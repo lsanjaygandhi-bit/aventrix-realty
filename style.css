@@ -1,0 +1,634 @@
+/* ===========================
+   AVENTRIX REALTY
+   BASE STYLES
+=========================== */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+html{
+    scroll-behavior:smooth;
+}
+body{
+    font-family:'Poppins',sans-serif;
+    background:#ffffff;
+    color:#111;
+    line-height:1.6;
+}
+/* ===========================
+   HEADER
+=========================== */
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: transform 0.4s ease;
+
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    transition: all 0.3s ease;
+}
+
+.container.nav{
+    width:90%;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:2px 1%;
+}
+.logo{
+    margin-right:20px;
+}
+
+.logo img{
+    height: 150px;
+    width: auto;
+    display: block;
+}
+
+nav{
+    display:flex;
+    gap:35px;
+}
+
+nav a{
+    color:#fff;
+    text-decoration:none;
+    font-weight:600;
+    font-size:15px;
+    letter-spacing:1px;
+}
+nav a:hover{
+    color:#0F5B4F;
+}
+/* ===========================
+   HERO
+=========================== */
+.hero{
+    min-height:100vh;
+    padding-top: 90px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    background:
+    linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),
+    url("images/hero.jpg");
+    background-size:cover;
+    background-position:center 30%;
+    background-repeat:no-repeat;
+}
+.overlay{
+    max-width:950px;
+    padding:20px;
+    color:#fff;
+    transform:translateY(-40px);
+}
+.overlay h1{
+    font-size:72px;
+    font-weight:700;
+    line-height:1.1;
+    margin-bottom:20px;
+    text-shadow:0 5px 20px rgba(0,0,0,.45);
+}
+.overlay p{
+    font-size:24px;
+    margin-bottom:40px;
+    color: #f5f5f5;
+}
+/* ===========================
+   SEARCH BOX
+=========================== */
+.search-box{
+    display:flex;
+    gap:15px;
+    justify-content:center;
+    flex-wrap:wrap;
+    background: rgba(255,255,255,.95);
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 20px 50px rgba(0,0,0,.25);
+}
+
+.search-box select{
+    width:220px;
+    padding:15px;
+    border:1px solid #ddd;
+    border-radius:8px;
+    font-size:15px;
+}
+
+.search-box button{
+    background:#0F5B4F;
+    color:#fff;
+    border:none;
+    padding:15px 30px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:15px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.search-box button:hover{
+    background:#0b433b;
+}
+/* ===========================
+   FEATURED PROPERTIES
+=========================== */
+
+.featured{
+    padding:80px 70px;
+    background:#f8f9fb;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+}
+
+.featured h2{
+    text-align:center;
+    font-size:42px;
+    margin-bottom:50px;
+    color:#111;
+}
+
+.property-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
+}
+
+.property-card{
+    background:#fff;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.property-card:hover{
+    transform:translateY(-8px);
+}
+
+.property-card img{
+    width:100%;
+    height:240px;
+    object-fit:cover;
+}
+
+.property-card h3{
+    padding:20px 20px 8px;
+    font-size:24px;
+}
+
+.property-card p{
+    padding:0 20px;
+    color:#666;
+}
+
+.property-card h4{
+    padding:10px 20px;
+    color:#0F5B4F;
+}
+
+.property-card a{
+    display:inline-block;
+    margin:0 20px 20px;
+    color:#0F5B4F;
+    font-weight:600;
+    text-decoration:none;
+}
+/* ===========================
+   WHY AVENTRIX
+=========================== */
+
+.why{
+    padding:80px 70px;
+    background:#ffffff;
+}
+
+.why h2{
+    text-align:center;
+    font-size:42px;
+    margin-bottom:50px;
+}
+
+.why-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+}
+
+.why-card{
+    background:#fff;
+    padding:35px 25px;
+    min-height:220px;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    transition:.3s;
+    text-align:center;
+}
+
+.why-card:hover{
+    transform:translateY(-8px);
+}
+
+.why-card h3{
+    margin-bottom:15px;
+    color:#0F5B4F;
+    font-size:22px;
+}
+
+.why-card p{
+    color:#666;
+    font-size:15px;
+    line-height:1.7;
+}
+/* ===========================
+   SERVICES
+=========================== */
+
+.services{
+    padding:100px 8%;
+    background:#ffffff;
+}
+
+.services h2{
+    text-align:center;
+    font-size:24px;
+    margin-bottom:15px;
+    color:#0f5b4f;
+}
+
+.service-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:30px;
+}
+
+.service-card{
+    background:#fff;
+    padding:35px 25px;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    transition:.3s;
+    text-align:center;
+}
+
+.service-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 15px 40px rgba(0,0,0,.15);
+}
+
+.service-card h3{
+    font-size:24px;
+    margin-bottom:15px;
+    color:#0F5B4F;
+}
+
+.service-card p{
+    color:#666;
+    line-height:1.7;
+}
+.contact{
+    padding:80px 0;
+    background:#111;
+    color:#fff;
+    text-align:center;
+}
+
+.contact h2{
+    font-size:40px;
+    margin-bottom:15px;
+}
+
+.contact p{
+    color:#ccc;
+    margin-bottom:40px;
+}
+
+.contact-info{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
+}
+
+.contact-info div{
+    background:#1a1a1a;
+    padding:30px;
+    border-radius:12px;
+}
+
+.contact-info h3{
+    margin-bottom:10px;
+    color:#0F5B4F;
+}
+
+.contact-info p{
+    margin:0;
+    color:#ddd;
+}
+.footer{
+    background:#0b0b0b;
+    color:#999;
+    text-align:center;
+    padding:25px 0;
+    font-size:15px;
+    border-top:1px solid rgba(255,255,255,0.08);
+}
+
+.footer p{
+    margin:0;
+}
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+
+@media (max-width:768px){
+
+    nav{
+        flex-direction:column;
+        gap:20px;
+    }
+
+    nav ul{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .overlay h1{
+        font-size:42px;
+    }
+
+    .overlay p{
+        font-size:18px;
+    }
+
+    .search-box{
+        flex-direction:column;
+    }
+
+    .property-grid,
+    .why-grid,
+    .service-grid,
+    .contact-info{
+        grid-template-columns:1fr;
+    }
+
+    .container{
+        width:90%;
+    }
+
+}
+.whatsapp-btn{
+    display:inline-block;
+    background:#25D366;
+    color:#fff;
+    padding:15px 30px;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:600;
+    transition:.3s;
+}
+
+.whatsapp-btn:hover{
+    background:#1da851;
+}
+#about{
+    padding:60px 8%;
+    text-align:center;
+}
+#about h2{
+    font-size:38px;
+    color:#0F5B4F;
+}
+.about-btn{
+    display:inline-block;
+    margin-top:20px;
+    padding:12px 30px;
+    background:#0F5B4F;
+    color:#fff;
+    text-decoration:none;
+    border-radius:30px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.about-btn:hover{
+    background:#0b463d;
+}
+/* ===== OUR LEADERSHIP ===== */
+
+#leadership{
+    padding:80px 0;
+    background:#ffffff;
+    text-align:center;
+}
+
+#leadership h2{
+    font-size:42px;
+    color:#111;
+    margin-bottom:20px;
+}
+/* Leadership Section */
+
+#leadership{
+    padding:80px 20px;
+    background:#ffffff;
+    text-align:center;
+}
+
+#leadership h2{
+    font-size:42px;
+    margin-bottom:10px;
+    color:#111;
+}
+
+#leadership p{
+    color:#666;
+}
+
+.leadership-grid{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    margin-top:40px;
+    flex-wrap:wrap;
+}
+
+.leader-card{
+    width:340px;
+    background:#fff;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    text-align:center;
+}
+
+.leader-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 15px 40px rgba(0,0,0,.15);
+}
+
+.leader-card h3{
+    font-size:26px;
+    color:#0F5B4F;
+    margin-bottom:8px;
+}
+
+.leader-card h4{
+    font-size:18px;
+    color:#777;
+    margin-bottom:15px;
+}
+
+.leader-card p{
+    line-height:1.8;
+}
+.leader-photo{
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    object-fit:cover;
+    margin-bottom:20px;
+    border:4px solid #0F5B4F;
+}
+.whatsapp-float{
+    position: fixed;
+    bottom: 25px;
+    right: 30px;
+    width: 85px;
+    height: 85px;
+    z-index: 9999;
+}
+
+.whatsapp-float img{
+    width:100%;
+    height:100%;
+    border-radius: 100%;
+    transition: transform 0.3s;
+}
+.whatsapp-float:hover img{
+    transform: scale(1.1);
+}
+.contact-info a{
+    color:#ffffff;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+.contact-info a:hover{
+    color:#0F5B4F;
+}
+.office-phone a{
+    color:#ffffff;
+    text-decoration:none;
+    font-size:15px;
+    font-weight:600;
+    white-space:nowrap;
+}
+
+.office-phone a:hover{
+    color:#0F5B4F;
+}
+.leader-card a{
+    color:#0F5B4F;
+    text-decoration:none;
+    font-weight:600;
+}
+
+.leader-card a:hover{
+    text-decoration:underline;
+}
+.map-btn{
+    display:inline-block;
+    margin-top:15px;
+    padding:10px 20px;
+    background:#0F5B4F;
+    color:#fff;
+    text-decoration:none;
+    border-radius:6px;
+    font-weight:600;
+}
+
+.map-btn:hover{
+    background:#0b463d;
+}
+/* PROPERTY HERO */
+
+.property-hero{
+    height:90vh;
+    background:
+    linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
+    url("images/crown-leaf.jpg");
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:#fff;
+}
+
+.property-overlay{
+    max-width:900px;
+}
+
+.property-overlay h1{
+    font-size:70px;
+    margin-bottom:15px;
+}
+
+.property-overlay p{
+    font-size:28px;
+    margin-bottom:30px;
+}
+
+.property-info{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    flex-wrap:wrap;
+    margin-bottom:40px;
+    font-size:20px;
+}
+
+.property-buttons{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.call-btn,
+.whatsapp-btn{
+    padding:15px 35px;
+    border-radius:40px;
+    text-decoration:none;
+    color:#fff;
+    font-weight:600;
+}
+
+.call-btn{
+    background:#0F5B4F;
+}
+
+.call-btn:hover{
+    background:#0b463d;
+}
+
+.whatsapp-btn{
+    background:#25D366;
+}
+
+.whatsapp-btn:hover{
+    background:#1ea952;
+}
