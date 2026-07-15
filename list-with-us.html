@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List with Us | Aventrix Realty</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+       <div class="page-nav">
+    <a href="index-old.html" class="back-btn"> Home</a>
+    <a href="javascript:history.back()" class="back-btn">← Back</a>
+</div>
+<section class="list-hero">
+
+    <div class="container">
+
+        <span class="section-tag">
+            PROPERTY OWNER SERVICES
+        </span>
+
+        <h1>
+            List Your Property<br>
+            with Aventrix Realty
+        </h1>
+
+        <p>
+            Whether you're selling, leasing or renting your property,
+            our experienced team will help you reach genuine buyers,
+            tenants and investors across Chennai.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="#owner-form" class="primary-btn">
+                Start Listing
+            </a>
+          
+
+        </div>
+
+    </div>
+
+</section>
+<section id="owner-form" class="owner-form">
+
+             <div class="container">
+
+                 <h2>Property Details</h2>
+
+                 <p>
+                     Complete the form below and our property consultant will contact you shortly.
+                     <br><br>
+                     <strong>🔒Your information is Kept confidential and used only for property-realated communication.</strong> 
+                 </p>
+
+                 <form id="propertyForm"
+                       action="https://formspree.io/f/xaqgrovg"
+                       method="POST">
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                             <label>Full Name <span class="required">*</span></label>
+                             <input type="text" name="full-name" placeholder="Full Name" required>
+                         </div>
+
+                         <div class="form-group">
+                             <label>Mobile Number <span class="required">*</span></label>
+                             <input type="tel" name="mobile-number" placeholder="Mobile Number" required>
+                         </div>
+
+                         <div class="form-group">
+                             <label>WhatsApp Number <span class="required">*</span></label>
+                             <input type="tel" name="whatsapp-number" placeholder="WhatsApp Number" required>
+                         </div>
+
+                         <div class="form-group">
+                            <label>Email Address (Optional)</label>
+                            <input type="email" name="email" placeholder="Email Address (Optional)">
+                         </div>
+
+                         <div class="form-group">
+                         <label>Property For <span class="required">*</span></label>
+                         <select name="property-for" required>
+                             <option value="">Select Property For</option>
+                             <option>Sale</option>
+                             <option>Rent</option>
+                             <option>Lease</option>
+                         </select>
+                     </div>
+
+                     <div class="form-group">
+                         <label>Property Type <span class="required">*</span></label>
+                         <select name="property-type" required>
+                             <option value="">Select Property Type</option>
+                             <option>Land</option>
+                             <option>Apartment</option>
+                             <option>Villa</option>
+                             <option>Commercial</option>
+                         </select>
+                     </div>
+
+                     <div class="form-group">
+                         <label>Property Address <span class="required">*</span></label>
+                         <input type="text" name="property-address" placeholder="Property Address" required>
+                     </div>
+
+        <div class="form-group">
+            <label>Land Area</label>
+            <input type="text" name="land-area" placeholder="Land Area">
+        </div>
+
+        <div class="form-group">
+            <label>Built-up Area</label>
+            <input type="text" name="built-up-area" placeholder="Built-up Area">
+        </div>
+
+        <div class="form-group">
+            <label>Expected Price <span class="required">*</span></label>
+            <input type="text" name="expected-price" placeholder="Expected Price (₹)" required>
+        </div>
+
+        <div class="form-group">
+            <label>Select Preferred Contact Time</label>
+            <select name="preferred-contact-time">
+                <option>Morning</option>
+                <option>Afternoon</option>
+                <option>Evening</option>
+            </select
+        </div>
+
+    </div>
+
+    <div class="form-group" style="margin-top:30px;">
+        <label>📷 Upload Property Photos</label>
+        <input type="file" name="property-photos" multiple>
+    </div>
+
+    <div class="form-group">
+        <label>Additional Details</label>
+        <textarea name="additional-details" placeholder="Tell us about your property..." rows="6"></textarea>
+    </div>
+    <div class="submit-wrapper">
+         <button type="submit">
+              Submit Property
+         </button>
+    </div>
+                 </form>
+                 <div id="success-message" style="display:none; text-align:center; padding:40px;">
+                     <h2 style="color:#2e7d32;">✅ Thank You!</h2>
+
+                     <p>Your property details have been submitted successfully.</p>
+
+                     <p>Our Aventrix Realty property consultant will contact you shortly.</p>
+                 </div>
+
+            </div>
+
+        </section>
+        
+    <script src="script.js"></script>
+
+   </body>
+   </html>
+

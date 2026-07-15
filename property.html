@@ -12,24 +12,27 @@
 <body>
 
 <header class="header">
-
     <div class="container nav">
 
         <div class="logo">
-            <a href="index.html">
-                <img src="images/Founder 3.PNG" alt="Aventrix Realty">
+            <a href="index-old.html" class="logo-text">
+                <span class="logo-main">AVENTRIX</span>
+                <span class="logo-sub">REALTY</span>
             </a>
         </div>
 
         <nav>
-            <a href="index.html">Home</a>
-            <a href="index.html#properties">Properties</a>
-            <a href="index.html#services">Services</a>
-            <a href="index.html#contact">Contact</a>
+            <a href="index-old.html">Home</a>
+            <a href="#properties">Properties</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
         </nav>
-
-    </div>
-
+        <div class="nav-right">
+            <a href="tel:+914446580150" class="call-btn">
+                Call Us
+            </a>
+        </div>
 </header>
 
 <section style="padding:120px 0 80px;">
@@ -75,4 +78,14 @@
 </footer>
 
 </body>
+<script>
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
+
+if (propertyData[id]) {
+    document.getElementById("property-title").textContent = propertyData[id].title;
+    document.getElementById("property-price").textContent = propertyData[id].price;
+    document.getElementById("property-location").textContent = propertyData[id].location;
+}
+</script>
 </html>
