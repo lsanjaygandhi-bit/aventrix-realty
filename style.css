@@ -1523,6 +1523,22 @@ nav a:hover::after{
     .enquiry-form-section{
         padding-top:100px;
     }
+ .main-nav{
+    display:none;
+    position:absolute;
+    top:100%;
+    left:0;
+    width:100%;
+    background:#fff;
+    flex-direction:column;
+    text-align:center;
+    padding:20px 0;
+    z-index:999;
+}
+
+.main-nav.active{
+    display:flex;
+}
 }
 .page-nav{
     position:absolute;

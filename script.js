@@ -85,8 +85,9 @@ const propertyData = {
 const menuToggle = document.getElementById("menuToggle");
 const mainNav = document.querySelector(".main-nav");
 
-if(menuToggle){
-    menuToggle.addEventListener("click",()=>{
+if (menuToggle) {
+    menuToggle.onclick = function () {
+        alert("Button Working");
         mainNav.classList.toggle("active");
-    });
+    };
 }
