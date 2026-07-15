@@ -1625,3 +1625,62 @@ nav a:hover::after{
 .page-nav .back-btn:hover{
     background:#c79f2d;
 }
+.menu-toggle{
+    display:none;
+    background:none;
+    border:none;
+    font-size:28px;
+    cursor:pointer;
+    color:#111;
+}
+
+@media (max-width:768px){
+
+.header{
+    background:#fff;
+}
+
+.container.nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 20px;
+}
+
+.menu-toggle{
+    display:block;
+}
+
+.main-nav{
+    display:none;
+    position:absolute;
+    top:80px;
+    left:0;
+    width:100%;
+    background:#fff;
+    flex-direction:column;
+    padding:20px;
+    gap:18px;
+    box-shadow:0 10px 30px rgba(0,0,0,.12);
+}
+
+.main-nav.active{
+    display:flex;
+}
+
+.nav-right{
+    display:none;
+}
+
+.dropdown-content{
+    position:static;
+    display:block;
+    box-shadow:none;
+    background:transparent;
+    padding-left:15px;
+}
+
+.hero h1{
+    font-size:42px;
+}
+}

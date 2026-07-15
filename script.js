@@ -82,3 +82,11 @@ const propertyData = {
     location: "Chennai",
   }
 };
+const menuToggle = document.getElementById("menuToggle");
+const mainNav = document.querySelector(".main-nav");
+
+if(menuToggle){
+    menuToggle.addEventListener("click",()=>{
+        mainNav.classList.toggle("active");
+    });
+}
