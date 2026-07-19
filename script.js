@@ -84,10 +84,41 @@ const propertyData = {
 };
 const menuToggle = document.getElementById("menuToggle");
 const mainNav = document.querySelector(".main-nav");
+const menuOverlay = document.getElementById("menuOverlay");
 
-if (menuToggle) {
-    menuToggle.onclick = function () {
-        alert("Button Working");
-        mainNav.classList.toggle("active");
-    };
+if (menuToggle && mainNav && menuOverlay) {
+
+    function closeMenu() {
+        menuToggle.classList.remove("active");
+        mainNav.classList.remove("active");
+        menuOverlay.classList.remove("active");
+        document.body.style.overflow = "";
+    }
+
+    function openMenu() {
+        menuToggle.classList.add("active");
+        mainNav.classList.add("active");
+        menuOverlay.classList.add("active");
+        document.body.style.overflow = "hidden";
+    }
+
+    menuToggle.addEventListener("click", function () {
+        if (mainNav.classList.contains("active")) {
+            closeMenu();
+        } else {
+            openMenu();
+        }
+    });
+
+    menuOverlay.addEventListener("click", closeMenu);
+
+    mainNav.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", closeMenu);
+    });
+
+    window.addEventListener("resize", function () {
+        if (window.innerWidth > 768) {
+            closeMenu();
+        }
+    });
 }
