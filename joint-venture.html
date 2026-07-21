@@ -6,6 +6,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <script>
+    (function () {
+    function evaluateMobile() {
+        // Detect real mobile/touch devices instead of relying only on
+        // viewport width, so the mobile layout survives orientation
+        // changes (landscape too). Also re-checks on resize so a
+        // desktop browser window narrowed below 768px (e.g. during
+        // responsive QA / devtools) correctly gets the mobile layout,
+        // without affecting real touch devices, which stay mobile
+        // via the touch/UA check regardless of width or rotation.
+        var coarsePointer = window.matchMedia &&
+            window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+        var mobileUA = /Android|iPhone|iPad|iPod|IEMobile|BlackBerry|Opera Mini|Mobile/i
+            .test(navigator.userAgent);
+        var narrowViewport = window.innerWidth <= 768;
+
+        var shouldBeMobile = coarsePointer || mobileUA || narrowViewport;
+        document.documentElement.classList.toggle('is-mobile', shouldBeMobile);
+    }
+
+    evaluateMobile();
+
+    var resizeTimer;
+    window.addEventListener('resize', function () {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(evaluateMobile, 150);
+    });
+})();
+    </script>
+
     <title>Joint Venture | Aventrix Realty</title>
 
     <link rel="stylesheet" href="style.css">
@@ -22,10 +52,47 @@
 
 <body>
 
-   <div class="page-nav">
-    <a href="index-old.html" class="back-btn"> Home</a>
-    <a href="javascript:history.back()" class="back-btn">← Back</a>
+    <header class="header">
+    <div class="container nav">
+        <div class="logo">
+    <a href="index.html" class="logo-text">
+        <span class="logo-main">AVENTRIX</span>
+        <span class="logo-sub">REALTY</span>
+    </a>
 </div>
+   <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+    <div class="menu-overlay" id="menuOverlay"></div>   
+       <nav class="main-nav">
+
+    <a href="index.html">Home</a>
+
+    <a href="index.html#about">About Us</a>
+
+    <a href="index.html#properties">Properties</a>
+
+    <a href="list-with-us.html">List With Us</a>
+
+    <a href="free-valuation.html">Free Valuation</a>
+
+    <a href="joint-venture.html">Joint Venture</a>
+    <a href="nri-services.html">NRI Services</a>
+
+    <a href="our-realtors.html">Our Realtors</a>
+
+  </nav>
+  
+        <div class="nav-right">
+            <a href="tel:+919176887770" class="nav-phone" aria-label="Call Aventrix Realty">
+                <i class="fas fa-phone-alt" aria-hidden="true"></i>
+                <span class="nav-phone-number">+91 91768 87770</span>
+            </a>
+        </div>
+    </div>
+     </header>
 
 <section class="list-hero">
 
@@ -70,7 +137,7 @@
 <p class="form-subtitle">
 Complete the form below and our team will contact you shortly.
 </p>
-<form id="propertyForm" action="https://formspree.io/f/xaqgrovg"method="POST">
+<form id="propertyForm" action="https://formspree.io/f/xaqgrovg" method="POST">
 
 <input type="hidden" name="_captcha" value="false">
 <input type="hidden" name="_subject" value="New Joint Venture Enquiry">
@@ -142,6 +209,42 @@ Complete the form below and our team will contact you shortly.
 
 </section>
 
+<footer class="footer">
+
+    <div class="container">
+
+        <div class="footer-logo">
+            <h3>AVENTRIX REALTY</h3>
+            <p>Where Legacy Meets the Next Generation</p>
+        </div>
+
+        <div class="footer-contact">
+
+            <p><i class="fas fa-phone"></i> Office : 044 4658 0150</p>
+            <p><i class="fas fa-mobile-alt"></i> Mobile : +91 91768 87770</p>
+            <p><i class="fas fa-envelope"></i> info@aventrixrealty.com</p>
+
+        </div>
+
+        <div class="footer-social">
+
+            <a href="https://www.facebook.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+
+            <a href="https://www.instagram.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+
+        </div>
+
+        <p class="copyright">
+            © 2026 Aventrix Realty. All Rights Reserved.
+        </p>
+
+    </div>
+
+</footer>
 
 <a href="https://wa.me/919176887770"
    class="whatsapp-float"
@@ -151,6 +254,10 @@ Complete the form below and our team will contact you shortly.
          alt="WhatsApp">
 
 </a>
+
+<button id="backToTop" class="back-to-top" aria-label="Back to top">
+    <i class="fas fa-chevron-up"></i>
+</button>
 
 <script src="script.js"></script>
 

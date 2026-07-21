@@ -7,6 +7,36 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <script>
+    (function () {
+    function evaluateMobile() {
+        // Detect real mobile/touch devices instead of relying only on
+        // viewport width, so the mobile layout survives orientation
+        // changes (landscape too). Also re-checks on resize so a
+        // desktop browser window narrowed below 768px (e.g. during
+        // responsive QA / devtools) correctly gets the mobile layout,
+        // without affecting real touch devices, which stay mobile
+        // via the touch/UA check regardless of width or rotation.
+        var coarsePointer = window.matchMedia &&
+            window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+        var mobileUA = /Android|iPhone|iPad|iPod|IEMobile|BlackBerry|Opera Mini|Mobile/i
+            .test(navigator.userAgent);
+        var narrowViewport = window.innerWidth <= 768;
+
+        var shouldBeMobile = coarsePointer || mobileUA || narrowViewport;
+        document.documentElement.classList.toggle('is-mobile', shouldBeMobile);
+    }
+
+    evaluateMobile();
+
+    var resizeTimer;
+    window.addEventListener('resize', function () {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(evaluateMobile, 150);
+    });
+})();
+    </script>
+
     <title>Aventrix Realty</title>
 
     <link rel="stylesheet" href="style.css">
@@ -14,42 +44,31 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    
   </head>
   <body>
     <header class="header">
     <div class="container nav">
         <div class="logo">
-    <a href="index-old.html" class="logo-text">
+    <a href="index.html" class="logo-text">
         <span class="logo-main">AVENTRIX</span>
         <span class="logo-sub">REALTY</span>
     </a>
 </div>
-   <button class="menu-toggle" id="menuToggle">
-    <i class="fas fa-bars"></i>
-    </button>
+   <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+    <div class="menu-overlay" id="menuOverlay"></div>   
        <nav class="main-nav">
 
-    <a href="index-old.html">Home</a>
+    <a href="index.html">Home</a>
 
-    <a href="#about">About Us</a>
+    <a href="index.html#about">About Us</a>
 
-    <div class="dropdown">
-
-        <a href="property.html" class="dropdown-toggle">
-            Properties
-         <i class="fas fa-chevron-down"></i>
-        </a>
-
-        <div class="dropdown-content">
-            <a href="property.html">Buy</a>
-            <a href="property.html">Sell</a>
-            <a href="property.html">Rent</a>
-        </div>
-
-    </div>
+    <a href="index.html#properties">Properties</a>
 
     <a href="list-with-us.html">List With Us</a>
 
@@ -58,37 +77,42 @@
     <a href="joint-venture.html">Joint Venture</a>
     <a href="nri-services.html">NRI Services</a>
 
-    <a href="insights.html">Insights</a>
+    <a href="our-realtors.html">Our Realtors</a>
 
   </nav>
   
         <div class="nav-right">
-            <a href="enquiry.html" class="primary-btn">
-                 Enquire Now
+            <a href="tel:+919176887770" class="nav-phone" aria-label="Call Aventrix Realty">
+                <i class="fas fa-phone-alt" aria-hidden="true"></i>
+                <span class="nav-phone-number">+91 91768 87770</span>
             </a>
         </div>
+    </div>
      </header>
 
+<div class="hero-wrapper">
        <section class="hero">
+
+     <video class="hero-video" id="heroVideo" autoplay muted loop playsinline preload="auto" poster="images/hero.jpg" aria-hidden="true">
+         <source src="images/hero-video.mp4?v=2" type="video/mp4">
+     </video>
 
      <div class="hero-overlay">
 
         <div class="hero-content">
 
-            <span class="hero-tag">
-                WHERE LEGACY MEETS THE NEXT GENERATION
-            </span>
-
             <h1>
-                Premium Real Estate
-                Sales & Investment
+                Discover Premium Properties
+                Across Chennai
             </h1>
 
+            <p class="hero-subheading">
+                Buy &middot; Sell &middot; Lease
+            </p>
+
             <p>
-                Built on decades of experience and driven by a modern vision,
-                Aventrix Realty delivers trusted property Solutions, land
-                investments, residential, commercial and joint venture solutions
-                across Chennai.
+                Trusted real estate solutions across residential, commercial
+                and land investments — backed by decades of local expertise.
             </p>
 
             <div class="hero-buttons">
@@ -108,41 +132,221 @@
     </div>
 
 </section>
-<section id="about" class="about">
+
+<div class="hero-search-wrap">
+    <div class="hero-search">
+        <form class="property-search-form" action="property.html" method="get">
+            <div class="search-field">
+                <label for="searchLocation">Location / Area</label>
+                <input type="text" id="searchLocation" name="location" placeholder="e.g. Chromepet, ECR...">
+            </div>
+            <div class="search-field">
+                <label for="searchType">Property Type</label>
+                <select id="searchType" name="type">
+                    <option value="">Any Type</option>
+                    <option value="apartment">Apartment</option>
+                    <option value="villa">Villa</option>
+                    <option value="plot">Plot / Land</option>
+                    <option value="commercial">Commercial</option>
+                </select>
+            </div>
+            <div class="search-field">
+                <label for="searchTransaction">Transaction</label>
+                <select id="searchTransaction" name="transaction">
+                    <option value="">Buy or Lease</option>
+                    <option value="buy">Buy</option>
+                    <option value="lease">Lease</option>
+                </select>
+            </div>
+            <button type="submit" class="search-btn">
+                <i class="fas fa-search" aria-hidden="true"></i> Search
+            </button>
+        </form>
+    </div>
+</div>
+</div>
+
+<section class="bsl-section">
 
     <div class="container">
 
-        <div class="section-title">
+        <div class="section-heading">
+            <span class="section-eyebrow">WHAT WE DO</span>
+            <h2 class="sr-only">Featured Services</h2>
+        </div>
 
-            <span>OUR STORY</span>
+        <div class="bsl-grid">
 
-            <h2>WHARE LEGACY MEETS THE NEXT GENERATION</h2>
+            <a href="property.html?transaction=buy" class="bsl-card">
+                <div class="bsl-icon"><i class="fas fa-home" aria-hidden="true"></i></div>
+                <h3>Buy</h3>
+                <p>Find verified homes, apartments and plots.</p>
+            </a>
+
+            <a href="list-with-us.html" class="bsl-card">
+                <div class="bsl-icon"><i class="fas fa-hand-holding-usd" aria-hidden="true"></i></div>
+                <h3>Sell</h3>
+                <p>List and sell your property with expert guidance.</p>
+            </a>
+
+            <a href="property.html?transaction=lease" class="bsl-card">
+                <div class="bsl-icon"><i class="fas fa-key" aria-hidden="true"></i></div>
+                <h3>Lease</h3>
+                <p>Residential and Commercial Leasing.</p>
+            </a>
+
+            <a href="joint-venture.html" class="bsl-card">
+                <div class="bsl-icon"><i class="fas fa-people-arrows" aria-hidden="true"></i></div>
+                <h3>Joint Venture</h3>
+                <p>Developer and landowner partnerships, built on trust.</p>
+            </a>
+
+            <a href="index.html#contact" class="bsl-card">
+                <div class="bsl-icon"><i class="fas fa-user-tie" aria-hidden="true"></i></div>
+                <h3>Property Advisory</h3>
+                <p>Expert guidance for every stage of your property journey.</p>
+            </a>
+
+            <a href="nri-services.html" class="bsl-card">
+                <div class="bsl-icon"><i class="fas fa-globe-asia" aria-hidden="true"></i></div>
+                <h3>NRI Services</h3>
+                <p>Remote-friendly property solutions for NRI clients.</p>
+            </a>
 
         </div>
 
-        <div class="about-content">
+    </div>
 
-            <p>Every great journey begins with a place that holds a story.</p>
+</section>
 
-            <p>
-                Long before Aventrix Realty was established, the very place where our office stands today was home to <strong>TP Builders</strong>, founded by <strong>Late Mr. Perumal</strong> in <strong>1965</strong>. From this very location, he built homes, created lasting relationships, and established a reputation that continues to inspire generations.
-            </p>
+<section class="invest-section">
 
-            <p>
-            The legacy did not end with one generation. In 2010, <strong>Gnanasekaran P</strong> proudly carried forward the vision of his father, <strong>Late Mr. Perumal</strong>. Inspired by the legacy of <strong>TP Builders</strong>, he preserved the values that earned generations of trust while embracing a modern approach to real estate—where tradition, professionalism, and long-term relationships remain at the heart of every property journey.
-            </p>
+    <div class="container">
 
-            <p>
-            As the vision continued to grow, <strong>Sanjay Gandhi L</strong> became part of this new chapter, bringing over a decade of real estate experience across land transactions, residential and commercial properties, joint ventures, and strategic advisory. Together, <strong>Gnanasekaran P</strong> and <strong>Sanjay Gandhi L</strong> continue to lead <strong>Aventrix Realty</strong>, combining a proud legacy with modern expertise to deliver exceptional real estate solutions for homeowners, investors, and developers.
-            </p>
+        <div class="section-heading">
+            <span class="section-eyebrow">THE OPPORTUNITY</span>
+            <h2>Why Invest in Chennai</h2>
+        </div>
 
-            <p>
-                Today, <strong>Aventrix Realty</strong> represents the next chapter of that journey. Built on decades of local knowledge and guided by a modern outlook, we provide professional advisory services in residential, commercial, land, and joint venture real estate across Chennai.
-            </p>
+        <div class="invest-grid">
 
-            <p class="about-closing">
-                <strong>Honouring the past. Building the future.</strong>
-            </p>
+            <div class="invest-card">
+                <div class="invest-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M3 17l6-6 4 4 8-8"/>
+                        <path d="M15 7h6v6"/>
+                    </svg>
+                </div>
+                <h3>Growth Corridors</h3>
+                <p>Rapidly developing zones offering strong long-term value.</p>
+            </div>
+
+            <div class="invest-card">
+                <div class="invest-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <rect x="4" y="10" width="16" height="8" rx="2"/>
+                        <circle cx="8" cy="18" r="1.6"/>
+                        <circle cx="16" cy="18" r="1.6"/>
+                        <path d="M7 10V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v4"/>
+                    </svg>
+                </div>
+                <h3>Metro Connectivity</h3>
+                <p>Expanding transit access improving reach across the city.</p>
+            </div>
+
+            <div class="invest-card">
+                <div class="invest-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <rect x="4" y="4" width="7" height="7" rx="1"/>
+                        <rect x="13" y="4" width="7" height="7" rx="1"/>
+                        <rect x="4" y="13" width="7" height="7" rx="1"/>
+                        <rect x="13" y="13" width="7" height="7" rx="1"/>
+                    </svg>
+                </div>
+                <h3>IT &amp; Business Hubs</h3>
+                <p>Proximity to major commercial and technology corridors.</p>
+            </div>
+
+            <div class="invest-card">
+                <div class="invest-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M4 19.5V9l8-5 8 5v10.5"/>
+                        <path d="M9 19.5v-6h6v6"/>
+                    </svg>
+                </div>
+                <h3>Rental Demand</h3>
+                <p>Consistent tenant demand across residential and commercial.</p>
+            </div>
+
+            <div class="invest-card">
+                <div class="invest-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M4 18l4-5 3 3 4-6 5 7"/>
+                        <path d="M4 18h16"/>
+                    </svg>
+                </div>
+                <h3>Long-term Appreciation</h3>
+                <p>Steady value growth backed by sustained market demand.</p>
+            </div>
+
+            <div class="invest-card">
+                <div class="invest-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M3 20h18"/>
+                        <path d="M5 20V10l4-3 4 3v10"/>
+                        <path d="M13 20v-6l3-2 3 2v6"/>
+                    </svg>
+                </div>
+                <h3>Infrastructure Development</h3>
+                <p>Ongoing civic and transport investment across the region.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="categories-section">
+
+    <div class="container">
+
+        <div class="section-heading">
+            <span class="section-eyebrow">BROWSE BY TYPE</span>
+            <h2>Property Categories</h2>
+        </div>
+
+        <div class="categories-grid">
+
+            <a href="property.html?category=residential" class="category-card" style="background-image:url('images/property1.jpg')">
+                <span class="category-overlay"></span>
+                <span class="category-label">Residential</span>
+            </a>
+
+            <a href="property.html?category=commercial" class="category-card" style="background-image:url('images/commercial-rental.jpg')">
+                <span class="category-overlay"></span>
+                <span class="category-label">Commercial</span>
+            </a>
+
+            <a href="property.html?category=land" class="category-card" style="background-image:url('images/ecr-devaneri.jpg')">
+                <span class="category-overlay"></span>
+                <span class="category-label">Land &amp; Plots</span>
+            </a>
+
+            <a href="property.html?category=villas" class="category-card" style="background-image:url('images/property2.jpg')">
+                <span class="category-overlay"></span>
+                <span class="category-label">Luxury Villas</span>
+            </a>
+
+            <a href="property.html?category=apartments" class="category-card" style="background-image:url('images/crownleaf.jpg')">
+                <span class="category-overlay"></span>
+                <span class="category-label">Apartments</span>
+            </a>
+
+            <a href="property.html?category=investment" class="category-card" style="background-image:url('images/property3.jpg')">
+                <span class="category-overlay"></span>
+                <span class="category-label">Investment Properties</span>
+            </a>
 
         </div>
 
@@ -156,93 +360,405 @@
 
         <div class="section-title">
             <h2>Our Featured Properties</h2>
+        </div>
 
         <div class="property-grid">
 
             <div class="property-card">
-
-                <img src="images/property1.jpg" alt="Luxury Apartment">
-
+                <div class="property-image-wrap">
+                    <img src="images/property1.jpg" alt="Luxury Apartment" loading="lazy">
+                    <span class="property-badge badge-sale">FOR SALE</span>
+                    <button class="property-share-btn" aria-label="Share this property"><i class="fas fa-share-alt" aria-hidden="true"></i></button>
+                </div>
                 <div class="content">
+                    <span class="property-location"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Chennai</span>
                     <h3>Luxury Apartments</h3>
                     <p>Premium apartments in Chennai's fastest-growing locations.</p>
-                    <span>Starting from ₹1.14 Crore</span>
-                   <a href="property.html?id=luxury-apartments">View Property</a>
+                    <div class="property-footer">
+                        <span class="property-price">₹1.14 Crore</span>
+                        <a href="property.html?id=luxury-apartments" class="view-details-btn">View Details</a>
+                    </div>
                 </div>
-
             </div>
 
             <div class="property-card">
-
-                <img src="images/property2.jpg" alt="Premium Villas">
-
+                <div class="property-image-wrap">
+                    <img src="images/property2.jpg" alt="Premium Villas" loading="lazy">
+                    <span class="property-badge badge-sale">FOR SALE</span>
+                    <button class="property-share-btn" aria-label="Share this property"><i class="fas fa-share-alt" aria-hidden="true"></i></button>
+                </div>
                 <div class="content">
+                    <span class="property-location"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Chennai</span>
                     <h3>Premium Villas</h3>
                     <p>Luxury independent villas with modern amenities.</p>
-                    <span>Starting from ₹1.45 Crore</span>
-                    <a href="property.html?id=premium-villas">View Property</a>
+                    <div class="property-footer">
+                        <span class="property-price">₹1.45 Crore</span>
+                        <a href="property.html?id=premium-villas" class="view-details-btn">View Details</a>
+                    </div>
                 </div>
-
             </div>
 
             <div class="property-card">
-
-                <img src="images/property3.jpg" alt="Residential Plots">
-
+                <div class="property-image-wrap">
+                    <img src="images/property3.jpg" alt="Residential Plots" loading="lazy">
+                    <span class="property-badge badge-sale">FOR SALE</span>
+                    <button class="property-share-btn" aria-label="Share this property"><i class="fas fa-share-alt" aria-hidden="true"></i></button>
+                </div>
                 <div class="content">
+                    <span class="property-location"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Chennai</span>
                     <h3>Residential Plots</h3>
                     <p>DTCP & CMDA approved premium investment plots.</p>
-                    <span>Starting from ₹1.00 Crore</span>
-                    <a href="property.html?id=residential-plots">View Property</a>
+                    <div class="property-footer">
+                        <span class="property-price">₹1.00 Crore</span>
+                        <a href="property.html?id=residential-plots" class="view-details-btn">View Details</a>
+                    </div>
                 </div>
-
             </div>
 
             <div class="property-card">
-
-                <img src="images/crownleaf.jpg" alt="Crown Leaf">
-
+                <div class="property-image-wrap">
+                    <img src="images/crownleaf.jpg" alt="Crown Leaf" loading="lazy">
+                    <span class="property-badge badge-sale">FOR SALE</span>
+                    <button class="property-share-btn" aria-label="Share this property"><i class="fas fa-share-alt" aria-hidden="true"></i></button>
+                </div>
                 <div class="content">
+                    <span class="property-location"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Old Pallavaram</span>
                     <h3>Crown Leaf</h3>
                     <p>Premium 3 BHK Apartments, Old Pallavaram.</p>
-                    <span>Starting from ₹1.10 Crore</span>
-                    <a href="property.html?id=crown-leaf">View Property</a>
+                    <div class="property-footer">
+                        <span class="property-price">₹1.10 Crore</span>
+                        <a href="property.html?id=crown-leaf" class="view-details-btn">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="property-card">
+                <div class="property-image-wrap">
+                    <img src="images/commercial-rental.jpg" alt="Premium Commercial Building for Rent" loading="lazy">
+                    <span class="property-badge badge-lease">FOR LEASE</span>
+                    <button class="property-share-btn" aria-label="Share this property"><i class="fas fa-share-alt" aria-hidden="true"></i></button>
+                </div>
+                <div class="content">
+                    <span class="property-location"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Lakshmipuram, Chromepet</span>
+                    <h3>Commercial for Rent</h3>
+                    <p>Approx. 6,500 Sq.Ft. Built-up Area.</p>
+                    <div class="property-footer">
+                        <span class="property-price">₹2.50 Lakhs / Month</span>
+                        <a href="property.html?id=commercial-rent" class="view-details-btn">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="property-card">
+                <div class="property-image-wrap">
+                    <img src="images/ecr-devaneri.jpg" alt="Premium Residential Plot - ECR Devaneri" loading="lazy">
+                    <span class="property-badge badge-sale">FOR SALE</span>
+                    <button class="property-share-btn" aria-label="Share this property"><i class="fas fa-share-alt" aria-hidden="true"></i></button>
+                </div>
+                <div class="content">
+                    <span class="property-location"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> ECR, Devaneri</span>
+                    <h3>Plot for Sale</h3>
+                    <p>5,520 Sq.Ft. &middot; 60 Ft Frontage | 92 Ft Depth &middot; Near East Bay Resort.</p>
+                    <div class="property-footer">
+                        <span class="property-price">View Price</span>
+                        <a href="property.html?id=plot-sale" class="view-details-btn">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="locations-section">
+
+    <div class="container">
+
+        <div class="section-heading">
+            <span class="section-eyebrow">EXPLORE CHENNAI</span>
+            <h2>Featured Locations</h2>
+        </div>
+
+        <div class="locations-grid">
+
+            <div class="location-category">
+                <button class="location-card-btn" style="background-image:url('images/loc-central-chennai.jpg')" aria-expanded="false">
+                    <span class="location-overlay"></span>
+                    <span class="location-name">Central Chennai</span>
+                <span class="location-toggle-btn"><i class="fas fa-plus" aria-hidden="true"></i></span>
+                </button>
+                <div class="location-areas-row">
+                    <div class="location-areas-track">
+                        <a href="property.html?location=egmore" class="location-chip">Egmore</a>
+                        <a href="property.html?location=nungambakkam" class="location-chip">Nungambakkam</a>
+                        <a href="property.html?location=t-nagar" class="location-chip">T. Nagar</a>
+                        <a href="property.html?location=mylapore" class="location-chip">Mylapore</a>
+                        <a href="property.html?location=royapettah" class="location-chip">Royapettah</a>
+                        <a href="property.html?location=alwarpet" class="location-chip">Alwarpet</a>
+                        <a href="property.html?location=chetpet" class="location-chip">Chetpet</a>
+                        <a href="property.html?location=kilpauk" class="location-chip">Kilpauk</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="location-category">
+                <button class="location-card-btn" style="background-image:url('images/loc-south-chennai.jpg')" aria-expanded="false">
+                    <span class="location-overlay"></span>
+                    <span class="location-name">South Chennai</span>
+                <span class="location-toggle-btn"><i class="fas fa-plus" aria-hidden="true"></i></span>
+                </button>
+                <div class="location-areas-row">
+                    <div class="location-areas-track">
+                        <a href="property.html?location=chromepet" class="location-chip">Chromepet</a>
+                        <a href="property.html?location=pallavaram" class="location-chip">Pallavaram</a>
+                        <a href="property.html?location=tambaram" class="location-chip">Tambaram</a>
+                        <a href="property.html?location=velachery" class="location-chip">Velachery</a>
+                        <a href="property.html?location=guindy" class="location-chip">Guindy</a>
+                        <a href="property.html?location=adyar" class="location-chip">Adyar</a>
+                        <a href="property.html?location=medavakkam" class="location-chip">Medavakkam</a>
+                        <a href="property.html?location=perungudi" class="location-chip">Perungudi</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="location-category">
+                <button class="location-card-btn" style="background-image:url('images/loc-omr-it-corridor.jpg')" aria-expanded="false">
+                    <span class="location-overlay"></span>
+                    <span class="location-name">OMR IT Corridor</span>
+                <span class="location-toggle-btn"><i class="fas fa-plus" aria-hidden="true"></i></span>
+                </button>
+                <div class="location-areas-row">
+                    <div class="location-areas-track">
+                        <a href="property.html?location=perungudi" class="location-chip">Perungudi</a>
+                        <a href="property.html?location=thoraipakkam" class="location-chip">Thoraipakkam</a>
+                        <a href="property.html?location=karapakkam" class="location-chip">Karapakkam</a>
+                        <a href="property.html?location=sholinganallur" class="location-chip">Sholinganallur</a>
+                        <a href="property.html?location=navalur" class="location-chip">Navalur</a>
+                        <a href="property.html?location=siruseri" class="location-chip">Siruseri</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="location-category">
+                <button class="location-card-btn" style="background-image:url('images/loc-airport-zone.jpg')" aria-expanded="false">
+                    <span class="location-overlay"></span>
+                    <span class="location-name">Airport Zone</span>
+                <span class="location-toggle-btn"><i class="fas fa-plus" aria-hidden="true"></i></span>
+                </button>
+                <div class="location-areas-row">
+                    <div class="location-areas-track">
+                        <a href="property.html?location=meenambakkam" class="location-chip">Meenambakkam</a>
+                        <a href="property.html?location=pallavaram" class="location-chip">Pallavaram</a>
+                        <a href="property.html?location=chromepet" class="location-chip">Chromepet</a>
+                        <a href="property.html?location=nanganallur" class="location-chip">Nanganallur</a>
+                        <a href="property.html?location=st-thomas-mount" class="location-chip">St. Thomas Mount</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="location-category">
+                <button class="location-card-btn" style="background-image:url('images/loc-luxury-neighbourhoods.jpg')" aria-expanded="false">
+                    <span class="location-overlay"></span>
+                    <span class="location-name">Luxury Neighbourhoods</span>
+                <span class="location-toggle-btn"><i class="fas fa-plus" aria-hidden="true"></i></span>
+                </button>
+                <div class="location-areas-row">
+                    <div class="location-areas-track">
+                        <a href="property.html?location=boat-club-road" class="location-chip">Boat Club Road</a>
+                        <a href="property.html?location=poes-garden" class="location-chip">Poes Garden</a>
+                        <a href="property.html?location=alwarpet" class="location-chip">Alwarpet</a>
+                        <a href="property.html?location=ra-puram" class="location-chip">R.A. Puram</a>
+                        <a href="property.html?location=besant-nagar" class="location-chip">Besant Nagar</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="location-category">
+                <button class="location-card-btn" style="background-image:url('images/loc-ecr-coastal-belt.jpg')" aria-expanded="false">
+                    <span class="location-overlay"></span>
+                    <span class="location-name">ECR Coastal Belt</span>
+                <span class="location-toggle-btn"><i class="fas fa-plus" aria-hidden="true"></i></span>
+                </button>
+                <div class="location-areas-row">
+                    <div class="location-areas-track">
+                        <a href="property.html?location=thiruvanmiyur" class="location-chip">Thiruvanmiyur</a>
+                        <a href="property.html?location=palavakkam" class="location-chip">Palavakkam</a>
+                        <a href="property.html?location=neelankarai" class="location-chip">Neelankarai</a>
+                        <a href="property.html?location=injambakkam" class="location-chip">Injambakkam</a>
+                        <a href="property.html?location=akkarai" class="location-chip">Akkarai</a>
+                        <a href="property.html?location=uthandi" class="location-chip">Uthandi</a>
+                        <a href="property.html?location=kanathur" class="location-chip">Kanathur</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="listings-carousel-section">
+
+    <div class="container">
+
+        <div class="section-heading">
+            <span class="section-eyebrow">RECENTLY ADDED</span>
+            <h2>Latest Listings</h2>
+        </div>
+
+        <div class="carousel-wrap">
+
+            <button class="carousel-arrow carousel-prev" id="carouselPrev" aria-label="Previous listings">
+                <i class="fas fa-chevron-left" aria-hidden="true"></i>
+            </button>
+
+            <div class="carousel-track" id="carouselTrack">
+
+                <div class="carousel-card">
+                    <img src="images/property1.jpg" alt="Luxury Apartments" loading="lazy">
+                    <div class="carousel-card-body">
+                        <span class="carousel-location">Chennai</span>
+                        <h3>Luxury Apartments</h3>
+                        <div class="carousel-meta">
+                            <span>Apartment</span>
+                            <span class="carousel-price">₹1.14 Crore</span>
+                        </div>
+                        <a href="property.html?id=luxury-apartments" class="carousel-view-btn">View Details</a>
+                    </div>
+                </div>
+
+                <div class="carousel-card">
+                    <img src="images/property2.jpg" alt="Premium Villas" loading="lazy">
+                    <div class="carousel-card-body">
+                        <span class="carousel-location">Chennai</span>
+                        <h3>Premium Villas</h3>
+                        <div class="carousel-meta">
+                            <span>Villa</span>
+                            <span class="carousel-price">₹1.45 Crore</span>
+                        </div>
+                        <a href="property.html?id=premium-villas" class="carousel-view-btn">View Details</a>
+                    </div>
+                </div>
+
+                <div class="carousel-card">
+                    <img src="images/crownleaf.jpg" alt="Crown Leaf" loading="lazy">
+                    <div class="carousel-card-body">
+                        <span class="carousel-location">Old Pallavaram</span>
+                        <h3>Crown Leaf</h3>
+                        <div class="carousel-meta">
+                            <span>Apartment</span>
+                            <span class="carousel-price">₹1.10 Crore</span>
+                        </div>
+                        <a href="property.html?id=crown-leaf" class="carousel-view-btn">View Details</a>
+                    </div>
+                </div>
+
+                <div class="carousel-card">
+                    <img src="images/commercial-rental.jpg" alt="Commercial for Rent" loading="lazy">
+                    <div class="carousel-card-body">
+                        <span class="carousel-location">Lakshmipuram, Chromepet</span>
+                        <h3>Commercial for Rent</h3>
+                        <div class="carousel-meta">
+                            <span>Commercial</span>
+                            <span class="carousel-price">₹2.50 Lakhs / Month</span>
+                        </div>
+                        <a href="property.html?id=commercial-rent" class="carousel-view-btn">View Details</a>
+                    </div>
+                </div>
+
+                <div class="carousel-card">
+                    <img src="images/ecr-devaneri.jpg" alt="Plot for Sale" loading="lazy">
+                    <div class="carousel-card-body">
+                        <span class="carousel-location">ECR, Devaneri</span>
+                        <h3>Plot for Sale</h3>
+                        <div class="carousel-meta">
+                            <span>Plot</span>
+                            <span class="carousel-price">View Price</span>
+                        </div>
+                        <a href="property.html?id=plot-sale" class="carousel-view-btn">View Details</a>
+                    </div>
                 </div>
 
             </div>
-             <div class="property-card">
-             <div class="content">
-                 <img src="images/commercial-rental.jpg" alt="Premium Commercial Building for Rent">
 
-                 <h3>Commercial for Rent</h3>
-                 <p>📍 Lakshmipuram, Chromepet.</p>
-                 <span>₹2.50 Lakhs / Month</span>
-                 <h4>Approx. 6,500 Sq.Ft. Built-up Area</h4>
-                 <a href="property.html?id=commercial-rent">View Property</a>
-
-               </div>
-
-            </div>
-             <div class="property-card">
-             <div class="content">
-
-                 <img src="images/ecr-devaneri.jpg" alt="Premium Residential Plot - ECR Devaneri">
-
-                 <h3>Plot for Sale</h3>
-
-                 <span>📍 ECR, Devaneri</span>
-                 <p>📐 5,520 Sq.Ft.<br>
-                  60 Ft Frontage | 92 Ft Depth
-                 </p>
-
-                 <h4>Near East Bay Resort</h4>
-
-                  <a href="property.html?id=plot-sale">View Property</a>
-
-              </div>
-             </div>
+            <button class="carousel-arrow carousel-next" id="carouselNext" aria-label="Next listings">
+                <i class="fas fa-chevron-right" aria-hidden="true"></i>
+            </button>
 
         </div>
+
+    </div>
+
+</section>
+
+<section id="about" class="about legacy-section">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <span class="section-eyebrow">OUR STORY</span>
+
+            <h2>Our Legacy</h2>
+
+            <p class="legacy-intro legacy-subtitle">Where Legacy Meets The Next Generation</p>
+
+        </div>
+
+        <div class="legacy-timeline">
+
+            <div class="legacy-item">
+                <div class="legacy-year">1965</div>
+                <div class="legacy-dot"></div>
+                <div class="legacy-text">
+                    <h3>TP Builders Founded</h3>
+                    <p>
+                        Long before Aventrix Realty was established, the very place where our
+                        office stands today was home to <strong>TP Builders</strong>, founded by
+                        <strong>Late Mr. Perumal</strong>. From this very location, he built homes,
+                        created lasting relationships, and established a reputation that continues
+                        to inspire generations.
+                    </p>
+                </div>
+            </div>
+
+            <div class="legacy-item">
+                <div class="legacy-year">2010</div>
+                <div class="legacy-dot"></div>
+                <div class="legacy-text">
+                    <h3>A New Generation</h3>
+                    <p>
+                        <strong>Gnanasekaran P</strong> proudly carried forward the vision of his
+                        father, preserving the values that earned generations of trust while
+                        embracing a modern approach to real estate — where tradition, professionalism,
+                        and long-term relationships remain at the heart of every property journey.
+                    </p>
+                </div>
+            </div>
+
+            <div class="legacy-item">
+                <div class="legacy-year">Present</div>
+                <div class="legacy-dot"></div>
+                <div class="legacy-text">
+                    <h3>Aventrix Realty Today</h3>
+                    <p>
+                        <strong>Sanjay Gandhi L</strong> became part of this new chapter, bringing
+                        over a decade of real estate experience across land, residential, commercial
+                        and joint venture advisory. Together, he and <strong>Gnanasekaran P</strong>
+                        continue to lead <strong>Aventrix Realty</strong> — combining a proud legacy
+                        with modern expertise across Chennai.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <p class="about-closing">
+            <strong>Honouring the past. Building the future.</strong>
+        </p>
 
     </div>
 
@@ -252,40 +768,77 @@
 
     <div class="container">
 
-        <h2>The Aventrix Difference</h2>
+        <div class="section-heading">
+            <span class="section-eyebrow">WHY AVENTRIX</span>
+            <h2>The Aventrix Standard</h2>
+        </div>
 
-        <div class="why-grid">
+        <div class="why-grid why-grid-6">
 
-            <div class="why-card">
+            <div class="why-item">
+                <div class="why-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M12 3l2.2 4.5 5 .7-3.6 3.5.9 5-4.5-2.4-4.5 2.4.9-5-3.6-3.5 5-.7z"/>
+                    </svg>
+                </div>
+                <h3>Trusted Since 1965</h3>
+                <p>Six decades of legacy, from TP Builders to Aventrix Realty.</p>
+            </div>
 
+            <div class="why-item">
+                <div class="why-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21z"/>
+                        <circle cx="12" cy="9.5" r="2.4"/>
+                    </svg>
+                </div>
+                <h3>Local Market Expertise</h3>
+                <p>Deep knowledge of Chennai's neighborhoods and value trends.</p>
+            </div>
+
+            <div class="why-item">
+                <div class="why-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M12 3l7 3.2v5.1c0 4.6-3 8.8-7 9.7-4-.9-7-5.1-7-9.7V6.2L12 3z"/>
+                        <path d="M9 12l2 2 4-4.2"/>
+                    </svg>
+                </div>
                 <h3>Verified Properties</h3>
-
                 <p>Every property is legally verified before listing.</p>
-
             </div>
 
-            <div class="why-card">
-
-                <h3>Expert Guidance</h3>
-
-                <p>Professional guidance from property search to registration.</p>
-
+            <div class="why-item">
+                <div class="why-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="8.5"/>
+                        <path d="M12 7.5v5l3.2 2"/>
+                    </svg>
+                </div>
+                <h3>Transparent Process</h3>
+                <p>Clear pricing, documentation and communication at every step.</p>
             </div>
 
-            <div class="why-card">
-
-                <h3>Land Solutions</h3>
-
-                <p>Professional support for land buying, selling and acquisition.</p>
-
+            <div class="why-item">
+                <div class="why-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="12" cy="7.5" r="3.2"/>
+                        <path d="M5 20c.6-3.6 3.6-6 7-6s6.4 2.4 7 6"/>
+                    </svg>
+                </div>
+                <h3>Professional Guidance</h3>
+                <p>Expert support from search to registration.</p>
             </div>
 
-            <div class="why-card">
-
-                <h3>Trusted Service</h3>
-
-                <p>Transparent, reliable and customer-focused real estate services.</p>
-
+            <div class="why-item">
+                <div class="why-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M3.5 12l3-3h4l2 2 2-2h4l3 3"/>
+                        <path d="M3.5 12v4.5h5.5v-3h6v3h5.5V12"/>
+                        <path d="M9 9.5V7a3 3 0 0 1 6 0v2.5"/>
+                    </svg>
+                </div>
+                <h3>Dedicated Support</h3>
+                <p>A responsive team, available throughout your journey.</p>
             </div>
 
         </div>
@@ -298,28 +851,59 @@
 
     <div class="container">
 
-        <h2>Our Services</h2>
+        <div class="section-heading">
+            <span class="section-eyebrow">WHAT WE OFFER</span>
+            <h2>Our Services</h2>
+        </div>
 
         <div class="service-grid">
 
-            <div class="service-card">
+            <div class="service-item">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M4 11.5L12 4l8 7.5"/>
+                        <path d="M6 10v9.5h12V10"/>
+                        <path d="M10 19.5v-6h4v6"/>
+                    </svg>
+                </div>
                 <h3>Residential Sales</h3>
-                <p>Flats, Villas & Independent Houses.</p>
+                <p>Apartments, Villas &amp; Independent Homes.</p>
             </div>
 
-            <div class="service-card">
+            <div class="service-item">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <rect x="5" y="3.5" width="9" height="17" rx="0.5"/>
+                        <rect x="14" y="8.5" width="5" height="12" rx="0.5"/>
+                        <path d="M7.5 7h1.5M7.5 10.5h1.5M7.5 14h1.5M11 7h1.5M11 10.5h1.5M11 14h1.5M16 12h1M16 15.5h1"/>
+                    </svg>
+                </div>
                 <h3>Commercial Properties</h3>
-                <p>Office spaces, retail & investment assets.</p>
+                <p>Office, Retail &amp; Investment Spaces.</p>
             </div>
 
-            <div class="service-card">
-                <h3>Land & Plots</h3>
-                <p>DTCP & CMDA approved plots.</p>
+            <div class="service-item">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M3 8.5l6-2.7 6 2.2 6-2.2v11.4l-6 2.2-6-2.2-6 2.7z"/>
+                        <path d="M9 5.8v11.4M15 8v11.4"/>
+                    </svg>
+                </div>
+                <h3>Land &amp; Plots</h3>
+                <p>DTCP &amp; CMDA Approved Properties.</p>
             </div>
 
-            <div class="service-card">
+            <div class="service-item">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="8" cy="8" r="2.6"/>
+                        <circle cx="16" cy="8" r="2.6"/>
+                        <path d="M3 19c.5-3 2.4-5 5-5s4.5 2 5 5"/>
+                        <path d="M11 19c.5-3 2.4-5 5-5s4.5 2 5 5"/>
+                    </svg>
+                </div>
                 <h3>Joint Venture</h3>
-                <p>Developer and landowner partnerships.</p>
+                <p>Developer &amp; Landowner Partnerships.</p>
             </div>
 
         </div>
@@ -327,43 +911,59 @@
     </div>
 
 </section>
-<section id="contact" class="contact">
+
+<section class="testimonials-section">
+
     <div class="container">
 
-        <h2>Contact Aventrix Realty</h2>
-        <p>Let's help you find your ideal property.</p>
+        <div class="section-heading">
+            <span class="section-eyebrow">CLIENT EXPERIENCES</span>
+            <h2>What Our Clients Say</h2>
+        </div>
 
-        <div class="contact-info">
+        <div class="testimonials-grid">
 
-            <div>
-                <h3>📍 Office</h3>
-                <p>No.27,1st Main Road,Newcolony,Chromepet, Chennai, Tamil Nadu</p>
-                <a href="https://maps.app.goo.gl/wQm9KBpQG9rEYFaX7?g_st=ic" target="_blank" class="map-btn">View on Google Maps       
-                </a>
+            <div class="testimonial-card">
+                <p class="testimonial-quote">
+                    "Aventrix Realty guided us through every step of purchasing our
+                    plot in Chromepet. Transparent, patient, and genuinely trustworthy."
+                </p>
+                <div class="testimonial-author">
+                    <span class="testimonial-name">Ramesh Kumar</span>
+                    <span class="testimonial-role">Purchased Residential Plot, Chromepet</span>
+                </div>
             </div>
 
-            <div>
-    <h3>📞 Contact</h3>
+            <div class="testimonial-card">
+                <p class="testimonial-quote">
+                    "We sold our commercial space within weeks, at a fair price,
+                    with zero surprises. Their advisory team knows the Chennai market well."
+                </p>
+                <div class="testimonial-author">
+                    <span class="testimonial-name">Priya Venkatesan</span>
+                    <span class="testimonial-role">Sold Commercial Property</span>
+                </div>
+            </div>
 
-    <p><strong>Gnanasekaran P</strong></p>
-    <p><a href="tel:+917092356222">+91 70923 56222</a></p>
-
-    <br>
-
-    <p><strong>Sanjay Gandhi L</strong></p>
-    <p><a href="tel:+919176887770">+91 91768 87770</a></p>
-
-</div>
-
-            <div>
-                <h3>✉️ Email</h3>
-                <p>info@aventrixrealty.com</p>
+            <div class="testimonial-card">
+                <p class="testimonial-quote">
+                    "Professional, responsive, and honest from the first call to
+                    registration day. Exactly what you want in a real estate partner."
+                </p>
+                <div class="testimonial-author">
+                    <span class="testimonial-name">Arvind Balaji</span>
+                    <span class="testimonial-role">Bought Villa, Old Pallavaram</span>
+                </div>
             </div>
 
         </div>
 
+        <p class="testimonials-note">Client testimonials shown are representative — replace with verified client feedback.</p>
+
     </div>
+
 </section>
+
 <section id="leadership">
 
     <div class="container">
@@ -374,7 +974,7 @@
         <div class="leadership-grid">
 
     <div class="leader-card">
-        <img src="images/founder.jpg" alt="Gnanasekaran P" class="leader-photo">
+        <img src="images/founder.jpg" alt="Gnanasekaran P" class="leader-photo" loading="lazy">
         <h3>Gnanasekaran P</h3>
         <h4>Founder</h4>
         <p>Visionary leader guiding Aventrix Realty with strategic direction and long-term growth.</p>
@@ -384,7 +984,7 @@
     </div>
 
     <div class="leader-card">
-        <img src="images/sanjay.jpg" alt="Sanjay Gandhi L" class="leader-photo">
+        <img src="images/sanjay.jpg" alt="Sanjay Gandhi L" class="leader-photo" loading="lazy">
         <h3>Sanjay Gandhi L</h3>
         <h4>Co-Founder & Managing Partner</h4>
         <p>Leading business operations, client relationships, sales and real estate advisory.</p>
@@ -394,54 +994,275 @@
         
     </div>
 </div>
+    </div>
 </section>
-<footer class="footer">
+
+<section class="faq-section">
 
     <div class="container">
 
-        <div class="footer-logo">
-            <h3>AVENTRIX REALTY</h3>
-            <p>Where Legacy Meets the Next Generation</p>
+        <div class="section-heading">
+            <span class="section-eyebrow">GOT QUESTIONS?</span>
+            <h2>Frequently Asked Questions</h2>
         </div>
 
-        <div class="footer-contact">
+        <div class="faq-list">
 
-            <p><i class="fas fa-phone"></i> Office : 044 4658 0150</p>
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span>How do I buy a property?</span>
+                    <i class="fas fa-plus faq-icon" aria-hidden="true"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Share your requirements through our Quick Enquiry form or a phone call. Our advisors shortlist verified properties matching your budget and preferences, arrange site visits, and guide you through documentation and registration.</p>
+                </div>
+            </div>
 
-            <p><i class="fas fa-mobile-alt"></i> Mobile : +91 91768 87770</p>
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span>How does Joint Venture work?</span>
+                    <i class="fas fa-plus faq-icon" aria-hidden="true"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>We partner landowners with reputable developers, structuring agreements that balance land value with construction investment — handling negotiations, legal documentation and project coordination throughout.</p>
+                </div>
+            </div>
 
-            <p><i class="fas fa-envelope"></i> info@aventrixrealty.com</p>
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span>How does property valuation work?</span>
+                    <i class="fas fa-plus faq-icon" aria-hidden="true"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Our team assesses location, market trends, property condition and comparable sales to provide a fair, data-backed valuation — free of cost, with no obligation.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span>Do you assist NRIs?</span>
+                    <i class="fas fa-plus faq-icon" aria-hidden="true"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Yes. We offer remote-friendly services for NRI clients, including virtual property tours, document handling, power-of-attorney coordination and end-to-end transaction support.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span>Do you help with legal verification?</span>
+                    <i class="fas fa-plus faq-icon" aria-hidden="true"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Every property we list undergoes legal verification, including title checks and approval status, before it reaches our clients.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span>Can you help sell my property?</span>
+                    <i class="fas fa-plus faq-icon" aria-hidden="true"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Absolutely. Our team markets your property to verified buyers, manages inquiries and negotiations, and supports you through to a smooth registration.</p>
+                </div>
+            </div>
 
         </div>
 
-        <div class="footer-social">
+    </div>
 
-            <a href="https://www.facebook.com/aventrixrealty"
-               target="_blank"
-               rel="noopener noreferrer"
-               aria-label="Facebook">
-                <i class="fab fa-facebook-f"></i>
-            </a>
+</section>
 
-            <a href="https://www.instagram.com/aventrixrealty"
-               target="_blank"
-               rel="noopener noreferrer"
-               aria-label="Instagram">
-                <i class="fab fa-instagram"></i>
-            </a>
+<section class="cta-section">
 
-        </div>
-
-        <p class="copyright">
-            © 2026 Aventrix Realty. All Rights Reserved.
+    <div class="container">
+        <h2>Ready to Find Your Ideal Property?</h2>
+        <p>
+            From your first enquiry to registration day, Aventrix Realty is with
+            you at every step — trusted guidance, verified properties, and a
+            team that treats your journey as our own.
         </p>
+        <div class="cta-buttons">
+            <a href="#properties" class="btn-primary">Explore Properties</a>
+            <a href="#contact" class="btn-secondary cta-btn-secondary">Let's Connect</a>
+        </div>
+    </div>
 
+</section>
+
+<section id="contact" class="quick-enquiry-section">
+
+    <div class="container">
+
+        <div class="quick-enquiry-grid">
+
+            <div class="quick-enquiry-info">
+                <span class="section-eyebrow eyebrow-light">LET'S CONNECT</span>
+                <h2>Let's Find Your Ideal Property</h2>
+                <p class="quick-enquiry-desc">
+                    Whether you're buying, selling, investing, or exploring a joint
+                    venture opportunity, our experienced property advisors are here
+                    to guide you every step of the way. Share your requirements, and
+                    we'll help you discover the right property across Chennai.
+                </p>
+
+                <div class="quick-enquiry-details">
+                    <div class="qe-detail">
+                        <span class="qe-label">Phone</span>
+                        <a href="tel:+919176887770">+91 91768 87770</a>
+                        <a href="tel:+917092356222">+91 70923 56222</a>
+                    </div>
+                    <div class="qe-detail">
+                        <span class="qe-label">Email</span>
+                        <a href="mailto:info@aventrixrealty.com">info@aventrixrealty.com</a>
+                    </div>
+                    <div class="qe-detail">
+                        <span class="qe-label">Office</span>
+                        <p>No.27, 1st Main Road, Newcolony, Chromepet, Chennai, Tamil Nadu</p>
+                        <a href="https://maps.app.goo.gl/wQm9KBpQG9rEYFaX7?g_st=ic" target="_blank" class="map-btn">View on Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quick-enquiry-form-wrap">
+                <form id="propertyForm" action="https://formspree.io/f/xaqgrovg" method="POST">
+
+                    <input type="hidden" name="Subject" value="Quick Enquiry - Homepage">
+
+                    <div class="qe-field">
+                        <label for="qeName">Full Name</label>
+                        <input type="text" id="qeName" name="Full Name" placeholder="Enter your full name" required>
+                    </div>
+
+                    <div class="qe-field">
+                        <label for="qePhone">Phone Number</label>
+                        <input type="tel" id="qePhone" name="Mobile Number" placeholder="Enter your mobile number" required>
+                    </div>
+
+                    <div class="qe-field">
+                        <label for="qeEmail">Email Address</label>
+                        <input type="email" id="qeEmail" name="Email" placeholder="Enter your email address">
+                    </div>
+
+                    <div class="qe-field">
+                        <label for="qeMessage">Preferred Location / Property Requirements</label>
+                        <textarea id="qeMessage" name="Message" rows="4" placeholder="Tell us your preferred location, property type, budget or any specific requirements..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="qe-submit-btn">Submit Enquiry</button>
+
+                </form>
+
+                <div id="success-message" class="success-message" style="display:none;">
+                    <h3>Thank You!</h3>
+                    <p>Your enquiry has been submitted successfully.</p>
+                    <p>Our Aventrix Realty team will contact you shortly.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<footer class="premium-footer">
+
+    <div class="container premium-footer-top">
+
+        <div class="pf-col pf-brand">
+            <h3 class="pf-logo">AVENTRIX REALTY</h3>
+            <p class="pf-tagline">Where Legacy Meets The Next Generation</p>
+            <p class="pf-desc">
+                Premium real estate advisory across Chennai — residential,
+                commercial, land and joint venture solutions, guided by
+                trust and decades of local expertise.
+            </p>
+            <div class="pf-contact">
+                <a href="tel:+91445806580150">044 4658 0150</a>
+                <a href="tel:+919176887770">+91 91768 87770</a>
+                <a href="mailto:info@aventrixrealty.com">info@aventrixrealty.com</a>
+                <p>No.27, 1st Main Road, Newcolony, Chromepet, Chennai, Tamil Nadu</p>
+            </div>
+        </div>
+
+        <div class="pf-col">
+            <h4 class="pf-heading">Quick Links</h4>
+            <ul class="pf-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="property.html">Properties</a></li>
+                <li><a href="free-valuation.html">Free Valuation</a></li>
+                <li><a href="joint-venture.html">Joint Venture</a></li>
+                <li><a href="nri-services.html">NRI Services</a></li>
+                <li><a href="insights.html">Insights</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+
+        <div class="pf-col">
+            <h4 class="pf-heading">Services</h4>
+            <ul class="pf-links">
+                <li><a href="property.html">Residential</a></li>
+                <li><a href="property.html">Commercial</a></li>
+                <li><a href="property.html">Land &amp; Plots</a></li>
+                <li><a href="joint-venture.html">Joint Venture</a></li>
+                <li><a href="index.html#contact">Property Advisory</a></li>
+                <li><a href="nri-services.html">NRI Services</a></li>
+            </ul>
+        </div>
+
+        <div class="pf-col">
+            <h4 class="pf-heading">Follow Us</h4>
+            <div class="pf-social">
+                <a href="https://www.facebook.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M15 8.5h-2a1.5 1.5 0 0 0-1.5 1.5v2h3.4l-.4 3H11.5v7h-3v-7H6.5v-3h2V9.7C8.5 7 10 5.5 12.5 5.5H15v3z"/></svg>
+                    <span>Facebook</span>
+                </a>
+                <a href="https://www.instagram.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="0.8" fill="currentColor" stroke="none"/></svg>
+                    <span>Instagram</span>
+                </a>
+                <a href="https://www.linkedin.com/in/lsanjaygandhi" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="3"/><path d="M8 10.5v6M8 7.8v.02M12 16.5v-3.7c0-1.2.9-2 2-2s2 .8 2 2v3.7"/></svg>
+                    <span>LinkedIn</span>
+                </a>
+                <a href="https://youtube.com/@sanjaygandhirealty" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="3" y="6.5" width="18" height="11" rx="3.5"/><path d="M10.3 9.8l4.4 2.2-4.4 2.2z" fill="currentColor" stroke="none"/></svg>
+                    <span>YouTube</span>
+                </a>
+                <a href="https://wa.me/9176887770" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 3.5a8.5 8.5 0 0 0-7.3 12.8L3.5 20.5l4.4-1.2A8.5 8.5 0 1 0 12 3.5z"/><path d="M8.7 8.6c.2-.5.4-.5.6-.5h.5c.2 0 .4 0 .5.4.2.5.6 1.5.6 1.6.1.1.1.3 0 .4-.1.2-.1.3-.3.4-.1.2-.3.3-.4.5-.1.1-.3.3-.1.5.2.4 1 1.5 2 2.3 1.2 1 1 .8 1.3.7.2 0 .4-.2.5-.4.2-.2.4-.2.6-.1l1.4.7c.2.1.4.2.4.3.1.2.1 1-.3 1.4-.4.5-1.4.9-2 .9-.6 0-1.4-.1-3.3-1-2.4-1.1-3.9-3.4-4-3.6-.1-.2-1-1.3-1-2.5s.6-1.8.8-2z" fill="currentColor" stroke="none"/></svg>
+                    <span>WhatsApp</span>
+                </a>
+                <a href="https://maps.app.goo.gl/wQm9KBpQG9rEYFaX7?g_st=ic" target="_blank" rel="noopener noreferrer" aria-label="Google Maps">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg>
+                    <span>Google Maps</span>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="premium-footer-divider"></div>
+
+    <div class="container premium-footer-bottom">
+        <p class="pf-copyright">© 2026 Aventrix Realty. All Rights Reserved.</p>
+        <div class="pf-legal">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms &amp; Conditions</a>
+            <a href="#">Sitemap</a>
+        </div>
     </div>
 
 </footer>
 <a href="https://wa.me/9176887770" class="whatsapp-float" target="_blank">
 <img src="images/whatsapp-icon.png" alt="WhatsApp">
 </a>
+
+<button id="backToTop" class="back-to-top" aria-label="Back to top">
+    <i class="fas fa-chevron-up"></i>
+</button>
 
 <script src="script.js"></script>
 </body>

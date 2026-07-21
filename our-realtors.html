@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script>
+    (function () {
+    function evaluateMobile() {
+        // Detect real mobile/touch devices instead of relying only on
+        // viewport width, so the mobile layout survives orientation
+        // changes (landscape too). Also re-checks on resize so a
+        // desktop browser window narrowed below 768px (e.g. during
+        // responsive QA / devtools) correctly gets the mobile layout,
+        // without affecting real touch devices, which stay mobile
+        // via the touch/UA check regardless of width or rotation.
+        var coarsePointer = window.matchMedia &&
+            window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+        var mobileUA = /Android|iPhone|iPad|iPod|IEMobile|BlackBerry|Opera Mini|Mobile/i
+            .test(navigator.userAgent);
+        var narrowViewport = window.innerWidth <= 768;
+
+        var shouldBeMobile = coarsePointer || mobileUA || narrowViewport;
+        document.documentElement.classList.toggle('is-mobile', shouldBeMobile);
+    }
+
+    evaluateMobile();
+
+    var resizeTimer;
+    window.addEventListener('resize', function () {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(evaluateMobile, 150);
+    });
+})();
+    </script>
+
+    <title>Our Realtors | Aventrix Realty</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  </head>
+  <body>
+    <header class="header">
+    <div class="container nav">
+        <div class="logo">
+    <a href="index.html" class="logo-text">
+        <span class="logo-main">AVENTRIX</span>
+        <span class="logo-sub">REALTY</span>
+    </a>
+</div>
+   <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+    <div class="menu-overlay" id="menuOverlay"></div>   
+       <nav class="main-nav">
+
+    <a href="index.html">Home</a>
+
+    <a href="index.html#about">About Us</a>
+
+    <a href="index.html#properties">Properties</a>
+
+    <a href="list-with-us.html">List With Us</a>
+
+    <a href="free-valuation.html">Free Valuation</a>
+
+    <a href="joint-venture.html">Joint Venture</a>
+    <a href="nri-services.html">NRI Services</a>
+
+    <a href="our-realtors.html">Our Realtors</a>
+
+  </nav>
+  
+        <div class="nav-right">
+            <a href="tel:+919176887770" class="nav-phone" aria-label="Call Aventrix Realty">
+                <i class="fas fa-phone-alt" aria-hidden="true"></i>
+                <span class="nav-phone-number">+91 91768 87770</span>
+            </a>
+        </div>
+    </div>
+     </header>
+
+    <section class="realtors-page-intro">
+        <div class="container">
+            <span class="section-eyebrow">OUR TEAM</span>
+            <h1>Meet Our Real Estate Professionals</h1>
+            <p class="realtors-subtitle">
+                Our experienced team is committed to delivering trusted guidance,
+                market expertise and exceptional service across every property journey.
+            </p>
+        </div>
+    </section>
+
+    <section class="realtors-section">
+        <div class="container">
+            <div class="realtors-grid" id="realtorsGrid">
+                <!-- Cards are rendered here by script.js from realtors-data.js -->
+            </div>
+        </div>
+    </section>
+
+<footer class="premium-footer">
+
+    <div class="container premium-footer-top">
+
+        <div class="pf-col pf-brand">
+            <h3 class="pf-logo">AVENTRIX REALTY</h3>
+            <p class="pf-tagline">Where Legacy Meets The Next Generation</p>
+            <p class="pf-desc">
+                Premium real estate advisory across Chennai — residential,
+                commercial, land and joint venture solutions, guided by
+                trust and decades of local expertise.
+            </p>
+            <div class="pf-contact">
+                <a href="tel:+91445806580150">044 4658 0150</a>
+                <a href="tel:+919176887770">+91 91768 87770</a>
+                <a href="mailto:info@aventrixrealty.com">info@aventrixrealty.com</a>
+                <p>No.27, 1st Main Road, Newcolony, Chromepet, Chennai, Tamil Nadu</p>
+            </div>
+        </div>
+
+        <div class="pf-col">
+            <h4 class="pf-heading">Quick Links</h4>
+            <ul class="pf-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="property.html">Properties</a></li>
+                <li><a href="free-valuation.html">Free Valuation</a></li>
+                <li><a href="joint-venture.html">Joint Venture</a></li>
+                <li><a href="nri-services.html">NRI Services</a></li>
+                <li><a href="insights.html">Insights</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+
+        <div class="pf-col">
+            <h4 class="pf-heading">Services</h4>
+            <ul class="pf-links">
+                <li><a href="property.html">Residential</a></li>
+                <li><a href="property.html">Commercial</a></li>
+                <li><a href="property.html">Land &amp; Plots</a></li>
+                <li><a href="joint-venture.html">Joint Venture</a></li>
+                <li><a href="index.html#contact">Property Advisory</a></li>
+                <li><a href="nri-services.html">NRI Services</a></li>
+            </ul>
+        </div>
+
+        <div class="pf-col">
+            <h4 class="pf-heading">Follow Us</h4>
+            <div class="pf-social">
+                <a href="https://www.facebook.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M15 8.5h-2a1.5 1.5 0 0 0-1.5 1.5v2h3.4l-.4 3H11.5v7h-3v-7H6.5v-3h2V9.7C8.5 7 10 5.5 12.5 5.5H15v3z"/></svg>
+                    <span>Facebook</span>
+                </a>
+                <a href="https://www.instagram.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="0.8" fill="currentColor" stroke="none"/></svg>
+                    <span>Instagram</span>
+                </a>
+                <a href="https://www.linkedin.com/in/lsanjaygandhi" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="3"/><path d="M8 10.5v6M8 7.8v.02M12 16.5v-3.7c0-1.2.9-2 2-2s2 .8 2 2v3.7"/></svg>
+                    <span>LinkedIn</span>
+                </a>
+                <a href="https://youtube.com/@sanjaygandhirealty" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="3" y="6.5" width="18" height="11" rx="3.5"/><path d="M10.3 9.8l4.4 2.2-4.4 2.2z" fill="currentColor" stroke="none"/></svg>
+                    <span>YouTube</span>
+                </a>
+                <a href="https://wa.me/9176887770" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 3.5a8.5 8.5 0 0 0-7.3 12.8L3.5 20.5l4.4-1.2A8.5 8.5 0 1 0 12 3.5z"/><path d="M8.7 8.6c.2-.5.4-.5.6-.5h.5c.2 0 .4 0 .5.4.2.5.6 1.5.6 1.6.1.1.1.3 0 .4-.1.2-.1.3-.3.4-.1.2-.3.3-.4.5-.1.1-.3.3-.1.5.2.4 1 1.5 2 2.3 1.2 1 1 .8 1.3.7.2 0 .4-.2.5-.4.2-.2.4-.2.6-.1l1.4.7c.2.1.4.2.4.3.1.2.1 1-.3 1.4-.4.5-1.4.9-2 .9-.6 0-1.4-.1-3.3-1-2.4-1.1-3.9-3.4-4-3.6-.1-.2-1-1.3-1-2.5s.6-1.8.8-2z" fill="currentColor" stroke="none"/></svg>
+                    <span>WhatsApp</span>
+                </a>
+                <a href="https://maps.app.goo.gl/wQm9KBpQG9rEYFaX7?g_st=ic" target="_blank" rel="noopener noreferrer" aria-label="Google Maps">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg>
+                    <span>Google Maps</span>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="premium-footer-divider"></div>
+
+    <div class="container premium-footer-bottom">
+        <p class="pf-copyright">© 2026 Aventrix Realty. All Rights Reserved.</p>
+        <div class="pf-legal">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms &amp; Conditions</a>
+            <a href="#">Sitemap</a>
+        </div>
+    </div>
+
+</footer>
+<a href="https://wa.me/9176887770" class="whatsapp-float" target="_blank">
+<img src="images/whatsapp-icon.png" alt="WhatsApp">
+</a>
+
+<button id="backToTop" class="back-to-top" aria-label="Back to top">
+    <i class="fas fa-chevron-up"></i>
+</button>
+
+<script src="realtors-data.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

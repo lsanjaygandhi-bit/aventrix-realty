@@ -2,90 +2,189 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script>
+    (function () {
+    function evaluateMobile() {
+        // Detect real mobile/touch devices instead of relying only on
+        // viewport width, so the mobile layout survives orientation
+        // changes (landscape too). Also re-checks on resize so a
+        // desktop browser window narrowed below 768px (e.g. during
+        // responsive QA / devtools) correctly gets the mobile layout,
+        // without affecting real touch devices, which stay mobile
+        // via the touch/UA check regardless of width or rotation.
+        var coarsePointer = window.matchMedia &&
+            window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+        var mobileUA = /Android|iPhone|iPad|iPod|IEMobile|BlackBerry|Opera Mini|Mobile/i
+            .test(navigator.userAgent);
+        var narrowViewport = window.innerWidth <= 768;
+
+        var shouldBeMobile = coarsePointer || mobileUA || narrowViewport;
+        document.documentElement.classList.toggle('is-mobile', shouldBeMobile);
+    }
+
+    evaluateMobile();
+
+    var resizeTimer;
+    window.addEventListener('resize', function () {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(evaluateMobile, 150);
+    });
+})();
+    </script>
+
     <title>Property Details | Aventrix Realty</title>
 
     <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 
 <body>
 
-<header class="header">
+    <header class="header">
     <div class="container nav">
-
         <div class="logo">
-            <a href="index-old.html" class="logo-text">
-                <span class="logo-main">AVENTRIX</span>
-                <span class="logo-sub">REALTY</span>
-            </a>
-        </div>
+    <a href="index.html" class="logo-text">
+        <span class="logo-main">AVENTRIX</span>
+        <span class="logo-sub">REALTY</span>
+    </a>
+</div>
+   <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+    <div class="menu-overlay" id="menuOverlay"></div>   
+       <nav class="main-nav">
 
-        <nav>
-            <a href="index-old.html">Home</a>
-            <a href="#properties">Properties</a>
-            <a href="#about">About</a>
-            <a href="#services">Services</a>
-            <a href="#contact">Contact</a>
-        </nav>
+    <a href="index.html">Home</a>
+
+    <a href="index.html#about">About Us</a>
+
+    <a href="index.html#properties">Properties</a>
+
+    <a href="list-with-us.html">List With Us</a>
+
+    <a href="free-valuation.html">Free Valuation</a>
+
+    <a href="joint-venture.html">Joint Venture</a>
+    <a href="nri-services.html">NRI Services</a>
+
+    <a href="our-realtors.html">Our Realtors</a>
+
+  </nav>
+  
         <div class="nav-right">
-            <a href="tel:+914446580150" class="call-btn">
-                Call Us
+            <a href="tel:+919176887770" class="nav-phone" aria-label="Call Aventrix Realty">
+                <i class="fas fa-phone-alt" aria-hidden="true"></i>
+                <span class="nav-phone-number">+91 91768 87770</span>
             </a>
         </div>
-</header>
+    </div>
+     </header>
 
-<section style="padding:120px 0 80px;">
-    <div class="container">
+<section class="property-hero" id="property-image">
 
-        <img src="images/property1.jpg" alt="Property"
-             style="width:100%; border-radius:12px; margin-bottom:30px;">
+    <div class="property-overlay">
 
-        <h1>Luxury Apartment</h1>
+        <h1 id="property-title">Luxury Apartments</h1>
+        <p id="property-location">📍 Chennai</p>
 
-        <h2 style="color:#0F5B4F;">₹114 Lakhs</h2>
+        <div class="property-info">
+            <span id="property-price">Contact for Price</span>
+        </div>
 
-        <p>
-            Premium 3 BHK Apartment located in Chennai's fastest-growing area.
-            Close to schools, hospitals, metro station and IT corridor.
-        </p>
-
-        <br>
-
-        <h3>Property Features</h3>
-
-        <ul>
-            <li>3 Bedrooms</li>
-            <li>3 Bathrooms</li>
-            <li>Covered Car Parking</li>
-            <li>Lift Available</li>
-            <li>24×7 Security</li>
-            <li>CMDA Approved</li>
-        </ul>
-        <br><br>
-
-<a href="https://wa.me/919176887770" class="whatsapp-btn">
-    WhatsApp Enquiry
-</a>
+        <div class="property-buttons">
+            <a href="tel:+914446580150" class="call-btn">Call Us</a>
+            <a href="https://wa.me/919176887770" class="whatsapp-btn" target="_blank">WhatsApp Enquiry</a>
+        </div>
 
     </div>
+
+</section>
+
+<section class="about">
+
+    <div class="container">
+
+        <div class="about-content">
+
+            <p id="property-description">
+                Premium 3 BHK Apartment located in Chennai's fastest-growing area.
+                Close to schools, hospitals, metro station and IT corridor.
+            </p>
+
+            <h3 style="margin:30px 0 15px;">Property Features</h3>
+
+            <ul id="property-features" style="line-height:2; color:#555; font-size:17px; padding-left:20px;">
+                <li>3 Bedrooms</li>
+                <li>3 Bathrooms</li>
+                <li>Covered Car Parking</li>
+                <li>Lift Available</li>
+                <li>24×7 Security</li>
+                <li>CMDA Approved</li>
+            </ul>
+
+        </div>
+
+    </div>
+
 </section>
 
 <footer class="footer">
+
     <div class="container">
-        <p>© 2026 Aventrix Realty. All Rights Reserved.</p>
+
+        <div class="footer-logo">
+            <h3>AVENTRIX REALTY</h3>
+            <p>Where Legacy Meets the Next Generation</p>
+        </div>
+
+        <div class="footer-contact">
+
+            <p><i class="fas fa-phone"></i> Office : 044 4658 0150</p>
+            <p><i class="fas fa-mobile-alt"></i> Mobile : +91 91768 87770</p>
+            <p><i class="fas fa-envelope"></i> info@aventrixrealty.com</p>
+
+        </div>
+
+        <div class="footer-social">
+
+            <a href="https://www.facebook.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+
+            <a href="https://www.instagram.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+
+        </div>
+
+        <p class="copyright">
+            © 2026 Aventrix Realty. All Rights Reserved.
+        </p>
+
     </div>
+
 </footer>
 
-</body>
-<script>
-const params = new URLSearchParams(window.location.search);
-const id = params.get("id");
+<a href="https://wa.me/919176887770" class="whatsapp-float" target="_blank">
+    <img src="images/whatsapp-icon.png" alt="WhatsApp">
+</a>
 
-if (propertyData[id]) {
-    document.getElementById("property-title").textContent = propertyData[id].title;
-    document.getElementById("property-price").textContent = propertyData[id].price;
-    document.getElementById("property-location").textContent = propertyData[id].location;
-}
-</script>
+<button id="backToTop" class="back-to-top" aria-label="Back to top">
+    <i class="fas fa-chevron-up"></i>
+</button>
+
+<script src="script.js"></script>
+
+</body>
 </html>
