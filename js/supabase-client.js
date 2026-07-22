@@ -10,8 +10,8 @@
  * service_role key in any file that ships to the browser.
  */
 
-const SUPABASE_URL = "https://YOUR-PROJECT-REF.supabase.co";
-const SUPABASE_ANON_KEY = "YOUR-SUPABASE-ANON-KEY";
+const SUPABASE_URL = "https://gkrtjeygrqkglsadskcg.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_MnbL_7U0x3xvksGpOJxtUQ_DEZ85MGL";
 
 window.supabaseClient = window.supabase.createClient(
     SUPABASE_URL,
