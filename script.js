@@ -76,95 +76,6 @@ if (form) {
 }
 
 // ===========================
-// STICKY HEADER:
-//  - transparent (white text) only while sitting over a
-//    full-bleed dark hero section
-//  - glassmorphism once scrolled past the hero, OR immediately
-//    on any page that has no hero section at all (so nav text
-//    is never invisible white-on-white on inner pages)
-//  - hides on scroll down, shows on scroll up
-//  - freezes at the very bottom (no bounce flicker)
-//  - forces glass style while mobile menu is open
-// ===========================
-const header = document.querySelector(".header");
-const heroEl = document.querySelector(".hero, .list-hero, .free-valuation-hero, .property-hero");
-const mainNavEl = document.querySelector(".main-nav");
-
-let lastScroll = 0;
-let ticking = false;
-const SCROLL_THRESHOLD = 5; // ignore tiny scroll jitter to prevent flicker
-
-// Glassmorphism kicks in once the user has scrolled past ~80% of the hero.
-// Pages with no hero section have nothing dark behind the header, so they
-// use a threshold of -1: the header is always in its solid "scrolled"
-// state, even at scrollY 0.
-const hasHero = !!heroEl;
-const glassThreshold = hasHero ? Math.round(heroEl.offsetHeight * 0.8) : -1;
-
-// scrollHeight only changes on resize/content-load, never mid-scroll —
-// caching it avoids forcing a layout read on every scroll frame.
-let maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-function recalcMaxScroll() {
-    maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-}
-window.addEventListener("resize", recalcMaxScroll, { passive: true });
-window.addEventListener("load", recalcMaxScroll);
-
-function updateHeaderOnScroll() {
-    const currentScroll = window.scrollY;
-
-    // While the mobile menu is open, force the glass style and don't
-    // touch the hide/show state at all
-    if (mainNavEl && mainNavEl.classList.contains("active")) {
-        header.classList.add("scrolled");
-        lastScroll = currentScroll;
-        ticking = false;
-        return;
-    }
-
-    // Glassmorphism toggle (independent of hide/show)
-    if (currentScroll > glassThreshold) {
-        header.classList.add("scrolled");
-    } else {
-        header.classList.remove("scrolled");
-    }
-
-    // Freeze hide/show state at the very bottom of the page so
-    // elastic/rubber-band overscroll can't flicker the header
-    if (maxScroll > 0 && currentScroll >= maxScroll - 2) {
-        lastScroll = currentScroll;
-        ticking = false;
-        return;
-    }
-
-    if (currentScroll < 50) {
-        header.classList.remove("hide"); // Always show near the very top
-    } else if (Math.abs(currentScroll - lastScroll) >= SCROLL_THRESHOLD) {
-        if (currentScroll > lastScroll) {
-            header.classList.add("hide");    // Scrolling down → hide
-        } else {
-            header.classList.remove("hide"); // Scrolling up → show
-        }
-    }
-
-    lastScroll = currentScroll;
-    ticking = false;
-}
-
-if (header) {
-    window.addEventListener("scroll", () => {
-        if (!ticking) {
-            window.requestAnimationFrame(updateHeaderOnScroll);
-            ticking = true;
-        }
-    }, { passive: true });
-
-    // Run once on load in case the page loads already scrolled
-    // (e.g. back-navigation, or a page that opens mid-scroll)
-    updateHeaderOnScroll();
-}
-
-// ===========================
 // BACK TO TOP
 // ===========================
 const backToTopBtn = document.getElementById("backToTop");
@@ -311,11 +222,6 @@ if (menuToggle && mainNav && menuOverlay) {
         }
 
         document.body.style.overflow = "";
-
-        // Re-sync header glass/hide state now that the menu is closed
-        if (typeof updateHeaderOnScroll === "function") {
-            updateHeaderOnScroll();
-        }
     }
 
     function openMenu() {
@@ -324,12 +230,6 @@ if (menuToggle && mainNav && menuOverlay) {
         menuOverlay.classList.add("active");
         menuToggle.setAttribute("aria-expanded", "true");
         document.body.style.overflow = "hidden";
-
-        // Force glass style immediately, even if still at the top of the page
-        if (header) {
-            header.classList.add("scrolled");
-            header.classList.remove("hide");
-        }
     }
 
     menuToggle.addEventListener("click", () => {
@@ -431,14 +331,6 @@ if (dropdownToggle) {
         <div class="realtor-profile-grid">
             <div class="realtor-profile-photo-wrap">
                 <img src="${realtor.photo}" alt="${realtor.name}" class="realtor-profile-photo">
-                <div class="realtor-profile-actions">
-                    <a href="${whatsappLink}" target="_blank" rel="noopener noreferrer" class="rp-whatsapp-btn">
-                        <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp
-                    </a>
-                    <a href="enquiry.html" class="rp-enquiry-btn">
-                        <i class="fas fa-envelope" aria-hidden="true"></i> Enquiry
-                    </a>
-                </div>
             </div>
             <div class="realtor-profile-info">
                 <span class="section-eyebrow">OUR TEAM</span>
@@ -467,6 +359,7 @@ if (dropdownToggle) {
 
                 <div class="rp-contact-row">
                     <a href="tel:${realtor.phone}"><i class="fas fa-phone-alt" aria-hidden="true"></i> ${realtor.phone}</a>
+                    <a href="${whatsappLink}" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp</a>
                     <a href="mailto:${realtor.email}"><i class="fas fa-envelope" aria-hidden="true"></i> ${realtor.email}</a>
                 </div>
             </div>
