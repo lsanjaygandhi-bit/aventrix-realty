@@ -81,6 +81,8 @@
 
     <div class="mobile-menu-divider"></div>
     <a href="tel:+919176887770" class="mobile-menu-phone">📞 +91 91768 87770</a>
+    <a href="tel:+917092356222" class="mobile-menu-phone">📞 +91 70923 56222</a>
+    
     
     <div class="mobile-menu-socials">
       <a href="https://wa.me/9176887770" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
@@ -99,9 +101,9 @@
 
   </nav>
         <div class="nav-right">
-            <a href="tel:+919176887770" class="nav-phone" aria-label="Call Aventrix Realty">
+            <a href="tel:+919176887770" class="nav-phone" data-site="phone1" aria-label="Call Aventrix Realty">
                 <i class="fas fa-phone-alt" aria-hidden="true"></i>
-                <span class="nav-phone-number">+91 91768 87770</span>
+                <span class="nav-phone-number" data-site="phone1">+91 91768 87770</span>
             </a>
         </div>
     </div>
@@ -118,16 +120,16 @@
 
         <div class="hero-content">
 
-            <h1>
+            <h1 id="heroTitle">
                 Discover Premium Properties
                 Across Chennai
             </h1>
-             <p>
+             <p id="heroSubtitle">
                 Trusted real estate solutions across residential, commercial
                 and land investments — backed by decades of local expertise.
             </p>
 
-            <p class="hero-subheading">
+            <p class="hero-subheading" id="heroTagline">
                 Buy &middot; Sell &middot; Lease
             </p>
 
@@ -179,110 +181,9 @@
             <h2>Our Featured Properties</h2>
         </div>
 
-        <div class="property-grid">
-
-            <div class="property-card">
-                <div class="property-image-wrap">
-                    <img src="images/property1.jpg" alt="Luxury Apartment" loading="lazy">
-                    <span class="property-badge badge-sale">FOR SALE</span>
-                    <button class="property-share-btn" aria-label="Share this property"><i class="fas fa-share-alt" aria-hidden="true"></i></button>
-                </div>
-                <div class="content">
-                    <span class="property-location"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Chennai</span>
-                    <h3>Luxury Apartments</h3>
-                    <p>Premium apartments in Chennai's fastest-growing locations.</p>
-                    <div class="property-footer">
-                        <span class="property-price">₹1.14 Crore</span>
-                        <a href="property.html?id=luxury-apartments" class="view-details-btn">View Details</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="property-card">
-                <div class="property-image-wrap">
-                    <img src="images/property2.jpg" alt="Premium Villas" loading="lazy">
-                    <span class="property-badge badge-sale">FOR SALE</span>
-                    <button class="property-share-btn" aria-label="Share this property"><i class="fas fa-share-alt" aria-hidden="true"></i></button>
-                </div>
-                <div class="content">
-                    <span class="property-location"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Chennai</span>
-                    <h3>Premium Villas</h3>
-                    <p>Luxury independent villas with modern amenities.</p>
-                    <div class="property-footer">
-                        <span class="property-price">₹1.45 Crore</span>
-                        <a href="property.html?id=premium-villas" class="view-details-btn">View Details</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="property-card">
-                <div class="property-image-wrap">
-                    <img src="images/property3.jpg" alt="Residential Plots" loading="lazy">
-                    <span class="property-badge badge-sale">FOR SALE</span>
-                    <button class="property-share-btn" aria-label="Share this property"><i class="fas fa-share-alt" aria-hidden="true"></i></button>
-                </div>
-                <div class="content">
-                    <span class="property-location"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Chennai</span>
-                    <h3>Residential Plots</h3>
-                    <p>DTCP & CMDA approved premium investment plots.</p>
-                    <div class="property-footer">
-                        <span class="property-price">₹1.00 Crore</span>
-                        <a href="property.html?id=residential-plots" class="view-details-btn">View Details</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="property-card">
-                <div class="property-image-wrap">
-                    <img src="images/crownleaf.jpg" alt="Crown Leaf" loading="lazy">
-                    <span class="property-badge badge-sale">FOR SALE</span>
-                    <button class="property-share-btn" aria-label="Share this property"><i class="fas fa-share-alt" aria-hidden="true"></i></button>
-                </div>
-                <div class="content">
-                    <span class="property-location"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Old Pallavaram</span>
-                    <h3>Crown Leaf</h3>
-                    <p>Premium 3 BHK Apartments, Old Pallavaram.</p>
-                    <div class="property-footer">
-                        <span class="property-price">₹1.10 Crore</span>
-                        <a href="property.html?id=crown-leaf" class="view-details-btn">View Details</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="property-card">
-                <div class="property-image-wrap">
-                    <img src="images/commercial-rental.jpg" alt="Premium Commercial Building for Rent" loading="lazy">
-                    <span class="property-badge badge-lease">FOR LEASE</span>
-                    <button class="property-share-btn" aria-label="Share this property"><i class="fas fa-share-alt" aria-hidden="true"></i></button>
-                </div>
-                <div class="content">
-                    <span class="property-location"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Lakshmipuram, Chromepet</span>
-                    <h3>Commercial for Rent</h3>
-                    <p>Approx. 6,500 Sq.Ft. Built-up Area.</p>
-                    <div class="property-footer">
-                        <span class="property-price">₹2.50 Lakhs / Month</span>
-                        <a href="property.html?id=commercial-rent" class="view-details-btn">View Details</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="property-card">
-                <div class="property-image-wrap">
-                    <img src="images/ecr-devaneri.jpg" alt="Premium Residential Plot - ECR Devaneri" loading="lazy">
-                    <span class="property-badge badge-sale">FOR SALE</span>
-                    <button class="property-share-btn" aria-label="Share this property"><i class="fas fa-share-alt" aria-hidden="true"></i></button>
-                </div>
-                <div class="content">
-                    <span class="property-location"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> ECR, Devaneri</span>
-                    <h3>Plot for Sale</h3>
-                    <p>5,520 Sq.Ft. &middot; 60 Ft Frontage | 92 Ft Depth &middot; Near East Bay Resort.</p>
-                    <div class="property-footer">
-                        <span class="property-price">View Price</span>
-                        <a href="property.html?id=plot-sale" class="view-details-btn">View Details</a>
-                    </div>
-                </div>
-            </div>
-
+        <div class="property-grid" id="propertyGrid">
+            <!-- Populated dynamically from Supabase by js/public-properties.js.
+                 Card markup/classes match the original design exactly. -->
         </div>
 
     </div>
@@ -1131,7 +1032,7 @@
             </div>
 
             <div class="quick-enquiry-form-wrap">
-                <form id="propertyForm" action="https://formspree.io/f/xaqgrovg" method="POST">
+                <form id="propertyForm" action=" method="POST">
 
                     <input type="hidden" name="Subject" value="Quick Enquiry - Homepage">
 
@@ -1269,6 +1170,11 @@
     <i class="fas fa-chevron-up"></i>
 </button>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-client.js"></script>
+<script src="js/public-properties.js"></script>
+<script src="js/public-site-settings.js"></script>
+<script src="js/enquiry-supabase.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
