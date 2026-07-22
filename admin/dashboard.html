@@ -37,7 +37,8 @@
     <main class="admin-main">
         <div class="admin-topbar">
             <div style="display:flex; align-items:center; gap:12px;">
-                <button class="admin-menu-toggle" id="menuToggleBtn"><i class="fas fa-bars"></i></button>
+                <button class="admin-menu-toggle" id="menuToggleBtn" onclick="document.getElementById('adminSidebar').classList.toggle('open'); document.getElementById('sidebarBackdrop').classList.toggle('show');"><i class="fas fa-bars"></i></button>
+
                 <h1 id="sectionTitle">Overview</h1>
             </div>
             <a href="../index.html" target="_blank" style="font-size:13px; color:var(--admin-muted); text-decoration:none;">
