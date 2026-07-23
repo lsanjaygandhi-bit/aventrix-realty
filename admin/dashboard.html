@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard | Aventrix Realty</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-body">
+
+<div class="admin-shell">
+
+    <div class="admin-sidebar-backdrop" id="sidebarBackdrop"></div>
+
+    <aside class="admin-sidebar" id="adminSidebar">
+        <div class="admin-sidebar-header">
+            <span class="main">AVENTRIX</span><br>
+            <span class="sub">ADMIN PANEL</span>
+        </div>
+        <ul class="admin-nav" id="adminNav">
+            <li><a data-section="overview" class="active"><i class="fas fa-gauge-high"></i> Overview</a></li>
+            <li><a data-section="properties"><i class="fas fa-building"></i> Properties</a></li>
+            <li><a data-section="enquiries"><i class="fas fa-envelope"></i> Enquiries <span class="nav-badge" id="enquiryBadge" style="display:none;">0</span></a></li>
+            <li><a data-section="settings"><i class="fas fa-gear"></i> Site Settings</a></li>
+        </ul>
+        <div class="nav-section-label">More modules (Blogs, Testimonials, Projects, Developers, Team) can be added here later — see admin/js/modules-config.js</div>
+        <div class="admin-sidebar-footer">
+            <button id="logoutBtn"><i class="fas fa-right-from-bracket"></i> Sign Out</button>
+        </div>
+    </aside>
+
+    <main class="admin-main">
+        <div class="admin-topbar">
+            <div style="display:flex; align-items:center; gap:12px;">
+                <button class="admin-menu-toggle" id="menuToggleBtn"><i class="fas fa-bars"></i></button>
+                <h1 id="sectionTitle">Overview</h1>
+            </div>
+            <a href="../index.html" target="_blank" style="font-size:13px; color:var(--admin-muted); text-decoration:none;">
+                <i class="fas fa-arrow-up-right-from-square"></i> View site
+            </a>
+        </div>
+
+        <div class="admin-content">
+
+            <!-- OVERVIEW -->
+            <section id="section-overview" class="admin-section">
+                <div class="admin-stats-grid">
+                    <div class="admin-stat-card"><div class="num" id="statTotal">–</div><div class="label">Total Properties</div></div>
+                    <div class="admin-stat-card"><div class="num" id="statPublished">–</div><div class="label">Published</div></div>
+                    <div class="admin-stat-card"><div class="num" id="statDraft">–</div><div class="label">Drafts</div></div>
+                    <div class="admin-stat-card"><div class="num" id="statEnquiries">–</div><div class="label">New Enquiries</div></div>
+                </div>
+                <div class="admin-card">
+                    <h2 style="margin-top:0; font-size:16px;">Welcome back</h2>
+                    <p style="color:var(--admin-muted); font-size:14px;">Use the sidebar to manage property listings, view enquiries submitted through the website, and update your homepage content — changes appear on the live site instantly, no code required.</p>
+                </div>
+            </section>
+
+            <!-- PROPERTIES -->
+            <section id="section-properties" class="admin-section" style="display:none;">
+                <div class="admin-toolbar">
+                    <div class="filters">
+                        <select id="filterPublishStatus">
+                            <option value="">All Status</option>
+                            <option value="Published">Published</option>
+                            <option value="Draft">Draft</option>
+                        </select>
+                        <select id="filterStatus">
+                            <option value="">Any Availability</option>
+                            <option value="Available">Available</option>
+                            <option value="Sold">Sold</option>
+                            <option value="Under Negotiation">Under Negotiation</option>
+                            <option value="Rented">Rented</option>
+                        </select>
+                    </div>
+                    <button class="admin-btn gold" id="addPropertyBtn" style="width:auto;"><i class="fas fa-plus"></i> Add Property</button>
+                </div>
+                <div class="admin-card" style="padding:0; overflow-x:auto;">
+                    <table class="admin-table" id="propertiesTable">
+                        <thead>
+                            <tr>
+                                <th>Image</th><th>Title</th><th>ID</th><th>Availability</th><th>Publish</th><th>Featured</th><th>Updated</th><th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="propertiesTableBody"></tbody>
+                    </table>
+                    <div class="empty-state" id="propertiesEmptyState" style="display:none;">
+                        <i class="fas fa-building"></i>
+                        No properties yet. Click "Add Property" to create your first listing.
+                    </div>
+                </div>
+            </section>
+
+            <!-- ENQUIRIES -->
+            <section id="section-enquiries" class="admin-section" style="display:none;">
+                <div class="admin-toolbar">
+                    <div class="filters">
+                        <select id="filterEnquiryStatus">
+                            <option value="">All</option>
+                            <option value="new">New</option>
+                            <option value="read">Read</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="admin-card" style="padding:0; overflow-x:auto;">
+                    <table class="admin-table" id="enquiriesTable">
+                        <thead>
+                            <tr><th>Date</th><th>Form</th><th>Name</th><th>Phone</th><th>Email</th><th>Status</th><th></th></tr>
+                        </thead>
+                        <tbody id="enquiriesTableBody"></tbody>
+                    </table>
+                    <div class="empty-state" id="enquiriesEmptyState" style="display:none;">
+                        <i class="fas fa-envelope-open"></i>
+                        No enquiries yet.
+                    </div>
+                </div>
+            </section>
+
+            <!-- SITE SETTINGS -->
+            <section id="section-settings" class="admin-section" style="display:none;">
+                <div class="admin-card">
+                    <h2 style="margin-top:0; font-size:16px;">Homepage Hero Banner</h2>
+                    <div class="admin-form-grid">
+                        <div class="admin-field full">
+                            <label>Hero Title</label>
+                            <input type="text" id="setHeroTitle">
+                        </div>
+                        <div class="admin-field full">
+                            <label>Hero Subtitle</label>
+                            <textarea id="setHeroSubtitle" rows="2"></textarea>
+                        </div>
+                        <div class="admin-field full">
+                            <label>Hero Tagline</label>
+                            <input type="text" id="setHeroTagline">
+                        </div>
+                    </div>
+                </div>
+                <div class="admin-card">
+                    <h2 style="margin-top:0; font-size:16px;">Realtor / Contact Details</h2>
+                    <div class="admin-form-grid">
+                        <div class="admin-field">
+                            <label>Primary Phone</label>
+                            <input type="text" id="setPhone1">
+                        </div>
+                        <div class="admin-field">
+                            <label>Contact Email</label>
+                            <input type="text" id="setEmail">
+                        </div>
+                    </div>
+                </div>
+                <button class="admin-btn gold" id="saveSettingsBtn" style="width:auto;"><i class="fas fa-check"></i> Save Changes</button>
+            </section>
+
+        </div>
+    </main>
+</div>
+
+<!-- PROPERTY ADD/EDIT MODAL -->
+<div class="admin-modal-overlay" id="propertyModalOverlay">
+    <div class="admin-modal">
+        <button class="admin-modal-close" id="closePropertyModal">&times;</button>
+        <h2 id="propertyModalTitle">Add Property</h2>
+        <p class="helper-text" id="propertyCodeDisplay" style="display:none;"></p>
+
+        <form id="propertyForm2">
+            <div class="admin-form-grid">
+                <div class="admin-field full">
+                    <label>Title *</label>
+                    <input type="text" id="fTitle" required>
+                </div>
+                <div class="admin-field">
+                    <label>Category</label>
+                    <select id="fCategory">
+                        <option value="residential">Residential</option>
+                        <option value="commercial">Commercial</option>
+                        <option value="land">Land &amp; Plots</option>
+                        <option value="villas">Luxury Villas</option>
+                        <option value="apartments">Apartments</option>
+                        <option value="investment">Investment</option>
+                    </select>
+                </div>
+                <div class="admin-field">
+                    <label>Listing Type</label>
+                    <select id="fListingType">
+                        <option value="sale">For Sale</option>
+                        <option value="lease">For Lease</option>
+                    </select>
+                </div>
+                <div class="admin-field">
+                    <label>Location</label>
+                    <input type="text" id="fLocation">
+                </div>
+                <div class="admin-field">
+                    <label>Price (display text) *</label>
+                    <input type="text" id="fPrice" placeholder="e.g. ₹1.14 Crore" required>
+                </div>
+                <div class="admin-field full">
+                    <label>Short Description (shown on listing card)</label>
+                    <input type="text" id="fShortDesc">
+                </div>
+                <div class="admin-field full">
+                    <label>Full Description</label>
+                    <textarea id="fDescription" rows="4"></textarea>
+                </div>
+                <div class="admin-field full">
+                    <label>Features (one per line)</label>
+                    <textarea id="fFeatures" rows="4" placeholder="3 Bedrooms&#10;Covered Car Parking&#10;24x7 Security"></textarea>
+                </div>
+                <div class="admin-field full">
+                    <label>Property Images</label>
+                    <input type="file" id="fImages" accept="image/*" multiple>
+                    <div class="image-upload-list" id="imagePreviewList"></div>
+                </div>
+                <div class="admin-field">
+                    <label>Availability Status</label>
+                    <select id="fStatus">
+                        <option>Available</option>
+                        <option>Sold</option>
+                        <option>Under Negotiation</option>
+                        <option>Rented</option>
+                    </select>
+                </div>
+                <div class="admin-field">
+                    <label>Publish Status</label>
+                    <select id="fPublishStatus">
+                        <option>Draft</option>
+                        <option>Published</option>
+                    </select>
+                </div>
+                <div class="admin-field">
+                    <label>Featured Property</label>
+                    <div class="toggle-row">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="fFeatured">
+                            <span class="toggle-slider"></span>
+                        </label>
+                        <span class="helper-text" style="margin:0;">Show in homepage featured section</span>
+                    </div>
+                </div>
+                <div class="admin-field full"><hr style="border:none; border-top:1px solid var(--admin-border);"></div>
+                <div class="admin-field full"><strong style="font-size:13px;">SEO</strong></div>
+                <div class="admin-field full">
+                    <label>Page Title</label>
+                    <input type="text" id="fSeoTitle">
+                </div>
+                <div class="admin-field full">
+                    <label>Meta Description</label>
+                    <textarea id="fSeoDescription" rows="2"></textarea>
+                </div>
+                <div class="admin-field full">
+                    <label>Keywords (comma separated)</label>
+                    <input type="text" id="fSeoKeywords">
+                </div>
+            </div>
+
+            <div style="display:flex; gap:10px; margin-top:18px; justify-content:flex-end;">
+                <button type="button" class="admin-btn secondary" id="cancelPropertyBtn">Cancel</button>
+                <button type="submit" class="admin-btn gold" id="savePropertyBtn" style="width:auto;">Save Property</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- ENQUIRY DETAIL MODAL -->
+<div class="admin-modal-overlay" id="enquiryModalOverlay">
+    <div class="admin-modal" style="max-width:520px;">
+        <button class="admin-modal-close" id="closeEnquiryModal">&times;</button>
+        <h2>Enquiry Details</h2>
+        <div id="enquiryDetailContent"></div>
+    </div>
+</div>
+
+<div class="toast" id="adminToast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../js/supabase-client.js"></script>
+<script src="js/modules-config.js"></script>
+<script src="js/crud-engine.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/properties.js"></script>
+<script src="js/enquiries.js"></script>
+<script src="js/settings.js"></script>
+<script src="js/dashboard-app.js"></script>
+</body>
+</html>

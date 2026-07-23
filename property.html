@@ -83,9 +83,9 @@
   </nav>
   
         <div class="nav-right">
-            <a href="tel:+919176887770" class="nav-phone" aria-label="Call Aventrix Realty">
+            <a href="tel:+919176887770" class="nav-phone" data-site="phone1" aria-label="Call Aventrix Realty">
                 <i class="fas fa-phone-alt" aria-hidden="true"></i>
-                <span class="nav-phone-number">+91 91768 87770</span>
+                <span class="nav-phone-number" data-site="phone1">+91 91768 87770</span>
             </a>
         </div>
     </div>
@@ -169,6 +169,7 @@
 
         <p class="copyright">
             © 2026 Aventrix Realty. All Rights Reserved.
+            <a href="admin/index.html" class="footer-login-link">Login</a>
         </p>
 
     </div>
@@ -183,6 +184,9 @@
     <i class="fas fa-chevron-up"></i>
 </button>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-client.js"></script>
+<script src="js/public-properties.js"></script>
 <script src="script.js"></script>
 
 </body>

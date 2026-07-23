@@ -42,38 +42,10 @@ if (heroVideo) {
 
 // ===========================
 // ENQUIRY / OWNER FORM SUBMIT
+// Moved to js/enquiry-supabase.js (submits to Supabase instead of
+// Formspree). Kept out of this file so this file never needs to
+// change again when the backend changes.
 // ===========================
-const form = document.getElementById("propertyForm");
-if (form) {
-    form.addEventListener("submit", async function (e) {
-        e.preventDefault();
-
-        try {
-            const data = new FormData(form);
-
-            const response = await fetch(form.action, {
-                method: form.method,
-                body: data,
-                headers: {
-                    Accept: "application/json"
-                }
-            });
-
-            if (response.ok) {
-                alert("SUCCESS");
-                form.style.display = "none";
-                const successEl = document.getElementById("success-message");
-                if (successEl) successEl.style.display = "block";
-                form.reset();
-            } else {
-                alert("Response Failed");
-            }
-        } catch (err) {
-            console.log(err);
-            alert(err);
-        }
-    });
-}
 
 // ===========================
 // BACK TO TOP
@@ -110,96 +82,10 @@ if (backToTopBtn) {
 }
 
 // ===========================
-// PROPERTY DATA (used on property.html)
+// PROPERTY DATA + DETAIL PAGE RENDER (property.html)
+// Moved to js/public-properties.js (loads from Supabase instead of
+// this static object) so new properties never require a code change.
 // ===========================
-const propertyData = {
-    "luxury-apartments": {
-        title: "Luxury Apartments",
-        price: "Starting from ₹1.14 Crore",
-        location: "Chennai",
-        image: "images/property1.jpg",
-        description: "Premium 3 BHK apartments in Chennai's fastest-growing locations, designed for modern family living with high-quality finishes and thoughtful layouts.",
-        features: ["3 Bedrooms", "3 Bathrooms", "Covered Car Parking", "Lift Available", "24×7 Security", "CMDA Approved"]
-    },
-    "premium-villas": {
-        title: "Premium Villas",
-        price: "Starting from ₹1.45 Crore",
-        location: "Chennai",
-        image: "images/property2.jpg",
-        description: "Luxury independent villas with modern amenities, private outdoor space and premium specifications throughout.",
-        features: ["Independent Villa", "Private Garden", "Covered Car Parking", "24×7 Security", "CMDA Approved", "Modern Amenities"]
-    },
-    "residential-plots": {
-        title: "Residential Plots",
-        price: "Starting from ₹1.00 Crore",
-        location: "Chennai",
-        image: "images/property3.jpg",
-        description: "DTCP & CMDA approved premium investment plots in high-growth residential corridors, ideal for building your dream home or long-term investment.",
-        features: ["DTCP Approved", "CMDA Approved", "Clear Title", "Gated Layout", "Wide Roads", "Investment Ready"]
-    },
-    "crown-leaf": {
-        title: "Crown Leaf",
-        price: "Starting from ₹1.10 Crore",
-        location: "Old Pallavaram",
-        image: "images/crownleaf.jpg",
-        description: "Premium 3 BHK apartments in Old Pallavaram, combining a prime location with quality construction and everyday convenience.",
-        features: ["3 BHK Apartments", "Covered Car Parking", "Lift Available", "24×7 Security", "Close to Schools & Hospitals", "CMDA Approved"]
-    },
-    "commercial-rent": {
-        title: "Commercial for Rent",
-        price: "₹2.50 Lakhs / Month",
-        location: "Lakshmipuram, Chromepet",
-        image: "images/commercial-rental.jpg",
-        description: "Approx. 6,500 Sq.Ft. built-up commercial building available for rent in Lakshmipuram, Chromepet — well suited for retail, office or business use.",
-        features: ["Approx. 6,500 Sq.Ft. Built-up Area", "Prime Chromepet Location", "Ample Parking", "Ready to Occupy"]
-    },
-    "plot-sale": {
-        title: "Plot for Sale",
-        price: "Contact for Price",
-        location: "ECR, Devaneri",
-        image: "images/ecr-devaneri.jpg",
-        description: "5,520 Sq.Ft. residential plot on ECR, Devaneri, near East Bay Resort — an excellent opportunity for a beachside home or investment.",
-        features: ["5,520 Sq.Ft.", "60 Ft Frontage", "92 Ft Depth", "Near East Bay Resort", "Clear Title"]
-    }
-};
-
-// ===========================
-// PROPERTY DETAIL PAGE RENDER (property.html)
-// ===========================
-const propertyTitleEl = document.getElementById("property-title");
-
-if (propertyTitleEl) {
-    const params = new URLSearchParams(window.location.search);
-    const id = params.get("id");
-    const property = propertyData[id] || propertyData["luxury-apartments"];
-
-    propertyTitleEl.textContent = property.title;
-
-    const priceEl = document.getElementById("property-price");
-    if (priceEl) priceEl.textContent = property.price;
-
-    const locationEl = document.getElementById("property-location");
-    if (locationEl) locationEl.textContent = "📍 " + property.location;
-
-    const imageEl = document.getElementById("property-image");
-    if (imageEl) {
-        imageEl.style.backgroundImage =
-            `linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)), url("${property.image}")`;
-    }
-
-    const descriptionEl = document.getElementById("property-description");
-    if (descriptionEl) descriptionEl.textContent = property.description;
-
-    const featuresEl = document.getElementById("property-features");
-    if (featuresEl) {
-        featuresEl.innerHTML = "";
-        property.features.forEach(feature => {
-            const li = document.createElement("li");
-            li.textContent = feature;
-            featuresEl.appendChild(li);
-        });
-    }
-}
 
 // ===========================
 // MOBILE MENU: OPEN / CLOSE
