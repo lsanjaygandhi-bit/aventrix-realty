@@ -38,7 +38,7 @@
             .eq("publish_status", "Published")
             .eq("is_featured", true)
             .order("created_at", { ascending: false })
-            .limit(6);
+            .limit(100);
 
         let properties = featured;
 
@@ -48,7 +48,7 @@
                 .select("*")
                 .eq("publish_status", "Published")
                 .order("created_at", { ascending: false })
-                .limit(6);
+                .limit(100);
             properties = recent || [];
         }
 
