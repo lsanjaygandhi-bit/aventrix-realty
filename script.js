@@ -291,29 +291,6 @@ if (dropdownToggle) {
 })();
 
 // ===========================
-// LATEST LISTINGS CAROUSEL
-// ===========================
-(function () {
-    const track = document.getElementById("carouselTrack");
-    const prevBtn = document.getElementById("carouselPrev");
-    const nextBtn = document.getElementById("carouselNext");
-    if (!track || !prevBtn || !nextBtn) return;
-
-    const scrollAmount = () => {
-        const card = track.querySelector(".carousel-card");
-        return card ? card.offsetWidth + 26 : 300;
-    };
-
-    prevBtn.addEventListener("click", () => {
-        track.scrollBy({ left: -scrollAmount(), behavior: "smooth" });
-    });
-
-    nextBtn.addEventListener("click", () => {
-        track.scrollBy({ left: scrollAmount(), behavior: "smooth" });
-    });
-})();
-
-// ===========================
 // PROPERTY SHARE BUTTON
 // Uses native Web Share API where available; falls back to
 // copying the property URL to the clipboard with a toast.

@@ -12,8 +12,10 @@
 
 const PropertiesModule = (function () {
     const BUCKET = "property-images";
-    let currentImages = []; // existing image URLs kept for the property being edited
-    let newFiles = [];      // newly selected File objects not yet uploaded
+    let currentImages = [];        // existing gallery image URLs kept for the property being edited
+    let newFiles = [];             // newly selected gallery File objects not yet uploaded
+    let currentFeaturedImage = ""; // existing featured image URL (empty = none set)
+    let newFeaturedFile = null;    // newly selected featured image File, not yet uploaded
     let editingId = null;
 
     const els = {};
@@ -23,8 +25,10 @@ const PropertiesModule = (function () {
             "propertiesTableBody", "propertiesEmptyState", "filterPublishStatus", "filterStatus",
             "propertyModalOverlay", "propertyModalTitle", "propertyCodeDisplay", "propertyForm2",
             "fTitle", "fCategory", "fListingType", "fLocation", "fPrice", "fShortDesc", "fDescription",
-            "fFeatures", "fImages", "imagePreviewList", "fStatus", "fPublishStatus", "fFeatured",
-            "fSeoTitle", "fSeoDescription", "fSeoKeywords"
+            "fFeatures", "fFeaturedImage", "featuredImagePreview", "fImages", "imagePreviewList",
+            "fStatus", "fPublishStatus", "fFeatured",
+            "fSeoTitle", "fSeoDescription", "fSeoKeywords",
+            "uploadProgressWrap", "uploadProgressBar", "uploadProgressLabel"
         ].forEach((id) => (els[id] = document.getElementById(id)));
     }
 
@@ -51,7 +55,7 @@ const PropertiesModule = (function () {
         els.propertiesEmptyState.style.display = rows.length ? "none" : "block";
         els.propertiesTableBody.innerHTML = rows.map((p) => `
             <tr>
-                <td><img class="thumb" src="${(p.images && p.images[0]) || 'https://placehold.co/80x80?text=No+Image'}" alt=""></td>
+                <td><img class="thumb" src="${p.featured_image || (p.images && p.images[0]) || 'https://placehold.co/80x80?text=No+Image'}" alt=""></td>
                 <td><strong>${escapeHtml(p.title)}</strong><br><span class="helper-text">${escapeHtml(p.location || "")}</span></td>
                 <td><span class="code-pill">${escapeHtml(p.property_code || "—")}</span></td>
                 <td><span class="badge ${statusBadgeClass(p.status)}">${escapeHtml(p.status)}</span></td>
@@ -74,10 +78,14 @@ const PropertiesModule = (function () {
         editingId = null;
         currentImages = [];
         newFiles = [];
+        currentFeaturedImage = "";
+        newFeaturedFile = null;
         els.propertyForm2.reset();
         els.propertyCodeDisplay.style.display = "none";
         els.propertyModalTitle.textContent = "Add Property";
+        hideProgress();
         renderImagePreviews();
+        renderFeaturedPreview();
     }
 
     function openAdd() {
@@ -90,6 +98,7 @@ const PropertiesModule = (function () {
         const p = await CrudEngine.getOne("properties", id);
         editingId = id;
         currentImages = p.images || [];
+        currentFeaturedImage = p.featured_image || "";
 
         els.propertyModalTitle.textContent = "Edit Property";
         els.propertyCodeDisplay.textContent = "Property ID: " + (p.property_code || "—") +
@@ -113,12 +122,15 @@ const PropertiesModule = (function () {
         els.fSeoKeywords.value = p.seo_keywords || "";
 
         renderImagePreviews();
+        renderFeaturedPreview();
         els.propertyModalOverlay.classList.add("open");
     }
 
     function closeModal() {
         els.propertyModalOverlay.classList.remove("open");
     }
+
+    // ---- Gallery images (multiple) ----
 
     function renderImagePreviews() {
         const existing = currentImages.map((url, i) => `
@@ -144,10 +156,72 @@ const PropertiesModule = (function () {
         renderImagePreviews();
     }
 
-    async function handleFileSelect(e) {
-        newFiles = newFiles.concat(Array.from(e.target.files));
+    function handleFileSelect(e) {
+        const files = Array.from(e.target.files);
+        const rejected = files.filter((f) => !CrudEngine.isAllowedImage(f));
+        const accepted = files.filter((f) => CrudEngine.isAllowedImage(f));
+        if (rejected.length) {
+            showToast(`Skipped ${rejected.length} file(s) — only JPG, JPEG, PNG or WEBP are supported.`, true);
+        }
+        newFiles = newFiles.concat(accepted);
         e.target.value = "";
         renderImagePreviews();
+    }
+
+    // ---- Featured image (single) ----
+
+    function renderFeaturedPreview() {
+        if (newFeaturedFile) {
+            els.featuredImagePreview.innerHTML = `
+                <div class="thumb-wrap featured-thumb-wrap">
+                    <img src="${URL.createObjectURL(newFeaturedFile)}" alt="">
+                    <button type="button" class="remove-thumb" onclick="PropertiesModule.removeFeaturedImage()">&times;</button>
+                </div>`;
+        } else if (currentFeaturedImage) {
+            els.featuredImagePreview.innerHTML = `
+                <div class="thumb-wrap featured-thumb-wrap">
+                    <img src="${currentFeaturedImage}" alt="">
+                    <button type="button" class="remove-thumb" onclick="PropertiesModule.removeFeaturedImage()">&times;</button>
+                </div>`;
+        } else {
+            els.featuredImagePreview.innerHTML = `<p class="helper-text" style="margin:8px 0 0;">No featured image set — the first gallery image will be used on the website until one is uploaded here.</p>`;
+        }
+    }
+
+    function removeFeaturedImage() {
+        newFeaturedFile = null;
+        currentFeaturedImage = "";
+        renderFeaturedPreview();
+    }
+
+    function handleFeaturedFileSelect(e) {
+        const file = e.target.files[0];
+        e.target.value = "";
+        if (!file) return;
+        if (!CrudEngine.isAllowedImage(file)) {
+            showToast("Only JPG, JPEG, PNG or WEBP images are supported.", true);
+            return;
+        }
+        newFeaturedFile = file; // replaces any existing featured image
+        renderFeaturedPreview();
+    }
+
+    // ---- Upload progress bar ----
+
+    function showProgress(label) {
+        els.uploadProgressWrap.style.display = "block";
+        els.uploadProgressBar.style.width = "0%";
+        els.uploadProgressLabel.textContent = label;
+    }
+
+    function updateProgress({ done, total, percent, fileName }) {
+        els.uploadProgressBar.style.width = percent + "%";
+        els.uploadProgressLabel.textContent = `Uploading image ${done} of ${total} (${fileName})…`;
+    }
+
+    function hideProgress() {
+        els.uploadProgressWrap.style.display = "none";
+        els.uploadProgressBar.style.width = "0%";
     }
 
     async function remove(id) {
@@ -168,10 +242,32 @@ const PropertiesModule = (function () {
         btn.textContent = "Saving...";
 
         try {
+            const totalUploads = newFiles.length + (newFeaturedFile ? 1 : 0);
             let uploadedUrls = [];
-            if (newFiles.length) {
-                uploadedUrls = await CrudEngine.uploadImages(BUCKET, newFiles, "properties");
+            let featuredUrl = currentFeaturedImage;
+
+            if (totalUploads) {
+                showProgress(`Uploading ${totalUploads} image${totalUploads > 1 ? "s" : ""}…`);
+                let uploadedSoFar = 0;
+
+                if (newFeaturedFile) {
+                    featuredUrl = await CrudEngine.uploadImage(BUCKET, newFeaturedFile, "properties/featured");
+                    uploadedSoFar += 1;
+                    updateProgress({ done: uploadedSoFar, total: totalUploads, percent: Math.round((uploadedSoFar / totalUploads) * 100), fileName: newFeaturedFile.name });
+                }
+
+                if (newFiles.length) {
+                    uploadedUrls = await CrudEngine.uploadImagesWithProgress(BUCKET, newFiles, "properties", (p) => {
+                        updateProgress({
+                            done: uploadedSoFar + p.done,
+                            total: totalUploads,
+                            percent: Math.round(((uploadedSoFar + p.done) / totalUploads) * 100),
+                            fileName: p.fileName
+                        });
+                    });
+                }
             }
+
             const images = currentImages.concat(uploadedUrls);
 
             const record = {
@@ -183,6 +279,7 @@ const PropertiesModule = (function () {
                 short_description: els.fShortDesc.value.trim(),
                 description: els.fDescription.value.trim(),
                 features: els.fFeatures.value.split("\n").map((s) => s.trim()).filter(Boolean),
+                featured_image: featuredUrl || "",
                 images: images,
                 status: els.fStatus.value,
                 publish_status: els.fPublishStatus.value,
@@ -209,6 +306,7 @@ const PropertiesModule = (function () {
         } finally {
             btn.disabled = false;
             btn.textContent = "Save Property";
+            hideProgress();
         }
     }
 
@@ -218,6 +316,7 @@ const PropertiesModule = (function () {
         document.getElementById("cancelPropertyBtn").addEventListener("click", closeModal);
         els.propertyForm2.addEventListener("submit", handleSubmit);
         els.fImages.addEventListener("change", handleFileSelect);
+        els.fFeaturedImage.addEventListener("change", handleFeaturedFileSelect);
         els.filterPublishStatus.addEventListener("change", load);
         els.filterStatus.addEventListener("change", load);
     }
@@ -227,7 +326,7 @@ const PropertiesModule = (function () {
         bindEvents();
     });
 
-    return { load, openEdit, remove, removeExistingImage, removeNewFile };
+    return { load, openEdit, remove, removeExistingImage, removeNewFile, removeFeaturedImage };
 })();
 
 window.PropertiesModule = PropertiesModule;

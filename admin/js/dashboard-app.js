@@ -27,6 +27,7 @@ function showToast(message, isError) {
     const titles = {
         overview: "Overview",
         properties: "Properties",
+        offices: "Office Locations",
         enquiries: "Enquiries",
         settings: "Site Settings"
     };
@@ -38,6 +39,7 @@ function showToast(message, isError) {
         closeSidebarMobile();
 
         if (key === "properties" && window.PropertiesModule) window.PropertiesModule.load();
+        if (key === "offices" && window.OfficesModule) window.OfficesModule.load();
         if (key === "enquiries" && window.EnquiriesModule) window.EnquiriesModule.load();
         if (key === "settings" && window.SettingsModule) window.SettingsModule.load();
         if (key === "overview") loadOverviewStats();

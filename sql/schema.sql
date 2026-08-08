@@ -61,6 +61,12 @@ create trigger trg_properties_updated_at
 before update on properties
 for each row execute function set_updated_at();
 
+-- Featured image (single hero/thumbnail image), separate from the
+-- `images` gallery array above. Added via ALTER so this script stays
+-- safe to re-run against a database that already has the properties
+-- table from before this field existed.
+alter table properties add column if not exists featured_image text;
+
 -- ------------------------------------------------------------
 -- 2. ENQUIRIES  (captures every form on the public site)
 -- ------------------------------------------------------------
@@ -96,6 +102,66 @@ drop trigger if exists trg_settings_updated_at on site_settings;
 create trigger trg_settings_updated_at
 before update on site_settings
 for each row execute function set_updated_at();
+
+-- ------------------------------------------------------------
+-- 4. OFFICE LOCATIONS  (Head Office + any future branches)
+-- ------------------------------------------------------------
+-- NOTE: the public website currently displays office information
+-- (Head Office + Adyar Branch) as static HTML directly in index.html
+-- and the site footer, NOT from this table — an earlier dynamic
+-- version of this feature was reverted because it could show a
+-- fallback message instead of the real Head Office details if the
+-- database wasn't reachable. This table and its Admin Panel screen
+-- (Office Locations) are kept for record-keeping / possible future
+-- use, but editing a row here will NOT currently change the live
+-- site. To update office info on the site itself, edit the relevant
+-- HTML files directly (search for "Head Office" / "Adyar Branch").
+--
+-- The Head Office row is seeded below and flagged is_head_office =
+-- true; it is never removed or altered by this script on re-run
+-- (unique name + `do nothing`).
+create table if not exists office_locations (
+    id             uuid primary key default gen_random_uuid(),
+    name           text not null unique,          -- e.g. "Aventrix Realty – Head Office"
+    address        text not null,
+    phone          text,
+    whatsapp       text,
+    maps_url       text,                           -- Google Maps link; empty = not yet verified
+    is_head_office boolean default false,
+    display_order  int default 0,
+    publish_status text default 'Published' check (publish_status in ('Draft', 'Published')),
+    created_at     timestamptz default now(),
+    updated_at     timestamptz default now()
+);
+
+drop trigger if exists trg_offices_updated_at on office_locations;
+create trigger trg_offices_updated_at
+before update on office_locations
+for each row execute function set_updated_at();
+
+-- Seed the existing Head Office (unchanged address/phone/map link).
+insert into office_locations (name, address, phone, maps_url, is_head_office, display_order)
+values (
+    'Aventrix Realty – Head Office',
+    'No.27, 1st Main Road, Newcolony, Chromepet, Chennai, Tamil Nadu',
+    '+91 91768 87770',
+    'https://maps.app.goo.gl/wQm9KBpQG9rEYFaX7?g_st=ic',
+    true,
+    0
+)
+on conflict (name) do nothing;
+
+-- Seed the new Adyar Branch. maps_url left empty until verified.
+insert into office_locations (name, address, phone, maps_url, is_head_office, display_order)
+values (
+    'Aventrix Realty – Adyar Branch',
+    'No. 85, Padmini Complex, 2nd Floor, Gandhi Nagar, Adyar, Chennai – 600020, Tamil Nadu, India',
+    '+91 91768 87770',
+    '',
+    false,
+    1
+)
+on conflict (name) do nothing;
 
 -- ============================================================
 -- ROW LEVEL SECURITY
@@ -144,6 +210,21 @@ using (true);
 -- Admin: can update site settings
 create policy "Admin can update site settings"
 on site_settings for all
+to authenticated
+using (true)
+with check (true);
+
+alter table office_locations enable row level security;
+
+-- Public: can read published office locations (Head Office + branches)
+create policy "Public can view published office locations"
+on office_locations for select
+to anon
+using (publish_status = 'Published');
+
+-- Admin: full read/write on office locations
+create policy "Admin full access to office locations"
+on office_locations for all
 to authenticated
 using (true)
 with check (true);

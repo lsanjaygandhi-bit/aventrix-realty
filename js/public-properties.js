@@ -60,8 +60,13 @@
         gridEl.innerHTML = properties.map(cardTemplate).join("");
     }
 
+    // Shared contact number for the Call / WhatsApp quick-action buttons
+    // on every property card.
+    const CARD_PHONE_TEL = "+919176887770";
+    const CARD_WHATSAPP_URL = "https://wa.me/919176887770";
+
     function cardTemplate(p) {
-        const image = (p.images && p.images[0]) || "images/property1.jpg";
+        const image = p.featured_image || (p.images && p.images[0]) || "images/property1.jpg";
         return `
             <div class="property-card">
                 <div class="property-image-wrap">
@@ -74,7 +79,17 @@
                     <h3>${escapeHtml(p.title)}</h3>
                     <p>${escapeHtml(p.short_description || "")}</p>
                     <div class="property-footer">
-                        <span class="property-price">${escapeHtml(p.price_display || "Contact for Price")}</span>
+                        <div class="property-footer-top">
+                            <span class="property-price">${escapeHtml(p.price_display || "Contact for Price")}</span>
+                            <div class="property-icon-actions">
+                                <a href="tel:${CARD_PHONE_TEL}" class="icon-action-btn icon-call-btn" aria-label="Call about ${escapeHtml(p.title)}" title="Call">
+                                    <i class="fas fa-phone-alt" aria-hidden="true"></i>
+                                </a>
+                                <a href="${CARD_WHATSAPP_URL}" class="icon-action-btn icon-whatsapp-btn" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp about ${escapeHtml(p.title)}" title="WhatsApp">
+                                    <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </div>
                         <a href="property.html?id=${encodeURIComponent(p.slug)}" class="view-details-btn">View Details</a>
                     </div>
                 </div>
@@ -134,7 +149,7 @@
 
         const imageEl = document.getElementById("property-image");
         if (imageEl) {
-            const image = (property.images && property.images[0]) || "images/property1.jpg";
+            const image = property.featured_image || (property.images && property.images[0]) || "images/property1.jpg";
             imageEl.style.backgroundImage =
                 `linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)), url("${image}")`;
         }

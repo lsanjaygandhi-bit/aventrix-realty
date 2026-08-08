@@ -279,6 +279,15 @@ table.admin-table img.thumb { width: 46px; height: 46px; object-fit: cover; bord
     border: none; border-radius: 50%; width: 20px; height: 20px; font-size: 12px; cursor: pointer;
 }
 
+.featured-thumb-wrap { width: 120px; height: 120px; }
+
+.upload-progress-track {
+    width: 100%; height: 8px; background: var(--admin-border); border-radius: 20px; overflow: hidden;
+}
+.upload-progress-fill {
+    height: 100%; width: 0%; background: var(--admin-gold); border-radius: 20px; transition: width 0.2s ease;
+}
+
 .toggle-row { display: flex; align-items: center; gap: 10px; }
 .toggle-switch { position: relative; width: 42px; height: 24px; }
 .toggle-switch input { opacity: 0; width: 0; height: 0; }

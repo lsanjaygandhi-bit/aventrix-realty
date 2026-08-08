@@ -47,7 +47,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   </head>
-  <body>
+  <body class="home-page">
     <header class="header">
     <div class="container nav">
         <div class="logo">
@@ -77,7 +77,7 @@
     <a href="joint-venture.html">Joint Venture</a>
     <a href="nri-services.html">NRI Services</a>
 
-    <a href="our-realtors.html">Our Realtors</a>
+    <a href="contact.html">Contact</a>
 
     <div class="mobile-menu-divider"></div>
     <a href="tel:+919176887770" class="mobile-menu-phone">📞 +91 91768 87770</a>
@@ -418,6 +418,8 @@
 
 </section>
 
+<div class="section-divider"></div>
+
 <section class="why">
 
     <div class="container">
@@ -500,6 +502,8 @@
     </div>
 
 </section>
+
+<div class="section-divider"></div>
 
 <section id="about" class="about legacy-section">
 
@@ -728,100 +732,6 @@
 
 </section>
 
-<section class="listings-carousel-section">
-
-    <div class="container">
-
-        <div class="section-heading">
-            <span class="section-eyebrow">RECENTLY ADDED</span>
-            <h2>Latest Listings</h2>
-        </div>
-
-        <div class="carousel-wrap">
-
-            <button class="carousel-arrow carousel-prev" id="carouselPrev" aria-label="Previous listings">
-                <i class="fas fa-chevron-left" aria-hidden="true"></i>
-            </button>
-
-            <div class="carousel-track" id="carouselTrack">
-
-                <div class="carousel-card">
-                    <img src="images/property1.jpg" alt="Luxury Apartments" loading="lazy">
-                    <div class="carousel-card-body">
-                        <span class="carousel-location">Chennai</span>
-                        <h3>Luxury Apartments</h3>
-                        <div class="carousel-meta">
-                            <span>Apartment</span>
-                            <span class="carousel-price">₹1.14 Crore</span>
-                        </div>
-                        <a href="property.html?id=luxury-apartments" class="carousel-view-btn">View Details</a>
-                    </div>
-                </div>
-
-                <div class="carousel-card">
-                    <img src="images/property2.jpg" alt="Premium Villas" loading="lazy">
-                    <div class="carousel-card-body">
-                        <span class="carousel-location">Chennai</span>
-                        <h3>Premium Villas</h3>
-                        <div class="carousel-meta">
-                            <span>Villa</span>
-                            <span class="carousel-price">₹1.45 Crore</span>
-                        </div>
-                        <a href="property.html?id=premium-villas" class="carousel-view-btn">View Details</a>
-                    </div>
-                </div>
-
-                <div class="carousel-card">
-                    <img src="images/crownleaf.jpg" alt="Crown Leaf" loading="lazy">
-                    <div class="carousel-card-body">
-                        <span class="carousel-location">Old Pallavaram</span>
-                        <h3>Crown Leaf</h3>
-                        <div class="carousel-meta">
-                            <span>Apartment</span>
-                            <span class="carousel-price">₹1.10 Crore</span>
-                        </div>
-                        <a href="property.html?id=crown-leaf" class="carousel-view-btn">View Details</a>
-                    </div>
-                </div>
-
-                <div class="carousel-card">
-                    <img src="images/commercial-rental.jpg" alt="Commercial for Rent" loading="lazy">
-                    <div class="carousel-card-body">
-                        <span class="carousel-location">Lakshmipuram, Chromepet</span>
-                        <h3>Commercial for Rent</h3>
-                        <div class="carousel-meta">
-                            <span>Commercial</span>
-                            <span class="carousel-price">₹2.50 Lakhs / Month</span>
-                        </div>
-                        <a href="property.html?id=commercial-rent" class="carousel-view-btn">View Details</a>
-                    </div>
-                </div>
-
-                <div class="carousel-card">
-                    <img src="images/ecr-devaneri.jpg" alt="Plot for Sale" loading="lazy">
-                    <div class="carousel-card-body">
-                        <span class="carousel-location">ECR, Devaneri</span>
-                        <h3>Plot for Sale</h3>
-                        <div class="carousel-meta">
-                            <span>Plot</span>
-                            <span class="carousel-price">View Price</span>
-                        </div>
-                        <a href="property.html?id=plot-sale" class="carousel-view-btn">View Details</a>
-                    </div>
-                </div>
-
-            </div>
-
-            <button class="carousel-arrow carousel-next" id="carouselNext" aria-label="Next listings">
-                <i class="fas fa-chevron-right" aria-hidden="true"></i>
-            </button>
-
-        </div>
-
-    </div>
-
-</section>
-
 <section class="services">
 
     <div class="container">
@@ -997,6 +907,58 @@
 
 </section>
 
+<!--
+    OFFICE LOCATIONS SECTION — Head Office (unchanged) plus the new
+    Adyar Branch below it. Static content, so both offices are always
+    visible regardless of database/connectivity status.
+-->
+<section id="office-locations" class="office-locations-section">
+
+    <div class="container">
+
+        <span class="section-eyebrow">VISIT US</span>
+        <h2 class="office-locations-heading">Our Office Locations</h2>
+        <p class="office-locations-subtitle">Head Office and branch locations across Chennai.</p>
+
+        <div class="office-locations-grid">
+
+            <!-- Head Office — name/address unchanged; both phone numbers + email added -->
+            <div class="office-card office-card-head">
+                <span class="office-card-badge">Head Office</span>
+                <h3 class="office-card-name">Aventrix Realty – Head Office</h3>
+                <p class="office-card-address">No.27, 1st Main Road, Newcolony, Chromepet, Chennai, Tamil Nadu</p>
+                <a href="tel:+919176887770" class="office-card-phone"><i class="fas fa-phone-alt" aria-hidden="true"></i> +91 91768 87770</a>
+                <a href="tel:+917092356222" class="office-card-phone"><i class="fas fa-phone-alt" aria-hidden="true"></i> +91 70923 56222</a>
+                <a href="mailto:office@aventrixrealty.com" class="office-card-phone"><i class="fas fa-envelope" aria-hidden="true"></i> office@aventrixrealty.com</a>
+                <div class="qe-office-links">
+                    <a href="https://maps.app.goo.gl/wQm9KBpQG9rEYFaX7?g_st=ic" target="_blank" rel="noopener noreferrer" class="map-btn">View on Google Maps</a>
+                    <a href="https://maps.app.goo.gl/wQm9KBpQG9rEYFaX7?g_st=ic" target="_blank" rel="noopener noreferrer" class="get-directions-btn">
+                        <i class="fas fa-diamond-turn-right" aria-hidden="true"></i> Get Directions
+                    </a>
+                </div>
+            </div>
+
+            <!-- Adyar Branch — Google Maps URL added -->
+            <div class="office-card">
+                <h3 class="office-card-name">Aventrix Realty – Adyar Branch</h3>
+                <p class="office-card-address">No.85, Padmini Complex, 2nd Floor, Gandhi Nagar, Adyar, Chennai – 600020, Tamil Nadu, India.</p>
+                <a href="tel:+919176887770" class="office-card-phone"><i class="fas fa-phone-alt" aria-hidden="true"></i> +91 91768 87770</a>
+                <a href="tel:+917092356222" class="office-card-phone"><i class="fas fa-phone-alt" aria-hidden="true"></i> +91 70923 56222</a>
+                <a href="mailto:adyar@aventrixrealty.com" class="office-card-phone"><i class="fas fa-envelope" aria-hidden="true"></i> adyar@aventrixrealty.com</a>
+                <div class="qe-office-links">
+                    <a href="https://maps.app.goo.gl/BV4hRAx1MxTWyredA?g_st=ic" target="_blank" rel="noopener noreferrer" class="map-btn">View on Google Maps</a>
+                    <a href="https://maps.app.goo.gl/BV4hRAx1MxTWyredA?g_st=ic" target="_blank" rel="noopener noreferrer" class="get-directions-btn">
+                        <i class="fas fa-diamond-turn-right" aria-hidden="true"></i> Get Directions
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
 <section id="contact" class="quick-enquiry-section">
 
     <div class="container">
@@ -1021,12 +983,7 @@
                     </div>
                     <div class="qe-detail">
                         <span class="qe-label">Email</span>
-                        <a href="mailto:info@aventrixrealty.com">info@aventrixrealty.com</a>
-                    </div>
-                    <div class="qe-detail">
-                        <span class="qe-label">Office</span>
-                        <p>No.27, 1st Main Road, Newcolony, Chromepet, Chennai, Tamil Nadu</p>
-                        <a href="https://maps.app.goo.gl/wQm9KBpQG9rEYFaX7?g_st=ic" target="_blank" class="map-btn">View on Google Maps</a>
+                        <a href="mailto:office@aventrixrealty.com">office@aventrixrealty.com</a>
                     </div>
                 </div>
             </div>
@@ -1035,6 +992,7 @@
                 <form id="propertyForm" action=" method="POST">
 
                     <input type="hidden" name="Subject" value="Quick Enquiry - Homepage">
+
 
                     <div class="qe-field">
                         <label for="qeName">Full Name</label>
@@ -1086,9 +1044,18 @@
                 trust and decades of local expertise.
             </p>
             <div class="pf-contact">
-                <a href="tel:+919176887770">+91 91768 87770</a>
-                <a href="mailto:info@aventrixrealty.com">info@aventrixrealty.com</a>
-                <p>No.27, 1st Main Road, Newcolony, Chromepet, Chennai, Tamil Nadu</p>
+                <!-- Head Office — unchanged, no existing content removed -->
+                <div class="pf-office-block">
+                    <p class="pf-office-name">Aventrix Realty – Head Office</p>
+                    <p>No.27, 1st Main Road, Newcolony, Chromepet, Chennai, Tamil Nadu</p>
+                    <p class="pf-office-label">Phone:</p>
+                    <a href="tel:+919176887770">+91 91768 87770</a>
+                    <a href="tel:+917092356222">+91 70923 56222</a>
+                    <p class="pf-office-label">Email:</p>
+                    <a href="mailto:office@aventrixrealty.com">office@aventrixrealty.com</a>
+                </div>
+                <!-- Adyar Branch — compact reference only; full details live on the Office Locations section -->
+                <p class="pf-branch-line"><span class="pf-office-label">Branch Office:</span> Adyar, Chennai</p>
             </div>
         </div>
 
@@ -1145,7 +1112,7 @@
     <div class="premium-footer-divider"></div>
 
     <div class="container premium-footer-bottom">
-        <p class="pf-copyright">© 2026 Aventrix Realty. All Rights Reserved.</p>
+        <p class="pf-copyright">© 2026 Aventrix Realty. All Rights Reserved. &#124; Designed with &#10084;&#65039; by L. Sanjay Gandhi</p>
         <div class="pf-legal">
             <a href="#">Privacy Policy</a>
             <a href="#">Terms &amp; Conditions</a>

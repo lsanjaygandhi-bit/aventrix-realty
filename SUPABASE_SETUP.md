@@ -10,7 +10,7 @@ Follow these steps in order. Takes about 15 minutes.
 ## 2. Run the database schema
 1. In your project, go to **SQL Editor → New query**.
 2. Open `sql/schema.sql` from this project, paste the whole file in, and click **Run**.
-3. This creates the `properties`, `enquiries`, and `site_settings` tables, the auto-ID trigger, and all Row Level Security (RLS) policies.
+3. This creates the `properties`, `enquiries`, `site_settings`, and `office_locations` tables, the auto-ID trigger, and all Row Level Security (RLS) policies. It also seeds the Head Office and Adyar Branch rows.
 
 ## 3. Create the Storage bucket
 1. Go to **Storage → New bucket**.
@@ -61,7 +61,14 @@ using (bucket_id = 'property-images');
 Visit `https://aventrixrealty.com/admin/` and sign in with the email/password from step 4.
 
 ## 7. Add your first property
-Admin panel → Properties → Add Property → fill in the details, upload photos, set **Publish Status** to **Published**, save. It appears on the homepage and its own property page immediately — no code changes, no re-upload.
+Admin panel → Properties → Add Property → fill in the details, upload a Featured Image and Gallery Images, set **Publish Status** to **Published**, save. It appears on the homepage and its own property page immediately — no code changes, no re-upload.
+
+## 8. Manage office locations (Head Office + branches)
+Admin panel → Office Locations → Add Office. Fill in the name, address, and (once verified) the Google Maps URL, then save. It appears in the homepage Contact section and site footer immediately.
+
+- Leave **Google Maps URL** empty for a location that isn't verified yet — the site will show its address only.
+- Once you add a verified Google Maps URL later, the **Get Directions** button and an **embedded map** appear automatically on the site. No code changes needed.
+- The Head Office row can be edited but not deleted from this screen, so it's always protected as you add new branches.
 
 ---
 

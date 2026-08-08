@@ -59,8 +59,20 @@ const CrudEngine = {
         return count || 0;
     },
 
+    // Accepted image formats across every upload field in the admin panel.
+    ALLOWED_IMAGE_TYPES: ["image/jpeg", "image/jpg", "image/png", "image/webp"],
+    ALLOWED_IMAGE_EXT: ["jpg", "jpeg", "png", "webp"],
+
+    isAllowedImage(file) {
+        const ext = (file.name.split(".").pop() || "").toLowerCase();
+        return this.ALLOWED_IMAGE_TYPES.includes(file.type) || this.ALLOWED_IMAGE_EXT.includes(ext);
+    },
+
     // Uploads one file to a storage bucket/folder and returns its public URL.
     async uploadImage(bucket, file, folder = "") {
+        if (!this.isAllowedImage(file)) {
+            throw new Error(`"${file.name}" isn't a supported image type. Use JPG, JPEG, PNG or WEBP.`);
+        }
         const ext = file.name.split(".").pop();
         const path = `${folder}${folder ? "/" : ""}${crypto.randomUUID()}.${ext}`;
         const { error } = await this.sb.storage.from(bucket).upload(path, file, { upsert: false });
@@ -73,6 +85,23 @@ const CrudEngine = {
         const urls = [];
         for (const file of files) {
             urls.push(await this.uploadImage(bucket, file, folder));
+        }
+        return urls;
+    },
+
+    // Same as uploadImages, but reports progress after each file finishes
+    // uploading via onProgress({ done, total, percent, fileName }). Used
+    // by the admin panel to show a live progress bar during multi-image
+    // uploads instead of a single blocking "Saving..." state.
+    async uploadImagesWithProgress(bucket, files, folder = "", onProgress = () => {}) {
+        const urls = [];
+        const total = files.length;
+        for (let i = 0; i < total; i++) {
+            const file = files[i];
+            const url = await this.uploadImage(bucket, file, folder);
+            urls.push(url);
+            const done = i + 1;
+            onProgress({ done, total, percent: Math.round((done / total) * 100), fileName: file.name });
         }
         return urls;
     }

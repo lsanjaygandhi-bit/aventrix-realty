@@ -26,6 +26,13 @@ const ADMIN_MODULES = [
         icon: "fa-building",
         table: "properties",
         description: "Property listings shown on the public website."
+    },
+    {
+        key: "offices",
+        label: "Office Locations",
+        icon: "fa-map-location-dot",
+        table: "office_locations",
+        description: "Head Office plus any branch locations shown in the Contact section and footer. See admin/js/offices.js."
     }
     // Future modules go here, following the same shape, e.g.:
     // {
