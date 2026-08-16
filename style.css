@@ -1746,7 +1746,7 @@ p.copyright .footer-login-link{
 .leader-photo{
     width:120px;
     height:120px;
-    border-radius:50%;
+    border-radius:14px;
     object-fit:cover;
     margin-bottom:20px;
     border:4px solid #0F3B2E;
@@ -2119,7 +2119,7 @@ color:#07111F;
 .hero-search-wrap{
     position:absolute;
     left:50%;
-    bottom:160px;
+    bottom: 180px;
     transform:translateX(-50%);
     z-index:3;
     width:90%;
@@ -3178,7 +3178,7 @@ html.is-mobile .service-item p{
 html.is-mobile .hero-search-wrap{
     position:absolute;
     left:50%;
-    bottom:80px;
+    bottom:180px;
     transform:translateX(-50%);
     width:calc(100% - 32px);
     max-width:none;

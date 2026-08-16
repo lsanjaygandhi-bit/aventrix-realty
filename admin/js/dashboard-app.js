@@ -26,8 +26,13 @@ function showToast(message, isError) {
 
     const titles = {
         overview: "Overview",
+        content: "Website Content",
         properties: "Properties",
+        testimonials: "Testimonials",
+        realtors: "Realtors / Team",
+        insights: "Insights",
         offices: "Office Locations",
+        media: "Media Library",
         enquiries: "Enquiries",
         settings: "Site Settings"
     };
@@ -38,8 +43,13 @@ function showToast(message, isError) {
         sectionTitle.textContent = titles[key] || key;
         closeSidebarMobile();
 
+        if (key === "content" && window.PageContentModule) window.PageContentModule.load();
         if (key === "properties" && window.PropertiesModule) window.PropertiesModule.load();
+        if (key === "testimonials" && window.TestimonialsModule) window.TestimonialsModule.load();
+        if (key === "realtors" && window.RealtorsModule) window.RealtorsModule.load();
+        if (key === "insights" && window.InsightsModule) window.InsightsModule.load();
         if (key === "offices" && window.OfficesModule) window.OfficesModule.load();
+        if (key === "media" && window.MediaLibraryModule) window.MediaLibraryModule.load();
         if (key === "enquiries" && window.EnquiriesModule) window.EnquiriesModule.load();
         if (key === "settings" && window.SettingsModule) window.SettingsModule.load();
         if (key === "overview") loadOverviewStats();

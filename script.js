@@ -166,7 +166,7 @@ if (dropdownToggle) {
 // Adding a new realtor to the data file is all that's needed —
 // this renders any number of cards automatically.
 // ===========================
-(function renderRealtorsGrid() {
+function renderRealtorsGrid() {
     const grid = document.getElementById("realtorsGrid");
     if (!grid || typeof REALTORS_DATA === "undefined") return;
 
@@ -182,13 +182,15 @@ if (dropdownToggle) {
             </div>
         `;
     }).join("");
-})();
+}
+renderRealtorsGrid();
+window.renderRealtorsGrid = renderRealtorsGrid;
 
 // ===========================
 // REALTOR PROFILE PAGE: RENDER FROM ?id=
 // Only runs if this page has a #realtorProfileContent element.
 // ===========================
-(function renderRealtorProfile() {
+function renderRealtorProfile() {
     const container = document.getElementById("realtorProfileContent");
     if (!container || typeof REALTORS_DATA === "undefined") return;
 
@@ -251,12 +253,17 @@ if (dropdownToggle) {
             </div>
         </div>
     `;
-})();
+}
+renderRealtorProfile();
+window.renderRealtorProfile = renderRealtorProfile;
 
 // ===========================
 // FAQ ACCORDION
+// Exposed as window.initFaqAccordion so it can be re-run after the
+// FAQ section is populated dynamically from the CMS (see
+// js/public-page-content.js) — harmless no-op otherwise.
 // ===========================
-(function () {
+function initFaqAccordion() {
     const faqItems = document.querySelectorAll(".faq-item");
     if (!faqItems.length) return;
 
@@ -288,7 +295,9 @@ if (dropdownToggle) {
             }
         });
     });
-})();
+}
+initFaqAccordion();
+window.initFaqAccordion = initFaqAccordion;
 
 // ===========================
 // PROPERTY SHARE BUTTON

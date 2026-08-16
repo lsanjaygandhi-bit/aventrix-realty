@@ -22,6 +22,7 @@ const OfficesModule = (function () {
             "officesTableBody", "officesEmptyState",
             "officeModalOverlay", "officeModalTitle", "officeForm",
             "oName", "oAddress", "oPhone", "oWhatsapp", "oMapsUrl",
+            "oEmail", "oBusinessHours", "oMapsEmbedUrl", "oLatitude", "oLongitude", "oImageUrl",
             "oDisplayOrder", "oPublishStatus", "oIsHeadOffice"
         ].forEach((id) => (els[id] = document.getElementById(id)));
     }
@@ -78,6 +79,12 @@ const OfficesModule = (function () {
         els.oPhone.value = o.phone || "";
         els.oWhatsapp.value = o.whatsapp || "";
         els.oMapsUrl.value = o.maps_url || "";
+        els.oEmail.value = o.email || "";
+        els.oBusinessHours.value = o.business_hours || "";
+        els.oMapsEmbedUrl.value = o.maps_embed_url || "";
+        els.oLatitude.value = o.latitude ?? "";
+        els.oLongitude.value = o.longitude ?? "";
+        els.oImageUrl.value = o.image_url || "";
         els.oDisplayOrder.value = o.display_order ?? 0;
         els.oPublishStatus.value = o.publish_status || "Published";
         els.oIsHeadOffice.checked = !!o.is_head_office;
@@ -113,6 +120,12 @@ const OfficesModule = (function () {
                 phone: els.oPhone.value.trim(),
                 whatsapp: els.oWhatsapp.value.trim(),
                 maps_url: els.oMapsUrl.value.trim(), // stays empty until a verified link is added
+                email: els.oEmail.value.trim(),
+                business_hours: els.oBusinessHours.value.trim(),
+                maps_embed_url: els.oMapsEmbedUrl.value.trim(),
+                latitude: els.oLatitude.value.trim() ? parseFloat(els.oLatitude.value) : null,
+                longitude: els.oLongitude.value.trim() ? parseFloat(els.oLongitude.value) : null,
+                image_url: els.oImageUrl.value.trim(),
                 display_order: parseInt(els.oDisplayOrder.value, 10) || 0,
                 publish_status: els.oPublishStatus.value,
                 is_head_office: els.oIsHeadOffice.checked

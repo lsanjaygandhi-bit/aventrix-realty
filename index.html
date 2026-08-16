@@ -47,7 +47,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   </head>
-  <body class="home-page">
+  <body class="home-page" data-page-key="home">
     <header class="header">
     <div class="container nav">
         <div class="logo">
@@ -172,6 +172,39 @@
     </div>
 </div>
 </div>
+
+<section id="leadership" data-cms-section="leadership-intro">
+
+    <div class="container">
+
+        <h2 data-cms-heading>Meet Our Leadership</h2>
+
+        <div data-cms-content><p>Leading Aventrix Realty</p></div>
+        <div class="leadership-grid">
+
+    <div class="leader-card">
+        <img src="images/founder.jpg" alt="Gnanasekaran P" class="leader-photo" loading="lazy">
+        <h3>Gnanasekaran P</h3>
+        <h4>Founder</h4>
+        <p>Visionary leader guiding Aventrix Realty with strategic direction and long-term growth.</p>
+        <a href="gnanasekaran.html" class="profile-btn">
+            View Profile →
+        </a>
+    </div>
+
+    <div class="leader-card">
+        <img src="images/sanjay.jpg" alt="Sanjay Gandhi L" class="leader-photo" loading="lazy">
+        <h3>Sanjay Gandhi L</h3>
+        <h4>Co-Founder & Managing Partner</h4>
+        <p>Leading business operations, client relationships, sales and real estate advisory.</p>
+        <a href="sanjay.html" class="profile-btn">
+            View Profile →
+        </a>
+        
+    </div>
+</div>
+    </div>
+</section>
 
 <section id="properties" class="featured">
 
@@ -505,19 +538,21 @@
 
 <div class="section-divider"></div>
 
-<section id="about" class="about legacy-section">
+<section id="about" class="about legacy-section" data-cms-section="about-legacy">
 
     <div class="container">
 
         <div class="section-title">
 
-            <span class="section-eyebrow">OUR STORY</span>
+            <span class="section-eyebrow" data-cms-eyebrow>OUR STORY</span>
 
-            <h2>Our Legacy</h2>
-
-            <p class="legacy-intro legacy-subtitle">Where Legacy Meets The Next Generation</p>
+            <h2 data-cms-heading>Our Legacy</h2>
 
         </div>
+
+        <div data-cms-content>
+
+        <p class="legacy-intro legacy-subtitle">Where Legacy Meets The Next Generation</p>
 
         <div class="legacy-timeline">
 
@@ -571,21 +606,24 @@
             <strong>Honouring the past. Building the future.</strong>
         </p>
 
+        </div>
+
     </div>
 
 </section>
 
-<section class="testimonials-section">
+<section class="testimonials-section" data-cms-section="testimonials-heading">
 
     <div class="container">
 
         <div class="section-heading">
-            <span class="section-eyebrow">CLIENT EXPERIENCES</span>
-            <h2>What Our Clients Say</h2>
+            <span class="section-eyebrow" data-cms-eyebrow>CLIENT EXPERIENCES</span>
+            <h2 data-cms-heading>What Our Clients Say</h2>
         </div>
 
-        <div class="testimonials-grid">
+        <div class="testimonials-grid" id="testimonialsGrid">
 
+            <!-- Static fallback shown only until js/public-testimonials.js loads -->
             <div class="testimonial-card">
                 <p class="testimonial-quote">
                     "Aventrix Realty guided us through every step of purchasing our
@@ -621,21 +659,21 @@
 
         </div>
 
-        <p class="testimonials-note">Client testimonials shown are representative — replace with verified client feedback.</p>
-
     </div>
 
 </section>
 
-<section class="cta-section">
+<section class="cta-section" data-cms-section="cta">
 
     <div class="container">
-        <h2>Ready to Find Your Ideal Property?</h2>
+        <h2 data-cms-heading>Ready to Find Your Ideal Property?</h2>
+        <div data-cms-content>
         <p>
             From your first enquiry to registration day, Aventrix Realty is with
             you at every step — trusted guidance, verified properties, and a
             team that treats your journey as our own.
         </p>
+        </div>
         <div class="cta-buttons">
             <a href="#properties" class="btn-primary">Explore Properties</a>
             <a href="#contact" class="btn-secondary cta-btn-secondary">Let's Connect</a>
@@ -797,49 +835,23 @@
 
 </section>
 
-<section id="leadership">
 
-    <div class="container">
 
-        <h2>Meet Our Leadership</h2>
-
-        <p>Leading Aventrix Realty</p>
-        <div class="leadership-grid">
-
-    <div class="leader-card">
-        <img src="images/founder.jpg" alt="Gnanasekaran P" class="leader-photo" loading="lazy">
-        <h3>Gnanasekaran P</h3>
-        <h4>Founder</h4>
-        <p>Visionary leader guiding Aventrix Realty with strategic direction and long-term growth.</p>
-        <a href="gnanasekaran.html" class="profile-btn">
-            View Profile →
-        </a>
-    </div>
-
-    <div class="leader-card">
-        <img src="images/sanjay.jpg" alt="Sanjay Gandhi L" class="leader-photo" loading="lazy">
-        <h3>Sanjay Gandhi L</h3>
-        <h4>Co-Founder & Managing Partner</h4>
-        <p>Leading business operations, client relationships, sales and real estate advisory.</p>
-        <a href="sanjay.html" class="profile-btn">
-            View Profile →
-        </a>
-        
-    </div>
-</div>
-    </div>
-</section>
-
-<section class="faq-section">
+<section class="faq-section" data-cms-section="faq">
 
     <div class="container">
 
         <div class="section-heading">
-            <span class="section-eyebrow">GOT QUESTIONS?</span>
-            <h2>Frequently Asked Questions</h2>
+            <span class="section-eyebrow" data-cms-eyebrow>GOT QUESTIONS?</span>
+            <h2 data-cms-heading>Frequently Asked Questions</h2>
         </div>
 
-        <div class="faq-list">
+        <!-- NOTE: only the heading/eyebrow above are CMS-editable. The individual
+             Q&A pairs below stay as static HTML on purpose — the accordion's
+             open/close behaviour depends on the button.faq-question /
+             div.faq-answer structure, which a free-text rich-text editor could
+             accidentally strip. Add/edit questions by editing this file directly. -->
+        <div class="faq-list" id="faqList">
 
             <div class="faq-item">
                 <button class="faq-question" aria-expanded="false">
@@ -912,16 +924,17 @@
     Adyar Branch below it. Static content, so both offices are always
     visible regardless of database/connectivity status.
 -->
-<section id="office-locations" class="office-locations-section">
+<section id="office-locations" class="office-locations-section" data-cms-section="office-intro">
 
     <div class="container">
 
-        <span class="section-eyebrow">VISIT US</span>
-        <h2 class="office-locations-heading">Our Office Locations</h2>
+        <span class="section-eyebrow" data-cms-eyebrow>VISIT US</span>
+        <h2 class="office-locations-heading" data-cms-heading>Our Office Locations</h2>
         <p class="office-locations-subtitle">Head Office and branch locations across Chennai.</p>
 
-        <div class="office-locations-grid">
+        <div class="office-locations-grid" data-offices-grid="cards">
 
+            <!-- Static fallback shown only until js/public-offices.js loads -->
             <!-- Head Office — name/address unchanged; both phone numbers + email added -->
             <div class="office-card office-card-head">
                 <span class="office-card-badge">Head Office</span>
@@ -938,16 +951,16 @@
                 </div>
             </div>
 
-            <!-- Adyar Branch — Google Maps URL added -->
+            <!-- Adyar Branch — corrected address + verified Google Maps link -->
             <div class="office-card">
                 <h3 class="office-card-name">Aventrix Realty – Adyar Branch</h3>
-                <p class="office-card-address">No.85, Padmini Complex, 2nd Floor, Gandhi Nagar, Adyar, Chennai – 600020, Tamil Nadu, India.</p>
+                <p class="office-card-address">2nd Floor, Padmini Complex, No. 85, Gandhi Nagar, 1st Main Road, Adyar, Chennai – 600020</p>
                 <a href="tel:+919176887770" class="office-card-phone"><i class="fas fa-phone-alt" aria-hidden="true"></i> +91 91768 87770</a>
                 <a href="tel:+917092356222" class="office-card-phone"><i class="fas fa-phone-alt" aria-hidden="true"></i> +91 70923 56222</a>
                 <a href="mailto:adyar@aventrixrealty.com" class="office-card-phone"><i class="fas fa-envelope" aria-hidden="true"></i> adyar@aventrixrealty.com</a>
                 <div class="qe-office-links">
-                    <a href="https://maps.app.goo.gl/BV4hRAx1MxTWyredA?g_st=ic" target="_blank" rel="noopener noreferrer" class="map-btn">View on Google Maps</a>
-                    <a href="https://maps.app.goo.gl/BV4hRAx1MxTWyredA?g_st=ic" target="_blank" rel="noopener noreferrer" class="get-directions-btn">
+                    <a href="https://maps.app.goo.gl/hX53rqYkHVqpZtJSA?g_st=ic" target="_blank" rel="noopener noreferrer" class="map-btn">View on Google Maps</a>
+                    <a href="https://maps.app.goo.gl/hX53rqYkHVqpZtJSA?g_st=ic" target="_blank" rel="noopener noreferrer" class="get-directions-btn">
                         <i class="fas fa-diamond-turn-right" aria-hidden="true"></i> Get Directions
                     </a>
                 </div>
@@ -965,15 +978,17 @@
 
         <div class="quick-enquiry-grid">
 
-            <div class="quick-enquiry-info">
-                <span class="section-eyebrow eyebrow-light">LET'S CONNECT</span>
-                <h2>Let's Find Your Ideal Property</h2>
+            <div class="quick-enquiry-info" data-cms-section="quick-enquiry-intro">
+                <span class="section-eyebrow eyebrow-light" data-cms-eyebrow>LET'S CONNECT</span>
+                <h2 data-cms-heading>Let's Find Your Ideal Property</h2>
+                <div data-cms-content>
                 <p class="quick-enquiry-desc">
                     Whether you're buying, selling, investing, or exploring a joint
                     venture opportunity, our experienced property advisors are here
                     to guide you every step of the way. Share your requirements, and
                     we'll help you discover the right property across Chennai.
                 </p>
+                </div>
 
                 <div class="quick-enquiry-details">
                     <div class="qe-detail">
@@ -1037,8 +1052,8 @@
 
         <div class="pf-col pf-brand">
             <h3 class="pf-logo">AVENTRIX REALTY</h3>
-            <p class="pf-tagline">Where Legacy Meets The Next Generation</p>
-            <p class="pf-desc">
+            <p class="pf-tagline" data-site="footer-tagline">Where Legacy Meets The Next Generation</p>
+            <p class="pf-desc" data-site="footer-description">
                 Premium real estate advisory across Chennai — residential,
                 commercial, land and joint venture solutions, guided by
                 trust and decades of local expertise.
@@ -1080,23 +1095,23 @@
         <div class="pf-col">
             <h4 class="pf-heading">Follow Us</h4>
             <div class="pf-social">
-                <a href="https://www.facebook.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                <a href="https://www.facebook.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Facebook" data-site="social-facebook">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M15 8.5h-2a1.5 1.5 0 0 0-1.5 1.5v2h3.4l-.4 3H11.5v7h-3v-7H6.5v-3h2V9.7C8.5 7 10 5.5 12.5 5.5H15v3z"/></svg>
                     <span>Facebook</span>
                 </a>
-                <a href="https://www.instagram.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <a href="https://www.instagram.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Instagram" data-site="social-instagram">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="0.8" fill="currentColor" stroke="none"/></svg>
                     <span>Instagram</span>
                 </a>
-                <a href="https://www.linkedin.com/in/lsanjaygandhi" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <a href="https://www.linkedin.com/in/lsanjaygandhi" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" data-site="social-linkedin">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="3"/><path d="M8 10.5v6M8 7.8v.02M12 16.5v-3.7c0-1.2.9-2 2-2s2 .8 2 2v3.7"/></svg>
                     <span>LinkedIn</span>
                 </a>
-                <a href="https://youtube.com/@sanjaygandhirealty" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                <a href="https://youtube.com/@sanjaygandhirealty" target="_blank" rel="noopener noreferrer" aria-label="YouTube" data-site="social-youtube">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="3" y="6.5" width="18" height="11" rx="3.5"/><path d="M10.3 9.8l4.4 2.2-4.4 2.2z" fill="currentColor" stroke="none"/></svg>
                     <span>YouTube</span>
                 </a>
-                <a href="https://wa.me/9176887770" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                <a href="https://wa.me/9176887770" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" data-site="whatsapp-link">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 3.5a8.5 8.5 0 0 0-7.3 12.8L3.5 20.5l4.4-1.2A8.5 8.5 0 1 0 12 3.5z"/><path d="M8.7 8.6c.2-.5.4-.5.6-.5h.5c.2 0 .4 0 .5.4.2.5.6 1.5.6 1.6.1.1.1.3 0 .4-.1.2-.1.3-.3.4-.1.2-.3.3-.4.5-.1.1-.3.3-.1.5.2.4 1 1.5 2 2.3 1.2 1 1 .8 1.3.7.2 0 .4-.2.5-.4.2-.2.4-.2.6-.1l1.4.7c.2.1.4.2.4.3.1.2.1 1-.3 1.4-.4.5-1.4.9-2 .9-.6 0-1.4-.1-3.3-1-2.4-1.1-3.9-3.4-4-3.6-.1-.2-1-1.3-1-2.5s.6-1.8.8-2z" fill="currentColor" stroke="none"/></svg>
                     <span>WhatsApp</span>
                 </a>
@@ -1112,7 +1127,7 @@
     <div class="premium-footer-divider"></div>
 
     <div class="container premium-footer-bottom">
-        <p class="pf-copyright">© 2026 Aventrix Realty. All Rights Reserved. &#124; Designed with &#10084;&#65039; by L. Sanjay Gandhi</p>
+        <p class="pf-copyright" data-site="copyright-text">© 2026 Aventrix Realty. All Rights Reserved. &#124; Designed with &#10084;&#65039; by L. Sanjay Gandhi</p>
         <div class="pf-legal">
             <a href="#">Privacy Policy</a>
             <a href="#">Terms &amp; Conditions</a>
@@ -1133,6 +1148,9 @@
 <script src="js/supabase-client.js"></script>
 <script src="js/public-properties.js"></script>
 <script src="js/public-site-settings.js"></script>
+<script src="js/public-page-content.js"></script>
+<script src="js/public-testimonials.js"></script>
+<script src="js/public-offices.js"></script>
 <script src="js/enquiry-supabase.js"></script>
 <script src="script.js"></script>
 </body>

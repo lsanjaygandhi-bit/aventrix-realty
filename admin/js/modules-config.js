@@ -33,41 +33,40 @@ const ADMIN_MODULES = [
         icon: "fa-map-location-dot",
         table: "office_locations",
         description: "Head Office plus any branch locations shown in the Contact section and footer. See admin/js/offices.js."
+    },
+    {
+        key: "pages",
+        label: "Website Content",
+        icon: "fa-file-lines",
+        table: "pages",
+        description: "Homepage, Joint Venture, NRI Services, List With Us, Free Valuation, Contact, Insights & Our Realtors page content. See admin/js/page-content.js."
+    },
+    {
+        key: "testimonials",
+        label: "Testimonials",
+        icon: "fa-quote-right",
+        table: "testimonials",
+        description: "Client testimonials shown on the homepage. See admin/js/testimonials.js."
+    },
+    {
+        key: "realtors",
+        label: "Realtors / Team",
+        icon: "fa-users",
+        table: "realtors",
+        description: "Our Realtors grid, Realtor Profile, Sanjay & Gnanasekaran pages. See admin/js/realtors.js."
+    },
+    {
+        key: "insights",
+        label: "Insights",
+        icon: "fa-newspaper",
+        table: "insights",
+        description: "Articles shown on the Insights page. See admin/js/insights.js."
+    },
+    {
+        key: "media",
+        label: "Media Library",
+        icon: "fa-images",
+        table: "media_library",
+        description: "Central image browse/upload/reuse across every module. See admin/js/media-library.js."
     }
-    // Future modules go here, following the same shape, e.g.:
-    // {
-    //     key: "blogs",
-    //     label: "Blog / Journal",
-    //     icon: "fa-newspaper",
-    //     table: "blog_posts",
-    //     description: "Articles shown on the Insights page."
-    // },
-    // {
-    //     key: "testimonials",
-    //     label: "Testimonials",
-    //     icon: "fa-quote-right",
-    //     table: "testimonials",
-    //     description: "Client testimonials shown on the homepage."
-    // },
-    // {
-    //     key: "projects",
-    //     label: "Projects",
-    //     icon: "fa-city",
-    //     table: "projects",
-    //     description: "Larger development projects (multi-unit)."
-    // },
-    // {
-    //     key: "developers",
-    //     label: "Developers",
-    //     icon: "fa-user-tie",
-    //     table: "developers",
-    //     description: "Partner developer/builder profiles."
-    // },
-    // {
-    //     key: "team",
-    //     label: "Team Members",
-    //     icon: "fa-users",
-    //     table: "team_members",
-    //     description: "Staff/agent profiles."
-    // }
 ];

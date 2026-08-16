@@ -10,6 +10,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <link rel="stylesheet" href="css/admin.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/quill/1.3.7/quill.snow.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/quill/1.3.7/quill.min.js"></script>
 </head>
 <body class="admin-body">
 
@@ -24,12 +26,16 @@
         </div>
         <ul class="admin-nav" id="adminNav">
             <li><a data-section="overview" class="active"><i class="fas fa-gauge-high"></i> Overview</a></li>
+            <li><a data-section="content"><i class="fas fa-file-lines"></i> Website Content</a></li>
             <li><a data-section="properties"><i class="fas fa-building"></i> Properties</a></li>
+            <li><a data-section="testimonials"><i class="fas fa-quote-right"></i> Testimonials</a></li>
+            <li><a data-section="realtors"><i class="fas fa-users"></i> Realtors / Team</a></li>
+            <li><a data-section="insights"><i class="fas fa-newspaper"></i> Insights</a></li>
             <li><a data-section="offices"><i class="fas fa-map-location-dot"></i> Office Locations</a></li>
+            <li><a data-section="media"><i class="fas fa-images"></i> Media Library</a></li>
             <li><a data-section="enquiries"><i class="fas fa-envelope"></i> Enquiries <span class="nav-badge" id="enquiryBadge" style="display:none;">0</span></a></li>
             <li><a data-section="settings"><i class="fas fa-gear"></i> Site Settings</a></li>
         </ul>
-        <div class="nav-section-label">More modules (Blogs, Testimonials, Projects, Developers, Team) can be added here later — see admin/js/modules-config.js</div>
         <div class="admin-sidebar-footer">
             <button id="logoutBtn"><i class="fas fa-right-from-bracket"></i> Sign Out</button>
         </div>
@@ -117,6 +123,118 @@
                 </div>
             </section>
 
+            <!-- WEBSITE CONTENT (PAGES) -->
+            <section id="section-content" class="admin-section" style="display:none;">
+                <div class="admin-toolbar">
+                    <select id="pageContentSelect" style="max-width:340px;"></select>
+                </div>
+                <p class="helper-text" id="pageContentEmpty">Choose a page above to edit its content. Changes go live on the public website as soon as you click "Save & Publish".</p>
+                <div id="pageContentForm" style="display:none;">
+                    <div class="admin-card">
+                        <h2 style="margin-top:0; font-size:16px;">Hero / Banner</h2>
+                        <div class="admin-form-grid">
+                            <div class="admin-field"><label>Eyebrow (small label)</label><input type="text" id="pcHeroEyebrow"></div>
+                            <div class="admin-field"><label>Button Text</label><input type="text" id="pcHeroButtonText"></div>
+                            <div class="admin-field full"><label>Heading</label><input type="text" id="pcHeroTitle"></div>
+                            <div class="admin-field full"><label>Subtitle</label><textarea id="pcHeroSubtitle" rows="2"></textarea></div>
+                            <div class="admin-field"><label>Button Link</label><input type="text" id="pcHeroButtonLink"></div>
+                            <div class="admin-field">
+                                <label>Hero Image URL</label>
+                                <input type="text" id="pcHeroImageUrl">
+                                <input type="file" id="pcHeroImageUpload" accept="image/*" style="margin-top:6px;">
+                            </div>
+                            <div class="admin-field full" id="pcHeroImagePreview" style="display:flex; gap:8px;"></div>
+                        </div>
+                    </div>
+
+                    <div class="admin-card">
+                        <div class="admin-toolbar" style="padding:0; margin-bottom:10px;">
+                            <h2 style="margin:0; font-size:16px;">Content Sections</h2>
+                            <button type="button" class="admin-btn secondary" id="pcAddSectionBtn" style="width:auto;"><i class="fas fa-plus"></i> Add Section</button>
+                        </div>
+                        <p class="helper-text">One rich-text block per section — headings, paragraphs, bold/italic, lists and links. Formatting inherits the website's typography automatically.</p>
+                        <div id="pcSectionsList"></div>
+                    </div>
+
+                    <div class="admin-card">
+                        <h2 style="margin-top:0; font-size:16px;">SEO</h2>
+                        <div class="admin-form-grid">
+                            <div class="admin-field full"><label>SEO Title</label><input type="text" id="pcSeoTitle"></div>
+                            <div class="admin-field full"><label>Meta Description</label><textarea id="pcSeoDescription" rows="2"></textarea></div>
+                            <div class="admin-field full"><label>Keywords</label><input type="text" id="pcSeoKeywords"></div>
+                        </div>
+                    </div>
+
+                    <button class="admin-btn gold" id="savePageContentBtn" style="width:auto;"><i class="fas fa-check"></i> Save & Publish</button>
+                </div>
+            </section>
+
+            <!-- TESTIMONIALS -->
+            <section id="section-testimonials" class="admin-section" style="display:none;">
+                <div class="admin-toolbar">
+                    <p class="helper-text" style="margin:0;">Shown in "What Our Clients Say" on the homepage. No limit on how many you can add.</p>
+                    <button class="admin-btn gold" id="addTestimonialBtn" style="width:auto;"><i class="fas fa-plus"></i> Add Testimonial</button>
+                </div>
+                <div class="admin-card" style="padding:0; overflow-x:auto;">
+                    <table class="admin-table" id="testimonialsTable">
+                        <thead><tr><th>Name</th><th>Role</th><th>Quote</th><th>Status</th><th></th></tr></thead>
+                        <tbody id="testimonialsTableBody"></tbody>
+                    </table>
+                    <div class="empty-state" id="testimonialsEmptyState" style="display:none;">
+                        <i class="fas fa-quote-right"></i> No testimonials yet. Click "Add Testimonial" to create one.
+                    </div>
+                </div>
+            </section>
+
+            <!-- REALTORS / TEAM -->
+            <section id="section-realtors" class="admin-section" style="display:none;">
+                <div class="admin-toolbar">
+                    <p class="helper-text" style="margin:0;">Drives Our Realtors, Realtor Profile pages, and (via Profile Link) the Sanjay/Gnanasekaran pages.</p>
+                    <button class="admin-btn gold" id="addRealtorBtn" style="width:auto;"><i class="fas fa-plus"></i> Add Realtor</button>
+                </div>
+                <div class="admin-card" style="padding:0; overflow-x:auto;">
+                    <table class="admin-table" id="realtorsTable">
+                        <thead><tr><th>Name</th><th>Designation</th><th>Slug</th><th>Status</th><th></th></tr></thead>
+                        <tbody id="realtorsTableBody"></tbody>
+                    </table>
+                    <div class="empty-state" id="realtorsEmptyState" style="display:none;">
+                        <i class="fas fa-users"></i> No realtors yet. Click "Add Realtor" to create one.
+                    </div>
+                </div>
+            </section>
+
+            <!-- INSIGHTS -->
+            <section id="section-insights" class="admin-section" style="display:none;">
+                <div class="admin-toolbar">
+                    <p class="helper-text" style="margin:0;">Articles shown on the Insights page. No limit on how many you can publish.</p>
+                    <button class="admin-btn gold" id="addInsightBtn" style="width:auto;"><i class="fas fa-plus"></i> Add Insight</button>
+                </div>
+                <div class="admin-card" style="padding:0; overflow-x:auto;">
+                    <table class="admin-table" id="insightsTable">
+                        <thead><tr><th>Title</th><th>Category</th><th>Status</th><th></th></tr></thead>
+                        <tbody id="insightsTableBody"></tbody>
+                    </table>
+                    <div class="empty-state" id="insightsEmptyState" style="display:none;">
+                        <i class="fas fa-newspaper"></i> No insights yet. Click "Add Insight" to create one.
+                    </div>
+                </div>
+            </section>
+
+            <!-- MEDIA LIBRARY -->
+            <section id="section-media" class="admin-section" style="display:none;">
+                <div class="admin-toolbar">
+                    <p class="helper-text" style="margin:0;">Upload once, reuse everywhere — copy an image URL into any Page, Testimonial, Realtor or Insight field.</p>
+                    <label class="admin-btn gold" style="width:auto; cursor:pointer;">
+                        <i class="fas fa-upload"></i> Upload Images
+                        <input type="file" id="mediaUploadInput" accept="image/*" multiple style="display:none;">
+                    </label>
+                </div>
+                <div class="media-grid" id="mediaGrid"></div>
+                <div class="empty-state" id="mediaEmptyState" style="display:none;">
+                    <i class="fas fa-images"></i> No images uploaded yet.
+                </div>
+            </section>
+
             <!-- ENQUIRIES -->
             <section id="section-enquiries" class="admin-section" style="display:none;">
                 <div class="admin-toolbar">
@@ -155,22 +273,93 @@
                             <label>Hero Subtitle</label>
                             <textarea id="setHeroSubtitle" rows="2"></textarea>
                         </div>
-                        <div class="admin-field full">
-                            <label>Hero Tagline</label>
+                        <div class="admin-field">
+                            <label>Hero Tagline <span class="helper-text" style="display:inline;">(e.g. "Buy · Sell · Lease")</span></label>
                             <input type="text" id="setHeroTagline">
+                        </div>
+                        <div class="admin-field">
+                            <label>Hero Tagline Color</label>
+                            <input type="color" id="setHeroTaglineColor" style="height:42px; padding:4px;">
+                        </div>
+                        <div class="admin-field full">
+                            <label>Hero Background Video URL <span class="helper-text" style="display:inline;">(leave empty to keep the current video)</span></label>
+                            <input type="text" id="setHeroVideoUrl" placeholder="images/hero-video.mp4">
                         </div>
                     </div>
                 </div>
                 <div class="admin-card">
-                    <h2 style="margin-top:0; font-size:16px;">Realtor / Contact Details</h2>
+                    <h2 style="margin-top:0; font-size:16px;">Contact Details</h2>
                     <div class="admin-form-grid">
                         <div class="admin-field">
                             <label>Primary Phone</label>
                             <input type="text" id="setPhone1">
                         </div>
                         <div class="admin-field">
+                            <label>Primary Phone (display format)</label>
+                            <input type="text" id="setPhone1Display" placeholder="+91 91768 87770">
+                        </div>
+                        <div class="admin-field">
+                            <label>Secondary Phone</label>
+                            <input type="text" id="setPhone2">
+                        </div>
+                        <div class="admin-field">
                             <label>Contact Email</label>
                             <input type="text" id="setEmail">
+                        </div>
+                        <div class="admin-field full">
+                            <label>WhatsApp Number <span class="helper-text" style="display:inline;">(digits only, e.g. 9176887770)</span></label>
+                            <input type="text" id="setWhatsapp">
+                        </div>
+                    </div>
+                </div>
+                <div class="admin-card">
+                    <h2 style="margin-top:0; font-size:16px;">Branding</h2>
+                    <div class="admin-form-grid">
+                        <div class="admin-field full">
+                            <label>Logo URL</label>
+                            <input type="text" id="setLogoUrl">
+                        </div>
+                        <div class="admin-field full">
+                            <label>Favicon URL</label>
+                            <input type="text" id="setFaviconUrl">
+                        </div>
+                    </div>
+                </div>
+                <div class="admin-card">
+                    <h2 style="margin-top:0; font-size:16px;">Footer</h2>
+                    <div class="admin-form-grid">
+                        <div class="admin-field full">
+                            <label>Footer Tagline</label>
+                            <input type="text" id="setFooterTagline">
+                        </div>
+                        <div class="admin-field full">
+                            <label>Footer Description</label>
+                            <textarea id="setFooterDescription" rows="2"></textarea>
+                        </div>
+                        <div class="admin-field full">
+                            <label>Copyright Text</label>
+                            <input type="text" id="setCopyrightText">
+                        </div>
+                    </div>
+                </div>
+                <div class="admin-card">
+                    <h2 style="margin-top:0; font-size:16px;">Social Links</h2>
+                    <div class="admin-form-grid">
+                        <div class="admin-field">
+                            <label>Facebook</label>
+                            <input type="text" id="setSocialFacebook">
+                        </div>
+                        <div class="admin-field">
+                            <label>Instagram</label>
+                            <input type="text" id="setSocialInstagram">
+                        </div>
+                        <div class="admin-field">
+                            <label>LinkedIn</label>
+                            <input type="text" id="setSocialLinkedin">
+                        </div>
+                        <div class="admin-field">
+                            <label>YouTube</label>
+                            <input type="text" id="setSocialYoutube">
                         </div>
                     </div>
                 </div>
@@ -327,6 +516,30 @@
                     <input type="text" id="oMapsUrl" placeholder="https://maps.app.goo.gl/...">
                 </div>
                 <div class="admin-field">
+                    <label>Email</label>
+                    <input type="text" id="oEmail" placeholder="office@aventrixrealty.com">
+                </div>
+                <div class="admin-field">
+                    <label>Business Hours</label>
+                    <input type="text" id="oBusinessHours" placeholder="Mon–Sat, 10am–7pm">
+                </div>
+                <div class="admin-field full">
+                    <label>Google Maps Embed URL <span class="helper-text" style="display:inline;">(optional — for an embedded map on Contact page)</span></label>
+                    <input type="text" id="oMapsEmbedUrl" placeholder="https://www.google.com/maps?q=...&output=embed">
+                </div>
+                <div class="admin-field">
+                    <label>Latitude</label>
+                    <input type="text" id="oLatitude" placeholder="13.0500">
+                </div>
+                <div class="admin-field">
+                    <label>Longitude</label>
+                    <input type="text" id="oLongitude" placeholder="80.2000">
+                </div>
+                <div class="admin-field full">
+                    <label>Office Image URL</label>
+                    <input type="text" id="oImageUrl">
+                </div>
+                <div class="admin-field">
                     <label>Display Order</label>
                     <input type="number" id="oDisplayOrder" value="0">
                 </div>
@@ -357,6 +570,99 @@
     </div>
 </div>
 
+<!-- TESTIMONIAL ADD/EDIT MODAL -->
+<div class="admin-modal-overlay" id="testimonialModalOverlay">
+    <div class="admin-modal" style="max-width:560px;">
+        <button class="admin-modal-close" id="closeTestimonialModal">&times;</button>
+        <h2 id="testimonialModalTitle">Add Testimonial</h2>
+        <form id="testimonialForm">
+            <div class="admin-form-grid">
+                <div class="admin-field"><label>Client Name *</label><input type="text" id="tName" required></div>
+                <div class="admin-field"><label>Role / Description</label><input type="text" id="tRole" placeholder="e.g. Purchased Villa, Adyar"></div>
+                <div class="admin-field full"><label>Quote *</label><textarea id="tQuote" rows="3" required></textarea></div>
+                <div class="admin-field full"><label>Photo URL (optional)</label><input type="text" id="tPhotoUrl"></div>
+                <div class="admin-field"><label>Display Order</label><input type="number" id="tDisplayOrder" value="0"></div>
+                <div class="admin-field">
+                    <label>Publish Status</label>
+                    <select id="tPublishStatus"><option>Published</option><option>Draft</option></select>
+                </div>
+            </div>
+            <div style="display:flex; gap:10px; margin-top:18px; justify-content:flex-end;">
+                <button type="button" class="admin-btn secondary" id="cancelTestimonialBtn">Cancel</button>
+                <button type="submit" class="admin-btn gold" id="saveTestimonialBtn" style="width:auto;">Save Testimonial</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- REALTOR ADD/EDIT MODAL -->
+<div class="admin-modal-overlay" id="realtorModalOverlay">
+    <div class="admin-modal" style="max-width:640px;">
+        <button class="admin-modal-close" id="closeRealtorModal">&times;</button>
+        <h2 id="realtorModalTitle">Add Realtor</h2>
+        <form id="realtorForm">
+            <div class="admin-form-grid">
+                <div class="admin-field"><label>Name *</label><input type="text" id="rName" required></div>
+                <div class="admin-field"><label>Slug (URL-safe, optional)</label><input type="text" id="rSlug" placeholder="auto-generated from name"></div>
+                <div class="admin-field"><label>Designation</label><input type="text" id="rDesignation"></div>
+                <div class="admin-field"><label>Photo URL</label><input type="text" id="rPhotoUrl"></div>
+                <div class="admin-field full"><label>Short Intro (shown on card)</label><textarea id="rShortIntro" rows="2"></textarea></div>
+                <div class="admin-field full"><label>About (shown on profile page)</label><textarea id="rAbout" rows="3"></textarea></div>
+                <div class="admin-field full"><label>Expertise (comma separated)</label><input type="text" id="rExpertise" placeholder="Land Advisory, Client Relationships"></div>
+                <div class="admin-field"><label>Experience</label><input type="text" id="rExperience" placeholder="10+ Years"></div>
+                <div class="admin-field full"><label>Languages (comma separated)</label><input type="text" id="rLanguages" placeholder="English, Tamil"></div>
+                <div class="admin-field full"><label>Specializations (comma separated)</label><input type="text" id="rSpecializations" placeholder="Residential, Commercial"></div>
+                <div class="admin-field"><label>Phone</label><input type="text" id="rPhone" placeholder="+919176887770"></div>
+                <div class="admin-field"><label>Email</label><input type="text" id="rEmail"></div>
+                <div class="admin-field"><label>WhatsApp (digits only)</label><input type="text" id="rWhatsapp" placeholder="919176887770"></div>
+                <div class="admin-field"><label>Profile Link Override (optional)</label><input type="text" id="rProfileLink" placeholder="e.g. sanjay.html"></div>
+                <div class="admin-field"><label>Display Order</label><input type="number" id="rDisplayOrder" value="0"></div>
+                <div class="admin-field">
+                    <label>Publish Status</label>
+                    <select id="rPublishStatus"><option>Published</option><option>Draft</option></select>
+                </div>
+            </div>
+            <div style="display:flex; gap:10px; margin-top:18px; justify-content:flex-end;">
+                <button type="button" class="admin-btn secondary" id="cancelRealtorBtn">Cancel</button>
+                <button type="submit" class="admin-btn gold" id="saveRealtorBtn" style="width:auto;">Save Realtor</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- INSIGHT ADD/EDIT MODAL -->
+<div class="admin-modal-overlay" id="insightModalOverlay">
+    <div class="admin-modal" style="max-width:720px;">
+        <button class="admin-modal-close" id="closeInsightModal">&times;</button>
+        <h2 id="insightModalTitle">Add Insight</h2>
+        <form id="insightForm">
+            <div class="admin-form-grid">
+                <div class="admin-field full"><label>Title *</label><input type="text" id="iTitle" required></div>
+                <div class="admin-field"><label>Slug (optional)</label><input type="text" id="iSlug" placeholder="auto-generated from title"></div>
+                <div class="admin-field"><label>Category</label><input type="text" id="iCategory"></div>
+                <div class="admin-field full"><label>Excerpt (card summary)</label><textarea id="iExcerpt" rows="2"></textarea></div>
+                <div class="admin-field full"><label>Cover Image URL</label><input type="text" id="iCoverImageUrl"></div>
+                <div class="admin-field full">
+                    <label>Body</label>
+                    <div class="pc-quill-editor" id="insightBodyEditor"></div>
+                </div>
+                <div class="admin-field full"><label>SEO Title</label><input type="text" id="iSeoTitle"></div>
+                <div class="admin-field full"><label>Meta Description</label><textarea id="iSeoDescription" rows="2"></textarea></div>
+                <div class="admin-field full"><label>Keywords</label><input type="text" id="iSeoKeywords"></div>
+                <div class="admin-field"><label>Display Order</label><input type="number" id="iDisplayOrder" value="0"></div>
+                <div class="admin-field">
+                    <label>Publish Status</label>
+                    <select id="iPublishStatus"><option>Draft</option><option>Published</option></select>
+                </div>
+            </div>
+            <div style="display:flex; gap:10px; margin-top:18px; justify-content:flex-end;">
+                <button type="button" class="admin-btn secondary" id="cancelInsightBtn">Cancel</button>
+                <button type="submit" class="admin-btn gold" id="saveInsightBtn" style="width:auto;">Save Insight</button>
+            </div>
+        </form>
+    </div>
+</div>
+
 <!-- ENQUIRY DETAIL MODAL -->
 <div class="admin-modal-overlay" id="enquiryModalOverlay">
     <div class="admin-modal" style="max-width:520px;">
@@ -375,6 +681,11 @@
 <script src="js/auth.js"></script>
 <script src="js/properties.js"></script>
 <script src="js/offices.js"></script>
+<script src="js/page-content.js"></script>
+<script src="js/testimonials.js"></script>
+<script src="js/realtors.js"></script>
+<script src="js/insights.js"></script>
+<script src="js/media-library.js"></script>
 <script src="js/enquiries.js"></script>
 <script src="js/settings.js"></script>
 <script src="js/dashboard-app.js"></script>
