@@ -12,6 +12,16 @@ Follow these steps in order. Takes about 15 minutes.
 2. Open `sql/schema.sql` from this project, paste the whole file in, and click **Run**.
 3. This creates the `properties`, `enquiries`, `site_settings`, and `office_locations` tables, the auto-ID trigger, and all Row Level Security (RLS) policies. It also seeds the Head Office and Adyar Branch rows.
 
+## 2b. Run the CMS extension (required for Website Content, Testimonials, Realtors, Insights, Media Library)
+Without this step, Admin Panel → Website Content will show
+"Could not find the table 'public.pages' in the schema cache" — the
+table simply hasn't been created yet.
+
+1. Still in **SQL Editor → New query**, open `sql/schema-cms-extension.sql`, paste the whole file in, and click **Run**. This creates the `pages`, `testimonials`, `realtors`, `insights`, and `media_library` tables plus their RLS policies. Safe to re-run.
+2. New query → open `sql/schema-cms-extension-2.sql`, paste and **Run**. Adds two small branding columns to `site_settings`. Safe to re-run.
+3. New query → open `sql/seed-cms-content.sql`, paste and **Run**. Populates the tables above with the site's actual existing content (Our Legacy text, the real Gnanasekaran/Sanjay realtor profiles, the existing testimonials and insight articles) — not placeholders. Uses `on conflict ... do nothing`, so it's safe to re-run and won't duplicate rows or overwrite anything you've already edited in Admin.
+4. If Admin still shows the "Could not find the table" error a minute after running these, the API's schema cache just needs a nudge: **Project Settings → General → Restart project**, or run `NOTIFY pgrst, 'reload schema';` in SQL Editor.
+
 ## 3. Create the Storage bucket
 1. Go to **Storage → New bucket**.
 2. Name it exactly: `property-images`

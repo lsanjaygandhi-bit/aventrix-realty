@@ -39,7 +39,7 @@
 
     <title>Aventrix Realty</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=20260817">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
@@ -110,7 +110,7 @@
      </header>
 
 <div class="hero-wrapper">
-       <section class="hero">
+       <section class="hero" id="hero">
 
      <video class="hero-video" id="heroVideo" autoplay muted loop playsinline preload="auto" poster="images/hero.jpg" aria-hidden="true">
          <source src="images/hero-video.mp4?v=2" type="video/mp4">
@@ -223,7 +223,7 @@
 
 </section>
 
-<section class="categories-section">
+<section class="categories-section" id="property-categories">
 
     <div class="container">
 
@@ -270,7 +270,7 @@
 
 </section>
 
-<section class="locations-section">
+<section class="locations-section" id="locations">
 
     <div class="container">
 
@@ -398,7 +398,7 @@
 
 </section>
 
-<section class="bsl-section">
+<section class="bsl-section" id="what-we-do">
 
     <div class="container">
 
@@ -453,7 +453,7 @@
 
 <div class="section-divider"></div>
 
-<section class="why">
+<section class="why" id="why-us">
 
     <div class="container">
 
@@ -612,7 +612,7 @@
 
 </section>
 
-<section class="testimonials-section" data-cms-section="testimonials-heading">
+<section class="testimonials-section" id="testimonials" data-cms-section="testimonials-heading">
 
     <div class="container">
 
@@ -682,7 +682,7 @@
 
 </section>
 
-<section class="invest-section">
+<section class="invest-section" id="invest">
 
     <div class="container">
 
@@ -837,7 +837,7 @@
 
 
 
-<section class="faq-section" data-cms-section="faq">
+<section class="faq-section" id="faq" data-cms-section="faq">
 
     <div class="container">
 
@@ -1046,7 +1046,7 @@
 
 </section>
 
-<footer class="premium-footer">
+<footer class="premium-footer" id="footer">
 
     <div class="container premium-footer-top">
 
@@ -1143,6 +1143,25 @@
 <button id="backToTop" class="back-to-top" aria-label="Back to top">
     <i class="fas fa-chevron-up"></i>
 </button>
+
+<!-- Small, subtle right-side section-progress indicator (mobile only).
+     One tiny separate segment per existing homepage section — reuses
+     the page's own section ids, no duplicate sections created. -->
+<nav class="section-scroll-indicator" id="sectionScrollIndicator" aria-label="Page section indicator">
+    <a href="#hero" class="ssi-segment" data-target="hero" aria-label="Home" data-label="Home"><span class="ssi-tooltip">Home</span></a>
+    <a href="#about" class="ssi-segment" data-target="about" aria-label="Meet Our Agency" data-label="Meet Our Agency"><span class="ssi-tooltip">Meet Our Agency</span></a>
+    <a href="#properties" class="ssi-segment" data-target="properties" aria-label="Our Future Property" data-label="Our Future Property"><span class="ssi-tooltip">Our Future Property</span></a>
+    <a href="#property-categories" class="ssi-segment" data-target="property-categories" aria-label="Property Categories" data-label="Property Categories"><span class="ssi-tooltip">Property Categories</span></a>
+    <a href="#locations" class="ssi-segment" data-target="locations" aria-label="Future Location" data-label="Future Location"><span class="ssi-tooltip">Future Location</span></a>
+    <a href="#what-we-do" class="ssi-segment" data-target="what-we-do" aria-label="What We Do" data-label="What We Do"><span class="ssi-tooltip">What We Do</span></a>
+    <a href="#why-us" class="ssi-segment" data-target="why-us" aria-label="Why Our Company" data-label="Why Our Company"><span class="ssi-tooltip">Why Our Company</span></a>
+    <a href="#testimonials" class="ssi-segment" data-target="testimonials" aria-label="What Our Clients Say" data-label="What Our Clients Say"><span class="ssi-tooltip">What Our Clients Say</span></a>
+    <a href="#invest" class="ssi-segment" data-target="invest" aria-label="The Opportunity" data-label="The Opportunity"><span class="ssi-tooltip">The Opportunity</span></a>
+    <a href="#faq" class="ssi-segment" data-target="faq" aria-label="Frequently Asked Questions" data-label="Frequently Asked Questions"><span class="ssi-tooltip">Frequently Asked Questions</span></a>
+    <a href="#office-locations" class="ssi-segment" data-target="office-locations" aria-label="Office Location" data-label="Office Location"><span class="ssi-tooltip">Office Location</span></a>
+    <a href="#contact" class="ssi-segment" data-target="contact" aria-label="Contact" data-label="Contact"><span class="ssi-tooltip">Contact</span></a>
+    <a href="#footer" class="ssi-segment" data-target="footer" aria-label="Footer" data-label="Footer"><span class="ssi-tooltip">Footer</span></a>
+</nav>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="js/supabase-client.js"></script>

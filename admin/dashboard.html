@@ -27,9 +27,10 @@
         <ul class="admin-nav" id="adminNav">
             <li><a data-section="overview" class="active"><i class="fas fa-gauge-high"></i> Overview</a></li>
             <li><a data-section="content"><i class="fas fa-file-lines"></i> Website Content</a></li>
+            <li><a data-section="legacy"><i class="fas fa-landmark"></i> Our Legacy</a></li>
             <li><a data-section="properties"><i class="fas fa-building"></i> Properties</a></li>
             <li><a data-section="testimonials"><i class="fas fa-quote-right"></i> Testimonials</a></li>
-            <li><a data-section="realtors"><i class="fas fa-users"></i> Realtors / Team</a></li>
+            <li><a data-section="realtors"><i class="fas fa-users"></i> Our Realtors / Leadership</a></li>
             <li><a data-section="insights"><i class="fas fa-newspaper"></i> Insights</a></li>
             <li><a data-section="offices"><i class="fas fa-map-location-dot"></i> Office Locations</a></li>
             <li><a data-section="media"><i class="fas fa-images"></i> Media Library</a></li>
@@ -129,6 +130,14 @@
                     <select id="pageContentSelect" style="max-width:340px;"></select>
                 </div>
                 <p class="helper-text" id="pageContentEmpty">Choose a page above to edit its content. Changes go live on the public website as soon as you click "Save & Publish".</p>
+                <p class="helper-text" id="pageContentLoading" style="display:none;"><i class="fas fa-spinner fa-spin"></i> Loading page content…</p>
+                <div class="admin-error" id="pageContentError" style="display:none;">
+                    <div id="pageContentErrorMsg"></div>
+                    <div style="display:flex; gap:10px; margin-top:10px;">
+                        <button type="button" class="admin-btn secondary" id="pcRetryBtn" style="width:auto;"><i class="fas fa-rotate-right"></i> Retry</button>
+                        <button type="button" class="admin-btn gold" id="pcCreatePageBtn" style="width:auto; display:none;"><i class="fas fa-plus"></i> Create Page Content</button>
+                    </div>
+                </div>
                 <div id="pageContentForm" style="display:none;">
                     <div class="admin-card">
                         <h2 style="margin-top:0; font-size:16px;">Hero / Banner</h2>
@@ -166,6 +175,39 @@
                     </div>
 
                     <button class="admin-btn gold" id="savePageContentBtn" style="width:auto;"><i class="fas fa-check"></i> Save & Publish</button>
+                </div>
+            </section>
+
+            <!-- OUR LEGACY (dedicated editor for the "about-legacy" section
+                 inside the Homepage `pages` row — same table/data as
+                 Website Content → Homepage, just a direct sidebar entry
+                 instead of being buried in that page's section list) -->
+            <section id="section-legacy" class="admin-section" style="display:none;">
+                <p class="helper-text" id="legacyLoading" style="display:none;"><i class="fas fa-spinner fa-spin"></i> Loading Our Legacy content…</p>
+                <div class="admin-error" id="legacyError" style="display:none;">
+                    <div id="legacyErrorMsg"></div>
+                    <div style="display:flex; gap:10px; margin-top:10px;">
+                        <button type="button" class="admin-btn secondary" id="legacyRetryBtn" style="width:auto;"><i class="fas fa-rotate-right"></i> Retry</button>
+                        <button type="button" class="admin-btn gold" id="legacyCreateBtn" style="width:auto; display:none;"><i class="fas fa-plus"></i> Create Legacy Content</button>
+                    </div>
+                </div>
+                <div id="legacyForm" style="display:none;">
+                    <div class="admin-card">
+                        <h2 style="margin-top:0; font-size:16px;">Our Legacy</h2>
+                        <p class="helper-text">This is the "Our Legacy" section shown on the Homepage — the same content Website Content → Homepage would show under Content Sections, just with its own direct menu entry.</p>
+                        <div class="admin-form-grid">
+                            <div class="admin-field"><label>Eyebrow (small label)</label><input type="text" id="legacyEyebrow"></div>
+                            <div class="admin-field full"><label>Heading</label><input type="text" id="legacyHeading"></div>
+                            <div class="admin-field full">
+                                <label>Content</label>
+                                <div class="pc-quill-editor" id="legacyQuillEditor"></div>
+                                <p class="helper-text" id="legacyQuillMissing" style="display:none; color:var(--admin-danger);">
+                                    Rich text editor failed to load (Quill is missing). Your existing content is safe, but reformatting is unavailable right now — refresh the page and try again.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="admin-btn gold" id="saveLegacyBtn" style="width:auto;"><i class="fas fa-check"></i> Save & Publish</button>
                 </div>
             </section>
 
@@ -682,6 +724,7 @@
 <script src="js/properties.js"></script>
 <script src="js/offices.js"></script>
 <script src="js/page-content.js"></script>
+<script src="js/legacy-content.js"></script>
 <script src="js/testimonials.js"></script>
 <script src="js/realtors.js"></script>
 <script src="js/insights.js"></script>

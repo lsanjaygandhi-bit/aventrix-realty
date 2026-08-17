@@ -1744,8 +1744,8 @@ p.copyright .footer-login-link{
     line-height:1.8;
 }
 .leader-photo{
-    width:120px;
-    height:120px;
+    width:150px;
+    height:150px;
     border-radius:14px;
     object-fit:cover;
     margin-bottom:20px;
@@ -1808,6 +1808,76 @@ p.copyright .footer-login-link{
 .back-to-top:hover{
     background:hwb(58 2% 30%);
     transform:translateY(-4px);
+}
+
+/* ===========================
+   SECTION SCROLL INDICATOR
+   One tiny, separate vertical dash per major homepage section —
+   not a continuous bar. Mobile only (paired with .is-mobile, same
+   pattern as the floating buttons). Sits vertically centred on the
+   right edge, well clear of the WhatsApp / Back-to-top buttons
+   which stay pinned to the bottom-right.
+=========================== */
+.section-scroll-indicator{
+    display:none;
+    position:fixed;
+    top:46%;
+    right:10px;
+    transform:translateY(-50%);
+    flex-direction:column;
+    align-items:center;
+    gap:5px;
+    z-index:9997;
+}
+
+html.is-mobile .section-scroll-indicator{
+    display:flex;
+}
+
+.ssi-segment{
+    position:relative;
+    display:block;
+    width:2px;
+    height:7px;
+    border-radius:2px;
+    background:rgba(255,255,255,0.55);
+    box-shadow:0 0 0 1px rgba(0,0,0,0.18);
+    transition:height 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.ssi-segment.active{
+    height:11px;
+    background:#D4AF37;
+    box-shadow:0 0 0 1px rgba(15,59,46,0.35), 0 0 4px rgba(212,175,55,0.55);
+}
+
+/* Section-name tooltip — hidden by default, shown on hover (desktop)
+   or briefly on tap (mobile, toggled via .show-tooltip in script.js).
+   Appears to the left of its own segment; never shifts the segment. */
+.ssi-tooltip{
+    position:absolute;
+    top:50%;
+    right:100%;
+    margin-right:8px;
+    transform:translateY(-50%) translateX(4px);
+    background:#0F3B2E;
+    color:#ffffff;
+    font-size:11px;
+    font-weight:500;
+    line-height:1;
+    white-space:nowrap;
+    padding:6px 10px;
+    border-radius:5px;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity 0.18s ease, transform 0.18s ease;
+    box-shadow:0 4px 12px rgba(0,0,0,0.22);
+}
+
+.ssi-segment:hover .ssi-tooltip,
+.ssi-segment.show-tooltip .ssi-tooltip{
+    opacity:1;
+    transform:translateY(-50%) translateX(0);
 }
 .contact-info a{
     color:#ffffff;
@@ -3143,6 +3213,11 @@ html.is-mobile .leader-card{
     margin:0 auto;
 }
 
+html.is-mobile .leader-photo{
+    width:180px;
+    height:180px;
+}
+
 html.is-mobile .featured{
     padding:45px 16px 55px;
 }
@@ -3366,18 +3441,18 @@ html.is-mobile .pf-legal{
 }
 
 html.is-mobile .whatsapp-float{
-    width:60px;
-    height:60px;
+    width:52px;
+    height:52px;
     bottom:20px;
-    right:20px;
+    right:18px;
 }
 
 html.is-mobile .back-to-top{
-    width:60px;
-    height:60px;
-    bottom:95px;
-    right:20px;
-    font-size:22px;
+    width:52px;
+    height:52px;
+    bottom:84px;
+    right:18px;
+    font-size:19px;
 }
 
 html.is-mobile .main-nav{
@@ -3510,6 +3585,25 @@ html.is-mobile .mobile-menu-socials svg{
     html:not(.is-mobile) .office-map-embed.office-map-placeholder{ height:180px; }
     html:not(.is-mobile) .office-locations-grid{ grid-template-columns:1fr; gap:20px; }
     html:not(.is-mobile) .office-locations-section{ padding:50px 16px; }
+
+    /* Floating buttons: match html.is-mobile sizing purely by viewport
+       width too, so the two buttons stay an identical-size pair even
+       when the mobile layout is reached via a narrow viewport alone
+       (e.g. browser devtools responsive/mobile view) without the
+       touch/UA signals that set the .is-mobile class. */
+    html:not(.is-mobile) .whatsapp-float{
+        width:52px;
+        height:52px;
+        bottom:20px;
+        right:18px;
+    }
+    html:not(.is-mobile) .back-to-top{
+        width:52px;
+        height:52px;
+        bottom:84px;
+        right:18px;
+        font-size:19px;
+    }
 }
 
 /* ==========================================================

@@ -27,9 +27,10 @@ function showToast(message, isError) {
     const titles = {
         overview: "Overview",
         content: "Website Content",
+        legacy: "Our Legacy",
         properties: "Properties",
         testimonials: "Testimonials",
-        realtors: "Realtors / Team",
+        realtors: "Our Realtors / Leadership",
         insights: "Insights",
         offices: "Office Locations",
         media: "Media Library",
@@ -44,6 +45,7 @@ function showToast(message, isError) {
         closeSidebarMobile();
 
         if (key === "content" && window.PageContentModule) window.PageContentModule.load();
+        if (key === "legacy" && window.LegacyContentModule) window.LegacyContentModule.load();
         if (key === "properties" && window.PropertiesModule) window.PropertiesModule.load();
         if (key === "testimonials" && window.TestimonialsModule) window.TestimonialsModule.load();
         if (key === "realtors" && window.RealtorsModule) window.RealtorsModule.load();

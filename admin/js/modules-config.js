@@ -42,6 +42,13 @@ const ADMIN_MODULES = [
         description: "Homepage, Joint Venture, NRI Services, List With Us, Free Valuation, Contact, Insights & Our Realtors page content. See admin/js/page-content.js."
     },
     {
+        key: "legacy",
+        label: "Our Legacy",
+        icon: "fa-landmark",
+        table: "pages",
+        description: "Dedicated editor for the 'about-legacy' section inside the Homepage `pages` row (Website Content also reaches this same section, but as one entry among the Homepage's several sections). See admin/js/legacy-content.js."
+    },
+    {
         key: "testimonials",
         label: "Testimonials",
         icon: "fa-quote-right",
@@ -50,7 +57,7 @@ const ADMIN_MODULES = [
     },
     {
         key: "realtors",
-        label: "Realtors / Team",
+        label: "Our Realtors / Leadership",
         icon: "fa-users",
         table: "realtors",
         description: "Our Realtors grid, Realtor Profile, Sanjay & Gnanasekaran pages. See admin/js/realtors.js."

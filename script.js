@@ -82,6 +82,76 @@ if (backToTopBtn) {
 }
 
 // ===========================
+// SECTION SCROLL INDICATOR
+// Small right-side dashes that track which major section is
+// currently in view, using the page's existing section ids.
+// Mobile only — the indicator element itself is hidden on desktop
+// via CSS (html.is-mobile), so this just wires up behaviour.
+// ===========================
+(function () {
+    const indicator = document.getElementById("sectionScrollIndicator");
+    if (!indicator) return;
+
+    const segments = Array.from(indicator.querySelectorAll(".ssi-segment"));
+    if (!segments.length) return;
+
+    const sections = segments
+        .map((seg) => ({ seg, el: document.getElementById(seg.dataset.target) }))
+        .filter((s) => s.el);
+
+    if (!sections.length) return;
+
+    function setActive(id) {
+        segments.forEach((seg) => seg.classList.toggle("active", seg.dataset.target === id));
+    }
+
+    if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                // Pick the entry closest to the vertical centre of the
+                // viewport among those currently intersecting, so the
+                // active dash tracks scroll position smoothly instead of
+                // flickering between adjacent sections.
+                let best = null;
+                let bestDistance = Infinity;
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) return;
+                    const distance = Math.abs(entry.boundingClientRect.top);
+                    if (distance < bestDistance) {
+                        bestDistance = distance;
+                        best = entry.target.id;
+                    }
+                });
+                if (best) setActive(best);
+            },
+            { rootMargin: "-40% 0px -40% 0px", threshold: [0, 0.25, 0.5, 0.75, 1] }
+        );
+
+        sections.forEach((s) => observer.observe(s.el));
+    }
+
+    // Click/tap a dash -> smooth-scroll to its section (uses existing
+    // ids, no new navigation logic beyond a standard smooth scroll).
+    // On touch devices there's no hover, so briefly reveal the tooltip
+    // on tap too, then auto-hide it — never left permanently visible.
+    segments.forEach((seg) => {
+        seg.addEventListener("click", (e) => {
+            e.preventDefault();
+            const target = document.getElementById(seg.dataset.target);
+            if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+
+            seg.classList.add("show-tooltip");
+            clearTimeout(seg._ssiTooltipTimer);
+            seg._ssiTooltipTimer = setTimeout(() => {
+                seg.classList.remove("show-tooltip");
+            }, 1400);
+        });
+    });
+
+    setActive("hero");
+})();
+
+// ===========================
 // PROPERTY DATA + DETAIL PAGE RENDER (property.html)
 // Moved to js/public-properties.js (loads from Supabase instead of
 // this static object) so new properties never require a code change.

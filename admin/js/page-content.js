@@ -28,13 +28,16 @@ const PAGES_LIST = [
 ];
 
 const PageContentModule = (function () {
-    let currentPage = null;   // full row from `pages`
-    let sectionEditors = {};  // sectionKey -> Quill instance
+    let currentPage = null;    // full row from `pages`
+    let currentPageKey = null; // key currently selected in the dropdown
+    let sectionEditors = {};   // sectionKey -> Quill instance
     const els = {};
 
     function cacheEls() {
         [
             "pageContentSelect", "pageContentForm", "pageContentEmpty",
+            "pageContentLoading", "pageContentError", "pageContentErrorMsg",
+            "pcRetryBtn", "pcCreatePageBtn",
             "pcHeroEyebrow", "pcHeroTitle", "pcHeroSubtitle",
             "pcHeroButtonText", "pcHeroButtonLink", "pcHeroImageUrl", "pcHeroImagePreview",
             "pcSectionsList", "pcSeoTitle", "pcSeoDescription", "pcSeoKeywords",
@@ -52,26 +55,95 @@ const PageContentModule = (function () {
         if (!els.pageContentSelect.options.length) populateSelect();
     }
 
+    // ---- View-state control -------------------------------------------
+    // Exactly one of these panels is visible at a time:
+    //   idle     -> nothing selected yet
+    //   loading  -> query in flight
+    //   error    -> query failed (real Supabase/network error)
+    //   notfound -> query succeeded but no row exists for this page yet
+    //   form     -> row loaded, editing form visible
+    function setState(state, opts = {}) {
+        els.pageContentEmpty.style.display = state === "idle" ? "block" : "none";
+        els.pageContentLoading.style.display = state === "loading" ? "block" : "none";
+        els.pageContentForm.style.display = state === "form" ? "block" : "none";
+
+        if (state === "error" || state === "notfound") {
+            els.pageContentError.style.display = "block";
+            els.pageContentErrorMsg.textContent = opts.message || "";
+            els.pcCreatePageBtn.style.display = state === "notfound" ? "inline-flex" : "none";
+        } else {
+            els.pageContentError.style.display = "none";
+        }
+    }
+
     async function openPage(pageKey) {
+        currentPageKey = pageKey || null;
+
         if (!pageKey) {
-            els.pageContentForm.style.display = "none";
-            els.pageContentEmpty.style.display = "block";
+            currentPage = null;
+            setState("idle");
             return;
         }
 
-        let row = await CrudEngine.sb.from("pages").select("*").eq("page_key", pageKey).maybeSingle();
-        let data = row.data;
+        setState("loading");
+
+        let data;
+        try {
+            const { data: row, error } = await CrudEngine.sb
+                .from("pages")
+                .select("*")
+                .eq("page_key", pageKey)
+                .maybeSingle();
+
+            if (error) {
+                // Real database/network/RLS error — never silently swallow
+                // this and never create a row on top of it.
+                throw error;
+            }
+
+            data = row; // null here means "no row yet", not an error
+        } catch (err) {
+            console.error("Failed to load page content for '" + pageKey + "':", err);
+            setState("error", { message: "Unable to load page content: " + (err && err.message ? err.message : "Unknown error. See console for details.") });
+            return;
+        }
 
         if (!data) {
-            // First time this page is opened — create its row.
+            // Query succeeded, the row genuinely doesn't exist yet.
+            currentPage = null;
             const meta = PAGES_LIST.find((p) => p.key === pageKey);
-            data = await CrudEngine.insert("pages", { page_key: pageKey, page_label: meta.label, sections: [] });
+            setState("notfound", { message: `"${meta ? meta.label : pageKey}" has no saved content yet. Click "Create Page Content" to start editing it.` });
+            return;
         }
 
         currentPage = data;
-        renderForm(data);
-        els.pageContentEmpty.style.display = "none";
-        els.pageContentForm.style.display = "block";
+        try {
+            renderForm(data);
+        } catch (err) {
+            console.error("Failed to render page content form:", err);
+            setState("error", { message: "Unable to display the editor: " + (err && err.message ? err.message : "Unknown error. See console for details.") });
+            return;
+        }
+        setState("form");
+    }
+
+    async function createCurrentPage() {
+        if (!currentPageKey) return;
+        const meta = PAGES_LIST.find((p) => p.key === currentPageKey);
+        const btn = els.pcCreatePageBtn;
+        btn.disabled = true;
+        try {
+            const data = await CrudEngine.insert("pages", { page_key: currentPageKey, page_label: meta ? meta.label : currentPageKey, sections: [] });
+            currentPage = data;
+            renderForm(data);
+            setState("form");
+            showToast("Page content created — edit and Save & Publish to go live");
+        } catch (err) {
+            console.error("Failed to create page content row:", err);
+            setState("error", { message: "Unable to create page content: " + (err && err.message ? err.message : "Unknown error. See console for details.") });
+        } finally {
+            btn.disabled = false;
+        }
     }
 
     function renderForm(p) {
@@ -134,6 +206,9 @@ const PageContentModule = (function () {
                     <div class="admin-field full">
                         <label>Content</label>
                         <div class="pc-quill-editor" id="quill-${escapeHtml(s.key)}"></div>
+                        <p class="helper-text pc-quill-missing" id="quill-missing-${escapeHtml(s.key)}" style="display:none; color:var(--admin-danger);">
+                            Rich text editor failed to load (Quill is missing). Your existing content is safe, but reformatting is unavailable right now — refresh the page and try again.
+                        </p>
                     </div>
                 </div>
                 <div style="display:flex; justify-content:flex-end; margin-top:10px;">
@@ -144,7 +219,20 @@ const PageContentModule = (function () {
 
         sorted.forEach((s) => {
             const editorEl = document.getElementById(`quill-${s.key}`);
-            if (!editorEl || typeof Quill === "undefined") return;
+            if (!editorEl) return;
+
+            if (typeof Quill === "undefined") {
+                // Don't let a missing Quill library silently drop content
+                // or break the rest of the editor — surface it clearly and
+                // keep the raw HTML around so Save still preserves it.
+                console.error("Quill library is not loaded; section '" + s.key + "' will not have a rich text editor.");
+                const missingMsg = document.getElementById(`quill-missing-${s.key}`);
+                if (missingMsg) missingMsg.style.display = "block";
+                editorEl.dataset.rawHtml = s.html || "";
+                editorEl.textContent = "(Rich text editor unavailable — raw content preserved.)";
+                return;
+            }
+
             const quill = new Quill(editorEl, {
                 theme: "snow",
                 modules: { toolbar: [["bold", "italic"], [{ header: [2, 3, false] }], ["link"], [{ list: "ordered" }, { list: "bullet" }], ["clean"]] }
@@ -164,8 +252,6 @@ const PageContentModule = (function () {
     function addSection() {
         const key = prompt("Section key (internal identifier, e.g. 'intro' or 'why-choose-us'):");
         if (!key) return;
-        const wrapper = document.createElement("div");
-        wrapper.innerHTML = "";
         const existing = collectSectionsFromDom();
         existing.push({ key, eyebrow: "", heading: "", html: "", image_url: "", display_order: existing.length });
         renderSections(existing);
@@ -174,13 +260,16 @@ const PageContentModule = (function () {
     function collectSectionsFromDom() {
         return Array.from(document.querySelectorAll(".pc-section-block")).map((block) => {
             const key = block.querySelector(".pc-s-key").value.trim();
+            const editorEl = block.querySelector(".pc-quill-editor");
             return {
                 key,
                 eyebrow: block.querySelector(".pc-s-eyebrow").value.trim(),
                 heading: block.querySelector(".pc-s-heading").value.trim(),
                 image_url: block.querySelector(".pc-s-image").value.trim(),
                 display_order: parseInt(block.querySelector(".pc-s-order").value, 10) || 0,
-                html: sectionEditors[key] ? sectionEditors[key].root.innerHTML : (block._html || "")
+                // Prefer the live Quill instance; fall back to the raw HTML
+                // we preserved if Quill failed to load for this section.
+                html: sectionEditors[key] ? sectionEditors[key].root.innerHTML : (editorEl && editorEl.dataset.rawHtml) || ""
             };
         });
     }
@@ -206,9 +295,9 @@ const PageContentModule = (function () {
             };
             await CrudEngine.update("pages", currentPage.id, record);
             showToast("Page content saved — live on the website");
-            openPage(currentPage.page_key);
+            await openPage(currentPage.page_key);
         } catch (err) {
-            console.error(err);
+            console.error("Save failed:", err);
             showToast("Save failed: " + err.message, true);
         } finally {
             btn.disabled = false;
@@ -232,6 +321,8 @@ const PageContentModule = (function () {
         els.pageContentSelect.addEventListener("change", (e) => openPage(e.target.value));
         document.getElementById("pcAddSectionBtn").addEventListener("click", addSection);
         els.savePageContentBtn.addEventListener("click", save);
+        els.pcRetryBtn.addEventListener("click", () => openPage(currentPageKey));
+        els.pcCreatePageBtn.addEventListener("click", createCurrentPage);
         const heroImageInput = document.getElementById("pcHeroImageUpload");
         if (heroImageInput) heroImageInput.addEventListener("change", (e) => uploadHeroImage(e.target.files[0]));
     }
