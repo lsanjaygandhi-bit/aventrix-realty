@@ -27,6 +27,7 @@ const SettingsModule = (function () {
         setVal("setPhone2", data.realtor_phone_2);
         setVal("setEmail", data.realtor_email);
         setVal("setWhatsapp", data.whatsapp_number);
+        setVal("setReraNo", data.rera_registration_no);
 
         // Branding
         setVal("setLogoUrl", data.logo_url);
@@ -72,6 +73,7 @@ const SettingsModule = (function () {
             realtor_phone_2: getVal("setPhone2"),
             realtor_email: getVal("setEmail"),
             whatsapp_number: getVal("setWhatsapp"),
+            rera_registration_no: getVal("setReraNo"),
 
             logo_url: getVal("setLogoUrl"),
             favicon_url: getVal("setFaviconUrl"),

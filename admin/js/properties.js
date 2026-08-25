@@ -26,6 +26,8 @@ const PropertiesModule = (function () {
             "propertyModalOverlay", "propertyModalTitle", "propertyCodeDisplay", "propertyForm2",
             "fTitle", "fCategory", "fListingType", "fLocation", "fPrice", "fShortDesc", "fDescription",
             "fFeatures", "fFeaturedImage", "featuredImagePreview", "fImages", "imagePreviewList",
+            "fBedrooms", "fBathrooms", "fParking", "fFloors", "fBuiltUpArea", "fLandArea", "fRoadWidth", "fRentalIncome", "fBrokerage",
+            "fUdsArea", "fFurnishing", "fFacing",
             "fStatus", "fPublishStatus", "fFeatured",
             "fSeoTitle", "fSeoDescription", "fSeoKeywords",
             "uploadProgressWrap", "uploadProgressBar", "uploadProgressLabel"
@@ -114,6 +116,18 @@ const PropertiesModule = (function () {
         els.fShortDesc.value = p.short_description || "";
         els.fDescription.value = p.description || "";
         els.fFeatures.value = (p.features || []).join("\n");
+        els.fBedrooms.value = p.bedrooms ?? "";
+        els.fBathrooms.value = p.bathrooms ?? "";
+        els.fParking.value = p.parking ?? "";
+        els.fFloors.value = p.floors ?? "";
+        els.fBuiltUpArea.value = p.built_up_area || "";
+        els.fLandArea.value = p.land_area || "";
+        els.fRoadWidth.value = p.road_width || "";
+        els.fRentalIncome.value = p.rental_income || "";
+        els.fBrokerage.value = p.brokerage || "";
+        els.fUdsArea.value = p.uds_area || "";
+        els.fFurnishing.value = p.furnishing || "";
+        els.fFacing.value = p.facing || "";
         els.fStatus.value = p.status || "Available";
         els.fPublishStatus.value = p.publish_status || "Draft";
         els.fFeatured.checked = !!p.is_featured;
@@ -279,6 +293,18 @@ const PropertiesModule = (function () {
                 short_description: els.fShortDesc.value.trim(),
                 description: els.fDescription.value.trim(),
                 features: els.fFeatures.value.split("\n").map((s) => s.trim()).filter(Boolean),
+                bedrooms: els.fBedrooms.value ? parseInt(els.fBedrooms.value, 10) : null,
+                bathrooms: els.fBathrooms.value ? parseInt(els.fBathrooms.value, 10) : null,
+                parking: els.fParking.value ? parseInt(els.fParking.value, 10) : null,
+                floors: els.fFloors.value ? parseInt(els.fFloors.value, 10) : null,
+                built_up_area: els.fBuiltUpArea.value.trim(),
+                land_area: els.fLandArea.value.trim(),
+                road_width: els.fRoadWidth.value.trim(),
+                rental_income: els.fRentalIncome.value.trim(),
+                brokerage: els.fBrokerage.value.trim(),
+                uds_area: els.fUdsArea.value.trim(),
+                furnishing: els.fFurnishing.value,
+                facing: els.fFacing.value,
                 featured_image: featuredUrl || "",
                 images: images,
                 status: els.fStatus.value,

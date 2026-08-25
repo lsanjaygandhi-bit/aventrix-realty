@@ -40,6 +40,7 @@ const PageContentModule = (function () {
             "pcRetryBtn", "pcCreatePageBtn",
             "pcHeroEyebrow", "pcHeroTitle", "pcHeroSubtitle",
             "pcHeroButtonText", "pcHeroButtonLink", "pcHeroImageUrl", "pcHeroImagePreview",
+            "pcHeroHomeNotice",
             "pcSectionsList", "pcSeoTitle", "pcSeoDescription", "pcSeoKeywords",
             "savePageContentBtn"
         ].forEach((id) => (els[id] = document.getElementById(id)));
@@ -147,6 +148,13 @@ const PageContentModule = (function () {
     }
 
     function renderForm(p) {
+        // Homepage's hero is actually driven by `site_settings`, not by
+        // this page's hero_* fields (index.html has no data-page-hero-*
+        // hooks — see js/public-site-settings.js). Surface that plainly
+        // instead of letting an edit here silently do nothing on the
+        // live site.
+        els.pcHeroHomeNotice.style.display = p.page_key === "home" ? "block" : "none";
+
         els.pcHeroEyebrow.value = p.hero_eyebrow || "";
         els.pcHeroTitle.value = p.hero_title || "";
         els.pcHeroSubtitle.value = p.hero_subtitle || "";

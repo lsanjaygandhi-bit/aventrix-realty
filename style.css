@@ -1922,76 +1922,421 @@ html.is-mobile .section-scroll-indicator{
 .map-btn:hover{
     background:#0b463d;
 }
-/* PROPERTY HERO */
+/* ===========================================================
+   FULL PROPERTY DETAILS PAGE (property.html)
+   Clean image gallery (nothing overlaid on it), then a persistent
+   Back to Properties bar, title / location / price, structured
+   specs, description, features, brokerage+RERA and a compact
+   Call/WhatsApp CTA. All "pd-" prefixed so nothing here can
+   collide with the Quick View's "qv-" classes.
+=========================================================== */
 
-.property-hero{
-    height:90vh;
-    background:
-    linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
-    url("images/crown-leaf.jpg");
-    background-size:cover;
-    background-position:center;
-    display:flex;
-    justify-content:center;
+/* --- Back to Properties bar (always visible, own strip above
+   the gallery — never overlaid on the image) --- */
+.pd-backbar{
+    padding:16px 0;
+    border-bottom:1px solid #f0f0f0;
+}
+
+.property-back-nav{
+    display:inline-flex;
     align-items:center;
-    text-align:center;
-    color:#fff;
-}
-
-.property-overlay{
-    max-width:900px;
-}
-
-.property-overlay h1{
-    font-size:70px;
-    margin-bottom:15px;
-}
-
-.property-overlay p{
-    font-size:28px;
-    margin-bottom:30px;
-}
-
-.property-info{
-    display:flex;
-    justify-content:center;
-    gap:30px;
-    flex-wrap:wrap;
-    margin-bottom:40px;
-    font-size:20px;
-}
-
-.property-buttons{
-    display:flex;
-    justify-content:center;
-    gap:20px;
-    flex-wrap:wrap;
-}
-
-.call-btn,
-.whatsapp-btn{
-    padding:15px 35px;
-    border-radius:30px;
+    gap:8px;
+    color:#0F3B2E;
     text-decoration:none;
-    color:#fff;
+    font-family:Poppins;
     font-weight:600;
+    font-size:14px;
 }
 
-.call-btn{
+.property-back-nav:hover{
+    text-decoration:underline;
+}
+
+/* --- Gallery --- */
+.pd-gallery{
+    position:relative;
     background:#0F3B2E;
 }
 
-.call-btn:hover{
-    background: #0c89f2;
+.pd-gallery-track{
+    display:flex;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
 }
 
-.whatsapp-btn{
+.pd-gallery-track::-webkit-scrollbar{
+    display:none;
+}
+
+.pd-gallery-track img{
+    flex:0 0 100%;
+    width:100%;
+    height:520px;
+    object-fit:cover;
+    scroll-snap-align:center;
+    display:block;
+}
+
+.pd-gallery-dots{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:16px;
+    display:flex;
+    justify-content:center;
+    gap:6px;
+}
+
+.pd-gallery-dots span{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:rgba(255,255,255,.5);
+    transition:.25s;
+}
+
+.pd-gallery-dots span.active{
+    background:#D4AF37;
+    width:18px;
+    border-radius:4px;
+}
+
+.pd-gallery-count{
+    position:absolute;
+    right:16px;
+    bottom:16px;
+    background:rgba(0,0,0,.5);
+    color:#fff;
+    font-size:12px;
+    font-family:Poppins;
+    font-weight:600;
+    padding:4px 11px;
+    border-radius:20px;
+}
+
+/* --- Title / location / price header (plain page content, not
+   an overlay on the image) --- */
+.pd-header{
+    padding:26px 0 8px;
+}
+
+.pd-badge{
+    display:inline-block;
+    background:#D4AF37;
+    color:#0F3B2E;
+    font-family:Poppins;
+    font-weight:700;
+    font-size:11px;
+    letter-spacing:.6px;
+    text-transform:uppercase;
+    padding:5px 13px;
+    border-radius:6px;
+    margin-bottom:12px;
+}
+
+.pd-header h1{
+    font-family:'Cormorant Garamond',serif;
+    font-size:44px;
+    font-weight:600;
+    color:#111;
+    margin:0 0 8px;
+    line-height:1.2;
+}
+
+.pd-location{
+    font-family:Poppins;
+    font-size:16px;
+    color:#666;
+    margin:0 0 16px;
+}
+
+.pd-price{
+    font-family:Poppins;
+    font-size:28px;
+    font-weight:800;
+    color:#0F3B2E;
+}
+
+/* --- Shared section heading style --- */
+.pd-section-heading{
+    font-family:Poppins;
+    font-weight:700;
+    font-size:13px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color:#0F3B2E;
+    margin:0 0 18px;
+    padding-bottom:12px;
+    border-bottom:1px solid #eee;
+}
+
+.pd-specs,
+.pd-description,
+.pd-features,
+.pd-trust{
+    padding:26px 0;
+    border-top:1px solid #f0f0f0;
+}
+
+/* --- Specifications grid — icon + label/value card, matching
+   the reference layout's 2-column spec cards --- */
+.pd-specs-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+}
+
+.pd-spec-card{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    background:#f7f6f2;
+    border:1px solid #eee;
+    border-radius:14px;
+    padding:14px;
+}
+
+.pd-spec-icon{
+    flex-shrink:0;
+    width:38px;
+    height:38px;
+    border-radius:10px;
+    background:#fff;
+    border:1px solid #e2e2e2;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#0F3B2E;
+    font-size:15px;
+}
+
+.pd-spec-text{
+    min-width:0;
+}
+
+.pd-spec-label{
+    display:block;
+    font-family:Poppins;
+    font-weight:600;
+    font-size:10.5px;
+    letter-spacing:.4px;
+    text-transform:uppercase;
+    color:#888;
+    margin-bottom:3px;
+}
+
+.pd-spec-value{
+    display:block;
+    font-family:Poppins;
+    font-weight:700;
+    font-size:15px;
+    color:#0F3B2E;
+    line-height:1.3;
+}
+
+@media (min-width:900px){
+    .pd-specs-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
+}
+
+/* --- Description --- */
+.pd-desc-text{
+    font-family:Poppins;
+    font-size:16px;
+    line-height:1.8;
+    color:#444;
+    margin:0;
+    display:-webkit-box;
+    -webkit-line-clamp:5;
+    -webkit-box-orient:vertical;
+    overflow:hidden;
+}
+
+.pd-desc-text.expanded{
+    display:block;
+    -webkit-line-clamp:unset;
+    overflow:visible;
+}
+
+.pd-readmore{
+    background:none;
+    border:none;
+    color:#0F3B2E;
+    font-family:Poppins;
+    font-weight:600;
+    font-size:14px;
+    padding:10px 0 0;
+    cursor:pointer;
+    text-decoration:underline;
+}
+
+/* --- Features — icon-topped grid, matching the reference layout --- */
+.pd-features-list{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px 12px;
+}
+
+.pd-features-list li{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    gap:8px;
+}
+
+.pd-feature-icon{
+    width:44px;
+    height:44px;
+    border-radius:12px;
+    background:#f7f6f2;
+    border:1px solid #eee;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#0F3B2E;
+    font-size:16px;
+}
+
+.pd-feature-label{
+    font-family:Poppins;
+    font-size:12.5px;
+    font-weight:500;
+    color:#333;
+    line-height:1.35;
+}
+
+@media (min-width:900px){
+    .pd-features-list{
+        grid-template-columns:repeat(5,1fr);
+    }
+}
+
+/* --- Brokerage / RERA — side-by-side trust cards --- */
+.pd-trust-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+}
+
+.pd-trust-row.pd-trust-single{
+    grid-template-columns:1fr;
+}
+
+.pd-trust-card{
+    background:#f7f6f2;
+    border:1px solid #eee;
+    border-radius:14px;
+    padding:16px;
+}
+
+.pd-trust-card .pd-section-heading{
+    margin-bottom:8px;
+    padding-bottom:0;
+    border-bottom:none;
+}
+
+.pd-trust-card p{
+    font-family:Poppins;
+    font-size:14px;
+    color:#444;
+    margin:0;
+}
+
+.pd-rera-no{
+    font-family:Poppins;
+    font-weight:700;
+    font-size:15px;
+    color:#0F3B2E;
+    margin:4px 0 0;
+}
+
+/* --- Contact CTA (normal page section, not an image overlay) —
+   compact, side-by-side Call + WhatsApp, never full-width blocks --- */
+.pd-contact-cta{
+    padding:24px 0 50px;
+}
+
+.pd-contact-cta .container{
+    display:flex;
+    gap:12px;
+}
+
+.pd-call-btn,
+.pd-whatsapp-btn{
+    flex:1;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    height:48px;
+    border-radius:30px;
+    text-decoration:none;
+    font-family:Poppins;
+    font-weight:600;
+    font-size:14.5px;
+    box-sizing:border-box;
+}
+
+.pd-call-btn{
+    background:#fff;
+    color:#0F3B2E;
+    border:1.5px solid #0F3B2E;
+}
+
+.pd-call-btn:hover{
+    background:#f4f4f4;
+}
+
+.pd-whatsapp-btn{
     background:#25D366;
+    color:#fff;
+    border:1.5px solid #25D366;
 }
 
-.whatsapp-btn:hover{
+.pd-whatsapp-btn:hover{
     background:#1ea952;
 }
+
+/* ===========================================================
+   FULL PROPERTY DETAILS PAGE — MOBILE
+=========================================================== */
+html.is-mobile .pd-gallery-track img{
+    height:280px;
+}
+
+html.is-mobile .pd-header{
+    padding:20px 0 4px;
+}
+
+html.is-mobile .pd-header h1{
+    font-size:26px;
+    line-height:1.25;
+}
+
+html.is-mobile .pd-location{
+    font-size:14px;
+    margin-bottom:12px;
+}
+
+html.is-mobile .pd-price{
+    font-size:22px;
+}
+
+html.is-mobile .pd-specs,
+html.is-mobile .pd-description,
+html.is-mobile .pd-features,
+html.is-mobile .pd-trust{
+    padding:20px 0;
+}
+
 .hero{
     min-height: 88vh;
     padding-top: 20px;
@@ -2094,7 +2439,7 @@ margin-top: -180px;
 
 .hero-subheading{
     font-size:22px;
-    font-weight:600;
+    font-weight:700;
     letter-spacing:3px;
     text-transform:uppercase;
     color:#D4AF37;
@@ -3458,23 +3803,27 @@ html.is-mobile .back-to-top{
 html.is-mobile .main-nav{
     position:fixed;
     top:0;
-    right:-320px;
-    width:100%;
-    max-width:320px;
+    right:0;
+    bottom:0;
+    width:76%;
+    max-width:340px;
     height:100vh;
+    height:100dvh;
     background:#ffffff;
     flex-direction:column;
     align-items:flex-start;
-    gap:18px;
-    padding:90px 25px 30px;
-    transition:.35s ease;
+    gap:0;
+    padding:calc(28px + env(safe-area-inset-top,0px)) 0 calc(24px + env(safe-area-inset-bottom,0px));
+    transform:translateX(100%);
+    transition:transform .32s cubic-bezier(.4,0,.2,1);
     box-shadow:-10px 0 30px rgba(0,0,0,.15);
     z-index:10001;
     overflow-y:auto;
+    -webkit-overflow-scrolling:touch;
 }
 
 html.is-mobile .main-nav.active{
-    right:0;
+    transform:translateX(0);
 }
 
 html.is-mobile .dropdown{
@@ -3501,9 +3850,42 @@ html.is-mobile .dropdown.open .dropdown-content{
 }
 
 html.is-mobile .main-nav a{
+    position:relative;
     width:100%;
     color:#111;
-    padding:8px 0;
+    padding:15px 28px;
+    font-family:Poppins;
+    font-weight:600;
+    font-size:16px;
+    letter-spacing:.2px;
+    border-bottom:1px solid #f0f0f0;
+    box-sizing:border-box;
+}
+
+/* Thin dark-green glowing edge on hover/tap/focus — left edge of the
+   item only, no background fill and no border around the menu. */
+html.is-mobile .main-nav a::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:8px;
+    bottom:8px;
+    width:3px;
+    border-radius:2px;
+    background:#0F3B2E;
+    box-shadow:0 0 8px rgba(15,59,46,.55);
+    opacity:0;
+    transition:opacity .2s ease;
+}
+
+html.is-mobile .main-nav a:hover::before,
+html.is-mobile .main-nav a:active::before,
+html.is-mobile .main-nav a:focus-visible::before{
+    opacity:1;
+}
+
+html.is-mobile .main-nav > a:first-child{
+    border-top:1px solid #f0f0f0;
 }
 
 .mobile-menu-phone{
@@ -3514,56 +3896,84 @@ html.is-mobile .main-nav a{
     display:none;
 }
 
+.mobile-menu-contact-label{
+    display:none;
+}
+
 .mobile-menu-socials{
     display:none;
 }
 
 html.is-mobile .mobile-menu-divider{
+    display:none;
+}
+
+html.is-mobile .mobile-menu-contact-label{
     display:block;
     width:100%;
-    height:1px;
-    background:#e5e7eb;
-    margin:20px 0 16px 0;
+    padding:22px 28px 8px;
+    box-sizing:border-box;
+    font-family:Poppins;
+    font-weight:600;
+    font-size:11px;
+    letter-spacing:1.5px;
+    color:#9a9a9a;
 }
 
 html.is-mobile .mobile-menu-phone{
-    display:block;
+    display:flex;
+    align-items:center;
+    gap:10px;
     width:100%;
-    padding:0;
+    padding:10px 28px;
+    box-sizing:border-box;
     font-family:Poppins;
-    font-weight:600;
-    font-size:16px;
+    font-weight:500;
+    font-size:15px;
     color:#111;
     text-decoration:none;
-    text-align:center;
-    margin: bottom 0px;
+    text-align:left;
 }
 
 html.is-mobile .mobile-menu-socials{
     display:flex;
-    justify-content:center;
+    justify-content:flex-start;
     align-items:center;
     gap:10px;
     width:100%;
-    margin: bottom 0px;
+    padding:14px 28px 0;
+    box-sizing:border-box;
 }
 
 html.is-mobile .mobile-menu-socials a{
     display:flex;
     align-items:center;
     justify-content:center;
-    width:36px;
-    height:36px;
+    width:34px;
+    height:34px;
     padding:0;
+    border-radius:50%;
+    background:#f5f5f5;
     color:#111;
     text-decoration:none;
 }
 
 html.is-mobile .mobile-menu-socials svg{
-    width:22px;
-    height:22px;
+    width:17px;
+    height:17px;
     stroke:#111;
     fill:none;
+}
+
+/* Keep the floating WhatsApp button from colliding with the open drawer */
+html.is-mobile .whatsapp-float{
+    transition:opacity .2s ease, transform .2s ease, visibility .2s ease;
+}
+
+html.is-mobile body.mobile-menu-open .whatsapp-float{
+    opacity:0;
+    visibility:hidden;
+    transform:scale(.8);
 }
 
 /* Fallback for the rare case JavaScript is disabled:
@@ -3592,15 +4002,15 @@ html.is-mobile .mobile-menu-socials svg{
        (e.g. browser devtools responsive/mobile view) without the
        touch/UA signals that set the .is-mobile class. */
     html:not(.is-mobile) .whatsapp-float{
-        width:52px;
-        height:52px;
+        width: 52px;
+        height:px;
         bottom:20px;
         right:18px;
     }
     html:not(.is-mobile) .back-to-top{
         width:52px;
         height:52px;
-        bottom:84px;
+        bottom: 80px;
         right:18px;
         font-size:19px;
     }
@@ -3833,6 +4243,17 @@ html.is-mobile .mobile-menu-socials svg{
 
 .rp-contact-row a:hover{
     color:#D4AF37;
+}
+
+.profile-rera{
+    margin-top:14px;
+    font-family:Poppins;
+    font-size:14px;
+    color:#555;
+}
+
+.profile-rera strong{
+    color:#0F3B2E;
 }
 
 .realtor-not-found{
@@ -4459,5 +4880,407 @@ html.is-mobile .cta-buttons{
 
     html.is-mobile .location-category.open .location-areas-row{
         max-height:64px;
+    }
+}
+
+/* ===========================================================
+   PROPERTY QUICK VIEW OVERLAY
+   Opened by tapping/clicking a property card. Full detail info
+   lives here; property.html is untouched. See js/public-properties.js
+   for the logic — this is markup-agnostic styling only.
+=========================================================== */
+
+/* Desktop hover affordance on the card image — a restrained
+   "Quick View" pill, shown only on real hover-capable pointers
+   so it never appears (or gets relied on) for touch. */
+@media (hover:hover) and (pointer:fine){
+    .property-card{ position:relative; }
+    .qv-hover-cta{
+        position:absolute;
+        left:50%;
+        bottom:18px;
+        transform:translate(-50%,10px);
+        opacity:0;
+        visibility:hidden;
+        transition:opacity .25s ease, transform .25s ease, visibility .25s ease;
+        background:rgba(255,255,255,.96);
+        color:#0F3B2E;
+        font-family:Poppins;
+        font-weight:600;
+        font-size:13px;
+        letter-spacing:.3px;
+        padding:10px 22px;
+        border-radius:30px;
+        box-shadow:0 10px 24px rgba(0,0,0,.22);
+        border:none;
+        cursor:pointer;
+        z-index:2;
+    }
+    .property-card:hover .qv-hover-cta{
+        opacity:1;
+        visibility:visible;
+        transform:translate(-50%,0);
+    }
+}
+
+.qv-overlay{
+    position:fixed;
+    inset:0;
+    z-index:10050;
+    display:none;
+}
+
+.qv-overlay.active{
+    display:block;
+}
+
+.qv-backdrop{
+    position:absolute;
+    inset:0;
+    background:rgba(10,20,17,.55);
+    opacity:0;
+    transition:opacity .3s ease;
+}
+
+.qv-overlay.active .qv-backdrop{
+    opacity:1;
+}
+
+.qv-sheet{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:0;
+    max-height:94vh;
+    max-height:94dvh;
+    background:#fff;
+    border-radius:22px 22px 0 0;
+    box-shadow:0 -20px 50px rgba(0,0,0,.3);
+    display:flex;
+    flex-direction:column;
+    transform:translateY(100%);
+    transition:transform .36s cubic-bezier(.4,0,.2,1);
+    overflow:hidden;
+}
+
+.qv-overlay.active .qv-sheet{
+    transform:translateY(0);
+}
+
+.qv-close{
+    position:absolute;
+    top:14px;
+    right:14px;
+    z-index:3;
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    border:none;
+    background:rgba(0,0,0,.45);
+    color:#fff;
+    font-size:20px;
+    line-height:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+}
+
+.qv-gallery{
+    position:relative;
+    flex-shrink:0;
+    background:#0F3B2E;
+}
+
+.qv-gallery-track{
+    display:flex;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+}
+
+.qv-gallery-track::-webkit-scrollbar{
+    display:none;
+}
+
+.qv-gallery-track img{
+    flex:0 0 100%;
+    width:100%;
+    height:260px;
+    object-fit:cover;
+    scroll-snap-align:center;
+    display:block;
+}
+
+.qv-gallery-dots{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:12px;
+    display:flex;
+    justify-content:center;
+    gap:6px;
+}
+
+.qv-gallery-dots span{
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:rgba(255,255,255,.5);
+    transition:.25s;
+}
+
+.qv-gallery-dots span.active{
+    background:#D4AF37;
+    width:16px;
+    border-radius:4px;
+}
+
+.qv-gallery-count{
+    position:absolute;
+    right:12px;
+    bottom:12px;
+    background:rgba(0,0,0,.5);
+    color:#fff;
+    font-size:11px;
+    font-family:Poppins;
+    font-weight:600;
+    padding:3px 9px;
+    border-radius:20px;
+}
+
+.qv-body{
+    overflow-y:auto;
+    padding:22px 22px 8px;
+    -webkit-overflow-scrolling:touch;
+}
+
+.qv-badge{
+    display:inline-block;
+    background:#D4AF37;
+    color:#0F3B2E;
+    font-family:Poppins;
+    font-weight:700;
+    font-size:10px;
+    letter-spacing:.6px;
+    text-transform:uppercase;
+    padding:4px 11px;
+    border-radius:6px;
+    margin-bottom:10px;
+}
+
+.qv-title{
+    font-family:'Cormorant Garamond',serif;
+    font-size:26px;
+    font-weight:600;
+    color:#111;
+    margin:0 0 6px;
+    line-height:1.25;
+}
+
+.qv-location{
+    font-family:Poppins;
+    font-size:14px;
+    color:#666;
+    margin:0 0 14px;
+}
+
+.qv-price{
+    font-family:Poppins;
+    font-size:22px;
+    font-weight:800;
+    color:#0F3B2E;
+    margin-bottom:18px;
+}
+
+.qv-stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+    margin-bottom:22px;
+}
+
+.qv-stat{
+    background:#f7f6f2;
+    border:1px solid #eee;
+    border-radius:12px;
+    text-align:center;
+    padding:12px 6px;
+}
+
+.qv-stat .qv-stat-value{
+    display:block;
+    font-family:Poppins;
+    font-weight:700;
+    font-size:16px;
+    color:#0F3B2E;
+}
+
+.qv-stat .qv-stat-label{
+    display:block;
+    font-family:Poppins;
+    font-size:11px;
+    color:#777;
+    margin-top:2px;
+}
+
+.qv-section{
+    margin-bottom:22px;
+}
+
+.qv-section h3{
+    font-family:Poppins;
+    font-weight:700;
+    font-size:12px;
+    letter-spacing:.8px;
+    text-transform:uppercase;
+    color:#0F3B2E;
+    margin:0 0 10px;
+    padding-bottom:8px;
+    border-bottom:1px solid #eee;
+}
+
+.qv-desc{
+    font-family:Poppins;
+    font-size:14.5px;
+    line-height:1.7;
+    color:#444;
+    margin:0;
+    display:-webkit-box;
+    -webkit-line-clamp:4;
+    -webkit-box-orient:vertical;
+    overflow:hidden;
+}
+
+.qv-desc.expanded{
+    display:block;
+    -webkit-line-clamp:unset;
+    overflow:visible;
+}
+
+.qv-readmore{
+    background:none;
+    border:none;
+    color:#0F3B2E;
+    font-family:Poppins;
+    font-weight:600;
+    font-size:13px;
+    padding:8px 0 0;
+    cursor:pointer;
+    text-decoration:underline;
+}
+
+.qv-features ul{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px 14px;
+}
+
+.qv-features li{
+    font-family:Poppins;
+    font-size:13.5px;
+    color:#333;
+    display:flex;
+    align-items:flex-start;
+    gap:8px;
+    line-height:1.4;
+}
+
+.qv-features li::before{
+    content:"\2713";
+    color:#D4AF37;
+    font-weight:700;
+    flex-shrink:0;
+}
+
+.qv-brokerage p,
+.qv-rera p{
+    font-family:Poppins;
+    font-size:13.5px;
+    color:#444;
+    margin:0 0 4px;
+}
+
+.qv-rera .qv-rera-authority{
+    color:#777;
+    font-size:12.5px;
+}
+
+.qv-rera .qv-rera-no strong{
+    color:#0F3B2E;
+}
+
+.qv-actions{
+    flex-shrink:0;
+    display:flex;
+    gap:10px;
+    padding:14px 16px calc(14px + env(safe-area-inset-bottom,0px));
+    border-top:1px solid #eee;
+    background:#fff;
+}
+
+.qv-actions a{
+    flex:1;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:7px;
+    text-decoration:none;
+    font-family:Poppins;
+    font-weight:600;
+    font-size:13.5px;
+    border-radius:30px;
+    padding:0 10px;
+    height:48px;
+    white-space:nowrap;
+    box-sizing:border-box;
+}
+
+.qv-call,
+.qv-whatsapp{
+    border:1.5px solid #0F3B2E;
+    color:#0F3B2E;
+    background:#fff;
+}
+
+.qv-whatsapp{
+    border-color:#25D366;
+    background:#25D366;
+    color:#fff;
+}
+
+/* Body-scroll lock while the Quick View is open (mirrors the
+   mobile-menu lock technique so iOS never rubber-bands behind it) */
+body.qv-open{
+    position:fixed;
+    left:0;
+    right:0;
+    width:100%;
+}
+
+/* --- Desktop: centered modal instead of a bottom sheet --- */
+@media (min-width:769px){
+    .qv-sheet{
+        left:50%;
+        top:50%;
+        bottom:auto;
+        transform:translate(-50%,-46%);
+        width:92%;
+        max-width:460px;
+        max-height:88vh;
+        border-radius:20px;
+        opacity:0;
+        transition:transform .3s ease, opacity .3s ease;
+    }
+    .qv-overlay.active .qv-sheet{
+        transform:translate(-50%,-50%);
+        opacity:1;
+    }
+    .qv-gallery-track img{
+        height:280px;
     }
 }

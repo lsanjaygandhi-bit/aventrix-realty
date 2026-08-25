@@ -166,18 +166,59 @@ const menuOverlay = document.getElementById("menuOverlay");
 
 if (menuToggle && mainNav && menuOverlay) {
 
-    function closeMenu() {
+    var menuScrollY = 0;
+    var menuHistoryPushed = false;
+
+    // Robust scroll lock: fixing the body at its current scroll offset
+    // (instead of just overflow:hidden) prevents iOS Safari from
+    // silently shifting/rubber-banding the page behind the drawer, and
+    // lets us restore the exact scroll position on close.
+    function lockBodyScroll() {
+        menuScrollY = window.scrollY || window.pageYOffset || 0;
+        document.body.style.position = "fixed";
+        document.body.style.top = "-" + menuScrollY + "px";
+        document.body.style.left = "0";
+        document.body.style.right = "0";
+        document.body.style.width = "100%";
+    }
+
+    function unlockBodyScroll() {
+        document.body.style.position = "";
+        document.body.style.top = "";
+        document.body.style.left = "";
+        document.body.style.right = "";
+        document.body.style.width = "";
+        window.scrollTo(0, menuScrollY);
+    }
+
+    // consumeHistory: true when the menu is being closed by an explicit
+    // "close" action (toggle button / overlay tap) so we pop the history
+    // entry we pushed on open. Left false when closing because the user
+    // already pressed Back (fromPopState) or is navigating to a new page
+    // via a menu link, since in both of those cases the history stack
+    // is already moving on its own.
+    function closeMenu(fromPopState, consumeHistory) {
+        if (!mainNav.classList.contains("active")) return;
+
         menuToggle.classList.remove("active");
         mainNav.classList.remove("active");
         menuOverlay.classList.remove("active");
         menuToggle.setAttribute("aria-expanded", "false");
+        document.body.classList.remove("mobile-menu-open");
 
         const dropdown = document.querySelector(".dropdown");
         if (dropdown) {
             dropdown.classList.remove("open");
         }
 
-        document.body.style.overflow = "";
+        unlockBodyScroll();
+
+        if (menuHistoryPushed && consumeHistory && !fromPopState) {
+            menuHistoryPushed = false;
+            history.back();
+        } else {
+            menuHistoryPushed = false;
+        }
     }
 
     function openMenu() {
@@ -185,23 +226,37 @@ if (menuToggle && mainNav && menuOverlay) {
         mainNav.classList.add("active");
         menuOverlay.classList.add("active");
         menuToggle.setAttribute("aria-expanded", "true");
-        document.body.style.overflow = "hidden";
+        document.body.classList.add("mobile-menu-open");
+        lockBodyScroll();
+
+        // Pressing the device/browser Back button while the drawer is
+        // open should close the drawer first, not navigate away.
+        history.pushState({ mobileMenuOpen: true }, "");
+        menuHistoryPushed = true;
     }
 
     menuToggle.addEventListener("click", () => {
         if (mainNav.classList.contains("active")) {
-            closeMenu();
+            closeMenu(false, true);
         } else {
             openMenu();
         }
     });
 
-    // Clicking outside (the overlay) closes the menu
-    menuOverlay.addEventListener("click", closeMenu);
+    window.addEventListener("popstate", () => {
+        if (mainNav.classList.contains("active")) {
+            closeMenu(true, false);
+        }
+    });
 
-    // Clicking a menu item (not the dropdown parent link) closes the menu
+    // Clicking outside (the overlay) closes the menu
+    menuOverlay.addEventListener("click", () => closeMenu(false, true));
+
+    // Clicking a menu item (not the dropdown parent link) closes the
+    // menu visually but leaves the pushed history entry alone — the
+    // link's own navigation is about to move the history stack anyway.
     mainNav.querySelectorAll("a:not(.dropdown-toggle)").forEach(link => {
-        link.addEventListener("click", closeMenu);
+        link.addEventListener("click", () => closeMenu(false, false));
     });
 
     // Auto-close if the viewport is resized back to desktop width
@@ -210,7 +265,7 @@ if (menuToggle && mainNav && menuOverlay) {
     // rotating a phone to landscape never force-closes the menu)
     window.addEventListener("resize", () => {
         if (!document.documentElement.classList.contains("is-mobile")) {
-            closeMenu();
+            closeMenu(false, false);
         }
     });
 }

@@ -139,8 +139,11 @@
                     </div>
                 </div>
                 <div id="pageContentForm" style="display:none;">
-                    <div class="admin-card">
+                    <div class="admin-card" id="pcHeroCard">
                         <h2 style="margin-top:0; font-size:16px;">Hero / Banner</h2>
+                        <p class="helper-text" id="pcHeroHomeNotice" style="display:none; color:var(--admin-danger); margin-top:-4px;">
+                            Homepage's hero banner is not controlled by these fields — it's managed under <strong>Site Settings</strong> instead (Hero Title / Subtitle / Tagline / Video). Fields below can still be saved, but won't appear on the live Homepage.
+                        </p>
                         <div class="admin-form-grid">
                             <div class="admin-field"><label>Eyebrow (small label)</label><input type="text" id="pcHeroEyebrow"></div>
                             <div class="admin-field"><label>Button Text</label><input type="text" id="pcHeroButtonText"></div>
@@ -352,6 +355,10 @@
                             <label>WhatsApp Number <span class="helper-text" style="display:inline;">(digits only, e.g. 9176887770)</span></label>
                             <input type="text" id="setWhatsapp">
                         </div>
+                        <div class="admin-field full">
+                            <label>RERA Agent Registration No. <span class="helper-text" style="display:inline;">(the real estate AGENT's registration, shown in the Property Quick View — not a per-project RERA number)</span></label>
+                            <input type="text" id="setReraNo" placeholder="TN/Agent/0284/2026">
+                        </div>
                     </div>
                 </div>
                 <div class="admin-card">
@@ -462,6 +469,71 @@
                 <div class="admin-field full">
                     <label>Features (one per line)</label>
                     <textarea id="fFeatures" rows="4" placeholder="3 Bedrooms&#10;Covered Car Parking&#10;24x7 Security"></textarea>
+                </div>
+                <div class="admin-field full"><hr style="border:none; border-top:1px solid var(--admin-border);"></div>
+                <div class="admin-field full"><strong style="font-size:13px;">Property Details <span class="helper-text" style="font-weight:400;">(optional — powers the Quick View stats. Leave blank to hide a stat.)</span></strong></div>
+                <div class="admin-field">
+                    <label>Bedrooms</label>
+                    <input type="number" id="fBedrooms" min="0">
+                </div>
+                <div class="admin-field">
+                    <label>Bathrooms</label>
+                    <input type="number" id="fBathrooms" min="0">
+                </div>
+                <div class="admin-field">
+                    <label>Parking</label>
+                    <input type="number" id="fParking" min="0">
+                </div>
+                <div class="admin-field">
+                    <label>Floors</label>
+                    <input type="number" id="fFloors" min="0">
+                </div>
+                <div class="admin-field">
+                    <label>Built-up Area</label>
+                    <input type="text" id="fBuiltUpArea" placeholder="e.g. 1,450 sq.ft">
+                </div>
+                <div class="admin-field">
+                    <label>Land Area</label>
+                    <input type="text" id="fLandArea" placeholder="e.g. 2,400 sq.ft">
+                </div>
+                <div class="admin-field">
+                    <label>Road Width</label>
+                    <input type="text" id="fRoadWidth" placeholder="e.g. 30 ft">
+                </div>
+                <div class="admin-field">
+                    <label>Rental Income</label>
+                    <input type="text" id="fRentalIncome" placeholder="e.g. ₹45,000/month">
+                </div>
+                <div class="admin-field">
+                    <label>UDS Area <span class="helper-text" style="display:inline;">(Undivided Share — distinct from Land Area)</span></label>
+                    <input type="text" id="fUdsArea" placeholder="e.g. 1,680 sq.ft">
+                </div>
+                <div class="admin-field">
+                    <label>Furnishing</label>
+                    <select id="fFurnishing">
+                        <option value="">Not specified</option>
+                        <option value="Fully Furnished">Fully Furnished</option>
+                        <option value="Semi-Furnished">Semi-Furnished</option>
+                        <option value="Unfurnished">Unfurnished</option>
+                    </select>
+                </div>
+                <div class="admin-field">
+                    <label>Facing</label>
+                    <select id="fFacing">
+                        <option value="">Not specified</option>
+                        <option>North</option>
+                        <option>South</option>
+                        <option>East</option>
+                        <option>West</option>
+                        <option>North-East</option>
+                        <option>North-West</option>
+                        <option>South-East</option>
+                        <option>South-West</option>
+                    </select>
+                </div>
+                <div class="admin-field full">
+                    <label>Brokerage <span class="helper-text" style="display:inline;">(shown in Quick View only when filled in)</span></label>
+                    <input type="text" id="fBrokerage" placeholder="e.g. 1%, ₹2,00,000, or Negotiable">
                 </div>
                 <div class="admin-field full">
                     <label>Featured Image <span class="helper-text" style="display:inline;">(main photo shown on property cards)</span></label>
