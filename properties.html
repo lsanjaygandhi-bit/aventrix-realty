@@ -18,13 +18,6 @@
     }
 
     function evaluateMobile() {
-        // Detect real mobile/touch devices instead of relying only on
-        // viewport width, so the mobile layout survives orientation
-        // changes (landscape too). Also re-checks on resize so a
-        // desktop browser window narrowed below 768px (e.g. during
-        // responsive QA / devtools) correctly gets the mobile layout,
-        // without affecting real touch devices, which stay mobile
-        // via the touch/UA check regardless of width or rotation.
         var coarsePointer = window.matchMedia &&
             window.matchMedia('(hover: none) and (pointer: coarse)').matches;
         var mobileUA = /Android|iPhone|iPad|iPod|IEMobile|BlackBerry|Opera Mini|Mobile/i
@@ -54,17 +47,19 @@
     <link rel="icon" type="image/png" sizes="512x512" href="/images/favicon/android-chrome-512x512.png">
     <link rel="manifest" href="/site.webmanifest">
 
-    <title>Realtor Profile | Aventrix Realty</title>
+    <title>Search Properties | Aventrix Realty</title>
+    <meta name="description" content="Search Aventrix Realty's full property listings across Chennai — filter by location, type, buy or rent, price, bedrooms, bathrooms and area.">
 
     <link rel="stylesheet" href="style.css?v=20260831">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  </head>
-  <body>
+</head>
+
+<body>
+
     <header class="header">
     <div class="container nav">
         <div class="logo">
@@ -78,14 +73,14 @@
     <span></span>
     <span></span>
 </button>
-    <div class="menu-overlay" id="menuOverlay"></div>   
+    <div class="menu-overlay" id="menuOverlay"></div>
        <nav class="main-nav">
 
     <a href="index.html">Home</a>
 
     <a href="index.html#about">About Us</a>
 
-    <a href="properties.html">Properties</a>
+    <a href="properties.html" class="active">Properties</a>
 
     <a href="list-with-us.html">List With Us</a>
 
@@ -120,24 +115,156 @@
     </div>
 
   </nav>
-  
+
         <div class="nav-right">
-            <a href="tel:+919176887770" class="nav-phone" aria-label="Call Aventrix Realty">
+            <a href="tel:+919176887770" class="nav-phone" data-site="phone1" aria-label="Call Aventrix Realty">
                 <i class="fas fa-phone-alt" aria-hidden="true"></i>
-                <span class="nav-phone-number">+91 91768 87770</span>
+                <span class="nav-phone-number" data-site="phone1">+91 91768 87770</span>
             </a>
         </div>
     </div>
      </header>
 
-    <section class="realtor-profile-section">
-        <div class="container">
-            <div id="realtorProfileContent">
-                <!-- Rendered dynamically by script.js from realtors-data.js
-                     based on the ?id= URL parameter -->
+<section class="sf-header">
+    <div class="container">
+        <span class="section-eyebrow">SEARCH PROPERTIES</span>
+        <h1>Find Your Next Property</h1>
+        <p class="sf-header-sub">Browse every published Aventrix Realty listing — filter by location, type, budget and more.</p>
+    </div>
+</section>
+
+<section class="sf-filter-section">
+    <div class="container">
+
+        <button type="button" id="sfMobileFilterToggle" class="sf-mobile-filter-toggle">
+            <i class="fas fa-sliders-h" aria-hidden="true"></i> Filters &amp; Sort
+            <span class="sf-active-count" id="sfActiveCount" hidden>0</span>
+        </button>
+
+        <div class="sf-filter-panel" id="sfFilterPanel">
+
+            <div class="sf-filter-panel-header">
+                <h3>Filter Properties</h3>
+                <button type="button" class="sf-filter-close" id="sfFilterClose" aria-label="Close filters"><i class="fas fa-times"></i></button>
+            </div>
+
+            <div class="sf-filter-grid">
+
+                <div class="sf-field">
+                    <label for="sfLocation">Location / Area</label>
+                    <input type="text" id="sfLocation" placeholder="e.g. Chromepet, ECR, OMR...">
+                </div>
+
+                <div class="sf-field">
+                    <label for="sfCategory">Property Type</label>
+                    <select id="sfCategory">
+                        <option value="">Any Type</option>
+                        <option value="residential">Residential</option>
+                        <option value="apartments">Apartments</option>
+                        <option value="villas">Luxury Villas</option>
+                        <option value="commercial">Commercial</option>
+                        <option value="land">Land &amp; Plots</option>
+                        <option value="investment">Investment</option>
+                    </select>
+                </div>
+
+                <div class="sf-field">
+                    <label for="sfListingType">Buy / Rent</label>
+                    <select id="sfListingType">
+                        <option value="">Buy or Rent</option>
+                        <option value="sale">Buy (Sale)</option>
+                        <option value="lease">Rent / Lease</option>
+                    </select>
+                </div>
+
+                <div class="sf-field sf-field-range">
+                    <label>Price Range (₹)</label>
+                    <div class="sf-range-inputs">
+                        <input type="number" id="sfPriceMin" placeholder="Min" min="0">
+                        <span>–</span>
+                        <input type="number" id="sfPriceMax" placeholder="Max" min="0">
+                    </div>
+                </div>
+
+                <div class="sf-field">
+                    <label for="sfBedrooms">Bedrooms</label>
+                    <select id="sfBedrooms">
+                        <option value="">Any</option>
+                        <option value="1">1+</option>
+                        <option value="2">2+</option>
+                        <option value="3">3+</option>
+                        <option value="4">4+</option>
+                        <option value="5">5+</option>
+                    </select>
+                </div>
+
+                <div class="sf-field">
+                    <label for="sfBathrooms">Bathrooms</label>
+                    <select id="sfBathrooms">
+                        <option value="">Any</option>
+                        <option value="1">1+</option>
+                        <option value="2">2+</option>
+                        <option value="3">3+</option>
+                        <option value="4">4+</option>
+                    </select>
+                </div>
+
+                <div class="sf-field sf-field-range">
+                    <label>Built-up Area (sq.ft)</label>
+                    <div class="sf-range-inputs">
+                        <input type="number" id="sfAreaMin" placeholder="Min" min="0">
+                        <span>–</span>
+                        <input type="number" id="sfAreaMax" placeholder="Max" min="0">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="sf-filter-panel-actions">
+                <button type="button" id="sfClearFilters" class="sf-clear-btn">Clear Filters</button>
+                <button type="button" id="sfApplyFilters" class="sf-apply-btn">Show Results</button>
+            </div>
+
+        </div>
+
+        <div class="sf-backdrop" id="sfBackdrop"></div>
+
+    </div>
+</section>
+
+<section class="sf-results-section">
+    <div class="container">
+
+        <div class="sf-results-bar">
+            <p class="sf-results-count" id="sfResultsCount" aria-live="polite">Loading properties…</p>
+            <div class="sf-sort-wrap">
+                <label for="sfSort">Sort by</label>
+                <select id="sfSort">
+                    <option value="recommended">Recommended</option>
+                    <option value="newest">Newest First</option>
+                    <option value="price_low">Price: Low to High</option>
+                    <option value="price_high">Price: High to Low</option>
+                </select>
             </div>
         </div>
-    </section>
+
+        <div class="sf-active-chips" id="sfActiveChips"></div>
+
+        <div class="property-grid" id="sfResultsGrid"></div>
+
+        <div class="sf-empty-state" id="sfEmptyState" hidden>
+            <i class="fas fa-house-circle-xmark" aria-hidden="true"></i>
+            <h3>No properties match your filters</h3>
+            <p>Try widening your price range or clearing a filter.</p>
+            <button type="button" id="sfEmptyClearBtn" class="sf-clear-btn">Clear All Filters</button>
+        </div>
+
+        <div class="sf-error-state" id="sfErrorState" hidden>
+            <p>We couldn't load properties right now. Please refresh, or contact us directly.</p>
+        </div>
+
+    </div>
+</section>
 
 <footer class="premium-footer">
 
@@ -152,7 +279,6 @@
                 trust and decades of local expertise.
             </p>
             <div class="pf-contact">
-                <!-- Head Office — unchanged, no existing content removed -->
                 <div class="pf-office-block">
                     <p class="pf-office-name">Aventrix Realty – Head Office</p>
                     <p>No.27, 1st Main Road, Newcolony, Chromepet, Chennai, Tamil Nadu</p>
@@ -162,7 +288,6 @@
                     <p class="pf-office-label">Email:</p>
                     <a href="mailto:office@aventrixrealty.com">office@aventrixrealty.com</a>
                 </div>
-                <!-- Adyar Branch — compact reference only; full details live on the Office Locations section -->
                 <p class="pf-branch-line"><span class="pf-office-label">Branch Office:</span> Adyar, Chennai</p>
             </div>
         </div>
@@ -179,7 +304,7 @@
         <div class="pf-col">
             <h4 class="pf-heading">Quick Links</h4>
             <ul class="pf-links">
-                <li><a href="property.html">Our Services</a></li>
+                <li><a href="properties.html">Search Properties</a></li>
                 <li><a href="our-realtors.html">Realtors</a></li>
                 <li><a href="brokerage-fees.html">Brokerage &amp; Fees</a></li>
                 <li><a href="admin/index.html" class="footer-nav-login">Admin Login</a></li>
@@ -230,8 +355,9 @@
     </div>
 
 </footer>
-<a href="https://wa.me/9176887770" class="whatsapp-float" target="_blank">
-<img src="images/whatsapp-icon.png" alt="WhatsApp">
+
+<a href="https://wa.me/919176887770" class="whatsapp-float" target="_blank">
+    <img src="images/whatsapp-icon.png" alt="WhatsApp">
 </a>
 
 <button id="backToTop" class="back-to-top" aria-label="Back to top">
@@ -240,8 +366,8 @@
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="js/supabase-client.js"></script>
-<script src="realtors-data.js"></script>
+<script src="js/properties-search.js"></script>
 <script src="script.js"></script>
-<script src="js/public-realtors.js"></script>
+
 </body>
 </html>

@@ -24,7 +24,7 @@ const PropertiesModule = (function () {
         [
             "propertiesTableBody", "propertiesEmptyState", "filterPublishStatus", "filterStatus",
             "propertyModalOverlay", "propertyModalTitle", "propertyCodeDisplay", "propertyForm2",
-            "fTitle", "fCategory", "fListingType", "fLocation", "fPrice", "fShortDesc", "fDescription",
+            "fTitle", "fCategory", "fListingType", "fLocation", "fPrice", "fPriceValue", "fShortDesc", "fDescription",
             "fFeatures", "fFeaturedImage", "featuredImagePreview", "fImages", "imagePreviewList",
             "fBedrooms", "fBathrooms", "fParking", "fFloors", "fBuiltUpArea", "fLandArea", "fRoadWidth", "fRentalIncome", "fBrokerage",
             "fUdsArea", "fFurnishing", "fFacing",
@@ -113,6 +113,7 @@ const PropertiesModule = (function () {
         els.fListingType.value = p.listing_type || "sale";
         els.fLocation.value = p.location || "";
         els.fPrice.value = p.price_display || "";
+        els.fPriceValue.value = p.price_value ?? "";
         els.fShortDesc.value = p.short_description || "";
         els.fDescription.value = p.description || "";
         els.fFeatures.value = (p.features || []).join("\n");
@@ -290,6 +291,7 @@ const PropertiesModule = (function () {
                 listing_type: els.fListingType.value,
                 location: els.fLocation.value.trim(),
                 price_display: els.fPrice.value.trim(),
+                price_value: els.fPriceValue.value !== "" ? parseFloat(els.fPriceValue.value) : null,
                 short_description: els.fShortDesc.value.trim(),
                 description: els.fDescription.value.trim(),
                 features: els.fFeatures.value.split("\n").map((s) => s.trim()).filter(Boolean),

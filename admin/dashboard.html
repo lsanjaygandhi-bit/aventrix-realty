@@ -466,6 +466,11 @@
                     <label>Price (display text) *</label>
                     <input type="text" id="fPrice" placeholder="e.g. ₹1.14 Crore" required>
                 </div>
+                <div class="admin-field">
+                    <label>Price (₹, numeric — for search filters &amp; sorting)</label>
+                    <input type="number" id="fPriceValue" min="0" step="1" placeholder="e.g. 11400000">
+                    <small class="admin-field-hint">Plain rupees, no commas or ₹. Optional — leave blank if unsure; the property still shows everywhere, it just won't match a price filter.</small>
+                </div>
                 <div class="admin-field full">
                     <label>Short Description (shown on listing card)</label>
                     <input type="text" id="fShortDesc">

@@ -367,3 +367,9 @@ table.admin-table img.thumb { width: 46px; height: 46px; object-fit: cover; bord
 .pc-quill-editor .ql-toolbar { border-radius: 8px 8px 0 0; border-color: #e5e3da; }
 .pc-quill-editor .ql-container { border-radius: 0 0 8px 8px; border-color: #e5e3da; }
 .pc-section-block { border: 1px solid #e5e3da; }
+
+/* ---------- Search & Filter migration: small field hint text ---------- */
+.admin-field-hint {
+    display: block; margin-top: 4px; font-size: 12px; line-height: 1.4;
+    color: #8a8577;
+}
