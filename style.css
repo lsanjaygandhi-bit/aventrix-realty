@@ -5721,3 +5721,613 @@ body.qv-open{
     display:inline-block;
     padding:14px 34px;
 }
+
+/* ============================================================
+   WISHLIST + RECENTLY VIEWED
+   Additive only — reuses emerald #0F3B2E / gold #D4AF37 and the
+   existing .property-grid/.property-card/.property-share-btn
+   patterns so it reads as part of the same product, not a bolt-on.
+   ============================================================ */
+
+/* ---------- Nav heart icon + count badge ---------- */
+.nav-wishlist-link{
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    color:#0F3B2E;
+    font-size:17px;
+    text-decoration:none;
+    transition:.2s;
+}
+.nav-wishlist-link:hover{
+    background:#faf3e3;
+    color:#D4AF37;
+}
+.nav-wishlist-count{
+    position:absolute;
+    top:2px;
+    right:0;
+    min-width:16px;
+    height:16px;
+    padding:0 4px;
+    border-radius:9px;
+    background:#D4AF37;
+    color:#07111F;
+    font-size:10px;
+    font-weight:700;
+    line-height:16px;
+    text-align:center;
+}
+
+/* ---------- Card heart/save button (opposite corner from share) ---------- */
+.property-save-btn{
+    position:absolute;
+    top:10px;
+    left:10px;
+    width:32px;
+    height:32px;
+    border-radius:50%;
+    background:rgba(255,255,255,.92);
+    border:none;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#0F3B2E;
+    cursor:pointer;
+    font-size:14px;
+    transition:.2s;
+    z-index:2;
+}
+.property-save-btn:hover{ transform:scale(1.1); }
+.property-save-btn i{ font-weight:400; } /* far (outline) heart by default */
+.property-save-btn.saved{ color:#c0392b; }
+.property-save-btn.saved i{ font-weight:900; } /* fas (solid) heart when saved */
+
+/* ---------- Quick View save button (added to the qv-actions row) ---------- */
+.qv-save{
+    flex:0 0 52px !important;
+    border:1.5px solid #0F3B2E;
+    background:#fff;
+    color:#0F3B2E;
+    cursor:pointer;
+}
+.qv-save.saved{
+    border-color:#c0392b;
+    color:#c0392b;
+}
+.qv-save i{ font-size:16px; }
+
+/* ---------- Property Details page save button ---------- */
+.pd-save-btn{
+    flex:0 0 56px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    height:48px;
+    border-radius:30px;
+    border:1.5px solid #0F3B2E;
+    background:#fff;
+    color:#0F3B2E;
+    font-size:18px;
+    cursor:pointer;
+    transition:.2s;
+}
+.pd-save-btn.saved{
+    border-color:#c0392b;
+    color:#c0392b;
+}
+.pd-save-btn:hover{ background:#f4f4f4; }
+
+/* ============================================================
+   wishlist.html — My Saved Properties
+   ============================================================ */
+.ws-header{
+    padding:150px 8% 34px;
+    background:#0F3B2E;
+    text-align:center;
+    color:#fff;
+}
+.ws-header .section-eyebrow{ color:#D4AF37; }
+.ws-header h1{
+    font-family:"Cormorant Garamond", serif;
+    font-size:42px;
+    font-weight:600;
+    margin:6px 0 0;
+    color:#fff;
+}
+
+.ws-section{ padding:50px 8%; background:#faf9f7; }
+.ws-section + .ws-section{ padding-top:10px; }
+
+.ws-section-heading{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:12px;
+    max-width:1200px;
+    margin:0 auto 22px;
+}
+.ws-section-heading h2{
+    font-family:"Cormorant Garamond", serif;
+    font-size:28px;
+    color:#0F3B2E;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+.ws-count-pill{
+    background:#0F3B2E;
+    color:#fff;
+    font-size:12px;
+    font-weight:700;
+    padding:3px 10px;
+    border-radius:12px;
+}
+.ws-clear-btn{
+    background:transparent;
+    border:1px solid #d0cec4;
+    color:#555;
+    font-weight:600;
+    font-size:13px;
+    padding:9px 16px;
+    border-radius:10px;
+    cursor:pointer;
+    transition:.2s;
+}
+.ws-clear-btn:hover{ border-color:#c0392b; color:#c0392b; }
+
+.ws-section .property-grid{
+    max-width:1200px;
+    margin:0 auto;
+}
+
+.ws-empty{
+    text-align:center;
+    padding:50px 20px;
+    max-width:1200px;
+    margin:0 auto;
+    background:#fff;
+    border:1px solid #eee;
+    border-radius:16px;
+}
+.ws-empty i{ font-size:36px; color:#D4AF37; margin-bottom:14px; }
+.ws-empty h3{
+    font-family:"Cormorant Garamond", serif;
+    font-size:22px;
+    color:#0F3B2E;
+    margin-bottom:6px;
+}
+.ws-empty p{ color:#666; margin-bottom:18px; font-size:14px; }
+
+.ws-divider{
+    max-width:1200px;
+    margin:10px auto 0;
+    border:none;
+    border-top:1px solid #e5e3da;
+}
+
+@media (max-width:900px){
+    .ws-header{ padding:120px 6% 26px; }
+    .ws-header h1{ font-size:30px; }
+    .ws-section{ padding:36px 6%; }
+}
+
+/* ============================================================
+   SHORTLIST + COMPARE + ENQUIRY-FROM-SHORTLIST
+   Additive only — reuses .icon-action-btn (card row), .qv-actions
+   (Quick View), .pd-save-btn pattern (property.html), and the
+   .ws-* section styles built for wishlist.html.
+   ============================================================ */
+
+/* ---------- Card icon-action-btn "active" (shortlisted) state ---------- */
+.icon-shortlist-btn.active{
+    background:#0F3B2E;
+    color:#D4AF37;
+    border-color:#0F3B2E;
+}
+
+/* ---------- Quick View shortlist button ---------- */
+.qv-shortlist{
+    flex:0 0 52px !important;
+    border:1.5px solid #0F3B2E;
+    background:#fff;
+    color:#0F3B2E;
+    cursor:pointer;
+}
+.qv-shortlist.active{
+    background:#0F3B2E;
+    color:#D4AF37;
+}
+.qv-shortlist i{ font-size:16px; }
+
+/* ---------- Property Details page shortlist button ---------- */
+.pd-shortlist-btn{
+    flex:0 0 56px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    height:48px;
+    border-radius:30px;
+    border:1.5px solid #0F3B2E;
+    background:#fff;
+    color:#0F3B2E;
+    font-size:18px;
+    cursor:pointer;
+    transition:.2s;
+}
+.pd-shortlist-btn.active{
+    background:#0F3B2E;
+    color:#D4AF37;
+}
+.pd-shortlist-btn:hover{ background:#f4f4f4; }
+.pd-shortlist-btn.active:hover{ background:#0c2f24; }
+
+/* Defensive tightening so Save + Shortlist + Call + WhatsApp still
+   fit comfortably on the narrowest common phone widths. */
+@media (max-width:400px){
+    .pd-contact-cta .container{ gap:8px; }
+    .pd-save-btn,
+    .pd-shortlist-btn{ flex:0 0 44px; font-size:16px; }
+    .pd-call-btn,
+    .pd-whatsapp-btn{ font-size:13px; gap:5px; }
+    .qv-actions{ gap:6px; padding-left:10px; padding-right:10px; }
+    .qv-save,
+    .qv-shortlist{ flex:0 0 44px !important; }
+    .qv-save i,
+    .qv-shortlist i{ font-size:15px; }
+    .qv-call,
+    .qv-whatsapp{ font-size:12.5px; gap:5px; padding:0 6px; }
+}
+
+/* ---------- Shortlist card "Select to Compare" checkbox chip ---------- */
+.sc-select-chip{
+    position:absolute;
+    top:10px;
+    right:10px;
+    z-index:2;
+    display:flex;
+    align-items:center;
+    gap:6px;
+    background:rgba(255,255,255,.94);
+    border-radius:20px;
+    padding:6px 12px 6px 8px;
+    font-size:12px;
+    font-weight:600;
+    color:#0F3B2E;
+    cursor:pointer;
+    user-select:none;
+}
+.sc-select-chip input{
+    width:16px;
+    height:16px;
+    accent-color:#0F3B2E;
+    cursor:pointer;
+}
+
+/* ---------- Shortlist toolbar (select all / compare / enquire) ---------- */
+.sc-toolbar{
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:14px;
+    max-width:1200px;
+    margin:0 auto 22px;
+}
+.sc-toolbar-links{ display:flex; gap:14px; }
+.sc-toolbar-links button{
+    background:none;
+    border:none;
+    color:#0F3B2E;
+    font-weight:600;
+    font-size:13px;
+    text-decoration:underline;
+    cursor:pointer;
+    padding:0;
+}
+.sc-toolbar-spacer{ flex:1; }
+.sc-compare-btn,
+.sc-enquire-btn{
+    border:none;
+    border-radius:10px;
+    padding:12px 20px;
+    font-weight:700;
+    font-size:13.5px;
+    cursor:pointer;
+    transition:.2s;
+}
+.sc-compare-btn{
+    background:#fff;
+    border:1.5px solid #0F3B2E;
+    color:#0F3B2E;
+}
+.sc-compare-btn:disabled,
+.sc-enquire-btn:disabled{
+    opacity:.45;
+    cursor:not-allowed;
+}
+.sc-enquire-btn{
+    background:#D4AF37;
+    color:#07111F;
+}
+.sc-enquire-btn:hover:not(:disabled){ background:#B8962E; }
+.sc-compare-btn:hover:not(:disabled){ background:#0F3B2E; color:#fff; }
+.sc-hint{
+    max-width:1200px;
+    margin:-10px auto 20px;
+    font-size:13px;
+    color:#888;
+}
+
+/* ---------- Comparison table ---------- */
+.sc-compare-section{ padding:10px 8% 50px; background:#faf9f7; }
+.sc-compare-section[hidden]{ display:none; }
+.sc-compare-wrap{
+    max-width:1200px;
+    margin:0 auto;
+    overflow-x:auto;
+    background:#fff;
+    border:1px solid #eee;
+    border-radius:16px;
+}
+.sc-compare-table{
+    border-collapse:collapse;
+    width:100%;
+    min-width:560px;
+}
+.sc-compare-table th,
+.sc-compare-table td{
+    padding:14px 16px;
+    text-align:left;
+    border-bottom:1px solid #eee;
+    font-size:13.5px;
+    vertical-align:top;
+}
+.sc-compare-table th.sc-attr-col{
+    width:150px;
+    background:#faf9f7;
+    font-weight:600;
+    color:#0F3B2E;
+    position:sticky;
+    left:0;
+    z-index:1;
+}
+.sc-compare-table td.sc-attr-col{
+    background:#faf9f7;
+    font-weight:600;
+    color:#0F3B2E;
+    position:sticky;
+    left:0;
+}
+.sc-compare-col-header{
+    min-width:170px;
+}
+.sc-compare-col-header img{
+    width:100%;
+    height:100px;
+    object-fit:cover;
+    border-radius:10px;
+    margin-bottom:8px;
+}
+.sc-compare-col-header h4{
+    font-size:14px;
+    color:#0F3B2E;
+    margin-bottom:6px;
+    line-height:1.3;
+}
+.sc-compare-remove{
+    background:none;
+    border:1px solid #d0cec4;
+    color:#888;
+    font-size:11px;
+    border-radius:8px;
+    padding:4px 8px;
+    cursor:pointer;
+    margin-top:6px;
+}
+.sc-compare-remove:hover{ border-color:#c0392b; color:#c0392b; }
+.sc-compare-view-link{
+    display:inline-block;
+    margin-top:6px;
+    font-size:12px;
+    font-weight:600;
+    color:#D4AF37;
+    text-decoration:none;
+}
+
+/* ---------- Shortlist enquiry section ---------- */
+.sc-enquiry-section{ padding:10px 8% 70px; background:#faf9f7; }
+.sc-enquiry-selected-list{
+    max-width:900px;
+    margin:0 auto 18px;
+    background:#fff;
+    border:1px solid #eee;
+    border-radius:12px;
+    padding:16px 20px;
+    font-size:13.5px;
+    color:#444;
+}
+.sc-enquiry-selected-list strong{ color:#0F3B2E; }
+
+@media (max-width:900px){
+    .sc-toolbar{ flex-direction:column; align-items:stretch; }
+    .sc-toolbar-spacer{ display:none; }
+}
+
+/* ---------- Remove-from-Shortlist button (shortlist.html cards) ---------- */
+.property-shortlist-remove-btn{
+    position:absolute;
+    top:10px;
+    left:10px;
+    width:32px;
+    height:32px;
+    border-radius:50%;
+    background:#0F3B2E;
+    color:#D4AF37;
+    border:none;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:14px;
+    cursor:pointer;
+    transition:.2s;
+    z-index:2;
+}
+.property-shortlist-remove-btn:hover{ transform:scale(1.1); background:#c0392b; color:#fff; }
+
+/* ============================================================
+   PROPERTY DETAIL UPGRADES — Gallery Lightbox + Share + Copy Link
+   Additive only — reuses the .qv-open body-scroll-lock technique,
+   .share-toast, and the site's emerald/gold palette.
+   ============================================================ */
+
+/* ---------- Backbar: back-nav + Share/Copy Link actions ---------- */
+.pd-backbar-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+}
+.pd-backbar-actions{
+    display:flex;
+    gap:10px;
+    flex-shrink:0;
+}
+.pd-icon-btn{
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    border:1.5px solid #0F3B2E;
+    background:#fff;
+    color:#0F3B2E;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:14px;
+    cursor:pointer;
+    transition:.2s;
+}
+.pd-icon-btn:hover{
+    background:#0F3B2E;
+    color:#fff;
+}
+
+/* ---------- Gallery expand-to-fullscreen hint ---------- */
+.pd-gallery-expand{
+    position:absolute;
+    top:16px;
+    right:16px;
+    width:36px;
+    height:36px;
+    border-radius:50%;
+    background:rgba(0,0,0,.5);
+    border:none;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:14px;
+    cursor:pointer;
+    transition:.2s;
+}
+.pd-gallery-expand:hover{ background:rgba(0,0,0,.7); }
+.pd-gallery-track img{ cursor:zoom-in; }
+
+/* ---------- Full-screen gallery lightbox ---------- */
+.pd-lightbox{
+    position:fixed;
+    inset:0;
+    z-index:2000;
+    display:none;
+    align-items:center;
+    justify-content:center;
+}
+.pd-lightbox.active{ display:flex; }
+.pd-lightbox-backdrop{
+    position:absolute;
+    inset:0;
+    background:rgba(5,10,8,.96);
+}
+.pd-lightbox-track{
+    position:relative;
+    z-index:1;
+    width:100%;
+    height:100%;
+    display:flex;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    align-items:center;
+}
+.pd-lightbox-track::-webkit-scrollbar{ display:none; }
+.pd-lightbox-track img{
+    flex:0 0 100%;
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    scroll-snap-align:center;
+    -webkit-user-select:none;
+    user-select:none;
+}
+.pd-lightbox-close{
+    position:absolute;
+    top:18px;
+    right:18px;
+    z-index:2;
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    background:rgba(255,255,255,.12);
+    border:none;
+    color:#fff;
+    font-size:20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+}
+.pd-lightbox-close:hover{ background:rgba(255,255,255,.22); }
+.pd-lightbox-count{
+    position:absolute;
+    left:50%;
+    bottom:22px;
+    transform:translateX(-50%);
+    z-index:2;
+    background:rgba(255,255,255,.12);
+    color:#fff;
+    font-size:13px;
+    font-weight:600;
+    padding:6px 16px;
+    border-radius:20px;
+}
+.pd-lightbox-nav{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    z-index:2;
+    width:46px;
+    height:46px;
+    border-radius:50%;
+    background:rgba(255,255,255,.12);
+    border:none;
+    color:#fff;
+    font-size:18px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+}
+.pd-lightbox-nav:hover{ background:rgba(255,255,255,.22); }
+.pd-lightbox-prev{ left:18px; }
+.pd-lightbox-next{ right:18px; }
+
+@media (max-width:640px){
+    .pd-lightbox-nav{ display:none; } /* swipe only on touch/mobile widths, matches the rest of the site's gallery pattern */
+    .pd-lightbox-close{ top:12px; right:12px; }
+    .pd-lightbox-count{ bottom:16px; }
+}

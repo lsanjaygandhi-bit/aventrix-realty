@@ -9,22 +9,11 @@
 
     <script>
     (function () {
-    // Manual scroll restoration: we save/restore scroll position
-    // ourselves (see script.js) so users returning via Back land back
-    // exactly where they were, instead of the browser's default
-    // (and often mistimed) automatic restoration.
     if ('scrollRestoration' in history) {
         history.scrollRestoration = 'manual';
     }
 
     function evaluateMobile() {
-        // Detect real mobile/touch devices instead of relying only on
-        // viewport width, so the mobile layout survives orientation
-        // changes (landscape too). Also re-checks on resize so a
-        // desktop browser window narrowed below 768px (e.g. during
-        // responsive QA / devtools) correctly gets the mobile layout,
-        // without affecting real touch devices, which stay mobile
-        // via the touch/UA check regardless of width or rotation.
         var coarsePointer = window.matchMedia &&
             window.matchMedia('(hover: none) and (pointer: coarse)').matches;
         var mobileUA = /Android|iPhone|iPad|iPod|IEMobile|BlackBerry|Opera Mini|Mobile/i
@@ -54,7 +43,8 @@
     <link rel="icon" type="image/png" sizes="512x512" href="/images/favicon/android-chrome-512x512.png">
     <link rel="manifest" href="/site.webmanifest">
 
-    <title>Sanjay Gandhi L | Aventrix Realty</title>
+    <title>Shortlist &amp; Compare | Aventrix Realty</title>
+    <meta name="robots" content="noindex">
 
     <link rel="stylesheet" href="style.css?v=20260831">
 
@@ -64,7 +54,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 
-<body data-realtor-slug="sanjay-gandhi-l">
+<body>
 
     <header class="header">
     <div class="container nav">
@@ -79,7 +69,7 @@
     <span></span>
     <span></span>
 </button>
-    <div class="menu-overlay" id="menuOverlay"></div>   
+    <div class="menu-overlay" id="menuOverlay"></div>
        <nav class="main-nav">
 
     <a href="index.html">Home</a>
@@ -121,63 +111,129 @@
     </div>
 
   </nav>
-  
+
         <div class="nav-right">
-            <a href="tel:+919176887770" class="nav-phone" aria-label="Call Aventrix Realty">
+            <a href="tel:+919176887770" class="nav-phone" data-site="phone1" aria-label="Call Aventrix Realty">
                 <i class="fas fa-phone-alt" aria-hidden="true"></i>
-                <span class="nav-phone-number">+91 91768 87770</span>
+                <span class="nav-phone-number" data-site="phone1">+91 91768 87770</span>
             </a>
         </div>
     </div>
      </header>
 
-<div class="profile-page">
-
-    <div class="profile-container">
-
-        <img src="images/sanjay.jpg" alt="Sanjay Gandhi L" class="profile-photo" data-realtor-photo>
-
-        <h1 data-realtor-name>Sanjay Gandhi L</h1>
-
-        <h3 data-realtor-designation>Co-Founder & Managing Partner</h3>
-
-        <p class="profile-intro" data-realtor-intro>
-            Leading business operations, client relationships, sales, and strategic growth at Aventrix Realty.
-        </p>
-        <hr>
-
-       <h2>Experience</h2>
-       <p>15+ Years in Real Estate Sales, Marketing & Business Development.</p>
-       
-       <h2>Specialization</h2>
-
-       <p data-realtor-specializations>
-       Land Acquisition & Investment<br>
-       Joint Venture & Developer Solutions<br>
-       Residential Properties<br>
-       Commercial Properties
-       </p>
-
-       <hr>
-
-       <h2>Contact</h2>
-
-       <div class="rp-contact-row">
-           <a href="tel:+919176887770" data-realtor-phone><i class="fas fa-phone-alt" aria-hidden="true"></i> <span>+91 91768 87770</span></a>
-           <a href="https://wa.me/919176887770" target="_blank" rel="noopener noreferrer" data-realtor-whatsapp><i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp</a>
-           <a href="mailto:sanjay@aventrixrealty.com" data-realtor-email><i class="fas fa-envelope" aria-hidden="true"></i> sanjay@aventrixrealty.com</a>
-       </div>
-
-       <p class="profile-rera">RERA Registered Agent: <strong>TN/Agent/0284/2026</strong></p>
-
-       <br>
-         <a href="index.html" class="back-btn"> Home</a>
-         <a href="javascript:history.back()" class="back-btn">← Back</a>
-
-
+<section class="ws-header">
+    <div class="container">
+        <span class="section-eyebrow">MY SHORTLIST</span>
+        <h1>Shortlist &amp; Compare</h1>
     </div>
+</section>
 
-</div>
+<section class="ws-section" id="scShortlistSection">
+    <div class="container">
+        <div class="ws-section-heading">
+            <h2><i class="fas fa-layer-group" style="color:#0F3B2E;font-size:20px;" aria-hidden="true"></i> My Shortlist <span class="ws-count-pill" id="scShortlistCount">0</span></h2>
+            <button type="button" id="scClearShortlistBtn" class="ws-clear-btn" hidden>Clear Shortlist</button>
+        </div>
+
+        <div class="sc-toolbar" id="scToolbar" hidden>
+            <div class="sc-toolbar-links">
+                <button type="button" id="scSelectAllBtn">Select All</button>
+                <button type="button" id="scClearSelectionBtn">Clear Selection</button>
+            </div>
+            <div class="sc-toolbar-spacer"></div>
+            <button type="button" id="scCompareBtn" class="sc-compare-btn" disabled>Compare Selected (<span id="scCompareCount">0</span>)</button>
+            <button type="button" id="scEnquireBtn" class="sc-enquire-btn" disabled>Enquire About Selected (<span id="scEnquireCount">0</span>)</button>
+        </div>
+        <p class="sc-hint" id="scHint" hidden>Select 2 to 4 properties to compare them side by side. You can enquire about any number of selected properties.</p>
+
+        <div class="property-grid" id="scShortlistGrid"></div>
+
+        <div class="ws-empty" id="scShortlistEmpty" hidden>
+            <i class="fas fa-layer-group" aria-hidden="true"></i>
+            <h3>Your shortlist is empty</h3>
+            <p>Tap the shortlist icon on any property to add it here for comparing and enquiring.</p>
+            <a href="properties.html" class="view-details-btn">Browse Properties</a>
+        </div>
+    </div>
+</section>
+
+<section class="sc-compare-section" id="scCompareSection" hidden>
+    <div class="container">
+        <div class="ws-section-heading">
+            <h2><i class="fas fa-table-columns" style="color:#0F3B2E;font-size:20px;" aria-hidden="true"></i> Comparing <span class="ws-count-pill" id="scCompareTableCount">0</span> Properties</h2>
+        </div>
+        <div class="sc-compare-wrap">
+            <table class="sc-compare-table" id="scCompareTable"></table>
+        </div>
+    </div>
+</section>
+
+<section class="sc-enquiry-section" id="scEnquirySection" hidden>
+    <div class="container">
+        <div class="ws-section-heading">
+            <h2><i class="fas fa-paper-plane" style="color:#0F3B2E;font-size:20px;" aria-hidden="true"></i> Enquire About These Properties</h2>
+        </div>
+
+        <div class="sc-enquiry-selected-list" id="scEnquirySelectedList"></div>
+
+        <div class="enquiry-container">
+            <div class="valuation-card">
+
+                <p class="form-subtitle">
+                    Please complete the form below and our team will get back to you about the properties listed above.
+                </p>
+
+                <form id="propertyForm" action="" method="POST">
+
+                    <input type="hidden" name="Shortlisted Properties" id="scEnquiryPropertiesField">
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label>Full Name *</label>
+                            <input type="text" name="Full Name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Mobile Number *</label>
+                            <input type="tel" name="Mobile Number" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" name="Email">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Preferred Contact Method</label>
+                            <select name="Preferred Contact Method">
+                                <option value="Phone Call">Phone Call</option>
+                                <option value="WhatsApp">WhatsApp</option>
+                                <option value="Email">Email</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label>Message</label>
+                            <textarea name="Message" rows="5" placeholder="Anything specific you'd like to know about these properties?"></textarea>
+                        </div>
+
+                    </div>
+
+                    <button type="submit" class="submit-btn">Send Enquiry</button>
+
+                </form>
+
+                <div id="success-message" class="success-message" style="display:none;">
+                    <h3>Thank You!</h3>
+                    <p>Your enquiry about these properties has been submitted successfully.</p>
+                    <p>Our Aventrix Realty team will contact you shortly.</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
 
 <footer class="premium-footer">
 
@@ -192,7 +248,6 @@
                 trust and decades of local expertise.
             </p>
             <div class="pf-contact">
-                <!-- Head Office — unchanged, no existing content removed -->
                 <div class="pf-office-block">
                     <p class="pf-office-name">Aventrix Realty – Head Office</p>
                     <p>No.27, 1st Main Road, Newcolony, Chromepet, Chennai, Tamil Nadu</p>
@@ -202,7 +257,6 @@
                     <p class="pf-office-label">Email:</p>
                     <a href="mailto:office@aventrixrealty.com">office@aventrixrealty.com</a>
                 </div>
-                <!-- Adyar Branch — compact reference only; full details live on the Office Locations section -->
                 <p class="pf-branch-line"><span class="pf-office-label">Branch Office:</span> Adyar, Chennai</p>
             </div>
         </div>
@@ -219,9 +273,10 @@
         <div class="pf-col">
             <h4 class="pf-heading">Quick Links</h4>
             <ul class="pf-links">
-                <li><a href="property.html">Our Services</a></li>
+                <li><a href="properties.html">Search Properties</a></li>
+                <li><a href="wishlist.html">My Saved Properties</a></li>
+                <li><a href="shortlist.html">Shortlist &amp; Compare</a></li>
                 <li><a href="our-realtors.html">Realtors</a></li>
-                <li><a href="brokerage-fees.html">Brokerage &amp; Fees</a></li>
                 <li><a href="admin/index.html" class="footer-nav-login">Admin Login</a></li>
             </ul>
         </div>
@@ -283,9 +338,9 @@
 <script src="js/supabase-client.js"></script>
 <script src="js/aventrix-storage.js"></script>
 <script src="js/wishlist-widget.js"></script>
-<script src="js/public-realtors.js"></script>
+<script src="js/shortlist-page.js"></script>
+<script src="js/enquiry-supabase.js"></script>
 <script src="script.js"></script>
 
 </body>
-
 </html>

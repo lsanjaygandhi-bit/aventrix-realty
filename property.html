@@ -132,8 +132,12 @@
      </header>
 
 <section class="pd-backbar">
-    <div class="container">
+    <div class="container pd-backbar-row">
         <a href="index.html#properties" id="propertyBackNav" class="property-back-nav">&larr; Back to Properties</a>
+        <div class="pd-backbar-actions">
+            <button type="button" id="pdShareBtn" class="pd-icon-btn" aria-label="Share this property"><i class="fas fa-share-alt" aria-hidden="true"></i></button>
+            <button type="button" id="pdCopyLinkBtn" class="pd-icon-btn" aria-label="Copy property link"><i class="fas fa-link" aria-hidden="true"></i></button>
+        </div>
     </div>
 </section>
 
@@ -141,6 +145,7 @@
     <div class="pd-gallery-track" id="pdGalleryTrack"></div>
     <div class="pd-gallery-dots" id="pdGalleryDots"></div>
     <div class="pd-gallery-count" id="pdGalleryCount"></div>
+    <button type="button" class="pd-gallery-expand" id="pdGalleryExpand" aria-label="View full-screen gallery"><i class="fas fa-expand" aria-hidden="true"></i></button>
 </section>
 
 <section class="pd-header">
@@ -201,6 +206,8 @@
 
 <section class="pd-contact-cta">
     <div class="container">
+        <button type="button" id="pdSaveBtn" class="pd-save-btn" aria-label="Save to Wishlist" aria-pressed="false"><i class="far fa-heart" aria-hidden="true"></i></button>
+        <button type="button" id="pdShortlistBtn" class="pd-shortlist-btn" aria-label="Add to Shortlist" aria-pressed="false"><i class="fas fa-layer-group" aria-hidden="true"></i></button>
         <a href="tel:+919176887770" id="pdCallBtn" class="pd-call-btn"><i class="fas fa-phone-alt" aria-hidden="true"></i> Call</a>
         <a href="https://wa.me/919176887770" id="pdWhatsappBtn" class="pd-whatsapp-btn" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp</a>
     </div>
@@ -308,6 +315,8 @@
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="js/supabase-client.js"></script>
+<script src="js/aventrix-storage.js"></script>
+<script src="js/wishlist-widget.js"></script>
 <script src="js/public-properties.js"></script>
 <script src="script.js"></script>
 

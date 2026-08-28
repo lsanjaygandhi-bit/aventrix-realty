@@ -63,7 +63,67 @@
 
         attachScrollSaveListeners(gridEl);
         attachQuickViewListeners(gridEl);
+        attachWishlistButtonListeners(gridEl);
+        attachShortlistButtonListeners(gridEl);
         restoreScrollIfReturning();
+    }
+
+    // ---------------------------------------------------------
+    // WISHLIST — heart button on every property card
+    // ---------------------------------------------------------
+    function setSaveBtnState(btn, saved) {
+        btn.classList.toggle("saved", saved);
+        btn.setAttribute("aria-pressed", saved ? "true" : "false");
+        btn.setAttribute("aria-label", saved ? "Remove from Wishlist" : "Save to Wishlist");
+        const icon = btn.querySelector("i");
+        if (icon) {
+            icon.classList.toggle("fas", saved);
+            icon.classList.toggle("far", !saved);
+        }
+    }
+
+    function attachWishlistButtonListeners(gridEl) {
+        if (!window.AventrixStorage) return;
+        gridEl.addEventListener("click", (e) => {
+            const btn = e.target.closest(".property-save-btn");
+            if (!btn) return;
+            e.preventDefault();
+            e.stopPropagation();
+            const slug = btn.getAttribute("data-slug");
+            const nowSaved = window.AventrixStorage.wishlist.toggle(slug);
+            setSaveBtnState(btn, nowSaved);
+            // Keep every other card for the same property (e.g. after a
+            // re-render) visually in sync too.
+            gridEl.querySelectorAll(`.property-save-btn[data-slug="${CSS.escape(slug)}"]`).forEach((b) => {
+                if (b !== btn) setSaveBtnState(b, nowSaved);
+            });
+        });
+    }
+
+    // ---------------------------------------------------------
+    // SHORTLIST — icon button in the card's Call/WhatsApp row
+    // ---------------------------------------------------------
+    function setShortlistBtnState(btn, active) {
+        btn.classList.toggle("active", active);
+        btn.setAttribute("aria-pressed", active ? "true" : "false");
+        btn.setAttribute("aria-label", active ? "Remove from Shortlist" : "Add to Shortlist");
+        btn.setAttribute("title", active ? "Shortlisted" : "Add to Shortlist");
+    }
+
+    function attachShortlistButtonListeners(gridEl) {
+        if (!window.AventrixStorage) return;
+        gridEl.addEventListener("click", (e) => {
+            const btn = e.target.closest(".icon-shortlist-btn");
+            if (!btn) return;
+            e.preventDefault();
+            e.stopPropagation();
+            const slug = btn.getAttribute("data-slug");
+            const nowActive = window.AventrixStorage.shortlist.toggle(slug);
+            setShortlistBtnState(btn, nowActive);
+            gridEl.querySelectorAll(`.icon-shortlist-btn[data-slug="${CSS.escape(slug)}"]`).forEach((b) => {
+                if (b !== btn) setShortlistBtnState(b, nowActive);
+            });
+        });
     }
 
     // ---------------------------------------------------------
@@ -133,11 +193,14 @@
 
     function cardTemplate(p) {
         const image = p.featured_image || (p.images && p.images[0]) || "images/property1.jpg";
+        const saved = window.AventrixStorage && window.AventrixStorage.wishlist.has(p.slug);
+        const shortlisted = window.AventrixStorage && window.AventrixStorage.shortlist.has(p.slug);
         return `
             <div class="property-card" data-slug="${escapeHtml(p.slug)}">
                 <div class="property-image-wrap">
                     <img src="${escapeHtml(image)}" alt="${escapeHtml(p.title)}" loading="lazy">
                     <span class="property-badge ${badgeClass(p.listing_type)}">${formatBadge(p.listing_type)}</span>
+                    <button class="property-save-btn${saved ? " saved" : ""}" aria-label="${saved ? "Remove from Wishlist" : "Save to Wishlist"}" aria-pressed="${saved ? "true" : "false"}" data-slug="${escapeHtml(p.slug)}"><i class="${saved ? "fas" : "far"} fa-heart" aria-hidden="true"></i></button>
                     <button class="property-share-btn" aria-label="Share this property"><i class="fas fa-share-alt" aria-hidden="true"></i></button>
                     <button type="button" class="qv-hover-cta" aria-label="Quick view ${escapeHtml(p.title)}">Quick View</button>
                 </div>
@@ -149,6 +212,9 @@
                         <div class="property-footer-top">
                             <span class="property-price">${escapeHtml(p.price_display || "Contact for Price")}</span>
                             <div class="property-icon-actions">
+                                <button type="button" class="icon-action-btn icon-shortlist-btn${shortlisted ? " active" : ""}" aria-label="${shortlisted ? "Remove from Shortlist" : "Add to Shortlist"}" aria-pressed="${shortlisted ? "true" : "false"}" data-slug="${escapeHtml(p.slug)}" title="${shortlisted ? "Shortlisted" : "Add to Shortlist"}">
+                                    <i class="fas fa-layer-group" aria-hidden="true"></i>
+                                </button>
                                 <a href="tel:${CARD_PHONE_TEL}" class="icon-action-btn icon-call-btn" aria-label="Call about ${escapeHtml(p.title)}" title="Call">
                                     <i class="fas fa-phone-alt" aria-hidden="true"></i>
                                 </a>
@@ -207,7 +273,7 @@
             // Let the card's own quick-action links behave normally —
             // Call, WhatsApp, and the share button aren't part of the
             // Quick View flow.
-            if (e.target.closest(".icon-action-btn") || e.target.closest(".property-share-btn")) {
+            if (e.target.closest(".icon-action-btn") || e.target.closest(".property-share-btn") || e.target.closest(".property-save-btn")) {
                 return;
             }
             const card = e.target.closest(".property-card");
@@ -261,6 +327,8 @@
                     </div>
                 </div>
                 <div class="qv-actions">
+                    <button type="button" class="qv-save" aria-label="Save to Wishlist" aria-pressed="false"><i class="far fa-heart" aria-hidden="true"></i></button>
+                    <button type="button" class="qv-shortlist" aria-label="Add to Shortlist" aria-pressed="false"><i class="fas fa-layer-group" aria-hidden="true"></i></button>
                     <a href="#" class="qv-call" aria-label="Call"><i class="fas fa-phone-alt" aria-hidden="true"></i> Call</a>
                     <a href="#" class="qv-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp</a>
                 </div>
@@ -275,6 +343,22 @@
     function wireQuickViewControls(el) {
         el.querySelector(".qv-close").addEventListener("click", () => closeQuickView());
         el.querySelector(".qv-backdrop").addEventListener("click", () => closeQuickView());
+
+        el.querySelector(".qv-save").addEventListener("click", () => {
+            if (!window.AventrixStorage || !qvCurrentProperty) return;
+            const slug = qvCurrentProperty.slug;
+            const nowSaved = window.AventrixStorage.wishlist.toggle(slug);
+            setQvSaveState(el, nowSaved);
+            grid.querySelectorAll(`.property-save-btn[data-slug="${CSS.escape(slug)}"]`).forEach((b) => setSaveBtnState(b, nowSaved));
+        });
+
+        el.querySelector(".qv-shortlist").addEventListener("click", () => {
+            if (!window.AventrixStorage || !qvCurrentProperty) return;
+            const slug = qvCurrentProperty.slug;
+            const nowActive = window.AventrixStorage.shortlist.toggle(slug);
+            setQvShortlistState(el, nowActive);
+            grid.querySelectorAll(`.icon-shortlist-btn[data-slug="${CSS.escape(slug)}"]`).forEach((b) => setShortlistBtnState(b, nowActive));
+        });
 
         el.querySelector(".qv-readmore").addEventListener("click", (e) => {
             const desc = el.querySelector(".qv-desc");
@@ -312,6 +396,8 @@
         const el = buildQuickViewMarkup();
         qvCurrentProperty = property;
         populateQuickView(el, property);
+        setQvSaveState(el, !!(window.AventrixStorage && window.AventrixStorage.wishlist.has(property.slug)));
+        setQvShortlistState(el, !!(window.AventrixStorage && window.AventrixStorage.shortlist.has(property.slug)));
 
         const settings = await getSiteSettingsForQuickView();
         const phoneDigits = settings.phone.replace(/\s+/g, "");
@@ -440,6 +526,27 @@
         }
     }
 
+    function setQvSaveState(el, saved) {
+        const btn = el.querySelector(".qv-save");
+        if (!btn) return;
+        btn.classList.toggle("saved", saved);
+        btn.setAttribute("aria-pressed", saved ? "true" : "false");
+        btn.setAttribute("aria-label", saved ? "Remove from Wishlist" : "Save to Wishlist");
+        const icon = btn.querySelector("i");
+        if (icon) {
+            icon.classList.toggle("fas", saved);
+            icon.classList.toggle("far", !saved);
+        }
+    }
+
+    function setQvShortlistState(el, active) {
+        const btn = el.querySelector(".qv-shortlist");
+        if (!btn) return;
+        btn.classList.toggle("active", active);
+        btn.setAttribute("aria-pressed", active ? "true" : "false");
+        btn.setAttribute("aria-label", active ? "Remove from Shortlist" : "Add to Shortlist");
+    }
+
     function updateGalleryDots(index) {
         if (!qvOverlayEl) return;
         qvGalleryIndex = index;
@@ -554,6 +661,13 @@
         renderPropertyGallery(property);
         renderPropertySpecs(property);
         wirePropertyContactButtons(property);
+        wirePropertySaveButton(property);
+        wirePropertyShortlistButton(property);
+        wirePropertyShareButtons(property);
+
+        if (window.AventrixStorage) {
+            window.AventrixStorage.recentlyViewed.record(property.slug);
+        }
 
         const descriptionEl = document.getElementById("property-description");
         const readMoreBtn = document.getElementById("pdReadMoreBtn");
@@ -680,6 +794,122 @@
             dotsWrap.style.display = "none";
             countEl.style.display = "none";
         }
+
+        wirePropertyGalleryLightbox(images, property.title);
+    }
+
+    // ---------------------------------------------------------
+    // FULL-SCREEN GALLERY LIGHTBOX (property.html only)
+    // Reuses the same images already rendered into #pdGalleryTrack —
+    // no separate fetch, no new data.
+    // ---------------------------------------------------------
+    let lbEl = null;
+    let lbImages = [];
+    let lbIndex = 0;
+    let lbScrollY = 0;
+
+    function buildLightboxMarkup() {
+        if (lbEl) return lbEl;
+        const el = document.createElement("div");
+        el.className = "pd-lightbox";
+        el.id = "pdLightbox";
+        el.innerHTML = `
+            <div class="pd-lightbox-backdrop"></div>
+            <button type="button" class="pd-lightbox-close" aria-label="Close full-screen gallery"><i class="fas fa-times" aria-hidden="true"></i></button>
+            <button type="button" class="pd-lightbox-nav pd-lightbox-prev" aria-label="Previous image"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
+            <button type="button" class="pd-lightbox-nav pd-lightbox-next" aria-label="Next image"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
+            <div class="pd-lightbox-track"></div>
+            <div class="pd-lightbox-count"></div>`;
+        document.body.appendChild(el);
+        lbEl = el;
+
+        el.querySelector(".pd-lightbox-close").addEventListener("click", closeLightbox);
+        el.querySelector(".pd-lightbox-backdrop").addEventListener("click", closeLightbox);
+        el.querySelector(".pd-lightbox-prev").addEventListener("click", () => navigateLightbox(-1));
+        el.querySelector(".pd-lightbox-next").addEventListener("click", () => navigateLightbox(1));
+
+        el.querySelector(".pd-lightbox-track").addEventListener("scroll", () => {
+            const trackEl = el.querySelector(".pd-lightbox-track");
+            const idx = Math.min(Math.round(trackEl.scrollLeft / trackEl.clientWidth), lbImages.length - 1);
+            lbIndex = idx;
+            updateLightboxCount();
+        }, { passive: true });
+
+        document.addEventListener("keydown", (e) => {
+            if (!lbEl.classList.contains("active")) return;
+            if (e.key === "Escape") closeLightbox();
+            if (e.key === "ArrowLeft") navigateLightbox(-1);
+            if (e.key === "ArrowRight") navigateLightbox(1);
+        });
+
+        return el;
+    }
+
+    function updateLightboxCount() {
+        lbEl.querySelector(".pd-lightbox-count").textContent = `${lbIndex + 1} / ${lbImages.length}`;
+    }
+
+    function navigateLightbox(direction) {
+        const trackEl = lbEl.querySelector(".pd-lightbox-track");
+        const newIndex = Math.max(0, Math.min(lbImages.length - 1, lbIndex + direction));
+        trackEl.scrollTo({ left: newIndex * trackEl.clientWidth, behavior: "smooth" });
+        lbIndex = newIndex;
+        updateLightboxCount();
+    }
+
+    function openLightbox(images, startIndex, alt) {
+        const el = buildLightboxMarkup();
+        lbImages = images;
+        lbIndex = startIndex;
+
+        const trackEl = el.querySelector(".pd-lightbox-track");
+        trackEl.innerHTML = images.map((src) =>
+            `<img src="${escapeHtml(src)}" alt="${escapeHtml(alt)}">`
+        ).join("");
+        updateLightboxCount();
+
+        const showNav = images.length > 1;
+        el.querySelector(".pd-lightbox-prev").style.display = showNav ? "flex" : "none";
+        el.querySelector(".pd-lightbox-next").style.display = showNav ? "flex" : "none";
+        el.querySelector(".pd-lightbox-count").style.display = showNav ? "block" : "none";
+
+        lbScrollY = window.scrollY || window.pageYOffset || 0;
+        document.body.classList.add("qv-open"); // reuses the existing body-scroll-lock technique
+        document.body.style.top = "-" + lbScrollY + "px";
+
+        el.classList.add("active");
+        // Jump to the tapped image without an animated scroll (the
+        // lightbox itself just appeared, an extra scroll animation on
+        // top would feel laggy).
+        requestAnimationFrame(() => {
+            trackEl.scrollLeft = startIndex * trackEl.clientWidth;
+        });
+    }
+
+    function closeLightbox() {
+        if (!lbEl || !lbEl.classList.contains("active")) return;
+        lbEl.classList.remove("active");
+        document.body.classList.remove("qv-open");
+        document.body.style.top = "";
+        window.scrollTo(0, lbScrollY);
+    }
+
+    function wirePropertyGalleryLightbox(images, title) {
+        const track = document.getElementById("pdGalleryTrack");
+        const expandBtn = document.getElementById("pdGalleryExpand");
+        if (!track) return;
+
+        track.querySelectorAll("img").forEach((img, i) => {
+            img.addEventListener("click", () => openLightbox(images, i, title));
+        });
+
+        if (expandBtn) {
+            expandBtn.addEventListener("click", () => {
+                const trackEl = document.getElementById("pdGalleryTrack");
+                const currentIndex = trackEl ? Math.round(trackEl.scrollLeft / trackEl.clientWidth) : 0;
+                openLightbox(images, currentIndex || 0, title);
+            });
+        }
     }
 
     // Structured specification cards — only ever built from fields that
@@ -729,6 +959,102 @@
                     <span class="pd-spec-value">${escapeHtml(String(s.value))}</span>
                 </div>
             </div>`).join("");
+    }
+
+    function wirePropertySaveButton(property) {
+        const btn = document.getElementById("pdSaveBtn");
+        if (!btn || !window.AventrixStorage) return;
+
+        function applyState(saved) {
+            btn.classList.toggle("saved", saved);
+            btn.setAttribute("aria-pressed", saved ? "true" : "false");
+            btn.setAttribute("aria-label", saved ? "Remove from Wishlist" : "Save to Wishlist");
+            const icon = btn.querySelector("i");
+            if (icon) {
+                icon.classList.toggle("fas", saved);
+                icon.classList.toggle("far", !saved);
+            }
+        }
+
+        applyState(window.AventrixStorage.wishlist.has(property.slug));
+        btn.addEventListener("click", () => {
+            const nowSaved = window.AventrixStorage.wishlist.toggle(property.slug);
+            applyState(nowSaved);
+        });
+    }
+
+    function wirePropertyShortlistButton(property) {
+        const btn = document.getElementById("pdShortlistBtn");
+        if (!btn || !window.AventrixStorage) return;
+
+        function applyState(active) {
+            btn.classList.toggle("active", active);
+            btn.setAttribute("aria-pressed", active ? "true" : "false");
+            btn.setAttribute("aria-label", active ? "Remove from Shortlist" : "Add to Shortlist");
+        }
+
+        applyState(window.AventrixStorage.shortlist.has(property.slug));
+        btn.addEventListener("click", () => {
+            const nowActive = window.AventrixStorage.shortlist.toggle(property.slug);
+            applyState(nowActive);
+        });
+    }
+
+    function wirePropertyShareButtons(property) {
+        const shareBtn = document.getElementById("pdShareBtn");
+        const copyBtn = document.getElementById("pdCopyLinkBtn");
+        if (!shareBtn && !copyBtn) return;
+
+        let toastEl = document.querySelector(".share-toast");
+        if (!toastEl) {
+            toastEl = document.createElement("div");
+            toastEl.className = "share-toast";
+            document.body.appendChild(toastEl);
+        }
+        function showToast(message) {
+            toastEl.textContent = message;
+            toastEl.classList.add("show");
+            clearTimeout(showToast._t);
+            showToast._t = setTimeout(() => toastEl.classList.remove("show"), 2200);
+        }
+
+        const shareUrl = window.location.href;
+        const shareTitle = property.title || "Aventrix Realty Property";
+
+        async function copyLink() {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                try {
+                    await navigator.clipboard.writeText(shareUrl);
+                    showToast("Link copied to clipboard");
+                } catch (err) {
+                    showToast("Unable to copy link");
+                }
+            } else {
+                showToast("Unable to copy link on this browser");
+            }
+        }
+
+        if (shareBtn) {
+            shareBtn.addEventListener("click", async () => {
+                if (navigator.share) {
+                    try {
+                        await navigator.share({
+                            title: shareTitle,
+                            text: `Check out ${shareTitle} on Aventrix Realty`,
+                            url: shareUrl
+                        });
+                    } catch (err) {
+                        // User cancelled the share sheet — no action needed
+                    }
+                } else {
+                    copyLink();
+                }
+            });
+        }
+
+        if (copyBtn) {
+            copyBtn.addEventListener("click", copyLink);
+        }
     }
 
     async function wirePropertyContactButtons(property) {

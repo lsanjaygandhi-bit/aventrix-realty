@@ -161,13 +161,16 @@
 
     function cardTemplate(p) {
         const image = p.featured_image || (p.images && p.images[0]) || "images/property1.jpg";
+        const saved = window.AventrixStorage && window.AventrixStorage.wishlist.has(p.slug);
+        const shortlisted = window.AventrixStorage && window.AventrixStorage.shortlist.has(p.slug);
         return `
-            <div class="property-card">
+            <div class="property-card" data-slug="${escapeHtml(p.slug)}">
                 <div class="property-image-wrap">
                     <a href="property.html?id=${encodeURIComponent(p.slug)}" aria-label="View ${escapeHtml(p.title)}">
                         <img src="${escapeHtml(image)}" alt="${escapeHtml(p.title)}" loading="lazy">
                     </a>
                     <span class="property-badge ${badgeClass(p.listing_type)}">${formatBadge(p.listing_type)}</span>
+                    <button class="property-save-btn${saved ? " saved" : ""}" aria-label="${saved ? "Remove from Wishlist" : "Save to Wishlist"}" aria-pressed="${saved ? "true" : "false"}" data-slug="${escapeHtml(p.slug)}"><i class="${saved ? "fas" : "far"} fa-heart" aria-hidden="true"></i></button>
                 </div>
                 <div class="content">
                     <span class="property-location"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> ${escapeHtml(p.location || "")}</span>
@@ -177,6 +180,9 @@
                         <div class="property-footer-top">
                             <span class="property-price">${escapeHtml(p.price_display || "Contact for Price")}</span>
                             <div class="property-icon-actions">
+                                <button type="button" class="icon-action-btn icon-shortlist-btn${shortlisted ? " active" : ""}" aria-label="${shortlisted ? "Remove from Shortlist" : "Add to Shortlist"}" aria-pressed="${shortlisted ? "true" : "false"}" data-slug="${escapeHtml(p.slug)}" title="${shortlisted ? "Shortlisted" : "Add to Shortlist"}">
+                                    <i class="fas fa-layer-group" aria-hidden="true"></i>
+                                </button>
                                 <a href="tel:${CARD_PHONE_TEL}" class="icon-action-btn icon-call-btn" aria-label="Call about ${escapeHtml(p.title)}" title="Call">
                                     <i class="fas fa-phone-alt" aria-hidden="true"></i>
                                 </a>
@@ -285,6 +291,54 @@
         els.resultsCount.textContent =
             properties.length === 1 ? "1 property found" : `${properties.length} properties found`;
         els.resultsGrid.innerHTML = properties.map(cardTemplate).join("");
+        attachWishlistButtonListeners();
+        attachShortlistButtonListeners();
+    }
+
+    // ---------------------------------------------------------
+    // WISHLIST — heart button on every result card
+    // ---------------------------------------------------------
+    let wishlistListenerAttached = false;
+    function attachWishlistButtonListeners() {
+        if (!window.AventrixStorage || wishlistListenerAttached) return;
+        wishlistListenerAttached = true;
+        els.resultsGrid.addEventListener("click", (e) => {
+            const btn = e.target.closest(".property-save-btn");
+            if (!btn) return;
+            e.preventDefault();
+            e.stopPropagation();
+            const slug = btn.getAttribute("data-slug");
+            const nowSaved = window.AventrixStorage.wishlist.toggle(slug);
+            btn.classList.toggle("saved", nowSaved);
+            btn.setAttribute("aria-pressed", nowSaved ? "true" : "false");
+            btn.setAttribute("aria-label", nowSaved ? "Remove from Wishlist" : "Save to Wishlist");
+            const icon = btn.querySelector("i");
+            if (icon) {
+                icon.classList.toggle("fas", nowSaved);
+                icon.classList.toggle("far", !nowSaved);
+            }
+        });
+    }
+
+    // ---------------------------------------------------------
+    // SHORTLIST — icon button on every result card
+    // ---------------------------------------------------------
+    let shortlistListenerAttached = false;
+    function attachShortlistButtonListeners() {
+        if (!window.AventrixStorage || shortlistListenerAttached) return;
+        shortlistListenerAttached = true;
+        els.resultsGrid.addEventListener("click", (e) => {
+            const btn = e.target.closest(".icon-shortlist-btn");
+            if (!btn) return;
+            e.preventDefault();
+            e.stopPropagation();
+            const slug = btn.getAttribute("data-slug");
+            const nowActive = window.AventrixStorage.shortlist.toggle(slug);
+            btn.classList.toggle("active", nowActive);
+            btn.setAttribute("aria-pressed", nowActive ? "true" : "false");
+            btn.setAttribute("aria-label", nowActive ? "Remove from Shortlist" : "Add to Shortlist");
+            btn.setAttribute("title", nowActive ? "Shortlisted" : "Add to Shortlist");
+        });
     }
 
     function updateActiveChips(state) {

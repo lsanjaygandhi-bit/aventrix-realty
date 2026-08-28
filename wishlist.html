@@ -9,22 +9,11 @@
 
     <script>
     (function () {
-    // Manual scroll restoration: we save/restore scroll position
-    // ourselves (see script.js) so users returning via Back land back
-    // exactly where they were, instead of the browser's default
-    // (and often mistimed) automatic restoration.
     if ('scrollRestoration' in history) {
         history.scrollRestoration = 'manual';
     }
 
     function evaluateMobile() {
-        // Detect real mobile/touch devices instead of relying only on
-        // viewport width, so the mobile layout survives orientation
-        // changes (landscape too). Also re-checks on resize so a
-        // desktop browser window narrowed below 768px (e.g. during
-        // responsive QA / devtools) correctly gets the mobile layout,
-        // without affecting real touch devices, which stay mobile
-        // via the touch/UA check regardless of width or rotation.
         var coarsePointer = window.matchMedia &&
             window.matchMedia('(hover: none) and (pointer: coarse)').matches;
         var mobileUA = /Android|iPhone|iPad|iPod|IEMobile|BlackBerry|Opera Mini|Mobile/i
@@ -54,7 +43,8 @@
     <link rel="icon" type="image/png" sizes="512x512" href="/images/favicon/android-chrome-512x512.png">
     <link rel="manifest" href="/site.webmanifest">
 
-    <title>Sanjay Gandhi L | Aventrix Realty</title>
+    <title>My Saved Properties | Aventrix Realty</title>
+    <meta name="robots" content="noindex">
 
     <link rel="stylesheet" href="style.css?v=20260831">
 
@@ -64,7 +54,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 
-<body data-realtor-slug="sanjay-gandhi-l">
+<body>
 
     <header class="header">
     <div class="container nav">
@@ -79,7 +69,7 @@
     <span></span>
     <span></span>
 </button>
-    <div class="menu-overlay" id="menuOverlay"></div>   
+    <div class="menu-overlay" id="menuOverlay"></div>
        <nav class="main-nav">
 
     <a href="index.html">Home</a>
@@ -121,63 +111,59 @@
     </div>
 
   </nav>
-  
+
         <div class="nav-right">
-            <a href="tel:+919176887770" class="nav-phone" aria-label="Call Aventrix Realty">
+            <a href="tel:+919176887770" class="nav-phone" data-site="phone1" aria-label="Call Aventrix Realty">
                 <i class="fas fa-phone-alt" aria-hidden="true"></i>
-                <span class="nav-phone-number">+91 91768 87770</span>
+                <span class="nav-phone-number" data-site="phone1">+91 91768 87770</span>
             </a>
         </div>
     </div>
      </header>
 
-<div class="profile-page">
-
-    <div class="profile-container">
-
-        <img src="images/sanjay.jpg" alt="Sanjay Gandhi L" class="profile-photo" data-realtor-photo>
-
-        <h1 data-realtor-name>Sanjay Gandhi L</h1>
-
-        <h3 data-realtor-designation>Co-Founder & Managing Partner</h3>
-
-        <p class="profile-intro" data-realtor-intro>
-            Leading business operations, client relationships, sales, and strategic growth at Aventrix Realty.
-        </p>
-        <hr>
-
-       <h2>Experience</h2>
-       <p>15+ Years in Real Estate Sales, Marketing & Business Development.</p>
-       
-       <h2>Specialization</h2>
-
-       <p data-realtor-specializations>
-       Land Acquisition & Investment<br>
-       Joint Venture & Developer Solutions<br>
-       Residential Properties<br>
-       Commercial Properties
-       </p>
-
-       <hr>
-
-       <h2>Contact</h2>
-
-       <div class="rp-contact-row">
-           <a href="tel:+919176887770" data-realtor-phone><i class="fas fa-phone-alt" aria-hidden="true"></i> <span>+91 91768 87770</span></a>
-           <a href="https://wa.me/919176887770" target="_blank" rel="noopener noreferrer" data-realtor-whatsapp><i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp</a>
-           <a href="mailto:sanjay@aventrixrealty.com" data-realtor-email><i class="fas fa-envelope" aria-hidden="true"></i> sanjay@aventrixrealty.com</a>
-       </div>
-
-       <p class="profile-rera">RERA Registered Agent: <strong>TN/Agent/0284/2026</strong></p>
-
-       <br>
-         <a href="index.html" class="back-btn"> Home</a>
-         <a href="javascript:history.back()" class="back-btn">← Back</a>
-
-
+<section class="ws-header">
+    <div class="container">
+        <span class="section-eyebrow">MY SAVED PROPERTIES</span>
+        <h1>Wishlist &amp; Recently Viewed</h1>
     </div>
+</section>
 
-</div>
+<section class="ws-section" id="wsWishlistSection">
+    <div class="container">
+        <div class="ws-section-heading">
+            <h2><i class="fas fa-heart" style="color:#c0392b;font-size:20px;" aria-hidden="true"></i> My Wishlist <span class="ws-count-pill" id="wsWishlistCount">0</span></h2>
+        </div>
+
+        <div class="property-grid" id="wsWishlistGrid"></div>
+
+        <div class="ws-empty" id="wsWishlistEmpty" hidden>
+            <i class="far fa-heart" aria-hidden="true"></i>
+            <h3>No saved properties yet</h3>
+            <p>Tap the heart icon on any property to save it here.</p>
+            <a href="properties.html" class="view-details-btn">Browse Properties</a>
+        </div>
+    </div>
+</section>
+
+<hr class="ws-divider">
+
+<section class="ws-section" id="wsRecentSection">
+    <div class="container">
+        <div class="ws-section-heading">
+            <h2><i class="fas fa-clock-rotate-left" style="color:#0F3B2E;font-size:20px;" aria-hidden="true"></i> Recently Viewed <span class="ws-count-pill" id="wsRecentCount">0</span></h2>
+            <button type="button" id="wsClearRecentBtn" class="ws-clear-btn" hidden>Clear Recently Viewed</button>
+        </div>
+
+        <div class="property-grid" id="wsRecentGrid"></div>
+
+        <div class="ws-empty" id="wsRecentEmpty" hidden>
+            <i class="fas fa-clock-rotate-left" aria-hidden="true"></i>
+            <h3>No recently viewed properties</h3>
+            <p>Properties you open will appear here automatically.</p>
+            <a href="properties.html" class="view-details-btn">Browse Properties</a>
+        </div>
+    </div>
+</section>
 
 <footer class="premium-footer">
 
@@ -192,7 +178,6 @@
                 trust and decades of local expertise.
             </p>
             <div class="pf-contact">
-                <!-- Head Office — unchanged, no existing content removed -->
                 <div class="pf-office-block">
                     <p class="pf-office-name">Aventrix Realty – Head Office</p>
                     <p>No.27, 1st Main Road, Newcolony, Chromepet, Chennai, Tamil Nadu</p>
@@ -202,7 +187,6 @@
                     <p class="pf-office-label">Email:</p>
                     <a href="mailto:office@aventrixrealty.com">office@aventrixrealty.com</a>
                 </div>
-                <!-- Adyar Branch — compact reference only; full details live on the Office Locations section -->
                 <p class="pf-branch-line"><span class="pf-office-label">Branch Office:</span> Adyar, Chennai</p>
             </div>
         </div>
@@ -219,7 +203,8 @@
         <div class="pf-col">
             <h4 class="pf-heading">Quick Links</h4>
             <ul class="pf-links">
-                <li><a href="property.html">Our Services</a></li>
+                <li><a href="properties.html">Search Properties</a></li>
+                <li><a href="wishlist.html">My Saved Properties</a></li>
                 <li><a href="our-realtors.html">Realtors</a></li>
                 <li><a href="brokerage-fees.html">Brokerage &amp; Fees</a></li>
                 <li><a href="admin/index.html" class="footer-nav-login">Admin Login</a></li>
@@ -283,9 +268,8 @@
 <script src="js/supabase-client.js"></script>
 <script src="js/aventrix-storage.js"></script>
 <script src="js/wishlist-widget.js"></script>
-<script src="js/public-realtors.js"></script>
+<script src="js/wishlist-page.js"></script>
 <script src="script.js"></script>
 
 </body>
-
 </html>
