@@ -30,6 +30,8 @@
     }
 
     async function renderHomepageGrid(gridEl) {
+        if (window.AventrixStorage) await window.AventrixStorage.ready;
+
         // Featured first; if none marked featured yet, fall back to the
         // most recent published properties so the section is never empty.
         let { data: featured } = await sb
@@ -612,6 +614,8 @@
     }
 
     async function renderPropertyDetail() {
+        if (window.AventrixStorage) await window.AventrixStorage.ready;
+
         const params = new URLSearchParams(window.location.search);
         const slug = params.get("id");
 

@@ -55,6 +55,12 @@ body{
     padding:14px 0%;
 }
 
+.nav-right{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
 .menu-toggle span{
     background:#111111;
 }
@@ -5639,7 +5645,13 @@ body.qv-open{
     color:#a33;
 }
 
-.main-nav a.active{ color:#D4AF37; }
+/* Removed a duplicate ".main-nav a.active" rule that was here — it
+   set the active nav link to gold (#D4AF37), silently overriding the
+   site's original single active-link color (emerald, defined once
+   near "ACTIVE NAV LINK" earlier in this file) wherever the browser
+   happened to apply this later rule. The static "Properties" active
+   link on properties.html still gets the correct emerald color from
+   that original rule — nothing lost by removing this one. */
 
 /* ---------- Mobile: filter bar collapses into a slide-up sheet ---------- */
 @media (max-width: 900px){
@@ -6330,4 +6342,162 @@ body.qv-open{
     .pd-lightbox-nav{ display:none; } /* swipe only on touch/mobile widths, matches the rest of the site's gallery pattern */
     .pd-lightbox-close{ top:12px; right:12px; }
     .pd-lightbox-count{ bottom:16px; }
+}
+
+/* ============================================================
+   MY ACCOUNT — Log In / Create Account / Forgot / Reset Password
+   Self-contained styling (does not depend on .valuation-card or
+   .submit-btn, which exist in enquiry.html/joint-venture.html's
+   markup but have no matching CSS rules anywhere in this file —
+   pre-existing gap, left untouched here; see delivery notes).
+   ============================================================ */
+
+.acct-section{
+    padding:50px 8% 90px;
+    background:#faf9f7;
+    display:flex;
+    justify-content:center;
+}
+
+.acct-card{
+    width:100%;
+    max-width:460px;
+    background:#fff;
+    border:1px solid #eee;
+    border-radius:18px;
+    box-shadow:0 10px 34px rgba(0,0,0,0.06);
+    padding:34px 30px;
+}
+
+.acct-tabs{
+    display:flex;
+    border:1px solid #e5e3da;
+    border-radius:12px;
+    overflow:hidden;
+    margin-bottom:24px;
+}
+.acct-tab{
+    flex:1;
+    background:#faf9f7;
+    border:none;
+    padding:13px 10px;
+    font-family:Poppins;
+    font-weight:600;
+    font-size:14px;
+    color:#666;
+    cursor:pointer;
+    transition:.2s;
+}
+.acct-tab.active{
+    background:#0F3B2E;
+    color:#fff;
+}
+
+.acct-message{
+    padding:12px 14px;
+    border-radius:10px;
+    font-size:13.5px;
+    margin-bottom:18px;
+}
+.acct-message-error{
+    background:#fdecea;
+    color:#a33;
+    border:1px solid #f3c8c4;
+}
+.acct-message-success{
+    background:#eaf6ee;
+    color:#1e7a3e;
+    border:1px solid #bfe6cb;
+}
+
+.acct-form{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+}
+
+.acct-field{
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+}
+.acct-field label{
+    font-size:12.5px;
+    font-weight:600;
+    letter-spacing:.3px;
+    color:#0F3B2E;
+}
+.acct-field input{
+    padding:13px 15px;
+    border-radius:10px;
+    border:1px solid #e0ded4;
+    background:#faf9f7;
+    font-size:15px;
+    font-family:inherit;
+    color:#111827;
+    outline:none;
+    transition:.2s;
+}
+.acct-field input:focus{
+    border-color:#D4AF37;
+    box-shadow:0 0 0 3px rgba(212,175,55,0.18);
+    background:#fff;
+}
+
+.acct-hint{
+    font-size:12.5px;
+    color:#888;
+    margin:-6px 0 0;
+}
+
+.acct-submit-btn{
+    background:#0F3B2E;
+    color:#fff;
+    border:none;
+    border-radius:10px;
+    padding:14px;
+    font-family:Poppins;
+    font-weight:700;
+    font-size:15px;
+    cursor:pointer;
+    transition:.2s;
+}
+.acct-submit-btn:hover:not(:disabled){ background:#0c2f24; }
+.acct-submit-btn:disabled{ opacity:.6; cursor:not-allowed; }
+
+.acct-link-btn{
+    background:none;
+    border:none;
+    color:#0F3B2E;
+    font-size:13px;
+    font-weight:600;
+    text-decoration:underline;
+    cursor:pointer;
+    padding:0;
+    align-self:flex-start;
+}
+
+.acct-panel-success{
+    text-align:center;
+    padding:20px 10px;
+}
+.acct-panel-success i{
+    font-size:38px;
+    color:#D4AF37;
+    margin-bottom:14px;
+}
+.acct-panel-success h3{
+    font-family:"Cormorant Garamond", serif;
+    font-size:24px;
+    color:#0F3B2E;
+    margin-bottom:8px;
+}
+.acct-panel-success p{
+    color:#666;
+    font-size:14px;
+    line-height:1.6;
+}
+
+@media (max-width:480px){
+    .acct-card{ padding:26px 20px; }
 }

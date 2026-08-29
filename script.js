@@ -502,6 +502,13 @@ window.initFaqAccordion = initFaqAccordion;
     if (currentPage === "" || currentPage === "/") currentPage = "index.html";
 
     navLinks.forEach(link => {
+        // The Admin link is a utility link, not a "which page am I on"
+        // nav item — always skip it here. Without this, its href
+        // ("admin/index.html") collides with Home's ("index.html") on
+        // the homepage, since both end in the same filename, and both
+        // would otherwise get wrongly marked active together.
+        if (link.classList.contains("main-nav-admin")) return;
+
         const href = link.getAttribute("href");
         if (!href || href.includes("#")) return;
         const linkPage = href.split("/").pop();

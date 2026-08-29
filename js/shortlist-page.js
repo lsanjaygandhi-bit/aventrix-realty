@@ -122,6 +122,7 @@
     }
 
     async function renderShortlist() {
+        await window.AventrixStorage.ready;
         const slugs = window.AventrixStorage.shortlist.list().slice().reverse(); // most recently added first
         currentProperties = await fetchPropertiesForSlugs(slugs);
 

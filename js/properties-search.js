@@ -214,6 +214,8 @@
     }
 
     async function fetchAndRender(pushHistory) {
+        if (window.AventrixStorage) await window.AventrixStorage.ready;
+
         const state = readStateFromInputs();
         writeStateToUrl(state, !pushHistory);
         updateActiveChips(state);

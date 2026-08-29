@@ -6,6 +6,11 @@
  * the phone number) on every page that loads this script. Purely
  * additive — no existing header markup is changed, this only
  * inserts two new elements. Requires js/aventrix-storage.js first.
+ *
+ * Relies on `.nav-right{ display:flex; align-items:center; gap:14px; }`
+ * in style.css for alignment/spacing — that rule is what keeps these
+ * icons and the phone link on one clean row without growing the
+ * header's height.
  */
 
 (function () {

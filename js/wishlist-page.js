@@ -95,6 +95,7 @@
     }
 
     async function renderWishlist() {
+        await window.AventrixStorage.ready;
         const slugs = window.AventrixStorage.wishlist.list().slice().reverse(); // most recently saved first
         const properties = await fetchPropertiesForSlugs(slugs);
 
@@ -111,6 +112,7 @@
     }
 
     async function renderRecentlyViewed() {
+        await window.AventrixStorage.ready;
         const entries = window.AventrixStorage.recentlyViewed.list(); // already most-recent-first
         const slugs = entries.map((e) => e.slug);
         const properties = await fetchPropertiesForSlugs(slugs);
