@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+    
 <head>
 
     <meta charset="UTF-8">
@@ -78,6 +78,15 @@
     <span></span>
     <span></span>
 </button>
+        <!-- Bell moved out of .nav-right (see earlier fix: nav-right
+             is display:none on mobile) so it stays visible on every
+             breakpoint. Post Property FREE moved into the hero
+             itself per the latest layout direction — see .hero. -->
+        <div class="home-app-header-actions">
+            <a href="account.html" class="home-app-bell-btn" aria-label="Account & notifications">
+                <i class="fas fa-bell" aria-hidden="true"></i>
+            </a>
+        </div>
     <div class="menu-overlay" id="menuOverlay"></div>   
        <nav class="main-nav">
 
@@ -121,6 +130,23 @@
 
   </nav>
         <div class="nav-right">
+            <!-- Notification/Bell — placed as nav-right's first static
+                 child so it lands correctly in the Admin -> Wishlist ->
+                 Shortlist -> Notification -> Phone order: the Wishlist
+                 and Shortlist icons are injected by js/wishlist-widget.js
+                 via insertBefore(el, navRight.firstChild), which always
+                 inserts at the very start — since this bell is that
+                 starting point, both icons end up ahead of it, giving
+                 exactly that order without any JS changes. Reuses the
+                 EXISTING .nav-wishlist-link styling (not a new look) so
+                 it matches Wishlist/Shortlist/phone exactly, matching
+                 the Properties page header as the reference. Hidden
+                 automatically on mobile along with the rest of
+                 .nav-right (existing rule, unchanged) — the separate
+                 always-visible mobile bell below covers that case. -->
+            <a href="account.html" class="nav-wishlist-link nav-bell-link" aria-label="Notifications">
+                <i class="fas fa-bell" aria-hidden="true"></i>
+            </a>
             <a href="tel:+919176887770" class="nav-phone" data-site="phone1" aria-label="Call Aventrix Realty">
                 <i class="fas fa-phone-alt" aria-hidden="true"></i>
                 <span class="nav-phone-number" data-site="phone1">+91 91768 87770</span>
@@ -132,16 +158,42 @@
 <div class="hero-wrapper">
        <section class="hero" id="hero">
 
-     <video class="hero-video" id="heroVideo" autoplay muted loop playsinline preload="auto" poster="images/hero.jpg" aria-hidden="true">
+     <!-- NEW hero copy + poster per the app-style redesign. Video
+          src/mechanism UNCHANGED — only the poster and overlay text
+          content changed. poster now points to images/hero-lifestyle.jpg,
+          which does NOT exist yet in this project: I have no way to
+          source or fabricate a real, licensed photo of a person for
+          this business's homepage, so this file needs to be supplied
+          and uploaded by Aventrix Realty. Until then the video (which
+          autoplays) covers it, same as the previous poster reference
+          (images/hero.jpg) also didn't actually exist as a file. -->
+     <video class="hero-video" id="heroVideo" autoplay muted loop playsinline preload="auto" poster="images/hero-lifestyle.jpg" aria-hidden="true">
          <source src="images/hero-video.mp4?v=2" type="video/mp4">
      </video>
+
+     <!-- MOVED per latest layout direction: Post Property FREE now
+          lives inside the hero itself, top-right corner, as a
+          compact floating CTA — no longer in the page header. Sits
+          as its own absolutely-positioned element (not inside
+          .hero-overlay/.hero-content), so it can never push into or
+          collide with the headline/subtext/BUY-SELL-RENT/search
+          panel below it. Same destination as before
+          (list-with-us.html) — position only changed. -->
+     <a href="list-with-us.html" class="home-app-hero-post-btn">Post Property <span>FREE</span></a>
+
+     <!-- REMOVED per feedback: the Wishlist/Shortlist/Notifications
+          quick-action bar that lived here is gone — those three are
+          now available in the header only (see .nav-right in the
+          page head), avoiding two competing places for the same
+          three actions on desktop. Post Property FREE stays here,
+          unchanged. -->
 
      <div class="hero-overlay">
 
         <div class="hero-content">
 
             <h1 id="heroTitle">
-                See It. Find It. Make It Yours. Chennai
+                Find Your Place to Call Your Own.
             </h1>
              <p id="heroSubtitle">
                 Trusted real estate solutions across residential, commercial
@@ -149,7 +201,7 @@
             </p>
 
             <p class="hero-subheading" id="heroTagline">
-                Buy &bull; Sell &bull; Rent
+                BUY &bull; SELL &bull; RENT
             </p>
 
 
@@ -159,12 +211,12 @@
 
 </section>
 
-<div class="hero-search-wrap">
+<div class="hero-search-wrap home-app-floating-search">
     <div class="hero-search">
         <form class="property-search-form" action="properties.html" method="get">
             <div class="search-field">
                 <label for="searchLocation">Location / Area</label>
-                <input type="text" id="searchLocation" name="location" placeholder="e.g. Chromepet, ECR...">
+                <input type="text" id="searchLocation" name="location" placeholder="Search location, property type...">
             </div>
             <div class="search-field">
                 <label for="searchType">Property Type</label>
@@ -191,7 +243,48 @@
     </div>
 </div>
 </div>
+<!-- hero-wrapper closes here, exactly scoped to hero + search bar as
+     it originally was — the two new sections below are true top-level
+     siblings, same as "Our Featured Properties" already is, not
+     nested inside hero-wrapper. See the CSS fix comment for why this
+     matters: hero-search-wrap is position:absolute relative to
+     hero-wrapper, so hero-wrapper's height must stay just the hero's
+     height, not balloon to include everything after it. -->
 
+<!-- MOVED per latest layout direction: My Listings / My Searches now
+     sits below the hero instead of above it. Same element, same IDs,
+     same JS wiring in js/home-app-experience.js (initSegments/
+     loadMyListings/renderRecentChips all just query by ID — moving
+     this in the DOM required no JS changes) — position only. -->
+<section class="home-app-segment-section" id="homeAppSegments">
+    <div class="container">
+        <div class="home-app-segment-control" role="tablist" aria-label="My Listings or My Searches">
+            <button type="button" class="home-app-segment-btn active" data-panel="listings" role="tab" aria-selected="true">My Listings</button>
+            <button type="button" class="home-app-segment-btn" data-panel="searches" role="tab" aria-selected="false">My Searches</button>
+        </div>
+        <div class="home-app-segment-panel" id="homeAppPanelListings" role="tabpanel">
+            <div class="home-app-listings-grid" id="myListingsGrid"></div>
+        </div>
+        <div class="home-app-segment-panel" id="homeAppPanelSearches" hidden role="tabpanel">
+            <div class="home-app-recent-chips" id="myRecentSearchesPanel"></div>
+        </div>
+    </div>
+</section>
+
+<!-- MOVED per feedback: category shortcuts now sit immediately below
+     the hero/search, not above it, and compact (no "Quick Explore"
+     heading — that was only a design idea, never required). Same
+     links as before, "Insights" links to the existing insights.html
+     (market content, not a property category — kept distinct rather
+     than forced into ?category=). The other four reuse the exact
+     existing properties.html query params already read by
+     js/properties-search.js — no new filtering logic. -->
+<!-- MOVED per feedback: Meet Our Leadership now sits directly below
+     My Listings / My Searches, per the requested homepage flow.
+     Content/functionality completely unchanged — same two people
+     (Founder + Co-Founder), same photos, same "View Profile" links
+     to their existing detail pages. Only made more compact via CSS
+     (see .leadership-grid/.leader-card), not restructured. -->
 <section id="leadership" data-cms-section="leadership-intro">
 
     <div class="container">
@@ -225,26 +318,79 @@
     </div>
 </section>
 
-<section id="properties" class="featured">
-
+<section class="home-app-shortcuts-section" aria-label="Browse by category">
     <div class="container">
-
-        <div class="section-title">
-            <h2>Our Featured Properties</h2>
+        <div class="home-app-shortcuts-row">
+            <a href="properties.html?transaction=buy" class="home-app-shortcut">
+                <span class="home-app-shortcut-icon"><i class="fas fa-home" aria-hidden="true"></i></span>
+                <span>Buy</span>
+            </a>
+            <a href="properties.html?transaction=lease" class="home-app-shortcut">
+                <span class="home-app-shortcut-icon"><i class="fas fa-key" aria-hidden="true"></i></span>
+                <span>Rent</span>
+            </a>
+            <a href="insights.html" class="home-app-shortcut">
+                <span class="home-app-shortcut-icon"><i class="fas fa-lightbulb" aria-hidden="true"></i></span>
+                <span>Insights</span>
+            </a>
+            <a href="properties.html?category=commercial" class="home-app-shortcut">
+                <span class="home-app-shortcut-icon"><i class="fas fa-building" aria-hidden="true"></i></span>
+                <span>Commercial</span>
+            </a>
+            <a href="properties.html?category=land" class="home-app-shortcut">
+                <span class="home-app-shortcut-icon"><i class="fas fa-map" aria-hidden="true"></i></span>
+                <span>Plot / Land</span>
+            </a>
         </div>
-
-        <div class="property-grid" id="propertyGrid">
-            <!-- Populated dynamically from Supabase by js/public-properties.js.
-                 Card markup/classes match the original design exactly. -->
-        </div>
-
-        <div class="view-all-properties-wrap">
-            <a href="properties.html" class="view-details-btn">Search All Properties</a>
-        </div>
-
     </div>
-
 </section>
+
+<!-- NEW: Recent Searches — real localStorage-backed history of the
+     form directly above (js/home-app-experience.js), not fake data.
+     Chips link back into properties.html using the exact same
+     location/type/transaction params the existing search already
+     uses, so results are guaranteed consistent. -->
+<section class="home-app-recent-section" aria-label="Recent searches">
+    <div class="container">
+        <div class="home-app-recent-row">
+            <span class="home-app-recent-label"><i class="fas fa-history" aria-hidden="true"></i> Recent Search</span>
+            <div class="home-app-recent-chips" id="recentSearchesChips"></div>
+            <button type="button" class="home-app-recent-all" id="allRecentSearchesBtn">All Recent Searches</button>
+        </div>
+    </div>
+</section>
+
+<!-- NEW: "Future Properties" — real Supabase data via a SEPARATE
+     compact renderer (js/home-app-experience.js), reusing the same
+     `properties` table/query pattern as js/public-properties.js but
+     NOT touching cardTemplate() itself, so the existing "Our Featured
+     Properties" section below and properties.html are unaffected. -->
+<section class="home-app-future-section" id="future-properties">
+    <div class="container">
+        <div class="home-app-future-heading">
+            <div>
+                <h2>Future Properties</h2>
+                <p>Handpicked properties for your future.</p>
+            </div>
+            <a href="properties.html" class="home-app-see-all">See All</a>
+        </div>
+        <div class="home-app-future-grid" id="futurePropertiesGrid"></div>
+    </div>
+</section>
+
+
+
+
+
+<!-- REMOVED per decision: "Our Featured Properties" was showing
+     the same property listings a second time, right after "Future
+     Properties" above, in an older visual style with its own
+     heart/SALE badge overlap bug. Removed entirely rather than
+     fixed, since Future Properties (now showing up to 20 properties)
+     already covers this purpose in the current design language.
+     js/public-properties.js's cardTemplate()/#propertyGrid loader is
+     no longer called from this page as a result — that file/function
+     is untouched and still used by properties.html. -->
 
 <section class="categories-section" id="property-categories">
 
@@ -1146,6 +1292,29 @@
             </div>
         </div>
 
+        <!-- NEW: map fills the previously-unused right-side space in
+             this same footer grid — existing 4 columns above are
+             completely unchanged in content, only the grid's column
+             widths were adjusted (see .premium-footer-top in
+             style.css) to make room for this 5th column. No API key
+             needed — standard Google Maps output=embed URL built
+             from the exact Head Office address already shown above. -->
+        <div class="pf-col pf-map-col">
+            <h4 class="pf-heading">Find Us</h4>
+            <div class="pf-map-wrap">
+                <iframe
+                    src="https://www.google.com/maps?q=No.27,+1st+Main+Road,+Newcolony,+Chromepet,+Chennai,+Tamil+Nadu&output=embed"
+                    width="100%"
+                    height="100%"
+                    style="border:0"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Aventrix Realty Head Office location on Google Maps">
+                </iframe>
+            </div>
+        </div>
+
     </div>
 
     <div class="premium-footer-divider"></div>
@@ -1187,6 +1356,32 @@
     <a href="#footer" class="ssi-segment" data-target="footer" aria-label="Footer" data-label="Footer"><span class="ssi-tooltip">Footer</span></a>
 </nav>
 
+<!-- NEW: fixed mobile bottom navigation. Every item routes to an
+     EXISTING page/route — no new pages invented. "Post FREE" reuses
+     List With Us (same as the header button). "Activity" points to
+     wishlist.html as the closest existing "your activity" page (the
+     site has no single unified activity hub the way the app does).
+     "Menu" reuses the EXISTING hamburger menu toggle via JS (see
+     js/home-app-experience.js) instead of building a second menu
+     system. -->
+<nav class="home-app-bottom-nav" aria-label="Mobile navigation">
+    <a href="index.html" class="home-app-nav-item active">
+        <i class="fas fa-home" aria-hidden="true"></i><span>Home</span>
+    </a>
+    <a href="properties.html" class="home-app-nav-item">
+        <i class="fas fa-search" aria-hidden="true"></i><span>Search</span>
+    </a>
+    <a href="list-with-us.html" class="home-app-nav-postfree">
+        <i class="fas fa-plus" aria-hidden="true"></i>
+    </a>
+    <a href="wishlist.html" class="home-app-nav-item">
+        <i class="fas fa-heart" aria-hidden="true"></i><span>Activity</span>
+    </a>
+    <button type="button" class="home-app-nav-item home-app-nav-menu-btn" id="homeAppMenuBtn">
+        <i class="fas fa-bars" aria-hidden="true"></i><span>Menu</span>
+    </button>
+</nav>
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="js/supabase-client.js"></script>
 <script src="js/aventrix-storage.js"></script>
@@ -1197,6 +1392,7 @@
 <script src="js/public-testimonials.js"></script>
 <script src="js/public-offices.js"></script>
 <script src="js/enquiry-supabase.js"></script>
+<script src="js/home-app-experience.js"></script>
 <script src="script.js"></script>
 </body>
 </html>

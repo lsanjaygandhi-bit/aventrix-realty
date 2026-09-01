@@ -215,7 +215,7 @@
                             <span class="property-price">${escapeHtml(p.price_display || "Contact for Price")}</span>
                             <div class="property-icon-actions">
                                 <button type="button" class="icon-action-btn icon-shortlist-btn${shortlisted ? " active" : ""}" aria-label="${shortlisted ? "Remove from Shortlist" : "Add to Shortlist"}" aria-pressed="${shortlisted ? "true" : "false"}" data-slug="${escapeHtml(p.slug)}" title="${shortlisted ? "Shortlisted" : "Add to Shortlist"}">
-                                    <i class="fas fa-layer-group" aria-hidden="true"></i>
+                                    <i class="fas fa-bookmark" aria-hidden="true"></i>
                                 </button>
                                 <a href="tel:${CARD_PHONE_TEL}" class="icon-action-btn icon-call-btn" aria-label="Call about ${escapeHtml(p.title)}" title="Call">
                                     <i class="fas fa-phone-alt" aria-hidden="true"></i>
@@ -330,7 +330,7 @@
                 </div>
                 <div class="qv-actions">
                     <button type="button" class="qv-save" aria-label="Save to Wishlist" aria-pressed="false"><i class="far fa-heart" aria-hidden="true"></i></button>
-                    <button type="button" class="qv-shortlist" aria-label="Add to Shortlist" aria-pressed="false"><i class="fas fa-layer-group" aria-hidden="true"></i></button>
+                    <button type="button" class="qv-shortlist" aria-label="Add to Shortlist" aria-pressed="false"><i class="fas fa-bookmark" aria-hidden="true"></i></button>
                     <a href="#" class="qv-call" aria-label="Call"><i class="fas fa-phone-alt" aria-hidden="true"></i> Call</a>
                     <a href="#" class="qv-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp</a>
                 </div>

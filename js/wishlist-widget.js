@@ -22,7 +22,7 @@
         shortlistLink.href = "shortlist.html";
         shortlistLink.className = "nav-wishlist-link nav-shortlist-link";
         shortlistLink.setAttribute("aria-label", "My Shortlist & Compare");
-        shortlistLink.innerHTML = `<i class="fas fa-layer-group" aria-hidden="true"></i><span class="nav-wishlist-count" hidden>0</span>`;
+        shortlistLink.innerHTML = `<i class="fas fa-bookmark" aria-hidden="true"></i><span class="nav-wishlist-count" hidden>0</span>`;
 
         const wishlistLink = document.createElement("a");
         wishlistLink.href = "wishlist.html";

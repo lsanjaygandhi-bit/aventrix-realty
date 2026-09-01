@@ -181,7 +181,7 @@
                             <span class="property-price">${escapeHtml(p.price_display || "Contact for Price")}</span>
                             <div class="property-icon-actions">
                                 <button type="button" class="icon-action-btn icon-shortlist-btn${shortlisted ? " active" : ""}" aria-label="${shortlisted ? "Remove from Shortlist" : "Add to Shortlist"}" aria-pressed="${shortlisted ? "true" : "false"}" data-slug="${escapeHtml(p.slug)}" title="${shortlisted ? "Shortlisted" : "Add to Shortlist"}">
-                                    <i class="fas fa-layer-group" aria-hidden="true"></i>
+                                    <i class="fas fa-bookmark" aria-hidden="true"></i>
                                 </button>
                                 <a href="tel:${CARD_PHONE_TEL}" class="icon-action-btn icon-call-btn" aria-label="Call about ${escapeHtml(p.title)}" title="Call">
                                     <i class="fas fa-phone-alt" aria-hidden="true"></i>

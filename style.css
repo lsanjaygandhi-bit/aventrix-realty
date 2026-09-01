@@ -273,6 +273,28 @@ nav a:hover{
     color:#111;
     line-height:1.3;
 }
+/* CRITICAL BUG FIX: the actual root cause of the "blue"/"purple"
+   colour complaints on property cards. This h3 sets color:#111 on
+   itself, but the clickable text is inside a nested <a> — and <a>
+   elements never inherit an ancestor's color; without their OWN
+   explicit color they fall back to the browser's default link
+   colours (blue for never-clicked, purple for links the visitor has
+   already opened before — confirmed there was no ":visited" rule
+   anywhere in this entire stylesheet). That's exactly why only some
+   cards looked purple: only the ones that specific browser had
+   already visited. Explicit color + a :visited override fixes every
+   card consistently, regardless of browse history. This h3/a
+   structure is shared by both properties.html's cardTemplate() and
+   the Home Page's Featured Properties cardTemplate() — fixing it
+   here fixes both, which is correct: the bug was identically present
+   in both, not something unique to the listing page. */
+.property-card h3 a{
+    color:inherit;
+    text-decoration:none;
+}
+.property-card h3 a:visited{
+    color:inherit;
+}
 
 /* Description — reserves identical space on every card (3 lines at
    15px/1.6 line-height = 72px) regardless of text length, and
@@ -433,8 +455,16 @@ nav a:hover{
    WHY CHOOSE AVENTRIX (minimal)
 =========================== */
 .why{
-    padding:110px 8%;
+    padding:52px 8%;
     background:#ffffff;
+}
+/* Spacing-only nudge: "WHY AVENTRIX" sat a little low/cramped
+   relative to "The Aventrix Standard" below it — scoped to this
+   section only, .section-eyebrow/.section-heading themselves
+   (shared by other sections) are untouched. */
+.why .section-eyebrow{
+    margin-top:-6px;
+    margin-bottom:10px;
 }
 
 .why-grid{
@@ -445,7 +475,7 @@ nav a:hover{
 
 .why-item{
     text-align:center;
-    padding:8px 34px;
+    padding:4px 20px;
     border-left:1px solid rgba(17,24,39,.08);
     transition:transform .45s cubic-bezier(.2,.8,.2,1);
 }
@@ -459,9 +489,9 @@ nav a:hover{
 }
 
 .why-icon{
-    width:46px;
-    height:46px;
-    margin:0 auto 24px;
+    width:38px;
+    height:38px;
+    margin:0 auto 12px;
     color:#0F3B2E;
     transition:color .35s ease, transform .4s cubic-bezier(.2,.8,.2,1);
 }
@@ -646,10 +676,23 @@ nav a:hover{
 
 .premium-footer-top{
     display:grid;
-    grid-template-columns:1.5fr 0.9fr 0.9fr 1fr;
-    gap:56px;
+    /* Narrowed the original 4 columns (1.5fr 0.9fr 0.9fr 1fr) slightly
+       to make room for a 5th map column — same minimum adjustment
+       approach as elsewhere in this pass. All 4 existing columns'
+       content is completely unchanged. */
+    grid-template-columns:1.3fr 0.8fr 0.8fr 0.9fr 1.3fr;
+    gap:40px;
     padding-bottom:64px;
 }
+
+.pf-map-wrap{
+    width:100%;
+    height:220px;
+    border-radius:12px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.12);
+}
+.pf-map-wrap iframe{ display:block; }
 
 .pf-brand{
     padding-right:20px;
@@ -1618,22 +1661,15 @@ p.copyright .footer-login-link{
     margin-bottom:105px;
 }
 
+/* REMOVED per feedback: the connecting/centre timeline line — dots,
+   years, and all milestone content are untouched, only this line
+   segment is hidden. */
 .legacy-item:not(:last-child)::after{
-    content:"";
-    position:absolute;
-    left:-35px;
-    top:6px;
-    bottom:calc(-105px - 6px);
-    width:1px;
-    background:rgba(15,91,79,.18);
+    display:none;
 }
 
 .legacy-item:nth-child(2){
     margin-bottom:130px;
-}
-
-.legacy-item:nth-child(2)::after{
-    bottom:calc(-130px - 6px);
 }
 
 .legacy-item:last-child{
@@ -1697,14 +1733,14 @@ p.copyright .footer-login-link{
 /* Leadership Section */
 
 #leadership{
-    padding:100px 20px;
+    padding:56px 20px;
     background:#ffffff;
     text-align:center;
 }
 
 #leadership h2{
-    font-size:42px;
-    margin-bottom:10px;
+    font-size:30px;
+    margin-bottom:6px;
     color:#111;
 }
 
@@ -1715,15 +1751,15 @@ p.copyright .footer-login-link{
 .leadership-grid{
     display:flex;
     justify-content:center;
-    gap:30px;
-    margin-top:40px;
+    gap:24px;
+    margin-top:24px;
     flex-wrap:wrap;
 }
 
 .leader-card{
-    width:340px;
+    width:280px;
     background:#fff;
-    padding:30px;
+    padding:20px;
     border-radius:15px;
     box-shadow:0 10px 25px rgba(0,0,0,.08);
     text-align:center;
@@ -1735,15 +1771,15 @@ p.copyright .footer-login-link{
 }
 
 .leader-card h3{
-    font-size:26px;
+    font-size:20px;
     color:#0F3B2E;
-    margin-bottom:8px;
+    margin-bottom:4px;
 }
 
 .leader-card h4{
-    font-size:18px;
+    font-size:14px;
     color:#777;
-    margin-bottom:15px;
+    margin-bottom:10px;
 }
 
 .leader-card p{
@@ -1754,7 +1790,7 @@ p.copyright .footer-login-link{
     height:150px;
     border-radius:14px;
     object-fit:cover;
-    margin-bottom:20px;
+    margin-bottom:12px;
     border:4px solid #0F3B2E;
 }
 .whatsapp-float{
@@ -2631,23 +2667,30 @@ color:#07111F;
    BUY / SELL / LEASE CARDS
 =========================== */
 .bsl-section{
-    padding:90px 8%;
+    padding:44px 8%;
     background:#faf8f5;
 }
 
 .bsl-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:28px 28px;
-    row-gap:32px;
+    gap:16px 16px;
+    row-gap:16px;
+}
+@media (min-width:901px){
+    /* COMPACT SINGLE-LINE per feedback: Buy / Sell / Lease / Joint
+       Venture / Property Advisory / NRI Services as one horizontal
+       row on desktop instead of a 3x2 grid of large cards. Content
+       unchanged, just laid out narrower. */
+    .bsl-grid{ grid-template-columns:repeat(6,1fr); gap:10px; }
 }
 
 .bsl-card{
     background:#fff;
-    border-radius:18px;
-    padding:42px 30px;
+    border-radius:14px;
+    padding:16px 10px;
     text-align:center;
-    box-shadow:0 10px 30px rgba(0,0,0,.06);
+    box-shadow:0 6px 16px rgba(0,0,0,.06);
     border:1px solid rgba(0,0,0,.04);
     text-decoration:none;
     display:flex;
@@ -2662,29 +2705,29 @@ color:#07111F;
 }
 
 .bsl-icon{
-    width:68px;
-    height:68px;
+    width:40px;
+    height:40px;
     border-radius:50%;
     background:linear-gradient(135deg,#0F3B2E,#0F3B2E);
     display:flex;
     align-items:center;
     justify-content:center;
     color:#fff;
-    font-size:24px;
-    margin-bottom:22px;
+    font-size:15px;
+    margin-bottom:10px;
 }
 
 .bsl-card h3{
-    font-size:22px;
+    font-size:14px;
     color:#111;
-    margin-bottom:10px;
+    margin-bottom:4px;
     font-weight:700;
 }
 
 .bsl-card p{
     color:#666;
-    font-size:15px;
-    line-height:1.6;
+    font-size:11.5px;
+    line-height:1.4;
     margin:0;
 }
 
@@ -2870,8 +2913,8 @@ nav a:hover::after{
 .main-nav{
     display:flex;
     align-items:center;
-    gap:26px;
-    margin-left:32px;
+    gap:20px;
+    margin-left:28px;
 }
 .main-nav > .dropdown{
     display: inline-block;
@@ -2883,9 +2926,17 @@ nav a:hover::after{
     text-decoration:none;
     font-family:Poppins;
     font-weight:400;
-    font-size:13.5px;
+    font-size:13px;
     letter-spacing:.2px;
     padding:6px 0;
+    /* BUG FIX: multi-word items ("About Us", "List With Us", "Free
+       Valuation", "Joint Venture", "NRI Services") were wrapping onto
+       a second line whenever the row ran tight on horizontal space —
+       confirmed from screenshots. nowrap keeps every item on one
+       line; the gap/margin/font-size trims above make enough extra
+       room that the whole row fits without wrapping at normal desktop
+       widths, without shrinking anything drastically. */
+    white-space:nowrap;
     transition:color .3s ease;
 }
 
@@ -3448,6 +3499,13 @@ nav a:hover::after{
     flex-direction:column;
     gap:6px;
     background:none;
+    /* BUG FIX: was rendering on the LEFT of the mobile header (default
+       flex order, right after the logo in DOM). Needs to be the LAST
+       element on the right, after the notification bell (order:5) —
+       see .home-app-header-actions above. order:6 here achieves that
+       without touching the notification bell's own rule or this
+       button's click handler/functionality. */
+    order:6;
     border:none;
     cursor:pointer;
 }
@@ -3540,6 +3598,10 @@ html.is-mobile .hero-content{
 html.is-mobile .hero h1{
     font-size:34px;
     line-height:1.2;
+    /* BUG FIX: the hero-corner Post Property CTA was overlapping this
+       headline's second line — confirmed visually. Capping width
+       keeps both lines clear of the CTA in the top-right corner. */
+    max-width:78%;
 }
 
 html.is-mobile .hero p{
@@ -3555,13 +3617,48 @@ html.is-mobile .btn-secondary{
 
 html.is-mobile .property-grid,
 html.is-mobile .why-grid,
-html.is-mobile .service-grid,
 html.is-mobile .contact-info,
-html.is-mobile .leadership-grid,
-html.is-mobile .bsl-grid{
+html.is-mobile .leadership-grid{
     grid-template-columns:1fr;
     display:grid;
     gap:24px;
+}
+
+/* MOBILE 2-COLUMN per feedback: "What We Do" (.bsl-grid, id=
+   "what-we-do") pulled out of the combined 1-column rule above —
+   the other four in that rule (.property-grid/.why-grid/
+   .contact-info/.leadership-grid) are untouched, still 1 column.
+   Learned from the Featured Locations bug just above: using
+   minmax(0,1fr) instead of plain 1fr from the start, so grid tracks
+   can't balloon past the container based on any child's intrinsic
+   content width. */
+html.is-mobile .bsl-grid{
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    display:grid;
+    gap:14px;
+}
+html.is-mobile .bsl-card{
+    min-width:0;
+    padding:14px 8px;
+}
+
+/* MOBILE 2-COLUMN per feedback: Our Services pulled out of the
+   combined 1-column rule above (which still governs .property-grid/
+   .why-grid/.contact-info/.leadership-grid/.bsl-grid unchanged) so
+   it alone gets 2 columns on mobile. Desktop untouched — this is
+   entirely inside html.is-mobile. */
+html.is-mobile .service-grid{
+    grid-template-columns:repeat(2, 1fr);
+    display:grid;
+    gap:14px;
+}
+html.is-mobile .service-item{
+    /* The left-border "divider" styling only makes sense in the
+       desktop 4-in-a-row layout; in a 2-column grid it would show up
+       as an odd, inconsistent line on only some items. Padding
+       trimmed to fit the narrower column. */
+    padding:6px 10px;
+    border-left:none;
 }
 
 html.is-mobile .property-card{
@@ -3675,16 +3772,11 @@ html.is-mobile .legacy-item{
 }
 
 html.is-mobile .legacy-item:not(:last-child)::after{
-    left:-24.5px;
-    bottom:calc(-50px - 6px);
+    display:none;
 }
 
 html.is-mobile .legacy-item:nth-child(2){
     margin-bottom:65px;
-}
-
-html.is-mobile .legacy-item:nth-child(2)::after{
-    bottom:calc(-65px - 6px);
 }
 
 html.is-mobile .legacy-dot{
@@ -3696,6 +3788,16 @@ html.is-mobile .legacy-year{
     top:-24px;
     transform:translateX(-50%);
     font-size:13px;
+}
+
+/* BUG FIX: "PRESENT" (7 characters) is wider than "1965"/"2010", so
+   centering it on the same point as the shorter labels above pushed
+   its left portion — the "P" — off the visible edge. Targets only
+   the last timeline item (Present), confirmed from the actual
+   markup order — 1965/2010 are untouched. */
+html.is-mobile .legacy-item:last-child .legacy-year{
+    left:0;
+    transform:translateX(0);
 }
 
 html.is-mobile .legacy-text h3{
@@ -4378,28 +4480,33 @@ html.is-mobile .rp-contact-row{
 ========================================================== */
 .categories-section{
     background:#fff;
-    padding:100px 8%;
+    padding:44px 8%;
 }
 
 .categories-grid{
     display:grid;
     grid-template-columns:repeat(3, 1fr);
-    gap:26px;
+    gap:12px;
     max-width:1200px;
-    margin:60px auto 0;
+    margin:24px auto 0;
+}
+@media (min-width:901px){
+    /* SINGLE ROW per feedback: all 6 categories left-to-right on
+       desktop instead of a 3x2 grid. */
+    .categories-grid{ grid-template-columns:repeat(6, 1fr); }
 }
 
 .category-card{
     position:relative;
     display:flex;
     align-items:flex-end;
-    height:260px;
-    border-radius:18px;
+    height:110px;
+    border-radius:12px;
     overflow:hidden;
     background-size:cover;
     background-position:center;
     text-decoration:none;
-    box-shadow:0 14px 34px rgba(0,0,0,.12);
+    box-shadow:0 6px 16px rgba(0,0,0,.1);
     transition:.4s cubic-bezier(.2,.8,.2,1);
 }
 
@@ -4422,11 +4529,11 @@ html.is-mobile .rp-contact-row{
 .category-label{
     position:relative;
     z-index:1;
-    padding:24px;
+    padding:10px;
     color:#fff;
-    font-size:20px;
+    font-size:12.5px;
     font-weight:700;
-    letter-spacing:.3px;
+    letter-spacing:.2px;
 }
 
 /* ==========================================================
@@ -4434,15 +4541,38 @@ html.is-mobile .rp-contact-row{
 ========================================================== */
 .locations-section{
     background:#faf9f7;
-    padding:100px 8%;
+    padding:48px 8%;
 }
 
 .locations-grid{
     display:flex;
     flex-direction:column;
-    gap:18px;
+    gap:12px;
     max-width:900px;
-    margin:60px auto 0;
+    margin:28px auto 0;
+}
+@media (min-width:901px){
+    /* SINGLE ROW per feedback: all 6 locations left-to-right on
+       desktop instead of stacked vertically. .location-category is
+       the actual direct child of .locations-grid (each one wraps
+       the clickable image button + its expandable neighbourhood-
+       chips row) — confirmed from the actual markup rather than
+       assumed. The chip row still expands/functions exactly as
+       before when a location is clicked; only the button's own
+       size/layout changes here. */
+    .locations-grid{
+        flex-direction:row;
+        max-width:1200px;
+        flex-wrap:wrap;
+    }
+    .locations-grid .location-category{
+        flex:1 1 0;
+        min-width:150px;
+    }
+    .locations-grid .location-card-btn{
+        height:100px;
+        width:100%;
+    }
 }
 
 .location-category{
@@ -4460,8 +4590,8 @@ html.is-mobile .rp-contact-row{
     display:flex;
     align-items:flex-end;
     justify-content:space-between;
-    height:190px;
-    border-radius:20px;
+    height:120px;
+    border-radius:16px;
     overflow:hidden;
     background-size:cover;
     background-position:center;
@@ -4494,9 +4624,9 @@ html.is-mobile .rp-contact-row{
 .location-name{
     position:relative;
     z-index:1;
-    padding:18px 20px;
+    padding:10px 12px;
     color:#fff;
-    font-size:17px;
+    font-size:13px;
     font-weight:700;
 }
 
@@ -4504,9 +4634,9 @@ html.is-mobile .rp-contact-row{
     position:relative;
     z-index:1;
     flex-shrink:0;
-    width:34px;
-    height:34px;
-    margin:0 20px 18px 0;
+    width:26px;
+    height:26px;
+    margin:0 10px 10px 0;
     border-radius:50%;
     background:rgba(255,255,255,.18);
     -webkit-backdrop-filter:blur(6px);
@@ -4589,7 +4719,7 @@ html.is-mobile .rp-contact-row{
 .why-grid-6{
     display:grid;
     grid-template-columns:repeat(3, 1fr);
-    gap:50px 20px;
+    gap:24px 20px;
 }
 
 .why-grid-6 .why-item{
@@ -4763,16 +4893,76 @@ html.is-mobile .cta-section{
     padding:45px 16px;
 }
 
-html.is-mobile .invest-grid,
-html.is-mobile .categories-grid,
-html.is-mobile .why-grid-6{
-    grid-template-columns:1fr;
-    gap:20px;
+/* MOBILE 2-COLUMN per feedback: each of these three gets its own
+   explicit mobile rule (was one combined 1-column rule) so they can
+   go to 2 columns independently without affecting anything else
+   that might share a rule with them. Desktop untouched — entirely
+   inside html.is-mobile. */
+html.is-mobile .categories-grid{
+    grid-template-columns:repeat(2, 1fr);
+    gap:12px;
+    margin-top:20px;
+}
+html.is-mobile .invest-grid{
+    grid-template-columns:repeat(2, 1fr);
+    gap:14px;
     margin-top:26px;
+}
+html.is-mobile .invest-card{
+    padding:16px 14px;
+}
+html.is-mobile .invest-icon{
+    width:30px;
+    height:30px;
+    margin-bottom:10px;
+}
+html.is-mobile .invest-card h3{
+    font-size:15px;
+    margin-bottom:6px;
+}
+html.is-mobile .invest-card p{
+    font-size:12.5px;
+    line-height:1.5;
+}
+html.is-mobile .why-grid-6{
+    grid-template-columns:repeat(2, 1fr);
+    gap:20px 14px;
+    margin-top:20px;
+}
+html.is-mobile .why-grid-6 .why-item{
+    /* Same reasoning as .service-item: the left-border divider only
+       makes sense in the desktop single-row layout. */
+    border-left:none;
+    padding:4px 8px;
 }
 
 html.is-mobile .locations-grid{
     margin-top:26px;
+    /* MOBILE 2-COLUMN per feedback: was a single vertical stack.
+       Each .location-category (image button + its own expandable
+       neighbourhood-chips row) becomes a grid cell; the whole
+       category still spans full width when its chip row is open
+       (below), so tapping one doesn't look cramped inside a narrow
+       half-column. */
+    display:grid;
+    /* BUG FIX (found by testing at real mobile widths, not assumed):
+       plain "1fr" tracks do NOT shrink below a grid item's intrinsic
+       content width by default. Each collapsed .location-category
+       still contains its full neighbourhood-chips row (multiple
+       chip links in one line, not wrapped) — that hidden content's
+       natural width was forcing each column to ~960px even inside a
+       ~360px container, silently pushing 4 of the 6 cards off-
+       screen (confirmed: grid-template-columns computed as
+       "955px 976px" against a 358px-wide container). minmax(0,1fr)
+       forces the tracks to actually respect the 50/50 split. */
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:10px;
+}
+html.is-mobile .location-category{
+    min-width:0;
+}
+html.is-mobile .location-category.open{
+    grid-column:1 / -1;
 }
 
 html.is-mobile .cta-section h2{
@@ -5799,6 +5989,20 @@ body.qv-open{
 .property-save-btn.saved{ color:#c0392b; }
 .property-save-btn.saved i{ font-weight:900; } /* fas (solid) heart when saved */
 
+/* BUG FIX (properties.html listing page only): .property-badge and
+   .property-save-btn share the exact same top:10px;left:10px in the
+   base rules above — genuinely, precisely overlapping (confirmed
+   from a screenshot: the SALE badge and wishlist heart were stacked
+   on top of each other). Scoped to #sfResultsGrid (properties.html's
+   own results grid, a distinct id from the Home Page's #propertyGrid)
+   so the Home Page Featured Properties — which uses the exact same
+   shared .property-badge/.property-save-btn base rules — is not
+   touched at all. Heart stays top-left as-is; badge shifts beside
+   it with clear spacing. */
+#sfResultsGrid .property-badge{
+    left:52px;
+}
+
 /* ---------- Quick View save button (added to the qv-actions row) ---------- */
 .qv-save{
     flex:0 0 52px !important;
@@ -5958,6 +6162,15 @@ body.qv-open{
 .qv-shortlist i{ font-size:16px; }
 
 /* ---------- Property Details page shortlist button ---------- */
+/* BUG FIX (UI consistency pass): Wishlist and Shortlist were
+   pixel-identical (same size/border/colour), reading as two
+   competing "favourite" controls next to each other. Kept both —
+   Shortlist is real, working functionality (shortlist.html,
+   comparison) — but gave it a clearly distinct, gold-accented
+   treatment so only the heart reads as the primary Save action.
+   Icon also changed (layer-group -> bookmark) — bookmark is a much
+   more recognisable "shortlist" glyph, and matches the icon already
+   used for this exact purpose in the Aventrix Realty mobile app. */
 .pd-shortlist-btn{
     flex:0 0 56px;
     display:inline-flex;
@@ -5965,19 +6178,19 @@ body.qv-open{
     justify-content:center;
     height:48px;
     border-radius:30px;
-    border:1.5px solid #0F3B2E;
+    border:1.5px solid #D4AF37;
     background:#fff;
-    color:#0F3B2E;
+    color:#D4AF37;
     font-size:18px;
     cursor:pointer;
     transition:.2s;
 }
 .pd-shortlist-btn.active{
-    background:#0F3B2E;
-    color:#D4AF37;
+    background:#D4AF37;
+    color:#fff;
 }
-.pd-shortlist-btn:hover{ background:#f4f4f4; }
-.pd-shortlist-btn.active:hover{ background:#0c2f24; }
+.pd-shortlist-btn:hover{ background:#fdf8ec; }
+.pd-shortlist-btn.active:hover{ background:#c19d2e; }
 
 /* Defensive tightening so Save + Shortlist + Call + WhatsApp still
    fit comfortably on the narrowest common phone widths. */
@@ -6500,4 +6713,525 @@ body.qv-open{
 
 @media (max-width:480px){
     .acct-card{ padding:26px 20px; }
+}
+
+/* ===========================================================
+   AVENTRIX REALTY — HOMEPAGE APP-STYLE REDESIGN (ADDITIVE)
+   All rules below are new, scoped to home-app-* classes plus a
+   few targeted mobile overrides for the existing floating
+   WhatsApp/Back-to-top buttons (so they don't collide with the
+   new fixed bottom nav). Nothing existing was removed or
+   rewritten — this block only adds to the cascade.
+   Palette reused exactly: deep green #0F3B2E, gold #D4AF37,
+   cream #faf9f7 / #f7f6f2.
+=========================================================== */
+
+/* Header additions — REFINED per feedback: lighter weight, better
+   spacing from the existing nav-right content, less "app toolbar"
+   feel. Functionality (href, bell destination) unchanged — visual
+   only. Sits in its own flex row, sibling to nav-right (see the
+   BUG FIX comment in index.html for why it's no longer inside
+   nav-right itself). */
+.home-app-header-actions{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-left:auto;
+    order:5;
+}
+/* Desktop now gets its Notification icon from inside .nav-right
+   itself (matching the Properties page header exactly — same
+   .nav-wishlist-link styling, correctly ordered after Wishlist/
+   Shortlist, see index.html) — so this standalone mobile-hamburger-
+   row version is mobile-only, avoiding a literal duplicate bell
+   showing twice on desktop. */
+@media (min-width:901px){
+    .home-app-header-actions{ display:none; }
+}
+.nav-right{ gap:14px; }
+
+/* Post Property FREE — hero variant (compact floating CTA, top-right
+   corner of the hero, per the latest layout direction). Solid white
+   pill for maximum contrast/legibility against the video background
+   — a translucent/glass treatment (matching the search panel) would
+   risk being unreadable depending on the underlying video frame,
+   and this needs to read clearly at a glance as a CTA, not blend in
+   like the search panel is meant to. Kept deliberately small so it
+   never competes with the headline for attention. */
+.home-app-hero-post-btn{
+    position:absolute;
+    top:20px;
+    right:20px;
+    z-index:4;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    background:#ffffff;
+    color:#0F3B2E;
+    font-weight:700;
+    font-size:13px;
+    padding:8px 14px;
+    border-radius:999px;
+    text-decoration:none;
+    white-space:nowrap;
+    box-shadow:0 4px 14px rgba(0,0,0,.18);
+}
+.home-app-hero-post-btn span{
+    background:#0F3B2E;
+    color:#fff;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:.4px;
+    padding:2px 7px;
+    border-radius:999px;
+}
+@media (max-width:640px){
+    .home-app-hero-post-btn{ top:16px; right:16px; padding:7px 12px; font-size:12px; }
+    .home-app-hero-post-btn span{ display:none; }
+}
+
+/* Hero quick-action bar CSS REMOVED per feedback — those three
+   actions (Wishlist/Shortlist/Notifications) now live in the header
+   only (see .nav-right / .nav-bell-link), avoiding two competing
+   places for the same controls. Post Property FREE's own styling
+   above is unchanged. */
+.home-app-post-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    background:transparent;
+    border:1px solid rgba(15,59,46,0.35);
+    color:#0F3B2E;
+    font-weight:600;
+    font-size:13px;
+    padding:8px 14px;
+    border-radius:999px;
+    text-decoration:none;
+    white-space:nowrap;
+    letter-spacing:.2px;
+}
+.home-app-post-btn span{
+    background:#0F3B2E;
+    color:#fff;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.4px;
+    padding:2px 8px;
+    border-radius:999px;
+}
+.home-app-post-btn:hover{ background:#f0efe9; }
+.home-app-bell-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:36px;
+    height:36px;
+    border-radius:999px;
+    background:transparent;
+    border:none;
+    color:#0F3B2E;
+    font-size:16px;
+    text-decoration:none;
+}
+.home-app-bell-btn:hover{ background:rgba(15,59,46,0.06); }
+
+/* My Listings / My Searches segmented control */
+.home-app-segment-section{ background:#faf9f7; padding:10px 0 4px; }
+.home-app-segment-control{
+    display:flex;
+    background:#eeece4;
+    border-radius:999px;
+    padding:5px;
+    max-width:520px;
+    margin:0 auto 12px;
+}
+.home-app-segment-btn{
+    flex:1;
+    border:none;
+    background:transparent;
+    padding:12px 10px;
+    border-radius:999px;
+    font-size:15px;
+    font-weight:600;
+    color:#5b5b52;
+    cursor:pointer;
+}
+.home-app-segment-btn.active{
+    background:#ffffff;
+    color:#111827;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
+.home-app-listings-grid, .home-app-recent-chips{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:14px;
+    max-width:900px;
+    margin:0 auto;
+}
+.home-app-signin-prompt{
+    grid-column:1/-1;
+    text-align:center;
+    padding:24px 16px;
+    background:#fff;
+    border-radius:14px;
+    border:1px solid #e5e3da;
+}
+.home-app-signin-prompt p{ margin:0 0 12px; color:#374151; }
+.home-app-signin-btn{
+    display:inline-block;
+    background:#0F3B2E;
+    color:#fff;
+    font-weight:600;
+    padding:10px 20px;
+    border-radius:999px;
+    text-decoration:none;
+}
+.home-app-loading, .home-app-empty{
+    grid-column:1/-1;
+    text-align:center;
+    color:#6b7280;
+    padding:20px;
+}
+
+/* Category shortcuts row */
+.home-app-shortcuts-section{ background:#faf9f7; padding:14px 0 12px; }
+/* MOBILE-ONLY per feedback: .container (shared sitewide) has zero
+   horizontal padding below 1200px, so this row sat flush against the
+   screen edges. Scoped to just this section's own .container — the
+   shared class itself is untouched. The row's existing horizontal-
+   scroll/no-wrap behaviour is unaffected by padding; it still can
+   only ever render as one row. Desktop untouched — entirely inside
+   html.is-mobile. */
+html.is-mobile .home-app-shortcuts-section .container{
+    padding:0 16px;
+}
+/* FINAL ALIGNMENT FIX per feedback: padding alone shifted the
+   container's edges inward but left the 5-item group itself
+   left-aligned within it (flex default). Measured actual content:
+   the 5 items total ~292px, plus gaps. At gap:8px the full group
+   fits without scrolling at 360/375/390/414px-wide phones (verified
+   directly, not assumed) — only at very narrow ~320px devices does
+   the item content alone still exceed the available width, which is
+   exactly why overflow-x:auto (unchanged, already on
+   .home-app-shortcuts-row) stays in place as the safety net for
+   that case. justify-content:center then centers the whole group as
+   one unit whenever it fits, rather than sitting flush at the start. */
+html.is-mobile .home-app-shortcuts-row{
+    gap:8px;
+    /* BUG FIX: plain justify-content:center on a horizontally-
+       scrollable container, when content is wider than the
+       viewport, centers within the container's own generated
+       scroll range — which pushed "Buy" out of reach even at
+       scrollLeft:0 (confirmed directly: Buy's position was -2 while
+       the visible edge was at 16, meaning scrolling all the way to
+       the start still didn't reveal it — a real, permanent clip,
+       not just "needs a scroll"). "safe center" is the CSS-correct
+       tool for exactly this: center when it fits; automatically
+       fall back to start-alignment (so scrollLeft:0 shows "Buy",
+       matching normal scroll behaviour) whenever centering would
+       otherwise make content inaccessible. Only affects the very
+       narrow ~320px case where the 5 items alone already exceed the
+       available width — 360px and up fit and center normally. */
+    justify-content:safe center;
+}
+.home-app-shortcuts-row{
+    display:flex;
+    gap:16px;
+    overflow-x:auto;
+    padding:4px 4px 4px;
+    scrollbar-width:none;
+}
+.home-app-shortcuts-row::-webkit-scrollbar{ display:none; }
+.home-app-shortcut{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:5px;
+    text-decoration:none;
+    color:#111827;
+    font-size:11.5px;
+    font-weight:600;
+    flex:0 0 auto;
+    min-width:52px;
+}
+.home-app-shortcut-icon{
+    width:40px;
+    height:40px;
+    border-radius:999px;
+    background:#ffffff;
+    border:1px solid #e5e3da;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#0F3B2E;
+    font-size:15px;
+}
+.home-app-shortcut:hover .home-app-shortcut-icon{ background:#f0efe9; }
+
+/* RESTORED per feedback: "BUY • SELL • RENT" is the original hero
+   line and must keep its original styling — .hero-subheading
+   (pre-existing, above in this file) already has the correct gold
+   colour and 900-weight baked in. My earlier hashtag experiment
+   added an extra class here that changed the font-weight and
+   duplicated the colour — removed entirely; nothing new needed. */
+
+/* Floating search bar overlapping the hero */
+/* BUG FIX (QA pass): this element already carries the pre-existing
+   .hero-search-wrap class, which has position:absolute (floating
+   over the hero, bottom:150px) — that's the ACTUAL mechanism that
+   makes it overlap the hero, already correct and untouched. My
+   first pass here also set position:relative + a negative margin,
+   which (later in the cascade) overrode that absolute positioning,
+   pulled the whole form back into normal document flow, and caused
+   it to visually collide with Recent Searches below it — confirmed
+   directly via getBoundingClientRect(): the two boxes measurably
+   overlapped, and elementFromPoint() at a chip's location returned
+   the search button, not the chip. Removed the conflicting
+   position/margin-top here entirely; only the visual card styling
+   (background/radius/shadow) is genuinely new. */
+/* RESTORED per feedback: the original .hero-search already has the
+   correct translucent/glass panel styling (rgba background +
+   backdrop-filter blur, seen just above in this file, untouched).
+   My earlier white-card override here was replacing that look —
+   removed entirely so the original hero search panel renders
+   exactly as it always has, unmodified. */
+
+/* Recent Searches */
+.home-app-recent-section{ background:#faf9f7; padding:18px 0 6px; }
+/* MOBILE-ONLY per feedback: same root cause as the shortcuts row
+   above — .container has no padding of its own below 1200px, so
+   "Recent Search" sat flush left and "All Recent Searches" sat
+   flush right. Scoped to just this section's own .container.
+   Desktop untouched. */
+html.is-mobile .home-app-recent-section .container{
+    padding:0 16px;
+}
+.home-app-recent-row{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    flex-wrap:wrap;
+}
+.home-app-recent-label{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    font-size:13px;
+    font-weight:600;
+    color:#5b5b52;
+    white-space:nowrap;
+}
+.home-app-recent-chips{
+    display:flex;
+    gap:10px;
+    overflow-x:auto;
+    flex:1;
+    scrollbar-width:none;
+}
+.home-app-recent-chips::-webkit-scrollbar{ display:none; }
+.home-app-recent-chip{
+    flex:0 0 auto;
+    background:#ffffff;
+    border:1px solid #e5e3da;
+    border-radius:999px;
+    padding:9px 16px;
+    font-size:13px;
+    color:#111827;
+    text-decoration:none;
+    white-space:nowrap;
+}
+.home-app-recent-chip:hover{ border-color:#0F3B2E; }
+.home-app-recent-empty{ font-size:13px; color:#9a9a9a; }
+html.is-mobile .home-app-recent-empty{ font-size:11.5px; }
+.home-app-recent-all{
+    background:none;
+    border:none;
+    color:#0F3B2E;
+    font-weight:600;
+    font-size:13px;
+    text-decoration:underline;
+    cursor:pointer;
+    white-space:nowrap;
+}
+
+/* Future Properties + compact card (SEPARATE from the existing
+   .property-card used by cardTemplate() / properties.html) */
+.home-app-future-section{ background:#faf9f7; padding:28px 0 40px; }
+.home-app-future-heading{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    margin-bottom:18px;
+}
+.home-app-future-heading h2{
+    font-family:'Playfair Display', 'Cormorant Garamond', serif;
+    color:#0F3B2E;
+    margin:0 0 4px;
+}
+.home-app-future-heading p{ margin:0; color:#6b7280; font-size:14px; }
+.home-app-see-all{ color:#0F3B2E; font-weight:600; text-decoration:underline; white-space:nowrap; }
+.home-app-future-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:16px;
+}
+/* BUG FIX: .container (used sitewide) has zero horizontal padding of
+   its own — below its 1200px max-width it renders edge-to-edge, so
+   these cards had no breathing room from the screen edges on mobile/
+   tablet. Scoped to just this section (not the shared .container
+   rule, which countless other sections rely on) so only Future
+   Properties gets the fix. */
+.home-app-future-section .container{
+    padding:0 16px;
+}
+.home-app-property-card{
+    display:block;
+    background:#ffffff;
+    border-radius:16px;
+    overflow:hidden;
+    border:1px solid #eceae2;
+    box-shadow:0 4px 14px rgba(0,0,0,.05);
+}
+/* Only this inner area is a link now (image/title/location/price) —
+   the actions row below is separate, avoiding a link nested inside
+   a link. Visual look is unchanged from when the whole card was
+   one <a>. */
+.home-app-card-linkarea{
+    display:block;
+    text-decoration:none;
+    color:inherit;
+}
+.home-app-card-image-wrap{ position:relative; width:100%; aspect-ratio:4/3; background:#eeece4; }
+.home-app-card-image-wrap img{ width:100%; height:100%; object-fit:cover; }
+.home-app-card-badge{
+    position:absolute; top:10px; left:10px;
+    background:#0F3B2E; color:#fff;
+    font-size:10px; font-weight:700; letter-spacing:.4px;
+    padding:4px 9px; border-radius:6px;
+}
+.home-app-card-badge.pending{ background:#D4AF37; color:#111; }
+.home-app-card-badge.published{ background:#0F3B2E; }
+.home-app-card-heart{
+    position:absolute; top:8px; right:8px;
+    width:30px; height:30px; border-radius:999px;
+    background:rgba(255,255,255,.92); border:none;
+    display:flex; align-items:center; justify-content:center;
+    color:#0F3B2E; cursor:pointer;
+}
+.home-app-card-heart.saved{ color:#c0392b; }
+.home-app-card-content{ padding:12px 14px 14px; }
+.home-app-card-content h3{
+    font-size:14px; margin:0 0 4px; color:#111827;
+    display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow:hidden;
+}
+.home-app-card-location{
+    display:flex; align-items:center; gap:4px;
+    font-size:11.5px; color:#6b7280; margin-bottom:6px;
+}
+.home-app-card-details{ font-size:13px; font-weight:700; color:#0F3B2E; }
+
+/* FUTURE PROPERTIES ONLY — View Details / Call / WhatsApp row.
+   Compact, matches the card's existing rounded/bordered language.
+   Kept as a slim strip so it's the "minimum layout adjustment" —
+   the image/title/location/price area above is completely
+   unchanged in size or style. */
+.home-app-card-actions{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    padding:0 10px 10px;
+}
+.home-app-card-view-btn{
+    flex:1;
+    text-align:center;
+    background:#0F3B2E;
+    color:#fff;
+    font-size:11.5px;
+    font-weight:700;
+    text-decoration:none;
+    padding:8px 6px;
+    border-radius:8px;
+    white-space:nowrap;
+}
+.home-app-card-view-btn:hover{ background:#0c2f24; }
+.home-app-card-icon-btn{
+    flex:0 0 auto;
+    width:32px;
+    height:32px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:8px;
+    border:1.5px solid #0F3B2E;
+    color:#0F3B2E;
+    font-size:13px;
+    text-decoration:none;
+}
+.home-app-card-icon-btn:hover{ background:#0F3B2E; color:#fff; }
+
+/* Fixed mobile bottom navigation — mirrors the site's existing
+   html.is-mobile convention, hidden on desktop/tablet by default */
+.home-app-bottom-nav{ display:none; }
+html.is-mobile .home-app-bottom-nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-around;
+    position:fixed;
+    left:0; right:0; bottom:0;
+    background:#ffffff;
+    border-top:1px solid #eceae2;
+    padding:8px 4px calc(8px + env(safe-area-inset-bottom));
+    z-index:9998;
+}
+/* BUG FIX (QA pass): nothing reserved space for the fixed bottom
+   nav, so the last ~43-90px of page content (footer, and anything
+   else at the true bottom of the page) rendered underneath it and
+   was unclickable — confirmed by scrolling to true max-scroll and
+   measuring the footer's bottom edge against the nav's top edge.
+   90px comfortably clears the nav's own height (~51-64px depending
+   on font metrics) plus notched-device safe-area headroom. */
+html.is-mobile body{ padding-bottom:90px; }
+/* BUG FIX (QA pass): any interactive element that gets scrolled to
+   the natural bottom edge of the viewport (auto-scroll-into-view,
+   anchor jumps, keyboard focus) can land exactly where the fixed
+   bottom nav sits, since a fixed bar occupies the same screen
+   position regardless of scroll offset. scroll-margin-bottom keeps
+   a clearance zone so these elements always stop short of it. */
+html.is-mobile .home-app-recent-chip,
+html.is-mobile .home-app-property-card,
+html.is-mobile .home-app-card-heart{
+    scroll-margin-bottom:100px;
+}
+.home-app-nav-item{
+    display:flex; flex-direction:column; align-items:center; gap:3px;
+    font-size:10.5px; color:#6b7280; text-decoration:none;
+    background:none; border:none; cursor:pointer;
+}
+.home-app-nav-item i{ font-size:19px; }
+.home-app-nav-item.active{ color:#0F3B2E; }
+.home-app-nav-postfree{
+    display:flex; align-items:center; justify-content:center;
+    width:52px; height:52px; border-radius:999px;
+    background:#0F3B2E; color:#fff; font-size:20px;
+    margin-top:-26px; box-shadow:0 6px 16px rgba(15,59,46,.35);
+    text-decoration:none;
+}
+
+/* Keep the existing floating WhatsApp/Back-to-top buttons clear of
+   the new bottom nav on mobile (cascade order wins, no !important
+   needed — these come after the existing html.is-mobile rules) */
+html.is-mobile .whatsapp-float{ bottom:90px; }
+html.is-mobile .back-to-top{ bottom:154px; }
+
+@media (max-width:640px){
+    .home-app-listings-grid, .home-app-recent-chips[id="myRecentSearchesPanel"], .home-app-future-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:10px;
+    }
+    .home-app-post-btn span{ display:none; }
+    .home-app-post-btn{ padding:8px 12px; }
+}
+
+@media (min-width:900px){
+    .home-app-listings-grid, .home-app-future-grid{ grid-template-columns:repeat(4,1fr); }
 }
