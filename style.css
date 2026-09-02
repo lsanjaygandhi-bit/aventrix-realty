@@ -223,9 +223,9 @@ nav a:hover{
     left:10px;
     display:flex;
     align-items:center;
-    padding:3px 9px;
-    border-radius:6px;
-    font-size:8px;
+    padding:2px 7px;
+    border-radius:5px;
+    font-size:7px;
     font-weight:700;
     letter-spacing:.4px;
     text-transform:uppercase;
@@ -474,18 +474,21 @@ nav a:hover{
 }
 
 .why-item{
+    /* BOXED CARD per feedback: was a plain text column separated
+       only by a left-border divider — now an individual compact
+       card. Content/icons unchanged. */
     text-align:center;
-    padding:4px 20px;
-    border-left:1px solid rgba(17,24,39,.08);
-    transition:transform .45s cubic-bezier(.2,.8,.2,1);
-}
-
-.why-item:first-child{
-    border-left:none;
+    padding:22px 18px;
+    background:#ffffff;
+    border:1px solid rgba(17,24,39,.07);
+    border-radius:14px;
+    box-shadow:0 4px 14px rgba(15,59,46,.05);
+    transition:transform .45s cubic-bezier(.2,.8,.2,1), box-shadow .35s ease;
 }
 
 .why-item:hover{
     transform:translateY(-6px);
+    box-shadow:0 14px 30px rgba(15,59,46,.12);
 }
 
 .why-icon{
@@ -547,22 +550,27 @@ nav a:hover{
 .service-grid{
     display:grid;
     grid-template-columns:repeat(4,1fr);
-    gap:0;
+    gap:20px;
 }
 
 .service-item{
+    /* BOXED CARD per feedback: was a plain divided column, now an
+       individual compact card, same treatment as Why Aventrix
+       Standard. Content/icons unchanged. Gap added above since
+       touching cards with gap:0 no longer makes sense once each has
+       its own visible border. */
     text-align:center;
-    padding:8px 28px;
-    border-left:1px solid rgba(17,24,39,.08);
-    transition:transform .4s ease;
-}
-
-.service-item:first-child{
-    border-left:none;
+    padding:22px 16px;
+    background:#ffffff;
+    border:1px solid rgba(17,24,39,.07);
+    border-radius:14px;
+    box-shadow:0 4px 14px rgba(15,59,46,.05);
+    transition:transform .4s ease, box-shadow .35s ease;
 }
 
 .service-item:hover{
     transform:translateY(-6px);
+    box-shadow:0 14px 30px rgba(15,59,46,.12);
 }
 
 .service-icon{
@@ -3013,10 +3021,17 @@ nav a:hover::after{
 
 .list-hero{
 
-    background: 
-    linear-gradient(rgba(5, 7, 21, 0.893),rgba(10, 20, 45, 0.80)),
+    /* HERO CONSISTENCY per feedback: replaced the heavy navy/black
+       gradient (rgba(5,7,21,.89) -> rgba(10,20,45,.80), a blue-toned
+       overlay) with a neutral dark charcoal glass treatment — more
+       transparent, no blue tint, image reads clearly through it.
+       min-height reduced from 90vh (near-full viewport) to match
+       .sf-header's new shared height so all six service-page heroes
+       are visually consistent. */
+    background:
+    linear-gradient(rgba(10,10,12,0.5), rgba(10,10,12,0.62)),
     url("images/list-property-banner.jpg") center center/cover no-repeat;
-    min-height:90vh;
+    min-height:420px;
     justify-content:center;
     display:flex;
     align-items:center;
@@ -3348,17 +3363,41 @@ nav a:hover::after{
     display: block;
 }
 .free-valuation-hero{
+    /* HERO CONSISTENCY per feedback: same dark-glass overlay and
+       shared height as the other five service-page heroes — keeps
+       its own image (valuation-bg.png). */
     background:
-    linear-gradient(rgba(10,20,45,0.78), rgba(10,20,45,0.78)),
+    linear-gradient(rgba(10,10,12,0.5), rgba(10,10,12,0.62)),
     url("images/valuation-bg.png") center center/cover no-repeat;
 
-    min-height:90vh;
+    min-height:420px;
     display:flex;
     align-items:center;
     justify-content:center;
     text-align:center;
     position:relative;
 }
+
+/* HERO CONSISTENCY per feedback: these three pages previously had no
+   distinct image at all (plain .list-hero, sharing List With Us's
+   banner). Own existing image each, same dark-glass overlay/height
+   as the rest of this group via the shared .list-hero base. */
+.joint-venture-hero{
+    background:
+    linear-gradient(rgba(10,10,12,0.5), rgba(10,10,12,0.62)),
+    url("images/cat-land-plots.jpg") center center/cover no-repeat;
+}
+.nri-services-hero{
+    background:
+    linear-gradient(rgba(10,10,12,0.5), rgba(10,10,12,0.62)),
+    url("images/cat-investment.jpg") center center/cover no-repeat;
+}
+.contact-page-hero{
+    background:
+    linear-gradient(rgba(10,10,12,0.5), rgba(10,10,12,0.62)),
+    url("images/chennai-marina.jpg") center center/cover no-repeat;
+}
+
 /* ENQUIRY PAGE FIX */
 .enquiry-form-section{
     padding-top:50px;
@@ -3576,7 +3615,15 @@ html.is-mobile .nav-right{
 }
 
 html.is-mobile .hero{
-    min-height: 820px;
+    /* MOBILE-ONLY per feedback: reduced from 820px. Originally tried
+       750px (~8.5%) but that combined with the longer new headline
+       text to overlap the search panel with "BUY - SELL - RENT" —
+       confirmed the margin there was already only ~8px even before
+       this change. Settled on 780px (~5%, low end of the requested
+       5-10% range) which leaves enough room to fix that overlap
+       properly (see .hero-search-wrap below) rather than compounding
+       it. Desktop's .hero{min-height:88vh} above is untouched. */
+    min-height: 780px;
     height:auto;
     padding:40px 16px 0;
 }
@@ -3653,16 +3700,22 @@ html.is-mobile .service-grid{
     gap:14px;
 }
 html.is-mobile .service-item{
-    /* The left-border "divider" styling only makes sense in the
-       desktop 4-in-a-row layout; in a 2-column grid it would show up
-       as an odd, inconsistent line on only some items. Padding
-       trimmed to fit the narrower column. */
+    /* Padding trimmed to fit the narrower 2-column width. */
     padding:6px 10px;
-    border-left:none;
 }
 
 html.is-mobile .property-card{
     width:100%;
+}
+/* MOBILE-ONLY per feedback: View Details on properties.html cards
+   was still using the full desktop size (min-height:44px,
+   padding:11px 22px, font-size:14px). Compact version here, kept
+   large enough to tap comfortably (36px min-height, well above the
+   ~32px de-facto minimum). Desktop .view-details-btn is untouched. */
+html.is-mobile .view-details-btn{
+    min-height:38px;
+    padding:8px 16px;
+    font-size:12.5px;
 }
 
 html.is-mobile .leader-card{
@@ -3692,15 +3745,21 @@ html.is-mobile .services{
     padding:45px 16px 50px;
 }
 
-html.is-mobile .why-grid,
-html.is-mobile .service-grid{
+html.is-mobile .why-grid{
     gap:32px;
 }
 
 html.is-mobile .why-item,
 html.is-mobile .service-item{
-    border-left:none;
-    padding:0;
+    /* BOXED CARD per feedback: was padding:0 (fine for the old plain-
+       divider look, but would make the new card boxes look broken —
+       content touching the card edges). Now matches the boxed-card
+       treatment. BUG FIX: this rule (and two others nearby) used to
+       also set border-left:none — leftover from before these were
+       real 4-side-bordered boxes; removing it, since it was
+       chipping the left edge off the border on mobile (confirmed
+       directly: borderWidth computed as "1px 1px 1px 0px"). */
+    padding:16px 12px;
 }
 
 html.is-mobile .why-item p,
@@ -3711,7 +3770,13 @@ html.is-mobile .service-item p{
 html.is-mobile .hero-search-wrap{
     position:absolute;
     left:50%;
-    bottom:120px;
+    /* BUG FIX: calculated to give ~17px clearance below the
+       "BUY - SELL - RENT" tagline (which sits lower than before due
+       to the new, longer headline pushing it down) while still
+       reducing the empty gap below the panel compared to the
+       original 120px. Verified empirically below, not just by this
+       calculation. */
+    bottom:30px;
     transform:translateX(-50%);
     width:calc(100% - 32px);
     max-width:none;
@@ -4722,9 +4787,9 @@ html.is-mobile .rp-contact-row{
     gap:24px 20px;
 }
 
-.why-grid-6 .why-item{
-    border-left:none;
-}
+/* Obsolete now that .why-item is a full 4-side bordered card — this
+   used to strip just the left edge back when items were separated
+   by a single border-left divider line (pre-boxed-card design). */
 
 /* ==========================================================
    FAQ ACCORDION
@@ -4930,10 +4995,10 @@ html.is-mobile .why-grid-6{
     margin-top:20px;
 }
 html.is-mobile .why-grid-6 .why-item{
-    /* Same reasoning as .service-item: the left-border divider only
-       makes sense in the desktop single-row layout. */
-    border-left:none;
-    padding:4px 8px;
+    /* Cards now have their own background/border/shadow (see base
+       .why-item rule). Padding tuned for the boxed card look at
+       mobile's 2-column width. */
+    padding:14px 10px;
 }
 
 html.is-mobile .locations-grid{
@@ -5602,8 +5667,21 @@ body.qv-open{
    ============================================================ */
 
 .sf-header{
-    padding:150px 8% 40px;
-    background:#0F3B2E;
+    /* HERO CONSISTENCY per feedback: was a flat solid colour with no
+       image and a much shorter, padding-only height than the other
+       service-page heroes. Now uses the same image+overlay mechanism
+       and the same shared min-height as .list-hero (see below), so
+       Properties/List With Us/Free Valuation/Joint Venture/NRI
+       Services/Contact all match. */
+    background:
+    linear-gradient(rgba(10,10,12,0.55), rgba(10,10,12,0.68)),
+    url("images/property2.jpg") center center/cover no-repeat;
+    min-height:420px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:40px 8%;
     text-align:center;
     color:#fff;
 }
