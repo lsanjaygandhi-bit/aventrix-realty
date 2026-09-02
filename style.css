@@ -1803,17 +1803,42 @@ p.copyright .footer-login-link{
 }
 .whatsapp-float{
     position: fixed;
-    bottom: 40px;
-    right: 20px;
-    width: 85px;
-    height: 85px;
+    /* DESKTOP OVERLAP FIX: was 85px at bottom:40/right:20, while
+       Back-to-Top was a different size (40px) at bottom:10/right:45
+       — the two boxes genuinely overlapped. Unified size (56px) and
+       right edge (24px) for both, with a clean 8px gap between them
+       vertically. Mobile is untouched — html.is-mobile and the
+       max-width:768px non-mobile-narrow-viewport rules each already
+       set their own width/height/bottom/right independently, so
+       nothing here reaches mobile. */
+    bottom: 24px;
+    right: 24px;
+    width: 56px;
+    height: 56px;
     z-index: 9999;
+    /* BUG FIX: border-radius on the <img> alone does not clip its
+       content in this browser — confirmed directly with an isolated
+       test (a red background stayed fully visible in every square
+       corner despite border-radius:100% on the img). The clip must
+       happen on this container instead, which is why it's added
+       here alongside overflow:hidden. */
+    border-radius: 100%;
+    overflow: hidden;
+    display: block;
+    /* New logo artwork (per latest upload) has a transparent
+       background — a solid white circular backing keeps this
+       reading as a proper button rather than a transparent shape
+       floating directly on the page, and gives the green logo mark
+       clean contrast against any page background. */
+    background: #ffffff;
+    box-shadow: 0 4px 14px rgba(0,0,0,.18);
 }
 
 .whatsapp-float img{
     width:100%;
     height:100%;
-    border-radius: 100%;
+    object-fit:cover;
+    display:block;
     transition: transform 0.3s;
 }
 .whatsapp-float:hover img{
@@ -1827,17 +1852,21 @@ p.copyright .footer-login-link{
 =========================== */
 .back-to-top{
     position: fixed;
-    bottom: 10px;
-    right: 45px;
-    width: 40px;
-    height: 40px;
+    /* DESKTOP OVERLAP FIX: unified size/right-edge with the WhatsApp
+       button above (see .whatsapp-float) and positioned with a
+       clean 8px gap between them (WhatsApp spans 24-80px from the
+       bottom, this spans 88-144px). */
+    bottom: 88px;
+    right: 24px;
+    width: 56px;
+    height: 56px;
     border-radius: 100%;
     display:flex;
     align-items:center;
     justify-content:center;
     background:lab(69.03% 27.33 65.19);
     color:#ffffff;
-    font-size:28px;
+    font-size:26px;
     border:none;
     cursor:pointer;
     box-shadow:0 8px 22px rgba(0,0,0,.25);
@@ -2387,6 +2416,23 @@ html.is-mobile .pd-trust{
     padding:20px 0;
 }
 
+/* BUG FIX per feedback: these sections' .container (shared sitewide,
+   zero horizontal padding by default below 1200px) left the title,
+   price/location, Property Details, Property Description, Key
+   Features, RERA/Brokerage, the contact-action row, and the back-bar
+   all touching the screen edges on mobile. Scoped to each section's
+   own .container specifically — the shared .container class itself
+   is untouched, so no other page is affected. */
+html.is-mobile .pd-header .container,
+html.is-mobile .pd-specs .container,
+html.is-mobile .pd-description .container,
+html.is-mobile .pd-features .container,
+html.is-mobile .pd-trust .container,
+html.is-mobile .pd-contact-cta .container,
+html.is-mobile .pd-backbar-row{
+    padding:0 16px;
+}
+
 .hero{
     min-height: 88vh;
     padding-top: 20px;
@@ -2424,7 +2470,14 @@ width:100%;
 
 height:100%;
 
-background:linear-gradient(180deg, rgba(7,17,31,.32) 0%, rgba(7,17,31,.5) 65%, rgba(7,17,31,.62) 100%);
+/* LIGHTER, NEUTRAL OVERLAY per feedback: was a navy/black-tinted
+   gradient (rgba(7,17,31, .32 -> .5 -> .62)) that made the hero
+   image look dull and heavily darkened, especially near the bottom.
+   Same neutral dark-charcoal tone already used on the six inner-page
+   heroes, at a notably lighter opacity here so the image reads
+   clearly — still enough contrast at the bottom for the search
+   panel's text. */
+background:linear-gradient(180deg, rgba(10,10,12,.15) 0%, rgba(10,10,12,.28) 65%, rgba(10,10,12,.4) 100%);
 
 display:flex;
 
@@ -3076,6 +3129,17 @@ nav a:hover::after{
 
 }
 
+/* MOBILE-ONLY per feedback: 54px was too large on narrow phone
+   screens, covering too much of the background image, across all
+   five pages that share .list-hero (List With Us, Free Valuation,
+   Joint Venture, NRI Services, Contact). Font family/weight/color
+   untouched — only size. Properties page uses a completely separate
+   selector (.sf-header h1), so it's structurally unreachable by
+   this rule. Desktop's 54px above is untouched. */
+html.is-mobile .list-hero h1{
+    font-size:26px;
+}
+
 .list-hero p{
 
     font-size:18px;
@@ -3390,7 +3454,7 @@ nav a:hover::after{
 .nri-services-hero{
     background:
     linear-gradient(rgba(10,10,12,0.5), rgba(10,10,12,0.62)),
-    url("images/cat-investment.jpg") center center/cover no-repeat;
+    url("images/nri-services-hero.jpg") center center/cover no-repeat;
 }
 .contact-page-hero{
     background:
@@ -3636,6 +3700,21 @@ html.is-mobile .hero-overlay{
 html.is-mobile .hero-buttons{
     flex-direction:column;
     gap:14px;
+}
+
+/* MOBILE-ONLY per feedback: switching to flex-direction:column above
+   means the cross-axis becomes horizontal, and flexbox's default
+   align-items:stretch was stretching the button to fill the full
+   width — that's the actual cause of the oversized button, not
+   anything explicit on .primary-btn itself. Scoped to this added
+   class (only on List With Us / Free Valuation / Joint Venture /
+   NRI Services) rather than plain .hero-buttons, so enquiry.html
+   — which shares .hero-buttons but was not part of this request —
+   is completely unaffected. align-items:center stops the stretch
+   (button becomes its natural content+padding width) and centers
+   it, satisfying both requirements with one property. */
+html.is-mobile .hero-buttons-compact{
+    align-items:center;
 }
 
 html.is-mobile .hero-content{
@@ -4167,7 +4246,7 @@ html.is-mobile body.mobile-menu-open .whatsapp-float{
        touch/UA signals that set the .is-mobile class. */
     html:not(.is-mobile) .whatsapp-float{
         width: 52px;
-        height:px;
+        height:52px;
         bottom:20px;
         right:18px;
     }
@@ -5675,7 +5754,7 @@ body.qv-open{
        Services/Contact all match. */
     background:
     linear-gradient(rgba(10,10,12,0.55), rgba(10,10,12,0.68)),
-    url("images/property2.jpg") center center/cover no-repeat;
+    url("images/properties-hero.jpg") center center/cover no-repeat;
     min-height:420px;
     display:flex;
     flex-direction:column;
@@ -7163,7 +7242,15 @@ html.is-mobile .home-app-recent-empty{ font-size:11.5px; }
     padding:0 16px;
 }
 .home-app-property-card{
-    display:block;
+    /* BUG FIX per feedback: bottom action row (View Details/Call/
+       WhatsApp) wasn't anchored — was display:block, so cards with
+       shorter titles left empty space above the actions row instead
+       of pushing it to the same bottom edge as neighboring cards.
+       Same proven flex-column + margin-top:auto pattern already
+       used successfully on properties.html's cards. */
+    display:flex;
+    flex-direction:column;
+    height:100%;
     background:#ffffff;
     border-radius:16px;
     overflow:hidden;
@@ -7183,12 +7270,12 @@ html.is-mobile .home-app-recent-empty{ font-size:11.5px; }
 .home-app-card-image-wrap img{ width:100%; height:100%; object-fit:cover; }
 .home-app-card-badge{
     position:absolute; top:10px; left:10px;
-    background:#0F3B2E; color:#fff;
-    font-size:10px; font-weight:700; letter-spacing:.4px;
-    padding:4px 9px; border-radius:6px;
+    background:#D4AF37; color:#0F3B2E;
+    font-size:8px; font-weight:700; letter-spacing:.3px;
+    padding:2px 7px; border-radius:5px;
 }
 .home-app-card-badge.pending{ background:#D4AF37; color:#111; }
-.home-app-card-badge.published{ background:#0F3B2E; }
+.home-app-card-badge.published{ background:#0F3B2E; color:#fff; }
 .home-app-card-heart{
     position:absolute; top:8px; right:8px;
     width:30px; height:30px; border-radius:999px;
@@ -7218,17 +7305,24 @@ html.is-mobile .home-app-recent-empty{ font-size:11.5px; }
     align-items:center;
     gap:6px;
     padding:0 10px 10px;
+    /* Pushes the actions row to the bottom of the now flex-column
+       card, regardless of how tall the content above it is. */
+    margin-top:auto;
 }
 .home-app-card-view-btn{
     flex:1;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-height:32px;
     text-align:center;
     background:#0F3B2E;
     color:#fff;
-    font-size:11.5px;
+    font-size:10.5px;
     font-weight:700;
     text-decoration:none;
-    padding:8px 6px;
-    border-radius:8px;
+    padding:6px 5px;
+    border-radius:7px;
     white-space:nowrap;
 }
 .home-app-card-view-btn:hover{ background:#0c2f24; }
