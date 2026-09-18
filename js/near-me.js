@@ -85,8 +85,7 @@
 
     const RADIUS_OPTIONS = [1, 5, 10, 25];
     let selectedRadius = 10;
-    let userCoords = null; // in-memory only, never persisted
-    let deniedThisSession = false;
+    let userCoords = null; // in-memory only, never persisted beyond sessionStorage
 
     // ---------------------------------------------------------
     // Haversine distance in km — reusable as-is once real
@@ -151,7 +150,6 @@
     }
 
     function renderDenied(message) {
-        deniedThisSession = true;
         widget.innerHTML = `
             <div class="near-me-panel near-me-fallback">
                 <p class="near-me-copy"><i class="fas fa-circle-info" aria-hidden="true"></i> ${escapeHtml(message)}</p>
@@ -284,37 +282,53 @@
     }
 
     // ---------------------------------------------------------
-    // Geolocation — only ever triggered by the user's own click on
-    // "Allow Location Access" above. Never called on page load, and
-    // never re-prompted automatically after a denial in this session.
+    // Geolocation — delegates the actual browser API call to
+    // js/geo-bridge.js, which is shared with index.html. If the
+    // homepage (or an earlier visit to this page, this session)
+    // already resolved this, the bridge returns that result instantly
+    // with no second call to the browser at all — the native prompt
+    // can only ever appear once per session, and this page reuses
+    // homepage coordinates automatically when they exist.
     // ---------------------------------------------------------
     function requestLocation() {
-        if (deniedThisSession) return; // don't nag after a denial this session
-        if (!("geolocation" in navigator)) {
-            renderDenied("Location isn't supported in this browser. You can search by location manually below.");
+        if (!window.AventrixGeoBridge) {
+            renderDenied("Location isn't available right now. You can search by location manually below.");
             return;
         }
 
         renderRequesting();
 
-        navigator.geolocation.getCurrentPosition(
-            (position) => {
-                userCoords = { lat: position.coords.latitude, lng: position.coords.longitude };
+        window.AventrixGeoBridge.request({
+            onGranted: (lat, lng) => {
+                userCoords = { lat, lng };
                 selectedRadius = 10;
                 renderResults();
             },
-            (error) => {
-                let message = "Location access was not enabled. You can search by location manually.";
-                if (error.code === error.TIMEOUT) {
-                    message = "Location request timed out. You can search by location manually.";
-                } else if (error.code === error.POSITION_UNAVAILABLE) {
-                    message = "Your location couldn't be determined right now. You can search by location manually.";
-                }
-                renderDenied(message);
-            },
-            { enableHighAccuracy: false, timeout: 8000, maximumAge: 300000 }
-        );
+            onUnavailable: (message) => {
+                renderDenied(message + " You can search by location manually.");
+            }
+        });
     }
 
-    trigger.addEventListener("click", renderExplainer);
+    // Manual re-open: clicking the collapsed trigger (shown after a
+    // denial, or after the results panel is cleared) re-runs the same
+    // requestLocation() flow. This does NOT show a second custom
+    // explainer step first — it goes straight to the browser's
+    // native prompt, same as the automatic call below. The browser
+    // itself decides whether that prompt actually appears again
+    // (it won't, once the user has already allowed or denied this
+    // site — see the note above requestLocation()).
+    trigger.addEventListener("click", requestLocation);
+
+    // ---------------------------------------------------------
+    // Auto-trigger on page load — no custom Aventrix "explainer"
+    // panel first. The ONLY thing shown before the browser's native
+    // permission dialog is a brief "waiting" message; the dialog
+    // itself is entirely the browser's own UI (native Allow/Don't
+    // Allow), not anything built here. If the user has already
+    // granted or denied this site before, the browser resolves
+    // instantly with no dialog at all — requestLocation() already
+    // handles both outcomes without any extra guard needed here.
+    // ---------------------------------------------------------
+    requestLocation();
 })();
