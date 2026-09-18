@@ -1,0 +1,264 @@
+/*
+ * AVENTRIX REALTY — PHASE 2A: PROPERTY DISCOVERY & SEARCH UX
+ * -------------------------------------------------------------
+ * New, additive stylesheet — style.css is left untouched. Reuses the
+ * existing brand palette (#0F3B2E deep green, #D4AF37 gold,
+ * #faf9f7 off-white, #e5e3da borders) so nothing here reads as a
+ * redesign, only new components in the existing visual language.
+ */
+
+/* ---------- Use My Location / Near Me ---------- */
+.near-me-section{ padding:0 0 6px; }
+.near-me-widget{ max-width:1200px; margin:0 auto; }
+
+.near-me-trigger{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    background:#fff;
+    border:1px solid #e5e3da;
+    color:#0F3B2E;
+    font-weight:600;
+    font-size:14px;
+    padding:12px 20px;
+    border-radius:12px;
+    cursor:pointer;
+    box-shadow:0 4px 14px rgba(0,0,0,0.05);
+    transition:.2s;
+}
+.near-me-trigger:hover{ border-color:#D4AF37; background:#faf9f7; }
+.near-me-trigger i{ color:#D4AF37; }
+
+.near-me-panel{
+    background:#fff;
+    border:1px solid #e5e3da;
+    border-radius:16px;
+    padding:20px 22px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.04);
+}
+
+.near-me-copy{
+    margin:0 0 14px;
+    font-size:15px;
+    color:#111827;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+.near-me-copy i{ color:#D4AF37; font-size:16px; }
+
+.near-me-actions{ display:flex; gap:12px; flex-wrap:wrap; }
+.near-me-allow-btn{
+    background:#0F3B2E;
+    color:#fff;
+    border:none;
+    font-weight:700;
+    font-size:14px;
+    padding:12px 22px;
+    border-radius:10px;
+    cursor:pointer;
+    transition:.2s;
+}
+.near-me-allow-btn:hover{ background:#0c2e24; }
+.near-me-cancel-btn{
+    background:transparent;
+    border:1px solid #d0cec4;
+    color:#555;
+    font-weight:600;
+    font-size:14px;
+    padding:11px 20px;
+    border-radius:10px;
+    cursor:pointer;
+    transition:.2s;
+}
+.near-me-cancel-btn:hover{ border-color:#0F3B2E; color:#0F3B2E; }
+
+.near-me-fallback .near-me-copy{ color:#555; }
+
+.near-me-results-panel{ padding:18px 22px 22px; }
+.near-me-results-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:14px;
+}
+.near-me-results-header h3{
+    margin:0;
+    font-size:16px;
+    color:#0F3B2E;
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+.near-me-results-header h3 i{ color:#D4AF37; }
+.near-me-clear-btn{
+    background:transparent;
+    border:none;
+    color:#9a9a9a;
+    font-size:13px;
+    font-weight:600;
+    cursor:pointer;
+    text-decoration:underline;
+}
+.near-me-clear-btn:hover{ color:#0F3B2E; }
+
+.near-me-radius-row{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px; }
+.near-me-radius-chip{
+    background:#faf9f7;
+    border:1px solid #e0ded4;
+    color:#0F3B2E;
+    font-size:13px;
+    font-weight:600;
+    padding:7px 16px;
+    border-radius:20px;
+    cursor:pointer;
+    transition:.15s;
+}
+.near-me-radius-chip:hover{ border-color:#D4AF37; }
+.near-me-radius-chip.active{ background:#0F3B2E; color:#fff; border-color:#0F3B2E; }
+
+.near-me-note{ font-size:12.5px; color:#9a9a9a; margin:0 0 16px; }
+.near-me-empty{ color:#666; font-size:14px; padding:10px 0; }
+
+.near-me-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(270px, 1fr));
+    gap:22px;
+}
+
+.near-me-distance-pill{
+    position:absolute;
+    bottom:10px;
+    right:10px;
+    background:rgba(15,59,46,0.85);
+    color:#fff;
+    font-size:11px;
+    font-weight:600;
+    padding:4px 9px;
+    border-radius:20px;
+}
+
+.near-me-skeleton-row{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(270px, 1fr));
+    gap:22px;
+    grid-column:1 / -1;
+}
+
+/* ---------- Loading skeletons (property-card shaped) ---------- */
+@keyframes phase2a-shimmer{
+    0%{ background-position:-200px 0; }
+    100%{ background-position:calc(200px + 100%) 0; }
+}
+.skeleton-card{
+    background:#fff;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 12px 34px rgba(15,59,46,.06);
+    display:flex;
+    flex-direction:column;
+}
+.skeleton-image{
+    height:260px;
+    background:#eee;
+    background-image:linear-gradient(90deg, #eee 0px, #f5f5f5 40px, #eee 80px);
+    background-size:200px;
+    animation:phase2a-shimmer 1.4s ease-in-out infinite;
+}
+.skeleton-line{
+    height:12px;
+    margin:14px 16px 0;
+    border-radius:6px;
+    background:#eee;
+    background-image:linear-gradient(90deg, #eee 0px, #f5f5f5 40px, #eee 80px);
+    background-size:200px;
+    animation:phase2a-shimmer 1.4s ease-in-out infinite;
+}
+.skeleton-line-short{ width:35%; margin-bottom:6px; }
+.skeleton-line-long{ width:85%; }
+.skeleton-line-medium{ width:55%; margin-bottom:16px; }
+
+@media (prefers-reduced-motion: reduce){
+    .skeleton-image, .skeleton-line{ animation:none; }
+}
+
+/* ---------- Similar Properties / Recently Viewed (property.html) ---------- */
+.pd-related-section{ padding:44px 0; }
+.pd-related-section .pd-section-heading{ margin-bottom:18px; }
+.pd-related-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(260px, 1fr));
+    gap:20px;
+}
+.pd-related-empty{ color:#888; font-size:14px; }
+
+@media (max-width: 640px){
+    .near-me-radius-row{ overflow-x:auto; flex-wrap:nowrap; padding-bottom:4px; }
+    .near-me-grid, .near-me-skeleton-row, .pd-related-grid{ grid-template-columns:1fr 1fr; gap:14px; }
+}
+@media (max-width: 420px){
+    .near-me-grid, .near-me-skeleton-row, .pd-related-grid{ grid-template-columns:1fr; }
+}
+
+/* ---------- Recent Searches — expanded list (All Recent Searches) ---------- */
+.rs-expanded-wrap{ margin-top:12px; }
+.rs-expanded-list{
+    list-style:none;
+    margin:0 0 14px;
+    padding:0;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+.rs-expanded-item{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    background:#fff;
+    border:1px solid #e5e3da;
+    border-radius:10px;
+    padding:10px 14px;
+}
+.rs-expanded-link{
+    color:#0F3B2E;
+    font-size:14px;
+    font-weight:600;
+    text-decoration:none;
+    flex:1;
+}
+.rs-expanded-link:hover{ color:#D4AF37; }
+.rs-remove-btn{
+    background:transparent;
+    border:none;
+    color:#9a9a9a;
+    font-size:14px;
+    width:28px;
+    height:28px;
+    border-radius:50%;
+    cursor:pointer;
+    transition:.15s;
+    flex-shrink:0;
+}
+.rs-remove-btn:hover{ background:#faf9f7; color:#c0392b; }
+.rs-clear-all-btn{
+    background:transparent;
+    border:1px solid #d0cec4;
+    color:#555;
+    font-weight:600;
+    font-size:13px;
+    padding:9px 18px;
+    border-radius:10px;
+    cursor:pointer;
+    transition:.2s;
+}
+.rs-clear-all-btn:hover{ border-color:#c0392b; color:#c0392b; }
+.rs-expanded-empty{ color:#9a9a9a; font-size:13px; margin:6px 0 0; }
+
+#propertiesRecentSearchSection{ padding:0 0 22px; background:transparent; }
+#propertiesRecentSearchSection .home-app-recent-row{ padding:0; }
+
+@media (max-width: 640px){
+    .rs-expanded-item{ padding:9px 12px; }
+    .rs-expanded-link{ font-size:13.5px; }
+}

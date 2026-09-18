@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /account.html
+Disallow: /wishlist.html
+Disallow: /shortlist.html
+
+Sitemap: https://aventrixrealty.com/sitemap.xml

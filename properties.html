@@ -48,14 +48,59 @@
     <link rel="manifest" href="/site.webmanifest">
 
     <title>Search Properties | Aventrix Realty</title>
+
+    <link rel="canonical" href="https://aventrixrealty.com/properties.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Aventrix Realty">
+    <meta property="og:title" content="Search Properties | Aventrix Realty">
+    <meta property="og:url" content="https://aventrixrealty.com/properties.html">
+    <meta property="og:image" content="https://aventrixrealty.com/images/chennai-marina.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Search Properties | Aventrix Realty">
+    <meta name="twitter:image" content="https://aventrixrealty.com/images/chennai-marina.jpg">
     <meta name="description" content="Search Aventrix Realty's full property listings across Chennai — filter by location, type, buy or rent, price, bedrooms, bathrooms and area.">
 
     <link rel="stylesheet" href="style.css?v=20260831">
+    <link rel="stylesheet" href="css/phase2a.css?v=1">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Search Properties | Aventrix Realty",
+  "url": "https://aventrixrealty.com/properties.html",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Aventrix Realty",
+    "url": "https://aventrixrealty.com/"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://aventrixrealty.com/index.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Properties",
+      "item": "https://aventrixrealty.com/properties.html"
+    }
+  ]
+}
+    </script>
 </head>
 
 <body>
@@ -148,6 +193,17 @@
     </div>
 </section>
 
+<section class="near-me-section">
+    <div class="container">
+        <div class="near-me-widget" id="nearMeWidget">
+            <button type="button" class="near-me-trigger" id="nearMeTrigger">
+                <i class="fas fa-location-crosshairs" aria-hidden="true"></i>
+                <span>Properties Near Me</span>
+            </button>
+        </div>
+    </div>
+</section>
+
 <section class="sf-filter-section">
     <div class="container">
 
@@ -233,6 +289,47 @@
                     </div>
                 </div>
 
+                <div class="sf-field">
+                    <label for="sfFacing">Facing</label>
+                    <select id="sfFacing">
+                        <option value="">Any</option>
+                        <option>North</option>
+                        <option>South</option>
+                        <option>East</option>
+                        <option>West</option>
+                        <option>North-East</option>
+                        <option>North-West</option>
+                        <option>South-East</option>
+                        <option>South-West</option>
+                    </select>
+                </div>
+
+                <div class="sf-field">
+                    <label for="sfFurnishing">Furnishing</label>
+                    <select id="sfFurnishing">
+                        <option value="">Any</option>
+                        <option value="Fully Furnished">Fully Furnished</option>
+                        <option value="Semi-Furnished">Semi-Furnished</option>
+                        <option value="Unfurnished">Unfurnished</option>
+                    </select>
+                </div>
+
+                <div class="sf-field">
+                    <label for="sfParking">Parking</label>
+                    <select id="sfParking">
+                        <option value="">Any</option>
+                        <option value="1">1+</option>
+                        <option value="2">2+</option>
+                        <option value="3">3+</option>
+                        <option value="4">4+</option>
+                    </select>
+                </div>
+
+                <div class="sf-field">
+                    <label for="sfRoadWidthMin">Min. Road Width (ft)</label>
+                    <input type="number" id="sfRoadWidthMin" placeholder="e.g. 30" min="0">
+                </div>
+
             </div>
 
             <div class="sf-filter-panel-actions">
@@ -249,6 +346,15 @@
 
 <section class="sf-results-section">
     <div class="container">
+
+        <section class="home-app-recent-section" aria-label="Recent searches" id="propertiesRecentSearchSection">
+            <div class="home-app-recent-row">
+                <span class="home-app-recent-label"><i class="fas fa-history" aria-hidden="true"></i> Recent Search</span>
+                <div class="home-app-recent-chips" id="sfRecentSearchesChips"></div>
+                <button type="button" class="home-app-recent-all" id="sfAllRecentSearchesBtn">All Recent Searches</button>
+            </div>
+            <div class="rs-expanded-wrap" id="sfRecentSearchesExpanded" hidden></div>
+        </section>
 
         <div class="sf-results-bar">
             <p class="sf-results-count" id="sfResultsCount" aria-live="polite">Loading properties…</p>
@@ -402,8 +508,10 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="js/supabase-client.js"></script>
 <script src="js/aventrix-storage.js"></script>
+<script src="js/recent-searches.js"></script>
 <script src="js/wishlist-widget.js"></script>
 <script src="js/properties-search.js"></script>
+<script src="js/near-me.js"></script>
 <script src="script.js"></script>
 
 </body>

@@ -719,11 +719,239 @@
             reraNoEl.textContent = settings.reraNo;
         }
 
-        // SEO — updates <title> and meta description/keywords without
-        // touching any visible layout.
-        if (property.seo_title) document.title = property.seo_title;
-        setMeta("description", property.seo_description);
+        // SEO — updates <title>, meta description/keywords, canonical URL,
+        // Open Graph / Twitter tags and JSON-LD structured data for this
+        // specific property, without touching any visible layout. Falls
+        // back to the property's own title/short_description whenever the
+        // dedicated seo_title/seo_description fields are empty, so a
+        // property never ships a blank or generic tag.
+        const seoTitle = property.seo_title || `${property.title} | Aventrix Realty`;
+        const seoDescription = property.seo_description || property.short_description || "";
+        const canonicalUrl = `https://aventrixrealty.com/property.html?id=${encodeURIComponent(property.slug)}`;
+        const ogImage = property.featured_image || (property.images && property.images[0]) || "https://aventrixrealty.com/images/chennai-marina.jpg";
+
+        document.title = seoTitle;
+        setMeta("description", seoDescription);
         setMeta("keywords", property.seo_keywords);
+        setCanonical(canonicalUrl);
+        setPropertyMeta("og:type", "product");
+        setPropertyMeta("og:site_name", "Aventrix Realty");
+        setPropertyMeta("og:title", seoTitle);
+        setPropertyMeta("og:description", seoDescription);
+        setPropertyMeta("og:url", canonicalUrl);
+        setPropertyMeta("og:image", ogImage);
+        setMeta("twitter:card", "summary_large_image");
+        setMeta("twitter:title", seoTitle);
+        setMeta("twitter:description", seoDescription);
+        setMeta("twitter:image", ogImage);
+        injectPropertyStructuredData(property, canonicalUrl, seoDescription);
+
+        renderSimilarProperties(property);
+        renderRecentlyViewed(property);
+    }
+
+    // ---------------------------------------------------------
+    // SIMILAR PROPERTIES (Phase 2A) — deterministic, rule-based, no AI.
+    // Tries progressively broader rules until at least 4 results are
+    // found (or the rules run out); never invents a match — a rule
+    // that returns nothing simply falls through to the next one.
+    // ---------------------------------------------------------
+    async function renderSimilarProperties(property) {
+        const section = document.getElementById("pdSimilarSection");
+        const grid = document.getElementById("pdSimilarGrid");
+        if (!section || !grid || !sb) return;
+
+        const MIN_RESULTS = 4;
+        const MAX_RESULTS = 8;
+        let matches = [];
+        const seenSlugs = new Set([property.slug]);
+
+        async function addFromQuery(builder) {
+            if (matches.length >= MIN_RESULTS) return;
+            const { data } = await builder.limit(MAX_RESULTS);
+            (data || []).forEach((p) => {
+                if (!seenSlugs.has(p.slug) && matches.length < MAX_RESULTS) {
+                    seenSlugs.add(p.slug);
+                    matches.push(p);
+                }
+            });
+        }
+
+        const base = () => sb.from("properties").select("*").eq("publish_status", "Published").neq("slug", property.slug);
+
+        // Rule 1: same category + same location
+        if (property.category && property.location) {
+            await addFromQuery(base().eq("category", property.category).ilike("location", `%${property.location}%`));
+        }
+        // Rule 2: same category, price within ~20%
+        if (matches.length < MIN_RESULTS && property.category && property.price_value) {
+            const lo = property.price_value * 0.8;
+            const hi = property.price_value * 1.2;
+            await addFromQuery(base().eq("category", property.category).gte("price_value", lo).lte("price_value", hi));
+        }
+        // Rule 3: same listing type + same bedroom count
+        if (matches.length < MIN_RESULTS && property.listing_type && property.bedrooms) {
+            await addFromQuery(base().eq("listing_type", property.listing_type).eq("bedrooms", property.bedrooms));
+        }
+        // Rule 4: fallback — same category, most recently published
+        if (matches.length < MIN_RESULTS && property.category) {
+            await addFromQuery(base().eq("category", property.category).order("created_at", { ascending: false }));
+        }
+
+        if (!matches.length) {
+            section.style.display = "none";
+            return;
+        }
+
+        section.style.display = "";
+        grid.innerHTML = matches.slice(0, MAX_RESULTS).map(cardTemplate).join("");
+        attachWishlistButtonListeners(grid);
+        attachShortlistButtonListeners(grid);
+    }
+
+    // ---------------------------------------------------------
+    // RECENTLY VIEWED (Phase 2A) — reads the client-side history
+    // AventrixStorage already tracks on every property view; shows
+    // every entry except the property currently being viewed.
+    // ---------------------------------------------------------
+    async function renderRecentlyViewed(property) {
+        const section = document.getElementById("pdRecentlyViewedSection");
+        const grid = document.getElementById("pdRecentlyViewedGrid");
+        if (!section || !grid || !sb || !window.AventrixStorage) return;
+
+        const history = window.AventrixStorage.recentlyViewed.list()
+            .filter((entry) => entry.slug !== property.slug)
+            .slice(0, 8);
+
+        if (!history.length) {
+            section.style.display = "none";
+            return;
+        }
+
+        const slugs = history.map((entry) => entry.slug);
+        const { data } = await sb.from("properties").select("*")
+            .eq("publish_status", "Published").in("slug", slugs);
+
+        if (!data || !data.length) {
+            section.style.display = "none";
+            return;
+        }
+
+        // Preserve the most-recently-viewed-first order from local
+        // history, not whatever order Supabase happens to return.
+        const bySlug = Object.fromEntries(data.map((p) => [p.slug, p]));
+        const ordered = slugs.map((s) => bySlug[s]).filter(Boolean);
+
+        section.style.display = "";
+        grid.innerHTML = ordered.map(cardTemplate).join("");
+        attachWishlistButtonListeners(grid);
+        attachShortlistButtonListeners(grid);
+    }
+
+    // Sets (or creates) the page's <link rel="canonical">, so every
+    // property page correctly self-references its own slug-based URL —
+    // this is what search engines use as the property's "real" address
+    // instead of guessing from query-string variations.
+    function setCanonical(url) {
+        let tag = document.querySelector('link[rel="canonical"]');
+        if (!tag) {
+            tag = document.createElement("link");
+            tag.setAttribute("rel", "canonical");
+            document.head.appendChild(tag);
+        }
+        tag.setAttribute("href", url);
+    }
+
+    // Open Graph tags use the "property" attribute, not "name" — kept as
+    // a separate small helper from setMeta() (which is name-based) rather
+    // than overloading that function's existing contract.
+    function setPropertyMeta(property, content) {
+        if (!content) return;
+        let tag = document.querySelector(`meta[property="${property}"]`);
+        if (!tag) {
+            tag = document.createElement("meta");
+            tag.setAttribute("property", property);
+            document.head.appendChild(tag);
+        }
+        tag.setAttribute("content", content);
+    }
+
+    // JSON-LD structured data for this property, built only from fields
+    // that actually have a value on the record — never fabricated. Uses
+    // schema.org's RealEstateListing type, plus a BreadcrumbList tracing
+    // Home > Properties > [Category] > this property's title.
+    function injectPropertyStructuredData(property, canonicalUrl, description) {
+        const images = (property.images && property.images.length ? property.images : null) ||
+            (property.featured_image ? [property.featured_image] : []);
+
+        const categoryLabels = {
+            residential: "Residential", commercial: "Commercial", land: "Land & Plots",
+            villas: "Luxury Villas", apartments: "Apartments", investment: "Investment"
+        };
+        const categoryLabel = categoryLabels[property.category] || property.category;
+
+        const listing = {
+            "@context": "https://schema.org",
+            "@type": "RealEstateListing",
+            "name": property.title,
+            "url": canonicalUrl
+        };
+        if (description) listing.description = description;
+        if (images.length) listing.image = images;
+        if (property.location) {
+            listing.address = {
+                "@type": "PostalAddress",
+                "addressLocality": property.location,
+                "addressRegion": "Tamil Nadu",
+                "addressCountry": "IN"
+            };
+        }
+        if (property.price_value) {
+            listing.offers = {
+                "@type": "Offer",
+                "price": property.price_value,
+                "priceCurrency": "INR",
+                "availability": "https://schema.org/InStock"
+            };
+        }
+        if (property.bedrooms) listing.numberOfRooms = property.bedrooms;
+
+        const breadcrumbTrail = [
+            { name: "Home", url: "https://aventrixrealty.com/index.html" },
+            { name: "Properties", url: "https://aventrixrealty.com/properties.html" }
+        ];
+        if (categoryLabel) {
+            breadcrumbTrail.push({
+                name: categoryLabel,
+                url: `https://aventrixrealty.com/properties.html?category=${encodeURIComponent(property.category)}`
+            });
+        }
+        breadcrumbTrail.push({ name: property.title, url: canonicalUrl });
+
+        const breadcrumb = {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": breadcrumbTrail.map((step, i) => ({
+                "@type": "ListItem", "position": i + 1, "name": step.name, "item": step.url
+            }))
+        };
+
+        writeJsonLd("property-listing-jsonld", listing);
+        writeJsonLd("property-breadcrumb-jsonld", breadcrumb);
+    }
+
+    // Creates or replaces a <script type="application/ld+json"> tag by id
+    // — re-running renderPropertyDetail() (e.g. a future re-navigation
+    // within the same page) updates it in place instead of duplicating it.
+    function writeJsonLd(id, data) {
+        let tag = document.getElementById(id);
+        if (!tag) {
+            tag = document.createElement("script");
+            tag.type = "application/ld+json";
+            tag.id = id;
+            document.head.appendChild(tag);
+        }
+        tag.textContent = JSON.stringify(data);
     }
 
     // Best-effort icon for a Key Feature, chosen from the feature's own

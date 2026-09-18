@@ -42,6 +42,10 @@
         bathrooms: document.getElementById("sfBathrooms"),
         areaMin: document.getElementById("sfAreaMin"),
         areaMax: document.getElementById("sfAreaMax"),
+        facing: document.getElementById("sfFacing"),
+        furnishing: document.getElementById("sfFurnishing"),
+        parking: document.getElementById("sfParking"),
+        roadWidthMin: document.getElementById("sfRoadWidthMin"),
         sort: document.getElementById("sfSort"),
         resultsCount: document.getElementById("sfResultsCount"),
         resultsGrid: grid,
@@ -92,6 +96,10 @@
             bathrooms: params.get("baths") || "",
             areaMin: params.get("areaMin") || "",
             areaMax: params.get("areaMax") || "",
+            facing: params.get("facing") || "",
+            furnishing: params.get("furnishing") || "",
+            parking: params.get("parking") || "",
+            roadWidthMin: params.get("roadWidthMin") || "",
             sort: params.get("sort") || "recommended"
         };
     }
@@ -106,6 +114,10 @@
         els.bathrooms.value = state.bathrooms;
         els.areaMin.value = state.areaMin;
         els.areaMax.value = state.areaMax;
+        els.facing.value = state.facing;
+        els.furnishing.value = state.furnishing;
+        els.parking.value = state.parking;
+        els.roadWidthMin.value = state.roadWidthMin;
         els.sort.value = state.sort;
     }
 
@@ -120,6 +132,10 @@
             bathrooms: els.bathrooms.value,
             areaMin: els.areaMin.value,
             areaMax: els.areaMax.value,
+            facing: els.facing.value,
+            furnishing: els.furnishing.value,
+            parking: els.parking.value,
+            roadWidthMin: els.roadWidthMin.value,
             sort: els.sort.value
         };
     }
@@ -135,6 +151,10 @@
         if (state.bathrooms) params.set("baths", state.bathrooms);
         if (state.areaMin) params.set("areaMin", state.areaMin);
         if (state.areaMax) params.set("areaMax", state.areaMax);
+        if (state.facing) params.set("facing", state.facing);
+        if (state.furnishing) params.set("furnishing", state.furnishing);
+        if (state.parking) params.set("parking", state.parking);
+        if (state.roadWidthMin) params.set("roadWidthMin", state.roadWidthMin);
         if (state.sort && state.sort !== "recommended") params.set("sort", state.sort);
 
         const qs = params.toString();
@@ -144,6 +164,16 @@
         } else {
             history.pushState(null, "", url);
         }
+    }
+
+    function skeletonCardsHtml(count) {
+        return Array.from({ length: count }).map(() => `
+            <div class="skeleton-card" aria-hidden="true">
+                <div class="skeleton-image"></div>
+                <div class="skeleton-line skeleton-line-short"></div>
+                <div class="skeleton-line skeleton-line-long"></div>
+                <div class="skeleton-line skeleton-line-medium"></div>
+            </div>`).join("");
     }
 
     function escapeHtml(str) {
@@ -207,6 +237,73 @@
         return match ? parseFloat(match[1]) : null;
     }
 
+    // Fixed-order category/facing labels for a readable Recent Search
+    // entry — falls back to the raw value if a mapping isn't found.
+    const CATEGORY_LABELS = {
+        residential: "Residential", apartments: "Apartments", villas: "Villas",
+        commercial: "Commercial", land: "Land & Plots", investment: "Investment"
+    };
+
+    function recordCurrentSearch(state) {
+        if (!window.AventrixRecentSearches) return;
+
+        const hasFilter = state.location || state.category || state.listingType ||
+            state.priceMin || state.priceMax || state.bedrooms || state.bathrooms ||
+            state.areaMin || state.areaMax || state.facing || state.furnishing ||
+            state.parking || state.roadWidthMin;
+        if (!hasFilter) return; // an empty/default search isn't worth remembering
+
+        const parts = [];
+        if (state.bedrooms) parts.push(`${state.bedrooms}+ BHK`);
+        parts.push(CATEGORY_LABELS[state.category] || (state.category ? state.category : "Properties"));
+        if (state.location) parts.push("in " + state.location);
+        if (state.priceMin || state.priceMax) {
+            parts.push(state.priceMin && state.priceMax ? `₹${state.priceMin}–₹${state.priceMax}`
+                : state.priceMin ? `₹${state.priceMin}+` : `Up to ₹${state.priceMax}`);
+        } else if (state.listingType) {
+            parts.push(state.listingType === "sale" ? "(Buy)" : "(Lease)");
+        }
+
+        window.AventrixRecentSearches.record({
+            url: window.location.pathname + window.location.search,
+            label: parts.join(" ")
+        });
+
+        renderRecentSearchWidget();
+    }
+
+    function renderRecentSearchWidget() {
+        const RS = window.AventrixRecentSearches;
+        if (!RS) return;
+        const chipsEl = document.getElementById("sfRecentSearchesChips");
+        const expandedEl = document.getElementById("sfRecentSearchesExpanded");
+        RS.renderChips(chipsEl);
+        if (expandedEl && !expandedEl.hidden) RS.renderExpandedList(expandedEl);
+    }
+
+    function initRecentSearchWidget() {
+        const RS = window.AventrixRecentSearches;
+        const chipsEl = document.getElementById("sfRecentSearchesChips");
+        const expandedEl = document.getElementById("sfRecentSearchesExpanded");
+        const allBtn = document.getElementById("sfAllRecentSearchesBtn");
+        if (!RS || !chipsEl) return;
+
+        RS.renderChips(chipsEl);
+
+        let expanded = false;
+        if (allBtn && expandedEl) {
+            allBtn.addEventListener("click", () => {
+                expanded = !expanded;
+                expandedEl.hidden = !expanded;
+                chipsEl.hidden = expanded;
+                if (expanded) RS.renderExpandedList(expandedEl);
+                allBtn.textContent = expanded ? "Show Less" : "All Recent Searches";
+            });
+        }
+
+        document.addEventListener("aventrix:recent-searches-changed", () => RS.renderChips(chipsEl));
+    }
+
     let debounceTimer = null;
     function debounce(fn, delay) {
         clearTimeout(debounceTimer);
@@ -222,6 +319,8 @@
 
         els.resultsCount.textContent = "Loading properties…";
         els.errorState.hidden = true;
+        els.emptyState.hidden = true;
+        els.resultsGrid.innerHTML = skeletonCardsHtml(6);
 
         if (!sb) {
             els.errorState.hidden = false;
@@ -238,6 +337,9 @@
         if (state.priceMin) query = query.gte("price_value", parseFloat(state.priceMin));
         if (state.priceMax) query = query.lte("price_value", parseFloat(state.priceMax));
         if (state.location) query = query.ilike("location", `%${state.location}%`);
+        if (state.facing) query = query.eq("facing", state.facing);
+        if (state.furnishing) query = query.eq("furnishing", state.furnishing);
+        if (state.parking) query = query.gte("parking", parseInt(state.parking, 10));
 
         if (state.sort === "price_low") {
             query = query.order("price_value", { ascending: true, nullsFirst: false });
@@ -278,7 +380,18 @@
             });
         }
 
+        // Client-side Road Width filter — same reasoning as Area above:
+        // road_width is free text (e.g. "30 ft"), no numeric column exists.
+        const roadWidthMin = state.roadWidthMin ? parseFloat(state.roadWidthMin) : null;
+        if (roadWidthMin !== null) {
+            properties = properties.filter((p) => {
+                const val = parseAreaNumber(p.road_width);
+                return val !== null && val >= roadWidthMin;
+            });
+        }
+
         renderResults(properties);
+        recordCurrentSearch(state);
     }
 
     function renderResults(properties) {
@@ -360,6 +473,10 @@
                 : state.areaMin ? `${state.areaMin}+ sq.ft` : `Up to ${state.areaMax} sq.ft`;
             chips.push({ key: "area", label: `Area: ${label}` });
         }
+        if (state.facing) chips.push({ key: "facing", label: `Facing: ${state.facing}` });
+        if (state.furnishing) chips.push({ key: "furnishing", label: state.furnishing });
+        if (state.parking) chips.push({ key: "parking", label: `${state.parking}+ Parking` });
+        if (state.roadWidthMin) chips.push({ key: "roadWidthMin", label: `Road Width: ${state.roadWidthMin}+ ft` });
 
         els.activeChips.innerHTML = chips.map((c) =>
             `<button type="button" class="sf-chip" data-clear="${c.key}">${escapeHtml(c.label)} <i class="fas fa-times" aria-hidden="true"></i></button>`
@@ -391,6 +508,10 @@
             case "bedrooms": els.bedrooms.value = ""; break;
             case "bathrooms": els.bathrooms.value = ""; break;
             case "area": els.areaMin.value = ""; els.areaMax.value = ""; break;
+            case "facing": els.facing.value = ""; break;
+            case "furnishing": els.furnishing.value = ""; break;
+            case "parking": els.parking.value = ""; break;
+            case "roadWidthMin": els.roadWidthMin.value = ""; break;
         }
     }
 
@@ -404,6 +525,10 @@
         els.bathrooms.value = "";
         els.areaMin.value = "";
         els.areaMax.value = "";
+        els.facing.value = "";
+        els.furnishing.value = "";
+        els.parking.value = "";
+        els.roadWidthMin.value = "";
         els.sort.value = "recommended";
         fetchAndRender(false);
     }
@@ -430,11 +555,11 @@
     // ---------------------------------------------------------
     // Wire inputs
     // ---------------------------------------------------------
-    [els.category, els.listingType, els.bedrooms, els.bathrooms, els.sort].forEach((el) => {
+    [els.category, els.listingType, els.bedrooms, els.bathrooms, els.facing, els.furnishing, els.parking, els.sort].forEach((el) => {
         el.addEventListener("change", () => fetchAndRender(true));
     });
 
-    [els.location, els.priceMin, els.priceMax, els.areaMin, els.areaMax].forEach((el) => {
+    [els.location, els.priceMin, els.priceMax, els.areaMin, els.areaMax, els.roadWidthMin].forEach((el) => {
         el.addEventListener("input", () => debounce(() => fetchAndRender(true), 450));
     });
 
@@ -450,6 +575,12 @@
     // Initial load — seeded from URL (supports deep links and the
     // homepage hero search form).
     // ---------------------------------------------------------
+    // Exposed so js/near-me.js can reuse the exact same card markup for
+    // its own "Properties Near You" results rather than duplicating it.
+    window.AventrixPropertyCard = cardTemplate;
+
+    initRecentSearchWidget();
+
     const initialState = readStateFromUrl();
     applyStateToInputs(initialState);
     fetchAndRender(false);

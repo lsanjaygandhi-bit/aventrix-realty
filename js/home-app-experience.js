@@ -28,9 +28,6 @@
     // exactly, not a new/placeholder number.
     const CARD_PHONE_TEL = "+919176887770";
     const CARD_WHATSAPP_URL = "https://wa.me/919176887770";
-    const RECENT_KEY = "aventrix_recent_searches";
-    const MAX_RECENT = 8;
-
     function escapeHtml(str) {
         return String(str || "").replace(/[&<>"']/g, (c) => ({
             "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
@@ -64,81 +61,40 @@
     }
 
     // ---------------------------------------------------------
-    // RECENT SEARCHES — captures the EXISTING search form's real
-    // submissions. Uses the exact same param names properties.html
-    // already reads (location/type/transaction), so a chip
-    // reproduces a real, working search.
+    // RECENT SEARCHES — now backed by the shared, fixed
+    // js/recent-searches.js module (see that file for the root-cause
+    // note on why this previously didn't work for real searches).
+    // The homepage hero bar's <form> still gets its own capture here
+    // (it has no equivalent in properties-search.js to hook into),
+    // normalized through the same record() function and canonical URL
+    // shape as every other search.
     // ---------------------------------------------------------
-    function readRecentSearches() {
-        try {
-            const raw = localStorage.getItem(RECENT_KEY);
-            const list = raw ? JSON.parse(raw) : [];
-            return Array.isArray(list) ? list : [];
-        } catch {
-            return [];
-        }
-    }
-
-    function saveRecentSearch(entry) {
-        const list = readRecentSearches().filter((e) =>
-            !(e.location === entry.location && e.type === entry.type && e.transaction === entry.transaction)
-        );
-        list.unshift(entry);
-        try {
-            localStorage.setItem(RECENT_KEY, JSON.stringify(list.slice(0, MAX_RECENT)));
-        } catch {
-            // localStorage unavailable (private mode, quota, etc.) — fail silently,
-            // the search itself still works via the form's normal navigation.
-        }
-    }
-
-    function labelFor(entry) {
-        const TYPE_LABELS = { apartment: "Apartments", villa: "Villas", plot: "Plots", commercial: "Commercial" };
-        const txn = entry.transaction === "buy" ? "Buy" : entry.transaction === "lease" ? "Rent" : "";
-        const typeLabel = TYPE_LABELS[entry.type] || "";
-        const parts = [];
-        if (txn) parts.push(txn);
-        else if (typeLabel) parts.push(typeLabel);
-        if (entry.location) parts.push("in " + entry.location);
-        else if (txn && typeLabel) parts.push(typeLabel);
-        return parts.length ? parts.join(" ") : "All Properties";
-    }
-
-    function searchUrlFor(entry) {
-        const params = new URLSearchParams();
-        if (entry.location) params.set("location", entry.location);
-        if (entry.type) params.set("type", entry.type);
-        if (entry.transaction) params.set("transaction", entry.transaction);
-        const qs = params.toString();
-        return "properties.html" + (qs ? "?" + qs : "");
-    }
-
-    function renderRecentChips(container, limit) {
-        if (!container) return;
-        const list = readRecentSearches().slice(0, limit);
-        if (list.length === 0) {
-            container.innerHTML = '<span class="home-app-recent-empty">Your recent searches will appear here.</span>';
-            return;
-        }
-        container.innerHTML = list
-            .map((entry) => `<a class="home-app-recent-chip" href="${escapeHtml(searchUrlFor(entry))}">${escapeHtml(labelFor(entry))}</a>`)
-            .join("");
-    }
-
     function initRecentSearches() {
+        const RS = window.AventrixRecentSearches;
+        if (!RS) return;
+
         const form = document.querySelector(".property-search-form");
         if (form) {
             form.addEventListener("submit", () => {
                 const data = new FormData(form);
-                const entry = {
-                    location: (data.get("location") || "").toString().trim(),
-                    type: (data.get("type") || "").toString(),
-                    transaction: (data.get("transaction") || "").toString(),
-                    ts: Date.now()
-                };
-                if (entry.location || entry.type || entry.transaction) {
-                    saveRecentSearch(entry);
-                }
+                const params = new URLSearchParams();
+                const location = (data.get("location") || "").toString().trim();
+                const type = (data.get("type") || "").toString();
+                const transaction = (data.get("transaction") || "").toString();
+                if (location) params.set("location", location);
+                if (type) params.set("type", type);
+                if (transaction) params.set("transaction", transaction);
+                const qs = params.toString();
+                if (!qs) return; // nothing entered — not a real search to remember
+
+                const TYPE_LABELS = { apartment: "Apartments", villa: "Villas", plot: "Plots", commercial: "Commercial" };
+                const txnLabel = transaction === "buy" ? "Buy" : transaction === "lease" ? "Rent" : "";
+                const typeLabel = TYPE_LABELS[type] || "";
+                const parts = [];
+                if (txnLabel) parts.push(txnLabel); else if (typeLabel) parts.push(typeLabel);
+                if (location) parts.push("in " + location); else if (txnLabel && typeLabel) parts.push(typeLabel);
+
+                RS.record({ url: "properties.html?" + qs, label: parts.length ? parts.join(" ") : "All Properties" });
                 // Synchronous localStorage write completes before the
                 // form's normal navigation to properties.html — no
                 // preventDefault, the existing search still runs exactly
@@ -148,18 +104,26 @@
 
         const chipsEl = document.getElementById("recentSearchesChips");
         const panelEl = document.getElementById("myRecentSearchesPanel");
-        renderRecentChips(chipsEl, 5);
-        renderRecentChips(panelEl, MAX_RECENT);
+        RS.renderChips(chipsEl);
+        RS.renderChips(panelEl);
 
         const allBtn = document.getElementById("allRecentSearchesBtn");
+        const expandedEl = document.getElementById("recentSearchesExpanded");
         let expanded = false;
-        if (allBtn) {
+        if (allBtn && expandedEl) {
             allBtn.addEventListener("click", () => {
                 expanded = !expanded;
-                renderRecentChips(chipsEl, expanded ? MAX_RECENT : 5);
+                expandedEl.hidden = !expanded;
+                chipsEl.hidden = expanded;
+                if (expanded) RS.renderExpandedList(expandedEl);
                 allBtn.textContent = expanded ? "Show Less" : "All Recent Searches";
             });
         }
+
+        document.addEventListener("aventrix:recent-searches-changed", () => {
+            RS.renderChips(chipsEl);
+            RS.renderChips(panelEl);
+        });
     }
 
     // ---------------------------------------------------------
