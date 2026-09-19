@@ -199,43 +199,144 @@
         </span>
 
         <h1 data-page-hero-title>
-            List Your Property<br>
-            with Aventrix Realty
+            Reach the Right Buyers<br>
+            for Your Property
         </h1>
 
         <p data-page-hero-subtitle>
-            Whether you're selling, leasing or renting your property,
-            our experienced team will help you reach genuine buyers,
-            tenants and investors across Chennai.
+            List your property with Aventrix Realty and get professional
+            marketing, wider exposure and dedicated support — from the
+            first enquiry through to the transaction.
         </p>
 
         <div class="hero-buttons hero-buttons-compact">
 
             <a href="#owner-form" class="primary-btn" data-page-hero-button>
-                Start Listing
+                List Your Property
             </a>
-          
+
 
         </div>
 
     </div>
 
 </section>
+
+<section class="fv-section">
+
+    <div class="container">
+
+        <div class="section-heading">
+            <span class="section-eyebrow">Property Owner Services</span>
+            <h2>Why List With Aventrix Realty?</h2>
+        </div>
+
+        <div class="fv-grid">
+
+            <div class="fv-card">
+                <span class="fv-card-number">01</span>
+                <h3>Wider Buyer Reach</h3>
+                <p>Your property is presented to genuine buyers, tenants
+                    and investors actively looking across Chennai.</p>
+            </div>
+
+            <div class="fv-card">
+                <span class="fv-card-number">02</span>
+                <h3>Professional Marketing</h3>
+                <p>Clear, well-organised property information helps your
+                    listing stand out and get noticed.</p>
+            </div>
+
+            <div class="fv-card">
+                <span class="fv-card-number">03</span>
+                <h3>End-to-End Support</h3>
+                <p>From listing to closing, our team stays involved with
+                    you at every step of the process.</p>
+            </div>
+
+            <div class="fv-card">
+                <span class="fv-card-number">04</span>
+                <h3>Confidential Handling</h3>
+                <p>Your property and contact details are handled
+                    discreetly and shared only with relevant parties.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="fv-section fv-alt">
+
+    <div class="container">
+
+        <div class="section-heading">
+            <span class="section-eyebrow">Owner Benefits</span>
+            <h2>What You Gain by Listing With Us</h2>
+        </div>
+
+        <div class="fv-benefits-grid">
+
+            <div class="fv-benefit">
+                <h3>Better Visibility</h3>
+                <p>Your property gets proper presentation across our
+                    active buyer and tenant network.</p>
+            </div>
+
+            <div class="fv-benefit">
+                <h3>Relevant Connections</h3>
+                <p>We match your property to buyers and tenants whose
+                    requirements genuinely fit.</p>
+            </div>
+
+            <div class="fv-benefit">
+                <h3>Professional Presentation</h3>
+                <p>Clear property details and organised information make
+                    a stronger first impression.</p>
+            </div>
+
+            <div class="fv-benefit">
+                <h3>Sensible Market Positioning</h3>
+                <p>We help position your property sensibly based on its
+                    location and category.</p>
+            </div>
+
+            <div class="fv-benefit">
+                <h3>Transaction Coordination</h3>
+                <p>Our team coordinates communication and next steps
+                    through the process.</p>
+            </div>
+
+            <div class="fv-benefit">
+                <h3>Ongoing Owner Communication</h3>
+                <p>You stay informed and involved throughout, through a
+                    single point of contact.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
 <section id="owner-form" class="owner-form">
 
              <div class="container">
 
-                 <h2>Property Details</h2>
+                 <h2>Share Your Property Details</h2>
 
                  <p>
-                     Complete the form below and our property consultant will contact you shortly.
+                     Tell us about your property and what you're looking to do with it —
+                     our team will review the details and get in touch to discuss the next steps.
                      <br><br>
-                     <strong>🔒Your information is Kept confidential and used only for property-realated communication.</strong> 
+                     <strong>🔒 Your information is kept confidential and used only for property-related communication.</strong>
                  </p>
 
                  <form id="propertyForm"
                        action="" method="POST">
 
+                    <h3 class="fv-form-group-heading">Owner Information</h3>
                     <div class="form-grid">
 
                         <div class="form-group">
@@ -254,19 +355,14 @@
                          </div>
 
                          <div class="form-group">
-                            <label>Email Address (Optional)</label>
-                            <input type="email" name="email" placeholder="Email Address (Optional)">
+                            <label>Email Address</label>
+                            <input type="email" name="email-address" placeholder="Email Address">
                          </div>
 
-                         <div class="form-group">
-                         <label>Property For <span class="required">*</span></label>
-                         <select name="property-for" required>
-                             <option value="">Select Property For</option>
-                             <option>Sale</option>
-                             <option>Rent</option>
-                             <option>Lease</option>
-                         </select>
-                     </div>
+                    </div>
+
+                    <h3 class="fv-form-group-heading">Property Information</h3>
+                    <div class="form-grid">
 
                      <div class="form-group">
                          <label>Property Type <span class="required">*</span></label>
@@ -275,8 +371,15 @@
                              <option>Land</option>
                              <option>Apartment</option>
                              <option>Villa</option>
+                             <option>Independent House</option>
                              <option>Commercial</option>
+                             <option>Other</option>
                          </select>
+                     </div>
+
+                     <div class="form-group">
+                         <label>Property Location</label>
+                         <input type="text" name="property-location" placeholder="Example : Chromepet, Chennai">
                      </div>
 
                      <div class="form-group">
@@ -295,13 +398,39 @@
         </div>
 
         <div class="form-group">
+            <label>Number of Bedrooms</label>
+            <select name="bedrooms">
+                <option value="">Select (if applicable)</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5+</option>
+                <option>Not Applicable</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Property Status</label>
+            <select name="property-status">
+                <option value="">Select</option>
+                <option>Ready to Move</option>
+                <option>Under Construction</option>
+                <option>Vacant</option>
+                <option>Tenant Occupied</option>
+                <option>Other</option>
+            </select>
+        </div>
+
+        <div class="form-group">
             <label>Expected Price <span class="required">*</span></label>
             <input type="text" name="expected-price" placeholder="Expected Price (₹)" required>
         </div>
 
         <div class="form-group">
-            <label>Select Preferred Contact Time</label>
+            <label>Preferred Contact Time</label>
             <select name="preferred-contact-time">
+                <option value="">Select (if any preference)</option>
                 <option>Morning</option>
                 <option>Afternoon</option>
                 <option>Evening</option>
@@ -310,22 +439,49 @@
 
     </div>
 
-    <div class="form-group" style="margin-top:30px;">
-        <label>📷 Upload Property Photos</label>
-        <input type="file" name="property-photos" multiple>
+    <h3 class="fv-form-group-heading">Listing Requirement</h3>
+    <div class="form-grid fv-form-grid-single">
+
+        <div class="form-group">
+             <label>What Are You Looking to Do? <span class="required">*</span></label>
+             <select name="listing-requirement" required>
+                 <option value="">Select Listing Requirement</option>
+                 <option>Sale</option>
+                 <option>Rental / Leasing</option>
+                 <option>Joint Venture</option>
+                 <option>Other</option>
+             </select>
+        </div>
+
     </div>
 
-    <div class="form-group">
-        <label>Additional Details</label>
-        <textarea name="additional-details" placeholder="Tell us about your property..." rows="6"></textarea>
+    <h3 class="fv-form-group-heading">Additional Details</h3>
+    <div class="form-grid fv-form-grid-single">
+
+        <div class="form-group">
+            <label>Anything Else We Should Know?</label>
+            <textarea name="additional-details" placeholder="Share any additional details about your property, or let us know what you're specifically looking for..." rows="6"></textarea>
+        </div>
+
     </div>
+
+    <h3 class="fv-form-group-heading">Optional Document / Image Upload</h3>
+    <div class="form-grid fv-form-grid-single">
+
+        <div class="form-group">
+            <label>Upload Property Photos</label>
+            <input type="file" name="property-photos" multiple>
+        </div>
+
+    </div>
+
     <div class="submit-wrapper">
          <button type="submit">
               Submit Property
          </button>
     </div>
                  </form>
-                 <div id="success-message" style="display:none; text-align:center; padding:40px;">
+                 <div id="success-message" class="success-message" style="display:none; text-align:center; padding:40px;">
                      <h2 style="color:#2e7d32;">✅ Thank You!</h2>
 
                      <p>Your property details have been submitted successfully.</p>
@@ -336,6 +492,343 @@
             </div>
 
         </section>
+
+<section class="fv-section">
+
+    <div class="container">
+
+        <div class="section-heading">
+            <span class="section-eyebrow">Property Types</span>
+            <h2>Property Types We Handle</h2>
+        </div>
+
+        <div class="fv-grid">
+
+            <div class="fv-card">
+                <h3>Residential Properties</h3>
+                <p>Homes for sale or rent, across a range of budgets and
+                    configurations.</p>
+            </div>
+
+            <div class="fv-card">
+                <h3>Commercial Properties</h3>
+                <p>Office spaces, showrooms and commercial units suited
+                    for business use.</p>
+            </div>
+
+            <div class="fv-card">
+                <h3>Land &amp; Plots</h3>
+                <p>Residential and investment plots across Chennai and
+                    its surrounding areas.</p>
+            </div>
+
+            <div class="fv-card">
+                <h3>Independent Houses</h3>
+                <p>Standalone homes suited for owners looking for more
+                    space and privacy.</p>
+            </div>
+
+            <div class="fv-card">
+                <h3>Apartments</h3>
+                <p>Flats across a range of configurations, from compact
+                    homes to larger units.</p>
+            </div>
+
+            <div class="fv-card">
+                <h3>Joint Development Opportunities</h3>
+                <p>Suitable land matched with development partners for
+                    joint development.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="fv-section fv-alt">
+
+    <div class="container">
+
+        <div class="section-heading">
+            <span class="section-eyebrow">Why Aventrix</span>
+            <h2>Why Property Owners Work With Us</h2>
+        </div>
+
+        <div class="fv-grid">
+
+            <div class="fv-card">
+                <span class="fv-card-number">01</span>
+                <h3>Real Estate Experience</h3>
+                <p>Led by professionals with 15+ years of real estate
+                    experience in the Chennai market.</p>
+            </div>
+
+            <div class="fv-card">
+                <span class="fv-card-number">02</span>
+                <h3>Local Market Knowledge</h3>
+                <p>A team familiar with Chennai's localities, property
+                    categories and buyer behaviour.</p>
+            </div>
+
+            <div class="fv-card">
+                <span class="fv-card-number">03</span>
+                <h3>Professional Property Marketing</h3>
+                <p>Your property is presented clearly and professionally,
+                    every time.</p>
+            </div>
+
+            <div class="fv-card">
+                <span class="fv-card-number">04</span>
+                <h3>Buyer &amp; Investor Network</h3>
+                <p>Access to a network of buyers, tenants and investors
+                    actively engaging with our team.</p>
+            </div>
+
+            <div class="fv-card">
+                <span class="fv-card-number">05</span>
+                <h3>Transparent Communication</h3>
+                <p>We keep you informed with honest, straightforward
+                    updates through the process.</p>
+            </div>
+
+            <div class="fv-card">
+                <span class="fv-card-number">06</span>
+                <h3>End-to-End Coordination</h3>
+                <p>One team coordinates the process from your first
+                    enquiry to the final transaction.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="fv-section">
+
+    <div class="container">
+
+        <div class="section-heading">
+            <span class="section-eyebrow">How It Works</span>
+            <h2>Our Property Listing Process</h2>
+        </div>
+
+        <div class="fv-grid">
+
+            <div class="fv-card">
+                <span class="fv-card-number">01</span>
+                <h3>Share Your Property</h3>
+                <p>Fill in your property and contact details through our
+                    simple listing form.</p>
+            </div>
+
+            <div class="fv-card">
+                <span class="fv-card-number">02</span>
+                <h3>Property Review</h3>
+                <p>Our team reviews the information you've shared to
+                    understand your property better.</p>
+            </div>
+
+            <div class="fv-card">
+                <span class="fv-card-number">03</span>
+                <h3>Market Positioning</h3>
+                <p>We consider your property's location, category and
+                    condition to position it sensibly.</p>
+            </div>
+
+            <div class="fv-card">
+                <span class="fv-card-number">04</span>
+                <h3>Buyer / Tenant Outreach</h3>
+                <p>Your property is shared with relevant buyers, tenants
+                    or investors in our network.</p>
+            </div>
+
+            <div class="fv-card">
+                <span class="fv-card-number">05</span>
+                <h3>Transaction Coordination</h3>
+                <p>We stay involved through discussions, follow-ups and
+                    the steps that follow.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="fv-section fv-alt">
+
+    <div class="container">
+
+        <div class="section-heading">
+            <span class="section-eyebrow">Common Situations</span>
+            <h2>Wherever You Are With Your Property, We Can Help</h2>
+        </div>
+
+        <div class="fv-grid">
+
+            <div class="fv-card">
+                <h3>Selling a Property</h3>
+                <p>Looking to sell? We help you reach genuine buyers and
+                    manage the process end-to-end.</p>
+            </div>
+
+            <div class="fv-card">
+                <h3>Leasing a Property</h3>
+                <p>Want to lease your property? We connect you with
+                    suitable tenants and coordinate the details.</p>
+            </div>
+
+            <div class="fv-card">
+                <h3>Managing an Investment Property</h3>
+                <p>Own a property purely as an investment? We help you
+                    stay on top of its market position.</p>
+            </div>
+
+            <div class="fv-card">
+                <h3>Land or Plot Sale</h3>
+                <p>Selling land or a plot? We help present it clearly to
+                    genuinely interested buyers.</p>
+            </div>
+
+            <div class="fv-card">
+                <h3>Joint Development Opportunity</h3>
+                <p>Have land suited for development? We can discuss joint
+                    development possibilities with our partners.</p>
+            </div>
+
+            <div class="fv-card">
+                <h3>Property Advisory Requirement</h3>
+                <p>Not sure of your next step? Our team can walk you
+                    through the options available to you.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="fv-section">
+
+    <div class="container">
+
+        <div class="section-heading">
+            <span class="section-eyebrow">FAQ</span>
+            <h2>Questions Property Owners Ask</h2>
+        </div>
+
+        <div class="faq-flat">
+            <div class="faq-list">
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>What information do I need to provide?</span>
+                        <i class="fas fa-plus faq-icon" aria-hidden="true"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Basic contact details along with your property's type,
+                            location, area and what you're looking to do with it
+                            (sale, rental or joint venture). Anything else can be
+                            added under Additional Details.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Can I list residential and commercial property?</span>
+                        <i class="fas fa-plus faq-icon" aria-hidden="true"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes. Our form covers residential property types such
+                            as apartments, villas and independent houses, as well
+                            as commercial properties.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Can you help with land and plots?</span>
+                        <i class="fas fa-plus faq-icon" aria-hidden="true"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes, land and plots are among the property types we
+                            regularly assist with — for sale, investment or joint
+                            development purposes.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>How does property marketing work?</span>
+                        <i class="fas fa-plus faq-icon" aria-hidden="true"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Once we understand your property, our team presents it
+                            clearly to genuine buyers, tenants or investors within
+                            our network, based on its category and location.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Can I list a property for lease?</span>
+                        <i class="fas fa-plus faq-icon" aria-hidden="true"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes — select "Rental / Leasing" under Listing
+                            Requirement in the form and our team will assist
+                            accordingly.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Can you assist with joint development opportunities?</span>
+                        <i class="fas fa-plus faq-icon" aria-hidden="true"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes. If your land may be suited for joint development,
+                            select "Joint Venture" in the form and our team will
+                            discuss the possibilities with you.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>What happens after I submit my property?</span>
+                        <i class="fas fa-plus faq-icon" aria-hidden="true"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Our team reviews the details you've shared and gets in
+                            touch to discuss your property and the next steps.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="fv-final-cta">
+
+    <div class="container">
+
+        <h2>Let's Talk About Your Property</h2>
+
+        <p>
+            Share your property details and our team will get in touch
+            to discuss the best way forward.
+        </p>
+
+        <a href="#owner-form" class="primary-btn">List Your Property</a>
+
+    </div>
+
+</section>
 
 <footer class="premium-footer">
 

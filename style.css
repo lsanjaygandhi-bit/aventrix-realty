@@ -8162,3 +8162,349 @@ body > section + section{
    affected. (The .section-divider margin reduction, for the
    "What We Do" → "Why Aventrix" gap, is noted next to that rule
    near the top of this file.) */
+
+/* ===========================================================
+   PROPERTY VALUATION PAGE — REBUILD (free-valuation.html only)
+   All classes below (.fv-*) are new and unique to this page, so
+   nothing here touches any other page. Reuses existing sitewide
+   tokens/components wherever possible instead of inventing new
+   ones: .section-eyebrow/.section-heading for section intros,
+   .profile-tags/.profile-tag for the "Who Is This For?" chips,
+   the existing rgba(17,24,39,.08) hairline-border token for every
+   card/divider, and the site's #0F3B2E / #D4AF37 colour pair —
+   no new colours introduced. Every new top-level section is a
+   direct <section> child of <body>, so the existing sitewide
+   "body > section + section{border-top:1px solid rgba(17,24,39,.08)}"
+   rule (see SITEWIDE CARD/PANEL BOUNDARIES above) already supplies
+   the thin section dividers the page needs, with no extra CSS.
+   Deliberately flat: no box-shadow, no hover-lift, minimal radius —
+   per the brief for this page specifically (other pages such as
+   .why-item keep their existing shadowed/rounded treatment
+   untouched). */
+
+.fv-section{
+    padding:70px 0;
+}
+.fv-section.fv-alt{
+    background:#f8f9fb;
+}
+.fv-section .container{
+    width:90%;
+    max-width:1100px;
+    margin:0 auto;
+}
+
+/* Numbered card grid — reused for "Why Choose a Property
+   Valuation?", "What Your Valuation Includes" and "Our Valuation
+   Process" (4, 5 and 4 cards respectively). auto-fit lets the same
+   two rules serve all three card counts cleanly across every
+   desktop width from 1024px to 1920px without a separate
+   column-count class per section. */
+.fv-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(165px,1fr));
+    gap:22px;
+}
+.fv-card{
+    background:#ffffff;
+    border:1px solid rgba(17,24,39,.08);
+    border-radius:12px;
+    padding:28px 24px;
+}
+.fv-card-number{
+    display:block;
+    font-family:'Montserrat',sans-serif;
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:2px;
+    color:#D4AF37;
+    margin-bottom:14px;
+}
+.fv-card h3{
+    font-family:'Montserrat',sans-serif;
+    font-size:18px;
+    font-weight:700;
+    color:#111827;
+    margin-bottom:8px;
+    letter-spacing:.2px;
+}
+.fv-card p{
+    font-size:14.5px;
+    line-height:1.7;
+    color:#4b5563;
+    margin:0;
+}
+
+/* Flat benefit list ("What a Valuation Helps You Understand") —
+   deliberately not a card grid, to read as visually distinct from
+   the numbered card sections above/below it and to keep this
+   section as low-contrast/minimal as the brief asks for. */
+.fv-benefits-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:0;
+    border-top:1px solid rgba(17,24,39,.08);
+}
+.fv-benefit{
+    padding:22px 20px;
+    border-bottom:1px solid rgba(17,24,39,.08);
+}
+.fv-benefit:nth-child(odd){
+    border-right:1px solid rgba(17,24,39,.08);
+}
+.fv-benefit h3{
+    font-family:'Montserrat',sans-serif;
+    font-size:16px;
+    font-weight:700;
+    color:#111827;
+    margin-bottom:6px;
+}
+.fv-benefit p{
+    font-size:14.5px;
+    line-height:1.7;
+    color:#4b5563;
+    margin:0;
+}
+
+/* Form group headings inside #valuation-form (Contact Details /
+   Property Details / Valuation Purpose / Additional Information /
+   Optional Document / Image Upload). Unique class, safe to define
+   globally — not used on any other page. */
+.fv-form-group-heading{
+    font-family:'Montserrat',sans-serif;
+    font-size:13px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    font-weight:700;
+    color:#0F3B2E;
+    margin:34px 0 14px;
+}
+.fv-form-group-heading:first-child{
+    margin-top:0;
+}
+.fv-form-grid-single{
+    grid-template-columns:1fr;
+}
+
+/* Submit button: the shared .owner-form button rule (used by three
+   other pages) has a fixed 180px width sized for "Get Free
+   Valuation" — too narrow for "Request Property Valuation". Scoped
+   to #valuation-form only, so list-with-us.html / nri-services.html
+   / joint-venture.html keep their existing 180px button untouched. */
+#valuation-form button{
+    width:auto;
+    min-width:280px;
+    padding:0 40px;
+}
+
+/* Final CTA banner — solid emerald, same colour as the rest of the
+   site's primary accent (not a new colour), flat/no image per the
+   brief's "avoid heavy visual weight" for this page. */
+.fv-final-cta{
+    background:#0F3B2E;
+    padding:64px 8%;
+    text-align:center;
+}
+.fv-final-cta h2{
+    font-family:'Montserrat',sans-serif;
+    font-size:34px;
+    font-weight:600;
+    color:#fff;
+    max-width:640px;
+    margin:0 auto 16px;
+}
+.fv-final-cta p{
+    font-size:16.5px;
+    line-height:1.8;
+    color:rgba(255,255,255,.8);
+    max-width:560px;
+    margin:0 auto 32px;
+}
+.fv-final-cta .primary-btn{
+    background:#D4AF37;
+    color:#111;
+}
+
+/* ---- Mobile (both the JS is-mobile path and the JS-disabled
+   narrow-window @media fallback are kept in sync, per this file's
+   established convention) ---- */
+html.is-mobile .fv-section{
+    padding:45px 0;
+}
+html.is-mobile .fv-final-cta{
+    padding:45px 6%;
+}
+html.is-mobile .fv-final-cta h2{
+    font-size:24px;
+}
+html.is-mobile .fv-grid{
+    grid-template-columns:1fr;
+    gap:16px;
+}
+html.is-mobile .fv-benefits-grid{
+    grid-template-columns:1fr;
+}
+html.is-mobile .fv-benefit:nth-child(odd){
+    border-right:none;
+}
+html.is-mobile #valuation-form .container{
+    padding:32px 20px;
+    border-radius:14px;
+}
+html.is-mobile #valuation-form .form-grid{
+    grid-template-columns:1fr;
+    gap:16px;
+}
+html.is-mobile #valuation-form button{
+    width:100%;
+    min-width:0;
+}
+
+@media(max-width:768px){
+    html:not(.is-mobile) .fv-section{
+        padding:45px 0;
+    }
+    html:not(.is-mobile) .fv-final-cta{
+        padding:45px 6%;
+    }
+    html:not(.is-mobile) .fv-final-cta h2{
+        font-size:24px;
+    }
+    html:not(.is-mobile) .fv-grid{
+        grid-template-columns:1fr;
+        gap:16px;
+    }
+    html:not(.is-mobile) .fv-benefits-grid{
+        grid-template-columns:1fr;
+    }
+    html:not(.is-mobile) .fv-benefit:nth-child(odd){
+        border-right:none;
+    }
+    html:not(.is-mobile) #valuation-form .container{
+        padding:32px 20px;
+        border-radius:14px;
+    }
+    html:not(.is-mobile) #valuation-form .form-grid{
+        grid-template-columns:1fr;
+        gap:16px;
+    }
+    html:not(.is-mobile) #valuation-form button{
+        width:100%;
+        min-width:0;
+    }
+}
+
+/* ===========================================================
+   LIST WITH US + NRI SERVICES — REBUILD
+   (list-with-us.html and nri-services.html only — #owner-form is
+   used by exactly these two pages, confirmed via grep; no other
+   page uses this id, so scoping to it cannot affect anything else.
+   Reuses the same .fv-* system built for free-valuation.html
+   (.fv-section/.fv-alt, .fv-grid/.fv-card/.fv-card-number,
+   .fv-benefits-grid/.fv-benefit, .fv-final-cta,
+   .fv-form-group-heading/.fv-form-grid-single, .profile-tags/
+   .profile-tag) as-is — none of those are ID-scoped, so no new
+   card/grid/CTA CSS is needed here at all. Only three genuinely new
+   things are added below: a flat FAQ accordion variant, styling for
+   the previously-unstyled .checkbox-group, and #owner-form's own
+   button-width/mobile overrides (mirroring #valuation-form's). */
+
+/* Flat FAQ accordion. Reuses the existing .faq-item/.faq-question/
+   .faq-answer classes as-is -- including their already-wired-up
+   behaviour (script.js's initFaqAccordion(), which queries these
+   exact class names and runs automatically on page load) -- so zero
+   JS changes were needed. Only the VISUAL treatment is overridden,
+   scoped under this new .faq-flat wrapper, so the homepage's own
+   .faq-section (dark glass/blur, documented elsewhere as used ONLY
+   on index.html) is completely untouched. */
+.faq-flat .faq-list{
+    max-width:820px;
+    margin:0 auto;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+}
+.faq-flat .faq-item{
+    background:#ffffff;
+    border:1px solid rgba(17,24,39,.08);
+    border-radius:12px;
+    box-shadow:none;
+    -webkit-backdrop-filter:none;
+    backdrop-filter:none;
+    transition:border-color .25s ease;
+}
+.faq-flat .faq-item:hover{
+    background:#ffffff;
+    border-color:rgba(17,24,39,.18);
+    transform:none;
+}
+.faq-flat .faq-question{
+    color:#111827;
+    font-size:15.5px;
+}
+.faq-flat .faq-icon{
+    color:#0F3B2E;
+}
+.faq-flat .faq-answer p{
+    color:#4b5563;
+}
+
+/* .checkbox-group (NRI consent row) had no styling at all before —
+   plain unstyled browser checkbox + label. Used only on
+   nri-services.html, so this is additive everywhere else. */
+.checkbox-group{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    margin:22px 0 8px;
+}
+.checkbox-group input[type="checkbox"]{
+    width:18px;
+    height:18px;
+    margin-top:2px;
+    accent-color:#0F3B2E;
+    flex-shrink:0;
+}
+.checkbox-group label{
+    font-size:13.5px;
+    line-height:1.6;
+    color:#666;
+}
+
+/* Submit button width + mobile overrides, same pattern as
+   #valuation-form. min-width is smaller than the Valuation page's
+   (280px) since both this page's CTAs ("Submit Property",
+   "Submit Enquiry") are shorter than "Request Property Valuation". */
+#owner-form button{
+    width:auto;
+    min-width:220px;
+    padding:0 36px;
+}
+
+html.is-mobile #owner-form .container{
+    padding:32px 20px;
+    border-radius:14px;
+}
+html.is-mobile #owner-form .form-grid{
+    grid-template-columns:1fr;
+    gap:16px;
+}
+html.is-mobile #owner-form button{
+    width:100%;
+    min-width:0;
+}
+
+@media(max-width:768px){
+    html:not(.is-mobile) #owner-form .container{
+        padding:32px 20px;
+        border-radius:14px;
+    }
+    html:not(.is-mobile) #owner-form .form-grid{
+        grid-template-columns:1fr;
+        gap:16px;
+    }
+    html:not(.is-mobile) #owner-form button{
+        width:100%;
+        min-width:0;
+    }
+}
