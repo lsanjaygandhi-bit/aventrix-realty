@@ -3151,6 +3151,75 @@ nav a:hover::after{
     line-height:1.8;
     color:#555;
 }
+
+/* Compact "tag" chips for verified, list-style facts on the
+   dedicated profile pages (Areas of Expertise, Languages) -- reuses
+   the exact 1px rgba(17,24,39,.08) hairline already used sitewide
+   (see SITEWIDE CARD / PANEL BOUNDARIES further down) and the
+   existing #f5f5f5 neutral / #0F3B2E emerald tokens, so no new
+   colours are introduced. Specialization keeps its existing
+   data-bound <br> list (synced from the `realtors` table via
+   js/public-realtors.js) rather than becoming tags, since converting
+   it to individual <span> tags would just get wiped out the next
+   time that sync runs and overwrites its innerHTML. */
+.profile-tags{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:10px;
+    margin:0 0 16px;
+}
+.profile-tag{
+    display:inline-flex;
+    align-items:center;
+    padding:8px 16px;
+    border-radius:20px;
+    border:1px solid rgba(17,24,39,.08);
+    background:#f5f5f5;
+    color:#0F3B2E;
+    font-size:14px;
+    font-weight:600;
+    line-height:1.3;
+}
+
+/* "Connect with Sanjay" social row (sanjay.html only) -- a light-card
+   counterpart to the footer's existing .pf-social (which is styled
+   for the dark footer background and isn't reusable on this white
+   card). Same hairline border / neutral background as .profile-tag
+   above, same thin-stroke currentColor icon style already used for
+   Facebook/Instagram/LinkedIn elsewhere on this site (icon paths
+   reused as-is); X has no existing icon in this codebase so a plain
+   two-stroke "X" mark was added in the same style. */
+.profile-social{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:12px;
+    margin:0 0 16px;
+}
+.profile-social a{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:10px 18px;
+    border-radius:24px;
+    border:1px solid rgba(17,24,39,.08);
+    background:#f5f5f5;
+    color:#0F3B2E;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:600;
+    transition:background .25s ease, transform .25s ease;
+}
+.profile-social a:hover{
+    background:#eceae2;
+    transform:translateY(-2px);
+}
+.profile-social a svg{
+    width:18px;
+    height:18px;
+    flex-shrink:0;
+}
 .main-nav{
     display:flex;
     align-items:center;
@@ -3346,6 +3415,20 @@ nav a:hover::after{
 
     text-align:center;
 
+}
+
+/* Brokerage & Professional Fees page only -- a page-specific override
+   of just the background-image, keeping the exact same .list-hero
+   overlay gradient, min-height, layout and typography that
+   list-with-us.html / enquiry.html / insights.html still use with
+   the original image. New photo: a premium architectural exterior
+   (no people, no text, no logos/signage), which suits a "transparent
+   fees / professional advisory" page better than the generic listing
+   banner. */
+.brokerage-hero{
+    background:
+    linear-gradient(rgba(10,10,12,0.5), rgba(10,10,12,0.62)),
+    url("images/brokerage-fees-hero.jpg") center center/cover no-repeat;
 }
 
 .list-hero .container{
@@ -4010,6 +4093,17 @@ html.is-mobile .contact-info{
 html.is-mobile .leadership-rows{
     gap:48px;
 }
+/* Content-width target (mobile refinement pass): #leadership's own
+   20px side padding plus the row-content's max-width together were
+   only landing the readable column at ~82% of the viewport -- a
+   touch tighter than the requested ~88-90%. Trimming the section's
+   own side padding slightly and widening the row-content max-width
+   closes that gap without touching anything else about the section
+   (heading, background, row gap, photo). */
+html.is-mobile #leadership{
+    padding-left:12px;
+    padding-right:12px;
+}
 html.is-mobile .leader-row,
 html.is-mobile .leader-row-reverse{
     flex-direction:column;
@@ -4035,12 +4129,24 @@ html.is-mobile .leader-row-photo{
    layout are untouched. */
 html.is-mobile .leader-row-content{
     text-align:center;
-    max-width:320px;
+    max-width:96%;
     margin:0 auto;
 }
+/* MOBILE PROFILE REFINEMENT PASS: body paragraph was inheriting the
+   desktop 15.5px/1.85 line-height with the block's centered
+   text-align, which produced tall, ragged, hard-to-scan wrapping on
+   narrow screens. Left-aligning just the paragraph (name/role/eyebrow
+   above stay centered -- hierarchy untouched) with a slightly larger
+   16px size but tighter 1.7 line-height reads as more compact and
+   more "professional report" than centered prose, while the shared
+   90% container width above keeps it comfortably inset from the
+   screen edges on all three tested widths (375/390/414). */
 html.is-mobile .leader-row-content p{
     max-width:none;
     margin:0 0 22px;
+    font-size:16px;
+    line-height:1.7;
+    text-align:left;
 }
 
 /* MOBILE 2-COLUMN per feedback: "What We Do" (.bsl-grid, id=
@@ -4521,8 +4627,16 @@ html.is-mobile body.mobile-menu-open .whatsapp-float{
     html:not(.is-mobile) .leader-row,
     html:not(.is-mobile) .leader-row-reverse{ flex-direction:column; align-items:stretch; text-align:center; gap:20px; }
     html:not(.is-mobile) .leader-row-photo{ width:100%; max-width:280px; margin:0 auto; }
-    html:not(.is-mobile) .leader-row-content{ text-align:center; max-width:320px; margin:0 auto; }
-    html:not(.is-mobile) .leader-row-content p{ max-width:none; margin:0 0 22px; }
+    html:not(.is-mobile) #leadership{ padding-left:12px; padding-right:12px; }
+    html:not(.is-mobile) .leader-row-content{ text-align:center; max-width:96%; margin:0 auto; }
+    html:not(.is-mobile) .leader-row-content p{ max-width:none; margin:0 0 22px; font-size:16px; line-height:1.7; text-align:left; }
+    html:not(.is-mobile) .profile-page{ padding:64px 8px 40px; }
+    html:not(.is-mobile) .profile-container{ padding:32px 15px 36px; }
+    html:not(.is-mobile) .profile-container p{ text-align:left; font-size:16px; line-height:1.7; max-width:none; margin:0 0 16px; }
+    html:not(.is-mobile) .profile-container h2{ text-align:left; margin:26px 0 10px; }
+    html:not(.is-mobile) .profile-container hr{ margin:20px 0; }
+    html:not(.is-mobile) .profile-tags,
+    html:not(.is-mobile) .profile-social{ justify-content:flex-start; }
     html:not(.is-mobile) .qe-office-links{ flex-direction:column; align-items:flex-start; gap:8px; }
     html:not(.is-mobile) .office-map-embed iframe{ height:180px; }
     html:not(.is-mobile) .office-map-embed.office-map-placeholder{ height:180px; }
@@ -7787,6 +7901,68 @@ html.is-mobile .home-app-recent-chip,
 html.is-mobile .home-app-property-card,
 html.is-mobile .home-app-card-heart{
     scroll-margin-bottom:100px;
+}
+/* Same clearance for the Leadership "View Profile" CTAs (only
+   present on index.html, so this rule is inert everywhere the fixed
+   bottom nav doesn't exist) -- keeps the button from stopping flush
+   behind the bar on an anchor jump or keyboard-focus scroll, and
+   the extra margin-top below gives it visual breathing room above
+   whatever follows during ordinary scrolling too. */
+html.is-mobile .leader-cta{
+    scroll-margin-bottom:110px;
+    margin-top:4px;
+}
+
+/* Dedicated profile pages (gnanasekaran.html / sanjay.html) -- mobile
+   refinement pass, second iteration. Content-density reference
+   provided (a competitor's founder-bio page) called for a denser,
+   uniformly left-aligned "corporate profile" reading flow rather
+   than the mix of centered short lines / left-aligned long
+   paragraphs from the first pass -- so this now treats every <p> in
+   the card the same way (profile-intro, Professional Background,
+   Legacy, Experience, Specialization, Areas of Expertise, the RERA
+   line on sanjay.html) at 16px/1.7, left-aligned, with a consistent
+   16px bottom margin instead of the browser's uneven collapsed
+   defaults. Section headings (h2) go left-aligned too so they read
+   as part of the same flowing column as the text under them, with a
+   trimmed, consistent margin (26px above/10px below) instead of the
+   browser default's larger, inconsistent spacing -- this, plus a
+   tightened <hr> margin, is what removes the "unnecessary empty
+   vertical space" between sections. Name (h1) and role (h3) stay
+   centered under the photo -- untouched, still the prominent
+   identity block the hierarchy requirement asked to preserve.
+
+   .profile-container's own fixed 50px side padding is still reduced
+   on mobile only (desktop untouched) so the text column reads at
+   roughly 88-90% of the viewport instead of the ~60% it was
+   effectively capped to originally -- the approved 1px card border
+   and border-radius are left exactly as they are; this only trims
+   the interior whitespace. Page-level top padding is increased
+   slightly so the photo/name always start with clear space below
+   the header, never underneath it. */
+html.is-mobile .profile-page{
+    padding:64px 8px 40px;
+}
+html.is-mobile .profile-container{
+    padding:32px 15px 36px;
+}
+html.is-mobile .profile-container p{
+    text-align:left;
+    font-size:16px;
+    line-height:1.7;
+    max-width:none;
+    margin:0 0 16px;
+}
+html.is-mobile .profile-container h2{
+    text-align:left;
+    margin:26px 0 10px;
+}
+html.is-mobile .profile-container hr{
+    margin:20px 0;
+}
+html.is-mobile .profile-tags,
+html.is-mobile .profile-social{
+    justify-content:flex-start;
 }
 .home-app-nav-item{
     display:flex; flex-direction:column; align-items:center; gap:3px;

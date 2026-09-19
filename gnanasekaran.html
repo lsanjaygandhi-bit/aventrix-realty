@@ -212,15 +212,19 @@
 
         <hr>
 
-        <h2>Professional Background</h2>
+        <h2>About</h2>
 
-        <p>
-            With over 15 years of experience in Chennai's real estate market, Gnanasekaran P provides the strategic direction and leadership behind Aventrix Realty. His deep understanding of local market cycles and neighbourhood trends shapes how the company sources and evaluates properties across residential, commercial and land segments. Over the years, he has built trusted, long-standing relationships with clients, landowners and developers, grounded in transparency and professional conduct at every stage of a transaction. His focus remains on steady, sustainable business development — growing Aventrix Realty's presence across Chennai while holding firmly to the standards of integrity that lasting real estate relationships depend on.
+        <p class="profile-body-text">
+            With over 15 years of experience in Chennai's real estate market, Gnanasekaran P provides the strategic direction and leadership behind Aventrix Realty. His deep understanding of local market cycles and neighbourhood trends shapes how the company sources and evaluates properties across residential, commercial and land segments.
+        </p>
+
+        <p class="profile-body-text">
+            Over the years, he has built trusted, long-standing relationships with clients, landowners and developers, grounded in transparency and professional conduct at every stage of a transaction. His focus remains on steady, sustainable business development — growing Aventrix Realty's presence across Chennai while holding firmly to the standards of integrity that lasting real estate relationships depend on.
         </p>
 
         <h2>Legacy</h2>
 
-        <p>
+        <p class="profile-body-text">
             Long before Aventrix Realty was established, the location where the company's office stands today was home to TP Builders, founded by Late Mr. Perumal. From this location, he built homes, created lasting relationships, and established a reputation that continues to inspire generations. Gnanasekaran P proudly carried forward the vision of his father, preserving the values that earned generations of trust while embracing a modern approach to real estate — where tradition, professionalism, and long-term relationships remain at the heart of every property journey.
         </p>
 
@@ -243,11 +247,18 @@
 
         <h2>Areas of Expertise</h2>
 
-        <p>
-            Land Advisory<br>
-            Strategic Growth<br>
-            Client Relationships
-        </p>
+        <div class="profile-tags">
+            <span class="profile-tag">Land Advisory</span>
+            <span class="profile-tag">Strategic Growth</span>
+            <span class="profile-tag">Client Relationships</span>
+        </div>
+
+        <h2>Languages</h2>
+
+        <div class="profile-tags">
+            <span class="profile-tag">English</span>
+            <span class="profile-tag">Tamil</span>
+        </div>
 
         <hr>
 
@@ -258,6 +269,12 @@
             <a href="https://wa.me/917092356222" target="_blank" rel="noopener noreferrer" data-realtor-whatsapp><i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp</a>
             <a href="mailto:gnanasekaran@aventrixrealty.com" data-realtor-email><i class="fas fa-envelope" aria-hidden="true"></i> gnanasekaran@aventrixrealty.com</a>
         </div>
+
+        <hr>
+
+        <h2>Featured Properties</h2>
+
+        <div class="property-grid" id="propertyGrid"></div>
 
         <br>
 
@@ -394,6 +411,12 @@
 <script src="js/aventrix-storage.js"></script>
 <script src="js/wishlist-widget.js"></script>
 <script src="js/public-realtors.js"></script>
+<!-- Reuses the SAME #propertyGrid renderer index.html used to use
+     (js/public-properties.js -> renderHomepageGrid()) for the new
+     "Featured Properties" section below -- live Supabase data
+     (featured, falling back to most recent published), the existing
+     cardTemplate()/.property-card markup, zero new property data. -->
+<script src="js/public-properties.js"></script>
 <script src="script.js"></script>
 
 </body>
