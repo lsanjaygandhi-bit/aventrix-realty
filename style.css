@@ -60,9 +60,14 @@ body{
   width: 100vw;
   height: 1px;
   background-color: rgba(17,24,39,.08);
-  margin: 80px 0;
+  margin: 32px 0;
   margin-left: calc(-50vw + 50%);
 }
+/* margin reduced from 80px 0 — the two sections either side of this
+   divider (bsl-section→why, why→about) already have their own
+   padding, so 80px on top of that made these two particular
+   transitions read as noticeably emptier than the rest of the
+   homepage; height/colour untouched from the sitewide-divider pass. */
 /* Colour/height updated as part of the sitewide subtle-divider pass
    (see "SITEWIDE SECTION DIVIDERS" at the end of this file) — was a
    2px solid gold (#D4AF37) line, now the same 1px low-opacity
@@ -598,7 +603,7 @@ nav a:hover{
    OUR SERVICES (minimal)
 =========================== */
 .services{
-    padding:100px 8% 110px;
+    padding:56px 8% 64px;
     background:#faf9f7;
 }
 
@@ -983,7 +988,7 @@ p.copyright .footer-login-link{
    TESTIMONIALS
 =========================== */
 .testimonials-section{
-    padding:100px 8%;
+    padding:56px 8%;
     background:#faf9f7;
 }
 
@@ -1047,7 +1052,7 @@ p.copyright .footer-login-link{
     overflow:hidden;
     background:#0F3B2E;
     color:#fff;
-    padding:100px 8%;
+    padding:56px 8%;
 }
 
 .quick-enquiry-section::before{
@@ -1642,7 +1647,7 @@ p.copyright .footer-login-link{
 ========================= */
 
 .about{
-    padding:100px 8%;
+    padding:56px 8%;
     background:#fff;
 }
 
@@ -4633,7 +4638,7 @@ html.is-mobile .rp-contact-row{
 ========================================================== */
 .invest-section{
     background:#faf9f7;
-    padding:100px 8%;
+    padding:56px 8%;
 }
 
 .invest-grid{
@@ -4947,7 +4952,7 @@ html.is-mobile .rp-contact-row{
     position:relative;
     overflow:hidden;
     background:#0F3B2E;
-    padding:100px 8%;
+    padding:56px 8%;
 }
 
 .faq-section::before{
@@ -5064,7 +5069,7 @@ html.is-mobile .rp-contact-row{
     background-position: center;
     background-repeat: no-repeat;
 
-    padding:100px 8%;
+    padding:56px 8%;
     text-align:center;
 }
 
@@ -7692,3 +7697,24 @@ body > section + section{
         padding:26px 20px;
     }
 }
+
+/* ===========================
+   HOMEPAGE SECTION SPACING — reduced
+   Several homepage sections (.about, .testimonials-section,
+   .cta-section, .invest-section, .services, .faq-section,
+   .quick-enquiry-section) all shared the same padding:100px 8%
+   (.services also had a 110px bottom), which stacked with each
+   section's own internal heading margins and produced very large,
+   near-empty gaps at several transitions on the homepage — most
+   visibly "Why Invest in Chennai" → "Our Services" and
+   "Why Aventrix" → "Our Legacy". All seven are reduced to a
+   consistent 56px (.services keeps a slightly larger 64px bottom,
+   since it leads into the dark FAQ section). Left/right padding
+   (8%), all card/grid/heading/icon styles, and every other homepage
+   section's padding are untouched — this only tightens the
+   before/after breathing room on sections that were disproportionately
+   larger than the rest of the page. Every one of these seven
+   selectors is used ONLY on index.html, so no other page is
+   affected. (The .section-divider margin reduction, for the
+   "What We Do" → "Why Aventrix" gap, is noted next to that rule
+   near the top of this file.) */
