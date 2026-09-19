@@ -223,6 +223,8 @@
 
     <a href="properties.html">Properties</a>
 
+    <a href="services.html">Services</a>
+
     <a href="list-with-us.html">List With Us</a>
 
     <a href="free-valuation.html">Free Valuation</a>
@@ -307,11 +309,12 @@
           (list-with-us.html) — position only changed. -->
      <a href="list-with-us.html" class="home-app-hero-post-btn">Post Property <span>FREE</span></a>
 
-     <!-- Small text link, placed directly under Post Property FREE per
-          request — same floating top-right corner, own line, no new
-          button/background styling. Goes to the existing account.html
-          login/signup flow (unchanged). -->
-     <a href="account.html" class="hero-login-link">LOGIN / SIGN UP</a>
+     <!-- LOGIN / SIGN UP text link REMOVED per request (header cleanup
+          pass) -- the account.html login/signup flow itself is
+          untouched and still fully reachable via the account icon in
+          the header's .nav-right / mobile bell (.home-app-bell-btn),
+          this was only the extra floating text duplicate in the hero
+          corner. -->
 
      <!-- REMOVED per feedback: the Wishlist/Shortlist/Notifications
           quick-action bar that lived here is gone — those three are
@@ -413,10 +416,19 @@
      js/properties-search.js — no new filtering logic. -->
 <!-- MOVED per feedback: Meet Our Leadership now sits directly below
      My Listings / My Searches, per the requested homepage flow.
-     Content/functionality completely unchanged — same two people
-     (Founder + Co-Founder), same photos, same "View Profile" links
-     to their existing detail pages. Only made more compact via CSS
-     (see .leadership-grid/.leader-card), not restructured. -->
+     Same two people (Founder + Co-Founder), same "View Profile" links
+     to their existing detail pages -- functionality unchanged.
+
+     REDESIGNED per reference screenshot (a split "photo + text" row
+     per person, matching another agency's "Meet Our Founder" layout)
+     -- .leadership-grid/.leader-card (the old side-by-side centered
+     cards) replaced with .leadership-rows/.leader-row (one large
+     photo beside a left-aligned text block per person, photo side
+     alternating row-to-row on desktop). New photos supplied by the
+     client replace the old images/founder.jpg + images/sanjay.jpg
+     in place, so gnanasekaran.html/sanjay.html, our-realtors.html
+     and realtors-data.js all pick up the new photos automatically
+     without needing their own edits. -->
 <section id="leadership" data-cms-section="leadership-intro">
 
     <div class="container">
@@ -424,28 +436,35 @@
         <h2 data-cms-heading>Meet Our Leadership</h2>
 
         <div data-cms-content><p>Leading Aventrix Realty</p></div>
-        <div class="leadership-grid">
 
-    <div class="leader-card">
-        <img src="images/founder.jpg" alt="Gnanasekaran P" class="leader-photo" loading="lazy">
-        <h3>Gnanasekaran P</h3>
-        <h4>Founder</h4>
-        <p>Visionary leader guiding Aventrix Realty with strategic direction and long-term growth.</p>
-        <a href="gnanasekaran.html" class="profile-btn">
-            View Profile →
-        </a>
+        <div class="leadership-rows">
+
+    <div class="leader-row">
+        <div class="leader-row-photo">
+            <img src="images/founder.jpg" alt="Gnanasekaran P" class="leader-photo" loading="lazy">
+        </div>
+        <div class="leader-row-content">
+            <span class="leader-eyebrow">— MEET OUR FOUNDER</span>
+            <h3>Gnanasekaran P</h3>
+            <h4>Founder</h4>
+            <p>With over 15 years of experience in Chennai's real estate market, Gnanasekaran P provides the strategic direction and leadership behind Aventrix Realty. His deep understanding of local market cycles and neighbourhood trends shapes how the company sources and evaluates properties across residential, commercial and land segments. Over the years, he has built trusted, long-standing relationships with clients, landowners and developers, grounded in transparency and professional conduct at every stage of a transaction. His focus remains on steady, sustainable business development — growing Aventrix Realty's presence across Chennai while holding firmly to the standards of integrity that lasting real estate relationships depend on.</p>
+            <a href="gnanasekaran.html" class="leader-cta">View Profile →</a>
+        </div>
     </div>
 
-    <div class="leader-card">
-        <img src="images/sanjay.jpg" alt="Sanjay Gandhi L" class="leader-photo" loading="lazy">
-        <h3>Sanjay Gandhi L</h3>
-        <h4>Co-Founder & Managing Partner</h4>
-        <p>Leading business operations, client relationships, sales and real estate advisory.</p>
-        <a href="sanjay.html" class="profile-btn">
-            View Profile →
-        </a>
-        
+    <div class="leader-row leader-row-reverse">
+        <div class="leader-row-photo">
+            <img src="images/sanjay.jpg" alt="Sanjay Gandhi L" class="leader-photo" loading="lazy">
+        </div>
+        <div class="leader-row-content">
+            <span class="leader-eyebrow">— MEET OUR CO-FOUNDER</span>
+            <h3>Sanjay Gandhi L</h3>
+            <h4>Co-Founder & Managing Partner</h4>
+            <p>Sanjay Gandhi L brings over 15 years of hands-on real estate experience to his role as Co-Founder and Managing Partner of Aventrix Realty, where he leads day-to-day business and operational activity. His work spans the full property lifecycle — buying, selling and leasing — coordinating property marketing and transaction execution while managing negotiations through to closure. With close familiarity with Chennai's neighbourhoods and property values, he works directly with buyers, sellers, investors and property owners to guide each transaction with clarity and care. His approach is centred on building long-term client relationships, backed by practical market knowledge and dependable, on-ground support.</p>
+            <a href="sanjay.html" class="leader-cta">View Profile →</a>
+        </div>
     </div>
+
 </div>
     </div>
 </section>
@@ -717,36 +736,42 @@ END TEMPORARILY HIDDEN — Featured Locations section -->
                 <div class="bsl-icon"><i class="fas fa-home" aria-hidden="true"></i></div>
                 <h3>Buy</h3>
                 <p>Find verified homes, apartments and plots.</p>
+                <span class="bsl-more">Learn More &rarr;</span>
             </a>
 
             <a href="list-with-us.html" class="bsl-card">
                 <div class="bsl-icon"><i class="fas fa-hand-holding-usd" aria-hidden="true"></i></div>
                 <h3>Sell</h3>
                 <p>List and sell your property with expert guidance.</p>
+                <span class="bsl-more">Learn More &rarr;</span>
             </a>
 
             <a href="property.html?transaction=lease" class="bsl-card">
                 <div class="bsl-icon"><i class="fas fa-key" aria-hidden="true"></i></div>
                 <h3>Lease</h3>
                 <p>Residential and Commercial Leasing.</p>
+                <span class="bsl-more">Learn More &rarr;</span>
             </a>
 
             <a href="joint-venture.html" class="bsl-card">
                 <div class="bsl-icon"><i class="fas fa-people-arrows" aria-hidden="true"></i></div>
                 <h3>Joint Venture</h3>
                 <p>Developer and landowner partnerships, built on trust.</p>
+                <span class="bsl-more">Learn More &rarr;</span>
             </a>
 
-            <a href="index.html#contact" class="bsl-card">
+            <a href="services.html#property-advisory" class="bsl-card">
                 <div class="bsl-icon"><i class="fas fa-user-tie" aria-hidden="true"></i></div>
                 <h3>Property Advisory</h3>
                 <p>Expert guidance for every stage of your property journey.</p>
+                <span class="bsl-more">Learn More &rarr;</span>
             </a>
 
             <a href="nri-services.html" class="bsl-card">
                 <div class="bsl-icon"><i class="fas fa-globe-asia" aria-hidden="true"></i></div>
                 <h3>NRI Services</h3>
                 <p>Remote-friendly property solutions for NRI clients.</p>
+                <span class="bsl-more">Learn More &rarr;</span>
             </a>
 
         </div>
@@ -986,6 +1011,31 @@ END TEMPORARILY HIDDEN — Featured Locations section -->
 
 </section>
 
+<section class="brokerage-teaser" id="brokerage">
+
+    <div class="container">
+
+        <div class="section-heading">
+            <span class="section-eyebrow">TRANSPARENCY</span>
+            <h2>Clear &amp; Transparent Brokerage</h2>
+        </div>
+
+        <p>
+            At Aventrix Realty, brokerage and professional fees are always
+            communicated upfront — no hidden charges, no surprises. Our fee
+            structure is transparent from the very first conversation, so you
+            always know exactly what to expect at every stage of your
+            transaction.
+        </p>
+
+        <div class="brokerage-teaser-cta">
+            <a href="brokerage-fees.html">View Brokerage Details &rarr;</a>
+        </div>
+
+    </div>
+
+</section>
+
 <section class="invest-section" id="invest">
 
     <div class="container">
@@ -1017,8 +1067,8 @@ END TEMPORARILY HIDDEN — Featured Locations section -->
                         <path d="M7 10V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v4"/>
                     </svg>
                 </div>
-                <h3>Metro Connectivity</h3>
-                <p>Expanding transit access improving reach across the city.</p>
+                <h3>Metro &amp; Infrastructure</h3>
+                <p>Expanding transit access and ongoing infrastructure investment across the city.</p>
             </div>
 
             <div class="invest-card">
@@ -1034,112 +1084,21 @@ END TEMPORARILY HIDDEN — Featured Locations section -->
                 <p>Proximity to major commercial and technology corridors.</p>
             </div>
 
-            <div class="invest-card">
-                <div class="invest-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <path d="M4 19.5V9l8-5 8 5v10.5"/>
-                        <path d="M9 19.5v-6h6v6"/>
-                    </svg>
-                </div>
-                <h3>Rental Demand</h3>
-                <p>Consistent tenant demand across residential and commercial.</p>
-            </div>
+        </div>
 
-            <div class="invest-card">
-                <div class="invest-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <path d="M4 18l4-5 3 3 4-6 5 7"/>
-                        <path d="M4 18h16"/>
-                    </svg>
-                </div>
-                <h3>Long-term Appreciation</h3>
-                <p>Steady value growth backed by sustained market demand.</p>
-            </div>
-
-            <div class="invest-card">
-                <div class="invest-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <path d="M3 20h18"/>
-                        <path d="M5 20V10l4-3 4 3v10"/>
-                        <path d="M13 20v-6l3-2 3 2v6"/>
-                    </svg>
-                </div>
-                <h3>Infrastructure Development</h3>
-                <p>Ongoing civic and transport investment across the region.</p>
-            </div>
-
+        <div class="invest-cta">
+            <a href="insights.html">Explore Chennai Investment Opportunities &rarr;</a>
         </div>
 
     </div>
 
 </section>
 
-<section class="services">
-
-    <div class="container">
-
-        <div class="section-heading">
-            <span class="section-eyebrow">WHAT WE OFFER</span>
-            <h2>Our Services</h2>
-        </div>
-
-        <div class="service-grid">
-
-            <div class="service-item">
-                <div class="service-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <path d="M4 11.5L12 4l8 7.5"/>
-                        <path d="M6 10v9.5h12V10"/>
-                        <path d="M10 19.5v-6h4v6"/>
-                    </svg>
-                </div>
-                <h3>Residential Sales</h3>
-                <p>Apartments, Villas &amp; Independent Homes.</p>
-            </div>
-
-            <div class="service-item">
-                <div class="service-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <rect x="5" y="3.5" width="9" height="17" rx="0.5"/>
-                        <rect x="14" y="8.5" width="5" height="12" rx="0.5"/>
-                        <path d="M7.5 7h1.5M7.5 10.5h1.5M7.5 14h1.5M11 7h1.5M11 10.5h1.5M11 14h1.5M16 12h1M16 15.5h1"/>
-                    </svg>
-                </div>
-                <h3>Commercial Properties</h3>
-                <p>Office, Retail &amp; Investment Spaces.</p>
-            </div>
-
-            <div class="service-item">
-                <div class="service-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <path d="M3 8.5l6-2.7 6 2.2 6-2.2v11.4l-6 2.2-6-2.2-6 2.7z"/>
-                        <path d="M9 5.8v11.4M15 8v11.4"/>
-                    </svg>
-                </div>
-                <h3>Land &amp; Plots</h3>
-                <p>DTCP &amp; CMDA Approved Properties.</p>
-            </div>
-
-            <div class="service-item">
-                <div class="service-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <circle cx="8" cy="8" r="2.6"/>
-                        <circle cx="16" cy="8" r="2.6"/>
-                        <path d="M3 19c.5-3 2.4-5 5-5s4.5 2 5 5"/>
-                        <path d="M11 19c.5-3 2.4-5 5-5s4.5 2 5 5"/>
-                    </svg>
-                </div>
-                <h3>Joint Venture</h3>
-                <p>Developer &amp; Landowner Partnerships.</p>
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
+<!-- The "Our Services" (WHAT WE OFFER) 4-card section that used to live here has
+     been moved to its own dedicated page, services.html, which now has the
+     full 7-service portfolio. It has NOT been deleted from the site — it is
+     still fully available via services.html and the "Services" nav link.
+     The four inline SVG icons below were reused as-is on that page. -->
 
 <section class="faq-section" id="faq" data-cms-section="faq">
 

@@ -217,7 +217,12 @@ nav a:hover{
 =========================== */
 
 .featured{
-    padding:90px 0 110px;
+    /* Reduced from 90px 0 110px (full-site spacing audit) -- only
+       used on insights.html, brought in line with the ~56-64px
+       vertical rhythm used for section padding elsewhere on the
+       site. Mobile (html.is-mobile .featured, 45px 16px 55px) was
+       already reasonable and is untouched. */
+    padding:56px 0 64px;
     background:#f8f9fb;
 }
 
@@ -593,8 +598,9 @@ nav a:hover{
 
 .why-item p{
     font-size:14.5px;
+    font-weight:500;
     line-height:1.7;
-    color:#6b7280;
+    color:#4b5563;
     max-width:220px;
     margin:0 auto;
 }
@@ -674,10 +680,35 @@ nav a:hover{
 
 .service-item p{
     font-size:14.5px;
+    font-weight:500;
     line-height:1.7;
-    color:#6b7280;
+    color:#4b5563;
     max-width:220px;
     margin:0 auto;
+}
+
+/* Small "Learn More" affordance -- same gold accent as .bsl-more /
+   .insight-card a, used on the new services.html page's 7 cards. */
+.service-more{
+    display:inline-block;
+    margin-top:12px;
+    color:#c89b3c;
+    font-weight:600;
+    font-size:13px;
+    text-decoration:none;
+}
+.service-more:hover{
+    text-decoration:underline;
+}
+
+/* services.html has 7 cards instead of the homepage's original 4, so
+   it gets its own grid rule (fluid auto-fit instead of a fixed
+   4-column grid) rather than forcing an uneven 4+3 split. The base
+   .service-grid / .service-item / .service-icon rules above are
+   otherwise reused as-is, unchanged, for full visual consistency
+   with the rest of the site. */
+.service-grid-7{
+    grid-template-columns:repeat(auto-fit, minmax(230px, 1fr));
 }
 
 .footer{
@@ -1377,8 +1408,13 @@ p.copyright .footer-login-link{
    from the office_locations table by js/public-offices.js.
 --------------------------------------------- */
 .office-locations-section{
+    /* Reduced from 100px 8% (full-site spacing audit) -- shared by
+       the homepage's office teaser AND all three office blocks on
+       contact.html, where three of these stacked back to back meant
+       200px of empty space between each. Left/right padding (8%)
+       and everything else about the section untouched. */
     background:#F9F8F4;
-    padding:100px 8%;
+    padding:56px 8%;
     text-align:center;
 }
 
@@ -1715,9 +1751,18 @@ p.copyright .footer-login-link{
 }
 
 /* Scoped to the homepage's About/Legacy section only (id="about"),
-   so property.html's .about section is unaffected */
+   so property.html's .about section is unaffected.
+   BUG FIX (full-site spacing audit): this ID+class rule sits below
+   the base ".about{ padding:56px 8%; }" reduction and, being more
+   specific (ID beats class), was silently overriding it back to the
+   old 90/100px figures on desktop -- the homepage's About/Legacy
+   section was never actually reduced despite the "HOMEPAGE SECTION
+   SPACING" pass further down this file claiming it was. The mobile
+   override two rules below (html.is-mobile #about.about, already at
+   50px/55px) was correct all along; only this desktop value was
+   stale. Brought in line with the same 56px used everywhere else. */
 #about.about{
-    padding:90px 8% 100px;
+    padding:56px 8%;
 }
 
 #about .about-content p{
@@ -1831,50 +1876,97 @@ p.copyright .footer-login-link{
     color:#666;
 }
 
-.leadership-grid{
+/* ===========================
+   MEET OUR LEADERSHIP -- redesigned to a "photo + text" row per
+   person (per reference: large portrait photo beside an eyebrow
+   label / name / role / bio / CTA button), replacing the previous
+   two-cards-side-by-side layout. Same Aventrix colours/typography
+   throughout -- only the structural layout changed. Photo side
+   alternates row-to-row on desktop (.leader-row-reverse) for a less
+   monotonous, more editorial feel; both rows stack to a single
+   photo-then-text column on mobile (see html.is-mobile rules below
+   and the max-width:768px fallback for non-touch narrow windows). */
+.leadership-rows{
     display:flex;
-    justify-content:center;
-    gap:24px;
-    margin-top:24px;
-    flex-wrap:wrap;
+    flex-direction:column;
+    gap:72px;
+    margin-top:40px;
 }
 
-.leader-card{
-    width:280px;
-    background:#fff;
-    padding:20px;
-    border-radius:15px;
-    box-shadow:0 10px 25px rgba(0,0,0,.08);
-    text-align:center;
+.leader-row{
+    display:flex;
+    align-items:center;
+    gap:56px;
+    text-align:left;
 }
 
-.leader-card:hover{
-    transform:translateY(-8px);
-    box-shadow:0 15px 40px rgba(0,0,0,.15);
+.leader-row-reverse{
+    flex-direction:row-reverse;
 }
 
-.leader-card h3{
-    font-size:20px;
-    color:#0F3B2E;
-    margin-bottom:4px;
+.leader-row-photo{
+    flex:0 0 380px;
 }
 
-.leader-card h4{
-    font-size:14px;
-    color:#777;
-    margin-bottom:10px;
-}
-
-.leader-card p{
-    line-height:1.8;
-}
 .leader-photo{
-    width:150px;
-    height:150px;
-    border-radius:14px;
+    width:100%;
+    height:460px;
     object-fit:cover;
-    margin-bottom:12px;
-    border:4px solid #0F3B2E;
+    border-radius:16px;
+    box-shadow:0 18px 40px rgba(17,24,39,.12);
+    display:block;
+}
+
+.leader-row-content{
+    flex:1;
+    min-width:0;
+}
+
+.leader-eyebrow{
+    display:block;
+    color:#D4AF37;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:1.5px;
+    margin-bottom:14px;
+}
+
+.leader-row-content h3{
+    font-size:30px;
+    color:#111;
+    margin-bottom:6px;
+}
+
+.leader-row-content h4{
+    font-size:15px;
+    font-weight:600;
+    color:#0F3B2E;
+    margin-bottom:18px;
+}
+
+.leader-row-content p{
+    font-size:15.5px;
+    line-height:1.85;
+    color:#4a4a4a;
+    margin:0 0 26px;
+    max-width:640px;
+}
+
+.leader-cta{
+    display:inline-block;
+    background:#0F3B2E;
+    color:#ffffff;
+    font-size:14px;
+    font-weight:600;
+    padding:12px 28px;
+    border-radius:8px;
+    text-decoration:none;
+    transition:background .25s ease, transform .25s ease;
+}
+
+.leader-cta:hover{
+    background:#0c2f24;
+    transform:translateY(-2px);
 }
 .whatsapp-float{
     position: fixed;
@@ -2053,15 +2145,6 @@ html.is-mobile .section-scroll-indicator{
 .office-phone a:hover{
     color:#0F3B2E;
 }
-.leader-card a{
-    color:#0F3B2E;
-    text-decoration:none;
-    font-weight:600;
-}
-
-.leader-card a:hover{
-    text-decoration:underline;
-}
 .map-btn{
     display:inline-block;
     margin-top:15px;
@@ -2231,8 +2314,13 @@ html.is-mobile .section-scroll-indicator{
 .pd-description,
 .pd-features,
 .pd-trust{
+    /* Divider colour brought to the sitewide rgba(17,24,39,.08)
+       charcoal hairline (full-site audit) -- previously its own
+       flat #f0f0f0 gray instead of the standard colour used for
+       every other section/card boundary on the site. Padding
+       (already a reasonable 26px) is unchanged. */
     padding:26px 0;
-    border-top:1px solid #f0f0f0;
+    border-top:1px solid rgba(17,24,39,.08);
 }
 
 /* --- Specifications grid — icon + label/value card, matching
@@ -2827,7 +2915,12 @@ color:#07111F;
     padding:16px 10px;
     text-align:center;
     box-shadow:0 6px 16px rgba(0,0,0,.06);
-    border:1px solid rgba(0,0,0,.04);
+    /* Border colour brought to the sitewide rgba(17,24,39,.08)
+       charcoal hairline (full-site audit) -- the previous
+       rgba(0,0,0,.04) was so faint against this card's white fill
+       that it read as borderless in practice. Everything else about
+       the card (shadow, radius, padding) is unchanged. */
+    border:1px solid rgba(17,24,39,.08);
     text-decoration:none;
     display:flex;
     flex-direction:column;
@@ -2861,10 +2954,22 @@ color:#07111F;
 }
 
 .bsl-card p{
-    color:#666;
+    color:#4b5563;
+    font-weight:500;
     font-size:11.5px;
     line-height:1.4;
     margin:0;
+}
+
+/* Small "Learn More" affordance added inside each "What We Do" card.
+   Reuses the same gold accent already used for .insight-card a links
+   elsewhere on the site, for visual consistency. Purely a text
+   affordance -- the whole .bsl-card is already the clickable link. */
+.bsl-more{
+    color:#c89b3c;
+    font-weight:600;
+    font-size:10.5px;
+    margin-top:8px;
 }
 
 
@@ -3101,6 +3206,78 @@ nav a:hover::after{
 
 .main-nav a:hover::after{
     width:100%;
+}
+
+/* Adding the new "Services" link (9th item, Phase C) made the desktop
+   nav row too wide to fit inside the header at "medium" desktop
+   widths (~1024-1400px) -- .nav-right (phone/account icons) was
+   being pushed past the right edge of the viewport and silently
+   clipped by the sitewide overflow-x:hidden on body.
+
+   This is the ONE authoritative place for nav spacing/sizing between
+   769px and 1450px -- an older, conflicting fixed-breakpoint fix used
+   to live much further down this file (search "HEADER — DESKTOP
+   OVERFLOW FIX (superseded)") and, because it came later in the
+   source with the same selectors/specificity, was silently winning
+   and fighting this block for part of this same width range. That
+   block is now inert; don't add another nav-sizing rule elsewhere.
+
+   Five tiers (not clamp()) so the exact spacing at each width is easy
+   to read and re-verify by eye, going from just-enough-to-fit at the
+   narrowest supported width up to a comfortably spaced, premium feel
+   by ~1300px+. Re-verified via computed bounding rects across the
+   entire 769-1450px range (769/800/900/1000/1023/1024/1100/1150/1151/
+   1200/1250/1300/1301/1350/1366/1400/1440/1450) with .nav-right always
+   landing inside the viewport -- zero overflow at every tested width.
+   Above 1450px the header already had enough room and is left at its
+   original, most spacious values. Mobile (<=768px) is unaffected --
+   that's the separate off-canvas drawer, not this rule. */
+@media (min-width:769px) and (max-width:899px){
+    .container.nav{ width:99.9%; max-width:1490px; }
+    .main-nav{ gap:1px; margin-left:1px; }
+    .main-nav a{ font-size:6.6px; letter-spacing:0; }
+    .main-nav a.main-nav-admin{ margin-left:1px; }
+    .nav-right{ gap:1px; }
+    .logo img{ height:42px; }
+}
+@media (min-width:900px) and (max-width:1023px){
+    .container.nav{ width:99.5%; max-width:1480px; }
+    .main-nav{ gap:3px; margin-left:3px; }
+    .main-nav a{ font-size:8.6px; letter-spacing:0; }
+    .main-nav a.main-nav-admin{ margin-left:2px; }
+    .nav-right{ gap:2px; }
+    .logo img{ height:42px; }
+}
+@media (min-width:1024px) and (max-width:1150px){
+    .container.nav{ width:99%; max-width:1470px; }
+    .main-nav{ gap:5px; margin-left:5px; }
+    .main-nav a{ font-size:10px; letter-spacing:0; }
+    .main-nav a.main-nav-admin{ margin-left:4px; }
+    .nav-right{ gap:3px; }
+    .logo img{ height:42px; }
+}
+@media (min-width:1151px) and (max-width:1300px){
+    .container.nav{ width:98%; max-width:1450px; }
+    .main-nav{ gap:8px; margin-left:8px; }
+    .main-nav a{ font-size:11px; letter-spacing:.15px; }
+    .main-nav a.main-nav-admin{ margin-left:6px; }
+    .nav-right{ gap:4px; }
+    .logo img{ height:42px; }
+}
+@media (min-width:1301px) and (max-width:1450px){
+    .container.nav{ width:98%; max-width:1460px; }
+    .main-nav{ gap:13px; margin-left:13px; }
+    .main-nav a{ font-size:12.5px; letter-spacing:.3px; }
+    .main-nav a.main-nav-admin{ margin-left:9px; }
+    .nav-right{ gap:5px; }
+    /* The extra "Services" link no longer fits comfortably at this
+       width purely by tightening nav text spacing, so the logo is
+       also scaled down slightly here (53px -> 42px) -- still the
+       full colour image logo, same proportions, just smaller in
+       this one narrow "medium desktop" band. Untouched above
+       1450px (full 53px) and untouched on mobile (its own 41px
+       rule, further down, is unaffected by this query's floor). */
+    .logo img{ height:42px; }
 }
 
 .dropdown{
@@ -3818,17 +3995,58 @@ html.is-mobile .btn-secondary{
 
 html.is-mobile .property-grid,
 html.is-mobile .why-grid,
-html.is-mobile .contact-info,
-html.is-mobile .leadership-grid{
+html.is-mobile .contact-info{
     grid-template-columns:1fr;
     display:grid;
     gap:24px;
 }
 
+/* Meet Our Leadership rows -- was a grid (.leadership-grid), now the
+   .leader-row/.leader-row-reverse split layout (see the desktop rules
+   near .leadership-rows further up). On mobile both rows always
+   stack photo-then-text in a single column, and the alternating
+   "reverse" direction used on desktop is switched off so row order
+   never flips on a narrow screen. */
+html.is-mobile .leadership-rows{
+    gap:48px;
+}
+html.is-mobile .leader-row,
+html.is-mobile .leader-row-reverse{
+    flex-direction:column;
+    align-items:stretch;
+    gap:20px;
+    text-align:center;
+}
+html.is-mobile .leader-row-photo{
+    flex:0 0 auto;
+    width:100%;
+    max-width:280px;
+    margin:0 auto;
+}
+/* BUG FIX (mobile alignment pass): the content block had no width
+   constraint of its own on mobile, so with text-align:center it
+   stretched to the full section width and wrapped unevenly (long,
+   ragged lines with no consistent measure -- the "uncontrolled
+   wrapping" look). Giving the whole block (eyebrow, name, role,
+   paragraph, button) the same centered max-width keeps every line
+   short enough to read comfortably and keeps them all aligned to
+   one consistent column, instead of just the paragraph having its
+   own separate width. Photo, colours, typography and the desktop
+   layout are untouched. */
+html.is-mobile .leader-row-content{
+    text-align:center;
+    max-width:320px;
+    margin:0 auto;
+}
+html.is-mobile .leader-row-content p{
+    max-width:none;
+    margin:0 0 22px;
+}
+
 /* MOBILE 2-COLUMN per feedback: "What We Do" (.bsl-grid, id=
    "what-we-do") pulled out of the combined 1-column rule above —
    the other four in that rule (.property-grid/.why-grid/
-   .contact-info/.leadership-grid) are untouched, still 1 column.
+   .contact-info) are untouched, still 1 column.
    Learned from the Featured Locations bug just above: using
    minmax(0,1fr) instead of plain 1fr from the start, so grid tracks
    can't balloon past the container based on any child's intrinsic
@@ -3845,7 +4063,7 @@ html.is-mobile .bsl-card{
 
 /* MOBILE 2-COLUMN per feedback: Our Services pulled out of the
    combined 1-column rule above (which still governs .property-grid/
-   .why-grid/.contact-info/.leadership-grid/.bsl-grid unchanged) so
+   .why-grid/.contact-info/.bsl-grid unchanged) so
    it alone gets 2 columns on mobile. Desktop untouched — this is
    entirely inside html.is-mobile. */
 html.is-mobile .service-grid{
@@ -3872,15 +4090,8 @@ html.is-mobile .view-details-btn{
     font-size:12.5px;
 }
 
-html.is-mobile .leader-card{
-    width:100%;
-    max-width:340px;
-    margin:0 auto;
-}
-
 html.is-mobile .leader-photo{
-    width:180px;
-    height:180px;
+    height:280px;
 }
 
 html.is-mobile .featured{
@@ -4306,8 +4517,12 @@ html.is-mobile body.mobile-menu-open .whatsapp-float{
     html:not(.is-mobile) .property-grid,
     html:not(.is-mobile) .why-grid,
     html:not(.is-mobile) .service-grid,
-    html:not(.is-mobile) .contact-info,
-    html:not(.is-mobile) .leadership-grid{ grid-template-columns:1fr; display:grid; }
+    html:not(.is-mobile) .contact-info{ grid-template-columns:1fr; display:grid; }
+    html:not(.is-mobile) .leader-row,
+    html:not(.is-mobile) .leader-row-reverse{ flex-direction:column; align-items:stretch; text-align:center; gap:20px; }
+    html:not(.is-mobile) .leader-row-photo{ width:100%; max-width:280px; margin:0 auto; }
+    html:not(.is-mobile) .leader-row-content{ text-align:center; max-width:320px; margin:0 auto; }
+    html:not(.is-mobile) .leader-row-content p{ max-width:none; margin:0 0 22px; }
     html:not(.is-mobile) .qe-office-links{ flex-direction:column; align-items:flex-start; gap:8px; }
     html:not(.is-mobile) .office-map-embed iframe{ height:180px; }
     html:not(.is-mobile) .office-map-embed.office-map-placeholder{ height:180px; }
@@ -4634,6 +4849,45 @@ html.is-mobile .rp-contact-row{
 }
 
 /* ==========================================================
+   CLEAR & TRANSPARENT BROKERAGE (compact homepage teaser)
+   New section added between the existing "Ready to Find Your Ideal
+   Property?" CTA and "Why Invest in Chennai". Deliberately simple
+   (heading + one paragraph + a single text CTA) so it stays compact
+   and doesn't compete with the card-grid sections around it. Full
+   detail already lives on brokerage-fees.html -- this just teases it.
+========================================================== */
+.brokerage-teaser{
+    padding:56px 8%;
+    background:#ffffff;
+    text-align:center;
+}
+
+.brokerage-teaser p{
+    max-width:640px;
+    margin:0 auto;
+    font-size:15.5px;
+    font-weight:500;
+    line-height:1.8;
+    color:#4b5563;
+}
+
+.brokerage-teaser-cta{
+    margin-top:28px;
+}
+
+.brokerage-teaser-cta a{
+    display:inline-block;
+    color:#c89b3c;
+    font-weight:600;
+    font-size:15px;
+    text-decoration:none;
+}
+
+.brokerage-teaser-cta a:hover{
+    text-decoration:underline;
+}
+
+/* ==========================================================
    WHY INVEST IN CHENNAI
 ========================================================== */
 .invest-section{
@@ -4655,7 +4909,12 @@ html.is-mobile .rp-contact-row{
     padding:38px 30px;
     box-shadow:0 10px 28px rgba(15,59,46,.06);
     transition:.4s cubic-bezier(.2,.8,.2,1);
-    border:1px solid rgba(15,59,46,.06);
+    /* Border colour brought to the sitewide rgba(17,24,39,.08)
+       charcoal hairline (full-site audit) -- the previous
+       rgba(15,59,46,.06) green tint was nearly invisible against
+       this card's white fill and the section's light background.
+       Everything else about the card is unchanged. */
+    border:1px solid rgba(17,24,39,.08);
 }
 
 .invest-card:hover{
@@ -4689,9 +4948,28 @@ html.is-mobile .rp-contact-row{
 
 .invest-card p{
     font-size:15px;
+    font-weight:500;
     line-height:1.7;
-    color:#6b7280;
+    color:#4b5563;
     margin:0;
+}
+
+/* CTA link under the (now compacted, 3-card) "Why Invest in Chennai"
+   grid -- reuses the same gold accent as .insight-card a / .bsl-more
+   for visual consistency. */
+.invest-cta{
+    text-align:center;
+    margin-top:36px;
+}
+.invest-cta a{
+    display:inline-block;
+    color:#c89b3c;
+    font-weight:600;
+    font-size:15px;
+    text-decoration:none;
+}
+.invest-cta a:hover{
+    text-decoration:underline;
 }
 
 /* ==========================================================
@@ -5108,7 +5386,8 @@ html.is-mobile .invest-section,
 html.is-mobile .categories-section,
 html.is-mobile .locations-section,
 html.is-mobile .faq-section,
-html.is-mobile .cta-section{
+html.is-mobile .cta-section,
+html.is-mobile .brokerage-teaser{
     padding:45px 16px;
 }
 
@@ -6363,10 +6642,14 @@ body.qv-open{
 .ws-empty p{ color:#666; margin-bottom:18px; font-size:14px; }
 
 .ws-divider{
+    /* Colour brought to the sitewide rgba(17,24,39,.08) charcoal
+       hairline (full-site audit) -- previously its own one-off
+       #e5e3da beige-gray instead of the standard divider colour
+       used everywhere else. Size/spacing unchanged. */
     max-width:1200px;
     margin:10px auto 0;
     border:none;
-    border-top:1px solid #e5e3da;
+    border-top:1px solid rgba(17,24,39,.08);
 }
 
 @media (max-width:900px){
@@ -7008,13 +7291,19 @@ body.qv-open{
    overflow fix (see the @media blocks under .main-nav). */
 
 /* Post Property FREE — hero variant (compact floating CTA, top-right
-   corner of the hero, per the latest layout direction). Solid white
-   pill for maximum contrast/legibility against the video background
-   — a translucent/glass treatment (matching the search panel) would
-   risk being unreadable depending on the underlying video frame,
-   and this needs to read clearly at a glance as a CTA, not blend in
-   like the search panel is meant to. Kept deliberately small so it
-   never competes with the headline for attention. */
+   corner of the hero). Now a black-glass / glassmorphism pill per
+   request: translucent near-black background + backdrop-filter blur
+   so the hero video still reads through it, a thin light-catching
+   border, a soft outer shadow, and inset highlight/shadow lines for
+   a subtle glass edge-light effect. White label text throughout --
+   the "FREE" word is no longer a separate coloured badge/pill (that
+   gold #D4AF37 chip read as "green-ish"/still a distinct colour
+   block against the dark glass, which the client asked to remove);
+   it's now just part of the same white text run inside the one
+   black-glass pill, set slightly bolder/letter-spaced so it still
+   stands out by weight and spacing alone, not by colour. Kept the
+   same small size/position as before -- only the visual treatment
+   changed. */
 .home-app-hero-post-btn{
     position:absolute;
     top:20px;
@@ -7022,55 +7311,54 @@ body.qv-open{
     z-index:4;
     display:inline-flex;
     align-items:center;
-    gap:6px;
-    background:#ffffff;
-    color:#0F3B2E;
-    font-weight:700;
+    gap:7px;
+    background:rgba(8,8,8,.5);
+    -webkit-backdrop-filter:blur(14px) saturate(140%);
+    backdrop-filter:blur(14px) saturate(140%);
+    color:#ffffff;
+    font-weight:600;
     font-size:13px;
-    padding:8px 14px;
+    padding:9px 16px;
     border-radius:999px;
+    border:1px solid rgba(255,255,255,.2);
     text-decoration:none;
     white-space:nowrap;
-    box-shadow:0 4px 14px rgba(0,0,0,.18);
+    box-shadow:
+        0 8px 22px rgba(0,0,0,.35),
+        inset 0 1px 0 rgba(255,255,255,.25),
+        inset 0 -1px 0 rgba(0,0,0,.2);
+    overflow:hidden;
+    transition:background .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+/* Soft diagonal sheen across the upper-left of the pill -- the
+   "glass reflection" highlight. Purely decorative, sits under the
+   text (z-index of the link's own content stacks above a ::before
+   by default source order) and never intercepts clicks. */
+.home-app-hero-post-btn::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:inherit;
+    background:linear-gradient(135deg, rgba(255,255,255,.22) 0%, rgba(255,255,255,0) 50%);
+    pointer-events:none;
+}
+.home-app-hero-post-btn:hover{
+    background:rgba(8,8,8,.62);
+    border-color:rgba(255,255,255,.32);
 }
 .home-app-hero-post-btn span{
-    background:#0F3B2E;
-    color:#fff;
-    font-size:10px;
+    position:relative;
+    background:none;
+    color:#ffffff;
+    font-size:11px;
     font-weight:700;
-    letter-spacing:.4px;
-    padding:2px 7px;
-    border-radius:999px;
+    letter-spacing:.5px;
+    padding:0;
+    border-radius:0;
 }
 @media (max-width:640px){
     .home-app-hero-post-btn{ top:16px; right:16px; padding:7px 12px; font-size:12px; }
     .home-app-hero-post-btn span{ display:none; }
-}
-
-/* LOGIN / SIGN UP — small text link directly under the Post Property
-   FREE button above. Text-only (no pill/background), same white
-   used for the headline/subheading text on the hero video, with a
-   subtle underline/divider beneath it. */
-.hero-login-link{
-    position:absolute;
-    top:64px;
-    right:20px;
-    z-index:4;
-    color:#ffffff;
-    font-family:'Montserrat',sans-serif;
-    font-size:12px;
-    font-weight:600;
-    letter-spacing:.3px;
-    text-decoration:none;
-    padding-bottom:4px;
-    border-bottom:1px solid rgba(255,255,255,.55);
-    white-space:nowrap;
-}
-.hero-login-link:hover{
-    border-bottom-color:#ffffff;
-}
-@media (max-width:640px){
-    .hero-login-link{ top:52px; right:16px; font-size:11px; }
 }
 
 /* Hero quick-action bar CSS REMOVED per feedback — those three
@@ -7543,39 +7831,18 @@ header nav a{
 }
 
 /* ===========================
-   HEADER — DESKTOP OVERFLOW FIX
-   Placed at the very end of this file on purpose, so these rules
-   reliably win the cascade over the earlier .main-nav / .main-nav a
-   declarations above (same selector specificity — later source
-   position wins).
-
-   The ALL-CAPS nav labels take noticeably more horizontal room than
-   the original mixed-case text did. Now that the phone NUMBER has
-   been removed from the desktop header (icon-only circular button,
-   same footprint as the Wishlist/Profile icons), the right-side
-   group is small and fixed-width, so this is only needed on the
-   narrower common laptop widths (roughly 901px–1350px) where the
-   logo + full nav text still don't both fit on one line; above that
-   the header now renders at full, unreduced size.
-
-   Fix: below 1350px, nav font-size/gap/margin-left scale smoothly
-   with viewport width (via clamp()) instead of jumping between a
-   few fixed breakpoints — verified with a fine-grained sweep (every
-   5px from 901px to 1920px) to guarantee there is no gap in
-   coverage between named widths, and that the header's height stays
-   perfectly constant throughout. Nothing is ever removed, hidden,
-   or wrapped to a second line, logo size is untouched, and ALL-CAPS
-   is preserved throughout. */
-@media (max-width:1350px){
-    .main-nav{
-        gap: clamp(4px, 3.118vw - 24.09px, 18px);
-        margin-left: clamp(6px, 4.009vw - 30.12px, 24px);
-    }
-    .main-nav a{
-        font-size: clamp(7.6px, 1.2027vw - 3.236px, 13px);
-        letter-spacing: 0px;
-    }
-}
+   HEADER — DESKTOP OVERFLOW FIX (superseded)
+   The old fixed-breakpoint / clamp() version of this fix used to
+   live here and conflicted with the newer, single consolidated nav
+   media query up near .main-nav's base rule (search for "min-width:
+   769px) and (max-width:1450px)") -- same selector, same specificity,
+   and because THIS block came later in the file it was silently
+   winning for every width between 769px and 1350px, undoing the
+   newer rule's spacing there. That's now the one and only place
+   controlling nav spacing/sizing at these widths, so this block is
+   intentionally left empty rather than removed outright, to avoid
+   losing the historical context above for anyone reading this file
+   later. Do not add nav sizing rules here again. */
 
 /* ===========================
    SITEWIDE SECTION DIVIDERS
@@ -7648,8 +7915,6 @@ body > section + section{
       .property-card      — property listing cards (homepage,
                              properties.html, wishlist/shortlist,
                              Similar/Recently Viewed on property.html)
-      .leader-card         — "Meet Our Leadership" cards on index.html
-                             (the reference example from the request)
       .insight-card        — insights.html article cards
       .category-card       — homepage category tiles
       .location-card-btn   — homepage locality tiles
@@ -7668,9 +7933,12 @@ body > section + section{
      redesign of that component, not a boundary refinement.
    - .home-app-segment-panel (My Listings / My Searches tab body): a
      tab-switcher container, not itself a visual card — the actual
-     cards inside it (.home-app-property-card) already have a border. */
+     cards inside it (.home-app-property-card) already have a border.
+   - .leader-card no longer exists: "Meet Our Leadership" was
+     redesigned to an open photo+text row (.leader-row), not a boxed
+     card, so there's no card boundary to add here any more -- the
+     photo keeps its own drop-shadow instead (see .leader-photo). */
 .property-card,
-.leader-card,
 .insight-card,
 .category-card,
 .location-card-btn,

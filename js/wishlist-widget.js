@@ -22,7 +22,13 @@
         shortlistLink.href = "shortlist.html";
         shortlistLink.className = "nav-wishlist-link nav-shortlist-link";
         shortlistLink.setAttribute("aria-label", "My Shortlist & Compare");
-        shortlistLink.innerHTML = `<i class="fas fa-bookmark" aria-hidden="true"></i><span class="nav-wishlist-count" hidden>0</span>`;
+        // Regular (outline) style instead of solid -- per request, this
+        // header icon should read as a clean thin-line bookmark outline
+        // with a white/transparent interior, not a solid filled green
+        // shape. Same existing brand green (.nav-wishlist-link's color)
+        // is still used for the outline itself -- no new colour
+        // introduced. Heart/Profile/Phone icons are untouched.
+        shortlistLink.innerHTML = `<i class="far fa-bookmark" aria-hidden="true"></i><span class="nav-wishlist-count" hidden>0</span>`;
 
         const wishlistLink = document.createElement("a");
         wishlistLink.href = "wishlist.html";
