@@ -72,10 +72,7 @@
     <link rel="stylesheet" href="style.css?v=20260831">
     <link rel="stylesheet" href="css/phase2a.css?v=1">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
 
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   
     <script type="application/ld+json">
@@ -200,8 +197,7 @@
     <div class="container nav">
         <div class="logo">
     <a href="index.html" class="logo-text">
-        <span class="logo-main">AVENTRIX</span>
-        <span class="logo-sub">REALTY</span>
+        <img src="images/aventrix-logo.png" alt="Aventrix Realty">
     </a>
 </div>
    <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
@@ -214,8 +210,8 @@
              breakpoint. Post Property FREE moved into the hero
              itself per the latest layout direction — see .hero. -->
         <div class="home-app-header-actions">
-            <a href="account.html" class="home-app-bell-btn" aria-label="Account & notifications">
-                <i class="fas fa-bell" aria-hidden="true"></i>
+            <a href="account.html" class="home-app-bell-btn" aria-label="My Account">
+                <i class="far fa-circle-user" aria-hidden="true"></i>
             </a>
         </div>
     <div class="menu-overlay" id="menuOverlay"></div>   
@@ -275,12 +271,11 @@
                  automatically on mobile along with the rest of
                  .nav-right (existing rule, unchanged) — the separate
                  always-visible mobile bell below covers that case. -->
-            <a href="account.html" class="nav-wishlist-link nav-bell-link" aria-label="Notifications">
-                <i class="fas fa-bell" aria-hidden="true"></i>
+            <a href="account.html" class="nav-wishlist-link nav-bell-link" aria-label="My Account">
+                <i class="far fa-circle-user" aria-hidden="true"></i>
             </a>
             <a href="tel:+919176887770" class="nav-phone" data-site="phone1" aria-label="Call Aventrix Realty">
                 <i class="fas fa-phone-alt" aria-hidden="true"></i>
-                <span class="nav-phone-number" data-site="phone1">+91 91768 87770</span>
             </a>
         </div>
     </div>
@@ -311,6 +306,12 @@
           panel below it. Same destination as before
           (list-with-us.html) — position only changed. -->
      <a href="list-with-us.html" class="home-app-hero-post-btn">Post Property <span>FREE</span></a>
+
+     <!-- Small text link, placed directly under Post Property FREE per
+          request — same floating top-right corner, own line, no new
+          button/background styling. Goes to the existing account.html
+          login/signup flow (unchanged). -->
+     <a href="account.html" class="hero-login-link">LOGIN / SIGN UP</a>
 
      <!-- REMOVED per feedback: the Wishlist/Shortlist/Notifications
           quick-action bar that lived here is gone — those three are
@@ -754,7 +755,7 @@ END TEMPORARILY HIDDEN — Featured Locations section -->
 
 </section>
 
-<div class="section-divider" style="background-color:transparent;"></div><!-- Gold line hidden per request; height/margin (spacing) preserved unchanged — only the color was disabled. -->
+<div class="section-divider"></div><!-- Sitewide subtle-divider pass: now renders the standard 1px low-opacity charcoal hairline (see .section-divider in style.css) instead of being hidden; spacing (margin:80px 0) unchanged. -->
 
 <section class="why" id="why-us">
 
@@ -839,7 +840,7 @@ END TEMPORARILY HIDDEN — Featured Locations section -->
 
 </section>
 
-<div class="section-divider" style="background-color:transparent;"></div><!-- Gold line hidden per request; height/margin (spacing) preserved unchanged — only the color was disabled. -->
+<div class="section-divider"></div><!-- Sitewide subtle-divider pass: now renders the standard 1px low-opacity charcoal hairline (see .section-divider in style.css) instead of being hidden; spacing (margin:80px 0) unchanged. -->
 
 <section id="about" class="about legacy-section" data-cms-section="about-legacy">
 
@@ -1354,7 +1355,7 @@ END TEMPORARILY HIDDEN — Featured Locations section -->
     <div class="container premium-footer-top">
 
         <div class="pf-col pf-brand">
-            <h3 class="pf-logo">AVENTRIX REALTY</h3>
+            <h3 class="pf-logo"><img src="images/aventrix-logo.png" alt="Aventrix Realty"></h3>
             <p class="pf-tagline" data-site="footer-tagline">Where Legacy Meets The Next Generation</p>
             <p class="pf-desc" data-site="footer-description">
                 Premium real estate advisory across Chennai — residential,

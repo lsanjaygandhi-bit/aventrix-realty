@@ -22,6 +22,9 @@
     };
     const messageEl = document.getElementById("acctMessage");
     const signupSuccessEl = document.getElementById("acctSignupSuccess");
+    const loggedInPanel = document.getElementById("acctLoggedInPanel");
+    const loggedInEmailEl = document.getElementById("acctLoggedInEmail");
+    const signOutBtn = document.getElementById("acctSignOutBtn");
 
     function showPanel(name) {
         Object.keys(panels).forEach((key) => { panels[key].hidden = key !== name; });
@@ -204,4 +207,28 @@
 
     // Default view on load: Log In tab.
     showPanel("login");
+
+    // ---------------------------------------------------------
+    // ALREADY LOGGED IN — there's no full customer dashboard yet,
+    // so this is a minimal check just to connect the header's new
+    // account icon to something sensible: if a session already
+    // exists, show a simple panel instead of the login form.
+    // ---------------------------------------------------------
+    if (signOutBtn) {
+        signOutBtn.addEventListener("click", async () => {
+            await sb.auth.signOut();
+            window.location.reload();
+        });
+    }
+
+    sb.auth.getSession().then(({ data }) => {
+        const user = data && data.session && data.session.user;
+        if (!user || !loggedInPanel) return;
+        tabsWrap.hidden = true;
+        Object.values(panels).forEach((p) => { p.hidden = true; });
+        signupSuccessEl.hidden = true;
+        clearMessage();
+        if (loggedInEmailEl) loggedInEmailEl.textContent = user.email || "";
+        loggedInPanel.hidden = false;
+    });
 })();
