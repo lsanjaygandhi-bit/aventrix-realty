@@ -886,7 +886,8 @@
 
         const categoryLabels = {
             residential: "Residential", commercial: "Commercial", land: "Land & Plots",
-            villas: "Luxury Villas", apartments: "Apartments", investment: "Investment"
+            villas: "Luxury Villas", apartments: "Apartments", investment: "Investment",
+            industrial: "Industrial", special_purpose: "Special Purpose", agricultural: "Agricultural"
         };
         const categoryLabel = categoryLabels[property.category] || property.category;
 
@@ -1158,11 +1159,30 @@
             land: "Land & Plots",
             villas: "Luxury Villas",
             apartments: "Apartments",
-            investment: "Investment"
+            investment: "Investment",
+            industrial: "Industrial",
+            special_purpose: "Special Purpose",
+            agricultural: "Agricultural"
+        };
+
+        // Sub-Type labels (approved 2026-09 taxonomy) — only populated on
+        // properties newly tagged with sub_type; legacy rows simply omit
+        // this card, same as any other blank field on this page.
+        const subTypeLabels = {
+            apartment_flat: "Apartment / Flat", villa: "Villa", independent_house: "Independent House",
+            duplex: "Duplex", penthouse: "Penthouse", residential_plot: "Residential Plot",
+            office_space: "Office Space", shop_retail: "Shop / Retail", showroom: "Showroom",
+            commercial_building: "Commercial Building", commercial_plot: "Commercial Plot",
+            factory_manufacturing: "Factory / Manufacturing", warehouse: "Warehouse",
+            industrial_building: "Industrial Building", industrial_plot: "Industrial Plot",
+            hotel: "Hotel", hospital: "Hospital", school_institution: "School / Institution",
+            resort: "Resort", other_special_purpose: "Other Special Purpose",
+            agricultural_land: "Agricultural Land", farm_land: "Farm Land", plantation_estate: "Plantation / Estate"
         };
 
         const specDefs = [
             { value: categoryLabels[property.category] || property.category, label: "Property Type", icon: "fa-house" },
+            { value: property.sub_type ? (subTypeLabels[property.sub_type] || property.sub_type) : "", label: "Sub-Type", icon: "fa-layer-group" },
             { value: formatBadge(property.listing_type), label: "Listing Type", icon: "fa-tag" },
             { value: property.bedrooms, label: "Bedrooms", icon: "fa-bed" },
             { value: property.bathrooms, label: "Bathrooms", icon: "fa-bath" },

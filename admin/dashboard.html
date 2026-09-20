@@ -438,14 +438,27 @@
                     <input type="text" id="fTitle" required>
                 </div>
                 <div class="admin-field">
-                    <label>Category</label>
+                    <label>Property Type</label>
                     <select id="fCategory">
-                        <option value="residential">Residential</option>
-                        <option value="commercial">Commercial</option>
-                        <option value="land">Land &amp; Plots</option>
-                        <option value="villas">Luxury Villas</option>
-                        <option value="apartments">Apartments</option>
-                        <option value="investment">Investment</option>
+                        <optgroup label="Property Type">
+                            <option value="residential">Residential</option>
+                            <option value="commercial">Commercial</option>
+                            <option value="industrial">Industrial</option>
+                            <option value="special_purpose">Special Purpose</option>
+                            <option value="agricultural">Agricultural</option>
+                        </optgroup>
+                        <optgroup label="Legacy (existing records only)">
+                            <option value="land">Land &amp; Plots</option>
+                            <option value="villas">Luxury Villas</option>
+                            <option value="apartments">Apartments</option>
+                            <option value="investment">Investment</option>
+                        </optgroup>
+                    </select>
+                </div>
+                <div class="admin-field">
+                    <label>Sub-Type</label>
+                    <select id="fSubType">
+                        <option value="">Not specified</option>
                     </select>
                 </div>
                 <div class="admin-field">

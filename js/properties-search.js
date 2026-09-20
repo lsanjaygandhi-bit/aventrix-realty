@@ -35,6 +35,7 @@
     const els = {
         location: document.getElementById("sfLocation"),
         category: document.getElementById("sfCategory"),
+        subType: document.getElementById("sfSubType"),
         listingType: document.getElementById("sfListingType"),
         priceMin: document.getElementById("sfPriceMin"),
         priceMax: document.getElementById("sfPriceMax"),
@@ -64,17 +65,88 @@
 
     // Maps the homepage hero search's "Property Type" values onto this
     // page's category values, so the existing hero form keeps working
-    // once its action points here.
+    // once its action points here. The four legacy values map onto the
+    // old category names for backward compatibility with any bookmarked
+    // or previously-shared links; the five canonical taxonomy values map
+    // onto themselves (identity) since the hero form now uses the same
+    // Property Type values as this page.
     const HERO_TYPE_TO_CATEGORY = {
         apartment: "apartments",
         villa: "villas",
         plot: "land",
-        commercial: "commercial"
+        commercial: "commercial",
+        residential: "residential",
+        industrial: "industrial",
+        special_purpose: "special_purpose",
+        agricultural: "agricultural"
     };
+
+    // Property Type → Sub-Type taxonomy (approved 2026-09). Drives the
+    // dependent Sub-Type dropdown on this page and is duplicated (kept
+    // in sync intentionally, same as the existing card-template pattern
+    // with near-me.js) in admin/js/properties.js for the Admin form's
+    // cascade, since these are plain scripts with no shared module.
+    const TYPE_SUBTYPES = {
+        residential: [
+            { value: "apartment_flat", label: "Apartment / Flat" },
+            { value: "villa", label: "Villa" },
+            { value: "independent_house", label: "Independent House" },
+            { value: "duplex", label: "Duplex" },
+            { value: "penthouse", label: "Penthouse" },
+            { value: "residential_plot", label: "Residential Plot" }
+        ],
+        commercial: [
+            { value: "office_space", label: "Office Space" },
+            { value: "shop_retail", label: "Shop / Retail" },
+            { value: "showroom", label: "Showroom" },
+            { value: "commercial_building", label: "Commercial Building" },
+            { value: "commercial_plot", label: "Commercial Plot" }
+        ],
+        industrial: [
+            { value: "factory_manufacturing", label: "Factory / Manufacturing" },
+            { value: "warehouse", label: "Warehouse" },
+            { value: "industrial_building", label: "Industrial Building" },
+            { value: "industrial_plot", label: "Industrial Plot" }
+        ],
+        special_purpose: [
+            { value: "hotel", label: "Hotel" },
+            { value: "hospital", label: "Hospital" },
+            { value: "school_institution", label: "School / Institution" },
+            { value: "resort", label: "Resort" },
+            { value: "other_special_purpose", label: "Other Special Purpose" }
+        ],
+        agricultural: [
+            { value: "agricultural_land", label: "Agricultural Land" },
+            { value: "farm_land", label: "Farm Land" },
+            { value: "plantation_estate", label: "Plantation / Estate" }
+        ]
+    };
+
+    // Reverse lookup (sub-type value -> owning Property Type) so a deep
+    // link carrying only `subtype=` (no `category=`) still resolves to
+    // the right Property Type — sub-type values are unique across the
+    // whole taxonomy, so this is unambiguous.
+    const SUBTYPE_TO_CATEGORY = {};
+    Object.keys(TYPE_SUBTYPES).forEach((cat) => {
+        TYPE_SUBTYPES[cat].forEach((s) => { SUBTYPE_TO_CATEGORY[s.value] = cat; });
+    });
+
+    // Rebuilds the Sub-Type dropdown for the given Property Type, keeping
+    // `selectedValue` selected only when it's actually valid for that
+    // type (otherwise resets to "Any Sub-Type"). Disabled when no
+    // Property Type is chosen, matching the Admin form's cascade.
+    function populateSubTypeOptions(category, selectedValue) {
+        const list = TYPE_SUBTYPES[category] || [];
+        els.subType.innerHTML = '<option value="">Any Sub-Type</option>' +
+            list.map((s) => `<option value="${s.value}">${escapeHtml(s.label)}</option>`).join("");
+        els.subType.disabled = list.length === 0;
+        els.subType.value = list.some((s) => s.value === selectedValue) ? selectedValue : "";
+    }
 
     const FIELD_LABELS = {
         location: "Location",
         category: "Type",
+        subType: "Sub-Type",
         listingType: "",
         priceMin: "Price",
         bedrooms: "Beds",
@@ -84,9 +156,13 @@
 
     function readStateFromUrl() {
         const params = new URLSearchParams(window.location.search);
+        const subType = params.get("subtype") || "";
+        const category = params.get("category") || HERO_TYPE_TO_CATEGORY[params.get("type")] ||
+            (subType && SUBTYPE_TO_CATEGORY[subType]) || "";
         return {
             location: params.get("location") || "",
-            category: params.get("category") || HERO_TYPE_TO_CATEGORY[params.get("type")] || "",
+            category: category,
+            subType: subType,
             listingType: params.get("listingType") ||
                 (params.get("transaction") === "buy" ? "sale" :
                  params.get("transaction") === "lease" ? "lease" : ""),
@@ -107,6 +183,7 @@
     function applyStateToInputs(state) {
         els.location.value = state.location;
         els.category.value = state.category;
+        populateSubTypeOptions(state.category, state.subType);
         els.listingType.value = state.listingType;
         els.priceMin.value = state.priceMin;
         els.priceMax.value = state.priceMax;
@@ -125,6 +202,7 @@
         return {
             location: els.location.value.trim(),
             category: els.category.value,
+            subType: els.subType.value,
             listingType: els.listingType.value,
             priceMin: els.priceMin.value,
             priceMax: els.priceMax.value,
@@ -144,6 +222,7 @@
         const params = new URLSearchParams();
         if (state.location) params.set("location", state.location);
         if (state.category) params.set("category", state.category);
+        if (state.subType) params.set("subtype", state.subType);
         if (state.listingType) params.set("listingType", state.listingType);
         if (state.priceMin) params.set("priceMin", state.priceMin);
         if (state.priceMax) params.set("priceMax", state.priceMax);
@@ -241,13 +320,14 @@
     // entry — falls back to the raw value if a mapping isn't found.
     const CATEGORY_LABELS = {
         residential: "Residential", apartments: "Apartments", villas: "Villas",
-        commercial: "Commercial", land: "Land & Plots", investment: "Investment"
+        commercial: "Commercial", land: "Land & Plots", investment: "Investment",
+        industrial: "Industrial", special_purpose: "Special Purpose", agricultural: "Agricultural"
     };
 
     function recordCurrentSearch(state) {
         if (!window.AventrixRecentSearches) return;
 
-        const hasFilter = state.location || state.category || state.listingType ||
+        const hasFilter = state.location || state.category || state.subType || state.listingType ||
             state.priceMin || state.priceMax || state.bedrooms || state.bathrooms ||
             state.areaMin || state.areaMax || state.facing || state.furnishing ||
             state.parking || state.roadWidthMin;
@@ -330,7 +410,37 @@
 
         let query = sb.from("properties").select("*").eq("publish_status", "Published");
 
-        if (state.category) query = query.eq("category", state.category);
+        // "Residential" widens to also include the legacy "apartments" and
+        // "villas" category values, since those are now Residential
+        // sub-types in spirit — existing rows are never modified, this
+        // only widens what the Residential filter matches. Every other
+        // category value (including legacy land/investment reached via
+        // an old bookmarked link) still does an exact match, unchanged
+        // from before.
+        if (state.category) {
+            if (state.category === "residential") {
+                query = query.in("category", ["residential", "apartments", "villas"]);
+            } else {
+                query = query.eq("category", state.category);
+            }
+        }
+
+        // Sub-Type filter. "Apartment / Flat" and "Villa" also match the
+        // pre-existing "apartments"/"villas" category rows (which predate
+        // the sub_type column and will never have it backfilled
+        // automatically), so selecting those sub-types still surfaces the
+        // existing inventory. Every other sub-type is a plain column
+        // match — only newly-tagged rows will have a value there.
+        if (state.subType) {
+            if (state.subType === "apartment_flat") {
+                query = query.or("sub_type.eq.apartment_flat,category.eq.apartments");
+            } else if (state.subType === "villa") {
+                query = query.or("sub_type.eq.villa,category.eq.villas");
+            } else {
+                query = query.eq("sub_type", state.subType);
+            }
+        }
+
         if (state.listingType) query = query.eq("listing_type", state.listingType);
         if (state.bedrooms) query = query.gte("bedrooms", parseInt(state.bedrooms, 10));
         if (state.bathrooms) query = query.gte("bathrooms", parseInt(state.bathrooms, 10));
@@ -460,6 +570,7 @@
         const chips = [];
         if (state.location) chips.push({ key: "location", label: `Location: ${state.location}` });
         if (state.category) chips.push({ key: "category", label: `Type: ${els.category.options[els.category.selectedIndex].text}` });
+        if (state.subType) chips.push({ key: "subType", label: `Sub-Type: ${els.subType.options[els.subType.selectedIndex] ? els.subType.options[els.subType.selectedIndex].text : state.subType}` });
         if (state.listingType) chips.push({ key: "listingType", label: state.listingType === "sale" ? "Buy" : "Rent / Lease" });
         if (state.priceMin || state.priceMax) {
             const label = state.priceMin && state.priceMax ? `₹${state.priceMin} – ₹${state.priceMax}`
@@ -502,7 +613,8 @@
     function clearFilter(key) {
         switch (key) {
             case "location": els.location.value = ""; break;
-            case "category": els.category.value = ""; break;
+            case "category": els.category.value = ""; populateSubTypeOptions("", ""); break;
+            case "subType": els.subType.value = ""; break;
             case "listingType": els.listingType.value = ""; break;
             case "price": els.priceMin.value = ""; els.priceMax.value = ""; break;
             case "bedrooms": els.bedrooms.value = ""; break;
@@ -518,6 +630,7 @@
     function clearAllFilters() {
         els.location.value = "";
         els.category.value = "";
+        populateSubTypeOptions("", "");
         els.listingType.value = "";
         els.priceMin.value = "";
         els.priceMax.value = "";
@@ -555,7 +668,12 @@
     // ---------------------------------------------------------
     // Wire inputs
     // ---------------------------------------------------------
-    [els.category, els.listingType, els.bedrooms, els.bathrooms, els.facing, els.furnishing, els.parking, els.sort].forEach((el) => {
+    els.category.addEventListener("change", () => {
+        populateSubTypeOptions(els.category.value, "");
+        fetchAndRender(true);
+    });
+
+    [els.subType, els.listingType, els.bedrooms, els.bathrooms, els.facing, els.furnishing, els.parking, els.sort].forEach((el) => {
         el.addEventListener("change", () => fetchAndRender(true));
     });
 

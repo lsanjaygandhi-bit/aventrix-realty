@@ -128,7 +128,7 @@
 
     <a href="index.html">Home</a>
 
-    <a href="index.html#about">About Us</a>
+    <a href="about.html">About Us</a>
 
     <a href="properties.html" class="active">Properties</a>
 
@@ -228,11 +228,26 @@
                     <select id="sfCategory">
                         <option value="">Any Type</option>
                         <option value="residential">Residential</option>
-                        <option value="apartments">Apartments</option>
-                        <option value="villas">Luxury Villas</option>
                         <option value="commercial">Commercial</option>
-                        <option value="land">Land &amp; Plots</option>
-                        <option value="investment">Investment</option>
+                        <option value="industrial">Industrial</option>
+                        <option value="special_purpose">Special Purpose</option>
+                        <option value="agricultural">Agricultural</option>
+                        <!-- Legacy category values — intentionally not shown in the
+                             open dropdown list (hidden), but kept as valid option
+                             values so an old bookmarked/shared link such as
+                             ?category=land or ?category=apartments still filters
+                             correctly instead of silently falling back to "Any Type". -->
+                        <option value="land" hidden>Land &amp; Plots</option>
+                        <option value="apartments" hidden>Apartments</option>
+                        <option value="villas" hidden>Luxury Villas</option>
+                        <option value="investment" hidden>Investment</option>
+                    </select>
+                </div>
+
+                <div class="sf-field">
+                    <label for="sfSubType">Property Sub-Type</label>
+                    <select id="sfSubType" disabled>
+                        <option value="">Any Sub-Type</option>
                     </select>
                 </div>
 
@@ -240,8 +255,8 @@
                     <label for="sfListingType">Buy / Rent</label>
                     <select id="sfListingType">
                         <option value="">Buy or Rent</option>
-                        <option value="sale">Buy (Sale)</option>
-                        <option value="lease">Rent / Lease</option>
+                        <option value="sale">Buy</option>
+                        <option value="lease">Rent &amp; Lease</option>
                     </select>
                 </div>
 
@@ -414,7 +429,7 @@
             <h4 class="pf-heading">About Aventrix</h4>
             <ul class="pf-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#about">About Us</a></li>
+                <li><a href="about.html">About Us</a></li>
                 <li><a href="index.html#contact">Contact Us</a></li>
             </ul>
         </div>
