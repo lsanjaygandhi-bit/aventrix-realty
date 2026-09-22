@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script>
+    (function () {
+    // Manual scroll restoration: we save/restore scroll position
+    // ourselves (see script.js) so users returning via Back land back
+    // exactly where they were, instead of the browser's default
+    // (and often mistimed) automatic restoration.
+    if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+    }
+
+    function evaluateMobile() {
+        // Detect real mobile/touch devices instead of relying only on
+        // viewport width, so the mobile layout survives orientation
+        // changes (landscape too). Also re-checks on resize so a
+        // desktop browser window narrowed below 768px (e.g. during
+        // responsive QA / devtools) correctly gets the mobile layout,
+        // without affecting real touch devices, which stay mobile
+        // via the touch/UA check regardless of width or rotation.
+        var coarsePointer = window.matchMedia &&
+            window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+        var mobileUA = /Android|iPhone|iPad|iPod|IEMobile|BlackBerry|Opera Mini|Mobile/i
+            .test(navigator.userAgent);
+        var narrowViewport = window.innerWidth <= 768;
+
+        var shouldBeMobile = coarsePointer || mobileUA || narrowViewport;
+        document.documentElement.classList.toggle('is-mobile', shouldBeMobile);
+    }
+
+    evaluateMobile();
+
+    var resizeTimer;
+    window.addEventListener('resize', function () {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(evaluateMobile, 150);
+    });
+})();
+    </script>
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/images/favicon/favicon-48x48.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/images/favicon/android-chrome-512x512.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <title>About Us | Aventrix Realty</title>
+
+    <meta name="description" content="Aventrix Realty brings together local market understanding, professional guidance and practical execution to help clients make confident property decisions across Chennai.">
+    <link rel="canonical" href="https://aventrixrealty.com/about.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Aventrix Realty">
+    <meta property="og:title" content="About Us | Aventrix Realty">
+    <meta property="og:description" content="Aventrix Realty brings together local market understanding, professional guidance and practical execution to help clients make confident property decisions across Chennai.">
+    <meta property="og:url" content="https://aventrixrealty.com/about.html">
+    <meta property="og:image" content="https://aventrixrealty.com/images/chennai-marina.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="About Us | Aventrix Realty">
+    <meta name="twitter:description" content="Aventrix Realty brings together local market understanding, professional guidance and practical execution to help clients make confident property decisions across Chennai.">
+    <meta name="twitter:image" content="https://aventrixrealty.com/images/chennai-marina.jpg">
+
+    <link rel="stylesheet" href="style.css?v=20260831">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "About Us | Aventrix Realty",
+  "url": "https://aventrixrealty.com/about.html",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Aventrix Realty",
+    "url": "https://aventrixrealty.com/"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Aventrix Realty",
+  "url": "https://aventrixrealty.com/",
+  "logo": "https://aventrixrealty.com/images/aventrix-logo.png",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "No.27, 1st Main Road, Newcolony, Chromepet",
+    "addressLocality": "Chennai",
+    "addressRegion": "Tamil Nadu",
+    "addressCountry": "IN"
+  },
+  "telephone": "+91-91768-87770",
+  "email": "office@aventrixrealty.com",
+  "sameAs": [
+    "https://www.facebook.com/aventrixrealty",
+    "https://www.instagram.com/aventrixrealty",
+    "https://www.linkedin.com/in/lsanjaygandhi",
+    "https://youtube.com/@sanjaygandhirealty"
+  ]
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://aventrixrealty.com/index.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "About Us",
+      "item": "https://aventrixrealty.com/about.html"
+    }
+  ]
+}
+    </script>
+</head>
+
+<body data-page-key="about">
+
+    <header class="header">
+    <div class="container nav">
+        <div class="logo">
+    <a href="index.html" class="logo-text">
+        <img src="images/aventrix-logo.png" alt="Aventrix Realty">
+    </a>
+</div>
+   <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+        <!-- Mobile-only bell — matches index.html's header exactly
+             (site-wide header consistency). Stays visible on every
+             breakpoint, unlike the desktop one inside .nav-right
+             (hidden on mobile by an existing rule). -->
+        <div class="home-app-header-actions">
+            <a href="account.html" class="home-app-bell-btn" aria-label="My Account">
+                <i class="far fa-circle-user" aria-hidden="true"></i>
+            </a>
+        </div>
+    <div class="menu-overlay" id="menuOverlay"></div>
+       <nav class="main-nav">
+
+    <a href="index.html">Home</a>
+
+    <a href="about.html" class="active">About Us</a>
+
+    <a href="properties.html">Properties</a>
+
+    <a href="services.html">Services</a>
+
+    <a href="list-with-us.html">List With Us</a>
+
+    <a href="free-valuation.html">Free Valuation</a>
+
+    <a href="joint-venture.html">Joint Venture</a>
+    <a href="nri-services.html">NRI Services</a>
+
+    <a href="contact.html">Contact</a>
+
+    <a href="admin/index.html" class="main-nav-admin">Admin</a>
+
+    <div class="mobile-menu-divider"></div>
+    <span class="mobile-menu-contact-label">CONTACT</span>
+    <a href="tel:+919176887770" class="mobile-menu-phone">📞 +91 91768 87770</a>
+    <a href="tel:+917092356222" class="mobile-menu-phone">📞 +91 70923 56222</a>
+    <div class="mobile-menu-socials">
+      <a href="https://wa.me/9176887770" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 3.5a8.5 8.5 0 0 0-7.3 12.8L3.5 20.5l4.4-1.2A8.5 8.5 0 1 0 12 3.5z"/><path d="M8.7 8.6c.2-.5.4-.5.6-.5h.5c.2 0 .4 0 .5.4.2.5.6 1.5.6 1.6.1.1.1.3 0 .4-.1.2-.1.3-.3.4-.1.2-.3.3-.4.5-.1.1-.3.3-.1.5.2.4 1 1.5 2 2.3 1.2 1 1 .8 1.3.7.2 0 .4-.2.5-.4.2-.2.4-.2.6-.1l1.4.7c.2.1.4.2.4.3.1.2.1 1-.3 1.4-.4.5-1.4.9-2 .9-.6 0-1.4-.1-3.3-1-2.4-1.1-3.9-3.4-4-3.6-.1-.2-1-1.3-1-2.5s.6-1.8.8-2z" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="https://www.instagram.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="0.8" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="https://www.facebook.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M15 8.5h-2a1.5 1.5 0 0 0-1.5 1.5v2h3.4l-.4 3H11.5v7h-3v-7H6.5v-3h2V9.7C8.5 7 10 5.5 12.5 5.5H15v3z"/></svg>
+      </a>
+      <a href="https://maps.app.goo.gl/wQm9KBpQG9rEYFaX7?g_st=ic" target="_blank" rel="noopener noreferrer" aria-label="Google Maps">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg>
+      </a>
+    </div>
+
+  </nav>
+
+        <div class="nav-right">
+            <!-- Notification/Bell — matches index.html's header exactly
+                 (site-wide header consistency), same .nav-wishlist-link
+                 styling, same position ahead of the phone number. -->
+            <a href="account.html" class="nav-wishlist-link nav-bell-link" aria-label="My Account">
+                <i class="far fa-circle-user" aria-hidden="true"></i>
+            </a>
+            <a href="tel:+919176887770" class="nav-phone" aria-label="Call Aventrix Realty">
+                <i class="fas fa-phone-alt" aria-hidden="true"></i>
+            </a>
+        </div>
+    </div>
+     </header>
+
+<!-- ==============================
+     SECTION 1 — HERO
+     Minimal, image-led hero. Reuses the site's shared .list-hero
+     component (dark overlay + background image, same min-height /
+     typography as every other inner page) with a page-specific
+     background image swap (.about-hero), exactly the pattern already
+     established for .brokerage-hero / .nri-hero. No CTA button here —
+     kept deliberately uncrowded per spec. -->
+<section class="list-hero about-hero">
+
+    <div class="container">
+
+        <span class="section-tag" data-page-hero-eyebrow>
+            ABOUT AVENTRIX REALTY
+        </span>
+
+        <h1 data-page-hero-title>
+            Real Estate. With Clarity<br>and Purpose.
+        </h1>
+
+        <p data-page-hero-subtitle>
+            Aventrix Realty brings together local market understanding,
+            professional guidance and practical execution to help clients
+            make confident property decisions.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- ==============================
+     SECTION 2 — BRAND STATEMENT
+     Large editorial statement, deliberately short on height. -->
+<section class="about-statement">
+
+    <div class="container">
+
+        <h2>Clear answers make <span class="about-accent">confident decisions.</span></h2>
+
+        <p>
+            At Aventrix Realty, we believe every property decision should
+            begin with a clear understanding of the opportunity, the market
+            and the objective behind it. Our role is to simplify the
+            process, present the right information and support our clients
+            from the first conversation to the next step.
+        </p>
+
+    </div>
+
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ==============================
+     SECTION 3 — WHO WE ARE
+     Two-column editorial layout: text column (eyebrow, heading,
+     original Aventrix-specific copy, property-type tags) beside one
+     large premium property image. Stacks cleanly on mobile. -->
+<section class="fv-section">
+
+    <div class="container">
+
+        <div class="about-split">
+
+            <div class="about-split-copy">
+
+                <span class="section-eyebrow">Who We Are</span>
+                <h2>Local Knowledge. Professional Guidance.</h2>
+
+                <p>
+                    Aventrix Realty works across a wide range of property
+                    requirements — buying, selling, leasing, investment,
+                    land, residential properties, commercial properties and
+                    joint development opportunities. Every engagement
+                    begins with a clear conversation about what the client
+                    is trying to achieve, whether that means finding the
+                    right property, positioning one for sale, or exploring
+                    a development opportunity for a piece of land.
+                </p>
+
+                <p>
+                    Once the requirement is well understood, our team works
+                    to match it with property opportunities that genuinely
+                    fit — rather than presenting options that don't serve
+                    the client's actual objective.
+                </p>
+
+                <div class="profile-tags about-tags-left">
+                    <span class="profile-tag">Buying</span>
+                    <span class="profile-tag">Selling</span>
+                    <span class="profile-tag">Leasing</span>
+                    <span class="profile-tag">Investment</span>
+                    <span class="profile-tag">Land</span>
+                    <span class="profile-tag">Residential Properties</span>
+                    <span class="profile-tag">Commercial Properties</span>
+                    <span class="profile-tag">Joint Development</span>
+                </div>
+
+            </div>
+
+            <div class="about-split-media">
+                <img src="images/valuation-bg.png" alt="Premium residential property exterior" loading="lazy">
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==============================
+     SECTION 4 — HOW WE WORK -->
+<section class="fv-section fv-alt">
+
+    <div class="container">
+
+        <div class="section-heading">
+            <span class="section-eyebrow">Our Approach</span>
+            <h2>A More Thoughtful Way to Handle Property.</h2>
+        </div>
+
+        <div class="fv-grid">
+
+            <div class="fv-card">
+                <span class="fv-card-number">01</span>
+                <h3>The Brief Comes First</h3>
+                <p>We start with a conversation, not a shortlist —
+                    understanding the purpose, budget, location and
+                    timeline behind a requirement before recommending a
+                    single property.</p>
+            </div>
+
+            <div class="fv-card">
+                <span class="fv-card-number">02</span>
+                <h3>Read the Market</h3>
+                <p>We consider location, property characteristics, pricing
+                    context and current market conditions before
+                    presenting an opportunity.</p>
+            </div>
+
+            <div class="fv-card">
+                <span class="fv-card-number">03</span>
+                <h3>Present Clearly</h3>
+                <p>We keep property information straightforward so clients
+                    can evaluate opportunities without unnecessary
+                    complexity.</p>
+            </div>
+
+            <div class="fv-card">
+                <span class="fv-card-number">04</span>
+                <h3>Support the Process</h3>
+                <p>We stay involved through discussions, coordination and
+                    the practical steps that follow a property decision.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==============================
+     SECTION 5 — WHAT WE DO -->
+<section class="fv-section">
+
+    <div class="container">
+
+        <div class="section-heading">
+            <span class="section-eyebrow">Our Services</span>
+            <h2>From Property Search to Strategic Opportunities.</h2>
+        </div>
+
+        <div class="fv-grid">
+
+            <div class="fv-card">
+                <span class="fv-card-number">01</span>
+                <h3>Buy</h3>
+                <p>Helping buyers identify suitable properties based on
+                    location, requirement and budget.</p>
+            </div>
+
+            <div class="fv-card">
+                <span class="fv-card-number">02</span>
+                <h3>Sell</h3>
+                <p>Supporting property owners with positioning, enquiries
+                    and transaction coordination.</p>
+            </div>
+
+            <div class="fv-card">
+                <span class="fv-card-number">03</span>
+                <h3>Lease</h3>
+                <p>Connecting suitable properties with genuine leasing
+                    requirements.</p>
+            </div>
+
+            <div class="fv-card">
+                <span class="fv-card-number">04</span>
+                <h3>Invest</h3>
+                <p>Helping clients evaluate property opportunities with a
+                    practical, information-led approach.</p>
+            </div>
+
+            <div class="fv-card">
+                <span class="fv-card-number">05</span>
+                <h3>Joint Development</h3>
+                <p>Supporting landowners and development opportunities
+                    through structured discussions and coordination.</p>
+            </div>
+
+            <div class="fv-card">
+                <span class="fv-card-number">06</span>
+                <h3>Property Advisory</h3>
+                <p>Providing practical guidance around property
+                    requirements and available opportunities.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==============================
+     SECTION 5.5 — OUR LEGACY
+     Moved here from the homepage (previously index.html's #about /
+     .legacy-section) per explicit request — this origin story now
+     lives only on the About page. Content and CSS classes
+     (.about / .legacy-* / .about-closing, all in style.css) are
+     unchanged from the homepage version, so no new styling was
+     introduced. The CMS data-attributes and id="about" anchor from
+     the homepage copy are intentionally dropped: about.html doesn't
+     use that CMS-section wiring anywhere else on this page, and
+     reusing id="about" here isn't needed since the header nav now
+     links straight to about.html. -->
+<section class="about legacy-section">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <span class="section-eyebrow">Our Story</span>
+
+            <h2>Our Legacy</h2>
+
+        </div>
+
+        <div>
+
+        <p class="legacy-intro legacy-subtitle">Where Legacy Meets The Next Generation</p>
+
+        <div class="legacy-timeline">
+
+            <div class="legacy-item">
+                <div class="legacy-year">1965</div>
+                <div class="legacy-dot"></div>
+                <div class="legacy-text">
+                    <h3>TP Builders Founded</h3>
+                    <p>
+                        Long before Aventrix Realty was established, the very place where our
+                        office stands today was home to <strong>TP Builders</strong>, founded by
+                        <strong>Late Mr. Perumal</strong>. From this very location, he built homes,
+                        created lasting relationships, and established a reputation that continues
+                        to inspire generations.
+                    </p>
+                </div>
+            </div>
+
+            <div class="legacy-item">
+                <div class="legacy-year">2010</div>
+                <div class="legacy-dot"></div>
+                <div class="legacy-text">
+                    <h3>A New Generation</h3>
+                    <p>
+                        <strong>Gnanasekaran P</strong> proudly carried forward the vision of his
+                        father, preserving the values that earned generations of trust while
+                        embracing a modern approach to real estate — where tradition, professionalism,
+                        and long-term relationships remain at the heart of every property journey.
+                    </p>
+                </div>
+            </div>
+
+            <div class="legacy-item">
+                <div class="legacy-year">Present</div>
+                <div class="legacy-dot"></div>
+                <div class="legacy-text">
+                    <h3>Aventrix Realty Today</h3>
+                    <p>
+                        <strong>Sanjay Gandhi L</strong> became part of this new chapter, bringing
+                        over a decade of real estate experience across land, residential, commercial
+                        and joint venture advisory. Together, he and <strong>Gnanasekaran P</strong>
+                        continue to lead <strong>Aventrix Realty</strong> — combining a proud legacy
+                        with modern expertise across Chennai.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <p class="about-closing">
+            <strong>Honouring the past. Building the future.</strong>
+        </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==============================
+     SECTION 6 — LEADERSHIP
+     Same people, same approved photographs, same verified bios and
+     same "View Profile" links as the homepage's #leadership section
+     (.leadership-rows / .leader-row are shared, unscoped classes) —
+     the homepage's own section is untouched. -->
+<section class="fv-section fv-alt">
+
+    <div class="container">
+
+        <div class="section-heading">
+            <span class="section-eyebrow">Our Leadership</span>
+            <h2>People Behind Aventrix Realty.</h2>
+        </div>
+
+        <div class="leadership-rows">
+
+            <div class="leader-row">
+                <div class="leader-row-photo">
+                    <img src="images/founder.jpg" alt="Gnanasekaran P" class="leader-photo" loading="lazy">
+                </div>
+                <div class="leader-row-content">
+                    <span class="leader-eyebrow">— MEET OUR FOUNDER</span>
+                    <h3>Gnanasekaran P</h3>
+                    <h4>Founder</h4>
+                    <p>With over 15 years of experience in Chennai's real estate market, Gnanasekaran P provides the strategic direction and leadership behind Aventrix Realty. His deep understanding of local market cycles and neighbourhood trends shapes how the company sources and evaluates properties across residential, commercial and land segments. Over the years, he has built trusted, long-standing relationships with clients, landowners and developers, grounded in transparency and professional conduct at every stage of a transaction. His focus remains on steady, sustainable business development — growing Aventrix Realty's presence across Chennai while holding firmly to the standards of integrity that lasting real estate relationships depend on.</p>
+                    <a href="gnanasekaran.html" class="leader-cta">View Profile →</a>
+                </div>
+            </div>
+
+            <div class="leader-row leader-row-reverse">
+                <div class="leader-row-photo">
+                    <img src="images/sanjay.jpg" alt="Sanjay Gandhi L" class="leader-photo" loading="lazy">
+                </div>
+                <div class="leader-row-content">
+                    <span class="leader-eyebrow">— MEET OUR CO-FOUNDER</span>
+                    <h3>Sanjay Gandhi L</h3>
+                    <h4>Co-Founder &amp; Managing Partner</h4>
+                    <p>Sanjay Gandhi L brings over 15 years of hands-on real estate experience to his role as Co-Founder and Managing Partner of Aventrix Realty, where he leads day-to-day business and operational activity. His work spans the full property lifecycle — buying, selling and leasing — coordinating property marketing and transaction execution while managing negotiations through to closure. With close familiarity with Chennai's neighbourhoods and property values, he works directly with buyers, sellers, investors and property owners to guide each transaction with clarity and care. His approach is centred on building long-term client relationships, backed by practical market knowledge and dependable, on-ground support.</p>
+                    <a href="sanjay.html" class="leader-cta">View Profile →</a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==============================
+     SECTION 7 — OUR NETWORK
+     Full-width, solid dark-green section (same brand colour used by
+     .leader-cta / .fv-final-cta elsewhere) for premium visual
+     punctuation between Leadership and Why Aventrix. -->
+<section class="about-network">
+
+    <div class="container">
+
+        <div class="section-heading">
+            <span class="section-eyebrow">Beyond the Property</span>
+            <h2>Strong Property Decisions Start With the Right Connections.</h2>
+        </div>
+
+        <p class="about-lede">
+            A property transaction rarely involves just one person. Aventrix
+            Realty works through a professional network that brings together
+            property owners, buyers, sellers, tenants, developers, investors,
+            local property contacts and professional service partners —
+            helping connect the right people at the right stage of a
+            transaction.
+        </p>
+
+        <div class="profile-tags">
+            <span class="profile-tag">Property Owners</span>
+            <span class="profile-tag">Buyers</span>
+            <span class="profile-tag">Sellers</span>
+            <span class="profile-tag">Tenants</span>
+            <span class="profile-tag">Developers</span>
+            <span class="profile-tag">Investors</span>
+            <span class="profile-tag">Local Property Contacts</span>
+            <span class="profile-tag">Professional Service Partners</span>
+        </div>
+
+        <div class="about-network-cta">
+            <a href="our-realtors.html" class="secondary-btn">Explore Our Realtors</a>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==============================
+     SECTION 8 — WHY AVENTRIX
+     A clean editorial numbered list (deliberately not a card grid,
+     to read as visually distinct from Sections 4 and 5). -->
+<section class="fv-section">
+
+    <div class="container">
+
+        <div class="section-heading">
+            <span class="section-eyebrow">Why Aventrix Realty</span>
+            <h2>Clear Thinking. Practical Execution.</h2>
+        </div>
+
+        <div class="about-why-list">
+
+            <div class="about-why-item">
+                <span class="about-why-number">01</span>
+                <div class="about-why-text">
+                    <h3>Requirement First</h3>
+                    <p>We focus on understanding the client's actual
+                        requirement before suggesting a property.</p>
+                </div>
+            </div>
+
+            <div class="about-why-item">
+                <span class="about-why-number">02</span>
+                <div class="about-why-text">
+                    <h3>Local Perspective</h3>
+                    <p>We bring practical knowledge of Chennai's property
+                        markets and locations.</p>
+                </div>
+            </div>
+
+            <div class="about-why-item">
+                <span class="about-why-number">03</span>
+                <div class="about-why-text">
+                    <h3>Straightforward Communication</h3>
+                    <p>We aim to keep property information and discussions
+                        clear and easy to understand.</p>
+                </div>
+            </div>
+
+            <div class="about-why-item">
+                <span class="about-why-number">04</span>
+                <div class="about-why-text">
+                    <h3>Professional Coordination</h3>
+                    <p>We help coordinate conversations and next steps
+                        between the relevant parties.</p>
+                </div>
+            </div>
+
+            <div class="about-why-item">
+                <span class="about-why-number">05</span>
+                <div class="about-why-text">
+                    <h3>Long-Term Relationships</h3>
+                    <p>We value professional relationships beyond a single
+                        property transaction.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==============================
+     SECTION 8.5 — DECLARATION
+     Dark full-bleed statement band, a brief emotional beat before the
+     closing CTA. Reuses chennai-marina.jpg — already the approved,
+     in-use background for the site's other dark sections (contact
+     hero, homepage CTA) and this very page's og:image, so no new
+     image is introduced. -->
+<section class="about-declaration">
+
+    <div class="container">
+
+        <span class="section-eyebrow">Our Commitment</span>
+
+        <h2>A property decision should never feel like a guess.<br>
+            <span class="about-accent">We make sure it doesn't.</span></h2>
+
+    </div>
+
+</section>
+
+<!-- ==============================
+     SECTION 9 — FINAL CTA -->
+<section class="fv-final-cta">
+
+    <div class="container">
+
+        <h2>Looking for the Right Property Opportunity?</h2>
+
+        <p>
+            Tell us what you are looking for, and our team can help you
+            explore the next step.
+        </p>
+
+        <div class="hero-buttons hero-buttons-compact">
+            <a href="properties.html" class="primary-btn">View Properties</a>
+            <a href="contact.html" class="secondary-btn">Contact Aventrix</a>
+        </div>
+
+    </div>
+
+</section>
+
+<footer class="premium-footer">
+
+    <div class="container premium-footer-top">
+
+        <div class="pf-col pf-brand">
+            <h3 class="pf-logo"><img src="images/aventrix-logo-white.png" alt="Aventrix Realty"></h3>
+            <p class="pf-tagline" data-site="footer-tagline">Where Legacy Meets The Next Generation</p>
+            <p class="pf-desc" data-site="footer-description">
+                Premium real estate advisory across Chennai — residential,
+                commercial, land and joint venture solutions, guided by
+                trust and decades of local expertise.
+            </p>
+            <div class="pf-contact">
+                <!-- Head Office — unchanged, no existing content removed -->
+                <div class="pf-office-block">
+                    <p class="pf-office-name">Aventrix Realty – Head Office</p>
+                    <p>No.27, 1st Main Road, Newcolony, Chromepet, Chennai, Tamil Nadu</p>
+                    <p class="pf-office-label">Phone:</p>
+                    <a href="tel:+919176887770">+91 91768 87770</a>
+                    <a href="tel:+917092356222">+91 70923 56222</a>
+                    <p class="pf-office-label">Email:</p>
+                    <a href="mailto:office@aventrixrealty.com">office@aventrixrealty.com</a>
+                </div>
+                <!-- Adyar Branch — compact reference only; full details live on the Office Locations section -->
+                <p class="pf-branch-line"><span class="pf-office-label">Branch Office:</span> Adyar, Chennai</p>
+            </div>
+        </div>
+
+        <div class="pf-col">
+            <h4 class="pf-heading">About Aventrix</h4>
+            <ul class="pf-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="index.html#contact">Contact Us</a></li>
+            </ul>
+        </div>
+
+        <div class="pf-col">
+            <h4 class="pf-heading">Quick Links</h4>
+            <ul class="pf-links">
+                <li><a href="property.html">Our Services</a></li>
+                <li><a href="our-realtors.html">Realtors</a></li>
+                <li><a href="brokerage-fees.html">Brokerage &amp; Fees</a></li>
+                <li><a href="admin/index.html" class="footer-nav-login">Admin Login</a></li>
+            </ul>
+        </div>
+
+        <div class="pf-col">
+            <h4 class="pf-heading">Follow Us</h4>
+            <div class="pf-social">
+                <a href="https://www.facebook.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Facebook" data-site="social-facebook">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M15 8.5h-2a1.5 1.5 0 0 0-1.5 1.5v2h3.4l-.4 3H11.5v7h-3v-7H6.5v-3h2V9.7C8.5 7 10 5.5 12.5 5.5H15v3z"/></svg>
+                    <span>Facebook</span>
+                </a>
+                <a href="https://www.instagram.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Instagram" data-site="social-instagram">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="0.8" fill="currentColor" stroke="none"/></svg>
+                    <span>Instagram</span>
+                </a>
+                <a href="https://www.linkedin.com/in/lsanjaygandhi" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" data-site="social-linkedin">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="3"/><path d="M8 10.5v6M8 7.8v.02M12 16.5v-3.7c0-1.2.9-2 2-2s2 .8 2 2v3.7"/></svg>
+                    <span>LinkedIn</span>
+                </a>
+                <a href="https://youtube.com/@sanjaygandhirealty" target="_blank" rel="noopener noreferrer" aria-label="YouTube" data-site="social-youtube">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="3" y="6.5" width="18" height="11" rx="3.5"/><path d="M10.3 9.8l4.4 2.2-4.4 2.2z" fill="currentColor" stroke="none"/></svg>
+                    <span>YouTube</span>
+                </a>
+                <a href="https://wa.me/9176887770" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" data-site="whatsapp-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 3.5a8.5 8.5 0 0 0-7.3 12.8L3.5 20.5l4.4-1.2A8.5 8.5 0 1 0 12 3.5z"/><path d="M8.7 8.6c.2-.5.4-.5.6-.5h.5c.2 0 .4 0 .5.4.2.5.6 1.5.6 1.6.1.1.1.3 0 .4-.1.2-.1.3-.3.4-.1.2-.3.3-.4.5-.1.1-.3.3-.1.5.2.4 1 1.5 2 2.3 1.2 1 1 .8 1.3.7.2 0 .4-.2.5-.4.2-.2.4-.2.6-.1l1.4.7c.2.1.4.2.4.3.1.2.1 1-.3 1.4-.4.5-1.4.9-2 .9-.6 0-1.4-.1-3.3-1-2.4-1.1-3.9-3.4-4-3.6-.1-.2-1-1.3-1-2.5s.6-1.8.8-2z" fill="currentColor" stroke="none"/></svg>
+                    <span>WhatsApp</span>
+                </a>
+                <a href="https://maps.app.goo.gl/wQm9KBpQG9rEYFaX7?g_st=ic" target="_blank" rel="noopener noreferrer" aria-label="Google Maps">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg>
+                    <span>Google Maps</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Google Map — matches index.html's footer exactly (site-wide
+             footer consistency). Existing 4 columns above unchanged in
+             content; only the shared .premium-footer-top grid column
+             widths (in style.css) accommodate this 5th column. -->
+        <div class="pf-col pf-map-col">
+            <h4 class="pf-heading">Find Us</h4>
+            <div class="pf-map-wrap">
+                <iframe
+                    src="https://www.google.com/maps?q=No.27,+1st+Main+Road,+Newcolony,+Chromepet,+Chennai,+Tamil+Nadu&output=embed"
+                    width="100%"
+                    height="100%"
+                    style="border:0"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Aventrix Realty Head Office location on Google Maps">
+                </iframe>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="premium-footer-divider"></div>
+
+    <div class="container premium-footer-bottom">
+        <p class="pf-copyright" data-site="copyright-text">© 2026 Aventrix Realty. All Rights Reserved. &#124; Designed with &#10084;&#65039; by L. Sanjay Gandhi</p>
+        <div class="pf-legal">
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="#">Terms &amp; Conditions</a>
+            <a href="#">Sitemap</a>
+        </div>
+    </div>
+
+</footer>
+
+<a href="https://wa.me/919176887770" class="whatsapp-float" target="_blank">
+    <img src="images/whatsapp-icon.png" alt="WhatsApp">
+</a>
+
+<button id="backToTop" class="back-to-top" aria-label="Back to top">
+    <i class="fas fa-chevron-up"></i>
+</button>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-client.js"></script>
+<script src="js/aventrix-storage.js"></script>
+<script src="js/wishlist-widget.js"></script>
+<script src="js/enquiry-supabase.js"></script>
+<script src="js/public-page-content.js"></script>
+<script src="js/public-site-settings.js"></script>
+<script src="script.js"></script>
+
+   </body>
+   </html>
