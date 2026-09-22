@@ -251,6 +251,19 @@
     let qvGalleryImages = [];
     let qvGalleryIndex = 0;
 
+    // WhatsApp numbers are stored in site_settings as digits only in
+    // local 10-digit format (admin field hint: "e.g. 9176887770"),
+    // but wa.me needs the full international number with no "+".
+    // Normalise here so the stored convention is kept as-is:
+    // 10 digits -> prefix 91; leading 0 + 10 digits -> 91 + 10 digits;
+    // anything already international is left unchanged.
+    function toWhatsAppDigits(value) {
+        let digits = String(value || "").replace(/\D/g, "");
+        if (digits.length === 11 && digits.charAt(0) === "0") digits = digits.slice(1);
+        if (digits.length === 10) digits = "91" + digits;
+        return digits;
+    }
+
     async function getSiteSettingsForQuickView() {
         if (qvSiteSettings) return qvSiteSettings;
         let data = null;
@@ -264,7 +277,7 @@
 
         qvSiteSettings = {
             phone: (data && data.realtor_phone_1) || CARD_PHONE_TEL,
-            whatsapp: (data && data.whatsapp_number) || "919176887770",
+            whatsapp: toWhatsAppDigits((data && data.whatsapp_number) || "919176887770"),
             reraNo: (data && data.rera_registration_no) || "TN/Agent/0284/2026"
         };
         return qvSiteSettings;
@@ -518,14 +531,12 @@
             featuresList.innerHTML = "";
         }
 
-        // Brokerage — only when configured
+        // Brokerage — no longer shown publicly. Aventrix does not
+        // publish per-listing brokerage rates ("Professional Fees,
+        // Agreed Upfront" -- see brokerage-fees.html). The field stays
+        // in the database/admin as an internal note only.
         const brokerageSection = el.querySelector(".qv-brokerage");
-        if (p.brokerage) {
-            brokerageSection.hidden = false;
-            brokerageSection.querySelector("p").textContent = p.brokerage;
-        } else {
-            brokerageSection.hidden = true;
-        }
+        brokerageSection.hidden = true;
     }
 
     function setQvSaveState(el, saved) {
@@ -702,15 +713,11 @@
 
         const brokerageSection = document.getElementById("pdBrokerageSection");
         const trustRow = document.querySelector(".pd-trust-row");
+        // Per-listing brokerage is no longer shown publicly (see the
+        // Quick View note above) -- always use the single-card RERA row.
         if (brokerageSection) {
-            if (property.brokerage) {
-                brokerageSection.style.display = "";
-                document.getElementById("pdBrokerageText").textContent = property.brokerage;
-                if (trustRow) trustRow.classList.remove("pd-trust-single");
-            } else {
-                brokerageSection.style.display = "none";
-                if (trustRow) trustRow.classList.add("pd-trust-single");
-            }
+            brokerageSection.style.display = "none";
+            if (trustRow) trustRow.classList.add("pd-trust-single");
         }
 
         const reraNoEl = document.getElementById("pdReraNo");

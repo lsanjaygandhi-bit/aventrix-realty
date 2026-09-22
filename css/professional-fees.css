@@ -1,0 +1,447 @@
+/* ===========================================================
+   PROFESSIONAL FEES PAGE (brokerage-fees.html only)
+   Loaded only by brokerage-fees.html. All selectors use the
+   page-unique .fees-* prefix (confirmed unused elsewhere), so
+   nothing here can affect any other page. Reuses the shared
+   .list-hero / .brokerage-hero, .section-heading / .section-eyebrow,
+   .fv-section / .fv-grid / .fv-card, .fv-final-cta and
+   .primary-btn / .secondary-btn system from style.css as-is.
+   Brand tokens only: emerald #0F3B2E, gold #D4AF37,
+   ink #111827, body #4b5563, hairline rgba(17,24,39,.08).
+=========================================================== */
+
+/* Shared container width for the new page-only sections, matching
+   .fv-section .container. */
+.fees-intro .container,
+.fees-process .container{
+    width:90%;
+    max-width:1100px;
+    margin:0 auto;
+}
+
+/* Section headings on this page sit a little tighter than the
+   sitewide 70px default, so sections read as one continuous story. */
+.fees-factors .section-heading,
+.fees-services .section-heading,
+.fees-process .section-heading,
+.fees-commitment .section-heading{
+    margin-bottom:44px;
+}
+
+/* ---------- ICON SYSTEM ----------
+   One outline family for the whole page: inline 24x24 SVGs,
+   currentColor stroke, 1.5 stroke width, round caps/joins (same
+   inline-SVG, thin-stroke format as the site's existing header and
+   footer icons). Paths from Lucide (ISC licence), inlined, so no
+   new runtime dependency. Size and colour are set per component. */
+.fees-icon{
+    display:block;
+    flex:0 0 auto;
+    width:22px;
+    height:22px;
+    stroke-width:1.5;
+}
+
+/* ---------- SECTION 2 — Every Property Assignment Is Different ---------- */
+.fees-intro{
+    padding:80px 0;
+    background:#ffffff;
+}
+.fees-intro-grid{
+    display:grid;
+    grid-template-columns:minmax(0,5fr) minmax(0,7fr);
+    gap:64px;
+    align-items:start;
+}
+.fees-intro-heading h2{
+    font-family:'Montserrat',sans-serif;
+    font-size:36px;
+    font-weight:600;
+    line-height:1.25;
+    color:#111827;
+    margin:0;
+}
+.fees-intro-copy{
+    border-left:2px solid #D4AF37;
+    padding-left:36px;
+}
+.fees-intro-copy p{
+    font-size:16px;
+    line-height:1.85;
+    color:#4b5563;
+    margin:0 0 16px;
+}
+.fees-intro-copy p:last-child{
+    margin-bottom:0;
+}
+.fees-intro-copy .fees-intro-lead{
+    font-size:19px;
+    line-height:1.7;
+    font-weight:500;
+    color:#111827;
+}
+
+/* ---------- SECTION 3 — What Shapes the Fee ----------
+   .fv-grid already auto-fits five cards in one row at desktop
+   widths; only a quiet gold accent line is added on top. */
+.fees-factors .fv-card{
+    border-top:2px solid #D4AF37;
+}
+.fees-card-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:16px;
+}
+.fees-card-top .fv-card-number{
+    margin-bottom:0;
+}
+.fees-icon-card{
+    width:24px;
+    height:24px;
+    color:#0F3B2E;
+}
+
+/* ---------- SECTION 4 — Our Real Estate Services ---------- */
+.fees-service-list{
+    list-style:none;
+    max-width:880px;
+    margin:0 auto;
+    padding:0;
+    border-top:1px solid rgba(17,24,39,.08);
+}
+.fees-service-row{
+    display:grid;
+    grid-template-columns:44px minmax(0,220px) minmax(0,1fr);
+    align-items:center;
+    gap:20px;
+    padding:20px 4px;
+    border-bottom:1px solid rgba(17,24,39,.08);
+}
+.fees-service-icon{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    background:#f7f6f2;
+    color:#0F3B2E;
+}
+.fees-icon-service{
+    width:20px;
+    height:20px;
+}
+.fees-service-row h3{
+    font-family:'Montserrat',sans-serif;
+    font-size:17px;
+    font-weight:700;
+    color:#111827;
+    margin:0;
+}
+.fees-service-row p{
+    font-size:15px;
+    line-height:1.7;
+    color:#4b5563;
+    margin:0;
+}
+.fees-services-note{
+    max-width:880px;
+    margin:28px auto 0;
+    text-align:center;
+    font-size:14.5px;
+    font-weight:500;
+    color:#0F3B2E;
+}
+
+/* ---------- SECTION 5 — How We Agree Your Fee ---------- */
+.fees-process{
+    background:#0F3B2E;
+    padding:80px 0;
+    color:#ffffff;
+}
+.fees-process .section-heading{
+    margin-bottom:16px;
+}
+.fees-process .section-eyebrow{
+    color:#D4AF37;
+}
+.fees-process .section-heading h2{
+    color:#ffffff;
+}
+.fees-process-lede{
+    max-width:560px;
+    margin:0 auto 56px;
+    text-align:center;
+    font-size:16px;
+    line-height:1.8;
+    color:rgba(255,255,255,.8);
+}
+.fees-timeline{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:28px;
+    position:relative;
+}
+/* Connecting line through the step markers (desktop). */
+.fees-timeline::before{
+    content:"";
+    position:absolute;
+    top:27px;
+    left:12.5%;
+    right:12.5%;
+    height:1px;
+    background:rgba(212,175,55,.45);
+}
+.fees-step{
+    position:relative;
+    text-align:center;
+}
+.fees-step-marker{
+    position:relative;
+    z-index:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:56px;
+    height:56px;
+    margin:0 auto 22px;
+    border-radius:50%;
+    background:#0F3B2E;
+    border:1px solid #D4AF37;
+    color:#D4AF37;
+    font-family:'Montserrat',sans-serif;
+    font-size:15px;
+    font-weight:700;
+    letter-spacing:1px;
+}
+.fees-step:last-child .fees-step-marker{
+    background:#D4AF37;
+    color:#0F3B2E;
+}
+.fees-step-body h3{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    font-family:'Montserrat',sans-serif;
+    font-size:19px;
+    font-weight:700;
+    color:#ffffff;
+    margin:0 0 8px;
+    letter-spacing:.3px;
+}
+/* Secondary to the numbered marker: small, muted gold. */
+.fees-icon-step{
+    width:18px;
+    height:18px;
+    color:rgba(212,175,55,.75);
+}
+.fees-step-body p{
+    font-size:14.5px;
+    line-height:1.75;
+    color:rgba(255,255,255,.78);
+    margin:0 auto;
+    max-width:240px;
+}
+
+/* ---------- SECTION 6 — Our Commitment ---------- */
+.fees-commitment-grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:40px 56px;
+    max-width:900px;
+    margin:0 auto;
+}
+.fees-commitment-item{
+    border-top:1px solid rgba(17,24,39,.08);
+    padding-top:26px;
+    position:relative;
+}
+.fees-commitment-item::before{
+    content:"";
+    position:absolute;
+    top:-1px;
+    left:0;
+    width:48px;
+    height:2px;
+    background:#D4AF37;
+}
+.fees-icon-commit{
+    color:#0F3B2E;
+    margin-bottom:14px;
+}
+.fees-commitment-item h3{
+    font-family:'Montserrat',sans-serif;
+    font-size:18px;
+    font-weight:700;
+    color:#111827;
+    margin:0 0 8px;
+}
+.fees-commitment-item p{
+    font-size:15px;
+    line-height:1.75;
+    color:#4b5563;
+    margin:0;
+}
+
+/* ---------- SECTIONS 7 & 8 — Taxes & Invoicing / Clear Terms ---------- */
+.fees-terms-grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:24px;
+    max-width:1000px;
+    margin:0 auto;
+}
+.fees-terms-panel{
+    background:#ffffff;
+    border:1px solid rgba(17,24,39,.08);
+    border-radius:12px;
+    padding:34px 32px;
+}
+.fees-terms-panel-accent{
+    border-left:3px solid #D4AF37;
+}
+.fees-terms-panel h2{
+    font-family:'Montserrat',sans-serif;
+    font-size:22px;
+    font-weight:600;
+    color:#0F3B2E;
+    margin:0 0 14px;
+}
+.fees-terms-panel p{
+    font-size:15px;
+    line-height:1.8;
+    color:#4b5563;
+    margin:0 0 12px;
+}
+.fees-terms-panel p:last-child{
+    margin-bottom:0;
+}
+
+/* ---------- Narrow desktop / tablet landscape ----------
+   Five cards in one row get cramped below ~1180px, so switch to a
+   centred 3 + 2 arrangement (6-column grid, each card spans 2). */
+@media (max-width:1180px){
+    html:not(.is-mobile) .fees-factors .fv-grid{
+        grid-template-columns:repeat(6,minmax(0,1fr));
+    }
+    html:not(.is-mobile) .fees-factors .fv-card{
+        grid-column:span 2;
+    }
+    html:not(.is-mobile) .fees-factors .fv-card:nth-child(4){
+        grid-column:2 / span 2;
+    }
+}
+
+/* ---------- Tablet (769px–1024px) ---------- */
+@media (max-width:1024px){
+    html:not(.is-mobile) .fees-intro-grid{
+        gap:40px;
+    }
+    html:not(.is-mobile) .fees-intro-heading h2{
+        font-size:30px;
+    }
+}
+
+/* ---------- Mobile ----------
+   Both the JS is-mobile path and the JS-disabled narrow-window
+   @media fallback are kept in sync, per style.css convention. */
+html.is-mobile .brokerage-hero .container{ padding:0 22px; }
+html.is-mobile .fees-factors .fv-grid{ gap:12px; }
+html.is-mobile .fees-factors .fv-card{ padding:20px 20px 22px; }
+html.is-mobile .fees-factors .fv-card-number{ margin-bottom:8px; }
+html.is-mobile .fees-intro{ padding:45px 0; }
+html.is-mobile .fees-intro-grid{ grid-template-columns:1fr; gap:22px; }
+html.is-mobile .fees-intro-heading h2{ font-size:25px; }
+html.is-mobile .fees-intro-copy{ padding-left:20px; }
+html.is-mobile .fees-intro-copy .fees-intro-lead{ font-size:17px; }
+html.is-mobile .fees-factors .section-heading h2,
+html.is-mobile .fees-services .section-heading h2,
+html.is-mobile .fees-process .section-heading h2,
+html.is-mobile .fees-commitment .section-heading h2{ font-size:26px; }
+html.is-mobile .fees-factors .section-heading,
+html.is-mobile .fees-services .section-heading,
+html.is-mobile .fees-commitment .section-heading{ margin-bottom:28px; }
+html.is-mobile .fees-service-row{
+    grid-template-columns:40px minmax(0,1fr);
+    gap:4px 16px;
+    align-items:start;
+    padding:18px 0;
+}
+html.is-mobile .fees-service-icon{ grid-row:span 2; width:36px; height:36px; }
+html.is-mobile .fees-service-row h3{ font-size:16px; padding-top:6px; }
+html.is-mobile .fees-service-row p{ font-size:14.5px; }
+html.is-mobile .fees-process{ padding:45px 0; }
+html.is-mobile .fees-process-lede{ margin-bottom:32px; font-size:15px; }
+html.is-mobile .fees-timeline{ grid-template-columns:1fr; gap:0; }
+html.is-mobile .fees-timeline::before{
+    top:24px; bottom:24px; left:23px; right:auto; width:1px; height:auto;
+}
+html.is-mobile .fees-step{
+    display:flex; align-items:flex-start; gap:18px; text-align:left; padding-bottom:26px;
+}
+html.is-mobile .fees-step:last-child{ padding-bottom:0; }
+html.is-mobile .fees-step-marker{
+    flex:0 0 auto; width:48px; height:48px; margin:0; font-size:14px;
+}
+html.is-mobile .fees-step-body{ padding-top:4px; }
+html.is-mobile .fees-step-body h3{ font-size:17px; margin-bottom:4px; justify-content:flex-start; }
+html.is-mobile .fees-card-top{ margin-bottom:10px; }
+html.is-mobile .fees-step-body p{ max-width:none; margin:0; }
+html.is-mobile .fees-commitment-grid{ grid-template-columns:1fr; gap:28px; }
+html.is-mobile .fees-terms-grid{ grid-template-columns:1fr; gap:16px; }
+html.is-mobile .fees-terms-panel{ padding:26px 22px; }
+html.is-mobile .fees-terms-panel h2{ font-size:20px; }
+
+@media (max-width:768px){
+    html:not(.is-mobile) .brokerage-hero .container{ padding:0 22px; }
+    html:not(.is-mobile) .fees-factors .fv-grid{ gap:12px; }
+    html:not(.is-mobile) .fees-factors .fv-card{ padding:20px 20px 22px; }
+    html:not(.is-mobile) .fees-factors .fv-card-number{ margin-bottom:8px; }
+    html:not(.is-mobile) .fees-intro{ padding:45px 0; }
+    html:not(.is-mobile) .fees-intro-grid{ grid-template-columns:1fr; gap:22px; }
+    html:not(.is-mobile) .fees-intro-heading h2{ font-size:25px; }
+    html:not(.is-mobile) .fees-intro-copy{ padding-left:20px; }
+    html:not(.is-mobile) .fees-intro-copy .fees-intro-lead{ font-size:17px; }
+    html:not(.is-mobile) .fees-factors .section-heading h2,
+    html:not(.is-mobile) .fees-services .section-heading h2,
+    html:not(.is-mobile) .fees-process .section-heading h2,
+    html:not(.is-mobile) .fees-commitment .section-heading h2{ font-size:26px; }
+    html:not(.is-mobile) .fees-factors .section-heading,
+    html:not(.is-mobile) .fees-services .section-heading,
+    html:not(.is-mobile) .fees-commitment .section-heading{ margin-bottom:28px; }
+    html:not(.is-mobile) .fees-service-row{
+        grid-template-columns:40px minmax(0,1fr);
+        gap:4px 16px;
+        align-items:start;
+        padding:18px 0;
+    }
+    html:not(.is-mobile) .fees-service-icon{ grid-row:span 2; width:36px; height:36px; }
+    html:not(.is-mobile) .fees-service-row h3{ font-size:16px; padding-top:6px; }
+    html:not(.is-mobile) .fees-service-row p{ font-size:14.5px; }
+    html:not(.is-mobile) .fees-process{ padding:45px 0; }
+    html:not(.is-mobile) .fees-process-lede{ margin-bottom:32px; font-size:15px; }
+    html:not(.is-mobile) .fees-timeline{ grid-template-columns:1fr; gap:0; }
+    html:not(.is-mobile) .fees-timeline::before{
+        top:24px; bottom:24px; left:23px; right:auto; width:1px; height:auto;
+    }
+    html:not(.is-mobile) .fees-step{
+        display:flex; align-items:flex-start; gap:18px; text-align:left; padding-bottom:26px;
+    }
+    html:not(.is-mobile) .fees-step:last-child{ padding-bottom:0; }
+    html:not(.is-mobile) .fees-step-marker{
+        flex:0 0 auto; width:48px; height:48px; margin:0; font-size:14px;
+    }
+    html:not(.is-mobile) .fees-step-body{ padding-top:4px; }
+    html:not(.is-mobile) .fees-step-body h3{ font-size:17px; margin-bottom:4px; justify-content:flex-start; }
+    html:not(.is-mobile) .fees-card-top{ margin-bottom:10px; }
+    html:not(.is-mobile) .fees-step-body p{ max-width:none; margin:0; }
+    html:not(.is-mobile) .fees-commitment-grid{ grid-template-columns:1fr; gap:28px; }
+    html:not(.is-mobile) .fees-terms-grid{ grid-template-columns:1fr; gap:16px; }
+    html:not(.is-mobile) .fees-terms-panel{ padding:26px 22px; }
+    html:not(.is-mobile) .fees-terms-panel h2{ font-size:20px; }
+}

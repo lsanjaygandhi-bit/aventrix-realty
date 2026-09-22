@@ -11,6 +11,19 @@
     const sb = window.supabaseClient;
     if (!sb) return;
 
+    // WhatsApp numbers are stored in site_settings as digits only in
+    // local 10-digit format (admin field hint: "e.g. 9176887770"),
+    // but wa.me needs the full international number with no "+".
+    // Normalise here so the stored convention is kept as-is:
+    // 10 digits -> prefix 91; leading 0 + 10 digits -> 91 + 10 digits;
+    // anything already international is left unchanged.
+    function toWhatsAppDigits(value) {
+        let digits = String(value || "").replace(/\D/g, "");
+        if (digits.length === 11 && digits.charAt(0) === "0") digits = digits.slice(1);
+        if (digits.length === 10) digits = "91" + digits;
+        return digits;
+    }
+
     sb.from("site_settings")
         .select("*")
         .eq("id", 1)
@@ -68,7 +81,7 @@
 
             if (data.whatsapp_number) {
                 document.querySelectorAll('[data-site="whatsapp-link"]').forEach((el) => {
-                    el.setAttribute("href", "https://wa.me/" + data.whatsapp_number.replace(/\D/g, ""));
+                    el.setAttribute("href", "https://wa.me/" + toWhatsAppDigits(data.whatsapp_number));
                 });
             }
             setHrefBySelector("[data-site='social-facebook']", data.social_facebook);
