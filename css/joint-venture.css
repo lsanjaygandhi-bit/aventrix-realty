@@ -1,0 +1,958 @@
+/* ===========================================================
+   JOINT VENTURE & DEVELOPMENT SOLUTIONS (joint-venture.html only)
+   Loaded only by joint-venture.html. Every selector is scoped with
+   the page-unique .jv-* prefix (or under .jv-form-section), so
+   nothing here reaches any other page. Reuses the shared
+   .list-hero / .joint-venture-hero, .section-heading /
+   .section-eyebrow, .faq-flat accordion, .fv-final-cta and
+   .primary-btn / .secondary-btn from style.css as-is.
+   Brand tokens only: emerald #0F3B2E, gold #D4AF37, ink #111827,
+   body #4b5563, alt background #f8f9fb, hairline rgba(17,24,39,.08).
+=========================================================== */
+
+/* ---------- Hero ----------
+   This page's hero carries an eyebrow, a two-line H1, a three-line
+   intro and two buttons, so it gets vertical padding inside the
+   shared 420px .list-hero (class used only on this page). */
+.joint-venture-hero{
+    padding:64px 0;
+}
+html.is-mobile .joint-venture-hero{
+    padding:48px 0 40px;
+    min-height:0;
+}
+@media (max-width:768px){
+    html:not(.is-mobile) .joint-venture-hero{
+        padding:48px 0 40px;
+        min-height:0;
+    }
+}
+
+/* ---------- Section shell ---------- */
+.jv-section{
+    padding:76px 0;
+    background:#ffffff;
+}
+.jv-section.jv-alt{
+    background:#f8f9fb;
+}
+.jv-section.jv-dark{
+    background:#0F3B2E;
+    color:#ffffff;
+}
+.jv-container{
+    width:90%;
+    max-width:1100px;
+    margin:0 auto;
+}
+.jv-heading{
+    max-width:760px;
+    margin-bottom:18px;
+}
+.jv-dark .section-eyebrow{
+    color:#D4AF37;
+}
+.jv-dark .section-heading h2{
+    color:#ffffff;
+}
+.jv-subhead{
+    margin:12px 0 0;
+    font-family:'Montserrat',sans-serif;
+    font-size:17px;
+    font-weight:500;
+    color:#D4AF37;
+}
+.jv-h2{
+    font-family:'Montserrat',sans-serif;
+    font-size:34px;
+    font-weight:600;
+    line-height:1.25;
+    color:#111827;
+    margin:0 0 20px;
+}
+.jv-h2-sm{
+    font-size:24px;
+    margin-bottom:14px;
+}
+.jv-intro{
+    max-width:720px;
+    margin:0 auto 44px;
+    text-align:center;
+    font-size:16px;
+    line-height:1.8;
+    color:rgba(255,255,255,.8);
+}
+.jv-intro-dark{
+    color:#4b5563;
+}
+.jv-lead{
+    font-size:18px;
+    line-height:1.75;
+    font-weight:500;
+    color:#111827;
+}
+.jv-section p{
+    font-size:15.5px;
+    line-height:1.8;
+    color:#4b5563;
+    margin:0 0 14px;
+}
+.jv-dark p{
+    color:rgba(255,255,255,.78);
+}
+.jv-section .jv-lead{ font-size:18px; color:#111827; }
+/* .jv-section p (above) would otherwise override the centring
+   margins of these two, so they're restated at higher specificity. */
+.jv-section .jv-heading{ max-width:900px; }
+.jv-section .jv-intro{ margin:0 auto 44px; }
+.jv-section .jv-intro{ font-size:16px; }
+.jv-section .jv-intro:not(.jv-intro-dark){ color:rgba(255,255,255,.8); }
+.jv-note{
+    font-size:14px !important;
+    color:#6b7280 !important;
+    margin-top:18px !important;
+}
+.jv-center{
+    text-align:center;
+}
+.jv-list-label{
+    font-family:'Montserrat',sans-serif;
+    font-size:13px !important;
+    font-weight:700;
+    letter-spacing:1.2px;
+    text-transform:uppercase;
+    color:#0F3B2E !important;
+    margin:0 0 16px !important;
+}
+.jv-disclaimer{
+    max-width:860px;
+    margin:40px auto 0 !important;
+    padding:16px 20px;
+    border-left:2px solid #D4AF37;
+    background:#ffffff;
+    font-size:14px !important;
+    line-height:1.7 !important;
+    color:#4b5563;
+}
+.jv-alt .jv-disclaimer{
+    background:#ffffff;
+}
+.jv-section:not(.jv-alt) .jv-disclaimer{
+    background:#f8f9fb;
+}
+
+/* ---------- Shared: two-column split ---------- */
+.jv-split{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    gap:64px;
+    align-items:center;
+}
+.jv-split-even{
+    align-items:start;
+}
+
+/* ---------- Shared: panel ---------- */
+.jv-panel{
+    background:#ffffff;
+    border:1px solid rgba(17,24,39,.08);
+    border-radius:12px;
+    padding:32px 30px;
+}
+
+/* ---------- Shared: checklist ---------- */
+.jv-checklist{
+    list-style:none;
+    margin:0;
+    padding:0;
+}
+.jv-checklist li{
+    position:relative;
+    padding:9px 0 9px 28px;
+    font-size:15px;
+    line-height:1.55;
+    color:#111827;
+    border-bottom:1px solid rgba(17,24,39,.06);
+}
+.jv-checklist li:last-child{
+    border-bottom:none;
+}
+/* Thin gold check drawn in CSS (no icon font needed). */
+.jv-checklist li::before{
+    content:"";
+    position:absolute;
+    left:3px;
+    top:15px;
+    width:10px;
+    height:5px;
+    border-left:1.5px solid #D4AF37;
+    border-bottom:1.5px solid #D4AF37;
+    transform:rotate(-45deg);
+}
+.jv-checklist-cols{
+    column-count:2;
+    column-gap:32px;
+}
+.jv-checklist-cols li{
+    break-inside:avoid;
+}
+.jv-checklist-grid{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    column-gap:32px;
+    max-width:980px;
+    margin:0 auto;
+}
+.jv-checklist-grid li{
+    border-bottom:1px solid rgba(17,24,39,.08);
+}
+.jv-checklist-grid li:last-child{
+    border-bottom:1px solid rgba(17,24,39,.08);
+}
+
+/* ---------- Shared: chips ---------- */
+.jv-chips{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+}
+.jv-chips li{
+    padding:8px 16px;
+    border:1px solid rgba(15,59,46,.22);
+    border-radius:999px;
+    font-size:14px;
+    color:#0F3B2E;
+    background:#ffffff;
+}
+.jv-chips-lg{
+    justify-content:center;
+    max-width:900px;
+    margin:0 auto;
+}
+.jv-chips-lg li{
+    padding:12px 20px;
+    font-size:15px;
+    font-weight:500;
+}
+
+/* Shared letter marker (sections 4 and 7) */
+.jv-option-letter{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    border:1px solid #D4AF37;
+    color:#D4AF37;
+    font-family:'Montserrat',sans-serif;
+    font-size:14px;
+    font-weight:700;
+    margin-bottom:18px;
+}
+
+/* ---------- 2 — What is a JV: flow ---------- */
+.jv-flow{
+    list-style:none;
+    margin:0;
+    padding:0;
+    max-width:420px;
+    justify-self:center;
+    width:100%;
+}
+.jv-flow-node{
+    position:relative;
+    background:#ffffff;
+    border:1px solid rgba(17,24,39,.1);
+    border-radius:10px;
+    padding:14px 20px;
+    text-align:center;
+    margin-bottom:26px;
+}
+.jv-flow-node:last-child{
+    margin-bottom:0;
+}
+/* Connector + arrow head between nodes */
+.jv-flow-node:not(:last-child)::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    bottom:-26px;
+    width:1px;
+    height:26px;
+    background:rgba(212,175,55,.7);
+}
+.jv-flow-node:not(:last-child)::before{
+    content:"";
+    position:absolute;
+    left:50%;
+    bottom:-27px;
+    width:7px;
+    height:7px;
+    margin-left:-3.5px;
+    border-right:1px solid #D4AF37;
+    border-bottom:1px solid #D4AF37;
+    transform:rotate(45deg);
+    z-index:1;
+}
+.jv-flow-title{
+    display:block;
+    font-family:'Montserrat',sans-serif;
+    font-size:14px;
+    font-weight:700;
+    letter-spacing:.8px;
+    text-transform:uppercase;
+    color:#0F3B2E;
+}
+.jv-flow-note{
+    display:block;
+    margin-top:3px;
+    font-size:13px;
+    color:#6b7280;
+}
+.jv-flow-key{
+    background:#0F3B2E;
+    border-color:#0F3B2E;
+}
+.jv-flow-key .jv-flow-title{ color:#D4AF37; }
+.jv-flow-key .jv-flow-note{ color:rgba(255,255,255,.75); }
+.jv-flow-end{
+    border-color:#D4AF37;
+}
+
+/* ---------- 4 — Structures (dark band) ---------- */
+.jv-option-grid{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:20px;
+}
+.jv-option{
+    border:1px solid rgba(255,255,255,.14);
+    border-radius:12px;
+    padding:28px 26px;
+    background:rgba(255,255,255,.03);
+    transition:border-color .25s ease;
+}
+.jv-option:hover{
+    border-color:rgba(212,175,55,.55);
+}
+.jv-option h3{
+    font-family:'Montserrat',sans-serif;
+    font-size:18px;
+    font-weight:600;
+    color:#ffffff;
+    margin:0 0 10px;
+}
+.jv-option p{
+    font-size:14.5px;
+    line-height:1.75;
+    margin:0;
+}
+.jv-footnote{
+    max-width:720px;
+    margin:32px auto 0 !important;
+    text-align:center;
+    font-size:14px !important;
+    color:rgba(255,255,255,.65) !important;
+}
+
+/* ---------- 5 — Our role (numbered grid) ---------- */
+.jv-role-grid{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:0 40px;
+    border-top:1px solid rgba(17,24,39,.08);
+}
+.jv-role-grid li{
+    padding:24px 0;
+    border-bottom:1px solid rgba(17,24,39,.08);
+}
+.jv-num{
+    display:block;
+    font-family:'Montserrat',sans-serif;
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:1px;
+    color:#D4AF37;
+    margin-bottom:10px;
+}
+.jv-role-grid h3{
+    font-family:'Montserrat',sans-serif;
+    font-size:16.5px;
+    font-weight:600;
+    color:#111827;
+    margin:0 0 6px;
+    line-height:1.4;
+}
+.jv-role-grid p{
+    font-size:14.5px;
+    line-height:1.7;
+    margin:0;
+}
+
+/* ---------- 6 — Roles ---------- */
+.jv-roles{
+    display:grid;
+    grid-template-columns:minmax(0,4fr) minmax(0,7fr);
+    gap:24px;
+    align-items:start;
+}
+.jv-roles-owner{
+    border-top:2px solid #0F3B2E;
+}
+.jv-roles-partner{
+    border-top:2px solid #D4AF37;
+}
+
+/* ---------- 7 — Commercial structures ---------- */
+.jv-structure-grid{
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:20px;
+}
+.jv-structure{
+    border:1px solid rgba(17,24,39,.08);
+    border-top:2px solid #D4AF37;
+    border-radius:12px;
+    padding:26px 22px;
+    background:#ffffff;
+}
+.jv-structure .jv-option-letter{
+    color:#0F3B2E;
+    border-color:rgba(15,59,46,.4);
+    margin-bottom:14px;
+}
+.jv-structure h3{
+    font-family:'Montserrat',sans-serif;
+    font-size:16.5px;
+    font-weight:600;
+    color:#111827;
+    margin:0 0 8px;
+    line-height:1.4;
+}
+.jv-structure p{
+    font-size:14.5px;
+    line-height:1.7;
+    margin:0;
+}
+.jv-factors{
+    margin-top:44px;
+    padding:30px;
+    border-radius:12px;
+    background:#f8f9fb;
+}
+.jv-factors .jv-note{
+    margin-bottom:0 !important;
+}
+
+/* ---------- 8 — Look beyond the share percentage ---------- */
+.jv-quote{
+    max-width:860px;
+    margin:0 auto 48px;
+    padding:0 0 0 28px;
+    border-left:3px solid #D4AF37;
+}
+.jv-quote p{
+    font-family:'Montserrat',sans-serif;
+    font-size:21px;
+    line-height:1.6;
+    font-weight:500;
+    color:#0F3B2E;
+    margin:0;
+}
+
+/* ---------- 9 — Objectives ---------- */
+.jv-objective-grid{
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:18px;
+}
+.jv-objective{
+    border:1px solid rgba(17,24,39,.08);
+    border-radius:12px;
+    padding:22px 20px;
+    background:#ffffff;
+}
+.jv-objective h3{
+    font-family:'Montserrat',sans-serif;
+    font-size:15.5px;
+    font-weight:600;
+    color:#0F3B2E;
+    margin:0 0 6px;
+    line-height:1.4;
+}
+.jv-objective p{
+    font-size:14px;
+    line-height:1.65;
+    margin:0;
+}
+
+/* ---------- 10 & 11 — Paired panels ---------- */
+.jv-pair{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:24px;
+    align-items:start;
+}
+.jv-pair .section-eyebrow{
+    margin-bottom:10px;
+}
+
+/* ---------- 12 — Process timeline (dark band) ---------- */
+.jv-timeline{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:grid;
+    grid-template-columns:repeat(9,minmax(0,1fr));
+    gap:10px;
+    position:relative;
+    counter-reset:none;
+}
+.jv-timeline::before{
+    content:"";
+    position:absolute;
+    top:23px;
+    left:5.5%;
+    right:5.5%;
+    height:1px;
+    background:rgba(212,175,55,.45);
+}
+.jv-timeline li{
+    position:relative;
+    text-align:center;
+}
+.jv-step-marker{
+    position:relative;
+    z-index:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:46px;
+    height:46px;
+    margin:0 auto 16px;
+    border-radius:50%;
+    background:#0F3B2E;
+    border:1px solid #D4AF37;
+    color:#D4AF37;
+    font-family:'Montserrat',sans-serif;
+    font-size:13.5px;
+    font-weight:700;
+}
+.jv-timeline li:last-child .jv-step-marker{
+    background:#D4AF37;
+    color:#0F3B2E;
+}
+.jv-step-title{
+    display:block;
+    font-family:'Montserrat',sans-serif;
+    font-size:13.5px;
+    font-weight:600;
+    line-height:1.45;
+    color:#ffffff;
+}
+
+/* ---------- 13 — Alignment equation ---------- */
+.jv-equation{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:grid;
+    grid-template-columns:repeat(6,minmax(0,1fr));
+    gap:28px;
+}
+.jv-equation li{
+    position:relative;
+    border:1px solid rgba(17,24,39,.1);
+    border-radius:12px;
+    padding:20px 14px;
+    text-align:center;
+    background:#ffffff;
+}
+/* "+" between tiles */
+.jv-equation li + li::before{
+    content:"+";
+    position:absolute;
+    left:-22px;
+    top:50%;
+    transform:translateY(-50%);
+    width:16px;
+    text-align:center;
+    font-family:'Montserrat',sans-serif;
+    font-size:20px;
+    font-weight:400;
+    color:#D4AF37;
+}
+.jv-eq-label{
+    display:block;
+    font-family:'Montserrat',sans-serif;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:1.2px;
+    text-transform:uppercase;
+    color:#0F3B2E;
+    margin-bottom:6px;
+}
+.jv-eq-value{
+    display:block;
+    font-size:14px;
+    line-height:1.5;
+    color:#4b5563;
+}
+.jv-eq-result{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:16px;
+    max-width:620px;
+    margin:32px auto 0;
+    padding:18px 24px;
+    border-radius:12px;
+    background:#0F3B2E;
+    font-family:'Montserrat',sans-serif;
+    font-size:16px;
+    font-weight:600;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color:#ffffff;
+    text-align:center;
+}
+.jv-eq-equals{
+    color:#D4AF37;
+    font-size:24px;
+    font-weight:400;
+}
+
+/* ---------- 14 — Why Aventrix (principles) ---------- */
+.jv-principles{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:20px;
+}
+.jv-principle{
+    background:#ffffff;
+    border:1px solid rgba(17,24,39,.08);
+    border-radius:12px;
+    padding:26px 24px;
+}
+.jv-icon{
+    display:block;
+    width:24px;
+    height:24px;
+    color:#0F3B2E;
+    stroke-width:1.5;
+    margin-bottom:14px;
+}
+.jv-principle h3{
+    font-family:'Montserrat',sans-serif;
+    font-size:17px;
+    font-weight:600;
+    color:#111827;
+    margin:0 0 6px;
+}
+.jv-principle p{
+    font-size:14.5px;
+    line-height:1.7;
+    margin:0;
+}
+
+/* ---------- 16 — FAQ (reuses .faq-flat) ---------- */
+.jv-faq .faq-list{
+    margin-top:10px;
+}
+.jv-faq .faq-answer p{
+    font-size:15px;
+    line-height:1.75;
+}
+
+/* ---------- 18 — Enquiry form ----------
+   .valuation-card / .submit-btn / textarea / .full-width had no
+   styles anywhere in style.css (pre-existing gap noted there), so the
+   form is styled here, matching the site's other rebuilt forms
+   (#valuation-form / #owner-form: same field, button and spacing). */
+.jv-form-section{
+    background:#f8f9fb;
+    padding:70px 0 90px;
+}
+.jv-form-section .enquiry-container{
+    max-width:860px;
+    padding:0 5%;
+}
+.jv-form-section .valuation-card{
+    background:#ffffff;
+    padding:40px 38px;
+}
+.jv-form-section .valuation-card h2{
+    font-family:'Montserrat',sans-serif;
+    font-size:30px;
+    font-weight:600;
+    color:#111827;
+    margin:0 0 10px;
+}
+.jv-form-section .form-subtitle{
+    font-size:15.5px;
+    line-height:1.75;
+    color:#4b5563;
+    margin:0 0 30px;
+}
+.jv-form-section .form-group.full-width{
+    grid-column:1 / -1;
+}
+.jv-form-section .form-grid input,
+.jv-form-section .form-grid select,
+.jv-form-section .form-grid textarea{
+    width:100%;
+    padding:14px 15px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    font-size:16px;
+    font-family:inherit;
+    color:#111827;
+    background:#ffffff;
+}
+.jv-form-section .form-grid textarea{
+    resize:vertical;
+    min-height:130px;
+    line-height:1.6;
+}
+.jv-form-section .form-grid input:focus,
+.jv-form-section .form-grid select:focus,
+.jv-form-section .form-grid textarea:focus{
+    outline:none;
+    border-color:#0F3B2E;
+    box-shadow:0 0 0 3px rgba(15,59,46,.12);
+}
+.jv-docs-note{
+    justify-content:flex-end;
+}
+.jv-docs-label{
+    font-size:14px;
+    font-weight:600;
+    color:#222;
+    margin-bottom:8px;
+}
+.jv-docs-note p{
+    margin:0;
+    padding:12px 14px;
+    border-radius:10px;
+    background:#f8f9fb;
+    font-size:13.5px;
+    line-height:1.6;
+    color:#4b5563;
+}
+.jv-form-section .submit-btn{
+    display:block;
+    min-width:300px;
+    height:52px;
+    margin:32px auto 0;
+    padding:0 36px;
+    background:#D4AF37;
+    color:#111;
+    border:none;
+    border-radius:12px;
+    font-family:inherit;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:background .25s ease;
+}
+.jv-form-section .submit-btn:hover{
+    background:#c89a2d;
+}
+.jv-form-section .submit-btn:focus-visible{
+    outline:2px solid #0F3B2E;
+    outline-offset:3px;
+}
+.jv-form-section .success-message h3{
+    font-family:'Montserrat',sans-serif;
+    font-size:24px;
+    color:#0F3B2E;
+    margin:0 0 10px;
+}
+.jv-form-section .success-message p{
+    color:#4b5563;
+    margin:0 0 6px;
+}
+
+/* ---------- Narrow desktop / tablet landscape ---------- */
+@media (max-width:1180px){
+    html:not(.is-mobile) .jv-structure-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); }
+    html:not(.is-mobile) .jv-objective-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); }
+    html:not(.is-mobile) .jv-equation{ grid-template-columns:repeat(3,minmax(0,1fr)); row-gap:20px; }
+    html:not(.is-mobile) .jv-equation li:nth-child(3n+1)::before{ display:none; }
+    /* Nine steps don't fit in one row here: vertical timeline in two
+       columns instead. */
+    html:not(.is-mobile) .jv-timeline{
+        grid-template-columns:repeat(3,minmax(0,1fr));
+        row-gap:34px;
+    }
+    html:not(.is-mobile) .jv-timeline::before{ display:none; }
+}
+
+/* ---------- Mobile ----------
+   Kept in sync for both the JS is-mobile path and the JS-disabled
+   narrow-window @media fallback, per style.css convention. */
+html.is-mobile .jv-section{ padding:46px 0; }
+html.is-mobile .jv-container{ width:88%; }
+html.is-mobile .jv-heading .section-eyebrow{ font-size:12px; letter-spacing:2.2px; }
+html.is-mobile .jv-heading h2{ font-size:26px; line-height:1.3; }
+html.is-mobile .jv-h2{ font-size:26px; }
+html.is-mobile .jv-h2-sm{ font-size:21px; }
+html.is-mobile .jv-subhead{ font-size:15.5px; }
+html.is-mobile .jv-section .jv-intro{ font-size:15px; margin-bottom:28px; }
+html.is-mobile .jv-section .jv-lead{ font-size:16.5px; }
+html.is-mobile .jv-split{ grid-template-columns:1fr; gap:32px; }
+html.is-mobile .jv-panel{ padding:24px 20px; }
+html.is-mobile .jv-flow-node{ padding:12px 16px; margin-bottom:22px; }
+html.is-mobile .jv-flow-node:not(:last-child)::after{ bottom:-22px; height:22px; }
+html.is-mobile .jv-flow-node:not(:last-child)::before{ bottom:-23px; }
+html.is-mobile .jv-flow-title{ font-size:13px; }
+html.is-mobile .jv-option-grid{ grid-template-columns:1fr; gap:14px; }
+html.is-mobile .jv-option{ padding:22px 20px; }
+html.is-mobile .jv-option .jv-option-letter{ margin-bottom:12px; }
+html.is-mobile .jv-role-grid{ grid-template-columns:1fr; }
+html.is-mobile .jv-role-grid li{ padding:18px 0; }
+html.is-mobile .jv-roles{ grid-template-columns:1fr; gap:16px; }
+html.is-mobile .jv-checklist-cols{ column-count:1; }
+html.is-mobile .jv-structure-grid{ grid-template-columns:1fr; gap:14px; }
+html.is-mobile .jv-factors{ padding:22px 18px; margin-top:30px; }
+html.is-mobile .jv-chips li{ font-size:13.5px; padding:7px 13px; }
+html.is-mobile .jv-chips-lg li{ font-size:14px; padding:10px 15px; }
+html.is-mobile .jv-quote{ padding-left:18px; margin-bottom:32px; }
+html.is-mobile .jv-quote p{ font-size:17px; }
+html.is-mobile .jv-checklist-grid{ grid-template-columns:1fr; }
+html.is-mobile .jv-objective-grid{ grid-template-columns:1fr 1fr; gap:12px; }
+html.is-mobile .jv-objective{ padding:16px 14px; }
+html.is-mobile .jv-objective h3{ font-size:14.5px; }
+html.is-mobile .jv-objective p{ font-size:13.5px; }
+html.is-mobile .jv-pair{ grid-template-columns:1fr; gap:16px; }
+html.is-mobile .jv-disclaimer{ margin-top:28px !important; }
+html.is-mobile .jv-timeline{ grid-template-columns:1fr; gap:0; }
+html.is-mobile .jv-timeline::before{ top:20px; bottom:20px; left:20px; right:auto; width:1px; height:auto; }
+html.is-mobile .jv-timeline li{ display:flex; align-items:center; gap:16px; text-align:left; padding-bottom:16px; }
+html.is-mobile .jv-timeline li:last-child{ padding-bottom:0; }
+html.is-mobile .jv-step-marker{ flex:0 0 auto; width:40px; height:40px; margin:0; font-size:12.5px; }
+html.is-mobile .jv-step-title{ font-size:15px; }
+html.is-mobile .jv-equation{ grid-template-columns:1fr; gap:26px; }
+html.is-mobile .jv-equation li{ padding:14px 16px; display:flex; justify-content:space-between; align-items:center; gap:12px; text-align:left; }
+html.is-mobile .jv-equation li + li::before{ left:50%; top:-23px; transform:translateX(-50%); }
+html.is-mobile .jv-eq-label{ margin:0; }
+html.is-mobile .jv-eq-value{ text-align:right; font-size:13.5px; }
+html.is-mobile .jv-eq-result{ font-size:13.5px; padding:16px; gap:12px; margin-top:26px; }
+html.is-mobile .jv-principles{ grid-template-columns:1fr; gap:14px; }
+html.is-mobile .jv-principle{ padding:22px 20px; }
+html.is-mobile .jv-form-section{ padding:46px 0 60px; }
+html.is-mobile .jv-form-section .enquiry-container{ padding:0 6%; }
+html.is-mobile .jv-form-section .valuation-card{ padding:26px 20px; }
+html.is-mobile .jv-form-section .valuation-card h2{ font-size:24px; }
+html.is-mobile .jv-form-section .form-grid{ grid-template-columns:1fr; gap:16px; }
+html.is-mobile .jv-form-section .submit-btn{ width:100%; min-width:0; }
+
+@media (max-width:768px){
+    html:not(.is-mobile) .jv-section{ padding:46px 0; }
+    html:not(.is-mobile) .jv-container{ width:88%; }
+    html:not(.is-mobile) .jv-heading .section-eyebrow{ font-size:12px; letter-spacing:2.2px; }
+    html:not(.is-mobile) .jv-heading h2{ font-size:26px; line-height:1.3; }
+    html:not(.is-mobile) .jv-h2{ font-size:26px; }
+    html:not(.is-mobile) .jv-h2-sm{ font-size:21px; }
+    html:not(.is-mobile) .jv-subhead{ font-size:15.5px; }
+    html:not(.is-mobile) .jv-section .jv-intro{ font-size:15px; margin-bottom:28px; }
+    html:not(.is-mobile) .jv-section .jv-lead{ font-size:16.5px; }
+    html:not(.is-mobile) .jv-split{ grid-template-columns:1fr; gap:32px; }
+    html:not(.is-mobile) .jv-panel{ padding:24px 20px; }
+    html:not(.is-mobile) .jv-flow-node{ padding:12px 16px; margin-bottom:22px; }
+    html:not(.is-mobile) .jv-flow-node:not(:last-child)::after{ bottom:-22px; height:22px; }
+    html:not(.is-mobile) .jv-flow-node:not(:last-child)::before{ bottom:-23px; }
+    html:not(.is-mobile) .jv-flow-title{ font-size:13px; }
+    html:not(.is-mobile) .jv-option-grid{ grid-template-columns:1fr; gap:14px; }
+    html:not(.is-mobile) .jv-option{ padding:22px 20px; }
+    html:not(.is-mobile) .jv-role-grid{ grid-template-columns:1fr; }
+    html:not(.is-mobile) .jv-role-grid li{ padding:18px 0; }
+    html:not(.is-mobile) .jv-roles{ grid-template-columns:1fr; gap:16px; }
+    html:not(.is-mobile) .jv-checklist-cols{ column-count:1; }
+    html:not(.is-mobile) .jv-structure-grid{ grid-template-columns:1fr; gap:14px; }
+    html:not(.is-mobile) .jv-factors{ padding:22px 18px; margin-top:30px; }
+    html:not(.is-mobile) .jv-quote{ padding-left:18px; margin-bottom:32px; }
+    html:not(.is-mobile) .jv-quote p{ font-size:17px; }
+    html:not(.is-mobile) .jv-checklist-grid{ grid-template-columns:1fr; }
+    html:not(.is-mobile) .jv-objective-grid{ grid-template-columns:1fr 1fr; gap:12px; }
+    html:not(.is-mobile) .jv-pair{ grid-template-columns:1fr; gap:16px; }
+    html:not(.is-mobile) .jv-timeline{ grid-template-columns:1fr; gap:0; row-gap:0; }
+    html:not(.is-mobile) .jv-timeline::before{ display:block; top:20px; bottom:20px; left:20px; right:auto; width:1px; height:auto; }
+    html:not(.is-mobile) .jv-timeline li{ display:flex; align-items:center; gap:16px; text-align:left; padding-bottom:16px; }
+    html:not(.is-mobile) .jv-timeline li:last-child{ padding-bottom:0; }
+    html:not(.is-mobile) .jv-step-marker{ flex:0 0 auto; width:40px; height:40px; margin:0; font-size:12.5px; }
+    html:not(.is-mobile) .jv-step-title{ font-size:15px; }
+    html:not(.is-mobile) .jv-equation{ grid-template-columns:1fr; gap:26px; }
+    html:not(.is-mobile) .jv-equation li{ padding:14px 16px; display:flex; justify-content:space-between; align-items:center; gap:12px; text-align:left; }
+    html:not(.is-mobile) .jv-equation li + li::before,
+    html:not(.is-mobile) .jv-equation li:nth-child(3n+1)::before{ display:block; left:50%; top:-23px; transform:translateX(-50%); }
+    html:not(.is-mobile) .jv-eq-label{ margin:0; }
+    html:not(.is-mobile) .jv-eq-value{ text-align:right; font-size:13.5px; }
+    html:not(.is-mobile) .jv-eq-result{ font-size:13.5px; padding:16px; gap:12px; margin-top:26px; }
+    html:not(.is-mobile) .jv-principles{ grid-template-columns:1fr; gap:14px; }
+    html:not(.is-mobile) .jv-form-section{ padding:46px 0 60px; }
+    html:not(.is-mobile) .jv-form-section .valuation-card{ padding:26px 20px; }
+    html:not(.is-mobile) .jv-form-section .valuation-card h2{ font-size:24px; }
+    html:not(.is-mobile) .jv-form-section .form-grid{ grid-template-columns:1fr; gap:16px; }
+    html:not(.is-mobile) .jv-form-section .submit-btn{ width:100%; min-width:0; }
+}
+
+
+/* ---------- Mobile compaction ----------
+   Hero text inset from the screen edge; letter / icon markers sit
+   beside the card title instead of above it, and list rows are a
+   little tighter, so the long page scans faster on a phone. */
+html.is-mobile .joint-venture-hero .container{ padding:0 22px; }
+html.is-mobile .joint-venture-hero h1{ font-size:27px; line-height:1.25; }
+html.is-mobile .joint-venture-hero p{ font-size:15.5px; line-height:1.7; }
+html.is-mobile .jv-option,
+html.is-mobile .jv-structure{ display:grid; grid-template-columns:34px minmax(0,1fr); column-gap:14px; align-items:start; }
+html.is-mobile .jv-option .jv-option-letter,
+html.is-mobile .jv-structure .jv-option-letter{ grid-row:span 2; margin:0; }
+html.is-mobile .jv-option h3,
+html.is-mobile .jv-structure h3{ margin-top:6px; }
+html.is-mobile .jv-principle{ display:grid; grid-template-columns:24px minmax(0,1fr); column-gap:14px; padding:18px 18px; }
+html.is-mobile .jv-principle .jv-icon{ grid-row:span 2; margin:2px 0 0; }
+html.is-mobile .jv-checklist li{ padding:7px 0 7px 26px; font-size:14.5px; }
+html.is-mobile .jv-checklist li::before{ top:13px; }
+html.is-mobile .jv-role-grid li{ padding:14px 0; }
+html.is-mobile .jv-role-grid h3{ font-size:15.5px; }
+html.is-mobile .jv-num{ margin-bottom:6px; }
+html.is-mobile .jv-form-section .submit-btn{ padding:0 16px; font-size:15.5px; }
+@media (max-width:768px){
+
+    /* ---------- Mobile compaction ----------
+       Hero text inset from the screen edge; letter / icon markers sit
+       beside the card title instead of above it, and list rows are a
+       little tighter, so the long page scans faster on a phone. */
+    html:not(.is-mobile) .joint-venture-hero .container{ padding:0 22px; }
+    html:not(.is-mobile) .joint-venture-hero h1{ font-size:27px; line-height:1.25; }
+    html:not(.is-mobile) .joint-venture-hero p{ font-size:15.5px; line-height:1.7; }
+    html:not(.is-mobile) .jv-option,
+    html:not(.is-mobile) .jv-structure{ display:grid; grid-template-columns:34px minmax(0,1fr); column-gap:14px; align-items:start; }
+    html:not(.is-mobile) .jv-option .jv-option-letter,
+    html:not(.is-mobile) .jv-structure .jv-option-letter{ grid-row:span 2; margin:0; }
+    html:not(.is-mobile) .jv-option h3,
+    html:not(.is-mobile) .jv-structure h3{ margin-top:6px; }
+    html:not(.is-mobile) .jv-principle{ display:grid; grid-template-columns:24px minmax(0,1fr); column-gap:14px; padding:18px 18px; }
+    html:not(.is-mobile) .jv-principle .jv-icon{ grid-row:span 2; margin:2px 0 0; }
+    html:not(.is-mobile) .jv-checklist li{ padding:7px 0 7px 26px; font-size:14.5px; }
+    html:not(.is-mobile) .jv-checklist li::before{ top:13px; }
+    html:not(.is-mobile) .jv-role-grid li{ padding:14px 0; }
+    html:not(.is-mobile) .jv-role-grid h3{ font-size:15.5px; }
+    html:not(.is-mobile) .jv-num{ margin-bottom:6px; }
+    html:not(.is-mobile) .jv-form-section .submit-btn{ padding:0 16px; font-size:15.5px; }
+}
+
+/* In-page anchor target: land the form card just below the fixed
+   header rather than behind it. */
+.jv-form-section{
+    scroll-margin-top:40px;
+}

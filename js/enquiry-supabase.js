@@ -45,7 +45,11 @@
         }
 
         const record = {
-            form_type: document.title.split("|")[0].trim() || "Enquiry",
+            // A form can name its own type via data-form-type (used by
+            // the Joint Venture page so its inbox label stays "Joint
+            // Venture" even though its <title> is longer); every other
+            // form keeps the original title-based label.
+            form_type: form.dataset.formType || document.title.split("|")[0].trim() || "Enquiry",
             source_page: window.location.pathname.split("/").pop() || "index.html",
             name: name,
             phone: phone,
