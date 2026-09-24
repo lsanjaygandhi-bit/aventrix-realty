@@ -82,45 +82,11 @@
     };
 
     // Property Type → Sub-Type taxonomy (approved 2026-09). Drives the
-    // dependent Sub-Type dropdown on this page and is duplicated (kept
-    // in sync intentionally, same as the existing card-template pattern
-    // with near-me.js) in admin/js/properties.js for the Admin form's
-    // cascade, since these are plain scripts with no shared module.
-    const TYPE_SUBTYPES = {
-        residential: [
-            { value: "apartment_flat", label: "Apartment / Flat" },
-            { value: "villa", label: "Villa" },
-            { value: "independent_house", label: "Independent House" },
-            { value: "duplex", label: "Duplex" },
-            { value: "penthouse", label: "Penthouse" },
-            { value: "residential_plot", label: "Residential Plot" }
-        ],
-        commercial: [
-            { value: "office_space", label: "Office Space" },
-            { value: "shop_retail", label: "Shop / Retail" },
-            { value: "showroom", label: "Showroom" },
-            { value: "commercial_building", label: "Commercial Building" },
-            { value: "commercial_plot", label: "Commercial Plot" }
-        ],
-        industrial: [
-            { value: "factory_manufacturing", label: "Factory / Manufacturing" },
-            { value: "warehouse", label: "Warehouse" },
-            { value: "industrial_building", label: "Industrial Building" },
-            { value: "industrial_plot", label: "Industrial Plot" }
-        ],
-        special_purpose: [
-            { value: "hotel", label: "Hotel" },
-            { value: "hospital", label: "Hospital" },
-            { value: "school_institution", label: "School / Institution" },
-            { value: "resort", label: "Resort" },
-            { value: "other_special_purpose", label: "Other Special Purpose" }
-        ],
-        agricultural: [
-            { value: "agricultural_land", label: "Agricultural Land" },
-            { value: "farm_land", label: "Farm Land" },
-            { value: "plantation_estate", label: "Plantation / Estate" }
-        ]
-    };
+    // dependent Sub-Type dropdown on this page. Now defined once in
+    // js/property-taxonomy.js (loaded before this file) and shared with
+    // the homepage hero search; admin/js/properties.js keeps its own
+    // copy for the Admin form's cascade, as before.
+    const TYPE_SUBTYPES = (window.AventrixPropertyTaxonomy && window.AventrixPropertyTaxonomy.TYPE_SUBTYPES) || {};
 
     // Reverse lookup (sub-type value -> owning Property Type) so a deep
     // link carrying only `subtype=` (no `category=`) still resolves to
@@ -320,7 +286,7 @@
     // entry — falls back to the raw value if a mapping isn't found.
     const CATEGORY_LABELS = {
         residential: "Residential", apartments: "Apartments", villas: "Villas",
-        commercial: "Commercial", land: "Land & Plots", investment: "Investment",
+        commercial: "Commercial", land: "Land", investment: "Investment",
         industrial: "Industrial", special_purpose: "Special Purpose", agricultural: "Agricultural"
     };
 

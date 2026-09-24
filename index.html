@@ -70,6 +70,7 @@
     <meta name="twitter:image" content="https://aventrixrealty.com/images/chennai-marina.jpg">
 
     <link rel="stylesheet" href="style.css?v=20260922">
+    <link rel="stylesheet" href="css/home-hero.css?v=4">
     <link rel="stylesheet" href="css/phase2a.css?v=1">
 
 
@@ -283,153 +284,253 @@
     </div>
      </header>
 
-<div class="hero-wrapper">
-       <section class="hero" id="hero">
+<!-- =============================================================
+     HOMEPAGE HERO + QUICK PROPERTY SEARCH
+     The search here is only an entry point: it builds a
+     properties.html URL using the exact same query parameters that
+     js/properties-search.js already reads (location, category,
+     subtype, listingType, priceMin, priceMax, beds, baths, areaMin,
+     areaMax, facing, furnishing, parking, roadWidthMin). Results,
+     chips, sorting and Recent Searches all come from properties.html
+     as before -- no second search system. Option values mirror
+     properties.html's filter panel; sub-types come from the shared
+     js/property-taxonomy.js. Behaviour: js/home-hero-search.js.
+     Styles: css/home-hero.css (this page only).
+     Kept for existing scripts: #hero (section indicator), #heroVideo
+     (script.js autoplay + Admin video override), #heroTitle /
+     #heroSubtitle / #heroTagline (Admin Site Settings text). -->
+<section class="hh-hero" id="hero">
 
-     <!-- NEW hero copy + poster per the app-style redesign. Video
-          src/mechanism UNCHANGED — only the poster and overlay text
-          content changed. poster now points to images/hero-lifestyle.jpg,
-          which does NOT exist yet in this project: I have no way to
-          source or fabricate a real, licensed photo of a person for
-          this business's homepage, so this file needs to be supplied
-          and uploaded by Aventrix Realty. Until then the video (which
-          autoplays) covers it, same as the previous poster reference
-          (images/hero.jpg) also didn't actually exist as a file. -->
-     <video class="hero-video" id="heroVideo" autoplay muted loop playsinline preload="auto" poster="images/hero-lifestyle.jpg" aria-hidden="true">
-         <source src="images/hero-video.mp4?v=2" type="video/mp4">
-     </video>
+    <video class="hh-video" id="heroVideo" autoplay muted loop playsinline preload="metadata" poster="images/hero-poster.jpg" aria-hidden="true">
+        <source src="images/hero-video.mp4?v=2" type="video/mp4">
+    </video>
+    <div class="hh-shade" aria-hidden="true"></div>
 
-     <!-- MOVED per latest layout direction: Post Property FREE now
-          lives inside the hero itself, top-right corner, as a
-          compact floating CTA — no longer in the page header. Sits
-          as its own absolutely-positioned element (not inside
-          .hero-overlay/.hero-content), so it can never push into or
-          collide with the headline/subtext/BUY-SELL-RENT/search
-          panel below it. Same destination as before
-          (list-with-us.html) — position only changed. -->
-     <a href="list-with-us.html" class="home-app-hero-post-btn">Post Property <span>FREE</span></a>
+    <a href="list-with-us.html" class="home-app-hero-post-btn">Post Property <span>FREE</span></a>
 
-     <!-- LOGIN / SIGN UP text link REMOVED per request (header cleanup
-          pass) -- the account.html login/signup flow itself is
-          untouched and still fully reachable via the account icon in
-          the header's .nav-right / mobile bell (.home-app-bell-btn),
-          this was only the extra floating text duplicate in the hero
-          corner. -->
+    <div class="hh-inner">
 
-     <!-- REMOVED per feedback: the Wishlist/Shortlist/Notifications
-          quick-action bar that lived here is gone — those three are
-          now available in the header only (see .nav-right in the
-          page head), avoiding two competing places for the same
-          three actions on desktop. Post Property FREE stays here,
-          unchanged. -->
-
-     <div class="hero-overlay">
-
-        <div class="hero-content">
-
-            <h1 id="heroTitle">
-                Find Your Place to Call Home in Chennai.
-            </h1>
-             <p id="heroSubtitle">
+        <div class="hh-copy">
+            <p class="hh-eyebrow" id="heroTagline">Buy &bull; Sell &bull; Rent</p>
+            <h1 class="hh-title" id="heroTitle">Find Your Next Property in Chennai</h1>
+            <p class="hh-subtitle" id="heroSubtitle">
                 Trusted real estate solutions across residential, commercial
                 and land investments — backed by decades of local expertise.
             </p>
+        </div>
 
-            <p class="hero-subheading" id="heroTagline">
-                BUY &bull; SELL &bull; RENT
-            </p>
+        <div class="hh-search" role="search" aria-label="Quick property search">
 
+            <div class="hh-tabs" role="radiogroup" aria-label="Buy or rent">
+                <button type="button" class="hh-tab is-active" role="radio" aria-checked="true" data-listing="sale">Buy</button>
+                <button type="button" class="hh-tab" role="radio" aria-checked="false" data-listing="lease">Rent &amp; Lease</button>
+                <button type="button" class="hh-tab" role="radio" aria-checked="false" data-listing="">All</button>
+            </div>
 
+            <form class="hh-form" id="heroSearchForm" action="properties.html" method="get" novalidate>
+
+                <input type="hidden" name="listingType" id="hsListingType" value="sale">
+
+                <div class="hh-row">
+
+                    <div class="hh-field hh-field-location">
+                        <label for="hsLocation">Location / Area</label>
+                        <div class="hh-control">
+                            <svg class="hh-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 4.99-5.54 10.19-7.4 11.8a1 1 0 0 1-1.2 0C9.54 20.19 4 14.99 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+                            <input type="text" id="hsLocation" name="location" placeholder="e.g. Chromepet, Velachery" list="hsAreaList" autocomplete="off" enterkeyhint="search">
+                        </div>
+                        <datalist id="hsAreaList">
+                            <option value="Chromepet"></option>
+                            <option value="Adyar"></option>
+                            <option value="Velachery"></option>
+                            <option value="ECR"></option>
+                            <option value="OMR"></option>
+                            <option value="Tambaram"></option>
+                            <option value="Pallavaram"></option>
+                            <option value="Medavakkam"></option>
+                            <option value="Madipakkam"></option>
+                            <option value="Guduvanchery"></option>
+                            <option value="Neelankarai"></option>
+                            <option value="T Nagar"></option>
+                        </datalist>
+                    </div>
+
+                    <div class="hh-field">
+                        <label for="hsCategory">Property Type</label>
+                        <div class="hh-control">
+                            <svg class="hh-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                            <select id="hsCategory" name="category">
+                                <option value="">Any Type</option>
+                                <option value="residential">Residential</option>
+                                <option value="commercial">Commercial</option>
+                                <option value="land">Land</option>
+                                <option value="industrial">Industrial</option>
+                                <option value="special_purpose">Special Purpose</option>
+                                <option value="agricultural">Agricultural</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="hh-field hh-field-price">
+                        <label for="hsPriceMin" id="hsPriceLabel">Price Range (₹)</label>
+                        <div class="hh-control hh-control-split">
+                            <select id="hsPriceMin" name="priceMin" aria-label="Minimum price">
+                                <option value="">Min</option>
+                            </select>
+                            <span class="hh-split-dash" aria-hidden="true">–</span>
+                            <select id="hsPriceMax" name="priceMax" aria-label="Maximum price">
+                                <option value="">Max</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="hh-field hh-field-beds">
+                        <label for="hsBeds">Bedrooms</label>
+                        <div class="hh-control">
+                            <svg class="hh-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg>
+                            <select id="hsBeds" name="beds">
+                                <option value="">Any</option>
+                                <option value="1">1+ BHK</option>
+                                <option value="2">2+ BHK</option>
+                                <option value="3">3+ BHK</option>
+                                <option value="4">4+ BHK</option>
+                                <option value="5">5+ BHK</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="hh-submit">
+                        <svg class="hh-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+                        <span>Search Properties</span>
+                    </button>
+
+                </div>
+
+                <div class="hh-advanced" id="hsAdvanced" hidden>
+                    <div class="hh-adv-grid">
+
+                        <div class="hh-field">
+                            <label for="hsSubType">Property Sub-Type</label>
+                            <div class="hh-control">
+                                <select id="hsSubType" name="subtype" disabled>
+                                    <option value="">Any Sub-Type</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="hh-field">
+                            <label for="hsBaths">Bathrooms</label>
+                            <div class="hh-control">
+                                <select id="hsBaths" name="baths">
+                                    <option value="">Any</option>
+                                    <option value="1">1+</option>
+                                    <option value="2">2+</option>
+                                    <option value="3">3+</option>
+                                    <option value="4">4+</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="hh-field">
+                            <label for="hsAreaMin">Built-up Area (sq.ft)</label>
+                            <div class="hh-control hh-control-split">
+                                <input type="number" id="hsAreaMin" name="areaMin" placeholder="Min" min="0" inputmode="numeric">
+                                <span class="hh-split-dash" aria-hidden="true">–</span>
+                                <input type="number" id="hsAreaMax" name="areaMax" placeholder="Max" min="0" inputmode="numeric" aria-label="Maximum built-up area">
+                            </div>
+                        </div>
+
+                        <div class="hh-field">
+                            <label for="hsFacing">Facing</label>
+                            <div class="hh-control">
+                                <select id="hsFacing" name="facing">
+                                    <option value="">Any</option>
+                                    <option>North</option>
+                                    <option>South</option>
+                                    <option>East</option>
+                                    <option>West</option>
+                                    <option>North-East</option>
+                                    <option>North-West</option>
+                                    <option>South-East</option>
+                                    <option>South-West</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="hh-field">
+                            <label for="hsFurnishing">Furnishing</label>
+                            <div class="hh-control">
+                                <select id="hsFurnishing" name="furnishing">
+                                    <option value="">Any</option>
+                                    <option value="Fully Furnished">Fully Furnished</option>
+                                    <option value="Semi-Furnished">Semi-Furnished</option>
+                                    <option value="Unfurnished">Unfurnished</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="hh-field">
+                            <label for="hsParking">Parking</label>
+                            <div class="hh-control">
+                                <select id="hsParking" name="parking">
+                                    <option value="">Any</option>
+                                    <option value="1">1+</option>
+                                    <option value="2">2+</option>
+                                    <option value="3">3+</option>
+                                    <option value="4">4+</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="hh-field">
+                            <label for="hsRoadWidth">Min. Road Width (ft)</label>
+                            <div class="hh-control">
+                                <input type="number" id="hsRoadWidth" name="roadWidthMin" placeholder="e.g. 30" min="0" inputmode="numeric">
+                            </div>
+                        </div>
+
+                        <div class="hh-adv-actions">
+                            <button type="button" class="hh-link-btn" id="hsReset">Clear all</button>
+                            <!-- Mobile only: on a phone the panel opens below the main
+                                 Search button, so repeat it here at the end of the list. -->
+                            <button type="submit" class="hh-submit hh-adv-submit">
+                                <svg class="hh-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+                                <span>Search Properties</span>
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="hh-foot">
+                    <div class="hh-popular">
+                        <span class="hh-popular-label">Popular:</span>
+                        <a href="properties.html?location=Chromepet">Chromepet</a>
+                        <a href="properties.html?location=Adyar">Adyar</a>
+                        <a href="properties.html?location=Velachery">Velachery</a>
+                        <a href="properties.html?location=ECR">ECR</a>
+                        <a href="properties.html?location=Tambaram">Tambaram</a>
+                    </div>
+                    <button type="button" class="hh-adv-toggle" id="hsAdvToggle" aria-expanded="false" aria-controls="hsAdvanced">
+                        <svg class="hh-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7h-9"/><path d="M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg>
+                        <span>Advanced Filters</span>
+                        <span class="hh-adv-count" id="hsAdvCount" hidden>0</span>
+                        <svg class="hh-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                    </button>
+                </div>
+
+            </form>
         </div>
 
     </div>
 
 </section>
 
-<div class="hero-search-wrap home-app-floating-search">
-    <div class="hero-search">
-        <form class="property-search-form" action="properties.html" method="get">
-            <div class="search-field">
-                <label for="searchLocation">Location / Area</label>
-                <input type="text" id="searchLocation" name="location" placeholder="Search location, property type...">
-            </div>
-            <div class="search-field">
-                <label for="searchType">Property Type</label>
-                <select id="searchType" name="type">
-                    <option value="">Any Type</option>
-                    <option value="residential">Residential</option>
-                    <option value="commercial">Commercial</option>
-                    <option value="industrial">Industrial</option>
-                    <option value="special_purpose">Special Purpose</option>
-                    <option value="agricultural">Agricultural</option>
-                </select>
-            </div>
-            <div class="search-field">
-                <label for="searchTransaction">Transaction</label>
-                <select id="searchTransaction" name="transaction">
-                    <option value="">Buy or Lease</option>
-                    <option value="buy">Buy</option>
-                    <option value="lease">Lease</option>
-                </select>
-            </div>
-            <button type="submit" class="search-btn">
-                <i class="fas fa-search" aria-hidden="true"></i> Search
-            </button>
-        </form>
-    </div>
-</div>
-</div>
-<!-- hero-wrapper closes here, exactly scoped to hero + search bar as
-     it originally was — the two new sections below are true top-level
-     siblings, same as "Our Featured Properties" already is, not
-     nested inside hero-wrapper. See the CSS fix comment for why this
-     matters: hero-search-wrap is position:absolute relative to
-     hero-wrapper, so hero-wrapper's height must stay just the hero's
-     height, not balloon to include everything after it. -->
-
-<!-- MOVED per latest layout direction: My Listings / My Searches now
-     sits below the hero instead of above it. Same element, same IDs,
-     same JS wiring in js/home-app-experience.js (initSegments/
-     loadMyListings/renderRecentChips all just query by ID — moving
-     this in the DOM required no JS changes) — position only. -->
-<section class="home-app-segment-section" id="homeAppSegments">
-    <div class="container">
-        <div class="home-app-segment-control" role="tablist" aria-label="My Listings or My Searches">
-            <button type="button" class="home-app-segment-btn active" data-panel="listings" role="tab" aria-selected="true">My Listings</button>
-            <button type="button" class="home-app-segment-btn" data-panel="searches" role="tab" aria-selected="false">My Searches</button>
-        </div>
-        <div class="home-app-segment-panel" id="homeAppPanelListings" role="tabpanel">
-            <div class="home-app-listings-grid" id="myListingsGrid"></div>
-        </div>
-        <div class="home-app-segment-panel" id="homeAppPanelSearches" hidden role="tabpanel">
-            <div class="home-app-recent-chips" id="myRecentSearchesPanel"></div>
-        </div>
-    </div>
-</section>
-
-<!-- MOVED per feedback: category shortcuts now sit immediately below
-     the hero/search, not above it, and compact (no "Quick Explore"
-     heading — that was only a design idea, never required). Same
-     links as before, "Insights" links to the existing insights.html
-     (market content, not a property category — kept distinct rather
-     than forced into ?category=). The other four reuse the exact
-     existing properties.html query params already read by
-     js/properties-search.js — no new filtering logic. -->
-<!-- MOVED per feedback: Meet Our Leadership now sits directly below
-     My Listings / My Searches, per the requested homepage flow.
-     Same two people (Founder + Co-Founder), same "View Profile" links
-     to their existing detail pages -- functionality unchanged.
-
-     REDESIGNED per reference screenshot (a split "photo + text" row
-     per person, matching another agency's "Meet Our Founder" layout)
-     -- .leadership-grid/.leader-card (the old side-by-side centered
-     cards) replaced with .leadership-rows/.leader-row (one large
-     photo beside a left-aligned text block per person, photo side
-     alternating row-to-row on desktop). New photos supplied by the
-     client replace the old images/founder.jpg + images/sanjay.jpg
-     in place, so gnanasekaran.html/sanjay.html, our-realtors.html
-     and realtors-data.js all pick up the new photos automatically
-     without needing their own edits. -->
+<!-- HOMEPAGE ORDER (confirmed 2026-09-24): Hero + search -> Meet Our
+     Leadership -> Your Account (My Listings / My Searches) -> remaining
+     homepage sections -> footer. Leadership sits directly below the
+     hero. Same section, markup and CMS hook
+     (data-cms-section="leadership-intro") -- position only. -->
 <section id="leadership" data-cms-section="leadership-intro">
 
     <div class="container">
@@ -471,8 +572,43 @@
     </div>
 </section>
 
-<section class="home-app-shortcuts-section" aria-label="Browse by category">
+<!-- HOMEPAGE ORDER (confirmed 2026-09-24): Your Account (My Listings /
+     My Searches) sits directly below Meet Our Leadership, in a compact
+     band (styles in css/home-hero.css).
+     Same IDs and JS wiring in js/home-app-experience.js
+     (initSegments / loadMyListings / renderChips query by ID), so the
+     move needs no JS changes. -->
+<section class="home-app-segment-section" id="homeAppSegments" aria-labelledby="homeAppSegmentsLabel">
     <div class="container">
+        <p class="home-app-segment-label" id="homeAppSegmentsLabel">Your Account</p>
+        <div class="home-app-segment-control" role="tablist" aria-label="My Listings or My Searches">
+            <button type="button" class="home-app-segment-btn active" data-panel="listings" role="tab" aria-selected="true">My Listings</button>
+            <button type="button" class="home-app-segment-btn" data-panel="searches" role="tab" aria-selected="false">My Searches</button>
+        </div>
+        <div class="home-app-segment-panel" id="homeAppPanelListings" role="tabpanel">
+            <div class="home-app-listings-grid" id="myListingsGrid"></div>
+        </div>
+        <div class="home-app-segment-panel" id="homeAppPanelSearches" hidden role="tabpanel">
+            <div class="home-app-recent-chips" id="myRecentSearchesPanel"></div>
+        </div>
+    </div>
+</section>
+
+<!-- Explore Properties shortcuts (2026-09-24: "Explore Properties"
+     heading added, order Buy / Rent / Commercial / Land / Insights,
+     "Plot / Land" relabelled "Land" to match the Property Type list;
+     links unchanged). Shortcuts, Recent Searches and Future Properties
+     share one master container -- see css/home-hero.css. Same
+     links as before, "Insights" links to the existing insights.html
+     (market content, not a property category — kept distinct rather
+     than forced into ?category=). The other four reuse the exact
+     existing properties.html query params already read by
+     js/properties-search.js — no new filtering logic. -->
+
+
+<section class="home-app-shortcuts-section" aria-labelledby="homeExploreTitle">
+    <div class="container">
+        <h2 class="home-explore-title" id="homeExploreTitle">Explore Properties</h2>
         <div class="home-app-shortcuts-row">
             <a href="properties.html?transaction=buy" class="home-app-shortcut">
                 <span class="home-app-shortcut-icon"><i class="fas fa-home" aria-hidden="true"></i></span>
@@ -482,17 +618,17 @@
                 <span class="home-app-shortcut-icon"><i class="fas fa-key" aria-hidden="true"></i></span>
                 <span>Rent</span>
             </a>
-            <a href="insights.html" class="home-app-shortcut">
-                <span class="home-app-shortcut-icon"><i class="fas fa-lightbulb" aria-hidden="true"></i></span>
-                <span>Insights</span>
-            </a>
             <a href="properties.html?category=commercial" class="home-app-shortcut">
                 <span class="home-app-shortcut-icon"><i class="fas fa-building" aria-hidden="true"></i></span>
                 <span>Commercial</span>
             </a>
             <a href="properties.html?category=land" class="home-app-shortcut">
                 <span class="home-app-shortcut-icon"><i class="fas fa-map" aria-hidden="true"></i></span>
-                <span>Plot / Land</span>
+                <span>Land</span>
+            </a>
+            <a href="insights.html" class="home-app-shortcut">
+                <span class="home-app-shortcut-icon"><i class="fas fa-lightbulb" aria-hidden="true"></i></span>
+                <span>Insights</span>
             </a>
         </div>
     </div>
@@ -506,7 +642,7 @@
 <section class="home-app-recent-section" aria-label="Recent searches">
     <div class="container">
         <div class="home-app-recent-row">
-            <span class="home-app-recent-label"><i class="fas fa-history" aria-hidden="true"></i> Recent Search</span>
+            <span class="home-app-recent-label"><i class="fas fa-history" aria-hidden="true"></i> Recent Searches</span>
             <div class="home-app-recent-chips" id="recentSearchesChips"></div>
             <button type="button" class="home-app-recent-all" id="allRecentSearchesBtn">All Recent Searches</button>
         </div>
@@ -526,7 +662,7 @@
                 <h2>Future Properties</h2>
                 <p>Handpicked properties for your future.</p>
             </div>
-            <a href="properties.html" class="home-app-see-all">See All</a>
+            <a href="properties.html" class="home-app-see-all">See All <span aria-hidden="true">&rarr;</span></a>
         </div>
         <div class="home-app-future-grid" id="futurePropertiesGrid"></div>
     </div>
@@ -1423,6 +1559,8 @@ END TEMPORARILY HIDDEN — Featured Locations section -->
 <script src="js/public-testimonials.js"></script>
 <script src="js/public-offices.js"></script>
 <script src="js/enquiry-supabase.js"></script>
+<script src="js/property-taxonomy.js?v=20260924"></script>
+<script src="js/home-hero-search.js?v=1"></script>
 <script src="js/home-app-experience.js"></script>
 <script src="script.js"></script>
 </body>

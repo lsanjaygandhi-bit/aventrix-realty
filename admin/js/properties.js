@@ -34,47 +34,15 @@ const PropertiesModule = (function () {
         ].forEach((id) => (els[id] = document.getElementById(id)));
     }
 
-    // Property Type → Sub-Type taxonomy (approved 2026-09). Kept in sync
-    // intentionally with the identical constant in js/properties-search.js
-    // — these are plain scripts with no shared module to import from.
-    const TYPE_SUBTYPES = {
-        residential: [
-            { value: "apartment_flat", label: "Apartment / Flat" },
-            { value: "villa", label: "Villa" },
-            { value: "independent_house", label: "Independent House" },
-            { value: "duplex", label: "Duplex" },
-            { value: "penthouse", label: "Penthouse" },
-            { value: "residential_plot", label: "Residential Plot" }
-        ],
-        commercial: [
-            { value: "office_space", label: "Office Space" },
-            { value: "shop_retail", label: "Shop / Retail" },
-            { value: "showroom", label: "Showroom" },
-            { value: "commercial_building", label: "Commercial Building" },
-            { value: "commercial_plot", label: "Commercial Plot" }
-        ],
-        industrial: [
-            { value: "factory_manufacturing", label: "Factory / Manufacturing" },
-            { value: "warehouse", label: "Warehouse" },
-            { value: "industrial_building", label: "Industrial Building" },
-            { value: "industrial_plot", label: "Industrial Plot" }
-        ],
-        special_purpose: [
-            { value: "hotel", label: "Hotel" },
-            { value: "hospital", label: "Hospital" },
-            { value: "school_institution", label: "School / Institution" },
-            { value: "resort", label: "Resort" },
-            { value: "other_special_purpose", label: "Other Special Purpose" }
-        ],
-        agricultural: [
-            { value: "agricultural_land", label: "Agricultural Land" },
-            { value: "farm_land", label: "Farm Land" },
-            { value: "plantation_estate", label: "Plantation / Estate" }
-        ]
-    };
+    // Property Type → Sub-Type taxonomy (approved 2026-09; Land added as
+    // its own Property Type 2026-09-24). Read from the shared
+    // js/property-taxonomy.js (loaded before this file in dashboard.html)
+    // so the Admin form, homepage search and properties.html always use
+    // the same list.
+    const TYPE_SUBTYPES = (window.AventrixPropertyTaxonomy && window.AventrixPropertyTaxonomy.TYPE_SUBTYPES) || {};
 
     // Rebuilds the Sub-Type dropdown for the given Property Type. Legacy
-    // category values (land/villas/apartments/investment) have no defined
+    // category values (villas/apartments/investment) have no defined
     // sub-type list, so the dropdown simply shows "Not specified" only —
     // it never shows sub-types that belong to a different Property Type.
     function populateSubTypeOptions(category, selectedValue) {

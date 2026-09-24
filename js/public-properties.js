@@ -892,7 +892,7 @@
             (property.featured_image ? [property.featured_image] : []);
 
         const categoryLabels = {
-            residential: "Residential", commercial: "Commercial", land: "Land & Plots",
+            residential: "Residential", commercial: "Commercial", land: "Land",
             villas: "Luxury Villas", apartments: "Apartments", investment: "Investment",
             industrial: "Industrial", special_purpose: "Special Purpose", agricultural: "Agricultural"
         };
@@ -1163,7 +1163,7 @@
         const categoryLabels = {
             residential: "Residential",
             commercial: "Commercial",
-            land: "Land & Plots",
+            land: "Land",
             villas: "Luxury Villas",
             apartments: "Apartments",
             investment: "Investment",
@@ -1184,7 +1184,8 @@
             industrial_building: "Industrial Building", industrial_plot: "Industrial Plot",
             hotel: "Hotel", hospital: "Hospital", school_institution: "School / Institution",
             resort: "Resort", other_special_purpose: "Other Special Purpose",
-            agricultural_land: "Agricultural Land", farm_land: "Farm Land", plantation_estate: "Plantation / Estate"
+            agricultural_land: "Agricultural Land", farm_land: "Farm Land", plantation_estate: "Plantation / Estate",
+            vacant_land: "Vacant Land", development_land: "Development Land", layout_plot: "Layout Plot", other_land: "Other Land"
         };
 
         const specDefs = [

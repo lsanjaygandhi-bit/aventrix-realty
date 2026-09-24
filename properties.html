@@ -229,15 +229,15 @@
                         <option value="">Any Type</option>
                         <option value="residential">Residential</option>
                         <option value="commercial">Commercial</option>
+                        <option value="land">Land</option>
                         <option value="industrial">Industrial</option>
                         <option value="special_purpose">Special Purpose</option>
                         <option value="agricultural">Agricultural</option>
                         <!-- Legacy category values — intentionally not shown in the
                              open dropdown list (hidden), but kept as valid option
                              values so an old bookmarked/shared link such as
-                             ?category=land or ?category=apartments still filters
+                             ?category=apartments still filters
                              correctly instead of silently falling back to "Any Type". -->
-                        <option value="land" hidden>Land &amp; Plots</option>
                         <option value="apartments" hidden>Apartments</option>
                         <option value="villas" hidden>Luxury Villas</option>
                         <option value="investment" hidden>Investment</option>
@@ -522,7 +522,8 @@
 <script src="js/aventrix-storage.js"></script>
 <script src="js/recent-searches.js"></script>
 <script src="js/wishlist-widget.js"></script>
-<script src="js/properties-search.js"></script>
+<script src="js/property-taxonomy.js?v=20260924"></script>
+<script src="js/properties-search.js?v=20260924"></script>
 <script src="js/geo-bridge.js"></script>
 <script src="js/near-me.js"></script>
 <script src="script.js"></script>
