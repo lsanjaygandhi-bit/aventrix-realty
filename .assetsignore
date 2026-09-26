@@ -1,2 +1,7 @@
 .git
 node_modules
+.DS_Store
+# Not part of the public website — keep off the CDN:
+sql
+tests
+*.md
