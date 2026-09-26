@@ -69,7 +69,7 @@
     <meta name="twitter:description" content="Aventrix Realty — trusted real estate advisory in Chennai for residential, commercial, land and joint venture properties. TNRERA-registered agent. Buy, sell, rent or invest with expert local guidance.">
     <meta name="twitter:image" content="https://aventrixrealty.com/images/chennai-marina.jpg">
 
-    <link rel="stylesheet" href="style.css?v=20260922">
+    <link rel="stylesheet" href="style.css?v=20260925">
     <link rel="stylesheet" href="css/home-hero.css?v=4">
     <link rel="stylesheet" href="css/phase2a.css?v=1">
 
@@ -235,7 +235,6 @@
 
     <a href="contact.html">Contact</a>
 
-    <a href="admin/index.html" class="main-nav-admin">Admin</a>
 
     <div class="mobile-menu-divider"></div>
     <span class="mobile-menu-contact-label">CONTACT</span>
@@ -1009,7 +1008,7 @@ END TEMPORARILY HIDDEN — Featured Locations section -->
      origin story now lives only on about.html (moved, not duplicated;
      see about.html Section 5.5). The .about/.legacy-*/.about-closing
      CSS in style.css is kept as-is since about.html now uses it. -->
-<section class="testimonials-section" id="testimonials" data-cms-section="testimonials-heading">
+<section class="testimonials-section" id="testimonials" data-cms-section="testimonials-heading" hidden>
 
     <div class="container">
 
@@ -1020,39 +1019,9 @@ END TEMPORARILY HIDDEN — Featured Locations section -->
 
         <div class="testimonials-grid" id="testimonialsGrid">
 
-            <!-- Static fallback shown only until js/public-testimonials.js loads -->
-            <div class="testimonial-card">
-                <p class="testimonial-quote">
-                    "Aventrix Realty guided us through every step of purchasing our
-                    plot in Chromepet. Transparent, patient, and genuinely trustworthy."
-                </p>
-                <div class="testimonial-author">
-                    <span class="testimonial-name">Ramesh Kumar</span>
-                    <span class="testimonial-role">Purchased Residential Plot, Chromepet</span>
-                </div>
-            </div>
-
-            <div class="testimonial-card">
-                <p class="testimonial-quote">
-                    "We sold our commercial space within weeks, at a fair price,
-                    with zero surprises. Their advisory team knows the Chennai market well."
-                </p>
-                <div class="testimonial-author">
-                    <span class="testimonial-name">Priya Venkatesan</span>
-                    <span class="testimonial-role">Sold Commercial Property</span>
-                </div>
-            </div>
-
-            <div class="testimonial-card">
-                <p class="testimonial-quote">
-                    "Professional, responsive, and honest from the first call to
-                    registration day. Exactly what you want in a real estate partner."
-                </p>
-                <div class="testimonial-author">
-                    <span class="testimonial-name">Arvind Balaji</span>
-                    <span class="testimonial-role">Bought Villa, Old Pallavaram</span>
-                </div>
-            </div>
+            <!-- No static testimonials: only genuine, Published testimonials from
+                 Admin → Testimonials are shown (js/public-testimonials.js). This whole
+                 section stays hidden until at least one exists. -->
 
         </div>
 
@@ -1420,7 +1389,6 @@ END TEMPORARILY HIDDEN — Featured Locations section -->
                 <li><a href="property.html">Our Services</a></li>
                 <li><a href="our-realtors.html">Realtors</a></li>
                 <li><a href="brokerage-fees.html">Brokerage &amp; Fees</a></li>
-                <li><a href="admin/index.html" class="footer-nav-login">Admin Login</a></li>
             </ul>
         </div>
 
@@ -1512,7 +1480,7 @@ END TEMPORARILY HIDDEN — Featured Locations section -->
     -->
     <a href="#what-we-do" class="ssi-segment" data-target="what-we-do" aria-label="What We Do" data-label="What We Do"><span class="ssi-tooltip">What We Do</span></a>
     <a href="#why-us" class="ssi-segment" data-target="why-us" aria-label="Why Our Company" data-label="Why Our Company"><span class="ssi-tooltip">Why Our Company</span></a>
-    <a href="#testimonials" class="ssi-segment" data-target="testimonials" aria-label="What Our Clients Say" data-label="What Our Clients Say"><span class="ssi-tooltip">What Our Clients Say</span></a>
+    <a href="#testimonials" class="ssi-segment" data-target="testimonials" hidden aria-label="What Our Clients Say" data-label="What Our Clients Say"><span class="ssi-tooltip">What Our Clients Say</span></a>
     <a href="#invest" class="ssi-segment" data-target="invest" aria-label="The Opportunity" data-label="The Opportunity"><span class="ssi-tooltip">The Opportunity</span></a>
     <a href="#faq" class="ssi-segment" data-target="faq" aria-label="Frequently Asked Questions" data-label="Frequently Asked Questions"><span class="ssi-tooltip">Frequently Asked Questions</span></a>
     <a href="#office-locations" class="ssi-segment" data-target="office-locations" aria-label="Office Location" data-label="Office Location"><span class="ssi-tooltip">Office Location</span></a>
@@ -1548,20 +1516,21 @@ END TEMPORARILY HIDDEN — Featured Locations section -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="js/supabase-client.js"></script>
+<script src="js/aventrix-tracking.js?v=20260925"></script>
 <script src="js/aventrix-storage.js"></script>
 <script src="js/recent-searches.js"></script>
 <script src="js/geo-bridge.js"></script>
 <script src="js/geo-homepage.js"></script>
 <script src="js/wishlist-widget.js"></script>
-<script src="js/public-properties.js"></script>
+<script src="js/public-properties.js?v=20260925"></script>
 <script src="js/public-site-settings.js"></script>
 <script src="js/public-page-content.js"></script>
-<script src="js/public-testimonials.js"></script>
+<script src="js/public-testimonials.js?v=20260925"></script>
 <script src="js/public-offices.js"></script>
-<script src="js/enquiry-supabase.js"></script>
+<script src="js/enquiry-supabase.js?v=20260925"></script>
 <script src="js/property-taxonomy.js?v=20260924"></script>
 <script src="js/home-hero-search.js?v=1"></script>
-<script src="js/home-app-experience.js"></script>
+<script src="js/home-app-experience.js?v=20260925"></script>
 <script src="script.js"></script>
 </body>
 </html>

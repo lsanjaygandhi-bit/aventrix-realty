@@ -27,7 +27,10 @@
  *   whatsapp       - WhatsApp number, digits only (e.g. "919176887770")
  */
 
-const REALTORS_DATA = [
+// `var` (not const) on purpose: js/public-realtors.js replaces this with
+// live CMS data via window.REALTORS_DATA, and script.js reads the global.
+// A `const` here created a separate binding, so CMS edits never showed.
+var REALTORS_DATA = [
     {
         id: "gnanasekaran-p",
         name: "Gnanasekaran P",
@@ -62,6 +65,7 @@ const REALTORS_DATA = [
     },
     {
         id: "sample-realtor",
+        publishStatus: "Draft", // unpublished 2026-09-25 — placeholder, kept for reference, never shown
         name: "Sample Realtor",
         designation: "Senior Property Consultant",
         photo: "images/sample-realtor.jpg",
@@ -80,3 +84,6 @@ const REALTORS_DATA = [
     // "id", and fill in their details. That's it — both the grid
     // and profile pages will pick it up automatically.
 ];
+
+// Only Published entries are ever shown (same rule as the CMS).
+REALTORS_DATA = REALTORS_DATA.filter(function (r) { return r.publishStatus !== "Draft"; });

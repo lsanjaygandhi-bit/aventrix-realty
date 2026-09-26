@@ -22,13 +22,37 @@ table simply hasn't been created yet.
 3. New query → open `sql/seed-cms-content.sql`, paste and **Run**. Populates the tables above with the site's actual existing content (Our Legacy text, the real Gnanasekaran/Sanjay realtor profiles, the existing testimonials and insight articles) — not placeholders. Uses `on conflict ... do nothing`, so it's safe to re-run and won't duplicate rows or overwrite anything you've already edited in Admin.
 4. If Admin still shows the "Could not find the table" error a minute after running these, the API's schema cache just needs a nudge: **Project Settings → General → Restart project**, or run `NOTIFY pgrst, 'reload schema';` in SQL Editor.
 
+## 2c. Security + CRM migrations (2026-09-25) — REQUIRED
+Run these two files, in this order, in **SQL Editor → New query**:
+
+1. `sql/migration-2026-09-25-01-p0-security-roles.sql` — adds the
+   `user_roles` table (admin / realtor / customer) and replaces every
+   "any logged-in user is admin" policy. Existing admins listed in
+   `admin_profiles` are carried over automatically.
+2. `sql/migration-2026-09-25-02-p1-crm-buyer-analytics.sql` — lead CRM
+   fields, notes, buyer requirement / saved searches, property analytics,
+   dashboard metrics.
+3. `sql/migration-2026-09-25-03-content-drafts.sql` — sets the placeholder
+   "Sample Realtor" and the 3 seeded testimonials to Draft (no deletes).
+
+All three are additive and safe to re-run. **Run them BEFORE deploying the
+matching website files** (the new Admin login checks the role through
+`app_role()`, which the first file creates).
+
+(`sql/schema-live-drift-capture-2026-09-25.sql` documents tables that
+already exist live — you don't need to run it on the live project.)
+
 ## 3. Create the Storage bucket
 1. Go to **Storage → New bucket**.
 2. Name it exactly: `property-images`
 3. Toggle **Public bucket: ON** (so property photos load on the public website without extra signed URLs).
 4. Click **Create bucket**.
 
-No extra storage policy is needed for a public bucket — public read is automatic, and only your logged-in admin session (via the `authenticated` role) can upload, since uploads go through the browser using your session.
+Public read is automatic for a public bucket. Upload / replace / delete
+permissions are set by the P0 migration (admins and realtors only; customers
+only into `customer-uploads/<their user id>/`). Do not add "Allow uploads"
+style policies from the dashboard — those were the source of the storage
+hole fixed on 2026-09-25.
 
 If you'd rather keep the bucket private and lock down write access explicitly, add this in SQL Editor instead of toggling public:
 ```sql
@@ -54,7 +78,19 @@ using (bucket_id = 'property-images');
 3. Leave "Auto Confirm User" checked so you can log in immediately.
 4. This is the email/password you'll use at `yoursite.com/admin/`.
 
-(Any user created this way is treated as an admin — the RLS policies grant full access to anyone logged in, since this is a single-business, single-admin setup. If you want a second admin later, just add another user here.)
+**Important (since 2026-09-25):** a login is NOT automatically an admin any
+more — buyers sign up on account.html with the same Supabase Auth. To make
+a user an admin, run in SQL Editor:
+
+```sql
+insert into public.user_roles (user_id, role)
+select id, 'admin' from auth.users where email = 'you@example.com'
+on conflict (user_id) do update set role = 'admin';
+```
+
+For a realtor (sees only leads assigned to them), use `'realtor'` and
+optionally link their public profile with `realtor_id` — see the notes at
+the bottom of the P0 migration file.
 
 ## 5. Connect the website to your project
 1. In Supabase, go to **Settings → API**.

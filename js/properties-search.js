@@ -30,6 +30,9 @@
 
     const CARD_PHONE_TEL = "+919176887770";
     const CARD_WHATSAPP_URL = "https://wa.me/919176887770";
+    function cardWhatsappHref(p) {
+        return window.AventrixTracking ? window.AventrixTracking.whatsappHref(p) : CARD_WHATSAPP_URL;
+    }
     const RESULT_CAP = 500; // technical safety cap, not a business/display limit
 
     const els = {
@@ -258,10 +261,10 @@
                                 <button type="button" class="icon-action-btn icon-shortlist-btn${shortlisted ? " active" : ""}" aria-label="${shortlisted ? "Remove from Shortlist" : "Add to Shortlist"}" aria-pressed="${shortlisted ? "true" : "false"}" data-slug="${escapeHtml(p.slug)}" title="${shortlisted ? "Shortlisted" : "Add to Shortlist"}">
                                     <i class="fas fa-bookmark" aria-hidden="true"></i>
                                 </button>
-                                <a href="tel:${CARD_PHONE_TEL}" class="icon-action-btn icon-call-btn" aria-label="Call about ${escapeHtml(p.title)}" title="Call">
+                                <a href="tel:${CARD_PHONE_TEL}" class="icon-action-btn icon-call-btn" data-track-event="call_click" aria-label="Call about ${escapeHtml(p.title)}" title="Call">
                                     <i class="fas fa-phone-alt" aria-hidden="true"></i>
                                 </a>
-                                <a href="${CARD_WHATSAPP_URL}" class="icon-action-btn icon-whatsapp-btn" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp about ${escapeHtml(p.title)}" title="WhatsApp">
+                                <a href="${escapeHtml(cardWhatsappHref(p))}" class="icon-action-btn icon-whatsapp-btn" data-track-event="whatsapp_click" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp about ${escapeHtml(p.title)}" title="WhatsApp">
                                     <i class="fab fa-whatsapp" aria-hidden="true"></i>
                                 </a>
                             </div>

@@ -18,6 +18,12 @@
         }[c]));
     }
 
+    // Only link to an article page when the article actually has body
+    // content — never send visitors to an empty page.
+    function hasBody(a) {
+        return !!String(a.body || "").replace(/<[^>]*>/g, "").trim();
+    }
+
     async function renderGrid(gridEl) {
         const { data } = await sb
             .from("insights")
@@ -33,7 +39,7 @@
                     <img src="${escapeHtml(a.cover_image_url || "images/insight-1.jpg")}" alt="${escapeHtml(a.title)}">
                     <h3>${escapeHtml(a.title)}</h3>
                     <p>${escapeHtml(a.excerpt || "")}</p>
-                    <a href="insight.html?id=${encodeURIComponent(a.slug)}">Read More →</a>
+                    ${hasBody(a) ? `<a href="insight.html?id=${encodeURIComponent(a.slug)}">Read More →</a>` : ""}
                 </div>
             </div>
         `).join("");
@@ -46,27 +52,48 @@
     if (titleEl) renderDetail();
 
     async function renderDetail() {
-        const params = new URLSearchParams(window.location.search);
-        const slug = params.get("id");
-        if (!slug) return;
+        const loadingEl = document.getElementById("insight-loading");
+        const missingEl = document.getElementById("insight-missing");
+        const contentEl = document.getElementById("insight-content");
+        const showMissing = () => {
+            if (loadingEl) loadingEl.hidden = true;
+            if (missingEl) missingEl.hidden = false;
+        };
 
-        const { data: article } = await sb
+        const slug = new URLSearchParams(window.location.search).get("id");
+        if (!slug) { showMissing(); return; }
+
+        const { data: article, error } = await sb
             .from("insights")
             .select("*")
             .eq("slug", slug)
             .eq("publish_status", "Published")
             .maybeSingle();
 
-        if (!article) return;
+        if (error || !article || !hasBody(article)) { showMissing(); return; }
 
         titleEl.textContent = article.title;
+        // Body is admin-authored rich text from the CMS editor. Only
+        // admins can write insights (enforced by RLS since the
+        // 2026-09-25 security migration).
         const bodyEl = document.getElementById("insight-body");
-        if (bodyEl) bodyEl.innerHTML = article.body || "";
+        if (bodyEl) bodyEl.innerHTML = article.body;
+        const metaEl = document.getElementById("insight-meta");
+        if (metaEl) {
+            const date = article.published_at || article.created_at;
+            metaEl.textContent = [article.category, date ? new Date(date).toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" }) : ""].filter(Boolean).join(" · ");
+        }
         const coverEl = document.getElementById("insight-cover");
-        if (coverEl && article.cover_image_url) coverEl.src = article.cover_image_url;
+        if (coverEl && article.cover_image_url) {
+            coverEl.src = article.cover_image_url;
+            coverEl.alt = article.title;
+            coverEl.hidden = false;
+        }
+        if (loadingEl) loadingEl.hidden = true;
+        if (contentEl) contentEl.hidden = false;
 
-        if (article.seo_title) document.title = article.seo_title;
-        setMeta("description", article.seo_description);
+        document.title = article.seo_title || (article.title + " | Aventrix Realty");
+        setMeta("description", article.seo_description || article.excerpt);
         setMeta("keywords", article.seo_keywords);
     }
 

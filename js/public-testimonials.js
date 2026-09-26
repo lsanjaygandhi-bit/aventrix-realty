@@ -1,10 +1,12 @@
 /*
  * AVENTRIX REALTY — PUBLIC TESTIMONIALS LOADER
  * ------------------------------------------------
- * Replaces the hardcoded testimonial cards on the homepage with
- * live data from Supabase. Markup matches the original design
- * exactly, so style.css needs zero changes. No-op if the page has
- * no #testimonialsGrid element.
+ * Renders Published testimonials from Supabase into the homepage
+ * section. The section (and its scroll-indicator dash) ships HIDDEN
+ * with no static cards, and is revealed only when at least one
+ * genuine Published testimonial exists — so no placeholder or
+ * unverified testimonial is ever shown, including when Supabase is
+ * unreachable. No-op if the page has no #testimonialsGrid element.
  */
 
 (function () {
@@ -25,7 +27,7 @@
         .eq("publish_status", "Published")
         .order("display_order", { ascending: true })
         .then(({ data }) => {
-            if (!data || !data.length) return; // keep grid empty rather than show a broken state
+            if (!data || !data.length) return; // nothing genuine to show → section stays hidden
             grid.innerHTML = data.map((t) => `
                 <div class="testimonial-card">
                     <p class="testimonial-quote">"${escapeHtml(t.quote)}"</p>
@@ -35,5 +37,10 @@
                     </div>
                 </div>
             `).join("");
-        });
+            const section = document.getElementById("testimonials");
+            if (section) section.hidden = false;
+            const dash = document.querySelector('.ssi-segment[data-target="testimonials"]');
+            if (dash) dash.hidden = false;
+        })
+        .catch(() => { /* Supabase unreachable → section stays hidden */ });
 })();

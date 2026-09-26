@@ -157,10 +157,10 @@
             ? `
                 <div class="home-app-card-actions">
                     <a class="home-app-card-view-btn" href="${detailHref}">View Details</a>
-                    <a class="home-app-card-icon-btn" href="tel:${CARD_PHONE_TEL}" aria-label="Call about ${escapeHtml(p.title)}" title="Call">
+                    <a class="home-app-card-icon-btn" href="tel:${CARD_PHONE_TEL}" data-slug="${escapeHtml(p.slug)}" data-track-event="call_click" aria-label="Call about ${escapeHtml(p.title)}" title="Call">
                         <i class="fas fa-phone-alt" aria-hidden="true"></i>
                     </a>
-                    <a class="home-app-card-icon-btn" href="${CARD_WHATSAPP_URL}" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp about ${escapeHtml(p.title)}" title="WhatsApp">
+                    <a class="home-app-card-icon-btn" href="${escapeHtml(window.AventrixTracking ? window.AventrixTracking.whatsappHref(p) : CARD_WHATSAPP_URL)}" data-slug="${escapeHtml(p.slug)}" data-track-event="whatsapp_click" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp about ${escapeHtml(p.title)}" title="WhatsApp">
                         <i class="fab fa-whatsapp" aria-hidden="true"></i>
                     </a>
                 </div>`

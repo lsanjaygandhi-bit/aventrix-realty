@@ -3,10 +3,9 @@
  * ---------------------------------------------------------------------
  * Uses Supabase Auth (email + password, email confirmation required —
  * configured in the Supabase Dashboard, not here). This file only
- * handles account.html's own forms. It does NOT yet touch Wishlist/
- * Shortlist/Recently Viewed — those still read/write localStorage via
- * AventrixStorage exactly as before. Migrating them to a logged-in
- * user's Supabase rows is a separate, later step.
+ * handles account.html's own forms. Wishlist / Shortlist / Recently
+ * Viewed sync is handled by js/aventrix-storage.js; the logged-in
+ * dashboard by js/account-dashboard.js.
  */
 
 (function () {
@@ -170,8 +169,15 @@
     // RESET PASSWORD (only reachable via the emailed reset link,
     // which logs the browser into a temporary "recovery" session)
     // ---------------------------------------------------------
+    // A password-reset link logs the browser into a temporary session;
+    // that must show the Reset form, never the logged-in dashboard.
+    let inRecovery = /type=recovery/.test(window.location.hash || "");
+    window.AventrixAccountRecovery = () => inRecovery;
+
     sb.auth.onAuthStateChange((event) => {
         if (event === "PASSWORD_RECOVERY") {
+            inRecovery = true;
+            if (loggedInPanel) loggedInPanel.hidden = true;
             tabsWrap.hidden = true;
             showPanel("reset");
         }
@@ -223,7 +229,7 @@
 
     sb.auth.getSession().then(({ data }) => {
         const user = data && data.session && data.session.user;
-        if (!user || !loggedInPanel) return;
+        if (!user || !loggedInPanel || inRecovery) return;
         tabsWrap.hidden = true;
         Object.values(panels).forEach((p) => { p.hidden = true; });
         signupSuccessEl.hidden = true;

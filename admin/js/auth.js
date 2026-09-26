@@ -20,13 +20,36 @@ const AdminAuth = {
         window.location.href = "index.html";
     },
 
-    // Call at the top of any page that requires a logged-in admin.
+    // Returns 'admin' | 'realtor' | 'customer' | 'anon' from the
+    // database (public.app_role(), sql/migration-2026-09-25-01-…).
+    // This is a convenience gate only — every permission is enforced
+    // by Supabase RLS regardless of what this returns.
+    async getRole() {
+        const { data, error } = await window.supabaseClient.rpc("app_role");
+        if (error) {
+            console.error("Aventrix admin: role check failed", error);
+            return null;
+        }
+        return data;
+    },
+
+    // Call at the top of any page that requires a logged-in admin or
+    // realtor. Buyers (customers) who sign in on account.html share the
+    // same Supabase Auth, so a session alone is NOT enough.
     async requireSession() {
         const session = await this.getSession();
         if (!session) {
             window.location.href = "index.html";
             return null;
         }
+        const role = await this.getRole();
+        if (role !== "admin" && role !== "realtor") {
+            await window.supabaseClient.auth.signOut();
+            window.location.href = "index.html?denied=1";
+            return null;
+        }
+        session.appRole = role;
+        window.AventrixAdminRole = role;
         return session;
     }
 };
@@ -36,9 +59,17 @@ const AdminAuth = {
     const form = document.getElementById("adminLoginForm");
     if (!form) return;
 
-    // If already logged in, skip straight to the dashboard.
-    AdminAuth.getSession().then((session) => {
-        if (session) window.location.href = "dashboard.html";
+    const errorElInit = document.getElementById("adminLoginError");
+    if (new URLSearchParams(window.location.search).get("denied") === "1") {
+        errorElInit.textContent = "This account doesn't have Admin Panel access.";
+        errorElInit.style.display = "block";
+    }
+
+    // If already logged in as staff, skip straight to the dashboard.
+    AdminAuth.getSession().then(async (session) => {
+        if (!session) return;
+        const role = await AdminAuth.getRole();
+        if (role === "admin" || role === "realtor") window.location.href = "dashboard.html";
     });
 
     form.addEventListener("submit", async (e) => {
@@ -56,6 +87,18 @@ const AdminAuth = {
 
         if (error) {
             errorEl.textContent = "Incorrect email or password.";
+            errorEl.style.display = "block";
+            btn.disabled = false;
+            btn.textContent = "Sign In";
+            return;
+        }
+
+        const role = await AdminAuth.getRole();
+        if (role !== "admin" && role !== "realtor") {
+            await window.supabaseClient.auth.signOut();
+            errorEl.textContent = role
+                ? "This account doesn't have Admin Panel access."
+                : "Couldn't verify access. Please make sure the latest database migration has been run.";
             errorEl.style.display = "block";
             btn.disabled = false;
             btn.textContent = "Sign In";

@@ -60,7 +60,8 @@
     <meta name="twitter:image" content="https://aventrixrealty.com/images/chennai-marina.jpg">
     <meta name="description" content="Search Aventrix Realty's full property listings across Chennai — filter by location, type, buy or rent, price, bedrooms, bathrooms and area.">
 
-    <link rel="stylesheet" href="style.css?v=20260922">
+    <link rel="stylesheet" href="style.css?v=20260925">
+    <link rel="stylesheet" href="css/buyer-features.css?v=20260925">
     <link rel="stylesheet" href="css/phase2a.css?v=1">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -143,7 +144,6 @@
 
     <a href="contact.html">Contact</a>
 
-    <a href="admin/index.html" class="main-nav-admin">Admin</a>
 
     <div class="mobile-menu-divider"></div>
     <span class="mobile-menu-contact-label">CONTACT</span>
@@ -370,6 +370,7 @@
 
         <div class="sf-results-bar">
             <p class="sf-results-count" id="sfResultsCount" aria-live="polite">Loading properties…</p>
+            <button type="button" class="sf-save-search-btn" id="sfSaveSearchBtn"><i class="far fa-bell" aria-hidden="true"></i> Save this search</button>
             <div class="sf-sort-wrap">
                 <label for="sfSort">Sort by</label>
                 <select id="sfSort">
@@ -381,6 +382,7 @@
             </div>
         </div>
 
+        <p class="sf-save-status" id="sfSaveSearchStatus" aria-live="polite" hidden></p>
         <div class="sf-active-chips" id="sfActiveChips"></div>
 
         <div class="property-grid" id="sfResultsGrid"></div>
@@ -440,7 +442,6 @@
                 <li><a href="properties.html">Search Properties</a></li>
                 <li><a href="our-realtors.html">Realtors</a></li>
                 <li><a href="brokerage-fees.html">Brokerage &amp; Fees</a></li>
-                <li><a href="admin/index.html" class="footer-nav-login">Admin Login</a></li>
             </ul>
         </div>
 
@@ -519,11 +520,13 @@
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="js/supabase-client.js"></script>
+<script src="js/aventrix-tracking.js?v=20260925"></script>
 <script src="js/aventrix-storage.js"></script>
 <script src="js/recent-searches.js"></script>
 <script src="js/wishlist-widget.js"></script>
 <script src="js/property-taxonomy.js?v=20260924"></script>
-<script src="js/properties-search.js?v=20260924"></script>
+<script src="js/properties-search.js?v=20260925"></script>
+<script src="js/saved-searches.js?v=20260925"></script>
 <script src="js/geo-bridge.js"></script>
 <script src="js/near-me.js"></script>
 <script src="script.js"></script>

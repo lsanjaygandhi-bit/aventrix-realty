@@ -189,6 +189,13 @@
     const CARD_PHONE_TEL = "+919176887770";
     const CARD_WHATSAPP_URL = "https://wa.me/919176887770";
 
+    // Property-specific WhatsApp link (AVX code + title + location +
+    // public link) via js/aventrix-tracking.js; falls back to the
+    // plain number if that helper isn't loaded on a page.
+    function cardWhatsappHref(p) {
+        return window.AventrixTracking ? window.AventrixTracking.whatsappHref(p) : CARD_WHATSAPP_URL;
+    }
+
     // Populated as each grid renders so the Quick View overlay can look
     // a property up by slug without a second network round-trip.
     const propertiesBySlug = {};
@@ -203,7 +210,7 @@
                     <img src="${escapeHtml(image)}" alt="${escapeHtml(p.title)}" loading="lazy">
                     <span class="property-badge ${badgeClass(p.listing_type)}">${formatBadge(p.listing_type)}</span>
                     <button class="property-save-btn${saved ? " saved" : ""}" aria-label="${saved ? "Remove from Wishlist" : "Save to Wishlist"}" aria-pressed="${saved ? "true" : "false"}" data-slug="${escapeHtml(p.slug)}"><i class="${saved ? "fas" : "far"} fa-heart" aria-hidden="true"></i></button>
-                    <button class="property-share-btn" aria-label="Share this property"><i class="fas fa-share-alt" aria-hidden="true"></i></button>
+                    <button class="property-share-btn" data-track-event="share" aria-label="Share this property"><i class="fas fa-share-alt" aria-hidden="true"></i></button>
                     <button type="button" class="qv-hover-cta" aria-label="Quick view ${escapeHtml(p.title)}">Quick View</button>
                 </div>
                 <div class="content">
@@ -217,10 +224,10 @@
                                 <button type="button" class="icon-action-btn icon-shortlist-btn${shortlisted ? " active" : ""}" aria-label="${shortlisted ? "Remove from Shortlist" : "Add to Shortlist"}" aria-pressed="${shortlisted ? "true" : "false"}" data-slug="${escapeHtml(p.slug)}" title="${shortlisted ? "Shortlisted" : "Add to Shortlist"}">
                                     <i class="fas fa-bookmark" aria-hidden="true"></i>
                                 </button>
-                                <a href="tel:${CARD_PHONE_TEL}" class="icon-action-btn icon-call-btn" aria-label="Call about ${escapeHtml(p.title)}" title="Call">
+                                <a href="tel:${CARD_PHONE_TEL}" class="icon-action-btn icon-call-btn" data-track-event="call_click" aria-label="Call about ${escapeHtml(p.title)}" title="Call">
                                     <i class="fas fa-phone-alt" aria-hidden="true"></i>
                                 </a>
-                                <a href="${CARD_WHATSAPP_URL}" class="icon-action-btn icon-whatsapp-btn" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp about ${escapeHtml(p.title)}" title="WhatsApp">
+                                <a href="${escapeHtml(cardWhatsappHref(p))}" class="icon-action-btn icon-whatsapp-btn" data-track-event="whatsapp_click" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp about ${escapeHtml(p.title)}" title="WhatsApp">
                                     <i class="fab fa-whatsapp" aria-hidden="true"></i>
                                 </a>
                             </div>
@@ -417,12 +424,15 @@
         const settings = await getSiteSettingsForQuickView();
         const phoneDigits = settings.phone.replace(/\s+/g, "");
         el.querySelector(".qv-call").setAttribute("href", "tel:" + phoneDigits);
-        const waMessage = encodeURIComponent(
-            `Hi Aventrix Realty, I am interested in ${property.title}. Please share more details.`
-        );
-        el.querySelector(".qv-whatsapp").setAttribute(
-            "href", `https://wa.me/${settings.whatsapp}?text=${waMessage}`
-        );
+        const qvWa = el.querySelector(".qv-whatsapp");
+        qvWa.setAttribute("href", window.AventrixTracking
+            ? window.AventrixTracking.whatsappHref(property, settings.whatsapp)
+            : `https://wa.me/${settings.whatsapp}?text=${encodeURIComponent(`Hi Aventrix Realty, I am interested in ${property.property_code ? property.property_code + " – " : ""}${property.title}. Please share more details.`)}`);
+        qvWa.setAttribute("data-track-event", "whatsapp_click");
+        qvWa.setAttribute("data-slug", property.slug);
+        const qvCall = el.querySelector(".qv-call");
+        qvCall.setAttribute("data-track-event", "call_click");
+        qvCall.setAttribute("data-slug", property.slug);
         el.querySelector(".qv-rera-no strong").textContent = settings.reraNo;
 
         lockScrollForQuickView();
@@ -683,6 +693,7 @@
         if (window.AventrixStorage) {
             window.AventrixStorage.recentlyViewed.record(property.slug);
         }
+        if (window.AventrixTracking) window.AventrixTracking.track(property.slug, "view");
 
         const descriptionEl = document.getElementById("property-description");
         const readMoreBtn = document.getElementById("pdReadMoreBtn");
@@ -1262,6 +1273,9 @@
 
     function wirePropertyShareButtons(property) {
         const shareBtn = document.getElementById("pdShareBtn");
+        [shareBtn, document.getElementById("pdCopyLinkBtn")].forEach((b) => {
+            if (b) { b.setAttribute("data-track-event", "share"); b.setAttribute("data-slug", property.slug); }
+        });
         const copyBtn = document.getElementById("pdCopyLinkBtn");
         if (!shareBtn && !copyBtn) return;
 
@@ -1326,12 +1340,19 @@
 
         if (callBtn) {
             callBtn.setAttribute("href", "tel:" + settings.phone.replace(/\s+/g, ""));
+            callBtn.setAttribute("data-track-event", "call_click");
+            callBtn.setAttribute("data-slug", property.slug);
         }
         if (waBtn) {
-            const waMessage = encodeURIComponent(
-                `Hi Aventrix Realty, I am interested in ${property.title}. Please share more details.`
-            );
-            waBtn.setAttribute("href", `https://wa.me/${settings.whatsapp}?text=${waMessage}`);
+            waBtn.setAttribute("href", window.AventrixTracking
+                ? window.AventrixTracking.whatsappHref(property, settings.whatsapp)
+                : `https://wa.me/${settings.whatsapp}?text=${encodeURIComponent(`Hi Aventrix Realty, I am interested in ${property.property_code ? property.property_code + " – " : ""}${property.title}. Please share more details.`)}`);
+            waBtn.setAttribute("data-track-event", "whatsapp_click");
+            waBtn.setAttribute("data-slug", property.slug);
+        }
+        const enquireBtn = document.getElementById("pdEnquireBtn");
+        if (enquireBtn) {
+            enquireBtn.setAttribute("href", "enquiry.html?property=" + encodeURIComponent(property.slug));
         }
     }
 

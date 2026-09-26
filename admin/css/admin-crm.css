@@ -1,0 +1,81 @@
+/* AVENTRIX REALTY — ADMIN: Leads CRM, follow-ups, dashboard metrics.
+   Uses the existing admin.css variables; adds nothing global. */
+
+.admin-toolbar #addLeadBtn { width: auto; }
+.admin-toolbar input[type="search"] {
+    padding: 8px 10px; border: 1px solid var(--admin-border); border-radius: 8px;
+    font-size: 13px; min-width: 220px; background: #fff;
+}
+
+tr.lead-unread td:first-child { box-shadow: inset 3px 0 0 var(--admin-gold); }
+tr.lead-unread strong { color: var(--admin-green); }
+
+.lead-follow { font-size: 12.5px; color: var(--admin-muted); }
+.lead-follow.today { color: #8a6d00; font-weight: 600; }
+.lead-follow.overdue { color: var(--admin-danger); font-weight: 600; }
+
+.lead-modal { max-width: 760px; }
+.lead-original {
+    background: #FAF9F6; border: 1px solid var(--admin-border); border-radius: 8px;
+    padding: 12px 14px; margin-bottom: 16px; max-height: 220px; overflow-y: auto; font-size: 13.5px;
+}
+.lead-kv { margin: 5px 0; word-break: break-word; }
+.lead-modal textarea, .lead-modal select, .lead-modal input {
+    font-family: inherit;
+}
+.lead-modal select:disabled { background: #f3f3f1; color: var(--admin-muted); }
+.lead-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 18px; flex-wrap: wrap; }
+.lead-actions .admin-btn { width: auto; }
+.lead-notes { margin-top: 22px; border-top: 1px solid var(--admin-border); padding-top: 14px; }
+.lead-notes h3 { font-size: 14px; margin: 0 0 10px; }
+.lead-note { border-left: 3px solid var(--admin-gold); padding: 6px 10px; margin-bottom: 10px; background: #FAF9F6; border-radius: 0 6px 6px 0; }
+.lead-note p { margin: 0 0 4px; font-size: 13.5px; white-space: pre-wrap; word-break: break-word; }
+
+/* Overview */
+.ov-heading { margin-top: 0; font-size: 16px; }
+.ov-note { margin: 12px 0 0; font-size: 12px; }
+.ov-two-col { display: grid; grid-template-columns: 1fr 1.4fr; gap: 16px; }
+.admin-stats-grid + .admin-stats-grid { margin-top: -4px; }
+
+.followup-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.followup-col h3 { font-size: 13px; text-transform: uppercase; letter-spacing: .4px; margin: 0 0 10px; display: flex; align-items: center; gap: 8px; }
+.followup-count { background: #eee; border-radius: 10px; padding: 1px 8px; font-size: 12px; }
+.followup-overdue .followup-count { background: #fbe3e1; color: var(--admin-danger); }
+.followup-today .followup-count { background: #fbf1cc; color: #8a6d00; }
+.followup-item {
+    display: flex; flex-direction: column; gap: 2px; width: 100%; text-align: left;
+    background: #fff; border: 1px solid var(--admin-border); border-radius: 8px;
+    padding: 9px 11px; margin-bottom: 8px; cursor: pointer; font-family: inherit; font-size: 13px;
+}
+.followup-item:hover { border-color: var(--admin-gold); }
+.followup-overdue .followup-item { border-left: 3px solid var(--admin-danger); }
+.followup-today .followup-item { border-left: 3px solid var(--admin-gold); }
+
+.ov-bar-row { display: grid; grid-template-columns: 110px 1fr 40px; align-items: center; gap: 10px; margin: 8px 0; font-size: 13px; }
+.ov-bar-track { background: #f1f0ec; border-radius: 6px; height: 10px; overflow: hidden; }
+.ov-bar-fill { background: var(--admin-green); height: 100%; border-radius: 6px; }
+.ov-bar-row .n { text-align: right; font-weight: 600; }
+
+.ov-perf-tabs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.ov-perf-tabs button {
+    border: 1px solid var(--admin-border); background: #fff; border-radius: 20px;
+    padding: 5px 12px; font-size: 12.5px; cursor: pointer; font-family: inherit;
+}
+.ov-perf-tabs button.active { background: var(--admin-green); color: #fff; border-color: var(--admin-green); }
+.ov-perf-list { list-style: none; margin: 0; padding: 0; }
+.ov-perf-list li { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid #f1f0ec; font-size: 13.5px; }
+.ov-perf-list li span:first-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* Realtor accounts: hide admin-only navigation / panels (RLS enforces
+   the real restriction; this only keeps the UI honest). */
+body.role-realtor [data-admin-only] { display: none !important; }
+
+@media (max-width: 900px) {
+    .ov-two-col, .followup-grid { grid-template-columns: 1fr; }
+    .admin-toolbar input[type="search"] { min-width: 0; width: 100%; }
+}
+
+/* First overview row has 5 cards (Drafts kept from the original dashboard). */
+@media (min-width: 901px) {
+    .admin-stats-grid.stats-5 { grid-template-columns: repeat(5, 1fr); }
+}

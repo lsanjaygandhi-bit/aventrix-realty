@@ -9,6 +9,16 @@
  * -effort name/phone/email pulled out for easy scanning in the admin
  * enquiry inbox.
  *
+ * PROPERTY ENQUIRIES: when a page is opened as
+ * enquiry.html?property=<slug> (the "Send an enquiry about this
+ * property" link on property.html), the slug is sent as
+ * property_slug. The database resolves it to the property's id and
+ * AVX code itself (only for Published listings), so the lead arrives
+ * in Admin → Leads already linked to the right property.
+ *
+ * LOGGED-IN BUYERS: submitted_by is set to their user id, so the
+ * enquiry also appears under "My Enquiries" on account.html.
+ *
  * NOTE: file inputs (e.g. property photo uploads on some forms) are
  * not uploaded to storage by this handler — only the filename is
  * recorded. Wiring those to Supabase Storage is a small follow-up if
@@ -23,6 +33,26 @@
     // Avoid double-binding if this script is somehow included twice.
     if (form.dataset.supabaseBound) return;
     form.dataset.supabaseBound = "true";
+
+    // Property context (enquiry.html?property=<slug>)
+    const propertySlug = (new URLSearchParams(window.location.search).get("property") || "").trim() || null;
+    if (propertySlug) {
+        sb.from("properties")
+            .select("title, property_code, location")
+            .eq("slug", propertySlug)
+            .eq("publish_status", "Published")
+            .maybeSingle()
+            .then(({ data }) => {
+                if (!data) return;
+                const note = document.createElement("p");
+                note.className = "enquiry-property-context";
+                note.textContent = "Enquiring about: " + (data.property_code ? data.property_code + " – " : "") +
+                    data.title + (data.location ? ", " + data.location : "");
+                form.parentNode.insertBefore(note, form);
+                const subject = form.querySelector('[name="Subject"]');
+                if (subject && !subject.value) subject.value = "Enquiry: " + (data.property_code || data.title);
+            });
+    }
 
     form.addEventListener("submit", async function (e) {
         e.preventDefault();
@@ -57,11 +87,26 @@
             payload: payload,
             status: "new"
         };
+        if (propertySlug) record.property_slug = propertySlug;
 
         try {
-            const { error } = await sb.from("enquiries").insert(record);
+            const { data: sessionData } = await sb.auth.getSession();
+            const user = sessionData && sessionData.session && sessionData.session.user;
+            if (user) record.submitted_by = user.id;
+        } catch (err) { /* anonymous submit is fine */ }
+
+        try {
+            let { error } = await sb.from("enquiries").insert(record);
+            // Safety net if the P1 database migration hasn't been run
+            // yet (no property_slug column): never lose the enquiry.
+            if (error && record.property_slug && /property_slug/.test(error.message || "")) {
+                delete record.property_slug;
+                record.payload = Object.assign({}, record.payload, { "Property": propertySlug });
+                ({ error } = await sb.from("enquiries").insert(record));
+            }
 
             if (!error) {
+                if (propertySlug && window.AventrixTracking) window.AventrixTracking.track(propertySlug, "enquiry");
                 form.style.display = "none";
                 const successEl = document.getElementById("success-message");
                 if (successEl) {

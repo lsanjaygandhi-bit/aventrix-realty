@@ -2592,7 +2592,7 @@ html.is-mobile .pd-backbar-row{
     min-height: 88vh;
     padding-top: 20px;
     padding-bottom: 50px;
-    background: url("images/hero.jpg") center center/cover no-repeat;
+    background: url("images/hero-poster.jpg") center center/cover no-repeat;
     position: relative;
     display: flex;
     align-items: center;
@@ -8723,3 +8723,9 @@ html.is-mobile .about-declaration h2{
         font-size:23px;
     }
 }
+
+/* 2026-09-25: testimonials section + its scroll-indicator dash stay
+   hidden until js/public-testimonials.js finds Published testimonials
+   (no static/placeholder testimonials are shipped). */
+.testimonials-section[hidden],
+.ssi-segment[hidden]{ display:none !important; }

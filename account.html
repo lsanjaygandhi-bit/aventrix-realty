@@ -49,7 +49,8 @@
     <link rel="canonical" href="https://aventrixrealty.com/account.html">
     <meta name="robots" content="noindex">
 
-    <link rel="stylesheet" href="style.css?v=20260922">
+    <link rel="stylesheet" href="style.css?v=20260925">
+    <link rel="stylesheet" href="css/buyer-features.css?v=20260925">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
@@ -97,7 +98,6 @@
 
     <a href="contact.html">Contact</a>
 
-    <a href="admin/index.html" class="main-nav-admin">Admin</a>
 
     <div class="mobile-menu-divider"></div>
     <span class="mobile-menu-contact-label">CONTACT</span>
@@ -139,7 +139,7 @@
 <section class="ws-header">
     <div class="container">
         <span class="section-eyebrow">MY ACCOUNT</span>
-        <h1>Log In or Create an Account</h1>
+        <h1 id="acctPageTitle">Log In or Create an Account</h1>
     </div>
 </section>
 
@@ -222,15 +222,143 @@
                 <p>We've sent a confirmation link to your email address. Please click it to activate your account before logging in.</p>
             </div>
 
-            <!-- ALREADY LOGGED IN — shown instead of the forms above when
-                 an active session is found. There is no full customer
-                 dashboard yet, so this is a minimal placeholder needed to
-                 connect the header's account icon to something sensible. -->
-            <div class="acct-panel-success" id="acctLoggedInPanel" hidden>
-                <i class="far fa-circle-user" aria-hidden="true"></i>
-                <h3>You're Logged In</h3>
-                <p id="acctLoggedInEmail"></p>
-                <button type="button" class="acct-submit-btn" id="acctSignOutBtn">Sign Out</button>
+            <!-- LOGGED-IN BUYER DASHBOARD — shown instead of the forms
+                 above when an active session is found (account-auth.js
+                 toggles #acctLoggedInPanel; js/account-dashboard.js fills
+                 it). All data is the buyer's own, protected by RLS. -->
+            <div class="acct-dash" id="acctLoggedInPanel" hidden>
+                <div class="acct-dash-head">
+                    <div>
+                        <h2 class="acct-dash-title">Welcome<span id="acctDashName"></span></h2>
+                        <p class="acct-dash-email" id="acctLoggedInEmail"></p>
+                    </div>
+                    <button type="button" class="acct-dash-signout" id="acctSignOutBtn"><i class="fas fa-arrow-right-from-bracket" aria-hidden="true"></i> Sign Out</button>
+                </div>
+
+                <div class="acct-dash-quicklinks">
+                    <a href="wishlist.html"><i class="fas fa-heart" aria-hidden="true"></i> Wishlist <span id="acctDashWishCount"></span></a>
+                    <a href="shortlist.html"><i class="fas fa-bookmark" aria-hidden="true"></i> Shortlist <span id="acctDashShortCount"></span></a>
+                    <a href="properties.html"><i class="fas fa-magnifying-glass" aria-hidden="true"></i> Search Properties</a>
+                </div>
+
+                <div class="acct-dash-tabs" role="tablist" id="acctDashTabs">
+                    <button type="button" role="tab" class="active" data-dtab="matches">Matches</button>
+                    <button type="button" role="tab" data-dtab="requirement">My Requirement</button>
+                    <button type="button" role="tab" data-dtab="searches">Saved Searches</button>
+                    <button type="button" role="tab" data-dtab="enquiries">My Enquiries</button>
+                    <button type="button" role="tab" data-dtab="profile">Profile</button>
+                </div>
+                <div class="acct-message" id="acctDashMessage" hidden></div>
+
+                <!-- MATCHES -->
+                <section class="acct-dash-panel" data-dpanel="matches">
+                    <p class="acct-hint acct-dash-intro">Properties scored against your saved requirement. Every score shows exactly which factors matched — ✓ matched, ~ close, ✗ didn't match, ? not stated in the listing.</p>
+                    <div id="acctMatches"><p class="acct-hint">Loading…</p></div>
+                </section>
+
+                <!-- REQUIREMENT -->
+                <section class="acct-dash-panel" data-dpanel="requirement" hidden>
+                    <form id="acctRequirementForm" class="acct-req-form">
+                        <div class="acct-req-grid">
+                            <div class="acct-field">
+                                <label for="reqTransaction">Looking to</label>
+                                <select id="reqTransaction">
+                                    <option value="">Any</option>
+                                    <option value="buy">Buy</option>
+                                    <option value="rent">Rent</option>
+                                    <option value="lease">Lease</option>
+                                </select>
+                            </div>
+                            <div class="acct-field">
+                                <label for="reqPurpose">Purpose</label>
+                                <select id="reqPurpose">
+                                    <option value="">Not specified</option>
+                                    <option value="self_use">Self Use</option>
+                                    <option value="investment">Investment</option>
+                                    <option value="rental">Rental Income</option>
+                                </select>
+                            </div>
+                            <div class="acct-field acct-req-full">
+                                <label>Property type</label>
+                                <div class="acct-chips" id="reqTypes"></div>
+                            </div>
+                            <div class="acct-field acct-req-full">
+                                <label for="reqLocations">Preferred locations <span class="acct-optional">(comma separated)</span></label>
+                                <input type="text" id="reqLocations" placeholder="Medavakkam, Pallikaranai, Velachery">
+                            </div>
+                            <div class="acct-field">
+                                <label for="reqBudgetMin">Budget from (₹ Lakhs)</label>
+                                <input type="number" id="reqBudgetMin" min="0" step="1" inputmode="decimal" placeholder="60">
+                            </div>
+                            <div class="acct-field">
+                                <label for="reqBudgetMax">Budget up to (₹ Lakhs)</label>
+                                <input type="number" id="reqBudgetMax" min="0" step="1" inputmode="decimal" placeholder="90">
+                            </div>
+                            <div class="acct-field acct-req-full">
+                                <label>BHK</label>
+                                <div class="acct-chips" id="reqBhk"></div>
+                            </div>
+                            <div class="acct-field">
+                                <label for="reqMinArea">Minimum built-up area (sq.ft)</label>
+                                <input type="number" id="reqMinArea" min="0" step="50" inputmode="numeric" placeholder="1000">
+                            </div>
+                            <div class="acct-field acct-req-check">
+                                <label class="acct-check"><input type="checkbox" id="reqParking"> Car parking required</label>
+                            </div>
+                            <div class="acct-field acct-req-full">
+                                <label>Facing</label>
+                                <div class="acct-chips" id="reqFacing"></div>
+                            </div>
+                            <div class="acct-field acct-req-full">
+                                <label>Furnishing</label>
+                                <div class="acct-chips" id="reqFurnishing"></div>
+                            </div>
+                            <div class="acct-field acct-req-full">
+                                <label for="reqNotes">Anything else? <span class="acct-optional">(optional)</span></label>
+                                <textarea id="reqNotes" rows="2" placeholder="e.g. near a school, ready to move"></textarea>
+                            </div>
+                        </div>
+                        <button type="submit" class="acct-submit-btn">Save Requirement</button>
+                    </form>
+                </section>
+
+                <!-- SAVED SEARCHES -->
+                <section class="acct-dash-panel" data-dpanel="searches" hidden>
+                    <p class="acct-hint acct-dash-intro">Save any search from the <a href="properties.html">Properties</a> page with “Save this search”. Automatic alerts for new matching listings are being set up — your preference below is stored so it's ready when they go live.</p>
+                    <div id="acctSavedSearches"><p class="acct-hint">Loading…</p></div>
+                </section>
+
+                <!-- ENQUIRIES -->
+                <section class="acct-dash-panel" data-dpanel="enquiries" hidden>
+                    <p class="acct-hint acct-dash-intro">Enquiries you've sent while logged in.</p>
+                    <div id="acctEnquiries"><p class="acct-hint">Loading…</p></div>
+                </section>
+
+                <!-- PROFILE -->
+                <section class="acct-dash-panel" data-dpanel="profile" hidden>
+                    <form id="acctProfileForm" class="acct-req-form">
+                        <div class="acct-req-grid">
+                            <div class="acct-field">
+                                <label for="profName">Full name</label>
+                                <input type="text" id="profName" autocomplete="name">
+                            </div>
+                            <div class="acct-field">
+                                <label for="profPhone">Mobile number</label>
+                                <input type="tel" id="profPhone" autocomplete="tel">
+                            </div>
+                            <div class="acct-field">
+                                <label for="profContact">Preferred contact</label>
+                                <select id="profContact">
+                                    <option value="">No preference</option>
+                                    <option>Phone</option>
+                                    <option>WhatsApp</option>
+                                    <option>Email</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" class="acct-submit-btn">Save Profile</button>
+                    </form>
+                </section>
             </div>
 
         </div>
@@ -279,7 +407,6 @@
                 <li><a href="wishlist.html">My Saved Properties</a></li>
                 <li><a href="shortlist.html">Shortlist &amp; Compare</a></li>
                 <li><a href="account.html">My Account</a></li>
-                <li><a href="admin/index.html" class="footer-nav-login">Admin Login</a></li>
             </ul>
         </div>
 
@@ -358,9 +485,13 @@
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="js/supabase-client.js"></script>
+<script src="js/aventrix-tracking.js?v=20260925"></script>
 <script src="js/aventrix-storage.js"></script>
 <script src="js/wishlist-widget.js"></script>
-<script src="js/account-auth.js"></script>
+<script src="js/account-auth.js?v=20260925"></script>
+<script src="js/property-taxonomy.js?v=20260924"></script>
+<script src="js/property-matching.js?v=20260925"></script>
+<script src="js/account-dashboard.js?v=20260925"></script>
 <script src="script.js"></script>
 
 </body>
