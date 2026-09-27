@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script>
+    (function () {
+    // Manual scroll restoration: we save/restore scroll position
+    // ourselves (see script.js) so users returning via Back land back
+    // exactly where they were, instead of the browser's default
+    // (and often mistimed) automatic restoration.
+    if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+    }
+
+    function evaluateMobile() {
+        var coarsePointer = window.matchMedia &&
+            window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+        var mobileUA = /Android|iPhone|iPad|iPod|IEMobile|BlackBerry|Opera Mini|Mobile/i
+            .test(navigator.userAgent);
+        var narrowViewport = window.innerWidth <= 768;
+
+        var shouldBeMobile = coarsePointer || mobileUA || narrowViewport;
+        document.documentElement.classList.toggle('is-mobile', shouldBeMobile);
+    }
+
+    evaluateMobile();
+
+    var resizeTimer;
+    window.addEventListener('resize', function () {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(evaluateMobile, 150);
+    });
+})();
+    </script>
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/images/favicon/favicon-48x48.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/images/favicon/android-chrome-512x512.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <title>EMI Calculator | Aventrix Realty</title>
+
+    <meta name="description" content="Estimate your home loan EMI with Aventrix Realty's free EMI calculator — see your monthly instalment, total interest and total repayment instantly.">
+    <link rel="canonical" href="https://aventrixrealty.com/emi-calculator.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Aventrix Realty">
+    <meta property="og:title" content="EMI Calculator | Aventrix Realty">
+    <meta property="og:description" content="Estimate your home loan EMI with Aventrix Realty's free EMI calculator — see your monthly instalment, total interest and total repayment instantly.">
+    <meta property="og:url" content="https://aventrixrealty.com/emi-calculator.html">
+    <meta property="og:image" content="https://aventrixrealty.com/images/chennai-marina.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="EMI Calculator | Aventrix Realty">
+    <meta name="twitter:description" content="Estimate your home loan EMI with Aventrix Realty's free EMI calculator — see your monthly instalment, total interest and total repayment instantly.">
+    <meta name="twitter:image" content="https://aventrixrealty.com/images/chennai-marina.jpg">
+
+    <link rel="stylesheet" href="style.css?v=20260925">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="css/emi-calculator.css?v=20260926c">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "EMI Calculator | Aventrix Realty",
+  "description": "Estimate your home loan EMI with Aventrix Realty's free EMI calculator — see your monthly instalment, total interest and total repayment instantly.",
+  "url": "https://aventrixrealty.com/emi-calculator.html",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Aventrix Realty",
+    "url": "https://aventrixrealty.com/"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://aventrixrealty.com/index.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "EMI Calculator",
+      "item": "https://aventrixrealty.com/emi-calculator.html"
+    }
+  ]
+}
+    </script>
+    <link rel="stylesheet" href="css/site-fixes.css?v=20260926b">
+</head>
+
+<body data-page-key="emi-calculator">
+
+    <header class="header">
+    <div class="container nav">
+        <div class="logo">
+    <a href="index.html" class="logo-text">
+        <img src="images/aventrix-logo.png" alt="Aventrix Realty">
+    </a>
+</div>
+   <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+        <!-- Mobile-only bell — matches index.html's header exactly
+             (site-wide header consistency). Stays visible on every
+             breakpoint, unlike the desktop one inside .nav-right
+             (hidden on mobile by an existing rule). -->
+        <div class="home-app-header-actions">
+            <a href="account.html" class="home-app-bell-btn" aria-label="My Account">
+                <i class="far fa-circle-user" aria-hidden="true"></i>
+            </a>
+        </div>
+    <div class="menu-overlay" id="menuOverlay"></div>
+       <nav class="main-nav" data-hq="phones">
+
+    <a href="index.html">Home</a>
+
+    <a href="about.html">About Us</a>
+
+    <a href="properties.html">Properties</a>
+
+    <a href="services.html">Services</a>
+
+    <a href="list-with-us.html">List With Us</a>
+
+    <a href="free-valuation.html">Free Valuation</a>
+
+    <a href="joint-venture.html">Joint Venture</a>
+    <a href="nri-services.html">NRI Services</a>
+
+    <a href="contact.html">Contact</a>
+
+    <a href="/admin/" class="main-nav-admin">Admin</a>
+
+
+    <div class="mobile-menu-divider"></div>
+    <span class="mobile-menu-contact-label">CONTACT</span>
+    <a href="tel:+919176887770" class="mobile-menu-phone">📞 +91 91768 87770</a>
+    <a href="tel:+917092356222" class="mobile-menu-phone">📞 +91 70923 56222</a>
+
+
+    <div class="mobile-menu-socials">
+      <a href="https://wa.me/919176887770" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" data-site="whatsapp-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 3.5a8.5 8.5 0 0 0-7.3 12.8L3.5 20.5l4.4-1.2A8.5 8.5 0 1 0 12 3.5z"/><path d="M8.7 8.6c.2-.5.4-.5.6-.5h.5c.2 0 .4 0 .5.4.2.5.6 1.5.6 1.6.1.1.1.3 0 .4-.1.2-.1.3-.3.4-.1.2-.3.3-.4.5-.1.1-.3.3-.1.5.2.4 1 1.5 2 2.3 1.2 1 1 .8 1.3.7.2 0 .4-.2.5-.4.2-.2.4-.2.6-.1l1.4.7c.2.1.4.2.4.3.1.2.1 1-.3 1.4-.4.5-1.4.9-2 .9-.6 0-1.4-.1-3.3-1-2.4-1.1-3.9-3.4-4-3.6-.1-.2-1-1.3-1-2.5s.6-1.8.8-2z" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="https://www.instagram.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Instagram" data-site="social-instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="0.8" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="https://www.facebook.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Facebook" data-site="social-facebook">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M15 8.5h-2a1.5 1.5 0 0 0-1.5 1.5v2h3.4l-.4 3H11.5v7h-3v-7H6.5v-3h2V9.7C8.5 7 10 5.5 12.5 5.5H15v3z"/></svg>
+      </a>
+      <a href="https://maps.app.goo.gl/wQm9KBpQG9rEYFaX7?g_st=ic" target="_blank" rel="noopener noreferrer" aria-label="Google Maps" data-hq="maps">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg>
+      </a>
+    </div>
+
+  </nav>
+
+        <div class="nav-right">
+            <!-- Notification/Bell — matches index.html's header exactly
+                 (site-wide header consistency), same .nav-wishlist-link
+                 styling, same position ahead of the phone number. -->
+            <a href="account.html" class="nav-wishlist-link nav-bell-link" aria-label="My Account">
+                <i class="far fa-circle-user" aria-hidden="true"></i>
+            </a>
+            <a href="tel:+919176887770" class="nav-phone" aria-label="Call Aventrix Realty">
+                <i class="fas fa-phone-alt" aria-hidden="true"></i>
+            </a>
+        </div>
+    </div>
+     </header>
+
+<!-- ==============================
+     EMI CALCULATOR — HERO
+     Reuses the shared .list-hero component (existing background). -->
+<section class="list-hero emi-hero">
+
+    <div class="container">
+
+        <span class="section-tag" data-page-hero-eyebrow>HOME LOANS</span>
+
+        <h1 data-page-hero-title>EMI Calculator</h1>
+
+        <p data-page-hero-subtitle>Estimate your monthly EMI, total interest and total repayment instantly.</p>
+
+    </div>
+
+</section>
+
+<!-- ==============================
+     EMI CALCULATOR — TOOL
+     All figures are calculated in js/emi-calculator.js. -->
+<section class="fv-section fv-alt emi-section" id="emiCalculator" aria-label="EMI calculator">
+
+    <div class="container emi-container" id="emiFloatZone">
+
+        <p class="emi-note" data-cms-section="emi-note" data-cms-label="Note under the hero">
+            <i class="fas fa-circle-info" aria-hidden="true"></i>
+            <span data-cms-f="text">Rates vary by lender. All figures shown are estimates for reference purposes only.</span>
+        </p>
+
+        <div class="emi-grid">
+
+            <!-- Loan details -->
+            <div class="emi-card emi-inputs">
+                <div class="emi-card-head">
+                    <span class="emi-card-icon" aria-hidden="true"><i class="fas fa-calculator"></i></span>
+                    <h2>Loan Details</h2>
+                </div>
+
+                <div class="emi-field">
+                    <div class="emi-field-top">
+                        <label for="emiAmountInput" id="emiAmountLabel">Loan Amount</label>
+                        <input type="text" id="emiAmountInput" class="emi-value emi-value-amount" inputmode="decimal" autocomplete="off" spellcheck="false" value="₹50 Lakh" aria-describedby="emiAmountHint">
+                    </div>
+                    <input type="range" id="emiAmountRange" class="emi-range" min="100000" max="50000000" step="100000" value="5000000" aria-labelledby="emiAmountLabel">
+                    <div class="emi-range-limits" aria-hidden="true"><span>₹1 L</span><span>₹5 Cr</span></div>
+                    <p class="emi-hint" id="emiAmountHint">Drag the slider or type an amount, e.g. 75 lakh or 1.2 cr.</p>
+                </div>
+
+                <div class="emi-field">
+                    <div class="emi-field-top">
+                        <label for="emiRateInput" id="emiRateLabel">Rate of Interest (p.a.)</label>
+                        <span class="emi-value-wrap">
+                            <input type="number" id="emiRateInput" class="emi-value emi-value-num" min="5" max="20" step="0.05" value="8.5" inputmode="decimal">
+                            <span class="emi-unit" aria-hidden="true">%</span>
+                        </span>
+                    </div>
+                    <input type="range" id="emiRateRange" class="emi-range" min="5" max="20" step="0.05" value="8.5" aria-labelledby="emiRateLabel">
+                    <div class="emi-range-limits" aria-hidden="true"><span>5%</span><span>20%</span></div>
+                </div>
+
+                <div class="emi-field">
+                    <div class="emi-field-top">
+                        <label for="emiTenureInput" id="emiTenureLabel">Loan Tenure</label>
+                        <span class="emi-tenure-controls">
+                            <span class="emi-value-wrap">
+                                <input type="number" id="emiTenureInput" class="emi-value emi-value-num emi-value-tenure" min="1" max="30" step="1" value="20" inputmode="numeric">
+                                <span class="emi-unit" id="emiTenureUnitLabel" aria-hidden="true">years</span>
+                            </span>
+                            <span class="emi-unit-toggle" role="group" aria-label="Tenure unit">
+                                <button type="button" data-emi-unit="yr" class="is-active" aria-pressed="true" aria-label="Years">Yr</button>
+                                <button type="button" data-emi-unit="mo" aria-pressed="false" aria-label="Months">Mo</button>
+                            </span>
+                        </span>
+                    </div>
+                    <input type="range" id="emiTenureRange" class="emi-range" min="1" max="30" step="1" value="20" aria-labelledby="emiTenureLabel">
+                    <div class="emi-range-limits" aria-hidden="true"><span id="emiTenureMin">1 Yr</span><span id="emiTenureMax">30 Yr</span></div>
+                </div>
+            </div>
+
+            <!-- Result -->
+            <div class="emi-card emi-result">
+                <div class="emi-result-head">
+                    <div>
+                        <span class="emi-result-label">Monthly EMI</span>
+                        <strong class="emi-result-value" data-emi-out="emi" aria-live="polite">₹43,391</strong>
+                    </div>
+                    <span class="emi-result-icon" aria-hidden="true"><i class="fas fa-chart-line"></i></span>
+                </div>
+                <dl class="emi-result-rows">
+                    <div class="emi-result-row">
+                        <dt>Principal Amount<small>Your loan amount</small></dt>
+                        <dd data-emi-out="principal">₹50,00,000</dd>
+                    </div>
+                    <div class="emi-result-row">
+                        <dt>Total Interest<small>Over <span data-emi-out="months">240 months</span> at <span data-emi-out="rate">8.5%</span></small></dt>
+                        <dd class="emi-accent" data-emi-out="interest">₹54,13,840</dd>
+                    </div>
+                    <div class="emi-result-row">
+                        <dt>Total Amount Payable<small>Principal + interest</small></dt>
+                        <dd data-emi-out="total">₹1,04,13,840</dd>
+                    </div>
+                </dl>
+            </div>
+
+        </div>
+
+        <!-- Breakdown -->
+        <div class="emi-card emi-breakdown">
+            <div class="emi-card-head">
+                <span class="emi-card-icon" aria-hidden="true"><i class="fas fa-chart-pie"></i></span>
+                <h2>Breakdown</h2>
+            </div>
+
+            <div class="emi-breakdown-grid">
+                <figure class="emi-donut-wrap">
+                    <svg id="emiDonut" class="emi-donut" viewBox="0 0 42 42" role="img" aria-label="Principal and interest share of the total amount payable">
+                        <circle class="emi-donut-principal" cx="21" cy="21" r="15.9155" fill="none" stroke-width="6"></circle>
+                        <circle id="emiDonutInterest" class="emi-donut-interest" cx="21" cy="21" r="15.9155" fill="none" stroke-width="6" stroke-dasharray="52 48" stroke-dashoffset="0" transform="rotate(-90 21 21)"></circle>
+                    </svg>
+                    <figcaption class="emi-donut-center">
+                        <span>Total Payable</span>
+                        <strong data-emi-out="total">₹1,04,13,840</strong>
+                    </figcaption>
+                </figure>
+
+                <div class="emi-breakdown-data">
+                    <ul class="emi-legend">
+                        <li>
+                            <span class="emi-swatch emi-swatch-principal" aria-hidden="true"></span>
+                            <span class="emi-legend-name">Principal <em data-emi-out="principal-pct">48.0%</em></span>
+                            <span class="emi-legend-value" data-emi-out="principal">₹50,00,000</span>
+                        </li>
+                        <li>
+                            <span class="emi-swatch emi-swatch-interest" aria-hidden="true"></span>
+                            <span class="emi-legend-name">Interest <em data-emi-out="interest-pct">52.0%</em></span>
+                            <span class="emi-legend-value" data-emi-out="interest">₹54,13,840</span>
+                        </li>
+                        <li class="emi-legend-total">
+                            <span class="emi-legend-name">Total Amount Payable</span>
+                            <span class="emi-legend-value" data-emi-out="total">₹1,04,13,840</span>
+                        </li>
+                    </ul>
+
+                    <div class="emi-stats">
+                        <div><span>Principal as % of total</span><strong data-emi-out="principal-pct">48.0%</strong></div>
+                        <div><span>Interest as % of total</span><strong data-emi-out="interest-pct">52.0%</strong></div>
+                        <div><span>Monthly interest rate</span><strong data-emi-out="monthly-rate">0.708%</strong></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tips -->
+        <div class="emi-card emi-tips" data-cms-section="emi-tips" data-cms-label="Tips">
+            <div class="emi-card-head">
+                <span class="emi-card-icon" aria-hidden="true"><i class="far fa-lightbulb"></i></span>
+                <h2 data-cms-heading>Tips</h2>
+            </div>
+            <ol class="emi-tips-list" data-cms-list="tips">
+                <li data-cms-item><span data-cms-f="text">A longer tenure lowers the monthly EMI but increases the total interest paid over the life of the loan.</span></li>
+                <li data-cms-item><span data-cms-f="text">A higher down payment reduces the loan principal, which lowers both the EMI and the total interest.</span></li>
+                <li data-cms-item><span data-cms-f="text">A lower interest rate reduces the total interest payable, so it helps to compare offers from more than one lender.</span></li>
+                <li data-cms-item><span data-cms-f="text">Where your lender allows part-prepayment, paying down principal early reduces the outstanding balance and can shorten the tenure.</span></li>
+                <li data-cms-item><span data-cms-f="text">On a floating-rate loan, a change in the rate can change your EMI or your remaining tenure.</span></li>
+            </ol>
+        </div>
+
+        <p class="emi-disclaimer" data-cms-section="emi-disclaimer" data-cms-label="Disclaimer">
+            <strong>Disclaimer:</strong>
+            <span data-cms-f="text">EMI calculations are estimates for reference purposes only. Actual EMI, interest and loan eligibility may vary depending on the lender, loan terms and applicant profile. Please consult the lender or a qualified financial advisor before making financial decisions.</span>
+        </p>
+
+    </div>
+
+</section>
+
+<!-- ==============================
+     CLOSING CALL TO ACTION
+     Reuses the shared .fv-final-cta banner and existing buttons. -->
+<section class="fv-final-cta">
+
+    <div class="container">
+
+        <h2>Planning Your Next Property?</h2>
+
+        <p>Explore listings across Chennai, or talk to our team about your requirement.</p>
+
+        <div class="hero-buttons hero-buttons-compact">
+            <a href="properties.html" class="primary-btn">Browse Properties</a>
+            <a href="contact.html" class="secondary-btn">Talk to Us</a>
+        </div>
+
+    </div>
+
+</section>
+
+<footer class="premium-footer">
+
+    <div class="container premium-footer-top">
+
+        <div class="pf-col pf-brand">
+            <h3 class="pf-logo"><img src="images/aventrix-logo-white.png" alt="Aventrix Realty"></h3>
+            <p class="pf-tagline" data-site="footer-tagline">Where Legacy Meets The Next Generation</p>
+            <p class="pf-desc" data-site="footer-description">
+                Premium real estate advisory across Chennai — residential,
+                commercial, land and joint venture solutions, guided by
+                trust and decades of local expertise.
+            </p>
+            <div class="pf-contact">
+                <div class="pf-office-block" data-hq="phones">
+                    <p class="pf-office-name" data-hq="name">Aventrix Realty – Head Office</p>
+                    <p data-hq="address">No.27, 1st Main Road, Newcolony, Chromepet, Chennai, Tamil Nadu</p>
+                    <p class="pf-office-label">Phone:</p>
+                    <a href="tel:+919176887770">+91 91768 87770</a>
+                    <a href="tel:+917092356222">+91 70923 56222</a>
+                    <p class="pf-office-label">Email:</p>
+                    <a href="mailto:office@aventrixrealty.com" data-hq="email">office@aventrixrealty.com</a>
+                </div>
+                <p class="pf-branch-line"><span class="pf-office-label">Branch Office:</span> Adyar, Chennai</p>
+            </div>
+        </div>
+
+        <div class="pf-col">
+            <h4 class="pf-heading">About Aventrix</h4>
+            <ul class="pf-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="index.html#contact">Contact Us</a></li>
+            </ul>
+        </div>
+
+        <div class="pf-col">
+            <h4 class="pf-heading">Quick Links</h4>
+            <ul class="pf-links">
+                <li><a href="services.html">Our Services</a></li>
+                <li><a href="our-realtors.html">Realtors</a></li>
+                <li><a href="brokerage-fees.html">Brokerage &amp; Fees</a></li>
+                <li><a href="emi-calculator.html">EMI Calculator</a></li>
+            </ul>
+        </div>
+
+        <div class="pf-col">
+            <h4 class="pf-heading">Follow Us</h4>
+            <div class="pf-social">
+                <a href="https://www.facebook.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Facebook" data-site="social-facebook">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M15 8.5h-2a1.5 1.5 0 0 0-1.5 1.5v2h3.4l-.4 3H11.5v7h-3v-7H6.5v-3h2V9.7C8.5 7 10 5.5 12.5 5.5H15v3z"/></svg>
+                    <span>Facebook</span>
+                </a>
+                <a href="https://www.instagram.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Instagram" data-site="social-instagram">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="0.8" fill="currentColor" stroke="none"/></svg>
+                    <span>Instagram</span>
+                </a>
+                <a href="https://www.linkedin.com/in/lsanjaygandhi" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" data-site="social-linkedin">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="3"/><path d="M8 10.5v6M8 7.8v.02M12 16.5v-3.7c0-1.2.9-2 2-2s2 .8 2 2v3.7"/></svg>
+                    <span>LinkedIn</span>
+                </a>
+                <a href="https://youtube.com/@sanjaygandhirealty" target="_blank" rel="noopener noreferrer" aria-label="YouTube" data-site="social-youtube">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="3" y="6.5" width="18" height="11" rx="3.5"/><path d="M10.3 9.8l4.4 2.2-4.4 2.2z" fill="currentColor" stroke="none"/></svg>
+                    <span>YouTube</span>
+                </a>
+                <a href="https://wa.me/919176887770" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" data-site="whatsapp-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 3.5a8.5 8.5 0 0 0-7.3 12.8L3.5 20.5l4.4-1.2A8.5 8.5 0 1 0 12 3.5z"/><path d="M8.7 8.6c.2-.5.4-.5.6-.5h.5c.2 0 .4 0 .5.4.2.5.6 1.5.6 1.6.1.1.1.3 0 .4-.1.2-.1.3-.3.4-.1.2-.3.3-.4.5-.1.1-.3.3-.1.5.2.4 1 1.5 2 2.3 1.2 1 1 .8 1.3.7.2 0 .4-.2.5-.4.2-.2.4-.2.6-.1l1.4.7c.2.1.4.2.4.3.1.2.1 1-.3 1.4-.4.5-1.4.9-2 .9-.6 0-1.4-.1-3.3-1-2.4-1.1-3.9-3.4-4-3.6-.1-.2-1-1.3-1-2.5s.6-1.8.8-2z" fill="currentColor" stroke="none"/></svg>
+                    <span>WhatsApp</span>
+                </a>
+                <a href="https://maps.app.goo.gl/wQm9KBpQG9rEYFaX7?g_st=ic" target="_blank" rel="noopener noreferrer" aria-label="Google Maps" data-hq="maps">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg>
+                    <span>Google Maps</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Google Map — matches index.html's footer exactly (site-wide
+             footer consistency). Existing 4 columns above unchanged in
+             content; only the shared .premium-footer-top grid column
+             widths (in style.css) accommodate this 5th column. -->
+        <div class="pf-col pf-map-col">
+            <h4 class="pf-heading">Find Us</h4>
+            <div class="pf-map-wrap">
+                <iframe data-hq="map-embed"
+                    src="https://www.google.com/maps?q=No.27,+1st+Main+Road,+Newcolony,+Chromepet,+Chennai,+Tamil+Nadu&output=embed"
+                    width="100%"
+                    height="100%"
+                    style="border:0"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Aventrix Realty Head Office location on Google Maps">
+                </iframe>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="premium-footer-divider"></div>
+
+    <div class="container premium-footer-bottom">
+        <p class="pf-copyright" data-site="copyright-text">© 2026 Aventrix Realty. All Rights Reserved. &#124; Designed with &#10084;&#65039; by L. Sanjay Gandhi</p>
+        <div class="pf-legal">
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="terms.html">Terms &amp; Conditions</a>
+            <a href="sitemap.html">Sitemap</a>
+            <a href="/admin/" class="pf-legal-admin">Admin</a>
+        </div>
+    </div>
+
+</footer>
+
+<a href="https://wa.me/919176887770" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" data-site="whatsapp-link">
+    <img src="images/whatsapp-icon.png" alt="WhatsApp">
+</a>
+
+<button id="backToTop" class="back-to-top" aria-label="Back to top">
+    <i class="fas fa-chevron-up"></i>
+</button>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-client.js"></script>
+<script src="js/public-site-settings.js?v=20260926b"></script>
+<script src="js/public-offices.js?v=20260926b"></script>
+<script src="js/public-page-content.js?v=20260926b"></script>
+<script src="js/aventrix-storage.js"></script>
+<script src="js/wishlist-widget.js"></script>
+<script src="js/enquiry-supabase.js?v=20260926b"></script>
+<script src="js/emi-calculator.js?v=20260926c"></script>
+<script src="script.js?v=20260926b"></script>
+
+</body>
+</html>

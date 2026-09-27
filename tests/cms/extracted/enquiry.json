@@ -1,0 +1,31 @@
+{
+ "page_key": "enquiry",
+ "hero": {
+  "hero_eyebrow": "PROPERTY ENQUIRY",
+  "hero_title": "Send Us Your<br> Property Enquiry",
+  "hero_subtitle": "Looking to buy, sell, rent or invest? Complete the enquiry form below and our team will contact you shortly.",
+  "hero_button_text": "Enquire Now",
+  "hero_button_link": "#enquiry-form"
+ },
+ "seo_title": "Property Enquiry | Aventrix Realty",
+ "seo_description": "Send Aventrix Realty an enquiry about buying, selling, renting or investing in property in Chennai. Our team will contact you shortly.",
+ "seo_keywords": "",
+ "og_image_url": "",
+ "sections": [
+  {
+   "key": "form-intro",
+   "label": "Enquiry form (heading and intro)",
+   "eyebrow": "",
+   "heading": "Property Enquiry Form",
+   "html": "",
+   "image_url": "",
+   "fields": {
+    "text": "Please complete the form below."
+   },
+   "hooks": [
+    "heading"
+   ],
+   "display_order": 1
+  }
+ ]
+}

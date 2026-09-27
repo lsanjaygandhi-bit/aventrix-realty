@@ -1,0 +1,927 @@
+[
+ [
+  "admin: Website Content lists every public page",
+  true,
+  "19"
+ ],
+ [
+  "read home: all 13 sections shown, no blank field with page content",
+  true,
+  "sections 13/13 blanks []"
+ ],
+ [
+  "save home: every edit stored in the database",
+  true,
+  "[]"
+ ],
+ [
+  "save home: no section or list item lost (34 items)",
+  true,
+  "([], 34, 34)"
+ ],
+ [
+  "reload home: edited values shown in Admin after reload",
+  true,
+  "[]"
+ ],
+ [
+  "read about: all 9 sections shown, no blank field with page content",
+  true,
+  "sections 9/9 blanks []"
+ ],
+ [
+  "read about: hero/SEO fields show DB values",
+  true,
+  "('Real Estate. With Clarity<br>and Purpose.', 'Real Estate. With Clarity<br>and Purpose.')"
+ ],
+ [
+  "save about: every edit stored in the database",
+  true,
+  "[]"
+ ],
+ [
+  "save about: no section or list item lost (33 items)",
+  true,
+  "([], 33, 33)"
+ ],
+ [
+  "reload about: edited values shown in Admin after reload",
+  true,
+  "[]"
+ ],
+ [
+  "read services: all 1 sections shown, no blank field with page content",
+  true,
+  "sections 1/1 blanks []"
+ ],
+ [
+  "read services: hero/SEO fields show DB values",
+  true,
+  "('Our Services', 'Our Services')"
+ ],
+ [
+  "save services: every edit stored in the database",
+  true,
+  "[]"
+ ],
+ [
+  "save services: no section or list item lost (7 items)",
+  true,
+  "([], 7, 7)"
+ ],
+ [
+  "reload services: edited values shown in Admin after reload",
+  true,
+  "[]"
+ ],
+ [
+  "read properties: all 0 sections shown, no blank field with page content",
+  true,
+  "sections 0/0 blanks []"
+ ],
+ [
+  "read properties: hero/SEO fields show DB values",
+  true,
+  "('Find Your Next Property', 'Find Your Next Property')"
+ ],
+ [
+  "save properties: every edit stored in the database",
+  true,
+  "[]"
+ ],
+ [
+  "save properties: no section or list item lost (0 items)",
+  true,
+  "([], 0, 0)"
+ ],
+ [
+  "reload properties: edited values shown in Admin after reload",
+  true,
+  "[]"
+ ],
+ [
+  "read list-with-us: all 9 sections shown, no blank field with page content",
+  true,
+  "sections 9/9 blanks []"
+ ],
+ [
+  "read list-with-us: hero/SEO fields show DB values",
+  true,
+  "('Reach the Right Buyers<br>for Your Property', 'Reach the Right Buyers<br>for Your Property')"
+ ],
+ [
+  "save list-with-us: every edit stored in the database",
+  true,
+  "[]"
+ ],
+ [
+  "save list-with-us: no section or list item lost (40 items)",
+  true,
+  "([], 40, 40)"
+ ],
+ [
+  "reload list-with-us: edited values shown in Admin after reload",
+  true,
+  "[]"
+ ],
+ [
+  "read free-valuation: all 7 sections shown, no blank field with page content",
+  true,
+  "sections 7/7 blanks []"
+ ],
+ [
+  "read free-valuation: hero/SEO fields show DB values",
+  true,
+  "('Know Your Property.<br>Plan With Confidence.', 'Know Your Property.<br>Plan With Confidence.')"
+ ],
+ [
+  "save free-valuation: every edit stored in the database",
+  true,
+  "[]"
+ ],
+ [
+  "save free-valuation: no section or list item lost (26 items)",
+  true,
+  "([], 26, 26)"
+ ],
+ [
+  "reload free-valuation: edited values shown in Admin after reload",
+  true,
+  "[]"
+ ],
+ [
+  "read joint-venture: all 16 sections shown, no blank field with page content",
+  true,
+  "sections 16/16 blanks []"
+ ],
+ [
+  "read joint-venture: hero/SEO fields show DB values",
+  true,
+  "('Turn Your Land Into a Development Opportunity', 'Turn Your Land Into a Development Opportunity')"
+ ],
+ [
+  "save joint-venture: every edit stored in the database",
+  true,
+  "[]"
+ ],
+ [
+  "save joint-venture: no section or list item lost (124 items)",
+  true,
+  "([], 124, 124)"
+ ],
+ [
+  "reload joint-venture: edited values shown in Admin after reload",
+  true,
+  "[]"
+ ],
+ [
+  "read nri-services: all 8 sections shown, no blank field with page content",
+  true,
+  "sections 8/8 blanks []"
+ ],
+ [
+  "read nri-services: hero/SEO fields show DB values",
+  true,
+  "('Your Property in Chennai,<br>Supported From Anywhere', 'Your Property in Chennai,<br>Supported From Anywhere')"
+ ],
+ [
+  "save nri-services: every edit stored in the database",
+  true,
+  "[]"
+ ],
+ [
+  "save nri-services: no section or list item lost (33 items)",
+  true,
+  "([], 33, 33)"
+ ],
+ [
+  "reload nri-services: edited values shown in Admin after reload",
+  true,
+  "[]"
+ ],
+ [
+  "read brokerage-fees: all 7 sections shown, no blank field with page content",
+  true,
+  "sections 7/7 blanks []"
+ ],
+ [
+  "read brokerage-fees: hero/SEO fields show DB values",
+  true,
+  "('Professional Fees,<br>Agreed Upfront', 'Professional Fees,<br>Agreed Upfront')"
+ ],
+ [
+  "save brokerage-fees: every edit stored in the database",
+  true,
+  "[]"
+ ],
+ [
+  "save brokerage-fees: no section or list item lost (24 items)",
+  true,
+  "([], 24, 24)"
+ ],
+ [
+  "reload brokerage-fees: edited values shown in Admin after reload",
+  true,
+  "[]"
+ ],
+ [
+  "read our-realtors: all 0 sections shown, no blank field with page content",
+  true,
+  "sections 0/0 blanks []"
+ ],
+ [
+  "read our-realtors: hero/SEO fields show DB values",
+  true,
+  "('Meet Our Real Estate Professionals', 'Meet Our Real Estate Professionals')"
+ ],
+ [
+  "save our-realtors: every edit stored in the database",
+  true,
+  "[]"
+ ],
+ [
+  "save our-realtors: no section or list item lost (0 items)",
+  true,
+  "([], 0, 0)"
+ ],
+ [
+  "reload our-realtors: edited values shown in Admin after reload",
+  true,
+  "[]"
+ ],
+ [
+  "read gnanasekaran: all 1 sections shown, no blank field with page content",
+  true,
+  "sections 1/1 blanks []"
+ ],
+ [
+  "read gnanasekaran: hero/SEO fields show DB values",
+  true,
+  "('', None)"
+ ],
+ [
+  "save gnanasekaran: every edit stored in the database",
+  true,
+  "[]"
+ ],
+ [
+  "save gnanasekaran: no section or list item lost (0 items)",
+  true,
+  "([], 0, 0)"
+ ],
+ [
+  "reload gnanasekaran: edited values shown in Admin after reload",
+  true,
+  "[]"
+ ],
+ [
+  "read sanjay: all 2 sections shown, no blank field with page content",
+  true,
+  "sections 2/2 blanks []"
+ ],
+ [
+  "read sanjay: hero/SEO fields show DB values",
+  true,
+  "('', None)"
+ ],
+ [
+  "save sanjay: every edit stored in the database",
+  true,
+  "[]"
+ ],
+ [
+  "save sanjay: no section or list item lost (4 items)",
+  true,
+  "([], 4, 4)"
+ ],
+ [
+  "reload sanjay: edited values shown in Admin after reload",
+  true,
+  "[]"
+ ],
+ [
+  "read insights: all 0 sections shown, no blank field with page content",
+  true,
+  "sections 0/0 blanks []"
+ ],
+ [
+  "read insights: hero/SEO fields show DB values",
+  true,
+  "('Market Insights, Property Knowledge & Updates', 'Market Insights, Property Knowledge & Updates')"
+ ],
+ [
+  "save insights: every edit stored in the database",
+  true,
+  "[]"
+ ],
+ [
+  "save insights: no section or list item lost (0 items)",
+  true,
+  "([], 0, 0)"
+ ],
+ [
+  "reload insights: edited values shown in Admin after reload",
+  true,
+  "[]"
+ ],
+ [
+  "read contact: all 4 sections shown, no blank field with page content",
+  true,
+  "sections 4/4 blanks []"
+ ],
+ [
+  "read contact: hero/SEO fields show DB values",
+  true,
+  "('Contact Aventrix Realty', 'Contact Aventrix Realty')"
+ ],
+ [
+  "save contact: every edit stored in the database",
+  true,
+  "[]"
+ ],
+ [
+  "save contact: no section or list item lost (2 items)",
+  true,
+  "([], 2, 2)"
+ ],
+ [
+  "reload contact: edited values shown in Admin after reload",
+  true,
+  "[]"
+ ],
+ [
+  "read enquiry: all 1 sections shown, no blank field with page content",
+  true,
+  "sections 1/1 blanks []"
+ ],
+ [
+  "read enquiry: hero/SEO fields show DB values",
+  true,
+  "('Send Us Your<br> Property Enquiry', 'Send Us Your<br> Property Enquiry')"
+ ],
+ [
+  "save enquiry: every edit stored in the database",
+  true,
+  "[]"
+ ],
+ [
+  "save enquiry: no section or list item lost (0 items)",
+  true,
+  "([], 0, 0)"
+ ],
+ [
+  "reload enquiry: edited values shown in Admin after reload",
+  true,
+  "[]"
+ ],
+ [
+  "read privacy-policy: all 1 sections shown, no blank field with page content",
+  true,
+  "sections 1/1 blanks []"
+ ],
+ [
+  "read privacy-policy: hero/SEO fields show DB values",
+  true,
+  "('Privacy Policy', 'Privacy Policy')"
+ ],
+ [
+  "save privacy-policy: every edit stored in the database",
+  true,
+  "[]"
+ ],
+ [
+  "save privacy-policy: no section or list item lost (0 items)",
+  true,
+  "([], 0, 0)"
+ ],
+ [
+  "reload privacy-policy: edited values shown in Admin after reload",
+  true,
+  "[]"
+ ],
+ [
+  "read terms: all 1 sections shown, no blank field with page content",
+  true,
+  "sections 1/1 blanks []"
+ ],
+ [
+  "read terms: hero/SEO fields show DB values",
+  true,
+  "('Terms & Conditions', 'Terms & Conditions')"
+ ],
+ [
+  "save terms: every edit stored in the database",
+  true,
+  "[]"
+ ],
+ [
+  "save terms: no section or list item lost (0 items)",
+  true,
+  "([], 0, 0)"
+ ],
+ [
+  "reload terms: edited values shown in Admin after reload",
+  true,
+  "[]"
+ ],
+ [
+  "read sitemap: all 0 sections shown, no blank field with page content",
+  true,
+  "sections 0/0 blanks []"
+ ],
+ [
+  "read sitemap: hero/SEO fields show DB values",
+  true,
+  "('Sitemap', 'Sitemap')"
+ ],
+ [
+  "save sitemap: every edit stored in the database",
+  true,
+  "[]"
+ ],
+ [
+  "save sitemap: no section or list item lost (0 items)",
+  true,
+  "([], 0, 0)"
+ ],
+ [
+  "reload sitemap: edited values shown in Admin after reload",
+  true,
+  "[]"
+ ],
+ [
+  "public index.html: SEO title from Admin",
+  true,
+  "E2E SEO home"
+ ],
+ [
+  "public index.html: og:title follows SEO title",
+  true,
+  "E2E SEO home"
+ ],
+ [
+  "public index.html: every edited section shows its new text",
+  true,
+  "[]"
+ ],
+ [
+  "public about.html: SEO title from Admin",
+  true,
+  "E2E SEO about"
+ ],
+ [
+  "public about.html: og:title follows SEO title",
+  true,
+  "E2E SEO about"
+ ],
+ [
+  "public about.html: hero title from Admin",
+  true,
+  "E2E Hero 1"
+ ],
+ [
+  "public about.html: every edited section shows its new text",
+  true,
+  "[]"
+ ],
+ [
+  "public services.html: SEO title from Admin",
+  true,
+  "E2E SEO services"
+ ],
+ [
+  "public services.html: og:title follows SEO title",
+  true,
+  "E2E SEO services"
+ ],
+ [
+  "public services.html: hero title from Admin",
+  true,
+  "E2E Hero 2"
+ ],
+ [
+  "public services.html: every edited section shows its new text",
+  true,
+  "[]"
+ ],
+ [
+  "public properties.html: SEO title from Admin",
+  true,
+  "E2E SEO properties"
+ ],
+ [
+  "public properties.html: og:title follows SEO title",
+  true,
+  "E2E SEO properties"
+ ],
+ [
+  "public properties.html: hero title from Admin",
+  true,
+  "E2E Hero 3"
+ ],
+ [
+  "public properties.html: every edited section shows its new text",
+  true,
+  "[]"
+ ],
+ [
+  "public list-with-us.html: SEO title from Admin",
+  true,
+  "E2E SEO list-with-us"
+ ],
+ [
+  "public list-with-us.html: og:title follows SEO title",
+  true,
+  "E2E SEO list-with-us"
+ ],
+ [
+  "public list-with-us.html: hero title from Admin",
+  true,
+  "E2E Hero 4"
+ ],
+ [
+  "public list-with-us.html: every edited section shows its new text",
+  true,
+  "[]"
+ ],
+ [
+  "public free-valuation.html: SEO title from Admin",
+  true,
+  "E2E SEO free-valuation"
+ ],
+ [
+  "public free-valuation.html: og:title follows SEO title",
+  true,
+  "E2E SEO free-valuation"
+ ],
+ [
+  "public free-valuation.html: hero title from Admin",
+  true,
+  "E2E Hero 5"
+ ],
+ [
+  "public free-valuation.html: every edited section shows its new text",
+  true,
+  "[]"
+ ],
+ [
+  "public joint-venture.html: SEO title from Admin",
+  true,
+  "E2E SEO joint-venture"
+ ],
+ [
+  "public joint-venture.html: og:title follows SEO title",
+  true,
+  "E2E SEO joint-venture"
+ ],
+ [
+  "public joint-venture.html: hero title from Admin",
+  true,
+  "E2E Hero 6"
+ ],
+ [
+  "public joint-venture.html: every edited section shows its new text",
+  true,
+  "[]"
+ ],
+ [
+  "public nri-services.html: SEO title from Admin",
+  true,
+  "E2E SEO nri-services"
+ ],
+ [
+  "public nri-services.html: og:title follows SEO title",
+  true,
+  "E2E SEO nri-services"
+ ],
+ [
+  "public nri-services.html: hero title from Admin",
+  true,
+  "E2E Hero 7"
+ ],
+ [
+  "public nri-services.html: every edited section shows its new text",
+  true,
+  "[]"
+ ],
+ [
+  "public brokerage-fees.html: SEO title from Admin",
+  true,
+  "E2E SEO brokerage-fees"
+ ],
+ [
+  "public brokerage-fees.html: og:title follows SEO title",
+  true,
+  "E2E SEO brokerage-fees"
+ ],
+ [
+  "public brokerage-fees.html: hero title from Admin",
+  true,
+  "E2E Hero 8"
+ ],
+ [
+  "public brokerage-fees.html: every edited section shows its new text",
+  true,
+  "[]"
+ ],
+ [
+  "public our-realtors.html: SEO title from Admin",
+  true,
+  "E2E SEO our-realtors"
+ ],
+ [
+  "public our-realtors.html: og:title follows SEO title",
+  true,
+  "E2E SEO our-realtors"
+ ],
+ [
+  "public our-realtors.html: hero title from Admin",
+  true,
+  "E2E Hero 9"
+ ],
+ [
+  "public our-realtors.html: every edited section shows its new text",
+  true,
+  "[]"
+ ],
+ [
+  "public gnanasekaran.html: SEO title from Admin",
+  true,
+  "E2E SEO gnanasekaran"
+ ],
+ [
+  "public gnanasekaran.html: og:title follows SEO title",
+  true,
+  "E2E SEO gnanasekaran"
+ ],
+ [
+  "public gnanasekaran.html: every edited section shows its new text",
+  true,
+  "[]"
+ ],
+ [
+  "public sanjay.html: SEO title from Admin",
+  true,
+  "E2E SEO sanjay"
+ ],
+ [
+  "public sanjay.html: og:title follows SEO title",
+  true,
+  "E2E SEO sanjay"
+ ],
+ [
+  "public sanjay.html: every edited section shows its new text",
+  true,
+  "[]"
+ ],
+ [
+  "public insights.html: SEO title from Admin",
+  true,
+  "E2E SEO insights"
+ ],
+ [
+  "public insights.html: og:title follows SEO title",
+  true,
+  "E2E SEO insights"
+ ],
+ [
+  "public insights.html: hero title from Admin",
+  true,
+  "E2E Hero 12"
+ ],
+ [
+  "public insights.html: every edited section shows its new text",
+  true,
+  "[]"
+ ],
+ [
+  "public contact.html: SEO title from Admin",
+  true,
+  "E2E SEO contact"
+ ],
+ [
+  "public contact.html: og:title follows SEO title",
+  true,
+  "E2E SEO contact"
+ ],
+ [
+  "public contact.html: hero title from Admin",
+  true,
+  "E2E Hero 13"
+ ],
+ [
+  "public contact.html: every edited section shows its new text",
+  true,
+  "[]"
+ ],
+ [
+  "public enquiry.html: SEO title from Admin",
+  true,
+  "E2E SEO enquiry"
+ ],
+ [
+  "public enquiry.html: og:title follows SEO title",
+  true,
+  "E2E SEO enquiry"
+ ],
+ [
+  "public enquiry.html: hero title from Admin",
+  true,
+  "E2E Hero 14"
+ ],
+ [
+  "public enquiry.html: every edited section shows its new text",
+  true,
+  "[]"
+ ],
+ [
+  "public privacy-policy.html: SEO title from Admin",
+  true,
+  "E2E SEO privacy-policy"
+ ],
+ [
+  "public privacy-policy.html: og:title follows SEO title",
+  true,
+  "E2E SEO privacy-policy"
+ ],
+ [
+  "public privacy-policy.html: hero title from Admin",
+  true,
+  "E2E Hero 15"
+ ],
+ [
+  "public privacy-policy.html: every edited section shows its new text",
+  true,
+  "[]"
+ ],
+ [
+  "public terms.html: SEO title from Admin",
+  true,
+  "E2E SEO terms"
+ ],
+ [
+  "public terms.html: og:title follows SEO title",
+  true,
+  "E2E SEO terms"
+ ],
+ [
+  "public terms.html: hero title from Admin",
+  true,
+  "E2E Hero 16"
+ ],
+ [
+  "public terms.html: every edited section shows its new text",
+  true,
+  "[]"
+ ],
+ [
+  "public sitemap.html: SEO title from Admin",
+  true,
+  "E2E SEO sitemap"
+ ],
+ [
+  "public sitemap.html: og:title follows SEO title",
+  true,
+  "E2E SEO sitemap"
+ ],
+ [
+  "public sitemap.html: hero title from Admin",
+  true,
+  "E2E Hero 17"
+ ],
+ [
+  "public sitemap.html: every edited section shows its new text",
+  true,
+  "[]"
+ ],
+ [
+  "public about.html: about-legacy (Homepage row) shows the Admin edit",
+  true,
+  "('E2E-0-0', 'OUR STORY\\nE2E-0-0 Our Legacy\\n\\nWhere Legacy Meets The Next Generation\\n\\n1965\\nTP Builders Founded\\n\\nLong before Aventrix Rea')"
+ ],
+ [
+  "public index.html: leadership-intro (Homepage row) shows the Admin edit",
+  true,
+  "('E2E leader bio.', 'E2E-0-3 Meet Our Leadership\\n\\nLeading Aventrix Realty\\n\\n\u2014 MEET OUR FOUNDER\\nGnanasekaran P\\nFounder\\n\\nE2E leader bio. With ov')"
+ ],
+ [
+  "public about.html: leadership-intro (Homepage row) shows the Admin edit",
+  true,
+  "('E2E leader bio.', \"\u2014 MEET OUR FOUNDER\\nGnanasekaran P\\nFounder\\n\\nE2E leader bio. With over 15 years of experience in Chennai's real estate mar\")"
+ ],
+ [
+  "public: no JS errors on any page",
+  true,
+  "[]"
+ ],
+ [
+  "lists: add + move up + remove saved in the right order",
+  true,
+  "['How does Joint Venture work?', 'How does property valuation work?', 'Do you assist NRIs?', 'Do you help with legal verification?', 'E2E new question?', 'Can you help sell my property?']"
+ ],
+ [
+  "lists: public FAQ shows the same questions in the same order",
+  true,
+  "(['How does Joint Venture work?', 'How does property valuation work?', 'Do you assist NRIs?', 'Do you help with legal verification?', 'E2E new question?', 'Can you help sell my property?'], ['How does Joint Venture work?', 'How does property valuation work?', 'Do you assist NRIs?', 'Do you help with"
+ ],
+ [
+  "lists: FAQ accordion opens the new question after the CMS render",
+  true,
+  "<div class=\"faq-item open\" data-cms-item=\"\">\n                <button class=\"faq-question\" aria-expanded=\"true\">\n                    <span data-cms-f=\"question\">E2E new question?</span>\n               "
+ ],
+ [
+  "home hero: title/subtitle saved to site_settings",
+  true,
+  ""
+ ],
+ [
+  "home hero: public hero shows Admin title and button",
+  true,
+  "('E2E Hero Title', 'E2E Post\\nFREE')"
+ ],
+ [
+  "settings: saved, hero left untouched",
+  true,
+  ""
+ ],
+ [
+  "settings: footer tagline + Instagram (footer and menu) on about.html",
+  true,
+  "['https://www.instagram.com/e2e-test', 'E2E footer tagline', 'https://www.instagram.com/e2e-test']"
+ ],
+ [
+  "settings: footer tagline + Instagram (footer and menu) on properties.html",
+  true,
+  "['https://www.instagram.com/e2e-test', 'E2E footer tagline', 'https://www.instagram.com/e2e-test']"
+ ],
+ [
+  "settings: footer tagline + Instagram (footer and menu) on terms.html",
+  true,
+  "['https://www.instagram.com/e2e-test', 'E2E footer tagline', 'https://www.instagram.com/e2e-test']"
+ ],
+ [
+  "settings: RERA number on Sanjay's profile",
+  true,
+  ""
+ ],
+ [
+  "settings: header phone link has +91",
+  true,
+  "tel:+919176887770"
+ ],
+ [
+  "offices: footer head-office phones/email from Admin on services.html",
+  true,
+  "AVENTRIX REALTY \u2013 HEAD OFFICE\n\nNo.27, 1st Main Road, Newcolony, Chromepet, Chennai, Tamil Nadu\n\nPHONE:\n\n+91 90000 11111\n+91 90000 22222\n\nEMAIL:\n\ne2e-office@example.com"
+ ],
+ [
+  "offices: footer head-office phones/email from Admin on index.html",
+  true,
+  "AVENTRIX REALTY \u2013 HEAD OFFICE\n\nNo.27, 1st Main Road, Newcolony, Chromepet, Chennai, Tamil Nadu\n\nPHONE:\n\n+91 90000 11111\n+91 90000 22222\n\nEMAIL:\n\ne2e-office@example.com"
+ ],
+ [
+  "offices: homepage Quick Enquiry phones/email from Admin",
+  true,
+  "PHONE\n+91 90000 11111\n+91 90000 22222\nEMAIL\ne2e-office@example.com"
+ ],
+ [
+  "offices: footer head-office phones/email from Admin on contact.html",
+  true,
+  "AVENTRIX REALTY \u2013 HEAD OFFICE\n\nNo.27, 1st Main Road, Newcolony, Chromepet, Chennai, Tamil Nadu\n\nPHONE:\n\n+91 90000 11111\n+91 90000 22222\n\nEMAIL:\n\ne2e-office@example.com"
+ ],
+ [
+  "offices: share link isn't used as a map embed (address map instead)",
+  true,
+  "['https://www.google.com/maps?q=No.27%2C%201st%20Main%20Road%2C%20Newcolony%2C%20Chromepet%2C%20Chennai%2C%20Tamil%20Nadu&output=embed', 'https://www.google.com/maps?q=2nd%20Floor%2C%20Padmini%20Complex%2C%20No.%2085%2C%20Gandhi%20Nagar%2C%201st%20Main%20Road%2C%20Adyar%2C%20Chennai%20%E2%80%93%2060"
+ ],
+ [
+  "offices: Contact quick-contact phones from Admin",
+  true,
+  "E2E-13-3 Business Hours\nMonday \u2013 Saturday\n9:30 AM \u2013 7:00 PM\nSunday\nBy Appointment\nQuick Contact\n+91 90000 11111\n+91 90000 22222\ne2e-office@example.com"
+ ],
+ [
+  "realtors: founder page About/Experience/Expertise/Languages from Admin",
+  true,
+  "Gnanasekaran P\nFounder\n\nReal estate professional known for a practical, people-focused approach and a strong belief in creating meaningful value.\n\nAbout\n\nE2E about para one.\n\nE2E about para two.\n\nE2E-10-0 Legacy\n\nLong before Aventrix Realty was established, the location where the company's office st"
+ ],
+ [
+  "realtors: About paragraphs keep the page style",
+  true,
+  ""
+ ],
+ [
+  "legacy: sidebar opens Homepage editor at Our Legacy",
+  true,
+  ""
+ ],
+ [
+  "legacy: timeline edited as structured fields (no Quill, no raw layout HTML)",
+  true,
+  ""
+ ],
+ [
+  "admin: no JS errors",
+  true,
+  "[]"
+ ]
+]

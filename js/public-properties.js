@@ -652,18 +652,13 @@
             property = data;
         }
 
-        // Graceful fallback so old shared links never show a broken page.
+        // Unknown, unpublished or removed listing: say so plainly (and keep it
+        // out of search results) instead of silently showing a different
+        // property under this URL, which is what the old fallback did.
         if (!property) {
-            const { data: fallback } = await sb
-                .from("properties")
-                .select("*")
-                .eq("publish_status", "Published")
-                .order("created_at", { ascending: false })
-                .limit(1);
-            property = fallback && fallback[0];
+            renderPropertyNotFound();
+            return;
         }
-
-        if (!property) return; // no properties in the system yet
 
         titleEl.textContent = property.title;
 
@@ -766,6 +761,29 @@
 
         renderSimilarProperties(property);
         renderRecentlyViewed(property);
+    }
+
+    function renderPropertyNotFound() {
+        titleEl.textContent = "This property is no longer available";
+        const loc = document.getElementById("property-location");
+        if (loc) { loc.textContent = ""; loc.style.display = "none"; }
+        ["pdGallery", "pdSpecsSection", "pdFeaturesSection", "pdSimilarSection", "pdBadge", "property-price", "pdSaveBtn", "pdShortlistBtn"].forEach((id) => {
+            const el = document.getElementById(id);
+            if (el) el.style.display = "none";
+        });
+        const desc = document.getElementById("property-description");
+        if (desc) {
+            desc.textContent = "The listing you're looking for may have been sold, leased or removed. Please browse our current properties, or contact us and we'll help you find a similar one.";
+            const cta = document.createElement("p");
+            cta.style.marginTop = "18px";
+            cta.innerHTML = '<a href="properties.html" class="primary-btn">Browse available properties</a>';
+            desc.insertAdjacentElement("afterend", cta);
+        }
+        document.title = "Property not available | Aventrix Realty";
+        let robots = document.querySelector('meta[name="robots"]');
+        if (!robots) { robots = document.createElement("meta"); robots.setAttribute("name", "robots"); document.head.appendChild(robots); }
+        robots.setAttribute("content", "noindex, follow");
+        renderRecentlyViewed({ slug: "" });
     }
 
     // ---------------------------------------------------------
@@ -925,18 +943,25 @@
                 "addressCountry": "IN"
             };
         }
-        if (property.price_value) {
+        // Only a real total price becomes an Offer price. Per-unit rates
+        // ("₹7,300/Sq.Ft.", "per Acre", "per Ground") and rents ("/ Month")
+        // would otherwise be published as the property's price.
+        const priceText = String(property.price_display || "");
+        const isRate = /sq\.?\s*ft|\/\s*(sq|month|mo)|per\s|month|acre|ground|cent/i.test(priceText);
+        if (property.price_value && property.listing_type !== "lease" && !isRate) {
+            const st = String(property.status || "").toLowerCase();
             listing.offers = {
                 "@type": "Offer",
                 "price": property.price_value,
                 "priceCurrency": "INR",
-                "availability": "https://schema.org/InStock"
+                "availability": st === "sold" ? "https://schema.org/SoldOut"
+                    : (st === "available" || !st) ? "https://schema.org/InStock" : "https://schema.org/OutOfStock"
             };
         }
         if (property.bedrooms) listing.numberOfRooms = property.bedrooms;
 
         const breadcrumbTrail = [
-            { name: "Home", url: "https://aventrixrealty.com/index.html" },
+            { name: "Home", url: "https://aventrixrealty.com/" },
             { name: "Properties", url: "https://aventrixrealty.com/properties.html" }
         ];
         if (categoryLabel) {

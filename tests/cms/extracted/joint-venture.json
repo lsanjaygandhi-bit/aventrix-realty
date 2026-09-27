@@ -1,0 +1,804 @@
+{
+ "page_key": "joint-venture",
+ "hero": {
+  "hero_eyebrow": "JOINT VENTURE & DEVELOPMENT SOLUTIONS",
+  "hero_title": "Turn Your Land Into a Development Opportunity",
+  "hero_subtitle": "Explore Joint Venture and development opportunities with Aventrix Realty. We help landowners understand their objectives, identify suitable development opportunities and coordinate discussions with potential development partners.",
+  "hero_button_text": "Discuss Your Property",
+  "hero_button_link": "https://wa.me/919176887770"
+ },
+ "seo_title": "Joint Venture & Development Solutions in Chennai | Aventrix Realty",
+ "seo_description": "Joint Venture and development options for land in Chennai. Aventrix Realty helps landowners assess their objectives and coordinate with development partners.",
+ "seo_keywords": "",
+ "og_image_url": "https://aventrixrealty.com/images/chennai-marina.jpg",
+ "sections": [
+  {
+   "key": "what-is-jv",
+   "label": "What is a Joint Venture",
+   "eyebrow": "The Basics",
+   "heading": "What Is a Joint Venture?",
+   "html": "",
+   "image_url": "",
+   "fields": {
+    "lead": "A Joint Venture is a development arrangement in which a landowner contributes the property, or agreed development rights, and a development partner takes on agreed development responsibilities. The commercial benefits are then shared according to terms both parties agree to.",
+    "text": "It allows a landowner to take part in the development of their property without having to undertake the entire development process on their own. What each party contributes, and what each party receives, is set out in the Joint Venture agreement."
+   },
+   "lists": {
+    "flow": [
+     {
+      "title": "Landowner",
+      "note": "Owns the property"
+     },
+     {
+      "title": "Land / Agreed Development Rights",
+      "note": "Contributed to the project"
+     },
+     {
+      "title": "Joint Venture Agreement",
+      "note": "Sets out terms and responsibilities"
+     },
+     {
+      "title": "Development Partner",
+      "note": "Undertakes agreed responsibilities"
+     },
+     {
+      "title": "Project Development",
+      "note": "Planning, approvals and construction"
+     },
+     {
+      "title": "Agreed Entitlement / Benefit",
+      "note": "Delivered as per the agreement"
+     }
+    ]
+   },
+   "hooks": [
+    "eyebrow",
+    "heading"
+   ],
+   "display_order": 1
+  },
+  {
+   "key": "why-jv",
+   "label": "Why consider a Joint Venture",
+   "eyebrow": "Why Consider a Joint Venture?",
+   "heading": "Your Land Can Do More Than Simply Remain an Asset",
+   "html": "",
+   "image_url": "",
+   "fields": {
+    "lead": "Not every landowner wants an outright sale. Some would rather take part in what their land can become, through a development arrangement shaped around their own priorities.",
+    "note": "What is possible depends on the property, the project and the terms agreed. Returns and appreciation are not guaranteed.",
+    "list_label": "Depending on the arrangement, a Joint Venture may allow you to:"
+   },
+   "lists": {
+    "benefits": [
+     {
+      "text": "Retain developed property"
+     },
+     {
+      "text": "Receive an agreed share of developed units or area"
+     },
+     {
+      "text": "Partially monetise your entitlement"
+     },
+     {
+      "text": "Combine property entitlement with financial consideration"
+     },
+     {
+      "text": "Hold developed units as a long-term investment"
+     },
+     {
+      "text": "Work with a development partner instead of developing on your own"
+     },
+     {
+      "text": "Explore redevelopment of an existing property"
+     }
+    ]
+   },
+   "hooks": [
+    "eyebrow",
+    "heading"
+   ],
+   "display_order": 2
+  },
+  {
+   "key": "structures",
+   "label": "Your land, your structure (6 options)",
+   "eyebrow": "Flexible Structures",
+   "heading": "Your Land. Your Objective. Your Structure.",
+   "html": "",
+   "image_url": "",
+   "fields": {
+    "subhead": "There is no one-size-fits-all Joint Venture structure.",
+    "intro": "Every landowner starts with a different objective. Depending on the project structure, feasibility and mutually agreed terms, the arrangement can be shaped in different ways.",
+    "footnote": "Not every structure is available for every property. What is possible depends on feasibility and the terms agreed between the parties."
+   },
+   "lists": {
+    "options": [
+     {
+      "letter": "A",
+      "title": "Retain Developed Property",
+      "text": "Receive your entitlement as developed units or area and keep them, for your family's use or for the future."
+     },
+     {
+      "letter": "B",
+      "title": "Partial Monetisation",
+      "text": "Retain part of your entitlement and sell another part, where the project structure allows it."
+     },
+     {
+      "letter": "C",
+      "title": "Property + Financial Consideration",
+      "text": "A combination of developed property and a financial component, subject to the terms agreed with the development partner."
+     },
+     {
+      "letter": "D",
+      "title": "Long-Term Holding",
+      "text": "Hold developed units as a long-term asset, for your own use or for rental, depending on your plans."
+     },
+     {
+      "letter": "E",
+      "title": "Redevelopment",
+      "text": "For older buildings or under-used properties, explore whether redevelopment is feasible and what it could involve."
+     },
+     {
+      "letter": "F",
+      "title": "Custom Project Structure",
+      "text": "Where several owners, larger parcels or specific objectives are involved, the structure can be tailored to the project, subject to feasibility."
+     }
+    ]
+   },
+   "hooks": [
+    "eyebrow",
+    "heading"
+   ],
+   "display_order": 3
+  },
+  {
+   "key": "our-role",
+   "label": "What Aventrix Realty does (9 roles)",
+   "eyebrow": "Our Role",
+   "heading": "We Help Structure the Opportunity",
+   "html": "",
+   "image_url": "",
+   "fields": {
+    "intro": "Aventrix Realty works as an advisory and transaction coordination partner. We do not develop every project ourselves. Our role is to understand your property and your objective, and to coordinate the process with the right people.",
+    "disclaimer": "Aventrix Realty does not provide legal, tax or technical advice. Legal, technical, tax and statutory matters should be reviewed by qualified professionals."
+   },
+   "lists": {
+    "roles": [
+     {
+      "number": "01",
+      "title": "Property Understanding",
+      "text": "Location, extent, access and the current state of the property."
+     },
+     {
+      "number": "02",
+      "title": "Landowner Objective Assessment",
+      "text": "What you want from the property, and what matters most to you."
+     },
+     {
+      "number": "03",
+      "title": "Preliminary Development Opportunity Assessment",
+      "text": "An initial view of how the property could potentially be developed."
+     },
+     {
+      "number": "04",
+      "title": "Development Partner Identification",
+      "text": "Identifying development partners whose capability suits the property."
+     },
+     {
+      "number": "05",
+      "title": "Commercial Discussion Coordination",
+      "text": "Organising and following through on discussions between the parties."
+     },
+     {
+      "number": "06",
+      "title": "Negotiation Coordination",
+      "text": "Helping both sides work through the commercial terms."
+     },
+     {
+      "number": "07",
+      "title": "Due-Diligence Coordination",
+      "text": "Coordinating document collection and reviews with the relevant professionals."
+     },
+     {
+      "number": "08",
+      "title": "Documentation Coordination",
+      "text": "Coordinating with legal professionals as the agreement is prepared."
+     },
+     {
+      "number": "09",
+      "title": "Project / Marketing Coordination",
+      "text": "Where applicable, coordination support as the project moves forward."
+     }
+    ]
+   },
+   "hooks": [
+    "eyebrow",
+    "heading"
+   ],
+   "display_order": 4
+  },
+  {
+   "key": "development-partner",
+   "label": "What the development partner may bring",
+   "eyebrow": "Roles in a Joint Venture",
+   "heading": "What the Development Partner May Bring",
+   "html": "",
+   "image_url": "",
+   "fields": {
+    "intro": "The exact responsibilities of the development partner are defined by the project structure and final agreement.",
+    "owner_label": "The landowner typically contributes",
+    "partner_label": "Depending on the agreed structure, the development partner may bring"
+   },
+   "lists": {
+    "owner_contributes": [
+     {
+      "text": "The land or agreed development rights"
+     },
+     {
+      "text": "Ownership and title documents"
+     },
+     {
+      "text": "Consent of all relevant owners"
+     },
+     {
+      "text": "Cooperation as set out in the agreement"
+     }
+    ],
+    "partner_brings": [
+     {
+      "text": "Project planning"
+     },
+     {
+      "text": "Architectural coordination"
+     },
+     {
+      "text": "Approval coordination"
+     },
+     {
+      "text": "Project funding / financial arrangements"
+     },
+     {
+      "text": "Construction execution"
+     },
+     {
+      "text": "Contractor management"
+     },
+     {
+      "text": "Consultant coordination"
+     },
+     {
+      "text": "Project management"
+     },
+     {
+      "text": "Marketing and sales"
+     },
+     {
+      "text": "Project completion"
+     },
+     {
+      "text": "Handover"
+     }
+    ]
+   },
+   "hooks": [
+    "eyebrow",
+    "heading"
+   ],
+   "display_order": 5
+  },
+  {
+   "key": "commercial-structures",
+   "label": "Commercial structures (4) and factors",
+   "eyebrow": "Commercial Terms",
+   "heading": "Commercial Structures Are Project-Specific",
+   "html": "",
+   "image_url": "",
+   "fields": {
+    "intro": "How the benefits of a Joint Venture are shared is decided project by project. Common approaches include:",
+    "factors_label": "Commercial terms depend on factors such as",
+    "note": "There is no standard sharing ratio. Any ratio is arrived at through feasibility and negotiation, and is set out in the final agreement."
+   },
+   "lists": {
+    "structures": [
+     {
+      "letter": "A",
+      "title": "Development / Area / Unit Share",
+      "text": "The landowner receives an agreed share of the developed area or units, and the development partner retains the rest."
+     },
+     {
+      "letter": "B",
+      "title": "Revenue Share",
+      "text": "The parties share the sale proceeds of the project in agreed proportions, instead of dividing the built area."
+     },
+     {
+      "letter": "C",
+      "title": "Property + Financial Consideration",
+      "text": "The landowner receives developed property along with an agreed financial component."
+     },
+     {
+      "letter": "D",
+      "title": "Hybrid Structure",
+      "text": "A combination of the above, shaped around the property and the objectives of both parties."
+     }
+    ],
+    "factors": [
+     {
+      "text": "Land value"
+     },
+     {
+      "text": "Location"
+     },
+     {
+      "text": "Land extent"
+     },
+     {
+      "text": "Development potential"
+     },
+     {
+      "text": "Project size"
+     },
+     {
+      "text": "Construction cost"
+     },
+     {
+      "text": "Funding requirements"
+     },
+     {
+      "text": "Development risk"
+     },
+     {
+      "text": "Responsibilities of each party"
+     },
+     {
+      "text": "Market conditions"
+     },
+     {
+      "text": "Negotiation between the parties"
+     }
+    ]
+   },
+   "hooks": [
+    "eyebrow",
+    "heading"
+   ],
+   "display_order": 6
+  },
+  {
+   "key": "before-you-agree",
+   "label": "Before you agree (15 points)",
+   "eyebrow": "Before You Agree",
+   "heading": "Look Beyond the Share Percentage",
+   "html": "",
+   "image_url": "",
+   "fields": {
+    "quote": "The important question is not only “What percentage do I receive?” but “What exactly am I receiving, what responsibilities apply to each party, and under what conditions will the entitlement be delivered?”",
+    "list_label": "Points a landowner should understand clearly"
+   },
+   "lists": {
+    "points": [
+     {
+      "text": "What exactly you contribute"
+     },
+     {
+      "text": "What exactly you receive"
+     },
+     {
+      "text": "Unit or area entitlement"
+     },
+     {
+      "text": "Construction responsibilities"
+     },
+     {
+      "text": "Project funding"
+     },
+     {
+      "text": "Approval responsibilities"
+     },
+     {
+      "text": "Cost allocation"
+     },
+     {
+      "text": "Taxes and statutory charges"
+     },
+     {
+      "text": "Project timeline"
+     },
+     {
+      "text": "Sales responsibilities"
+     },
+     {
+      "text": "Delay provisions"
+     },
+     {
+      "text": "Default provisions"
+     },
+     {
+      "text": "Exit and termination provisions"
+     },
+     {
+      "text": "Handover terms"
+     },
+     {
+      "text": "Documentation"
+     }
+    ]
+   },
+   "hooks": [
+    "eyebrow",
+    "heading"
+   ],
+   "display_order": 7
+  },
+  {
+   "key": "your-objective",
+   "label": "We start with your objective (8)",
+   "eyebrow": "Your Priorities",
+   "heading": "We Start With Your Objective",
+   "html": "",
+   "image_url": "",
+   "fields": {
+    "intro": "Two landowners with similar plots can want very different things. Before discussing any structure, we take time to understand what you actually want from your property."
+   },
+   "lists": {
+    "objectives": [
+     {
+      "title": "Maximum Value Exploration",
+      "text": "Understanding what the land could achieve through development."
+     },
+     {
+      "title": "Property Retention",
+      "text": "Keeping developed property within the family."
+     },
+     {
+      "title": "Partial Sale / Monetisation",
+      "text": "Selling part of the entitlement and retaining the rest."
+     },
+     {
+      "title": "Long-Term Investment",
+      "text": "Holding developed units for the years ahead."
+     },
+     {
+      "title": "Liquidity Requirement",
+      "text": "Needing funds at a particular stage."
+     },
+     {
+      "title": "Hands-Off Development",
+      "text": "Taking part without managing the development yourself."
+     },
+     {
+      "title": "Family-Owned or Jointly Owned Property",
+      "text": "Bringing several owners to a shared decision."
+     },
+     {
+      "title": "Redevelopment",
+      "text": "Giving an older building or under-used plot a new purpose."
+     }
+    ]
+   },
+   "hooks": [
+    "eyebrow",
+    "heading"
+   ],
+   "display_order": 8
+  },
+  {
+   "key": "ownership-and-verification",
+   "label": "Multiple owners / Due diligence",
+   "eyebrow": "",
+   "heading": "",
+   "html": "",
+   "image_url": "",
+   "fields": {
+    "disclaimer": "Aventrix Realty facilitates coordination. Legal, title, technical, tax and statutory matters should be independently reviewed by appropriately qualified professionals."
+   },
+   "lists": {
+    "panels": [
+     {
+      "eyebrow": "Shared Ownership",
+      "title": "When a Property Has Multiple Owners",
+      "text": "Many properties are held by families or by several co-owners. In such cases, a few additional points need to be addressed as discussions move forward:",
+      "points": "<li>Ownership interests</li> <li>Consent of all relevant owners</li> <li>Distribution of entitlement</li> <li>Decision-making</li> <li>Authority to negotiate</li> <li>Documentation</li> <li>Succession or legal considerations, where applicable</li>"
+     },
+     {
+      "eyebrow": "Due Diligence",
+      "title": "Before Development Comes Verification",
+      "text": "Before any development commitment is made, the property needs to be reviewed carefully. This typically covers:",
+      "points": "<li>Title and ownership</li> <li>Encumbrances</li> <li>Survey and measurements</li> <li>Access</li> <li>Existing structures</li> <li>Existing occupants or tenants, where applicable</li> <li>Planning and development parameters</li> <li>Existing liabilities</li> <li>Other project-specific matters</li>"
+     }
+    ]
+   },
+   "hooks": [],
+   "display_order": 9
+  },
+  {
+   "key": "jv-process",
+   "label": "From land to development (9 steps)",
+   "eyebrow": "The Process",
+   "heading": "From Land to Development",
+   "html": "",
+   "image_url": "",
+   "fields": {
+    "intro": "A typical sequence. The time each stage takes depends on the property, the parties and the project."
+   },
+   "lists": {
+    "steps": [
+     {
+      "number": "01",
+      "title": "Submit Your Property"
+     },
+     {
+      "number": "02",
+      "title": "Understand Your Objective"
+     },
+     {
+      "number": "03",
+      "title": "Preliminary Property Assessment"
+     },
+     {
+      "number": "04",
+      "title": "Explore Development Options"
+     },
+     {
+      "number": "05",
+      "title": "Development Partner Discussion"
+     },
+     {
+      "number": "06",
+      "title": "Commercial Negotiation"
+     },
+     {
+      "number": "07",
+      "title": "Due Diligence"
+     },
+     {
+      "number": "08",
+      "title": "Documentation"
+     },
+     {
+      "number": "09",
+      "title": "Development"
+     }
+    ]
+   },
+   "hooks": [
+    "eyebrow",
+    "heading"
+   ],
+   "display_order": 10
+  },
+  {
+   "key": "alignment",
+   "label": "Alignment before agreement",
+   "eyebrow": "What Makes a Joint Venture Work",
+   "heading": "Alignment Before Agreement",
+   "html": "",
+   "image_url": "",
+   "fields": {
+    "intro": "A Joint Venture is more likely to move forward smoothly when these elements are aligned before the agreement is signed.",
+    "result": "A Structured Development Opportunity"
+   },
+   "lists": {
+    "elements": [
+     {
+      "label": "Landowner",
+      "value": "Expectations"
+     },
+     {
+      "label": "Development Partner",
+      "value": "Capability"
+     },
+     {
+      "label": "Property",
+      "value": "Development Potential"
+     },
+     {
+      "label": "Project Economics",
+      "value": "Commercial Viability"
+     },
+     {
+      "label": "Documentation",
+      "value": "Clear Responsibilities"
+     },
+     {
+      "label": "Execution",
+      "value": "Timelines & Accountability"
+     }
+    ]
+   },
+   "hooks": [
+    "eyebrow",
+    "heading"
+   ],
+   "display_order": 11
+  },
+  {
+   "key": "why-aventrix",
+   "label": "Why Aventrix Realty (6 principles)",
+   "eyebrow": "Our Approach",
+   "heading": "Why Aventrix Realty?",
+   "html": "",
+   "image_url": "",
+   "fields": {
+    "intro": "We focus on understanding the property and the landowner's objective before exploring suitable development opportunities."
+   },
+   "lists": {
+    "principles": [
+     {
+      "title": "Property First",
+      "text": "We start with the land itself: its location, extent, access and potential."
+     },
+     {
+      "title": "Objective Driven",
+      "text": "Your objective shapes which development routes are worth exploring."
+     },
+     {
+      "title": "Partner Focused",
+      "text": "We look for development partners whose capability suits the property."
+     },
+     {
+      "title": "Transparent Discussions",
+      "text": "Terms, responsibilities and open questions are discussed openly with you."
+     },
+     {
+      "title": "Professional Coordination",
+      "text": "We coordinate with legal, technical and other professionals where needed."
+     },
+     {
+      "title": "Project Specific",
+      "text": "Every property is assessed on its own merits, not through a fixed formula."
+     }
+    ]
+   },
+   "hooks": [
+    "eyebrow",
+    "heading"
+   ],
+   "display_order": 12
+  },
+  {
+   "key": "who-can-approach",
+   "label": "Who can approach us",
+   "eyebrow": "Who Can Approach Us",
+   "heading": "Have Land With Development Potential?",
+   "html": "",
+   "image_url": "",
+   "fields": {
+    "intro": "We welcome enquiries from owners of:",
+    "note": "Every property is subject to preliminary evaluation and project feasibility."
+   },
+   "lists": {
+    "owners": [
+     {
+      "text": "Residential development land"
+     },
+     {
+      "text": "Large land parcels"
+     },
+     {
+      "text": "Commercial development properties"
+     },
+     {
+      "text": "Redevelopment opportunities"
+     },
+     {
+      "text": "Strategic properties"
+     },
+     {
+      "text": "Family-owned properties"
+     },
+     {
+      "text": "Jointly owned properties"
+     },
+     {
+      "text": "Existing properties requiring redevelopment"
+     }
+    ]
+   },
+   "hooks": [
+    "eyebrow",
+    "heading"
+   ],
+   "display_order": 13
+  },
+  {
+   "key": "jv-faq",
+   "label": "Joint Venture FAQs (10)",
+   "eyebrow": "Questions",
+   "heading": "Joint Venture FAQs",
+   "html": "",
+   "image_url": "",
+   "lists": {
+    "faqs": [
+     {
+      "question": "Do I have to sell my land to enter a Joint Venture?",
+      "answer": "<p>Not necessarily. In a Joint Venture, the landowner contributes the land or agreed development rights in return for an agreed entitlement, instead of an outright sale. How ownership and rights are dealt with is set out in the agreement and should be reviewed with your legal adviser.</p>"
+     },
+     {
+      "question": "Can I retain some of the developed property?",
+      "answer": "<p>Depending on the project structure and the terms agreed, a landowner may receive their entitlement as developed units or area and retain them.</p>"
+     },
+     {
+      "question": "Can I sell part of my entitlement?",
+      "answer": "<p>In some structures, yes. Whether, and when, part of an entitlement can be sold depends on the agreement and the project.</p>"
+     },
+     {
+      "question": "Is the sharing ratio always 50:50?",
+      "answer": "<p>No. There is no standard ratio. The share depends on factors such as land value, location, development potential, construction cost, funding and the responsibilities of each party, and is settled through negotiation.</p>"
+     },
+     {
+      "question": "Does Aventrix Realty construct the project?",
+      "answer": "<p>No. Aventrix Realty works as an advisory and coordination partner. Construction and other development responsibilities are undertaken by the development partner, as defined in the final agreement.</p>"
+     },
+     {
+      "question": "How long does a Joint Venture take?",
+      "answer": "<p>It varies. Assessment, partner discussions, due diligence, documentation, approvals and construction each take time, and the overall timeline depends on the property and the project. Agreed timelines are recorded in the agreement.</p>"
+     },
+     {
+      "question": "Can multiple family members jointly approach Aventrix Realty?",
+      "answer": "<p>Yes. Co-owners can approach us together. Consent of all relevant owners, authority to negotiate and the distribution of entitlement will need to be addressed as discussions progress.</p>"
+     },
+     {
+      "question": "Will every property qualify for a Joint Venture?",
+      "answer": "<p>No. Every property is subject to preliminary evaluation and project feasibility. Title, access, extent, location and development parameters all affect whether a Joint Venture is practical.</p>"
+     },
+     {
+      "question": "Who handles legal documentation?",
+      "answer": "<p>Legal documentation should be prepared and reviewed by qualified legal professionals. Aventrix Realty coordinates between the parties and the professionals involved, but does not provide legal advice.</p>"
+     },
+     {
+      "question": "How is the final commercial structure decided?",
+      "answer": "<p>Through discussion and negotiation between the landowner and the development partner, based on feasibility, the landowner's objective and the responsibilities of each party. The agreed terms are then recorded in the final agreement.</p>"
+     }
+    ]
+   },
+   "hooks": [
+    "eyebrow",
+    "heading"
+   ],
+   "display_order": 14
+  },
+  {
+   "key": "final-cta",
+   "label": "Closing call to action",
+   "eyebrow": "",
+   "heading": "Your Land Has Potential. Let's Explore It.",
+   "html": "",
+   "image_url": "",
+   "fields": {
+    "text": "Whether you are looking to develop, retain, monetise or explore the possibilities of your property, Aventrix Realty can help you understand potential development routes and coordinate suitable opportunities."
+   },
+   "lists": {
+    "buttons": [
+     {
+      "text": "Discuss Your Property",
+      "link": "https://wa.me/919176887770"
+     },
+     {
+      "text": "Submit Your Land",
+      "link": "#joint-form"
+     }
+    ]
+   },
+   "hooks": [
+    "heading"
+   ],
+   "display_order": 15
+  },
+  {
+   "key": "form-intro",
+   "label": "Enquiry form (heading and intro)",
+   "eyebrow": "",
+   "heading": "Let's Discuss Your Property",
+   "html": "",
+   "image_url": "",
+   "fields": {
+    "text": "Tell us about your property and your development objective. Our team will review the information and contact you to discuss the next steps."
+   },
+   "hooks": [
+    "heading"
+   ],
+   "display_order": 16
+  }
+ ]
+}

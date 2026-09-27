@@ -14,6 +14,8 @@ if [ "$1" != "baseline" ]; then
   $P -f sql/migration-2026-09-25-01-p0-security-roles.sql >/dev/null 2>&1
   $P -f sql/migration-2026-09-25-02-p1-crm-buyer-analytics.sql >/dev/null 2>&1
   $P -f sql/migration-2026-09-25-03-content-drafts.sql >/dev/null 2>&1
+  $P -f sql/migration-2026-09-26-04-cms-content-sync.sql >/dev/null 2>&1
+  $P -f sql/migration-2026-09-26-06-property-coordinates.sql >/dev/null 2>&1
 fi
 [ "$2" != "noseed" ] && { $P -f tests/db/20-browser-seed.sql >/dev/null 2>&1 || true; }
 pkill -f "postgrest" || true; pkill -f "http.server 8080" || true; sleep 1

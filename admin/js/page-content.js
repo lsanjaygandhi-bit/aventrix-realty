@@ -1,47 +1,85 @@
 /*
- * AVENTRIX REALTY — WEBSITE CONTENT (PAGES) MODULE
+ * AVENTRIX REALTY — WEBSITE CONTENT (PAGES) MODULE  (v2, 2026-09-26)
  * -------------------------------------------
- * ONE generic editor, reused for every content page (Homepage,
- * Joint Venture, NRI Services, List With Us, Free Valuation,
- * Contact, Insights hero, Our Realtors intro).
+ * One editor for every public page. Data: the `pages` table, one row per
+ * page_key (see js/public-page-content.js for how it renders).
  *
- * Hybrid CMS approach (per approved plan):
- *   - Structured fields: hero eyebrow/title/subtitle/button/image,
- *     SEO title/description/keywords — separate inputs.
- *   - Body content: ONE rich-text block PER SECTION (Quill editor),
- *     not a separate field per sentence/paragraph.
+ *   Hero / banner      hero_eyebrow, hero_title, hero_subtitle,
+ *                      hero_button_text/link, hero_image_url
+ *                      (Homepage: title, subtitle, tagline, colour and video
+ *                       are the `site_settings` hero fields — edited here, in
+ *                       one place; the button and poster image are the page's
+ *                       own hero fields.)
+ *   Sections           each `sections[]` entry matches one block on the page
+ *                      (data-cms-section="key"):
+ *                        eyebrow · heading · rich text (html) · image_url
+ *                        fields  {name: value}           single values
+ *                        lists   {name: [{field: value}]} repeatable items
+ *                      Which of these a section has is decided by the page
+ *                      (`hooks`, recorded when the section was created), so
+ *                      the form only shows inputs that actually change the
+ *                      website.
+ *   SEO                seo_title, seo_description, seo_keywords, og_image_url
  *
- * Data lives in the `pages` table, one row per page_key.
- * See js/public-page-content.js for how this renders on the
- * public site.
+ * Rich text: Quill is used only when the stored HTML is plain formatted text
+ * (paragraphs, bold/italic, lists, links, sub-headings). HTML with page
+ * layout markup (classes, divs) is edited in an HTML box instead, because
+ * Quill silently strips that markup on save.
  */
 
 const PAGES_LIST = [
-    { key: "home", label: "Homepage" },
-    { key: "joint-venture", label: "Joint Venture" },
-    { key: "nri-services", label: "NRI Services" },
-    { key: "list-with-us", label: "List With Us" },
-    { key: "free-valuation", label: "Free Property Valuation" },
-    { key: "contact", label: "Contact" },
-    { key: "insights", label: "Insights (page intro)" },
-    { key: "our-realtors", label: "Our Realtors (page intro)" }
+    { key: "home", label: "Homepage", url: "index.html" },
+    { key: "about", label: "About Us", url: "about.html" },
+    { key: "services", label: "Services", url: "services.html" },
+    { key: "properties", label: "Properties (search page header)", url: "properties.html" },
+    { key: "list-with-us", label: "List With Us", url: "list-with-us.html" },
+    { key: "free-valuation", label: "Free Property Valuation", url: "free-valuation.html" },
+    { key: "joint-venture", label: "Joint Venture", url: "joint-venture.html" },
+    { key: "nri-services", label: "NRI Services", url: "nri-services.html" },
+    { key: "brokerage-fees", label: "Professional Fees", url: "brokerage-fees.html" },
+    { key: "our-realtors", label: "Our Realtors (page intro)", url: "our-realtors.html" },
+    { key: "gnanasekaran", label: "Founder profile — Gnanasekaran P", url: "gnanasekaran.html" },
+    { key: "sanjay", label: "Co-Founder profile — Sanjay Gandhi L", url: "sanjay.html" },
+    { key: "insights", label: "Insights (page intro)", url: "insights.html" },
+    { key: "contact", label: "Contact", url: "contact.html" },
+    { key: "enquiry", label: "Property Enquiry", url: "enquiry.html" },
+    { key: "privacy-policy", label: "Privacy Policy", url: "privacy-policy.html" },
+    { key: "terms", label: "Terms & Conditions", url: "terms.html" },
+    { key: "sitemap", label: "Sitemap (page intro)", url: "sitemap.html" }
 ];
+
+// Friendly labels for structured field names.
+const FIELD_LABELS = {
+    text: "Text", text2: "Second paragraph", title: "Title", subtitle: "Subtitle", label: "Label",
+    link: "Link (URL)", link_text: "Link text", button_text: "Button text", number: "Number",
+    icon: "Icon (Font Awesome classes)", image: "Image URL", photo: "Photo URL", name: "Name",
+    role: "Role / designation", bio: "Biography", rera: "RERA line", profile_link: "Profile page link",
+    question: "Question", answer: "Answer", year: "Year", closing: "Closing line", lead: "Lead paragraph",
+    note: "Note", intro: "Introduction", quote: "Quote", disclaimer: "Disclaimer", footnote: "Footnote",
+    subhead: "Sub-heading", letter: "Letter", value: "Value", result: "Result", day: "Day(s)", time: "Time",
+    hours_title: "Hours card title", contact_title: "Contact card title", list_label: "List heading",
+    points: "Points (list)", eyebrow: "Small label", factors_label: "Factors heading",
+    owner_label: "Landowner list heading", partner_label: "Partner list heading"
+};
 
 const PageContentModule = (function () {
     let currentPage = null;    // full row from `pages`
-    let currentPageKey = null; // key currently selected in the dropdown
-    let sectionEditors = {};   // sectionKey -> Quill instance
+    let currentPageKey = null;
+    let siteSettings = null;   // homepage hero lives in site_settings
+    let sectionState = [];     // working copy of sections (objects), same order as the form
+    let editors = {};          // "sectionIndex" -> Quill instance
     const els = {};
 
     function cacheEls() {
         [
             "pageContentSelect", "pageContentForm", "pageContentEmpty",
             "pageContentLoading", "pageContentError", "pageContentErrorMsg",
-            "pcRetryBtn", "pcCreatePageBtn",
+            "pcRetryBtn", "pcCreatePageBtn", "pcViewPageLink",
             "pcHeroEyebrow", "pcHeroTitle", "pcHeroSubtitle",
             "pcHeroButtonText", "pcHeroButtonLink", "pcHeroImageUrl", "pcHeroImagePreview",
-            "pcHeroHomeNotice",
-            "pcSectionsList", "pcSeoTitle", "pcSeoDescription", "pcSeoKeywords",
+            "pcHomeHero", "pcSsHeroTitle", "pcSsHeroSubtitle", "pcSsHeroTagline", "pcSsHeroTaglineColor", "pcSsHeroVideoUrl",
+            "pcHeroStdFields", "pcHeroImageLabel",
+            "pcSectionsList", "pcSeoTitle", "pcSeoDescription", "pcSeoKeywords", "pcOgImageUrl",
             "savePageContentBtn"
         ].forEach((id) => (els[id] = document.getElementById(id)));
     }
@@ -49,25 +87,17 @@ const PageContentModule = (function () {
     function populateSelect() {
         els.pageContentSelect.innerHTML =
             '<option value="">Choose a page to edit…</option>' +
-            PAGES_LIST.map((p) => `<option value="${p.key}">${p.label}</option>`).join("");
+            PAGES_LIST.map((p) => `<option value="${p.key}">${escapeHtml(p.label)}</option>`).join("");
     }
 
     async function load() {
         if (!els.pageContentSelect.options.length) populateSelect();
     }
 
-    // ---- View-state control -------------------------------------------
-    // Exactly one of these panels is visible at a time:
-    //   idle     -> nothing selected yet
-    //   loading  -> query in flight
-    //   error    -> query failed (real Supabase/network error)
-    //   notfound -> query succeeded but no row exists for this page yet
-    //   form     -> row loaded, editing form visible
     function setState(state, opts = {}) {
         els.pageContentEmpty.style.display = state === "idle" ? "block" : "none";
         els.pageContentLoading.style.display = state === "loading" ? "block" : "none";
         els.pageContentForm.style.display = state === "form" ? "block" : "none";
-
         if (state === "error" || state === "notfound") {
             els.pageContentError.style.display = "block";
             els.pageContentErrorMsg.textContent = opts.message || "";
@@ -77,32 +107,23 @@ const PageContentModule = (function () {
         }
     }
 
-    async function openPage(pageKey) {
+    async function openPage(pageKey, opts) {
+        opts = opts || {};
         currentPageKey = pageKey || null;
-
-        if (!pageKey) {
-            currentPage = null;
-            setState("idle");
-            return;
-        }
-
+        if (els.pageContentSelect.value !== (pageKey || "")) els.pageContentSelect.value = pageKey || "";
+        if (!pageKey) { currentPage = null; setState("idle"); return; }
         setState("loading");
 
         let data;
         try {
-            const { data: row, error } = await CrudEngine.sb
-                .from("pages")
-                .select("*")
-                .eq("page_key", pageKey)
-                .maybeSingle();
-
-            if (error) {
-                // Real database/network/RLS error — never silently swallow
-                // this and never create a row on top of it.
-                throw error;
+            const { data: row, error } = await CrudEngine.sb.from("pages").select("*").eq("page_key", pageKey).maybeSingle();
+            if (error) throw error;
+            data = row;
+            if (pageKey === "home") {
+                const { data: ss, error: e2 } = await CrudEngine.sb.from("site_settings").select("*").eq("id", 1).maybeSingle();
+                if (e2) throw e2;
+                siteSettings = ss || {};
             }
-
-            data = row; // null here means "no row yet", not an error
         } catch (err) {
             console.error("Failed to load page content for '" + pageKey + "':", err);
             setState("error", { message: "Unable to load page content: " + (err && err.message ? err.message : "Unknown error. See console for details.") });
@@ -110,7 +131,6 @@ const PageContentModule = (function () {
         }
 
         if (!data) {
-            // Query succeeded, the row genuinely doesn't exist yet.
             currentPage = null;
             const meta = PAGES_LIST.find((p) => p.key === pageKey);
             setState("notfound", { message: `"${meta ? meta.label : pageKey}" has no saved content yet. Click "Create Page Content" to start editing it.` });
@@ -126,6 +146,14 @@ const PageContentModule = (function () {
             return;
         }
         setState("form");
+
+        if (opts.focus) {
+            const block = document.querySelector(`.pc-section-block[data-section-key="${cssEscape(opts.focus)}"]`);
+            if (block) {
+                block.classList.add("pc-section-focus");
+                block.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
+        }
     }
 
     async function createCurrentPage() {
@@ -134,11 +162,9 @@ const PageContentModule = (function () {
         const btn = els.pcCreatePageBtn;
         btn.disabled = true;
         try {
-            const data = await CrudEngine.insert("pages", { page_key: currentPageKey, page_label: meta ? meta.label : currentPageKey, sections: [] });
-            currentPage = data;
-            renderForm(data);
-            setState("form");
+            await CrudEngine.insert("pages", { page_key: currentPageKey, page_label: meta ? meta.label : currentPageKey, sections: [] });
             showToast("Page content created — edit and Save & Publish to go live");
+            await openPage(currentPageKey);
         } catch (err) {
             console.error("Failed to create page content row:", err);
             setState("error", { message: "Unable to create page content: " + (err && err.message ? err.message : "Unknown error. See console for details.") });
@@ -147,13 +173,28 @@ const PageContentModule = (function () {
         }
     }
 
+    // ------------------------------------------------------------------
+    // Form rendering
+    // ------------------------------------------------------------------
     function renderForm(p) {
-        // Homepage's hero is actually driven by `site_settings`, not by
-        // this page's hero_* fields (index.html has no data-page-hero-*
-        // hooks — see js/public-site-settings.js). Surface that plainly
-        // instead of letting an edit here silently do nothing on the
-        // live site.
-        els.pcHeroHomeNotice.style.display = p.page_key === "home" ? "block" : "none";
+        const meta = PAGES_LIST.find((x) => x.key === p.page_key);
+        if (els.pcViewPageLink) {
+            els.pcViewPageLink.href = meta ? "../" + meta.url : "../index.html";
+            els.pcViewPageLink.style.display = meta ? "" : "none";
+        }
+
+        const isHome = p.page_key === "home";
+        els.pcHomeHero.style.display = isHome ? "block" : "none";
+        els.pcHeroStdFields.style.display = isHome ? "none" : "";
+        els.pcHeroImageLabel.textContent = isHome ? "Hero video poster image (shown while the video loads)" : "Hero Image URL";
+        if (isHome) {
+            const ss = siteSettings || {};
+            els.pcSsHeroTitle.value = ss.hero_title || "";
+            els.pcSsHeroSubtitle.value = ss.hero_subtitle || "";
+            els.pcSsHeroTagline.value = ss.hero_tagline || "";
+            els.pcSsHeroTaglineColor.value = ss.hero_tagline_color || "#D4AF37";
+            els.pcSsHeroVideoUrl.value = ss.hero_video_url || "";
+        }
 
         els.pcHeroEyebrow.value = p.hero_eyebrow || "";
         els.pcHeroTitle.value = p.hero_title || "";
@@ -166,122 +207,210 @@ const PageContentModule = (function () {
         els.pcSeoTitle.value = p.seo_title || "";
         els.pcSeoDescription.value = p.seo_description || "";
         els.pcSeoKeywords.value = p.seo_keywords || "";
+        if (els.pcOgImageUrl) els.pcOgImageUrl.value = p.og_image_url || "";
 
-        renderSections(p.sections || []);
+        sectionState = JSON.parse(JSON.stringify(p.sections || [])).sort((a, b) => (a.display_order || 0) - (b.display_order || 0));
+        renderSections();
     }
 
     function renderImagePreview(el, url) {
         if (!el) return;
-        el.innerHTML = url ? `<img src="${escapeHtml(url)}" alt="">` : "";
+        el.innerHTML = url ? `<img src="${escapeHtml(resolveUrl(url))}" alt="">` : "";
+    }
+
+    // Site-relative paths ("images/x.jpg") are relative to the website root,
+    // not to /admin/, so preview them from there.
+    function resolveUrl(url) {
+        const u = String(url || "");
+        return /^(https?:|data:|\/)/i.test(u) ? u : "../" + u;
     }
 
     function escapeHtml(str) {
-        return String(str || "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+        return String(str == null ? "" : str).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+    }
+    function cssEscape(str) { return String(str).replace(/["\\]/g, "\\$&"); }
+
+    function labelFor(name) {
+        return FIELD_LABELS[name] || name.replace(/_/g, " ").replace(/^\w/, (c) => c.toUpperCase());
     }
 
-    function renderSections(sections) {
-        sectionEditors = {};
-        const sorted = [...sections].sort((a, b) => (a.display_order || 0) - (b.display_order || 0));
+    // Which inputs a section shows. Sections created before hooks were
+    // recorded show everything (safe default).
+    function hookSet(s) {
+        if (Array.isArray(s.hooks)) return new Set(s.hooks);
+        return new Set(["eyebrow", "heading", "html", "image_url"]);
+    }
 
-        if (!sorted.length) {
-            els.pcSectionsList.innerHTML = `<p class="helper-text">No content sections on this page yet. Click "Add Section" to create one.</p>`;
+    // Plain formatted text → safe for Quill; anything with classes, styles,
+    // divs or other layout markup → HTML box (Quill would strip it).
+    function isQuillSafe(html) {
+        if (!html) return true;
+        const tpl = document.createElement("template");
+        tpl.innerHTML = html;
+        const allowed = new Set(["P", "BR", "STRONG", "B", "EM", "I", "U", "A", "UL", "OL", "LI", "H2", "H3"]);
+        return Array.from(tpl.content.querySelectorAll("*")).every((el) => {
+            if (!allowed.has(el.tagName)) return false;
+            return Array.from(el.attributes).every((a) => el.tagName === "A" && ["href", "target", "rel"].includes(a.name));
+        });
+    }
+
+    function fieldInput(value, attrs, name) {
+        const v = value == null ? "" : String(value);
+        const long = v.length > 90 || /<[a-z]/i.test(v) || ["text", "bio", "answer", "text2", "lead", "intro", "note", "quote", "disclaimer", "footnote", "closing", "points"].includes(name);
+        if (long) {
+            const rows = Math.min(12, Math.max(2, Math.ceil(v.length / 90) + (/<[a-z]/i.test(v) ? 1 : 0)));
+            return `<textarea ${attrs} rows="${rows}">${escapeHtml(v)}</textarea>`;
+        }
+        return `<input type="text" ${attrs} value="${escapeHtml(v)}">`;
+    }
+
+    function renderSections() {
+        editors = {};
+        if (!sectionState.length) {
+            els.pcSectionsList.innerHTML = `<p class="helper-text">This page has no editable content sections.</p>`;
             return;
         }
 
-        els.pcSectionsList.innerHTML = sorted.map((s, i) => `
-            <div class="admin-card pc-section-block" data-section-key="${escapeHtml(s.key)}" style="margin-bottom:14px;">
-                <div class="admin-form-grid">
-                    <div class="admin-field">
-                        <label>Section Key (internal)</label>
-                        <input type="text" class="pc-s-key" value="${escapeHtml(s.key)}" placeholder="e.g. about-legacy">
-                    </div>
-                    <div class="admin-field">
-                        <label>Eyebrow (small label above heading)</label>
-                        <input type="text" class="pc-s-eyebrow" value="${escapeHtml(s.eyebrow)}">
-                    </div>
-                    <div class="admin-field full">
-                        <label>Section Heading</label>
-                        <input type="text" class="pc-s-heading" value="${escapeHtml(s.heading)}">
-                    </div>
-                    <div class="admin-field">
-                        <label>Image URL (optional)</label>
-                        <input type="text" class="pc-s-image" value="${escapeHtml(s.image_url)}">
-                    </div>
-                    <div class="admin-field">
-                        <label>Display Order</label>
-                        <input type="number" class="pc-s-order" value="${s.display_order ?? i}">
-                    </div>
-                    <div class="admin-field full">
-                        <label>Content</label>
-                        <div class="pc-quill-editor" id="quill-${escapeHtml(s.key)}"></div>
-                        <p class="helper-text pc-quill-missing" id="quill-missing-${escapeHtml(s.key)}" style="display:none; color:var(--admin-danger);">
-                            Rich text editor failed to load (Quill is missing). Your existing content is safe, but reformatting is unavailable right now — refresh the page and try again.
-                        </p>
-                    </div>
-                </div>
-                <div style="display:flex; justify-content:flex-end; margin-top:10px;">
-                    <button type="button" class="admin-btn secondary danger pc-remove-section"><i class="fas fa-trash"></i> Remove Section</button>
-                </div>
-            </div>
-        `).join("");
-
-        sorted.forEach((s) => {
-            const editorEl = document.getElementById(`quill-${s.key}`);
-            if (!editorEl) return;
-
-            if (typeof Quill === "undefined") {
-                // Don't let a missing Quill library silently drop content
-                // or break the rest of the editor — surface it clearly and
-                // keep the raw HTML around so Save still preserves it.
-                console.error("Quill library is not loaded; section '" + s.key + "' will not have a rich text editor.");
-                const missingMsg = document.getElementById(`quill-missing-${s.key}`);
-                if (missingMsg) missingMsg.style.display = "block";
-                editorEl.dataset.rawHtml = s.html || "";
-                editorEl.textContent = "(Rich text editor unavailable — raw content preserved.)";
-                return;
+        els.pcSectionsList.innerHTML = sectionState.map((s, si) => {
+            const hooks = hookSet(s);
+            const title = s.label || s.key;
+            const parts = [];
+            if (hooks.has("eyebrow")) parts.push(`<div class="admin-field"><label>Small label (eyebrow)</label><input type="text" data-s="${si}" data-k="eyebrow" value="${escapeHtml(s.eyebrow)}"></div>`);
+            if (hooks.has("heading")) parts.push(`<div class="admin-field full"><label>Heading</label><input type="text" data-s="${si}" data-k="heading" value="${escapeHtml(s.heading)}"></div>`);
+            if (hooks.has("image_url")) parts.push(`<div class="admin-field full"><label>Image URL</label><input type="text" data-s="${si}" data-k="image_url" value="${escapeHtml(s.image_url)}"></div>`);
+            if (hooks.has("html")) {
+                const quill = isQuillSafe(s.html) && typeof Quill !== "undefined";
+                parts.push(`<div class="admin-field full"><label>Text</label>${quill
+                    ? `<div class="pc-quill-editor" id="pc-quill-${si}"></div>`
+                    : `<textarea class="pc-html-box" data-s="${si}" data-k="html" rows="${Math.min(18, Math.max(4, Math.ceil(String(s.html || "").length / 100)))}">${escapeHtml(s.html)}</textarea>
+                       <p class="helper-text">${typeof Quill === "undefined" ? "The rich text editor did not load — editing as HTML so nothing is lost." : "This text contains page layout markup, so it is edited as HTML to keep the layout intact."}</p>`}</div>`);
             }
+            const fields = s.fields || {};
+            Object.keys(fields).forEach((name) => {
+                parts.push(`<div class="admin-field ${/text|bio|answer|lead|intro|note|quote|disclaimer|closing|points/.test(name) ? "full" : ""}"><label>${escapeHtml(labelFor(name))}</label>${fieldInput(fields[name], `data-s="${si}" data-f="${escapeHtml(name)}"`, name)}</div>`);
+            });
 
-            const quill = new Quill(editorEl, {
+            const lists = s.lists || {};
+            const listHtml = Object.keys(lists).map((ln) => renderList(si, ln, lists[ln])).join("");
+
+            const shownOn = s.key === "about-legacy" ? `<p class="helper-text">Shown on the <strong>About Us</strong> page.</p>`
+                : s.key === "leadership-intro" ? `<p class="helper-text">The people below are shown on the Homepage <em>and</em> the About Us page.</p>` : "";
+
+            return `
+            <div class="admin-card pc-section-block" data-section-key="${escapeHtml(s.key)}" data-si="${si}">
+                <div class="pc-section-head">
+                    <h3>${escapeHtml(title)}</h3>
+                    <span class="pc-section-key">${escapeHtml(s.key)}</span>
+                </div>
+                ${shownOn}
+                <div class="admin-form-grid">${parts.join("")}</div>
+                ${listHtml}
+            </div>`;
+        }).join("");
+
+        // Quill instances for plain rich-text sections
+        sectionState.forEach((s, si) => {
+            const el = document.getElementById(`pc-quill-${si}`);
+            if (!el) return;
+            const quill = new Quill(el, {
                 theme: "snow",
                 modules: { toolbar: [["bold", "italic"], [{ header: [2, 3, false] }], ["link"], [{ list: "ordered" }, { list: "bullet" }], ["clean"]] }
             });
-            quill.root.innerHTML = s.html || "";
-            sectionEditors[s.key] = quill;
-        });
-
-        document.querySelectorAll(".pc-remove-section").forEach((btn) => {
-            btn.addEventListener("click", (e) => {
-                if (!confirm("Remove this section? This can't be undone until you save.")) return;
-                e.target.closest(".pc-section-block").remove();
-            });
+            quill.clipboard.dangerouslyPasteHTML(s.html || "");
+            editors[si] = quill;
         });
     }
 
-    function addSection() {
-        const key = prompt("Section key (internal identifier, e.g. 'intro' or 'why-choose-us'):");
-        if (!key) return;
-        const existing = collectSectionsFromDom();
-        existing.push({ key, eyebrow: "", heading: "", html: "", image_url: "", display_order: existing.length });
-        renderSections(existing);
+    function renderList(si, name, items) {
+        items = Array.isArray(items) ? items : [];
+        const keys = [];
+        items.forEach((it) => Object.keys(it || {}).forEach((k) => { if (!keys.includes(k)) keys.push(k); }));
+        const rows = items.map((it, ii) => `
+            <div class="pc-list-item" data-s="${si}" data-l="${escapeHtml(name)}" data-i="${ii}">
+                <div class="pc-list-item-head">
+                    <strong>${ii + 1}</strong>
+                    <span>${escapeHtml(stripTags(it[keys[0]] || "")).slice(0, 70)}</span>
+                    <span class="pc-list-actions">
+                        <button type="button" class="admin-btn secondary pc-item-up" title="Move up" ${ii === 0 ? "disabled" : ""}><i class="fas fa-arrow-up"></i></button>
+                        <button type="button" class="admin-btn secondary pc-item-down" title="Move down" ${ii === items.length - 1 ? "disabled" : ""}><i class="fas fa-arrow-down"></i></button>
+                        <button type="button" class="admin-btn secondary danger pc-item-remove" title="Remove" ${items.length <= 1 ? "disabled" : ""}><i class="fas fa-trash"></i></button>
+                    </span>
+                </div>
+                <div class="admin-form-grid">
+                    ${keys.map((k) => `<div class="admin-field ${/text|bio|answer|points|note/.test(k) ? "full" : ""}"><label>${escapeHtml(labelFor(k))}</label>${fieldInput(it[k], `data-s="${si}" data-l="${escapeHtml(name)}" data-i="${ii}" data-if="${escapeHtml(k)}"`, k)}</div>`).join("")}
+                </div>
+            </div>`).join("");
+        return `
+            <div class="pc-list" data-s="${si}" data-l="${escapeHtml(name)}">
+                <div class="pc-list-head">
+                    <h4>${escapeHtml(labelFor(name))} <span class="helper-text" style="display:inline;">(${items.length})</span></h4>
+                    <button type="button" class="admin-btn secondary pc-item-add" style="width:auto;"><i class="fas fa-plus"></i> Add</button>
+                </div>
+                ${rows}
+            </div>`;
     }
 
-    function collectSectionsFromDom() {
-        return Array.from(document.querySelectorAll(".pc-section-block")).map((block) => {
-            const key = block.querySelector(".pc-s-key").value.trim();
-            const editorEl = block.querySelector(".pc-quill-editor");
-            return {
-                key,
-                eyebrow: block.querySelector(".pc-s-eyebrow").value.trim(),
-                heading: block.querySelector(".pc-s-heading").value.trim(),
-                image_url: block.querySelector(".pc-s-image").value.trim(),
-                display_order: parseInt(block.querySelector(".pc-s-order").value, 10) || 0,
-                // Prefer the live Quill instance; fall back to the raw HTML
-                // we preserved if Quill failed to load for this section.
-                html: sectionEditors[key] ? sectionEditors[key].root.innerHTML : (editorEl && editorEl.dataset.rawHtml) || ""
-            };
+    function stripTags(v) {
+        const d = document.createElement("div");
+        d.innerHTML = String(v);
+        return d.textContent || "";
+    }
+
+    // Copy everything typed in the form back into sectionState.
+    function collectFromDom() {
+        document.querySelectorAll("#pcSectionsList [data-s]").forEach((el) => {
+            if (!("value" in el) || el.tagName === "DIV") return;
+            const s = sectionState[Number(el.dataset.s)];
+            if (!s) return;
+            const v = el.value.trim();
+            if (el.dataset.k) s[el.dataset.k] = v;
+            else if (el.dataset.f) { s.fields = s.fields || {}; s.fields[el.dataset.f] = v; }
+            else if (el.dataset.if) {
+                const list = s.lists[el.dataset.l];
+                const item = list && list[Number(el.dataset.i)];
+                if (item) item[el.dataset.if] = v;
+            }
+        });
+        Object.keys(editors).forEach((si) => {
+            const q = editors[si];
+            const html = q.root.innerHTML;
+            sectionState[Number(si)].html = (html === "<p><br></p>") ? "" : html;
         });
     }
 
+    function onListClick(e) {
+        const btn = e.target.closest("button");
+        if (!btn) return;
+        const listEl = btn.closest(".pc-list");
+        if (!listEl) return;
+        collectFromDom();
+        const s = sectionState[Number(listEl.dataset.s)];
+        const list = s.lists[listEl.dataset.l];
+        const itemEl = btn.closest(".pc-list-item");
+        const i = itemEl ? Number(itemEl.dataset.i) : -1;
+        if (btn.classList.contains("pc-item-add")) {
+            const last = list[list.length - 1] || {};
+            const blank = {};
+            // new item: same fields as the last one; keeps its icon so it matches the design
+            Object.keys(last).forEach((k) => (blank[k] = k === "icon" ? last[k] : ""));
+            list.push(blank);
+        } else if (btn.classList.contains("pc-item-remove")) {
+            if (list.length <= 1) return;
+            if (!confirm("Remove this item? It is only removed from the website when you click Save & Publish.")) return;
+            list.splice(i, 1);
+        } else if (btn.classList.contains("pc-item-up") && i > 0) {
+            [list[i - 1], list[i]] = [list[i], list[i - 1]];
+        } else if (btn.classList.contains("pc-item-down") && i < list.length - 1) {
+            [list[i + 1], list[i]] = [list[i], list[i + 1]];
+        } else return;
+        const y = window.scrollY;
+        renderSections();
+        window.scrollTo(0, y);
+    }
+
+    // ------------------------------------------------------------------
+    // Save
+    // ------------------------------------------------------------------
     async function save() {
         if (!currentPage) return;
         const btn = els.savePageContentBtn;
@@ -289,6 +418,7 @@ const PageContentModule = (function () {
         btn.textContent = "Saving...";
 
         try {
+            collectFromDom();
             const record = {
                 hero_eyebrow: els.pcHeroEyebrow.value.trim(),
                 hero_title: els.pcHeroTitle.value.trim(),
@@ -299,8 +429,22 @@ const PageContentModule = (function () {
                 seo_title: els.pcSeoTitle.value.trim(),
                 seo_description: els.pcSeoDescription.value.trim(),
                 seo_keywords: els.pcSeoKeywords.value.trim(),
-                sections: collectSectionsFromDom()
+                sections: sectionState
             };
+            if (els.pcOgImageUrl) record.og_image_url = els.pcOgImageUrl.value.trim();
+
+            if (currentPage.page_key === "home") {
+                // Homepage hero text/video: the site_settings row (single source).
+                const { error } = await CrudEngine.sb.from("site_settings").update({
+                    hero_title: els.pcSsHeroTitle.value.trim(),
+                    hero_subtitle: els.pcSsHeroSubtitle.value.trim(),
+                    hero_tagline: els.pcSsHeroTagline.value.trim(),
+                    hero_tagline_color: els.pcSsHeroTaglineColor.value.trim(),
+                    hero_video_url: els.pcSsHeroVideoUrl.value.trim()
+                }).eq("id", 1);
+                if (error) throw error;
+            }
+
             await CrudEngine.update("pages", currentPage.id, record);
             showToast("Page content saved — live on the website");
             await openPage(currentPage.page_key);
@@ -327,12 +471,13 @@ const PageContentModule = (function () {
 
     function bindEvents() {
         els.pageContentSelect.addEventListener("change", (e) => openPage(e.target.value));
-        document.getElementById("pcAddSectionBtn").addEventListener("click", addSection);
         els.savePageContentBtn.addEventListener("click", save);
         els.pcRetryBtn.addEventListener("click", () => openPage(currentPageKey));
         els.pcCreatePageBtn.addEventListener("click", createCurrentPage);
+        els.pcSectionsList.addEventListener("click", onListClick);
         const heroImageInput = document.getElementById("pcHeroImageUpload");
         if (heroImageInput) heroImageInput.addEventListener("change", (e) => uploadHeroImage(e.target.files[0]));
+        els.pcHeroImageUrl.addEventListener("change", () => renderImagePreview(els.pcHeroImagePreview, els.pcHeroImageUrl.value.trim()));
     }
 
     document.addEventListener("DOMContentLoaded", () => {
@@ -340,7 +485,7 @@ const PageContentModule = (function () {
         bindEvents();
     });
 
-    return { load, openPage };
+    return { load, openPage, isQuillSafe };
 })();
 
 window.PageContentModule = PageContentModule;

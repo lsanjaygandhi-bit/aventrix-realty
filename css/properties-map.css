@@ -1,0 +1,158 @@
+/* =====================================================================
+   AVENTRIX REALTY — PROPERTIES: LIST / MAP VIEW (properties.html only)
+   Additive. Uses the site's existing colours (#0F3B2E green, #D4AF37
+   gold), Montserrat, the pill toggle / card look and .view-details-btn.
+   List View markup and card styles are untouched.
+   ===================================================================== */
+
+/* [hidden] must win over component display rules */
+#sfResultsGrid[hidden], #sfMapView[hidden], #futurePropertiesGrid[hidden], #hpMapView[hidden], .sf-map-wrap[hidden], .sf-map-note[hidden],
+.sf-map-fallback[hidden], .sf-map-preview[hidden], .sf-map-area-btn[hidden], .sf-map-loading[hidden]{ display:none !important; }
+
+/* ---------- List | Map toggle ---------- */
+.sf-view-toggle{
+    display:flex; width:max-content; max-width:100%;
+    margin:0 auto 16px 0;
+    border:1.5px solid #0F3B2E; border-radius:30px; overflow:hidden; background:#fff;
+}
+.sf-results-section .sf-view-toggle{ margin-left:max(0px, calc((100% - 1200px) / 2)); }
+.sf-view-toggle button{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'Montserrat',sans-serif; font-size:13px; font-weight:600;
+    color:#0F3B2E; background:transparent; border:0;
+    min-height:40px; padding:0 18px; cursor:pointer;
+}
+.sf-view-toggle button + button{ border-left:1.5px solid #0F3B2E; }
+.sf-view-toggle button.is-active{ background:#0F3B2E; color:#fff; }
+.sf-view-toggle button:focus-visible{ outline:2px solid #D4AF37; outline-offset:-3px; }
+
+/* ---------- Map view ---------- */
+.sf-map-view{ max-width:1200px; margin:0 auto 24px; }
+.sf-map-note{
+    font-size:13.5px; line-height:1.55; color:#4b5563;
+    background:#f8f9fb; border:1px solid rgba(17,24,39,.08); border-radius:10px;
+    padding:10px 14px; margin:0 0 12px;
+}
+.sf-map-fallback{
+    text-align:center; background:#f8f9fb; border:1px dashed rgba(15,59,46,.35); border-radius:12px;
+    padding:36px 20px; color:#374151;
+}
+.sf-map-fallback i{ font-size:28px; color:#0F3B2E; margin-bottom:10px; display:block; }
+.sf-map-fallback p{ margin:0; font-size:15px; line-height:1.6; }
+
+.sf-map-wrap{
+    position:relative;
+    height:min(72vh, 640px); min-height:420px;
+    border-radius:12px; overflow:hidden;
+    border:1px solid rgba(17,24,39,.08);
+    background:#e9ecef;
+}
+.sf-map-canvas{ position:absolute; inset:0; }
+
+.sf-map-loading{
+    position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+    display:inline-flex; align-items:center; gap:10px;
+    background:#fff; border-radius:30px; padding:10px 18px;
+    font-size:13px; font-weight:600; color:#0F3B2E; box-shadow:0 4px 14px rgba(17,24,39,.15);
+}
+.sf-map-loading span{
+    width:14px; height:14px; border-radius:50%;
+    border:2px solid rgba(15,59,46,.25); border-top-color:#0F3B2E; animation:sfMapSpin .8s linear infinite;
+}
+@keyframes sfMapSpin{ to{ transform:rotate(360deg); } }
+
+.sf-map-area-btn{
+    position:absolute; top:12px; left:50%; transform:translateX(-50%); z-index:3;
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'Montserrat',sans-serif; font-size:13px; font-weight:600;
+    background:#fff; color:#0F3B2E; border:1.5px solid #0F3B2E; border-radius:30px;
+    min-height:40px; padding:0 16px; cursor:pointer; box-shadow:0 4px 14px rgba(17,24,39,.18);
+    white-space:nowrap;
+}
+.sf-map-area-btn:hover{ background:#0F3B2E; color:#fff; }
+
+/* Advanced-marker content (used only when a Map ID is configured) */
+.sf-map-pin{ width:30px; height:40px; cursor:pointer; }
+.sf-map-pin svg{ display:block; }
+.sf-map-cluster{
+    min-width:40px; height:40px; padding:0 8px; border-radius:20px;
+    display:flex; align-items:center; justify-content:center;
+    background:#0F3B2E; color:#fff; font:700 13px 'Montserrat',sans-serif;
+    box-shadow:0 0 0 5px rgba(212,175,55,.45); cursor:pointer;
+}
+
+/* ---------- Property preview (card on desktop, bottom sheet on phones) ---------- */
+.sf-map-preview{
+    position:absolute; z-index:4; left:16px; bottom:16px;
+    width:360px; max-width:calc(100% - 32px);
+    display:grid; grid-template-columns:120px minmax(0,1fr);
+    background:#fff; border-radius:12px; overflow:hidden;
+    box-shadow:0 10px 30px rgba(17,24,39,.25);
+}
+.sf-map-preview-img{ display:block; background:#f3f4f6; }
+.sf-map-preview-img img{ width:100%; height:100%; object-fit:cover; display:block; min-height:150px; }
+.sf-map-preview-body{ padding:12px 14px 12px; min-width:0; }
+.sf-map-preview-title{ font-size:15px; font-weight:700; line-height:1.35; margin:0 26px 4px 0; color:#111827;
+    display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+.sf-map-preview-title a{ color:inherit; text-decoration:none; }
+.sf-map-preview-loc{ font-size:12.5px; color:#4b5563; margin:0 0 4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.sf-map-preview-loc i{ color:#0F3B2E; margin-right:3px; }
+.sf-map-preview-meta{ font-size:12.5px; color:#6b7280; margin:0 0 8px; line-height:1.45; }
+.sf-map-preview-row{ display:flex; align-items:center; justify-content:space-between; gap:8px; margin-bottom:10px; }
+.sf-map-preview-price{ font-size:15px; font-weight:700; color:#0F3B2E; min-width:0; overflow-wrap:anywhere; }
+.sf-map-preview-actions{ display:inline-flex; gap:6px; flex:0 0 auto; }
+.sf-map-preview-icon{
+    width:40px; height:40px; border-radius:50%; border:1px solid rgba(15,59,46,.25); background:#fff;
+    color:#0F3B2E; display:inline-flex; align-items:center; justify-content:center; cursor:pointer; font-size:15px;
+}
+.sf-map-preview-icon.is-on{ background:#0F3B2E; color:#fff; border-color:#0F3B2E; }
+.sf-map-preview-foot{ display:flex; align-items:center; gap:10px; }
+.sf-map-preview .sf-map-preview-cta{ width:auto; flex:1 1 auto; min-height:40px; padding:8px 16px; font-size:13.5px; }
+.sf-map-preview-pager{ display:inline-flex; align-items:center; gap:6px; font-size:12.5px; font-weight:600; color:#374151; flex:0 0 auto; }
+.sf-map-preview-pager button{
+    width:32px; height:32px; border-radius:50%; border:1px solid rgba(15,59,46,.25); background:#fff; color:#0F3B2E; cursor:pointer;
+}
+.sf-map-preview-close{
+    position:absolute; top:6px; right:6px; z-index:1;
+    width:32px; height:32px; border-radius:50%; border:0; background:rgba(255,255,255,.95);
+    color:#111827; cursor:pointer; font-size:14px; box-shadow:0 1px 4px rgba(17,24,39,.2);
+}
+
+/* Floating WhatsApp / Back-to-top step aside while they'd cover the map */
+body.sf-map-floats-aside .whatsapp-float,
+body.sf-map-floats-aside .back-to-top{
+    opacity:0 !important; visibility:hidden !important; pointer-events:none !important;
+    transition:opacity .2s ease, visibility .2s ease;
+}
+
+/* ---------- Phones ---------- */
+html.is-mobile .sf-view-toggle{ width:100%; }
+html.is-mobile .sf-view-toggle button{ flex:1 1 50%; justify-content:center; padding:0 10px; }
+html.is-mobile .sf-map-wrap{ height:min(68vh, 560px); min-height:360px; border-radius:10px; }
+html.is-mobile .sf-map-preview{
+    left:8px; right:8px; bottom:8px; width:auto; max-width:none;
+    grid-template-columns:96px minmax(0,1fr);
+}
+html.is-mobile .sf-map-preview-img img{ min-height:140px; }
+html.is-mobile .sf-map-preview-body{ padding:10px 12px; }
+html.is-mobile .sf-map-preview-title{ font-size:14px; }
+@media (max-width:360px){
+    html.is-mobile .sf-map-preview{ grid-template-columns:80px minmax(0,1fr); }
+    html.is-mobile .sf-map-preview-body{ padding:9px 10px; }
+    html.is-mobile .sf-map-preview .sf-map-preview-cta{ padding:8px 10px; font-size:13px; }
+    html.is-mobile .sf-map-area-btn{ font-size:12.5px; padding:0 12px; }
+}
+@media (max-width:768px){
+    html:not(.is-mobile) .sf-view-toggle{ width:100%; }
+    html:not(.is-mobile) .sf-view-toggle button{ flex:1 1 50%; justify-content:center; }
+}
+
+/* ---------- Homepage: Future Properties section (same component) ---------- */
+.hp-view-toggle{ margin:4px 0 18px; }
+.hp-map-view{ max-width:none; margin:0; }
+.hp-map-view .sf-map-wrap{ height:min(62vh, 560px); min-height:380px; }
+html.is-mobile .hp-map-view .sf-map-wrap{ height:min(64vh, 520px); min-height:340px; }
+.hp-view-all{ margin-top:28px; }
+.hp-view-all .view-details-btn{ width:auto; min-width:220px; padding:13px 32px; display:inline-flex; }
+html.is-mobile .hp-view-all{ margin-top:22px; }
+html.is-mobile .hp-view-all .view-details-btn{ width:100%; min-width:0; min-height:44px; font-size:14px; }

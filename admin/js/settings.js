@@ -7,6 +7,10 @@
  * but that had no Admin form field — this module now covers all of
  * them, so every value Admin can see here actually reaches the
  * public website, and nothing is hard-coded that Admin can't change.
+ *
+ * 2026-09-26: the Homepage hero fields are edited in Website Content →
+ * Homepage (one place). This module no longer reads or writes them, so a
+ * save here can never overwrite a hero change made there.
  */
 
 const SettingsModule = (function () {
@@ -14,12 +18,6 @@ const SettingsModule = (function () {
         const { data } = await window.supabaseClient.from("site_settings").select("*").eq("id", 1).maybeSingle();
         if (!data) return;
 
-        // Hero
-        setVal("setHeroTitle", data.hero_title);
-        setVal("setHeroSubtitle", data.hero_subtitle);
-        setVal("setHeroTagline", data.hero_tagline);
-        setVal("setHeroTaglineColor", data.hero_tagline_color || "#D4AF37");
-        setVal("setHeroVideoUrl", data.hero_video_url);
 
         // Contact
         setVal("setPhone1", data.realtor_phone_1);
@@ -62,11 +60,6 @@ const SettingsModule = (function () {
 
         const record = {
             id: 1,
-            hero_title: getVal("setHeroTitle"),
-            hero_subtitle: getVal("setHeroSubtitle"),
-            hero_tagline: getVal("setHeroTagline"),
-            hero_tagline_color: getVal("setHeroTaglineColor"),
-            hero_video_url: getVal("setHeroVideoUrl"),
 
             realtor_phone_1: getVal("setPhone1"),
             realtor_phone_1_display: getVal("setPhone1Display"),
@@ -102,6 +95,11 @@ const SettingsModule = (function () {
 
     document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("saveSettingsBtn").addEventListener("click", save);
+        document.querySelectorAll("[data-goto-content]").forEach((a) => a.addEventListener("click", (e) => {
+            e.preventDefault();
+            if (typeof window.AventrixShowSection === "function") window.AventrixShowSection("content");
+            if (window.PageContentModule) window.PageContentModule.openPage(a.getAttribute("data-goto-content"));
+        }));
     });
 
     return { load };

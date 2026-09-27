@@ -1,0 +1,82 @@
+{
+ "page_key": "contact",
+ "hero": {
+  "hero_eyebrow": "GET IN TOUCH",
+  "hero_title": "Contact Aventrix Realty",
+  "hero_subtitle": "We're here to assist you with buying, selling, leasing and investment opportunities."
+ },
+ "seo_title": "Contact Us | Aventrix Realty",
+ "seo_description": "Contact Aventrix Realty — Chennai real estate advisors with offices in Chromepet and Adyar. Call, WhatsApp or send an enquiry for buying, selling or leasing property.",
+ "seo_keywords": "",
+ "og_image_url": "https://aventrixrealty.com/images/chennai-marina.jpg",
+ "sections": [
+  {
+   "key": "offices-intro",
+   "label": "Our Offices (heading; offices come from Admin → Office Locations)",
+   "eyebrow": "VISIT US",
+   "heading": "Our Offices",
+   "html": "<p>Head Office and branch locations across Chennai.</p>",
+   "image_url": "",
+   "hooks": [
+    "eyebrow",
+    "heading",
+    "html"
+   ],
+   "display_order": 1
+  },
+  {
+   "key": "contact-form-intro",
+   "label": "Enquiry form (heading and intro)",
+   "eyebrow": "",
+   "heading": "Send Us an Enquiry",
+   "html": "",
+   "image_url": "",
+   "fields": {
+    "text": "Complete the form below and our team will get back to you shortly."
+   },
+   "hooks": [
+    "heading"
+   ],
+   "display_order": 2
+  },
+  {
+   "key": "offices-heading",
+   "label": "Locate Our Offices (maps come from Admin → Office Locations)",
+   "eyebrow": "FIND US",
+   "heading": "Locate Our Offices",
+   "html": "",
+   "image_url": "",
+   "hooks": [
+    "eyebrow",
+    "heading"
+   ],
+   "display_order": 3
+  },
+  {
+   "key": "contact-hours",
+   "label": "Business hours & quick contact (phone/email come from the Head Office)",
+   "eyebrow": "",
+   "heading": "",
+   "html": "",
+   "image_url": "",
+   "fields": {
+    "hours_title": "Business Hours",
+    "contact_title": "Quick Contact"
+   },
+   "lists": {
+    "hours": [
+     {
+      "day": "Monday – Saturday",
+      "time": "9:30 AM – 7:00 PM"
+     },
+     {
+      "day": "Sunday",
+      "time": "By Appointment"
+     }
+    ]
+   },
+   "hooks": [],
+   "display_order": 4
+  }
+ ]
+}

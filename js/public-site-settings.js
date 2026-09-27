@@ -46,11 +46,16 @@
             // Hero background video — swap the <source> and reload only
             // if Admin has set an override; otherwise the existing local
             // video file keeps playing exactly as before.
-            if (data.hero_video_url) {
+            // The site's own video (images/hero-video.mp4, any ?v=) is already
+            // served by the page in a phone and a desktop size, so it is left
+            // alone; only a different, custom video replaces the sources.
+            if (data.hero_video_url && !/(^|\/)images\/hero-video\.mp4(\?|$)/.test(data.hero_video_url)) {
                 const videoEl = document.getElementById("heroVideo");
-                const sourceEl = videoEl && videoEl.querySelector("source");
-                if (videoEl && sourceEl && sourceEl.getAttribute("src") !== data.hero_video_url) {
-                    sourceEl.setAttribute("src", data.hero_video_url);
+                const sources = videoEl ? Array.from(videoEl.querySelectorAll("source")) : [];
+                if (videoEl && sources.length) {
+                    sources.slice(1).forEach((s) => s.remove());
+                    sources[0].removeAttribute("media");
+                    sources[0].setAttribute("src", data.hero_video_url);
                     videoEl.load();
                 }
             }
@@ -61,7 +66,8 @@
             if (data.realtor_phone_1) {
                 document.querySelectorAll('[data-site="phone1"]').forEach((el) => {
                     if (el.tagName === "A") {
-                        el.href = "tel:" + data.realtor_phone_1.replace(/\s+/g, "");
+                        // "9176887770" is stored in local format; a tel: link needs +91.
+                        el.href = "tel:+" + toWhatsAppDigits(data.realtor_phone_1);
                     } else {
                         el.textContent = data.realtor_phone_1_display || data.realtor_phone_1;
                     }
@@ -78,6 +84,7 @@
             setTextBySelector("[data-site='footer-tagline']", data.footer_tagline);
             setTextBySelector("[data-site='footer-description']", data.footer_description);
             setTextBySelector("[data-site='copyright-text']", data.copyright_text);
+            setTextBySelector("[data-site='rera-no']", data.rera_registration_no);
 
             if (data.whatsapp_number) {
                 document.querySelectorAll('[data-site="whatsapp-link"]').forEach((el) => {

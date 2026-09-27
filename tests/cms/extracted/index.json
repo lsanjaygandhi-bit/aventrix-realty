@@ -1,0 +1,372 @@
+{
+ "page_key": "home",
+ "hero": {
+  "hero_button_text": "Post Property <span>FREE</span>",
+  "hero_button_link": "list-with-us.html",
+  "hero_image_url": "images/hero-poster.jpg"
+ },
+ "seo_title": "Aventrix Realty",
+ "seo_description": "Aventrix Realty — trusted real estate advisory in Chennai for residential, commercial, land and joint venture properties. TNRERA-registered agent. Buy, sell, rent or invest with expert local guidance.",
+ "seo_keywords": "",
+ "og_image_url": "https://aventrixrealty.com/images/chennai-marina.jpg",
+ "sections": [
+  {
+   "key": "leadership-intro",
+   "label": "Meet Our Leadership (founders)",
+   "eyebrow": "",
+   "heading": "Meet Our Leadership",
+   "html": "<p>Leading Aventrix Realty</p>",
+   "image_url": "",
+   "lists": {
+    "leaders": [
+     {
+      "photo": "images/founder.jpg",
+      "name": "Gnanasekaran P",
+      "label": "— MEET OUR FOUNDER",
+      "role": "Founder",
+      "bio": "With over 15 years of experience in Chennai's real estate market, Gnanasekaran P provides the strategic direction and leadership behind Aventrix Realty. His deep understanding of local market cycles and neighbourhood trends shapes how the company sources and evaluates properties across residential, commercial and land segments. Over the years, he has built trusted, long-standing relationships with clients, landowners and developers, grounded in transparency and professional conduct at every stage of a transaction. His focus remains on steady, sustainable business development — growing Aventrix Realty's presence across Chennai while holding firmly to the standards of integrity that lasting real estate relationships depend on.",
+      "link_text": "View Profile →",
+      "profile_link": "gnanasekaran.html"
+     },
+     {
+      "photo": "images/sanjay.jpg",
+      "name": "Sanjay Gandhi L",
+      "label": "— MEET OUR CO-FOUNDER",
+      "role": "Co-Founder & Managing Partner",
+      "rera": "TNRERA Reg. No.: TN/Agent/0284/2026",
+      "bio": "Sanjay Gandhi L brings over 15 years of hands-on real estate experience to his role as Co-Founder and Managing Partner of Aventrix Realty, where he leads day-to-day business and operational activity. His work spans the full property lifecycle — buying, selling and leasing — coordinating property marketing and transaction execution while managing negotiations through to closure. With close familiarity with Chennai's neighbourhoods and property values, he works directly with buyers, sellers, investors and property owners to guide each transaction with clarity and care. His approach is centred on building long-term client relationships, backed by practical market knowledge and dependable, on-ground support.",
+      "link_text": "View Profile →",
+      "profile_link": "sanjay.html"
+     }
+    ]
+   },
+   "hooks": [
+    "heading",
+    "html"
+   ],
+   "display_order": 1
+  },
+  {
+   "key": "future-properties",
+   "label": "Future Properties (heading; cards are the latest 20 Published properties, Featured first — Admin → Properties)",
+   "eyebrow": "",
+   "heading": "Future Properties",
+   "html": "",
+   "image_url": "",
+   "fields": {
+    "subtitle": "Handpicked properties for your future.",
+    "link_text": "See All <span aria-hidden=\"true\">→</span>",
+    "link": "properties.html"
+   },
+   "hooks": [
+    "heading"
+   ],
+   "display_order": 2
+  },
+  {
+   "key": "property-categories",
+   "label": "Property Categories",
+   "eyebrow": "BROWSE BY TYPE",
+   "heading": "Property Categories",
+   "html": "",
+   "image_url": "",
+   "lists": {
+    "categories": [
+     {
+      "link": "properties.html?category=residential",
+      "image": "images/cat-residential.jpg",
+      "label": "Residential"
+     },
+     {
+      "link": "properties.html?category=commercial",
+      "image": "images/cat-commercial.jpg",
+      "label": "Commercial"
+     },
+     {
+      "link": "properties.html?category=land",
+      "image": "images/cat-land-plots.jpg",
+      "label": "Land & Plots"
+     },
+     {
+      "link": "properties.html?category=villas",
+      "image": "images/cat-luxury-villas.jpg",
+      "label": "Luxury Villas"
+     },
+     {
+      "link": "properties.html?category=apartments",
+      "image": "images/cat-apartments.jpg",
+      "label": "Apartments"
+     },
+     {
+      "link": "properties.html?category=investment",
+      "image": "images/cat-investment.jpg",
+      "label": "Investment Properties"
+     }
+    ]
+   },
+   "hooks": [
+    "eyebrow",
+    "heading"
+   ],
+   "display_order": 3
+  },
+  {
+   "key": "what-we-do",
+   "label": "What We Do (service cards)",
+   "eyebrow": "WHAT WE DO",
+   "heading": "Featured Services",
+   "html": "",
+   "image_url": "",
+   "lists": {
+    "services": [
+     {
+      "link": "properties.html?transaction=buy",
+      "icon": "fas fa-home",
+      "title": "Buy",
+      "text": "Find verified homes, apartments and plots.",
+      "link_text": "Learn More →"
+     },
+     {
+      "link": "list-with-us.html",
+      "icon": "fas fa-hand-holding-usd",
+      "title": "Sell",
+      "text": "List and sell your property with expert guidance.",
+      "link_text": "Learn More →"
+     },
+     {
+      "link": "properties.html?transaction=lease",
+      "icon": "fas fa-key",
+      "title": "Lease",
+      "text": "Residential and Commercial Leasing.",
+      "link_text": "Learn More →"
+     },
+     {
+      "link": "joint-venture.html",
+      "icon": "fas fa-people-arrows",
+      "title": "Joint Venture",
+      "text": "Developer and landowner partnerships, built on trust.",
+      "link_text": "Learn More →"
+     },
+     {
+      "link": "services.html#property-advisory",
+      "icon": "fas fa-user-tie",
+      "title": "Property Advisory",
+      "text": "Expert guidance for every stage of your property journey.",
+      "link_text": "Learn More →"
+     },
+     {
+      "link": "nri-services.html",
+      "icon": "fas fa-globe-asia",
+      "title": "NRI Services",
+      "text": "Remote-friendly property solutions for NRI clients.",
+      "link_text": "Learn More →"
+     }
+    ]
+   },
+   "hooks": [
+    "eyebrow",
+    "heading"
+   ],
+   "display_order": 4
+  },
+  {
+   "key": "why-us",
+   "label": "Why Aventrix (6 points)",
+   "eyebrow": "WHY AVENTRIX",
+   "heading": "The Aventrix Standard",
+   "html": "",
+   "image_url": "",
+   "lists": {
+    "points": [
+     {
+      "title": "Trusted Since 1965",
+      "text": "Six decades of legacy, from TP Builders to Aventrix Realty."
+     },
+     {
+      "title": "Local Market Expertise",
+      "text": "Deep knowledge of Chennai's neighborhoods and value trends."
+     },
+     {
+      "title": "Verified Properties",
+      "text": "Every property is legally verified before listing."
+     },
+     {
+      "title": "Transparent Process",
+      "text": "Clear pricing, documentation and communication at every step."
+     },
+     {
+      "title": "Professional Guidance",
+      "text": "Expert support from search to registration."
+     },
+     {
+      "title": "Dedicated Support",
+      "text": "A responsive team, available throughout your journey."
+     }
+    ]
+   },
+   "hooks": [
+    "eyebrow",
+    "heading"
+   ],
+   "display_order": 5
+  },
+  {
+   "key": "testimonials-heading",
+   "label": "Testimonials (heading; quotes come from Admin → Testimonials)",
+   "eyebrow": "CLIENT EXPERIENCES",
+   "heading": "What Our Clients Say",
+   "html": "",
+   "image_url": "",
+   "hooks": [
+    "eyebrow",
+    "heading"
+   ],
+   "display_order": 6
+  },
+  {
+   "key": "cta",
+   "label": "Call to action band",
+   "eyebrow": "",
+   "heading": "Ready to Find Your Ideal Property?",
+   "html": "<p> From your first enquiry to registration day, Aventrix Realty is with you at every step — trusted guidance, verified properties, and a team that treats your journey as our own. </p>",
+   "image_url": "",
+   "lists": {
+    "buttons": [
+     {
+      "text": "Explore Properties",
+      "link": "properties.html"
+     },
+     {
+      "text": "Let's Connect",
+      "link": "#contact"
+     }
+    ]
+   },
+   "hooks": [
+    "heading",
+    "html"
+   ],
+   "display_order": 7
+  },
+  {
+   "key": "brokerage-teaser",
+   "label": "Professional Fees teaser",
+   "eyebrow": "TRANSPARENCY",
+   "heading": "Professional Fees, Agreed Upfront",
+   "html": "",
+   "image_url": "",
+   "fields": {
+    "text": "At Aventrix Realty, brokerage and professional fees are always communicated upfront — no hidden charges, no surprises. Our fee structure is transparent from the very first conversation, so you always know exactly what to expect at every stage of your transaction.",
+    "link_text": "How Our Fees Work →",
+    "link": "brokerage-fees.html"
+   },
+   "hooks": [
+    "eyebrow",
+    "heading"
+   ],
+   "display_order": 8
+  },
+  {
+   "key": "why-invest",
+   "label": "Why Invest in Chennai",
+   "eyebrow": "THE OPPORTUNITY",
+   "heading": "Why Invest in Chennai",
+   "html": "",
+   "image_url": "",
+   "fields": {
+    "link_text": "Explore Chennai Investment Opportunities →",
+    "link": "insights.html"
+   },
+   "lists": {
+    "points": [
+     {
+      "title": "Growth Corridors",
+      "text": "Rapidly developing zones offering strong long-term value."
+     },
+     {
+      "title": "Metro & Infrastructure",
+      "text": "Expanding transit access and ongoing infrastructure investment across the city."
+     },
+     {
+      "title": "IT & Business Hubs",
+      "text": "Proximity to major commercial and technology corridors."
+     }
+    ]
+   },
+   "hooks": [
+    "eyebrow",
+    "heading"
+   ],
+   "display_order": 9
+  },
+  {
+   "key": "faq",
+   "label": "Frequently Asked Questions",
+   "eyebrow": "GOT QUESTIONS?",
+   "heading": "Frequently Asked Questions",
+   "html": "",
+   "image_url": "",
+   "lists": {
+    "faqs": [
+     {
+      "question": "How do I buy a property?",
+      "answer": "<p>Share your requirements through our Quick Enquiry form or a phone call. Our advisors shortlist verified properties matching your budget and preferences, arrange site visits, and guide you through documentation and registration.</p>"
+     },
+     {
+      "question": "How does Joint Venture work?",
+      "answer": "<p>We partner landowners with reputable developers, structuring agreements that balance land value with construction investment — handling negotiations, legal documentation and project coordination throughout.</p>"
+     },
+     {
+      "question": "How does property valuation work?",
+      "answer": "<p>Our team assesses location, market trends, property condition and comparable sales to provide a fair, data-backed valuation — free of cost, with no obligation.</p>"
+     },
+     {
+      "question": "Do you assist NRIs?",
+      "answer": "<p>Yes. We offer remote-friendly services for NRI clients, including virtual property tours, document handling, power-of-attorney coordination and end-to-end transaction support.</p>"
+     },
+     {
+      "question": "Do you help with legal verification?",
+      "answer": "<p>Every property we list undergoes legal verification, including title checks and approval status, before it reaches our clients.</p>"
+     },
+     {
+      "question": "Can you help sell my property?",
+      "answer": "<p>Absolutely. Our team markets your property to verified buyers, manages inquiries and negotiations, and supports you through to a smooth registration.</p>"
+     }
+    ]
+   },
+   "hooks": [
+    "eyebrow",
+    "heading"
+   ],
+   "display_order": 10
+  },
+  {
+   "key": "office-intro",
+   "label": "Office Locations (heading; offices come from Admin → Office Locations)",
+   "eyebrow": "VISIT US",
+   "heading": "Our Office Locations",
+   "html": "<p>Head Office and branch locations across Chennai.</p>",
+   "image_url": "",
+   "hooks": [
+    "eyebrow",
+    "heading",
+    "html"
+   ],
+   "display_order": 11
+  },
+  {
+   "key": "quick-enquiry-intro",
+   "label": "Quick Enquiry (intro text)",
+   "eyebrow": "LET'S CONNECT",
+   "heading": "Let's Find Your Ideal Property",
+   "html": "<p> Whether you're buying, selling, investing, or exploring a joint venture opportunity, our experienced property advisors are here to guide you every step of the way. Share your requirements, and we'll help you discover the right property across Chennai. </p>",
+   "image_url": "",
+   "hooks": [
+    "eyebrow",
+    "heading",
+    "html"
+   ],
+   "display_order": 12
+  }
+ ]
+}

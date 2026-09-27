@@ -131,12 +131,14 @@ const OfficesModule = (function () {
                 is_head_office: els.oIsHeadOffice.checked
             };
 
+            const embedOk = !record.maps_embed_url || /^https:\/\/(www\.)?google\.[a-z.]+\/maps\/embed/i.test(record.maps_embed_url) || /[?&]output=embed\b/i.test(record.maps_embed_url);
+            const embedNote = embedOk ? "" : " — note: the Map Embed URL is a share link, so the website shows a map built from the address instead";
             if (editingId) {
                 await CrudEngine.update("office_locations", editingId, record);
-                showToast("Office updated");
+                showToast("Office updated" + embedNote);
             } else {
                 await CrudEngine.insert("office_locations", record);
-                showToast("Office created");
+                showToast("Office created" + embedNote);
             }
 
             closeModal();

@@ -1,0 +1,30 @@
+{
+ "gnanasekaran.html": {
+  "diff": [
+   "-P: Carrying forward a legacy built on trust and integrity, Gnanasekaran P continues the vision of TP Builders while leading Aventrix Realty with a modern approach,",
+   "+P: Real estate professional known for a practical, people-focused approach and a strong belief in creating meaningful value.",
+   "-P: Land Properties Residential Properties Commercial Properties Joint Venture Support",
+   "+P: Land Properties Residential Properties Commercial Properties Joint Ventures",
+   "-A: +91 7092356222",
+   "-href: +91 7092356222 -> tel:+917092356222",
+   "-SPAN: +91 7092356222",
+   "+A: +91 70923 56222",
+   "+href: +91 70923 56222 -> tel:+917092356222",
+   "+SPAN: +91 70923 56222",
+   "-href: Google Maps -> https://maps.app.goo.gl/wQm9KBpQG9rEYFaX7?g_st=ic",
+   "+href: Google Maps -> https://maps.app.goo.gl/baFHiqJpGngjZFRy9"
+  ],
+  "errors": []
+ },
+ "sanjay.html": {
+  "diff": [
+   "-H1: Sanjay Gandhi L",
+   "+H1: L. Sanjay Gandhi",
+   "-P: Leading business operations, client relationships, sales, and strategic growth at Aventrix Realty.",
+   "+P: Leading business operations, client relationships, sales and real estate advisory.",
+   "-href: Google Maps -> https://maps.app.goo.gl/wQm9KBpQG9rEYFaX7?g_st=ic",
+   "+href: Google Maps -> https://maps.app.goo.gl/baFHiqJpGngjZFRy9"
+  ],
+  "errors": []
+ }
+}

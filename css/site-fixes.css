@@ -1,0 +1,49 @@
+/* =====================================================================
+   AVENTRIX REALTY — SITEWIDE FIXES (2026-09-26)
+   Loaded last on every public page (after style.css and page CSS).
+   Additive only; no colour, font or design changes.
+   ===================================================================== */
+
+/* ---------- 1. Footer vs floating WhatsApp / Back-to-top ----------
+   At the very end of every page the floating buttons (fixed, bottom-right)
+   sat on top of the footer's last row: "Terms & Conditions" / "Sitemap"
+   (measured at 320, 375, 390, 1024 and 1280px). The footer's bottom row
+   now keeps a right-hand gutter the width of the floating buttons, so
+   its links always stay clear of them. Button positions are unchanged. */
+
+/* Phones / touch (html.is-mobile): buttons are 52px at right:18px */
+html.is-mobile .premium-footer-bottom{
+    padding-right:calc(18px + 52px + 14px + env(safe-area-inset-right, 0px));
+}
+
+/* Narrow desktop windows (no .is-mobile) ≤768px: same 52px buttons */
+@media (max-width:768px){
+    html:not(.is-mobile) .premium-footer-bottom{
+        padding-right:calc(18px + 52px + 14px);
+    }
+}
+
+/* Desktop: buttons are 56px at right:24px. Only needed while the
+   footer container reaches the right-hand 104px of the window. */
+@media (min-width:769px) and (max-width:1439px){
+    html:not(.is-mobile) .premium-footer-bottom{
+        padding-right:calc(24px + 56px + 16px);
+    }
+}
+
+/* ---------- 2. Human-readable sitemap (sitemap.html) ---------- */
+.sitemap-section .sitemap-grid{
+    display:grid;
+    grid-template-columns:repeat(3, minmax(0, 1fr));
+    gap:28px 40px;
+    text-align:left;
+}
+.sitemap-section .sitemap-dynamic{ margin-top:36px; grid-template-columns:2fr 1fr; }
+.sitemap-section h2{ font-size:18px; margin:0 0 10px; }
+.sitemap-section ul{ list-style:none; padding:0; margin:0 0 22px; }
+.sitemap-section li{ margin:0 0 8px; line-height:1.5; }
+.sitemap-section a{ color:#0F3B2E; text-decoration:underline; text-underline-offset:3px; }
+@media (max-width:768px){
+    .sitemap-section .sitemap-grid,
+    .sitemap-section .sitemap-dynamic{ grid-template-columns:1fr; gap:6px; }
+}

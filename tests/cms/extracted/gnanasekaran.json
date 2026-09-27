@@ -1,0 +1,25 @@
+{
+ "page_key": "gnanasekaran",
+ "hero": {},
+ "seo_title": "Gnanasekaran P | Aventrix Realty",
+ "seo_description": "Gnanasekaran P, Founder of Aventrix Realty — carrying forward a real estate legacy rooted in Chennai since 1965 through TP Builders.",
+ "seo_keywords": "",
+ "og_image_url": "https://aventrixrealty.com/images/founder.jpg",
+ "sections": [
+  {
+   "key": "profile-legacy",
+   "label": "Legacy paragraph on this profile page",
+   "eyebrow": "",
+   "heading": "Legacy",
+   "html": "",
+   "image_url": "",
+   "fields": {
+    "text": "Long before Aventrix Realty was established, the location where the company's office stands today was home to TP Builders, founded by Late Mr. Perumal. From this location, he built homes, created lasting relationships, and established a reputation that continues to inspire generations. Gnanasekaran P proudly carried forward the vision of his father, preserving the values that earned generations of trust while embracing a modern approach to real estate — where tradition, professionalism, and long-term relationships remain at the heart of every property journey."
+   },
+   "hooks": [
+    "heading"
+   ],
+   "display_order": 1
+  }
+ ]
+}

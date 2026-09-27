@@ -26,6 +26,10 @@
  */
 
 (function () {
+    // The lead's form type falls back to the page's ORIGINAL <title>, read
+    // now (before Admin SEO text can change document.title), so editing a
+    // page's SEO title never changes how its leads are labelled.
+    const PAGE_TITLE = document.title;
     const sb = window.supabaseClient;
     const form = document.getElementById("propertyForm") || document.querySelector("form");
     if (!sb || !form) return;
@@ -79,7 +83,7 @@
             // the Joint Venture page so its inbox label stays "Joint
             // Venture" even though its <title> is longer); every other
             // form keeps the original title-based label.
-            form_type: form.dataset.formType || document.title.split("|")[0].trim() || "Enquiry",
+            form_type: form.dataset.formType || PAGE_TITLE.split("|")[0].trim() || "Enquiry",
             source_page: window.location.pathname.split("/").pop() || "index.html",
             name: name,
             phone: phone,

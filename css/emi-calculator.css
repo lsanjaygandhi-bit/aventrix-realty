@@ -1,0 +1,247 @@
+/* =====================================================================
+   AVENTRIX REALTY — EMI CALCULATOR (emi-calculator.html only)
+   Uses the site's existing palette (#0F3B2E green, #D4AF37 gold,
+   #111827 text), Montserrat, the .fv-card look (white, 12px radius,
+   hairline border) and the shared .list-hero / .fv-final-cta blocks.
+   ===================================================================== */
+
+.emi-section{ padding:48px 0 64px; }
+.emi-section .container.emi-container{ width:90%; max-width:1100px; margin:0 auto; }
+
+/* Desktop windows 769–1279px: the floating WhatsApp / Back-to-top buttons
+   (56px at right:24px) would reach into the content, so the tool keeps a
+   symmetric gutter wide enough for them. From 1280px the page margin
+   already clears them. */
+@media (min-width:769px) and (max-width:1279px){
+    html:not(.is-mobile) .emi-section .container.emi-container{
+        width:auto;
+        max-width:calc(100vw - 2 * (24px + 56px + 12px));
+    }
+}
+
+.emi-note{
+    display:flex; gap:10px; align-items:flex-start;
+    margin:0 0 22px; color:#4b5563; font-size:14px; line-height:1.6;
+}
+.emi-note i{ color:#0F3B2E; margin-top:3px; }
+
+.emi-grid{
+    display:grid;
+    grid-template-columns:minmax(0, 1.15fr) minmax(0, 1fr);
+    gap:24px;
+    align-items:start;
+}
+
+.emi-card{
+    background:#ffffff;
+    border:1px solid rgba(17,24,39,.08);
+    border-radius:12px;
+    padding:26px 26px 24px;
+    min-width:0;
+}
+.emi-grid + .emi-card, .emi-breakdown + .emi-tips{ margin-top:24px; }
+
+.emi-card-head{ display:flex; align-items:center; gap:12px; margin-bottom:22px; }
+.emi-card-head h2{
+    font-family:'Montserrat',sans-serif; font-size:20px; font-weight:700;
+    color:#111827; margin:0; letter-spacing:.2px;
+}
+.emi-card-icon{
+    width:38px; height:38px; flex:0 0 38px; border-radius:10px;
+    display:inline-flex; align-items:center; justify-content:center;
+    background:rgba(15,59,46,.07); color:#0F3B2E; font-size:16px;
+    border-top:2px solid #D4AF37;
+}
+
+/* ---------- Inputs ---------- */
+.emi-field{ padding:4px 0 18px; }
+.emi-field + .emi-field{ border-top:1px solid rgba(17,24,39,.06); padding-top:18px; }
+.emi-field-top{
+    display:flex; align-items:center; justify-content:space-between;
+    gap:10px; flex-wrap:wrap; margin-bottom:6px;
+}
+.emi-field-top label{ font-size:15px; font-weight:600; color:#111827; }
+
+.emi-value{
+    font-family:'Montserrat',sans-serif; font-size:15px; font-weight:700; color:#0F3B2E;
+    background:#f8f9fb; border:1px solid rgba(17,24,39,.12); border-radius:40px;
+    padding:8px 14px; min-height:40px; text-align:right; outline:none;
+    -moz-appearance:textfield; appearance:textfield;
+}
+.emi-value::-webkit-outer-spin-button,
+.emi-value::-webkit-inner-spin-button{ -webkit-appearance:none; margin:0; }
+.emi-value:focus{ border-color:#0F3B2E; box-shadow:0 0 0 3px rgba(15,59,46,.15); background:#fff; }
+.emi-value-amount{ width:150px; }
+.emi-value-num{ width:84px; padding-right:30px; }
+.emi-value-tenure{ width:104px; padding-right:62px; }
+.emi-value-wrap{ position:relative; display:inline-flex; align-items:center; }
+.emi-unit{
+    position:absolute; right:13px; font-size:13px; font-weight:600; color:#6b7280; pointer-events:none;
+}
+.emi-tenure-controls{ display:inline-flex; align-items:center; gap:8px; }
+
+.emi-unit-toggle{
+    display:inline-flex; border:1px solid rgba(17,24,39,.12); border-radius:40px; overflow:hidden; background:#f8f9fb;
+}
+.emi-unit-toggle button{
+    font-family:'Montserrat',sans-serif; font-size:13px; font-weight:600;
+    border:0; background:transparent; color:#374151; min-width:44px; min-height:40px; padding:0 12px; cursor:pointer;
+}
+.emi-unit-toggle button.is-active{ background:#0F3B2E; color:#fff; }
+.emi-unit-toggle button:focus-visible{ outline:2px solid #D4AF37; outline-offset:-2px; }
+
+/* Range: 44px tall touch target, 6px track, 26px thumb.
+   touch-action:pan-y — a horizontal drag moves the slider, a vertical
+   swipe still scrolls the page. */
+.emi-range{
+    --emi-fill:50%;
+    -webkit-appearance:none; appearance:none;
+    width:100%; height:44px; margin:2px 0 0; background:transparent;
+    cursor:pointer; touch-action:pan-y;
+}
+.emi-range:focus{ outline:none; }
+.emi-range::-webkit-slider-runnable-track{
+    height:6px; border-radius:6px;
+    background:linear-gradient(to right, #0F3B2E 0, #0F3B2E var(--emi-fill), #e5e7eb var(--emi-fill), #e5e7eb 100%);
+}
+.emi-range::-webkit-slider-thumb{
+    -webkit-appearance:none; appearance:none;
+    width:26px; height:26px; margin-top:-10px; border-radius:50%;
+    background:#fff; border:3px solid #0F3B2E; box-shadow:0 2px 6px rgba(17,24,39,.25);
+}
+.emi-range::-moz-range-track{ height:6px; border-radius:6px; background:#e5e7eb; }
+.emi-range::-moz-range-progress{ height:6px; border-radius:6px; background:#0F3B2E; }
+.emi-range::-moz-range-thumb{
+    width:20px; height:20px; border-radius:50%; background:#fff; border:3px solid #0F3B2E; box-shadow:0 2px 6px rgba(17,24,39,.25);
+}
+.emi-range:focus-visible::-webkit-slider-thumb{ box-shadow:0 0 0 5px rgba(212,175,55,.45); }
+.emi-range:focus-visible::-moz-range-thumb{ box-shadow:0 0 0 5px rgba(212,175,55,.45); }
+
+.emi-range-limits{ display:flex; justify-content:space-between; font-size:12px; color:#6b7280; margin-top:-4px; }
+.emi-hint{ font-size:12px; color:#6b7280; margin:8px 0 0; line-height:1.5; }
+
+/* ---------- Result ---------- */
+.emi-result{ padding:0; overflow:hidden; }
+.emi-result-head{
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    background:#0F3B2E; color:#fff; padding:24px 26px;
+}
+.emi-result-label{
+    display:block; font-size:12px; letter-spacing:3px; text-transform:uppercase;
+    color:#D4AF37; font-weight:600; margin-bottom:8px;
+}
+.emi-result-value{ display:block; font-size:34px; font-weight:700; line-height:1.15; color:#fff; word-break:break-word; }
+.emi-result-icon{
+    width:46px; height:46px; flex:0 0 46px; border-radius:12px;
+    border:1px solid rgba(255,255,255,.25); display:inline-flex; align-items:center; justify-content:center; font-size:18px;
+}
+.emi-result-rows{ margin:0; padding:6px 26px 10px; }
+.emi-result-row{
+    display:flex; justify-content:space-between; align-items:flex-start; gap:12px;
+    padding:16px 0; border-bottom:1px solid rgba(17,24,39,.06);
+}
+.emi-result-row:last-child{ border-bottom:0; }
+.emi-result-row dt{ font-size:15px; font-weight:600; color:#111827; margin:0; }
+.emi-result-row dt small{ display:block; font-size:12px; font-weight:500; color:#6b7280; margin-top:4px; }
+.emi-result-row dd{ margin:0; font-size:17px; font-weight:700; color:#111827; text-align:right; white-space:nowrap; }
+.emi-accent{ color:#9a7b1f !important; }
+
+/* ---------- Breakdown ---------- */
+.emi-breakdown-grid{
+    display:grid; grid-template-columns:260px minmax(0, 1fr); gap:36px; align-items:center;
+}
+.emi-donut-wrap{ position:relative; margin:0 auto; width:100%; max-width:260px; aspect-ratio:1 / 1; }
+.emi-donut{ width:100%; height:100%; display:block; }
+.emi-donut-principal{ stroke:#0F3B2E; }
+.emi-donut-interest{ stroke:#D4AF37; transition:stroke-dasharray .25s ease; }
+.emi-donut-center{
+    position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; padding:0 22%; margin:0;
+}
+.emi-donut-center span{ font-size:12px; color:#6b7280; margin-bottom:4px; }
+.emi-donut-center strong{ font-size:16px; font-weight:700; color:#111827; word-break:break-word; }
+
+.emi-legend{ list-style:none; margin:0 0 18px; padding:0; }
+.emi-legend li{
+    display:flex; align-items:center; gap:10px; padding:10px 0; border-bottom:1px solid rgba(17,24,39,.06); font-size:14px;
+}
+.emi-legend-name{ flex:1 1 auto; color:#374151; }
+.emi-legend-name em{ font-style:normal; font-weight:700; color:#111827; margin-left:4px; }
+.emi-legend-value{ font-weight:700; color:#111827; white-space:nowrap; }
+.emi-legend-total{ border-bottom:0 !important; padding-top:14px !important; }
+.emi-legend-total .emi-legend-name{ font-weight:700; color:#111827; }
+.emi-swatch{ width:12px; height:12px; border-radius:3px; flex:0 0 12px; }
+.emi-swatch-principal{ background:#0F3B2E; }
+.emi-swatch-interest{ background:#D4AF37; }
+
+.emi-stats{
+    display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:12px;
+    background:#f8f9fb; border-radius:10px; padding:14px 16px;
+}
+.emi-stats span{ display:block; font-size:12px; color:#6b7280; margin-bottom:4px; line-height:1.4; }
+.emi-stats strong{ font-size:16px; font-weight:700; color:#0F3B2E; }
+
+/* ---------- Tips + disclaimer ---------- */
+.emi-tips-list{ margin:0; padding:0; list-style:none; counter-reset:emitip; }
+.emi-tips-list li{
+    counter-increment:emitip; position:relative; padding:0 0 14px 40px; font-size:15px; line-height:1.6; color:#374151;
+}
+.emi-tips-list li:last-child{ padding-bottom:0; }
+.emi-tips-list li::before{
+    content:counter(emitip); position:absolute; left:0; top:0;
+    width:26px; height:26px; border-radius:50%; border:1px solid #D4AF37; color:#9a7b1f;
+    font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center;
+}
+.emi-disclaimer{ margin:22px 0 0; font-size:13px; line-height:1.7; color:#6b7280; }
+.emi-disclaimer strong{ color:#374151; }
+
+/* ---------- Floating buttons step aside over the tool (phones) ---------- */
+body.emi-floats-aside .whatsapp-float,
+body.emi-floats-aside .back-to-top{
+    opacity:0 !important; visibility:hidden !important; pointer-events:none !important;
+    transition:opacity .2s ease, visibility .2s ease;
+}
+
+/* ---------- Tablet / narrow desktop ---------- */
+@media (max-width:1000px){
+    html:not(.is-mobile) .emi-grid{ grid-template-columns:1fr; }
+    html:not(.is-mobile) .emi-breakdown-grid{ grid-template-columns:220px minmax(0, 1fr); gap:28px; }
+}
+
+/* ---------- Phones (mobile-first single column) ---------- */
+html.is-mobile .emi-grid,
+html.is-mobile .emi-breakdown-grid{ grid-template-columns:1fr; gap:18px; }
+@media (max-width:768px){
+    .emi-grid, .emi-breakdown-grid{ grid-template-columns:1fr; gap:18px; }
+}
+@media (max-width:1000px){
+    html.is-mobile .emi-breakdown-grid{ grid-template-columns:1fr; }
+}
+html.is-mobile .emi-section{ padding:28px 0 44px; }
+html.is-mobile .emi-section .container.emi-container{ width:auto; margin:0 16px; }
+html.is-mobile .emi-card{ padding:20px 16px 18px; }
+html.is-mobile .emi-grid + .emi-card,
+html.is-mobile .emi-breakdown + .emi-tips{ margin-top:18px; }
+html.is-mobile .emi-result{ padding:0; }
+html.is-mobile .emi-result-head{ padding:20px 16px; }
+html.is-mobile .emi-result-value{ font-size:30px; }
+html.is-mobile .emi-result-rows{ padding:4px 16px 8px; }
+html.is-mobile .emi-donut-wrap{ max-width:220px; }
+html.is-mobile .emi-stats{ grid-template-columns:1fr 1fr; }
+html.is-mobile .emi-card-head{ margin-bottom:16px; }
+html.is-mobile .emi-card-head h2{ font-size:18px; }
+
+@media (max-width:400px){
+    html.is-mobile .emi-value-amount{ width:132px; }
+    html.is-mobile .emi-result-row dd{ font-size:16px; }
+    html.is-mobile .emi-result-row dt{ font-size:14px; }
+    html.is-mobile .emi-stats{ grid-template-columns:1fr; }
+}
+@media (max-width:340px){
+    html.is-mobile .emi-card{ padding:18px 12px 16px; }
+    html.is-mobile .emi-result{ padding:0; }
+    html.is-mobile .emi-result-head,
+    html.is-mobile .emi-result-rows{ padding-left:12px; padding-right:12px; }
+    html.is-mobile .emi-value-amount{ width:122px; font-size:14px; }
+    html.is-mobile .emi-result-value{ font-size:27px; }
+}

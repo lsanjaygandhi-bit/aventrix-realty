@@ -15,7 +15,7 @@
 <meta name="robots" content="noindex, nofollow">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <link rel="stylesheet" href="css/admin.css?v=20260925">
-<link rel="stylesheet" href="css/admin-crm.css?v=20260926">
+<link rel="stylesheet" href="css/admin-crm.css?v=20260926c">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/quill/1.3.7/quill.snow.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/quill/1.3.7/quill.min.js"></script>
 </head>
@@ -177,18 +177,30 @@
                 </div>
                 <div id="pageContentForm" style="display:none;">
                     <div class="admin-card" id="pcHeroCard">
-                        <h2 style="margin-top:0; font-size:16px;">Hero / Banner</h2>
-                        <p class="helper-text" id="pcHeroHomeNotice" style="display:none; color:var(--admin-danger); margin-top:-4px;">
-                            Homepage's hero banner is not controlled by these fields — it's managed under <strong>Site Settings</strong> instead (Hero Title / Subtitle / Tagline / Video). Fields below can still be saved, but won't appear on the live Homepage.
-                        </p>
+                        <div class="pc-section-head">
+                            <h2 style="margin:0; font-size:16px;">Hero / Banner</h2>
+                            <a id="pcViewPageLink" href="../index.html" target="_blank" rel="noopener" class="helper-text">View page ↗</a>
+                        </div>
+                        <div id="pcHomeHero" style="display:none;">
+                            <div class="admin-form-grid">
+                                <div class="admin-field full"><label>Hero Title</label><input type="text" id="pcSsHeroTitle"></div>
+                                <div class="admin-field full"><label>Hero Subtitle</label><textarea id="pcSsHeroSubtitle" rows="2"></textarea></div>
+                                <div class="admin-field"><label>Hero Tagline <span class="helper-text" style="display:inline;">(e.g. "Buy • Sell • Rent")</span></label><input type="text" id="pcSsHeroTagline"></div>
+                                <div class="admin-field"><label>Tagline Colour</label><input type="color" id="pcSsHeroTaglineColor" style="height:42px; padding:4px;"></div>
+                                <div class="admin-field full"><label>Hero Background Video URL <span class="helper-text" style="display:inline;">(leave empty to keep the current video)</span></label><input type="text" id="pcSsHeroVideoUrl" placeholder="images/hero-video.mp4"></div>
+                            </div>
+                            <p class="helper-text" style="margin-top:0;">"Post Property" button and poster image:</p>
+                        </div>
                         <div class="admin-form-grid">
-                            <div class="admin-field"><label>Eyebrow (small label)</label><input type="text" id="pcHeroEyebrow"></div>
+                            <div id="pcHeroStdFields" style="display:contents;">
+                                <div class="admin-field full"><label>Eyebrow (small label)</label><input type="text" id="pcHeroEyebrow"></div>
+                                <div class="admin-field full"><label>Heading <span class="helper-text" style="display:inline;">(use &lt;br&gt; for a line break)</span></label><input type="text" id="pcHeroTitle"></div>
+                                <div class="admin-field full"><label>Subtitle</label><textarea id="pcHeroSubtitle" rows="2"></textarea></div>
+                            </div>
                             <div class="admin-field"><label>Button Text</label><input type="text" id="pcHeroButtonText"></div>
-                            <div class="admin-field full"><label>Heading</label><input type="text" id="pcHeroTitle"></div>
-                            <div class="admin-field full"><label>Subtitle</label><textarea id="pcHeroSubtitle" rows="2"></textarea></div>
                             <div class="admin-field"><label>Button Link</label><input type="text" id="pcHeroButtonLink"></div>
-                            <div class="admin-field">
-                                <label>Hero Image URL</label>
+                            <div class="admin-field full">
+                                <label id="pcHeroImageLabel">Hero Image URL</label>
                                 <input type="text" id="pcHeroImageUrl">
                                 <input type="file" id="pcHeroImageUpload" accept="image/*" style="margin-top:6px;">
                             </div>
@@ -197,11 +209,8 @@
                     </div>
 
                     <div class="admin-card">
-                        <div class="admin-toolbar" style="padding:0; margin-bottom:10px;">
-                            <h2 style="margin:0; font-size:16px;">Content Sections</h2>
-                            <button type="button" class="admin-btn secondary" id="pcAddSectionBtn" style="width:auto;"><i class="fas fa-plus"></i> Add Section</button>
-                        </div>
-                        <p class="helper-text">One rich-text block per section — headings, paragraphs, bold/italic, lists and links. Formatting inherits the website's typography automatically.</p>
+                        <h2 style="margin:0 0 6px; font-size:16px;">Page Sections</h2>
+                        <p class="helper-text">Each block below is one section of the page, top to bottom. Lists (cards, steps, questions…) can be reordered, added to or shortened; the website keeps its design automatically. Empty fields fall back to the website's current text.</p>
                         <div id="pcSectionsList"></div>
                     </div>
 
@@ -211,6 +220,7 @@
                             <div class="admin-field full"><label>SEO Title</label><input type="text" id="pcSeoTitle"></div>
                             <div class="admin-field full"><label>Meta Description</label><textarea id="pcSeoDescription" rows="2"></textarea></div>
                             <div class="admin-field full"><label>Keywords</label><input type="text" id="pcSeoKeywords"></div>
+                            <div class="admin-field full"><label>Social sharing image URL <span class="helper-text" style="display:inline;">(og:image — leave empty to keep the page's current image)</span></label><input type="text" id="pcOgImageUrl"></div>
                         </div>
                     </div>
 
@@ -218,38 +228,9 @@
                 </div>
             </section>
 
-            <!-- OUR LEGACY (dedicated editor for the "about-legacy" section
-                 inside the Homepage `pages` row — same table/data as
-                 Website Content → Homepage, just a direct sidebar entry
-                 instead of being buried in that page's section list) -->
-            <section id="section-legacy" class="admin-section" style="display:none;">
-                <p class="helper-text" id="legacyLoading" style="display:none;"><i class="fas fa-spinner fa-spin"></i> Loading Our Legacy content…</p>
-                <div class="admin-error" id="legacyError" style="display:none;">
-                    <div id="legacyErrorMsg"></div>
-                    <div style="display:flex; gap:10px; margin-top:10px;">
-                        <button type="button" class="admin-btn secondary" id="legacyRetryBtn" style="width:auto;"><i class="fas fa-rotate-right"></i> Retry</button>
-                        <button type="button" class="admin-btn gold" id="legacyCreateBtn" style="width:auto; display:none;"><i class="fas fa-plus"></i> Create Legacy Content</button>
-                    </div>
-                </div>
-                <div id="legacyForm" style="display:none;">
-                    <div class="admin-card">
-                        <h2 style="margin-top:0; font-size:16px;">Our Legacy</h2>
-                        <p class="helper-text">This is the "Our Legacy" section shown on the Homepage — the same content Website Content → Homepage would show under Content Sections, just with its own direct menu entry.</p>
-                        <div class="admin-form-grid">
-                            <div class="admin-field"><label>Eyebrow (small label)</label><input type="text" id="legacyEyebrow"></div>
-                            <div class="admin-field full"><label>Heading</label><input type="text" id="legacyHeading"></div>
-                            <div class="admin-field full">
-                                <label>Content</label>
-                                <div class="pc-quill-editor" id="legacyQuillEditor"></div>
-                                <p class="helper-text" id="legacyQuillMissing" style="display:none; color:var(--admin-danger);">
-                                    Rich text editor failed to load (Quill is missing). Your existing content is safe, but reformatting is unavailable right now — refresh the page and try again.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="admin-btn gold" id="saveLegacyBtn" style="width:auto;"><i class="fas fa-check"></i> Save & Publish</button>
-                </div>
-            </section>
+            <!-- OUR LEGACY — the sidebar entry opens Website Content → Homepage at the
+                 "Our Legacy" section (admin/js/legacy-content.js). -->
+            <section id="section-legacy" class="admin-section" style="display:none;"></section>
 
             <!-- TESTIMONIALS -->
             <section id="section-testimonials" class="admin-section" style="display:none;">
@@ -351,31 +332,7 @@
 
             <!-- SITE SETTINGS -->
             <section id="section-settings" class="admin-section" style="display:none;">
-                <div class="admin-card">
-                    <h2 style="margin-top:0; font-size:16px;">Homepage Hero Banner</h2>
-                    <div class="admin-form-grid">
-                        <div class="admin-field full">
-                            <label>Hero Title</label>
-                            <input type="text" id="setHeroTitle">
-                        </div>
-                        <div class="admin-field full">
-                            <label>Hero Subtitle</label>
-                            <textarea id="setHeroSubtitle" rows="2"></textarea>
-                        </div>
-                        <div class="admin-field">
-                            <label>Hero Tagline <span class="helper-text" style="display:inline;">(e.g. "Buy · Sell · Lease")</span></label>
-                            <input type="text" id="setHeroTagline">
-                        </div>
-                        <div class="admin-field">
-                            <label>Hero Tagline Color</label>
-                            <input type="color" id="setHeroTaglineColor" style="height:42px; padding:4px;">
-                        </div>
-                        <div class="admin-field full">
-                            <label>Hero Background Video URL <span class="helper-text" style="display:inline;">(leave empty to keep the current video)</span></label>
-                            <input type="text" id="setHeroVideoUrl" placeholder="images/hero-video.mp4">
-                        </div>
-                    </div>
-                </div>
+                <p class="helper-text">The Homepage hero banner (title, subtitle, tagline, video) is edited under <a href="#" data-goto-content="home">Website Content → Homepage</a>. Office addresses, phones and emails shown in the footer and contact sections come from <strong>Office Locations</strong>.</p>
                 <div class="admin-card">
                     <h2 style="margin-top:0; font-size:16px;">Contact Details</h2>
                     <div class="admin-form-grid">
@@ -510,6 +467,14 @@
                 <div class="admin-field">
                     <label>Location</label>
                     <input type="text" id="fLocation">
+                </div>
+                <div class="admin-field full" id="fCoordsRow" hidden>
+                    <label>Map location <span class="helper-text" style="display:inline;">(optional &mdash; shows this property on the Properties page Map View)</span></label>
+                    <div class="admin-coords">
+                        <input type="text" id="fLatitude" inputmode="decimal" autocomplete="off" placeholder="Latitude, e.g. 12.9416" aria-label="Latitude">
+                        <input type="text" id="fLongitude" inputmode="decimal" autocomplete="off" placeholder="Longitude, e.g. 80.1984" aria-label="Longitude">
+                    </div>
+                    <small class="admin-field-hint">In Google Maps, right-click the exact property location and click the numbers at the top (e.g. 12.9416, 80.1984) to copy them, then paste into Latitude &mdash; both boxes fill in. Leave both empty to keep the property off the map.</small>
                 </div>
                 <div class="admin-field">
                     <label>Price (display text) *</label>
@@ -696,12 +661,13 @@
                     <input type="text" id="oEmail" placeholder="office@aventrixrealty.com">
                 </div>
                 <div class="admin-field">
-                    <label>Business Hours</label>
+                    <label>Business Hours <span class="helper-text" style="display:inline;">(internal note — the website's hours are edited in Website Content → Contact → Business hours)</span></label>
                     <input type="text" id="oBusinessHours" placeholder="Mon–Sat, 10am–7pm">
                 </div>
                 <div class="admin-field full">
-                    <label>Google Maps Embed URL <span class="helper-text" style="display:inline;">(optional — for an embedded map on Contact page)</span></label>
-                    <input type="text" id="oMapsEmbedUrl" placeholder="https://www.google.com/maps?q=...&output=embed">
+                    <label>Google Maps Embed URL <span class="helper-text" style="display:inline;">(optional — for the embedded map on the Contact page and footer)</span></label>
+                    <input type="text" id="oMapsEmbedUrl" placeholder="https://www.google.com/maps/embed?pb=...">
+                    <p class="helper-text" id="oMapsEmbedHint">Use Google Maps → Share → <strong>Embed a map</strong> → copy the <code>src</code> link (starts with https://www.google.com/maps/embed). A normal share link (maps.app.goo.gl/…) can't be embedded; if one is entered, the website builds the map from the address instead.</p>
                 </div>
                 <div class="admin-field">
                     <label>Latitude</label>
@@ -888,16 +854,16 @@
 <script src="js/crud-engine.js"></script>
 <script src="js/auth.js?v=20260925"></script>
 <script src="../js/property-taxonomy.js?v=20260924"></script>
-<script src="js/properties.js"></script>
-<script src="js/offices.js"></script>
-<script src="js/page-content.js"></script>
-<script src="js/legacy-content.js"></script>
+<script src="js/properties.js?v=20260926c"></script>
+<script src="js/offices.js?v=20260926b"></script>
+<script src="js/page-content.js?v=20260926b"></script>
+<script src="js/legacy-content.js?v=20260926b"></script>
 <script src="js/testimonials.js"></script>
 <script src="js/realtors.js"></script>
 <script src="js/insights.js"></script>
 <script src="js/media-library.js"></script>
 <script src="js/enquiries.js?v=20260925"></script>
-<script src="js/settings.js"></script>
+<script src="js/settings.js?v=20260926b"></script>
 <script src="js/dashboard-app.js?v=20260926"></script>
 </body>
 </html>

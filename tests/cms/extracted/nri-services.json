@@ -1,0 +1,287 @@
+{
+ "page_key": "nri-services",
+ "hero": {
+  "hero_eyebrow": "NRI PROPERTY SERVICES",
+  "hero_title": "Your Property in Chennai,<br> Supported From Anywhere",
+  "hero_subtitle": "Aventrix Realty helps NRIs buy, sell, lease and manage property in Chennai and Tamil Nadu — with a local team handling the details on the ground.",
+  "hero_button_text": "Start Your NRI Enquiry",
+  "hero_button_link": "#owner-form"
+ },
+ "seo_title": "NRI Services | Aventrix Realty",
+ "seo_description": "Remote-friendly real estate services for NRIs from Aventrix Realty — virtual property tours, documentation support, power-of-attorney coordination and end-to-end transaction assistance in Chennai.",
+ "seo_keywords": "",
+ "og_image_url": "https://aventrixrealty.com/images/chennai-marina.jpg",
+ "sections": [
+  {
+   "key": "local-support",
+   "label": "Local support while overseas (5)",
+   "eyebrow": "Local Presence",
+   "heading": "Local Support While You're Overseas",
+   "html": "",
+   "image_url": "",
+   "lists": {
+    "items": [
+     {
+      "title": "Local Coordination",
+      "text": "Our Chennai-based team handles the on-ground parts of your property matter on your behalf."
+     },
+     {
+      "title": "Regular Communication",
+      "text": "You stay updated through calls, messages or email, in whichever way suits you."
+     },
+     {
+      "title": "Property Visits, Where Applicable",
+      "text": "Our team can visit your property or arrange viewings when required."
+     },
+     {
+      "title": "Local Market Understanding",
+      "text": "We keep track of local conditions relevant to your property's category and location."
+     },
+     {
+      "title": "Transaction Support",
+      "text": "From documentation coordination to closing, we stay involved through the process."
+     }
+    ]
+   },
+   "hooks": [
+    "eyebrow",
+    "heading"
+   ],
+   "display_order": 1
+  },
+  {
+   "key": "how-we-help",
+   "label": "How Aventrix helps NRIs (6 cards)",
+   "eyebrow": "How We Help",
+   "heading": "How Aventrix Helps NRIs",
+   "html": "",
+   "image_url": "",
+   "lists": {
+    "items": [
+     {
+      "number": "01",
+      "title": "Property Purchase Assistance",
+      "text": "Guidance and support if you're looking to buy property in Chennai."
+     },
+     {
+      "number": "02",
+      "title": "Property Sale Support",
+      "text": "Help presenting and positioning your property for sale, on your behalf."
+     },
+     {
+      "number": "03",
+      "title": "Rental / Leasing Assistance",
+      "text": "Support finding suitable tenants and managing the leasing process."
+     },
+     {
+      "number": "04",
+      "title": "Property Management Coordination",
+      "text": "Coordination for the upkeep and oversight of your property while you're away."
+     },
+     {
+      "number": "05",
+      "title": "Investment Guidance",
+      "text": "General guidance on property options that suit your investment goals."
+     },
+     {
+      "number": "06",
+      "title": "Documentation & Transaction Coordination",
+      "text": "Coordination of paperwork and communication through the transaction process."
+     }
+    ]
+   },
+   "hooks": [
+    "eyebrow",
+    "heading"
+   ],
+   "display_order": 2
+  },
+  {
+   "key": "form-intro",
+   "label": "Enquiry form (heading and intro)",
+   "eyebrow": "",
+   "heading": "Share Your Property Requirement",
+   "html": "",
+   "image_url": "",
+   "fields": {
+    "text": "Tell us what you need — buying, selling, leasing or managing a property — and our team will get in touch to discuss the next steps. <br><br> <strong>🔒 Your information is kept confidential and used only for property-related communication.</strong>"
+   },
+   "hooks": [
+    "heading"
+   ],
+   "display_order": 3
+  },
+  {
+   "key": "categories",
+   "label": "Property categories we assist with",
+   "eyebrow": "Property Categories",
+   "heading": "Property Categories We Assist With",
+   "html": "",
+   "image_url": "",
+   "lists": {
+    "tags": [
+     {
+      "label": "Residential Properties"
+     },
+     {
+      "label": "Commercial Properties"
+     },
+     {
+      "label": "Land & Plots"
+     },
+     {
+      "label": "Independent Houses"
+     },
+     {
+      "label": "Apartments"
+     },
+     {
+      "label": "Joint Development Opportunities"
+     }
+    ]
+   },
+   "hooks": [
+    "eyebrow",
+    "heading"
+   ],
+   "display_order": 4
+  },
+  {
+   "key": "why-local",
+   "label": "Why NRIs choose local support (5)",
+   "eyebrow": "Why It Helps",
+   "heading": "Why NRIs Choose Local Support",
+   "html": "",
+   "image_url": "",
+   "lists": {
+    "items": [
+     {
+      "title": "Fewer Trips Required",
+      "text": "With a local team handling coordination, you don't need to travel for every step, where applicable."
+     },
+     {
+      "title": "Consistent Updates",
+      "text": "You're kept informed at each stage, instead of having to follow up repeatedly yourself."
+     },
+     {
+      "title": "Local Visibility",
+      "text": "Your property gets proper visibility in the local market, even while you're away."
+     },
+     {
+      "title": "Prompt Attention to Local Matters",
+      "text": "Property-related tasks that need someone on the ground are handled without unnecessary delay."
+     },
+     {
+      "title": "Single Point of Contact",
+      "text": "One team coordinates communication, so you're not juggling multiple contacts."
+     }
+    ]
+   },
+   "hooks": [
+    "eyebrow",
+    "heading"
+   ],
+   "display_order": 5
+  },
+  {
+   "key": "getting-started",
+   "label": "Getting started (5 steps)",
+   "eyebrow": "How It Works",
+   "heading": "Getting Started as an NRI Client",
+   "html": "",
+   "image_url": "",
+   "lists": {
+    "items": [
+     {
+      "number": "01",
+      "title": "Share Your Requirement",
+      "text": "Tell us what you need — whether it's buying, selling, leasing or managing a property."
+     },
+     {
+      "number": "02",
+      "title": "Understand Your Property Need",
+      "text": "Our team reviews your requirement to understand what matters most to you."
+     },
+     {
+      "number": "03",
+      "title": "Local Market / Property Review",
+      "text": "We assess the relevant property or market context on the ground in Chennai."
+     },
+     {
+      "number": "04",
+      "title": "Coordinate Visits / Discussions",
+      "text": "Where needed, we arrange property visits or discussions on your behalf."
+     },
+     {
+      "number": "05",
+      "title": "Support the Transaction",
+      "text": "We stay involved through documentation, communication and the steps that follow."
+     }
+    ]
+   },
+   "hooks": [
+    "eyebrow",
+    "heading"
+   ],
+   "display_order": 6
+  },
+  {
+   "key": "nri-faq",
+   "label": "NRI FAQs (6)",
+   "eyebrow": "FAQ",
+   "heading": "Questions NRI Clients Ask",
+   "html": "",
+   "image_url": "",
+   "lists": {
+    "faqs": [
+     {
+      "question": "Can NRIs buy property in Chennai?",
+      "answer": "<p>Yes, NRIs can generally purchase most types of residential and commercial property in India, subject to RBI and FEMA guidelines. As rules can depend on individual circumstances, we recommend confirming specifics with a qualified legal or tax professional alongside our support.</p>"
+     },
+     {
+      "question": "Can Aventrix help an NRI sell property?",
+      "answer": "<p>Yes. We help present your property to genuine buyers and coordinate the process on your behalf, from a distance.</p>"
+     },
+     {
+      "question": "Can you assist with rental requirements?",
+      "answer": "<p>Yes, we assist NRI owners with finding suitable tenants and coordinating the leasing process.</p>"
+     },
+     {
+      "question": "Can you coordinate property-related activities locally?",
+      "answer": "<p>Yes. Our Chennai-based team can coordinate visits, documentation and other on-ground requirements where applicable.</p>"
+     },
+     {
+      "question": "How can an NRI start a property enquiry?",
+      "answer": "<p>Simply fill in the form above with your requirement and contact details, and our team will get in touch with you.</p>"
+     },
+     {
+      "question": "What information should I provide?",
+      "answer": "<p>Your contact details, what you need help with (buying, selling, leasing, management or investment), and any relevant property details you already have.</p>"
+     }
+    ]
+   },
+   "hooks": [
+    "eyebrow",
+    "heading"
+   ],
+   "display_order": 7
+  },
+  {
+   "key": "final-cta",
+   "label": "Closing call to action",
+   "eyebrow": "",
+   "heading": "Stay Connected to Your Property in Chennai",
+   "html": "",
+   "image_url": "",
+   "fields": {
+    "text": "Share your requirement and our team will get in touch to help you take the next step, wherever you are.",
+    "button_text": "Start Your NRI Property Enquiry",
+    "link": "#owner-form"
+   },
+   "hooks": [
+    "heading"
+   ],
+   "display_order": 8
+  }
+ ]
+}

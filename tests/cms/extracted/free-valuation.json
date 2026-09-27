@@ -1,0 +1,243 @@
+{
+ "page_key": "free-valuation",
+ "hero": {
+  "hero_eyebrow": "FREE PROPERTY VALUATION",
+  "hero_title": "Know Your Property.<br> Plan With Confidence.",
+  "hero_subtitle": "Get a professional view of your property's current market position, based on its location, property characteristics and relevant market conditions.",
+  "hero_button_text": "Request Property Valuation",
+  "hero_button_link": "#valuation-form"
+ },
+ "seo_title": "Free Property Valuation | Aventrix Realty",
+ "seo_description": "Request a free property valuation from Aventrix Realty. Our Chennai property experts review your land, apartment, villa or commercial property to share its current market position.",
+ "seo_keywords": "",
+ "og_image_url": "https://aventrixrealty.com/images/chennai-marina.jpg",
+ "sections": [
+  {
+   "key": "why-valuation",
+   "label": "Why choose a valuation (4 cards)",
+   "eyebrow": "Property Valuation",
+   "heading": "Why Choose a Property Valuation?",
+   "html": "",
+   "image_url": "",
+   "lists": {
+    "items": [
+     {
+      "number": "01",
+      "title": "Current Market Estimate",
+      "text": "Understand where your property stands today, based on its location, characteristics and current market conditions."
+     },
+     {
+      "number": "02",
+      "title": "Confident Decisions",
+      "text": "Get a clearer market perspective before deciding to sell, rent or hold on to your property."
+     },
+     {
+      "number": "03",
+      "title": "Future Property Potential",
+      "text": "Understand how your property's location and category may support future opportunities."
+     },
+     {
+      "number": "04",
+      "title": "Professional Guidance",
+      "text": "Our team reviews your property details and shares practical, experience-based guidance."
+     }
+    ]
+   },
+   "hooks": [
+    "eyebrow",
+    "heading"
+   ],
+   "display_order": 1
+  },
+  {
+   "key": "valuation-benefits",
+   "label": "What a valuation helps you understand (6)",
+   "eyebrow": "Valuation Benefits",
+   "heading": "What a Valuation Helps You Understand",
+   "html": "",
+   "image_url": "",
+   "lists": {
+    "items": [
+     {
+      "title": "Indicative Market Value",
+      "text": "A general sense of where your property may stand in today's market conditions."
+     },
+     {
+      "title": "Location & Market Context",
+      "text": "How the surrounding neighbourhood and nearby developments shape your property's position."
+     },
+     {
+      "title": "Property-Specific Factors",
+      "text": "How size, age, layout and current condition influence your property's standing."
+     },
+     {
+      "title": "Rental & Leasing Perspective",
+      "text": "Where relevant, a sense of how your property may perform in the rental market."
+     },
+     {
+      "title": "Development & Future Potential",
+      "text": "Where applicable, how your land may support future development or joint venture opportunities."
+     },
+     {
+      "title": "A Clear Starting Point",
+      "text": "A simple, practical foundation to help you plan your property's next step."
+     }
+    ]
+   },
+   "hooks": [
+    "eyebrow",
+    "heading"
+   ],
+   "display_order": 2
+  },
+  {
+   "key": "form-intro",
+   "label": "Valuation form (heading and intro)",
+   "eyebrow": "",
+   "heading": "Share Your Property Details",
+   "html": "",
+   "image_url": "",
+   "fields": {
+    "text": "Tell us about your property and our team will review the information to understand its market position. <br><br> <strong> 🔒 Your information is kept confidential and used only for valuation purposes. </strong>"
+   },
+   "hooks": [
+    "heading"
+   ],
+   "display_order": 3
+  },
+  {
+   "key": "valuation-includes",
+   "label": "What your valuation includes (5 cards)",
+   "eyebrow": "What You Receive",
+   "heading": "What Your Valuation Includes",
+   "html": "",
+   "image_url": "",
+   "lists": {
+    "items": [
+     {
+      "number": "01",
+      "title": "Market Value Perspective",
+      "text": "An indicative view of your property's current position in the market."
+     },
+     {
+      "number": "02",
+      "title": "Location & Demand Insight",
+      "text": "An understanding of how your property's location and category influence buyer or tenant interest."
+     },
+     {
+      "number": "03",
+      "title": "Property Condition Review",
+      "text": "A look at how your property's size, age and condition affect its standing."
+     },
+     {
+      "number": "04",
+      "title": "Suitable Next Steps",
+      "text": "Practical suggestions on how to move forward, whether selling, renting or holding."
+     },
+     {
+      "number": "05",
+      "title": "Professional Guidance",
+      "text": "Direct guidance from our team to help you plan with clarity."
+     }
+    ]
+   },
+   "hooks": [
+    "eyebrow",
+    "heading"
+   ],
+   "display_order": 4
+  },
+  {
+   "key": "valuation-process",
+   "label": "Our valuation process (4 steps)",
+   "eyebrow": "How It Works",
+   "heading": "Our Valuation Process",
+   "html": "",
+   "image_url": "",
+   "lists": {
+    "items": [
+     {
+      "number": "01",
+      "title": "Submit Property Information",
+      "text": "Fill out the property valuation form with your contact and property details."
+     },
+     {
+      "number": "02",
+      "title": "Team Review",
+      "text": "Our team reviews the details you've shared along with your property's location and category."
+     },
+     {
+      "number": "03",
+      "title": "Market Assessment",
+      "text": "We assess relevant market conditions and trends for your property's area."
+     },
+     {
+      "number": "04",
+      "title": "Receive Guidance",
+      "text": "You receive a clear market perspective along with practical guidance from our team."
+     }
+    ]
+   },
+   "hooks": [
+    "eyebrow",
+    "heading"
+   ],
+   "display_order": 5
+  },
+  {
+   "key": "who-for",
+   "label": "Who is this for",
+   "eyebrow": "Who We Help",
+   "heading": "Who Is This For?",
+   "html": "",
+   "image_url": "",
+   "lists": {
+    "tags": [
+     {
+      "label": "Property Owners"
+     },
+     {
+      "label": "Sellers"
+     },
+     {
+      "label": "Landowners"
+     },
+     {
+      "label": "Investors"
+     },
+     {
+      "label": "Landlords"
+     },
+     {
+      "label": "Developers"
+     },
+     {
+      "label": "NRI Property Owners"
+     }
+    ]
+   },
+   "hooks": [
+    "eyebrow",
+    "heading"
+   ],
+   "display_order": 6
+  },
+  {
+   "key": "final-cta",
+   "label": "Closing call to action",
+   "eyebrow": "",
+   "heading": "Understand Your Property's Market Position",
+   "html": "",
+   "image_url": "",
+   "fields": {
+    "text": "Start with your property details and let our team help you understand its current market perspective.",
+    "button_text": "Request Property Valuation",
+    "link": "#valuation-form"
+   },
+   "hooks": [
+    "heading"
+   ],
+   "display_order": 7
+  }
+ ]
+}

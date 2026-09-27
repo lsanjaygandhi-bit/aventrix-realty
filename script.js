@@ -7,7 +7,19 @@
 // ===========================
 const heroVideo = document.getElementById("heroVideo");
 
-if (heroVideo) {
+// Data Saver on, or "reduce motion" requested: keep the poster image and
+// don't download/play the background video.
+const heroVideoSkip = !!(heroVideo && (
+    (navigator.connection && navigator.connection.saveData) ||
+    (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches)));
+if (heroVideoSkip) {
+    heroVideo.removeAttribute("autoplay");
+    heroVideo.preload = "none";
+    heroVideo.querySelectorAll("source").forEach((s) => s.remove());
+    heroVideo.load();
+}
+
+if (heroVideo && !heroVideoSkip) {
     const attemptPlay = () => {
         const playPromise = heroVideo.play();
         if (playPromise !== undefined) {
@@ -334,6 +346,31 @@ function renderRealtorProfile() {
     }
 
     document.title = `${realtor.name} | Aventrix Realty`;
+    // SEO: one canonical address per person. Founders have their own
+    // dedicated page (profileLink), so this generic profile points there.
+    (function setRealtorSeo() {
+        const base = "https://aventrixrealty.com/";
+        const canonical = realtor.profileLink ? base + realtor.profileLink : base + "realtor-profile.html?id=" + encodeURIComponent(realtor.id);
+        const desc = (realtor.shortIntro || "").trim() || `${realtor.name}, ${realtor.designation} at Aventrix Realty.`;
+        const setTag = (sel, make, attr, val) => {
+            let t = document.head.querySelector(sel);
+            if (!t) { t = make(); document.head.appendChild(t); }
+            t.setAttribute(attr, val);
+        };
+        const meta = (key, val, a) => setTag(`meta[${a || "name"}="${key}"]`, () => { const m = document.createElement("meta"); m.setAttribute(a || "name", key); return m; }, "content", val);
+        setTag('link[rel="canonical"]', () => { const l = document.createElement("link"); l.rel = "canonical"; return l; }, "href", canonical);
+        meta("description", desc);
+        meta("og:title", document.title, "property");
+        meta("og:description", desc, "property");
+        meta("og:url", canonical, "property");
+        meta("twitter:title", document.title);
+        meta("twitter:description", desc);
+        if (realtor.photo) {
+            const img = /^https?:/i.test(realtor.photo) ? realtor.photo : base + String(realtor.photo).replace(/^\//, "");
+            meta("og:image", img, "property");
+            meta("twitter:image", img);
+        }
+    })();
 
     const expertiseTags = (realtor.expertise || []).map(x => `<span class="rp-tag">${x}</span>`).join("");
     const specializationTags = (realtor.specializations || []).map(x => `<span class="rp-tag">${x}</span>`).join("");

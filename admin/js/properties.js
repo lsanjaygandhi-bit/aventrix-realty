@@ -20,6 +20,49 @@ const PropertiesModule = (function () {
 
     const els = {};
 
+    // ---- Map coordinates (latitude / longitude) ----
+    // The columns come from sql/migration-2026-09-26-06-property-coordinates.sql.
+    // Until that migration has run, the fields stay hidden and are never
+    // sent, so saving a property keeps working exactly as before.
+    let coordsSupported = null; // null = not checked yet
+    async function detectCoords() {
+        if (coordsSupported !== null) return coordsSupported;
+        try {
+            const { error } = await CrudEngine.sb.from("properties").select("latitude,longitude").limit(1);
+            coordsSupported = !error;
+        } catch (e) {
+            coordsSupported = false;
+        }
+        if (els.fCoordsRow) els.fCoordsRow.hidden = !coordsSupported;
+        return coordsSupported;
+    }
+
+    // Returns { latitude, longitude } (numbers or both null), or throws a
+    // message the admin can act on.
+    function readCoords() {
+        const latText = els.fLatitude.value.trim(), lngText = els.fLongitude.value.trim();
+        if (!latText && !lngText) return { latitude: null, longitude: null };
+        if (!latText || !lngText) throw new Error("Enter both Latitude and Longitude, or leave both empty.");
+        const num = /^[-+]?\d{1,3}(\.\d+)?$/;
+        if (!num.test(latText) || !num.test(lngText)) throw new Error("Latitude and Longitude must be decimal numbers, e.g. 12.9416 and 80.1984.");
+        const lat = parseFloat(latText), lng = parseFloat(lngText);
+        if (lat < -90 || lat > 90) throw new Error("Latitude must be between -90 and 90.");
+        if (lng < -180 || lng > 180) throw new Error("Longitude must be between -180 and 180.");
+        if (lat === 0 && lng === 0) throw new Error("0, 0 is not a real property location.");
+        return { latitude: Math.round(lat * 1e6) / 1e6, longitude: Math.round(lng * 1e6) / 1e6 };
+    }
+
+    // Pasting "12.9416, 80.1984" (as copied from Google Maps) into either
+    // box fills both.
+    function handleCoordsPaste(e) {
+        const text = (e.clipboardData || window.clipboardData).getData("text") || "";
+        const m = text.trim().match(/^\(?\s*([-+]?\d{1,3}(?:\.\d+)?)\s*[, ]\s*([-+]?\d{1,3}(?:\.\d+)?)\s*\)?$/);
+        if (!m) return;
+        e.preventDefault();
+        els.fLatitude.value = m[1];
+        els.fLongitude.value = m[2];
+    }
+
     function cacheEls() {
         [
             "propertiesTableBody", "propertiesEmptyState", "filterPublishStatus", "filterStatus",
@@ -27,7 +70,7 @@ const PropertiesModule = (function () {
             "fTitle", "fCategory", "fSubType", "fListingType", "fLocation", "fPrice", "fPriceValue", "fShortDesc", "fDescription",
             "fFeatures", "fFeaturedImage", "featuredImagePreview", "fImages", "imagePreviewList",
             "fBedrooms", "fBathrooms", "fParking", "fFloors", "fBuiltUpArea", "fLandArea", "fRoadWidth", "fRentalIncome", "fBrokerage",
-            "fUdsArea", "fFurnishing", "fFacing",
+            "fUdsArea", "fFurnishing", "fFacing", "fCoordsRow", "fLatitude", "fLongitude",
             "fStatus", "fPublishStatus", "fFeatured",
             "fSeoTitle", "fSeoDescription", "fSeoKeywords",
             "uploadProgressWrap", "uploadProgressBar", "uploadProgressLabel"
@@ -111,6 +154,7 @@ const PropertiesModule = (function () {
 
     function openAdd() {
         resetForm();
+        detectCoords();
         els.propertyModalOverlay.classList.add("open");
     }
 
@@ -149,6 +193,9 @@ const PropertiesModule = (function () {
         els.fUdsArea.value = p.uds_area || "";
         els.fFurnishing.value = p.furnishing || "";
         els.fFacing.value = p.facing || "";
+        await detectCoords();
+        els.fLatitude.value = p.latitude ?? "";
+        els.fLongitude.value = p.longitude ?? "";
         els.fStatus.value = p.status || "Available";
         els.fPublishStatus.value = p.publish_status || "Draft";
         els.fFeatured.checked = !!p.is_featured;
@@ -277,6 +324,8 @@ const PropertiesModule = (function () {
         btn.textContent = "Saving...";
 
         try {
+            // Checked before any upload, so a typo never leaves stray images.
+            const coords = coordsSupported ? readCoords() : null;
             const totalUploads = newFiles.length + (newFeaturedFile ? 1 : 0);
             let uploadedUrls = [];
             let featuredUrl = currentFeaturedImage;
@@ -337,6 +386,7 @@ const PropertiesModule = (function () {
                 seo_description: els.fSeoDescription.value.trim(),
                 seo_keywords: els.fSeoKeywords.value.trim()
             };
+            if (coordsSupported) Object.assign(record, coords);
 
             if (editingId) {
                 await CrudEngine.update("properties", editingId, record);
@@ -367,6 +417,8 @@ const PropertiesModule = (function () {
         els.fCategory.addEventListener("change", () => populateSubTypeOptions(els.fCategory.value, ""));
         els.fImages.addEventListener("change", handleFileSelect);
         els.fFeaturedImage.addEventListener("change", handleFeaturedFileSelect);
+        els.fLatitude.addEventListener("paste", handleCoordsPaste);
+        els.fLongitude.addEventListener("paste", handleCoordsPaste);
         els.filterPublishStatus.addEventListener("change", load);
         els.filterStatus.addEventListener("change", load);
     }

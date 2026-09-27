@@ -1,0 +1,370 @@
+{
+ "page_key": "about",
+ "hero": {
+  "hero_eyebrow": "ABOUT AVENTRIX REALTY",
+  "hero_title": "Real Estate. With Clarity<br>and Purpose.",
+  "hero_subtitle": "Aventrix Realty brings together local market understanding, professional guidance and practical execution to help clients make confident property decisions."
+ },
+ "seo_title": "About Us | Aventrix Realty",
+ "seo_description": "Aventrix Realty brings together local market understanding, professional guidance and practical execution to help clients make confident property decisions across Chennai.",
+ "seo_keywords": "",
+ "og_image_url": "https://aventrixrealty.com/images/chennai-marina.jpg",
+ "sections": [
+  {
+   "key": "about-statement",
+   "label": "Brand statement",
+   "eyebrow": "",
+   "heading": "Clear answers make <span class=\"about-accent\">confident decisions.</span>",
+   "html": "",
+   "image_url": "",
+   "fields": {
+    "text": "At Aventrix Realty, we believe every property decision should begin with a clear understanding of the opportunity, the market and the objective behind it. Our role is to simplify the process, present the right information and support our clients from the first conversation to the next step."
+   },
+   "hooks": [
+    "heading"
+   ],
+   "display_order": 1
+  },
+  {
+   "key": "who-we-are",
+   "label": "Who We Are",
+   "eyebrow": "Who We Are",
+   "heading": "Local Knowledge. Professional Guidance.",
+   "html": "",
+   "image_url": "images/valuation-bg.png",
+   "fields": {
+    "text": "Aventrix Realty works across a wide range of property requirements — buying, selling, leasing, investment, land, residential properties, commercial properties and joint development opportunities. Every engagement begins with a clear conversation about what the client is trying to achieve, whether that means finding the right property, positioning one for sale, or exploring a development opportunity for a piece of land.",
+    "text2": "Once the requirement is well understood, our team works to match it with property opportunities that genuinely fit — rather than presenting options that don't serve the client's actual objective."
+   },
+   "lists": {
+    "tags": [
+     {
+      "label": "Buying"
+     },
+     {
+      "label": "Selling"
+     },
+     {
+      "label": "Leasing"
+     },
+     {
+      "label": "Investment"
+     },
+     {
+      "label": "Land"
+     },
+     {
+      "label": "Residential Properties"
+     },
+     {
+      "label": "Commercial Properties"
+     },
+     {
+      "label": "Joint Development"
+     }
+    ]
+   },
+   "hooks": [
+    "eyebrow",
+    "heading",
+    "image_url"
+   ],
+   "display_order": 2
+  },
+  {
+   "key": "our-approach",
+   "label": "Our Approach (4 cards)",
+   "eyebrow": "Our Approach",
+   "heading": "A More Thoughtful Way to Handle Property.",
+   "html": "",
+   "image_url": "",
+   "lists": {
+    "items": [
+     {
+      "number": "01",
+      "title": "The Brief Comes First",
+      "text": "We start with a conversation, not a shortlist — understanding the purpose, budget, location and timeline behind a requirement before recommending a single property."
+     },
+     {
+      "number": "02",
+      "title": "Read the Market",
+      "text": "We consider location, property characteristics, pricing context and current market conditions before presenting an opportunity."
+     },
+     {
+      "number": "03",
+      "title": "Present Clearly",
+      "text": "We keep property information straightforward so clients can evaluate opportunities without unnecessary complexity."
+     },
+     {
+      "number": "04",
+      "title": "Support the Process",
+      "text": "We stay involved through discussions, coordination and the practical steps that follow a property decision."
+     }
+    ]
+   },
+   "hooks": [
+    "eyebrow",
+    "heading"
+   ],
+   "display_order": 3
+  },
+  {
+   "key": "about-services",
+   "label": "Our Services (6 cards)",
+   "eyebrow": "Our Services",
+   "heading": "From Property Search to Strategic Opportunities.",
+   "html": "",
+   "image_url": "",
+   "lists": {
+    "items": [
+     {
+      "number": "01",
+      "title": "Buy",
+      "text": "Helping buyers identify suitable properties based on location, requirement and budget."
+     },
+     {
+      "number": "02",
+      "title": "Sell",
+      "text": "Supporting property owners with positioning, enquiries and transaction coordination."
+     },
+     {
+      "number": "03",
+      "title": "Lease",
+      "text": "Connecting suitable properties with genuine leasing requirements."
+     },
+     {
+      "number": "04",
+      "title": "Invest",
+      "text": "Helping clients evaluate property opportunities with a practical, information-led approach."
+     },
+     {
+      "number": "05",
+      "title": "Joint Development",
+      "text": "Supporting landowners and development opportunities through structured discussions and coordination."
+     },
+     {
+      "number": "06",
+      "title": "Property Advisory",
+      "text": "Providing practical guidance around property requirements and available opportunities."
+     }
+    ]
+   },
+   "hooks": [
+    "eyebrow",
+    "heading"
+   ],
+   "display_order": 4
+  },
+  {
+   "key": "about-legacy",
+   "__page": "home",
+   "label": "Our Legacy — shown on About Us",
+   "eyebrow": "Our Story",
+   "heading": "Our Legacy",
+   "html": "",
+   "image_url": "",
+   "fields": {
+    "subtitle": "Where Legacy Meets The Next Generation",
+    "closing": "<strong>Honouring the past. Building the future.</strong>"
+   },
+   "lists": {
+    "timeline": [
+     {
+      "year": "1965",
+      "title": "TP Builders Founded",
+      "text": "Long before Aventrix Realty was established, the very place where our office stands today was home to <strong>TP Builders</strong>, founded by <strong>Late Mr. Perumal</strong>. From this very location, he built homes, created lasting relationships, and established a reputation that continues to inspire generations."
+     },
+     {
+      "year": "2010",
+      "title": "A New Generation",
+      "text": "<strong>Gnanasekaran P</strong> proudly carried forward the vision of his father, preserving the values that earned generations of trust while embracing a modern approach to real estate — where tradition, professionalism, and long-term relationships remain at the heart of every property journey."
+     },
+     {
+      "year": "Present",
+      "title": "Aventrix Realty Today",
+      "text": "<strong>Sanjay Gandhi L</strong> became part of this new chapter, bringing over a decade of real estate experience across land, residential, commercial and joint venture advisory. Together, he and <strong>Gnanasekaran P</strong> continue to lead <strong>Aventrix Realty</strong> — combining a proud legacy with modern expertise across Chennai."
+     }
+    ]
+   },
+   "hooks": [
+    "eyebrow",
+    "heading"
+   ],
+   "display_order": 5
+  },
+  {
+   "key": "about-leadership",
+   "label": "Leadership heading (people are edited under Homepage → Meet Our Leadership)",
+   "eyebrow": "Our Leadership",
+   "heading": "People Behind Aventrix Realty.",
+   "html": "",
+   "image_url": "",
+   "hooks": [
+    "eyebrow",
+    "heading"
+   ],
+   "display_order": 6
+  },
+  {
+   "key": "leadership-intro",
+   "__page": "home",
+   "eyebrow": "",
+   "heading": "",
+   "html": "",
+   "image_url": "",
+   "lists": {
+    "leaders": [
+     {
+      "photo": "images/founder.jpg",
+      "name": "Gnanasekaran P",
+      "label": "— MEET OUR FOUNDER",
+      "role": "Founder",
+      "bio": "With over 15 years of experience in Chennai's real estate market, Gnanasekaran P provides the strategic direction and leadership behind Aventrix Realty. His deep understanding of local market cycles and neighbourhood trends shapes how the company sources and evaluates properties across residential, commercial and land segments. Over the years, he has built trusted, long-standing relationships with clients, landowners and developers, grounded in transparency and professional conduct at every stage of a transaction. His focus remains on steady, sustainable business development — growing Aventrix Realty's presence across Chennai while holding firmly to the standards of integrity that lasting real estate relationships depend on.",
+      "link_text": "View Profile →",
+      "profile_link": "gnanasekaran.html"
+     },
+     {
+      "photo": "images/sanjay.jpg",
+      "name": "Sanjay Gandhi L",
+      "label": "— MEET OUR CO-FOUNDER",
+      "role": "Co-Founder & Managing Partner",
+      "rera": "TNRERA Reg. No.: TN/Agent/0284/2026",
+      "bio": "Sanjay Gandhi L brings over 15 years of hands-on real estate experience to his role as Co-Founder and Managing Partner of Aventrix Realty, where he leads day-to-day business and operational activity. His work spans the full property lifecycle — buying, selling and leasing — coordinating property marketing and transaction execution while managing negotiations through to closure. With close familiarity with Chennai's neighbourhoods and property values, he works directly with buyers, sellers, investors and property owners to guide each transaction with clarity and care. His approach is centred on building long-term client relationships, backed by practical market knowledge and dependable, on-ground support.",
+      "link_text": "View Profile →",
+      "profile_link": "sanjay.html"
+     }
+    ]
+   },
+   "hooks": [],
+   "display_order": 7
+  },
+  {
+   "key": "about-network",
+   "label": "Our Network",
+   "eyebrow": "Beyond the Property",
+   "heading": "Strong Property Decisions Start With the Right Connections.",
+   "html": "",
+   "image_url": "",
+   "fields": {
+    "text": "A property transaction rarely involves just one person. Aventrix Realty works through a professional network that brings together property owners, buyers, sellers, tenants, developers, investors, local property contacts and professional service partners — helping connect the right people at the right stage of a transaction.",
+    "link_text": "Explore Our Realtors",
+    "link": "our-realtors.html"
+   },
+   "lists": {
+    "tags": [
+     {
+      "label": "Property Owners"
+     },
+     {
+      "label": "Buyers"
+     },
+     {
+      "label": "Sellers"
+     },
+     {
+      "label": "Tenants"
+     },
+     {
+      "label": "Developers"
+     },
+     {
+      "label": "Investors"
+     },
+     {
+      "label": "Local Property Contacts"
+     },
+     {
+      "label": "Professional Service Partners"
+     }
+    ]
+   },
+   "hooks": [
+    "eyebrow",
+    "heading"
+   ],
+   "display_order": 8
+  },
+  {
+   "key": "about-why",
+   "label": "Why Aventrix (5 points)",
+   "eyebrow": "Why Aventrix Realty",
+   "heading": "Clear Thinking. Practical Execution.",
+   "html": "",
+   "image_url": "",
+   "lists": {
+    "points": [
+     {
+      "number": "01",
+      "title": "Requirement First",
+      "text": "We focus on understanding the client's actual requirement before suggesting a property."
+     },
+     {
+      "number": "02",
+      "title": "Local Perspective",
+      "text": "We bring practical knowledge of Chennai's property markets and locations."
+     },
+     {
+      "number": "03",
+      "title": "Straightforward Communication",
+      "text": "We aim to keep property information and discussions clear and easy to understand."
+     },
+     {
+      "number": "04",
+      "title": "Professional Coordination",
+      "text": "We help coordinate conversations and next steps between the relevant parties."
+     },
+     {
+      "number": "05",
+      "title": "Long-Term Relationships",
+      "text": "We value professional relationships beyond a single property transaction."
+     }
+    ]
+   },
+   "hooks": [
+    "eyebrow",
+    "heading"
+   ],
+   "display_order": 9
+  },
+  {
+   "key": "about-declaration",
+   "label": "Commitment statement",
+   "eyebrow": "Our Commitment",
+   "heading": "A property decision should never feel like a guess.<br> <span class=\"about-accent\">We make sure it doesn't.</span>",
+   "html": "",
+   "image_url": "",
+   "hooks": [
+    "eyebrow",
+    "heading"
+   ],
+   "display_order": 10
+  },
+  {
+   "key": "final-cta",
+   "label": "Closing call to action",
+   "eyebrow": "",
+   "heading": "Looking for the Right Property Opportunity?",
+   "html": "",
+   "image_url": "",
+   "fields": {
+    "text": "Tell us what you are looking for, and our team can help you explore the next step."
+   },
+   "lists": {
+    "buttons": [
+     {
+      "text": "View Properties",
+      "link": "properties.html"
+     },
+     {
+      "text": "Contact Aventrix",
+      "link": "contact.html"
+     }
+    ]
+   },
+   "hooks": [
+    "heading"
+   ],
+   "display_order": 11
+  }
+ ]
+}

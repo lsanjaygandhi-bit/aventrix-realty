@@ -79,3 +79,27 @@ body.role-realtor [data-admin-only] { display: none !important; }
 @media (min-width: 901px) {
     .admin-stats-grid.stats-5 { grid-template-columns: repeat(5, 1fr); }
 }
+
+/* ===== Website Content editor v2 (2026-09-26) ===== */
+.pc-section-head{ display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin-bottom:8px; }
+.pc-section-head h3{ margin:0; font-size:15px; }
+.pc-section-key{ font-size:11px; color:#8a8a8a; font-family:ui-monospace, SFMono-Regular, Menlo, monospace; }
+.pc-section-focus{ box-shadow:0 0 0 3px rgba(212,175,55,.55); }
+.pc-list{ margin-top:14px; border-top:1px solid #eee; padding-top:12px; }
+.pc-list-head{ display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:8px; }
+.pc-list-head h4{ margin:0; font-size:14px; }
+.pc-list-item{ border:1px solid #ececec; border-radius:10px; padding:10px 12px; margin-bottom:10px; background:#fcfcfb; }
+.pc-list-item-head{ display:flex; align-items:center; gap:10px; margin-bottom:6px; font-size:13px; }
+.pc-list-item-head > span:first-of-type{ flex:1; min-width:0; color:#666; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.pc-list-actions{ display:flex; gap:6px; flex-shrink:0; }
+.pc-list-actions .admin-btn{ width:auto; padding:6px 9px; min-height:32px; }
+.pc-html-box{ font-family:ui-monospace, SFMono-Regular, Menlo, monospace; font-size:12.5px; }
+@media (max-width:640px){
+    .pc-list-item-head > span:first-of-type{ display:none; }
+    .pc-list-actions{ margin-left:auto; }
+}
+
+/* ---- Properties → Map location (latitude / longitude) ---- */
+.admin-coords { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+#fCoordsRow[hidden] { display: none !important; }
+@media (max-width: 520px) { .admin-coords { grid-template-columns: 1fr; } }

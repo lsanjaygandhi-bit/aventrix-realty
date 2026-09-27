@@ -1,0 +1,57 @@
+{
+ "page_key": "sanjay",
+ "hero": {},
+ "seo_title": "Sanjay Gandhi L | Aventrix Realty",
+ "seo_description": "Sanjay Gandhi L, Co-Founder & Managing Partner of Aventrix Realty — over a decade of experience in Chennai real estate advisory across residential, commercial, land and joint venture transactions.",
+ "seo_keywords": "",
+ "og_image_url": "https://aventrixrealty.com/images/sanjay.jpg",
+ "sections": [
+  {
+   "key": "profile-legacy",
+   "label": "Legacy paragraph on this profile page",
+   "eyebrow": "",
+   "heading": "Legacy",
+   "html": "",
+   "image_url": "",
+   "fields": {
+    "text": "Sanjay Gandhi L became part of Aventrix Realty's new chapter, bringing over a decade of real estate experience across land, residential, commercial and joint venture advisory. Together with Gnanasekaran P, he continues to lead Aventrix Realty — combining a proud legacy with modern expertise across Chennai."
+   },
+   "hooks": [
+    "heading"
+   ],
+   "display_order": 1
+  },
+  {
+   "key": "profile-social",
+   "label": "Personal social links on this profile page",
+   "eyebrow": "",
+   "heading": "Connect with Sanjay",
+   "html": "",
+   "image_url": "",
+   "lists": {
+    "links": [
+     {
+      "link": "https://www.facebook.com/share/1JAhc91b79/?mibextid=wwXIfr",
+      "label": "Facebook"
+     },
+     {
+      "link": "https://www.instagram.com/sanjaygandhirealty?stkn=MTdjdXB5YnBjZHg2Mw%3D%3D&utm_source=qr",
+      "label": "Instagram"
+     },
+     {
+      "link": "https://x.com/sanjaygandhil?s=11",
+      "label": "X"
+     },
+     {
+      "link": "https://www.linkedin.com/in/lsanjaygandhi?utm_source=share_via&utm_content=profile&utm_medium=member_ios",
+      "label": "LinkedIn"
+     }
+    ]
+   },
+   "hooks": [
+    "heading"
+   ],
+   "display_order": 2
+  }
+ ]
+}

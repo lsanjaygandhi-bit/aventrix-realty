@@ -1,0 +1,232 @@
+/* =====================================================================
+   AVENTRIX REALTY — PROPERTY CARD ALIGNMENT FIX (2026-09-26)
+   ---------------------------------------------------------------------
+   Loaded LAST on every page that renders property cards (index,
+   properties, property, wishlist, shortlist). Additive only: no colour,
+   font-family or card-style changes. Fixes the underlying layout so any
+   CMS content (long/short title, long/empty description, long price,
+   missing image) fits the same structure:
+
+     image → badge → location → title → description → price → actions → View Details
+
+   Measured problems this file fixes (see the audit report):
+   1. Price + 3 icon buttons sat in one nowrap row. In narrow cards the
+      buttons were pushed outside the card (clipped by overflow:hidden)
+      and the price wrapped to 3–7 lines ("₹ / 54 / lakh").
+   2. Buttons were vertically centred against the price, so a 2-line
+      price moved them — rows of cards had misaligned action rows.
+   3. The FOR SALE/LEASE badge sat under the wishlist heart everywhere
+      except #sfResultsGrid.
+   4. Narrow two-column cards (Near You / Similar / Recently Viewed at
+      421–640px) used full desktop sizing: 22px titles 7–8 lines tall,
+      24px side padding, 185×260 portrait images.
+   5. Recent Search chip strip was squeezed to ~90px so "Land (Buy)" was
+      cut off on phones (properties.html has no home-hero.css, which is
+      where the homepage's phone layout for this row lives).
+   ===================================================================== */
+
+/* ---------- 1. Card column never lets content widen it ---------- */
+.property-card,
+.property-card .content{
+    min-width:0;
+}
+.property-card h3,
+.property-card p,
+.property-location,
+.property-price{
+    overflow-wrap:anywhere;          /* long unbroken CMS strings wrap instead of overflowing */
+}
+
+/* Placeholder colour behind every card image (loading / fallback) */
+.property-image-wrap{
+    background:#eeece4;
+}
+
+/* Location: pin stays on the first line when the location wraps */
+.property-location{
+    align-items:flex-start;
+}
+.property-location i{
+    flex-shrink:0;
+    margin-top:.15em;
+}
+
+/* ---------- 2. Price + actions: dedicated bottom action area ----------
+   - The row may wrap: when the price (on one line) and the buttons don't
+     both fit, the price takes its own line and the buttons move below.
+   - Buttons are bottom-aligned (flex-end) and the footer is already
+     pinned to the card bottom (margin-top:auto), so the buttons sit at
+     the same height in every card of a row regardless of price length.
+   - Single-line prices stay vertically centred beside the buttons,
+     exactly as before. */
+.property-footer-top{
+    flex-wrap:wrap;
+    align-items:flex-end;
+    row-gap:10px;
+}
+.property-price{
+    flex:1 1 auto;                   /* short prices stay beside the buttons; a price too long to fit
+                                        on one line beside them moves to its own full-width line */
+    min-width:0;
+    align-self:center;
+}
+.property-icon-actions{
+    margin-left:auto;
+    flex-wrap:wrap;                  /* never pushed outside the card, even on very narrow cards */
+    justify-content:flex-end;
+    row-gap:8px;
+}
+
+/* ---------- 3. Badge beside the heart on EVERY grid ----------
+   Same offset the listing page (#sfResultsGrid) already used; now also
+   Near You, Similar, Recently Viewed, Wishlist and Shortlist. */
+.property-card .property-badge{
+    left:52px;
+}
+
+/* ---------- 4. Narrow cards (≈ two-column phone grids) ----------
+   Uses the card's own width, not the viewport, so it applies to any grid
+   whose cards become narrow — current or future — without touching the
+   single-column phone layout or desktop. Browsers without container
+   queries keep the normal sizing (still safe: sections 1–3 apply). */
+.property-card{
+    container-type:inline-size;
+}
+@container (max-width:240px){
+    .property-image-wrap{
+        aspect-ratio:4 / 3;
+    }
+    .property-image-wrap > a{
+        display:block;
+        height:100%;
+    }
+    .property-card .property-image-wrap img{
+        height:100%;
+    }
+    .property-location{
+        display:-webkit-box;
+        -webkit-box-orient:vertical;
+        -webkit-line-clamp:2;
+        line-clamp:2;
+        overflow:hidden;
+        padding:12px 12px 0;
+        font-size:10.5px;
+        letter-spacing:.3px;
+        line-height:1.45;
+    }
+    .property-location i{
+        margin:0 3px 0 0;
+    }
+    /* Title: 4-line clamp in narrow cards only. The full title stays in
+       the DOM (screen readers, link text) and on the property page. */
+    .property-card h3{
+        padding:6px 12px 0;
+        margin-bottom:6px;
+        font-size:16px;
+        line-height:1.3;
+        display:-webkit-box;
+        -webkit-box-orient:vertical;
+        -webkit-line-clamp:4;
+        line-clamp:4;
+        overflow:hidden;
+    }
+    /* Description: 2 lines reserved on every card (also when empty) */
+    .property-card p{
+        padding:0 12px;
+        margin-bottom:12px;
+        font-size:13px;
+        line-height:1.5;
+        height:3em;
+        -webkit-line-clamp:2;
+        line-clamp:2;
+    }
+    .property-footer{
+        padding:0 12px 14px;
+        gap:10px;
+    }
+    .property-price{
+        font-size:15px;
+    }
+    .property-icon-actions{
+        gap:8px;
+    }
+    .property-card .property-icon-actions .icon-action-btn{
+        width:40px;
+        height:40px;
+        font-size:15px;
+    }
+    .property-card .property-footer .view-details-btn{   /* beats html.is-mobile .view-details-btn */
+        min-height:40px;
+        padding:8px 10px;
+        font-size:12.5px;
+    }
+    .near-me-distance-pill{
+        bottom:8px;
+        right:8px;
+    }
+}
+
+/* ---------- 5. Recent Search row on properties.html (phones) ----------
+   Same phone layout the homepage already uses (css/home-hero.css):
+   label + "All Recent Searches" on the first line, chip strip full-width
+   below it (still horizontally scrollable when there are many chips). */
+#propertiesRecentSearchSection .home-app-recent-row{
+    display:grid;
+    grid-template-columns:auto minmax(0,1fr) auto;
+    align-items:center;
+    column-gap:14px;
+    row-gap:10px;
+}
+#propertiesRecentSearchSection .home-app-recent-chips{
+    min-width:0;
+    max-width:none;                  /* same reset the homepage applies (css/home-hero.css): */
+    margin:0;                        /* the shared style.css rule centres it with margin:auto */
+    justify-content:flex-start;
+    contain:inline-size;             /* chip strip scrolls; its chips never widen the row */
+}
+#propertiesRecentSearchSection .home-app-recent-all{
+    justify-self:end;
+    padding:6px 0;                   /* taller tap target, same look */
+}
+@media (max-width:640px){
+    #propertiesRecentSearchSection .home-app-recent-row{
+        grid-template-columns:minmax(0,1fr) auto;
+    }
+    #propertiesRecentSearchSection .home-app-recent-chips{
+        grid-column:1 / -1;
+        grid-row:2;
+    }
+    #propertiesRecentSearchSection .home-app-recent-all{
+        grid-column:2;
+        grid-row:1;
+    }
+}
+
+/* ---------- 6. Homepage Future Properties compact card (≤400px) ----------
+   View Details + Call + WhatsApp (≈146px) didn't fit the 119px inner
+   width of a 2-column card at 320–360px; the WhatsApp icon was pushed
+   outside the card. On those widths View Details takes the full row and
+   the two icons share the row beneath it. */
+@media (max-width:400px){
+    .home-app-card-actions{
+        flex-wrap:wrap;
+    }
+    .home-app-card-view-btn{
+        flex:1 1 100%;
+    }
+    .home-app-card-icon-btn{
+        flex:1 1 0;
+    }
+}
+
+/* ---------- 7. Floating WhatsApp / Back-to-top: safe area ----------
+   Keeps the existing positions and adds the device safe-area inset
+   (0 on devices/browsers without one, so nothing moves there). */
+html.is-mobile .whatsapp-float{
+    bottom:calc(90px + env(safe-area-inset-bottom, 0px));
+    right:calc(18px + env(safe-area-inset-right, 0px));
+}
+html.is-mobile .back-to-top{
+    bottom:calc(154px + env(safe-area-inset-bottom, 0px));
+    right:calc(18px + env(safe-area-inset-right, 0px));
+}

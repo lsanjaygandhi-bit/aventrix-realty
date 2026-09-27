@@ -1,0 +1,342 @@
+{
+ "page_key": "list-with-us",
+ "hero": {
+  "hero_eyebrow": "PROPERTY OWNER SERVICES",
+  "hero_title": "Reach the Right Buyers<br> for Your Property",
+  "hero_subtitle": "List your property with Aventrix Realty and get professional marketing, wider exposure and dedicated support — from the first enquiry through to the transaction.",
+  "hero_button_text": "List Your Property",
+  "hero_button_link": "#owner-form"
+ },
+ "seo_title": "List with Us | Aventrix Realty",
+ "seo_description": "List your property for free with Aventrix Realty — reach verified buyers and tenants across Chennai with expert marketing and advisory support.",
+ "seo_keywords": "",
+ "og_image_url": "https://aventrixrealty.com/images/chennai-marina.jpg",
+ "sections": [
+  {
+   "key": "why-list",
+   "label": "Why list with Aventrix (4 cards)",
+   "eyebrow": "Property Owner Services",
+   "heading": "Why List With Aventrix Realty?",
+   "html": "",
+   "image_url": "",
+   "lists": {
+    "items": [
+     {
+      "number": "01",
+      "title": "Wider Buyer Reach",
+      "text": "Your property is presented to genuine buyers, tenants and investors actively looking across Chennai."
+     },
+     {
+      "number": "02",
+      "title": "Professional Marketing",
+      "text": "Clear, well-organised property information helps your listing stand out and get noticed."
+     },
+     {
+      "number": "03",
+      "title": "End-to-End Support",
+      "text": "From listing to closing, our team stays involved with you at every step of the process."
+     },
+     {
+      "number": "04",
+      "title": "Confidential Handling",
+      "text": "Your property and contact details are handled discreetly and shared only with relevant parties."
+     }
+    ]
+   },
+   "hooks": [
+    "eyebrow",
+    "heading"
+   ],
+   "display_order": 1
+  },
+  {
+   "key": "owner-benefits",
+   "label": "What you gain (6)",
+   "eyebrow": "Owner Benefits",
+   "heading": "What You Gain by Listing With Us",
+   "html": "",
+   "image_url": "",
+   "lists": {
+    "items": [
+     {
+      "title": "Better Visibility",
+      "text": "Your property gets proper presentation across our active buyer and tenant network."
+     },
+     {
+      "title": "Relevant Connections",
+      "text": "We match your property to buyers and tenants whose requirements genuinely fit."
+     },
+     {
+      "title": "Professional Presentation",
+      "text": "Clear property details and organised information make a stronger first impression."
+     },
+     {
+      "title": "Sensible Market Positioning",
+      "text": "We help position your property sensibly based on its location and category."
+     },
+     {
+      "title": "Transaction Coordination",
+      "text": "Our team coordinates communication and next steps through the process."
+     },
+     {
+      "title": "Ongoing Owner Communication",
+      "text": "You stay informed and involved throughout, through a single point of contact."
+     }
+    ]
+   },
+   "hooks": [
+    "eyebrow",
+    "heading"
+   ],
+   "display_order": 2
+  },
+  {
+   "key": "form-intro",
+   "label": "Listing form (heading and intro)",
+   "eyebrow": "",
+   "heading": "Share Your Property Details",
+   "html": "",
+   "image_url": "",
+   "fields": {
+    "text": "Tell us about your property and what you're looking to do with it — our team will review the details and get in touch to discuss the next steps. <br><br> <strong>🔒 Your information is kept confidential and used only for property-related communication.</strong>"
+   },
+   "hooks": [
+    "heading"
+   ],
+   "display_order": 3
+  },
+  {
+   "key": "property-types",
+   "label": "Property types we handle (6)",
+   "eyebrow": "Property Types",
+   "heading": "Property Types We Handle",
+   "html": "",
+   "image_url": "",
+   "lists": {
+    "items": [
+     {
+      "title": "Residential Properties",
+      "text": "Homes for sale or rent, across a range of budgets and configurations."
+     },
+     {
+      "title": "Commercial Properties",
+      "text": "Office spaces, showrooms and commercial units suited for business use."
+     },
+     {
+      "title": "Land & Plots",
+      "text": "Residential and investment plots across Chennai and its surrounding areas."
+     },
+     {
+      "title": "Independent Houses",
+      "text": "Standalone homes suited for owners looking for more space and privacy."
+     },
+     {
+      "title": "Apartments",
+      "text": "Flats across a range of configurations, from compact homes to larger units."
+     },
+     {
+      "title": "Joint Development Opportunities",
+      "text": "Suitable land matched with development partners for joint development."
+     }
+    ]
+   },
+   "hooks": [
+    "eyebrow",
+    "heading"
+   ],
+   "display_order": 4
+  },
+  {
+   "key": "why-owners",
+   "label": "Why owners work with us (6 cards)",
+   "eyebrow": "Why Aventrix",
+   "heading": "Why Property Owners Work With Us",
+   "html": "",
+   "image_url": "",
+   "lists": {
+    "items": [
+     {
+      "number": "01",
+      "title": "Real Estate Experience",
+      "text": "Led by professionals with 15+ years of real estate experience in the Chennai market."
+     },
+     {
+      "number": "02",
+      "title": "Local Market Knowledge",
+      "text": "A team familiar with Chennai's localities, property categories and buyer behaviour."
+     },
+     {
+      "number": "03",
+      "title": "Professional Property Marketing",
+      "text": "Your property is presented clearly and professionally, every time."
+     },
+     {
+      "number": "04",
+      "title": "Buyer & Investor Network",
+      "text": "Access to a network of buyers, tenants and investors actively engaging with our team."
+     },
+     {
+      "number": "05",
+      "title": "Transparent Communication",
+      "text": "We keep you informed with honest, straightforward updates through the process."
+     },
+     {
+      "number": "06",
+      "title": "End-to-End Coordination",
+      "text": "One team coordinates the process from your first enquiry to the final transaction."
+     }
+    ]
+   },
+   "hooks": [
+    "eyebrow",
+    "heading"
+   ],
+   "display_order": 5
+  },
+  {
+   "key": "listing-process",
+   "label": "Listing process (5 steps)",
+   "eyebrow": "How It Works",
+   "heading": "Our Property Listing Process",
+   "html": "",
+   "image_url": "",
+   "lists": {
+    "items": [
+     {
+      "number": "01",
+      "title": "Share Your Property",
+      "text": "Fill in your property and contact details through our simple listing form."
+     },
+     {
+      "number": "02",
+      "title": "Property Review",
+      "text": "Our team reviews the information you've shared to understand your property better."
+     },
+     {
+      "number": "03",
+      "title": "Market Positioning",
+      "text": "We consider your property's location, category and condition to position it sensibly."
+     },
+     {
+      "number": "04",
+      "title": "Buyer / Tenant Outreach",
+      "text": "Your property is shared with relevant buyers, tenants or investors in our network."
+     },
+     {
+      "number": "05",
+      "title": "Transaction Coordination",
+      "text": "We stay involved through discussions, follow-ups and the steps that follow."
+     }
+    ]
+   },
+   "hooks": [
+    "eyebrow",
+    "heading"
+   ],
+   "display_order": 6
+  },
+  {
+   "key": "situations",
+   "label": "Common situations (6)",
+   "eyebrow": "Common Situations",
+   "heading": "Wherever You Are With Your Property, We Can Help",
+   "html": "",
+   "image_url": "",
+   "lists": {
+    "items": [
+     {
+      "title": "Selling a Property",
+      "text": "Looking to sell? We help you reach genuine buyers and manage the process end-to-end."
+     },
+     {
+      "title": "Leasing a Property",
+      "text": "Want to lease your property? We connect you with suitable tenants and coordinate the details."
+     },
+     {
+      "title": "Managing an Investment Property",
+      "text": "Own a property purely as an investment? We help you stay on top of its market position."
+     },
+     {
+      "title": "Land or Plot Sale",
+      "text": "Selling land or a plot? We help present it clearly to genuinely interested buyers."
+     },
+     {
+      "title": "Joint Development Opportunity",
+      "text": "Have land suited for development? We can discuss joint development possibilities with our partners."
+     },
+     {
+      "title": "Property Advisory Requirement",
+      "text": "Not sure of your next step? Our team can walk you through the options available to you."
+     }
+    ]
+   },
+   "hooks": [
+    "eyebrow",
+    "heading"
+   ],
+   "display_order": 7
+  },
+  {
+   "key": "owner-faq",
+   "label": "Owner FAQs (7)",
+   "eyebrow": "FAQ",
+   "heading": "Questions Property Owners Ask",
+   "html": "",
+   "image_url": "",
+   "lists": {
+    "faqs": [
+     {
+      "question": "What information do I need to provide?",
+      "answer": "<p>Basic contact details along with your property's type, location, area and what you're looking to do with it (sale, rental or joint venture). Anything else can be added under Additional Details.</p>"
+     },
+     {
+      "question": "Can I list residential and commercial property?",
+      "answer": "<p>Yes. Our form covers residential property types such as apartments, villas and independent houses, as well as commercial properties.</p>"
+     },
+     {
+      "question": "Can you help with land and plots?",
+      "answer": "<p>Yes, land and plots are among the property types we regularly assist with — for sale, investment or joint development purposes.</p>"
+     },
+     {
+      "question": "How does property marketing work?",
+      "answer": "<p>Once we understand your property, our team presents it clearly to genuine buyers, tenants or investors within our network, based on its category and location.</p>"
+     },
+     {
+      "question": "Can I list a property for lease?",
+      "answer": "<p>Yes — select \"Rental / Leasing\" under Listing Requirement in the form and our team will assist accordingly.</p>"
+     },
+     {
+      "question": "Can you assist with joint development opportunities?",
+      "answer": "<p>Yes. If your land may be suited for joint development, select \"Joint Venture\" in the form and our team will discuss the possibilities with you.</p>"
+     },
+     {
+      "question": "What happens after I submit my property?",
+      "answer": "<p>Our team reviews the details you've shared and gets in touch to discuss your property and the next steps.</p>"
+     }
+    ]
+   },
+   "hooks": [
+    "eyebrow",
+    "heading"
+   ],
+   "display_order": 8
+  },
+  {
+   "key": "final-cta",
+   "label": "Closing call to action",
+   "eyebrow": "",
+   "heading": "Let's Talk About Your Property",
+   "html": "",
+   "image_url": "",
+   "fields": {
+    "text": "Share your property details and our team will get in touch to discuss the best way forward.",
+    "button_text": "List Your Property",
+    "link": "#owner-form"
+   },
+   "hooks": [
+    "heading"
+   ],
+   "display_order": 9
+  }
+ ]
+}

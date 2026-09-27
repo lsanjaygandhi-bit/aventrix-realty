@@ -4,8 +4,10 @@ Build: `aventrix-realty-p0-p1-reconciled-2026-09-26.zip`, based on the live sour
 (GitHub `lsanjaygandhi-bit/aventrix-realty` @ `4c70d1c`, 24 Sep) with the tested P0/P1 changes applied.
 Supabase project: `gkrtjeygrqkglsadskcg` · Cloudflare Worker: `polished-band-06ef`
 
-**Status on 2026-09-26:** step 1 is done. The backup schema `backup_20260925` was created and verified on 25 Sep; keep it.
-**Nothing else has been run.** No migration has been applied and the live site is unchanged.
+**Status on 2026-09-26 (evening):** step 1 is done (backup schema `backup_20260925`; keep it). P0 (step 2) was applied
+to the live database on 26 Sep, followed by the approved CMS blank-fill (`backup_20260926_cms`) and office-details fix
+(`backup_20260926_offices`). P1, 03 and the new 04 migration have **not** been run, and the website is **not** deployed.
+This build (`aventrix-realty-cms-complete-2026-09-26`) adds migration 04 (Website Content sync) and the optional file 05.
 
 Do the steps in order and don't skip ahead. Each step has a pass condition and a way back.
 Allow about 45 minutes, and pick a quiet hour.
@@ -79,6 +81,15 @@ select policyname from pg_policies where schemaname='storage' and tablename='obj
 
 1. Run `sql/migration-2026-09-25-02-p1-crm-buyer-analytics.sql`.
 2. Run `sql/migration-2026-09-25-03-content-drafts.sql`.
+3. Run `sql/migration-2026-09-26-04-cms-content-sync.sql` (fills Admin → Website Content with the text every page
+   shows today; never overwrites a value; snapshot `backup_20260926_cms2`).
+   Check: `select page_key, jsonb_array_length(sections) from pages order by 1;` → 18 rows.
+4. **Decision:** `sql/optional-2026-09-26-05-keep-founder-page-text.sql` — run it only if the two founder profile
+   pages should keep their current text (see the file header for the exact differences).
+5. Run `sql/migration-2026-09-26-06-property-coordinates.sql` (adds empty `latitude` / `longitude` to properties for
+   the Map View; changes no existing value, no RLS). Check:
+   `select count(*) from information_schema.columns where table_name='properties' and column_name in ('latitude','longitude');` → 2.
+   The site and Admin also work without it (Map View then says no property has a map location yet).
 
 Then verify:
 ```sql
@@ -123,8 +134,9 @@ rollback;   -- nothing is saved
 | Check | Expected |
 |---|---|
 | `https://aventrixrealty.com/sql/migration-2026-09-25-01-p0-security-roles.sql` | 404 |
-| Header and footer on any page | no "Admin" link |
-| `/admin/` typed directly | login page loads, you can log in |
+| Header and footer on any page | one "Admin" link in the header (in the ☰ menu on phones) and one in the footer's bottom row; both open `/admin/` |
+| `/admin/` typed directly, or via either Admin link | login page loads, you can log in |
+| `emi-calculator.html` (footer → Quick Links → EMI Calculator) | sliders and boxes update the EMI instantly; 50 Lakh · 8.5% · 20 Yr shows ₹43,391 |
 | Homepage | no testimonials section; Leadership section still directly below the hero |
 | Our Realtors | Gnanasekaran P + L. Sanjay Gandhi only; Sanjay shows **"15+ years"** (the CMS value) |
 | `realtor-profile.html?id=sample-realtor` | "couldn't find that profile" |
@@ -136,6 +148,14 @@ rollback;   -- nothing is saved
 | Buyer: wishlist / shortlist on phone, then on laptop | same items on both |
 | Admin → Overview | real counts; the test enquiry shows under Leads |
 | iPhone Safari: homepage, properties, account, admin | layout OK (not yet tested on real iOS) |
+| Admin → Website Content → each page | every field shows the page's text (none blank) |
+| Edit one Homepage FAQ answer → Save & Publish → reload homepage | the new answer shows and still opens/closes |
+| Footer on any page, scrolled to the very bottom (phone) | Privacy, Terms & Conditions, Sitemap and Admin not covered by the WhatsApp / top buttons |
+| `terms.html`, `sitemap.html`, `privacy-policy.html` | load; Terms reviewed by you first (it is `noindex` until you remove that tag) |
+| Contact → "Locate Our Offices" | both maps show (share links are replaced by an address map) |
+| Google Maps key in `js/maps-config.js` (see `MAP-VIEW-2026-09-26.md`) → Properties → **Map View** | interactive map; markers only for properties that have coordinates; no key → "Map view is temporarily unavailable…" and List View works |
+| Homepage → Future Properties → **Map View** | same listings as List View; markers only for those with coordinates; "View All Properties" opens the Properties page |
+| Admin → Properties → edit one property → Map location (paste "12.9416, 80.1984" from Google Maps) → Save → Properties → Map View | its marker appears; tap it → preview → View Details opens that property |
 
 Delete the test buyer account and the test lead afterwards if you like (Admin → Leads → delete).
 
@@ -165,4 +185,5 @@ These were **not** verified and remain future / P2 work:
 - Verified Property workflow
 - Area landing pages
 - Pre-rendered / dynamic SEO property and article pages; dynamic sitemap
-- Hero video (13.7 MB) and large image compression
+- Dynamic `sitemap.xml` (the file lists the 25 live listings as of 26 Sep; regenerate it when listings change —
+  `sitemap.html` is always current because it reads the database)

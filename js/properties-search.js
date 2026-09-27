@@ -359,9 +359,84 @@
         debounceTimer = setTimeout(fn, delay);
     }
 
+    // ---------------------------------------------------------
+    // Shared result set (List View + Map View use the SAME array)
+    // ---------------------------------------------------------
+    // lastServerData: the rows the last Supabase query returned.
+    // mapArea: optional "Search this area" bounds from the Map View —
+    // applied below as one more client-side filter, exactly like the
+    // Area / Road Width filters, so the list, the map and the count
+    // always agree. It is kept in memory only (not in the URL), so map
+    // positions never create new page URLs.
+    let lastServerData = [];
+    let lastState = null;
+    let mapArea = null;      // { south, west, north, east } or null
+    let requestSeq = 0;      // ignore responses that arrive out of order
+
+    // A property's own map coordinates, or null — one definition, in
+    // js/properties-map.js (the map is the only thing that sets mapArea).
+    function coordsOf(p) {
+        return window.AventrixPropertyMap ? window.AventrixPropertyMap.coordsOf(p) : null;
+    }
+
+    function inMapArea(p) {
+        const c = coordsOf(p);
+        if (!c) return false;
+        if (c.lat < mapArea.south || c.lat > mapArea.north) return false;
+        return mapArea.west <= mapArea.east
+            ? c.lng >= mapArea.west && c.lng <= mapArea.east
+            : c.lng >= mapArea.west || c.lng <= mapArea.east; // bounds crossing 180°
+    }
+
+    function applyClientFilters(rows, state) {
+        let properties = rows || [];
+
+        // Client-side Area filter (built_up_area has no numeric column).
+        const areaMin = state.areaMin ? parseFloat(state.areaMin) : null;
+        const areaMax = state.areaMax ? parseFloat(state.areaMax) : null;
+        if (areaMin !== null || areaMax !== null) {
+            properties = properties.filter((p) => {
+                const val = parseAreaNumber(p.built_up_area);
+                if (val === null) return false;
+                if (areaMin !== null && val < areaMin) return false;
+                if (areaMax !== null && val > areaMax) return false;
+                return true;
+            });
+        }
+
+        // Client-side Road Width filter — same reasoning as Area above:
+        // road_width is free text (e.g. "30 ft"), no numeric column exists.
+        const roadWidthMin = state.roadWidthMin ? parseFloat(state.roadWidthMin) : null;
+        if (roadWidthMin !== null) {
+            properties = properties.filter((p) => {
+                const val = parseAreaNumber(p.road_width);
+                return val !== null && val >= roadWidthMin;
+            });
+        }
+
+        // Map View "Search this area".
+        if (mapArea) properties = properties.filter(inMapArea);
+
+        return properties;
+    }
+
+    function publishResults(properties, status) {
+        const detail = { properties: properties, status: status, mapArea: mapArea };
+        window.AventrixSearchResults = detail;
+        document.dispatchEvent(new CustomEvent("aventrix:search-results", { detail: detail }));
+    }
+
+    function renderFiltered() {
+        if (!lastState) return;
+        const properties = applyClientFilters(lastServerData, lastState);
+        renderResults(properties);
+        publishResults(properties, "ok");
+    }
+
     async function fetchAndRender(pushHistory) {
         if (window.AventrixStorage) await window.AventrixStorage.ready;
 
+        const seq = ++requestSeq;
         const state = readStateFromInputs();
         writeStateToUrl(state, !pushHistory);
         updateActiveChips(state);
@@ -374,6 +449,7 @@
         if (!sb) {
             els.errorState.hidden = false;
             els.resultsCount.textContent = "";
+            publishResults([], "error");
             return;
         }
 
@@ -435,41 +511,20 @@
         query = query.limit(RESULT_CAP);
 
         let { data, error } = await query;
+        if (seq !== requestSeq) return; // a newer search has started; drop this stale response
 
         if (error) {
             els.errorState.hidden = false;
             els.resultsGrid.innerHTML = "";
             els.emptyState.hidden = true;
             els.resultsCount.textContent = "";
+            publishResults([], "error");
             return;
         }
 
-        let properties = data || [];
-
-        // Client-side Area filter (built_up_area has no numeric column).
-        const areaMin = state.areaMin ? parseFloat(state.areaMin) : null;
-        const areaMax = state.areaMax ? parseFloat(state.areaMax) : null;
-        if (areaMin !== null || areaMax !== null) {
-            properties = properties.filter((p) => {
-                const val = parseAreaNumber(p.built_up_area);
-                if (val === null) return false;
-                if (areaMin !== null && val < areaMin) return false;
-                if (areaMax !== null && val > areaMax) return false;
-                return true;
-            });
-        }
-
-        // Client-side Road Width filter — same reasoning as Area above:
-        // road_width is free text (e.g. "30 ft"), no numeric column exists.
-        const roadWidthMin = state.roadWidthMin ? parseFloat(state.roadWidthMin) : null;
-        if (roadWidthMin !== null) {
-            properties = properties.filter((p) => {
-                const val = parseAreaNumber(p.road_width);
-                return val !== null && val >= roadWidthMin;
-            });
-        }
-
-        renderResults(properties);
+        lastServerData = data || [];
+        lastState = state;
+        renderFiltered();
         recordCurrentSearch(state);
     }
 
@@ -557,6 +612,7 @@
         if (state.furnishing) chips.push({ key: "furnishing", label: state.furnishing });
         if (state.parking) chips.push({ key: "parking", label: `${state.parking}+ Parking` });
         if (state.roadWidthMin) chips.push({ key: "roadWidthMin", label: `Road Width: ${state.roadWidthMin}+ ft` });
+        if (mapArea) chips.push({ key: "mapArea", label: "Map area" });
 
         els.activeChips.innerHTML = chips.map((c) =>
             `<button type="button" class="sf-chip" data-clear="${c.key}">${escapeHtml(c.label)} <i class="fas fa-times" aria-hidden="true"></i></button>`
@@ -593,6 +649,7 @@
             case "furnishing": els.furnishing.value = ""; break;
             case "parking": els.parking.value = ""; break;
             case "roadWidthMin": els.roadWidthMin.value = ""; break;
+            case "mapArea": mapArea = null; break;
         }
     }
 
@@ -612,6 +669,7 @@
         els.parking.value = "";
         els.roadWidthMin.value = "";
         els.sort.value = "recommended";
+        mapArea = null;
         fetchAndRender(false);
     }
 
@@ -665,6 +723,22 @@
     // Exposed so js/near-me.js can reuse the exact same card markup for
     // its own "Properties Near You" results rather than duplicating it.
     window.AventrixPropertyCard = cardTemplate;
+
+    // Used by js/properties-map.js (Map View). The map never queries the
+    // database itself — it shows the result set published above.
+    window.AventrixSearch = {
+        coordsOf: coordsOf,
+        escapeHtml: escapeHtml,
+        getResults: () => window.AventrixSearchResults || null,
+        getMapArea: () => mapArea,
+        // Apply (or clear, with null) the map's "Search this area" bounds
+        // to the current results without a new database request.
+        setMapArea: (bounds) => {
+            mapArea = bounds ? { south: +bounds.south, west: +bounds.west, north: +bounds.north, east: +bounds.east } : null;
+            if (lastState) updateActiveChips(lastState);
+            renderFiltered();
+        }
+    };
 
     initRecentSearchWidget();
 

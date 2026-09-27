@@ -1,0 +1,73 @@
+{
+ "page_key": "services",
+ "hero": {
+  "hero_eyebrow": "WHAT WE OFFER",
+  "hero_title": "Our Services",
+  "hero_subtitle": "A complete range of real estate services in Chennai — from residential sales and commercial properties to land & plots, leasing, joint venture development, property advisory and dedicated NRI services. Whatever stage of your property journey you're at, Aventrix Realty is with you."
+ },
+ "seo_title": "Our Services | Aventrix Realty",
+ "seo_description": "Explore Aventrix Realty's complete range of real estate services in Chennai — residential sales, commercial properties, land & plots, leasing, joint venture development, property advisory and NRI services.",
+ "seo_keywords": "",
+ "og_image_url": "https://aventrixrealty.com/images/chennai-marina.jpg",
+ "sections": [
+  {
+   "key": "services-list",
+   "label": "Services (7 cards)",
+   "eyebrow": "OUR PORTFOLIO",
+   "heading": "Everything We Offer, In One Place",
+   "html": "",
+   "image_url": "",
+   "lists": {
+    "services": [
+     {
+      "title": "Residential Sales",
+      "text": "Apartments, Villas & Independent Homes.",
+      "link_text": "Learn More →",
+      "link": "properties.html?transaction=buy"
+     },
+     {
+      "title": "Commercial Properties",
+      "text": "Office, Retail & Investment Spaces.",
+      "link_text": "Learn More →",
+      "link": "properties.html"
+     },
+     {
+      "title": "Land & Plots",
+      "text": "DTCP & CMDA Approved Properties.",
+      "link_text": "Learn More →",
+      "link": "properties.html"
+     },
+     {
+      "title": "Leasing",
+      "text": "Residential and Commercial Leasing.",
+      "link_text": "Learn More →",
+      "link": "properties.html?transaction=lease"
+     },
+     {
+      "title": "Joint Venture",
+      "text": "Developer & Landowner Partnerships.",
+      "link_text": "Learn More →",
+      "link": "joint-venture.html"
+     },
+     {
+      "title": "Property Advisory",
+      "text": "Expert guidance for every stage of your property journey.",
+      "link_text": "Learn More →",
+      "link": "contact.html"
+     },
+     {
+      "title": "NRI Services",
+      "text": "Remote-friendly property solutions for NRI clients.",
+      "link_text": "Learn More →",
+      "link": "nri-services.html"
+     }
+    ]
+   },
+   "hooks": [
+    "eyebrow",
+    "heading"
+   ],
+   "display_order": 1
+  }
+ ]
+}

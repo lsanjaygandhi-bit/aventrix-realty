@@ -224,10 +224,20 @@
             .limit(20);
         if (error || !data || data.length === 0) {
             grid.innerHTML = '<p class="home-app-empty">No properties available right now — please check back soon.</p>';
+            publishHomeResults([], error ? "error" : "ok");
             return;
         }
         grid.innerHTML = data.map((p) => compactCardTemplate(p, { showActions: true })).join("");
         wireHearts(grid);
+        publishHomeResults(data, "ok");
+    }
+
+    // The homepage List / Map toggle (js/properties-map.js) shows exactly
+    // these records on the map — no second query, no second dataset.
+    function publishHomeResults(properties, status) {
+        const detail = { properties: properties, status: status };
+        window.AventrixHomeResults = detail;
+        document.dispatchEvent(new CustomEvent("aventrix:home-properties", { detail: detail }));
     }
 
     // ---------------------------------------------------------

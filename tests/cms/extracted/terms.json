@@ -1,0 +1,26 @@
+{
+ "page_key": "terms",
+ "hero": {
+  "hero_eyebrow": "LEGAL",
+  "hero_title": "Terms & Conditions",
+  "hero_subtitle": "Last updated: 26 September 2026"
+ },
+ "seo_title": "Terms & Conditions | Aventrix Realty",
+ "seo_description": "Terms and conditions for using the Aventrix Realty website and mobile app.",
+ "seo_keywords": "",
+ "og_image_url": "https://aventrixrealty.com/images/chennai-marina.jpg",
+ "sections": [
+  {
+   "key": "terms",
+   "label": "Terms & Conditions text",
+   "eyebrow": "",
+   "heading": "",
+   "html": "<p>These Terms &amp; Conditions apply to your use of the website <strong>aventrixrealty.com</strong> and the <strong>Aventrix Realty mobile application</strong> (together, the \"Services\"), operated by Aventrix Realty (\"we\", \"us\", \"our\"). By using the Services, you agree to these terms. If you do not agree, please do not use the Services.</p> <h2>Property Information</h2> <p>Property details, prices, images, measurements and availability shown on the Services are provided for general information. They may change without notice and may be based on information supplied by property owners or other parties. Please confirm all details with our team, and verify title, approvals and documents independently with qualified professionals, before making any decision or payment.</p> <p>A listing on the Services is not an offer or a contract. Any transaction is subject to separate discussion and written agreement between the relevant parties.</p> <h2>Our Services and Professional Fees</h2> <p>Aventrix Realty provides real estate advisory, brokerage and transaction coordination services. Professional fees depend on the nature and scope of each assignment and are discussed and agreed with you before we proceed, as described on our <a href=\"brokerage-fees.html\">Professional Fees</a> page. Where a written fee agreement is in place, its terms apply.</p> <p>Aventrix Realty does not provide legal, tax, technical or financial advice. Such matters should be reviewed by appropriately qualified professionals.</p> <h2>Enquiries, Listings and Accounts</h2> <p>When you submit an enquiry, a property for listing or other information, you confirm that the information is accurate and that you are entitled to share it. We may decline or remove any listing at our discretion. If you create an account, you are responsible for keeping your sign-in details secure and for activity under your account.</p> <h2>Acceptable Use</h2> <ul> <li>Do not submit false, misleading or unlawful information.</li> <li>Do not attempt to interfere with, disrupt or gain unauthorised access to the Services or their data.</li> <li>Do not copy or reuse listing content, images or other material from the Services for commercial purposes without our permission.</li> </ul> <h2>Content and Intellectual Property</h2> <p>The design, text, graphics, logos and other content of the Services belong to Aventrix Realty or are used with permission. Property images may belong to property owners or other parties.</p> <h2>Third-Party Links and Services</h2> <p>The Services link to or embed third-party services such as WhatsApp, Google Maps and social media platforms. We are not responsible for the content, availability or practices of those services.</p> <h2>Limitation of Liability</h2> <p>The Services are provided \"as is\". To the extent permitted by law, Aventrix Realty is not liable for any loss arising from reliance on information on the Services, from interruptions or errors in the Services, or from dealings between you and any third party.</p> <h2>Privacy</h2> <p>Our <a href=\"privacy-policy.html\">Privacy Policy</a> explains how we handle your personal information.</p> <h2>Changes to These Terms</h2> <p>We may update these terms from time to time. Changes will be posted on this page with an updated date.</p> <h2>Contact Us</h2> <p>If you have any questions about these terms, please contact us:</p> <p><strong>Aventrix Realty</strong><br>No.27, 1st Main Road, Newcolony, Chromepet, Chennai, Tamil Nadu<br>Phone: <a href=\"tel:+919176887770\">+91 91768 87770</a> / <a href=\"tel:+917092356222\">+91 70923 56222</a><br>Email: <a href=\"mailto:office@aventrixrealty.com\">office@aventrixrealty.com</a></p>",
+   "image_url": "",
+   "hooks": [
+    "html"
+   ],
+   "display_order": 1
+  }
+ ]
+}

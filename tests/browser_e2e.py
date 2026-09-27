@@ -300,13 +300,20 @@ def run():
         # ---------- CONTENT DECISIONS (2026-09-25) ----------
         import glob, os
         public_pages = sorted(os.path.basename(f) for f in glob.glob(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "*.html")))
-        leaks = [f for f in public_pages if "admin/index.html" in open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", f)).read()]
-        check(f"content: no Admin link in any of {len(public_pages)} public pages (source scan)", not leaks and len(public_pages) >= 22, leaks)
+        # 2026-09-26 decision: every public page links to the existing Admin Panel
+        # exactly twice — header nav + footer legal row — and nothing else.
+        def _admin_links(f):
+            src = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", f)).read()
+            return (src.count('href="/admin/"'), src.count('class="main-nav-admin"'), src.count('class="pf-legal-admin"'), src.count("admin/index.html"))
+        wrong = [(f, _admin_links(f)) for f in public_pages if _admin_links(f) != (2, 1, 1, 0)]
+        check(f"content: header + footer Admin link (/admin/) on all {len(public_pages)} public pages (source scan)", not wrong and len(public_pages) >= 22, wrong)
         ctx = make_context(browser)
         page = ctx.new_page(); errors = []
         page.on("pageerror", lambda e: errors.append(str(e)))
         page.goto(SITE + "/index.html", wait_until="load"); page.wait_for_timeout(1500)
-        check("content: homepage header+footer have no admin link (rendered)", page.locator('a[href*="admin/"]').count() == 0)
+        check("content: homepage has exactly one header and one footer Admin link, both to /admin/ (rendered)",
+              page.locator('a[href*="admin"]').count() == 2 and page.locator('.main-nav a.main-nav-admin[href="/admin/"]').count() == 1
+              and page.locator('.pf-legal a.pf-legal-admin[href="/admin/"]').count() == 1)
         check("content: testimonials section hidden (no genuine testimonials)", page.locator("#testimonials").is_hidden())
         check("content: no seeded testimonial names anywhere on homepage", not any(n in page.content() for n in ["Ramesh Kumar", "Priya Venkatesan", "Arvind Balaji"]))
         sql("insert into testimonials(client_name,client_role,quote,publish_status) values ('Genuine Client','Verified buyer','Real feedback','Published')")

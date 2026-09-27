@@ -1,0 +1,244 @@
+{
+ "page_key": "brokerage-fees",
+ "hero": {
+  "hero_eyebrow": "TRANSPARENCY",
+  "hero_title": "Professional Fees,<br>Agreed Upfront",
+  "hero_subtitle": "Our professional fee is based on the nature, scope and complexity of your requirement, and is clearly discussed and agreed with you before we proceed."
+ },
+ "seo_title": "Professional Fees & Brokerage | Aventrix Realty",
+ "seo_description": "How Aventrix Realty approaches professional fees and brokerage in Chennai — the scope is explained clearly and the fee is agreed with you before we proceed.",
+ "seo_keywords": "",
+ "og_image_url": "https://aventrixrealty.com/images/chennai-marina.jpg",
+ "sections": [
+  {
+   "key": "fees-intro",
+   "label": "Every assignment is different",
+   "eyebrow": "Our Approach",
+   "heading": "Every Property Assignment Is Different",
+   "html": "",
+   "image_url": "",
+   "fields": {
+    "lead": "A residential purchase, a land transaction, a commercial lease and a Joint Venture assignment can each involve very different levels of work, coordination and responsibility.",
+    "text": "That is why Aventrix Realty does not apply one fixed fee to every assignment. We first understand your requirement, define the scope of our involvement, and then agree the applicable professional fee, commonly referred to as brokerage, with you."
+   },
+   "hooks": [
+    "eyebrow",
+    "heading"
+   ],
+   "display_order": 1
+  },
+  {
+   "key": "fees-factors",
+   "label": "What shapes the fee (5 cards)",
+   "eyebrow": "What We Consider",
+   "heading": "What Shapes the Fee",
+   "html": "",
+   "image_url": "",
+   "lists": {
+    "items": [
+     {
+      "number": "01",
+      "title": "Nature of Transaction",
+      "text": "Buying, selling, leasing, land, Joint Venture or advisory assignments."
+     },
+     {
+      "number": "02",
+      "title": "Property & Transaction Value",
+      "text": "The type and value of the property, and of the transaction."
+     },
+     {
+      "number": "03",
+      "title": "Scope of Work",
+      "text": "The services required and the level of our involvement."
+     },
+     {
+      "number": "04",
+      "title": "Complexity",
+      "text": "The stakeholders, documentation, negotiations and coordination involved."
+     },
+     {
+      "number": "05",
+      "title": "Professional Involvement",
+      "text": "The time, expertise and transaction support the assignment calls for."
+     }
+    ]
+   },
+   "hooks": [
+    "eyebrow",
+    "heading"
+   ],
+   "display_order": 2
+  },
+  {
+   "key": "fees-services",
+   "label": "Our real estate services (7 rows)",
+   "eyebrow": "What We Do",
+   "heading": "Our Real Estate Services",
+   "html": "",
+   "image_url": "",
+   "fields": {
+    "note": "Professional fees are applicable based on the nature and scope of the assignment."
+   },
+   "lists": {
+    "services": [
+     {
+      "title": "Buying",
+      "text": "Property search, evaluation and transaction support."
+     },
+     {
+      "title": "Selling",
+      "text": "Property positioning, buyer engagement and negotiation support."
+     },
+     {
+      "title": "Leasing",
+      "text": "Residential and commercial leasing assistance."
+     },
+     {
+      "title": "Land & Plots",
+      "text": "Land transactions, opportunity assessment and coordination."
+     },
+     {
+      "title": "Joint Ventures",
+      "text": "Coordination between landowners and developers on development opportunities."
+     },
+     {
+      "title": "NRI Property Services",
+      "text": "Remote property assistance and transaction coordination."
+     },
+     {
+      "title": "Property Advisory",
+      "text": "Requirement-based guidance for property decisions."
+     }
+    ]
+   },
+   "hooks": [
+    "eyebrow",
+    "heading"
+   ],
+   "display_order": 3
+  },
+  {
+   "key": "fees-process",
+   "label": "How we agree your fee (4 steps)",
+   "eyebrow": "The Process",
+   "heading": "How We Agree Your Fee",
+   "html": "",
+   "image_url": "",
+   "fields": {
+    "text": "The same four steps apply to every assignment, whatever its size."
+   },
+   "lists": {
+    "steps": [
+     {
+      "number": "01",
+      "title": "Understand",
+      "text": "We understand your property, requirement and objectives."
+     },
+     {
+      "number": "02",
+      "title": "Define",
+      "text": "We establish the scope of our involvement and the services required."
+     },
+     {
+      "number": "03",
+      "title": "Agree",
+      "text": "The applicable professional fee, payment terms and applicable taxes are discussed and confirmed."
+     },
+     {
+      "number": "04",
+      "title": "Proceed",
+      "text": "We begin the assignment once the terms are mutually agreed."
+     }
+    ]
+   },
+   "hooks": [
+    "eyebrow",
+    "heading"
+   ],
+   "display_order": 4
+  },
+  {
+   "key": "fees-commitment",
+   "label": "Our commitment (4 points)",
+   "eyebrow": "What You Can Expect",
+   "heading": "Our Commitment",
+   "html": "",
+   "image_url": "",
+   "lists": {
+    "points": [
+     {
+      "title": "Clear Communication",
+      "text": "You will know the applicable fee before we proceed."
+     },
+     {
+      "title": "Written Terms",
+      "text": "The agreed fee and payment terms are clearly documented where applicable."
+     },
+     {
+      "title": "No Unexpected Changes",
+      "text": "The agreed fee does not change unless the scope changes and revised terms are mutually agreed."
+     },
+     {
+      "title": "Professional Transparency",
+      "text": "We explain what the fee covers, which party it applies to and when it is payable."
+     }
+    ]
+   },
+   "hooks": [
+    "eyebrow",
+    "heading"
+   ],
+   "display_order": 5
+  },
+  {
+   "key": "fees-terms",
+   "label": "Taxes & invoicing / Clear terms",
+   "eyebrow": "",
+   "heading": "",
+   "html": "",
+   "image_url": "",
+   "lists": {
+    "panels": [
+     {
+      "title": "Taxes & Invoicing",
+      "text": "Where applicable, GST and other statutory taxes will be charged in accordance with applicable laws. Applicable fees and taxes will be communicated as part of the agreed commercial terms."
+     },
+     {
+      "title": "Clear Terms Before We Proceed",
+      "text": "Aventrix Realty charges professional fees for its real estate services. The applicable fee depends on the nature and scope of the assignment and is discussed with the client before proceeding.",
+      "text2": "Where a written fee agreement is in place, its agreed terms will apply."
+     }
+    ]
+   },
+   "hooks": [],
+   "display_order": 6
+  },
+  {
+   "key": "final-cta",
+   "label": "Closing call to action",
+   "eyebrow": "",
+   "heading": "Let's Start With a Conversation",
+   "html": "",
+   "image_url": "",
+   "fields": {
+    "text": "Tell us what you are looking to buy, sell, lease or develop. We'll understand your requirement, explain the scope of our involvement and discuss the applicable professional fee with you before proceeding."
+   },
+   "lists": {
+    "buttons": [
+     {
+      "text": "Talk to Us",
+      "link": "contact.html"
+     },
+     {
+      "text": "WhatsApp Us",
+      "link": "https://wa.me/919176887770"
+     }
+    ]
+   },
+   "hooks": [
+    "heading"
+   ],
+   "display_order": 7
+  }
+ ]
+}

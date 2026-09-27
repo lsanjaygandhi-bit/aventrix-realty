@@ -62,15 +62,29 @@
 
         if (r.specializations && r.specializations.length) {
             document.querySelectorAll("[data-realtor-specializations]").forEach((el) => {
-                el.innerHTML = r.specializations.map((s) => s).join("<br>\n");
+                el.innerHTML = r.specializations.map((x) => escapeHtml(x)).join("<br>\n");
             });
         }
+
+        // Long-form profile fields (Admin → Our Realtors / Leadership).
+        if (r.about && String(r.about).trim()) {
+            document.querySelectorAll("[data-realtor-about]").forEach((box) => {
+                const tpl = box.querySelector("p");
+                const cls = tpl ? tpl.className : "profile-body-text";
+                box.innerHTML = String(r.about).split(/\n\s*\n/).map((para) => para.trim()).filter(Boolean)
+                    .map((para) => `<p class="${cls}">${escapeHtml(para).replace(/\n/g, "<br>")}</p>`).join("\n");
+            });
+        }
+        setText("[data-realtor-experience]", r.experience);
+        setList("[data-realtor-expertise]", r.expertise);
+        setList("[data-realtor-languages]", r.languages);
 
         document.querySelectorAll("[data-realtor-phone]").forEach((el) => {
             if (!r.phone) return;
             el.setAttribute("href", "tel:" + r.phone.replace(/\s+/g, ""));
+            const shown = formatPhone(r.phone);
             const label = el.querySelector("span") || el;
-            if (label !== el) label.textContent = r.phone; else el.lastChild && (el.lastChild.textContent = " " + r.phone);
+            if (label !== el) label.textContent = shown; else el.lastChild && (el.lastChild.textContent = " " + shown);
         });
         document.querySelectorAll("[data-realtor-whatsapp]").forEach((el) => {
             if (r.whatsapp) el.setAttribute("href", "https://wa.me/" + r.whatsapp);
@@ -80,7 +94,33 @@
             el.setAttribute("href", "mailto:" + r.email);
         });
 
-        if (r.name) document.title = `${r.name} | Aventrix Realty`;
+        // <title> comes from the page's SEO fields (Admin → Website Content), not the realtor name.
+    }
+
+    // Tag lists (<span class="profile-tag">) or a <br>-separated paragraph —
+    // whichever markup the page already uses.
+    function setList(selector, values) {
+        if (!Array.isArray(values) || !values.length) return;
+        document.querySelectorAll(selector).forEach((el) => {
+            const tag = el.querySelector(".profile-tag");
+            if (tag) {
+                el.innerHTML = values.map((v) => `<span class="${tag.className}">${escapeHtml(v)}</span>`).join("\n");
+            } else {
+                el.innerHTML = values.map((v) => escapeHtml(v)).join("<br>\n");
+            }
+        });
+    }
+
+    // "+917092356222" → "+91 70923 56222" (Indian mobile numbers); anything else unchanged.
+    function formatPhone(p) {
+        const d = String(p || "").replace(/\D/g, "");
+        if (d.length === 12 && d.startsWith("91")) return "+91 " + d.slice(2, 7) + " " + d.slice(7);
+        if (d.length === 10) return "+91 " + d.slice(0, 5) + " " + d.slice(5);
+        return p;
+    }
+
+    function escapeHtml(str) {
+        return String(str == null ? "" : str).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
     }
 
     function setText(selector, value) {

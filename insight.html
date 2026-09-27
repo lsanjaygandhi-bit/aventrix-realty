@@ -73,9 +73,10 @@
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 
+    <link rel="stylesheet" href="css/site-fixes.css?v=20260926b">
 </head>
 
-<body data-page-key="insights">
+<body>
 
     <header class="header">
     <div class="container nav">
@@ -99,7 +100,7 @@
             </a>
         </div>
     <div class="menu-overlay" id="menuOverlay"></div>   
-       <nav class="main-nav">
+       <nav class="main-nav" data-hq="phones">
 
     <a href="index.html">Home</a>
 
@@ -118,6 +119,8 @@
 
     <a href="contact.html">Contact</a>
 
+    <a href="/admin/" class="main-nav-admin">Admin</a>
+
 
     <div class="mobile-menu-divider"></div>
     <span class="mobile-menu-contact-label">CONTACT</span>
@@ -126,16 +129,16 @@
 
 
     <div class="mobile-menu-socials">
-      <a href="https://wa.me/919176887770" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+      <a href="https://wa.me/919176887770" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" data-site="whatsapp-link">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 3.5a8.5 8.5 0 0 0-7.3 12.8L3.5 20.5l4.4-1.2A8.5 8.5 0 1 0 12 3.5z"/><path d="M8.7 8.6c.2-.5.4-.5.6-.5h.5c.2 0 .4 0 .5.4.2.5.6 1.5.6 1.6.1.1.1.3 0 .4-.1.2-.1.3-.3.4-.1.2-.3.3-.4.5-.1.1-.3.3-.1.5.2.4 1 1.5 2 2.3 1.2 1 1 .8 1.3.7.2 0 .4-.2.5-.4.2-.2.4-.2.6-.1l1.4.7c.2.1.4.2.4.3.1.2.1 1-.3 1.4-.4.5-1.4.9-2 .9-.6 0-1.4-.1-3.3-1-2.4-1.1-3.9-3.4-4-3.6-.1-.2-1-1.3-1-2.5s.6-1.8.8-2z" fill="currentColor" stroke="none"/></svg>
       </a>
-      <a href="https://www.instagram.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+      <a href="https://www.instagram.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Instagram" data-site="social-instagram">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="0.8" fill="currentColor" stroke="none"/></svg>
       </a>
-      <a href="https://www.facebook.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+      <a href="https://www.facebook.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Facebook" data-site="social-facebook">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M15 8.5h-2a1.5 1.5 0 0 0-1.5 1.5v2h3.4l-.4 3H11.5v7h-3v-7H6.5v-3h2V9.7C8.5 7 10 5.5 12.5 5.5H15v3z"/></svg>
       </a>
-      <a href="https://maps.app.goo.gl/wQm9KBpQG9rEYFaX7?g_st=ic" target="_blank" rel="noopener noreferrer" aria-label="Google Maps">
+      <a href="https://maps.app.goo.gl/wQm9KBpQG9rEYFaX7?g_st=ic" target="_blank" rel="noopener noreferrer" aria-label="Google Maps" data-hq="maps">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg>
       </a>
     </div>
@@ -192,14 +195,14 @@
             </p>
             <div class="pf-contact">
                 <!-- Head Office — unchanged, no existing content removed -->
-                <div class="pf-office-block">
-                    <p class="pf-office-name">Aventrix Realty – Head Office</p>
-                    <p>No.27, 1st Main Road, Newcolony, Chromepet, Chennai, Tamil Nadu</p>
+                <div class="pf-office-block" data-hq="phones">
+                    <p class="pf-office-name" data-hq="name">Aventrix Realty – Head Office</p>
+                    <p data-hq="address">No.27, 1st Main Road, Newcolony, Chromepet, Chennai, Tamil Nadu</p>
                     <p class="pf-office-label">Phone:</p>
                     <a href="tel:+919176887770">+91 91768 87770</a>
                     <a href="tel:+917092356222">+91 70923 56222</a>
                     <p class="pf-office-label">Email:</p>
-                    <a href="mailto:office@aventrixrealty.com">office@aventrixrealty.com</a>
+                    <a href="mailto:office@aventrixrealty.com" data-hq="email">office@aventrixrealty.com</a>
                 </div>
                 <!-- Adyar Branch — compact reference only; full details live on the Office Locations section -->
                 <p class="pf-branch-line"><span class="pf-office-label">Branch Office:</span> Adyar, Chennai</p>
@@ -218,9 +221,10 @@
         <div class="pf-col">
             <h4 class="pf-heading">Quick Links</h4>
             <ul class="pf-links">
-                <li><a href="property.html">Our Services</a></li>
+                <li><a href="services.html">Our Services</a></li>
                 <li><a href="our-realtors.html">Realtors</a></li>
                 <li><a href="brokerage-fees.html">Brokerage &amp; Fees</a></li>
+                <li><a href="emi-calculator.html">EMI Calculator</a></li>
             </ul>
         </div>
 
@@ -247,7 +251,7 @@
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 3.5a8.5 8.5 0 0 0-7.3 12.8L3.5 20.5l4.4-1.2A8.5 8.5 0 1 0 12 3.5z"/><path d="M8.7 8.6c.2-.5.4-.5.6-.5h.5c.2 0 .4 0 .5.4.2.5.6 1.5.6 1.6.1.1.1.3 0 .4-.1.2-.1.3-.3.4-.1.2-.3.3-.4.5-.1.1-.3.3-.1.5.2.4 1 1.5 2 2.3 1.2 1 1 .8 1.3.7.2 0 .4-.2.5-.4.2-.2.4-.2.6-.1l1.4.7c.2.1.4.2.4.3.1.2.1 1-.3 1.4-.4.5-1.4.9-2 .9-.6 0-1.4-.1-3.3-1-2.4-1.1-3.9-3.4-4-3.6-.1-.2-1-1.3-1-2.5s.6-1.8.8-2z" fill="currentColor" stroke="none"/></svg>
                     <span>WhatsApp</span>
                 </a>
-                <a href="https://maps.app.goo.gl/wQm9KBpQG9rEYFaX7?g_st=ic" target="_blank" rel="noopener noreferrer" aria-label="Google Maps">
+                <a href="https://maps.app.goo.gl/wQm9KBpQG9rEYFaX7?g_st=ic" target="_blank" rel="noopener noreferrer" aria-label="Google Maps" data-hq="maps">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg>
                     <span>Google Maps</span>
                 </a>
@@ -261,7 +265,7 @@
         <div class="pf-col pf-map-col">
             <h4 class="pf-heading">Find Us</h4>
             <div class="pf-map-wrap">
-                <iframe
+                <iframe data-hq="map-embed"
                     src="https://www.google.com/maps?q=No.27,+1st+Main+Road,+Newcolony,+Chromepet,+Chennai,+Tamil+Nadu&output=embed"
                     width="100%"
                     height="100%"
@@ -282,14 +286,15 @@
         <p class="pf-copyright" data-site="copyright-text">© 2026 Aventrix Realty. All Rights Reserved. &#124; Designed with &#10084;&#65039; by L. Sanjay Gandhi</p>
         <div class="pf-legal">
             <a href="privacy-policy.html">Privacy Policy</a>
-            <a href="#">Terms &amp; Conditions</a>
-            <a href="#">Sitemap</a>
+            <a href="terms.html">Terms &amp; Conditions</a>
+            <a href="sitemap.html">Sitemap</a>
+            <a href="/admin/" class="pf-legal-admin">Admin</a>
         </div>
     </div>
 
 </footer>
 
-<a href="https://wa.me/919176887770"
+<a href="https://wa.me/919176887770" data-site="whatsapp-link"
    class="whatsapp-float"
    target="_blank">
 
@@ -304,11 +309,12 @@
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="js/supabase-client.js"></script>
+<script src="js/public-site-settings.js?v=20260926b"></script>
+<script src="js/public-offices.js?v=20260926b"></script>
 <script src="js/aventrix-storage.js"></script>
 <script src="js/wishlist-widget.js"></script>
 <script src="js/public-insights.js?v=20260925"></script>
-<script src="js/public-site-settings.js"></script>
-<script src="script.js"></script>
+<script src="script.js?v=20260926b"></script>
 
 </body>
 </html>
