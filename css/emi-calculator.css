@@ -5,6 +5,34 @@
    hairline border) and the shared .list-hero / .fv-final-cta blocks.
    ===================================================================== */
 
+/* Hero: dark overlay is its own layer so the Admin-editable background
+   photo (.emi-hero-media, [data-page-hero-image]) can be swapped without
+   ever touching or losing the readability gradient. Default photo:
+   images/emi-calculator-hero.jpg (premium residential property + home
+   finance/EMI visual, dark green toward the text side). */
+.emi-hero{
+    position:relative;
+    overflow:hidden;
+    background:none;
+}
+.emi-hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:1;
+    background:linear-gradient(rgba(10,10,12,0.5), rgba(10,10,12,0.62));
+}
+.emi-hero .emi-hero-media{
+    position:absolute;
+    inset:0;
+    z-index:0;
+    background:url("../images/emi-calculator-hero.jpg") center center/cover no-repeat;
+}
+.emi-hero .container{
+    position:relative;
+    z-index:2;
+}
+
 .emi-section{ padding:48px 0 64px; }
 .emi-section .container.emi-container{ width:90%; max-width:1100px; margin:0 auto; }
 

@@ -31,6 +31,10 @@
     // rendered as a marker/pin.
     var CHENNAI_CENTER = { lat: 13.0827, lng: 80.2707 };
     var NO_MARKERS_ZOOM = 11;
+    // "Current Location" (Properties Map View only) — browser geolocation,
+    // shown for this page view only, never treated as a property and
+    // never persisted anywhere. See makeCurrentLocationMarker() below.
+    var CURRENT_LOCATION_ZOOM = 16;
 
     function esc(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
 
@@ -98,6 +102,12 @@
             '<circle cx="' + d / 2 + '" cy="' + d / 2 + '" r="' + r + '" fill="#0F3B2E"/></svg>';
     }
     function svgUrl(svg) { return "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg); }
+    // Blue "you are here" dot with a soft halo — deliberately unlike the
+    // dark-green/gold property pin (PIN_SVG) and the gold cluster badge
+    // (clusterSvg), so it can never be mistaken for a property marker.
+    var CURRENT_LOCATION_SVG = '<svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34">' +
+        '<circle cx="17" cy="17" r="16" fill="#1A73E8" fill-opacity="0.18"/>' +
+        '<circle cx="17" cy="17" r="8" fill="#1A73E8" stroke="#ffffff" stroke-width="3"/></svg>';
     function project(pos, zoom) {
         var scale = 256 * Math.pow(2, zoom);
         var siny = Math.min(Math.max(Math.sin(pos.lat * Math.PI / 180), -0.9999), 0.9999);
@@ -135,7 +145,8 @@
             listBtn: $("ViewListBtn"), mapBtn: $("ViewMapBtn"), mapView: $("MapView"),
             wrap: $("MapWrap"), canvas: $("MapCanvas"), note: $("MapNote"),
             fallback: $("MapFallback"), fallbackText: $("MapFallbackText"),
-            areaBtn: $("MapAreaBtn"), preview: $("MapPreview"), loading: $("MapLoading")
+            areaBtn: $("MapAreaBtn"), preview: $("MapPreview"), loading: $("MapLoading"),
+            currentBtn: $("CurrentLocationBtn"), currentStatus: $("CurrentLocationStatus")
         };
         var grid = cfg.grid;
         if (!grid || !els.listBtn || !els.mapBtn || !els.mapView || !els.wrap || !els.canvas || !els.preview) return null;
@@ -145,7 +156,8 @@
             view: "list", results: [], status: "loading",
             map: null, useAdvanced: false,
             markers: {}, clusterPool: [], mapped: [], clusters: [],
-            lastGesture: 0, fittedFor: null, preview: null
+            lastGesture: 0, fittedFor: null, preview: null,
+            currentLocationMarker: null
         };
 
         // ---- view toggle ----
@@ -179,6 +191,20 @@
             return out;
         }
 
+        // True once the map exists and NONE of the currently mapped
+        // properties' own stored coordinates fall inside the map's current
+        // visible viewport (google.maps.LatLngBounds.contains) — i.e. the
+        // visitor has panned/zoomed somewhere with nothing mapped nearby.
+        // This never removes or re-fetches anything: it only reads the
+        // already-loaded `list` (from mappable()) and the map's own
+        // getBounds(), so panning never triggers a new Supabase request.
+        function viewportHasNoMapped(list) {
+            if (!state.map || !list.length) return false;
+            var b = state.map.getBounds();
+            if (!b) return false;
+            return !list.some(function (x) { return b.contains(x.pos); });
+        }
+
         function updateNote(list) {
             var total = state.results.length, onMap = list.length, missing = total - onMap, m = cfg.messages;
             var area = cfg.areaSearch && cfg.areaSearch.get();
@@ -186,6 +212,11 @@
             if (state.status === "loading") msg = "";
             else if (state.status === "error" || total === 0) msg = m.empty || "";
             else if (onMap === 0) msg = m.none(total);
+            // Only when the visitor hasn't run "Search this area" (that has
+            // its own, more specific message below) — every mapped property
+            // has real coordinates, so this is a true empty-viewport read,
+            // never a guess.
+            else if (!area && viewportHasNoMapped(list)) msg = m.emptyViewport || "No properties in this area yet.";
             else if (missing > 0) msg = m.some(onMap, total);
             else if (area && m.area) msg = m.area(onMap);
             els.note.textContent = msg;
@@ -203,31 +234,36 @@
 
         // On opening Map View and on every new result set while open.
         //
-        // Two states the map must NOT confuse:
+        // States the map must NOT confuse:
         //   - Google Maps genuinely failed to load (bad/missing key, network,
         //     timeout, gm_authFailure) -> showFallback(): no canvas, "Map view
-        //     is temporarily unavailable."
-        //   - Google Maps is fine but none of today's properties have their
-        //     own coordinates yet -> the map itself still renders (centered on
-        //     Chennai), just with zero markers and the "no locations yet" note.
+        //     is temporarily unavailable." This is the ONLY state that hides
+        //     the actual map canvas.
+        //   - The property data request itself failed (network/API error) ->
+        //     nothing reliable to show or center on; same fallback treatment
+        //     as a Maps failure, but kept visually distinct from it (no
+        //     canvas either way, since the page's own empty/error state
+        //     already covers this on the List View side).
+        //   - Google Maps is fine and the property data loaded, but there are
+        //     zero results for the current search OR none of today's results
+        //     have their own coordinates yet -> the map itself ALWAYS still
+        //     renders — centered on Chennai — with zero markers and a small,
+        //     non-blocking note; it must never be replaced by a blank panel
+        //     or collapse to nothing.
         function refresh(fromArea) {
             var list = mappable();
             updateNote(list);
             if (state.status === "loading") return;
             if (Maps.status === "failed") { showFallback(); return; }
-            if (state.status === "error" || !state.results.length) {
-                // Either the property data failed to load, or there are no
-                // properties at all for the current search/filters (the
-                // page's own empty state already covers that). Neither case
-                // has anything to center a map on, and neither is a Maps API
-                // failure, so this stays visually distinct from showFallback().
+            if (state.status === "error") {
                 els.wrap.hidden = true; els.fallback.hidden = true; hide(els.areaBtn, true);
                 closePreview();
                 if (state.map) syncMarkers([]); else state.mapped = [];
                 return;
             }
-            // At least one property exists for this search — the map always
-            // renders from here on, even if none of them have coordinates yet.
+            // Whether there are zero results at all (empty search/DB) or
+            // results with no coordinates yet, the map stays visible and
+            // interactive from here on — only the note above it changes.
             els.fallback.hidden = true;
             els.wrap.hidden = false;
             if (Maps.status !== "ready") {
@@ -265,8 +301,30 @@
             var opts = {
                 center: list.length ? list[0].pos : CHENNAI_CENTER,
                 zoom: list.length ? 12 : NO_MARKERS_ZOOM,
+                // No mapTypeId set here on purpose: Google Maps' own default
+                // ("roadmap") applies, and mapTypeIds below only ever offers
+                // Roadmap and Satellite — Roadmap stays the default type on
+                // every load, and Satellite is reachable via the dropdown.
                 gestureHandling: "greedy", clickableIcons: false,
-                mapTypeControl: false, streetViewControl: false, fullscreenControl: false,
+                // Map / Satellite switcher. Kept small (a dropdown, not the
+                // horizontal button bar) and pinned to the top-left corner —
+                // the one corner nothing else uses ("Search this area" is
+                // top-center, zoom is top-right, the property preview card
+                // is bottom-left but only appears after a marker is tapped).
+                mapTypeControl: true,
+                mapTypeControlOptions: {
+                    style: g.MapTypeControlStyle ? g.MapTypeControlStyle.DROPDOWN_MENU : undefined,
+                    position: g.ControlPosition ? g.ControlPosition.TOP_LEFT : undefined,
+                    // "hybrid", not "satellite": Google's own control still
+                    // labels this option "Satellite" (its native English
+                    // label for HYBRID), but the map type it actually applies
+                    // is satellite imagery WITH roads/locality labels drawn on
+                    // top — plain "satellite" imagery alone has no labels at
+                    // all and looks blank. Only Roadmap/Satellite are offered;
+                    // no separate "Hybrid" option is exposed.
+                    mapTypeIds: ["roadmap", "hybrid"]
+                },
+                streetViewControl: false, fullscreenControl: false,
                 zoomControl: true,
                 zoomControlOptions: { position: g.ControlPosition ? g.ControlPosition.RIGHT_TOP : undefined }
             };
@@ -280,6 +338,13 @@
             state.map.addListener("idle", function () {
                 recluster();
                 if (cfg.areaSearch && Date.now() - state.lastGesture < 4000) hide(els.areaBtn, false);
+                // Re-evaluate the note (in particular the "no properties in
+                // this area yet" message) against the NEW viewport after
+                // every pan/zoom/map-type change settles. This reads only
+                // the already-loaded results (mappable()) and the map's own
+                // getBounds() — no new Supabase request is triggered by
+                // panning or zooming.
+                updateNote(mappable());
             });
             state.map.addListener("dragstart", function () { state.lastGesture = Date.now(); });
             state.map.addListener("click", closePreview);
@@ -331,6 +396,56 @@
                     mk.setTitle(n + " properties");
                 }
             };
+        }
+
+        // ---- "Current Location" marker (Properties Map View only) ----
+        // Deliberately NOT built with makeMarker(): it is never a property,
+        // never clickable to open the property preview, never added to
+        // state.markers/clusterPool, and so never takes part in
+        // syncMarkers()/recluster() — it cannot be confused with, hidden
+        // by, or clustered together with a property pin.
+        function makeCurrentLocationMarker(pos) {
+            var g = window.google.maps;
+            if (state.useAdvanced) {
+                var el = document.createElement("div");
+                el.className = "sf-current-location-dot";
+                el.innerHTML = CURRENT_LOCATION_SVG;
+                var am = new g.marker.AdvancedMarkerElement({ position: pos, content: el, title: "Your current location", gmpClickable: false });
+                return {
+                    show: function () { if (am.map !== state.map) am.map = state.map; },
+                    hide: function () { if (am.map) am.map = null; },
+                    setPos: function (p) { am.position = p; }
+                };
+            }
+            var mk = new g.Marker({
+                position: pos, title: "Your current location", optimized: true, clickable: false, zIndex: 999,
+                icon: { url: svgUrl(CURRENT_LOCATION_SVG), scaledSize: new g.Size(34, 34), anchor: new g.Point(17, 17) }
+            });
+            var onMap = false;
+            return {
+                show: function () { if (!onMap) { mk.setMap(state.map); onMap = true; } },
+                hide: function () { if (onMap) { mk.setMap(null); onMap = false; } },
+                setPos: function (p) { mk.setPosition(p); }
+            };
+        }
+
+        function ensureCurrentLocationMarker(pos) {
+            if (state.currentLocationMarker) { state.currentLocationMarker.setPos(pos); state.currentLocationMarker.show(); return; }
+            state.currentLocationMarker = makeCurrentLocationMarker(pos);
+            state.currentLocationMarker.show();
+        }
+
+        var currentLocationStatusTimer = null;
+        function showCurrentLocationStatus(text) {
+            if (!els.currentStatus) return;
+            clearTimeout(currentLocationStatusTimer);
+            els.currentStatus.textContent = text;
+            els.currentStatus.hidden = false;
+            currentLocationStatusTimer = setTimeout(function () { els.currentStatus.hidden = true; }, 4500);
+        }
+        function hideCurrentLocationStatus() {
+            clearTimeout(currentLocationStatusTimer);
+            if (els.currentStatus) els.currentStatus.hidden = true;
         }
 
         function syncMarkers(list) {
@@ -434,6 +549,12 @@
         function openPreview(items) {
             state.preview = { items: items, index: 0 };
             renderPreview();
+            // The preview card can occupy the same corner as the "Current
+            // Location" control on phones (full-width bottom sheet) — step
+            // it (and any status message) aside for as long as the preview
+            // is open, per the "do not cover ... property preview" requirement.
+            if (els.currentBtn) hide(els.currentBtn, true);
+            hideCurrentLocationStatus();
             var close = els.preview.querySelector(".sf-map-preview-close");
             if (close) close.focus({ preventScroll: true });
         }
@@ -442,6 +563,7 @@
             els.preview.hidden = true;
             els.preview.innerHTML = "";
             els.preview.removeAttribute("data-slug");
+            if (els.currentBtn) hide(els.currentBtn, false);
         }
 
         els.preview.addEventListener("click", function (e) {
@@ -465,6 +587,53 @@
                 closePreview();
                 els.areaBtn.hidden = true;
                 cfg.areaSearch.set({ north: ne.lat(), east: ne.lng(), south: sw.lat(), west: sw.lng() });
+            });
+        }
+
+        // ---- "Current Location" button (Properties Map View only) ----
+        // Reuses the existing geolocation session bridge (js/geo-bridge.js —
+        // also used by js/near-me.js) instead of calling
+        // navigator.geolocation directly, so this never becomes a second,
+        // duplicate geolocation system: the browser's native permission
+        // prompt still only ever appears once per tab/session either way.
+        if (cfg.currentLocation && els.currentBtn) {
+            els.currentBtn.addEventListener("click", function () {
+                if (!state.map || els.currentBtn.getAttribute("aria-busy") === "true") return;
+                if (!window.AventrixGeoBridge) {
+                    showCurrentLocationStatus("Location isn't available right now.");
+                    return;
+                }
+                els.currentBtn.setAttribute("aria-busy", "true");
+                hideCurrentLocationStatus();
+                window.AventrixGeoBridge.request({
+                    onGranted: function (lat, lng) {
+                        els.currentBtn.removeAttribute("aria-busy");
+                        var pos = { lat: lat, lng: lng };
+                        // Center + zoom the existing map; never a property
+                        // marker, never written back to Supabase or any
+                        // other store — held only in this page view (and,
+                        // via the shared bridge, this browser tab's
+                        // sessionStorage) for as long as the tab is open.
+                        // Every click re-centers AND re-zooms to a fixed
+                        // close-up level (never "only if currently zoomed
+                        // out further"), matching a standard Google Maps
+                        // "Your Location" control and making a second click
+                        // after moving somewhere else behave identically to
+                        // the first.
+                        ensureCurrentLocationMarker(pos);
+                        state.map.panTo(pos);
+                        state.map.setZoom(CURRENT_LOCATION_ZOOM);
+                    },
+                    onUnavailable: function (message, kind) {
+                        els.currentBtn.removeAttribute("aria-busy");
+                        var text = kind === "denied"
+                            ? "Location access is disabled. Please allow location access to use your current location."
+                            : kind === "unsupported"
+                                ? "Your browser doesn't support location services."
+                                : "Unable to determine your current location. Please try again.";
+                        showCurrentLocationStatus(text);
+                    }
+                }, { forceRefresh: true });
             });
         }
 
@@ -533,14 +702,19 @@
         var props = createInstance({
             name: "properties", prefix: "sf", grid: sfGrid, viewKey: "aventrix:propertiesView",
             event: "aventrix:search-results",
+            currentLocation: true,
             initial: function () { return window.AventrixSearchResults || null; },
             areaSearch: S.setMapArea ? { get: S.getMapArea, set: S.setMapArea } : null,
             messages: {
-                none: function (total) { return total === 1
-                    ? "This property doesn't have a map location yet. Use List View to see it."
-                    : "These " + total + " properties don't have a map location yet. Use List View to see them."; },
+                // Zero results for the current search/filters, and zero of
+                // today's results having coordinates, are shown with the
+                // same small, non-blocking note — the map itself (Chennai by
+                // default) stays fully visible and interactive either way.
+                empty: "No mapped properties yet. Explore the map or switch to List View.",
+                none: function () { return "No mapped properties yet. Explore the map or switch to List View."; },
                 some: function (on, total) { return "Showing " + on + " of " + total + " properties on the map. Some properties are not currently available on the map — see List View."; },
-                area: function (on) { return "Showing " + on + (on === 1 ? " property" : " properties") + " in this map area."; }
+                area: function (on) { return "Showing " + on + (on === 1 ? " property" : " properties") + " in this map area."; },
+                emptyViewport: "No properties in this area yet."
             },
             syncCard: function (slug, kind, on) {
                 var sel = kind === "wishlist" ? ".property-save-btn" : ".icon-shortlist-btn";
@@ -566,12 +740,17 @@
         var home = createInstance({
             name: "home", prefix: "hp", grid: hpGrid, viewKey: "aventrix:homeView",
             event: "aventrix:home-properties",
+            // Same Current Location control as the Properties page — same
+            // code path (shared AventrixGeoBridge, forceRefresh, zoom 16,
+            // blue dot), bound to this instance's own hp* elements and map.
+            currentLocation: true,
             initial: function () { return window.AventrixHomeResults || null; },
             areaSearch: null,
             messages: {
                 empty: "No properties available right now — please check back soon.",
                 none: function () { return "Map locations will appear as properties are added to the map."; },
-                some: function (on, total) { return "Showing " + on + " of " + total + " properties on the map."; }
+                some: function (on, total) { return "Showing " + on + " of " + total + " properties on the map."; },
+                emptyViewport: "No properties in this area yet."
             },
             syncCard: function (slug, kind, on) {
                 if (kind !== "wishlist") return; // homepage cards have no shortlist button

@@ -25,6 +25,7 @@ const PropertiesModule = (function () {
     // Until that migration has run, the fields stay hidden and are never
     // sent, so saving a property keeps working exactly as before.
     let coordsSupported = null; // null = not checked yet
+    let locationPicker = null; // lazily created — only once coords are known to be supported
     async function detectCoords() {
         if (coordsSupported !== null) return coordsSupported;
         try {
@@ -34,7 +35,25 @@ const PropertiesModule = (function () {
             coordsSupported = false;
         }
         if (els.fCoordsRow) els.fCoordsRow.hidden = !coordsSupported;
+        if (coordsSupported) ensureLocationPicker();
         return coordsSupported;
+    }
+
+    // Map/search/marker picker layered on top of the existing Latitude /
+    // Longitude text boxes — it reads and writes those same two inputs,
+    // so typing or pasting coordinates still works exactly as before,
+    // and saving (readCoords(), below) is completely unchanged.
+    function ensureLocationPicker() {
+        if (locationPicker || !window.AventrixLocationPicker || !els.fLocationMap) return;
+        locationPicker = AventrixLocationPicker.attach({
+            mapEl: els.fLocationMap,
+            searchInputEl: els.fLocationSearch,
+            searchBtnEl: els.fLocationSearchBtn,
+            latInputEl: els.fLatitude,
+            lngInputEl: els.fLongitude,
+            statusEl: els.fLocationStatus
+        });
+        if (els.fLocationClearBtn) els.fLocationClearBtn.addEventListener("click", () => locationPicker.clear());
     }
 
     // Returns { latitude, longitude } (numbers or both null), or throws a
@@ -71,6 +90,7 @@ const PropertiesModule = (function () {
             "fFeatures", "fFeaturedImage", "featuredImagePreview", "fImages", "imagePreviewList",
             "fBedrooms", "fBathrooms", "fParking", "fFloors", "fBuiltUpArea", "fLandArea", "fRoadWidth", "fRentalIncome", "fBrokerage",
             "fUdsArea", "fFurnishing", "fFacing", "fCoordsRow", "fLatitude", "fLongitude",
+            "fLocationMap", "fLocationSearch", "fLocationSearchBtn", "fLocationStatus", "fLocationClearBtn",
             "fStatus", "fPublishStatus", "fFeatured",
             "fSeoTitle", "fSeoDescription", "fSeoKeywords",
             "uploadProgressWrap", "uploadProgressBar", "uploadProgressLabel"
@@ -147,6 +167,7 @@ const PropertiesModule = (function () {
         populateSubTypeOptions(els.fCategory.value, "");
         els.propertyCodeDisplay.style.display = "none";
         els.propertyModalTitle.textContent = "Add Property";
+        if (locationPicker) locationPicker.clear();
         hideProgress();
         renderImagePreviews();
         renderFeaturedPreview();
@@ -156,6 +177,7 @@ const PropertiesModule = (function () {
         resetForm();
         detectCoords();
         els.propertyModalOverlay.classList.add("open");
+        if (locationPicker) setTimeout(() => locationPicker.invalidateSize(), 50);
     }
 
     async function openEdit(id) {
@@ -196,6 +218,10 @@ const PropertiesModule = (function () {
         await detectCoords();
         els.fLatitude.value = p.latitude ?? "";
         els.fLongitude.value = p.longitude ?? "";
+        if (locationPicker) {
+            if (p.latitude != null && p.longitude != null) locationPicker.setLocation(p.latitude, p.longitude);
+            else locationPicker.clear();
+        }
         els.fStatus.value = p.status || "Available";
         els.fPublishStatus.value = p.publish_status || "Draft";
         els.fFeatured.checked = !!p.is_featured;
@@ -206,6 +232,7 @@ const PropertiesModule = (function () {
         renderImagePreviews();
         renderFeaturedPreview();
         els.propertyModalOverlay.classList.add("open");
+        if (locationPicker) setTimeout(() => locationPicker.invalidateSize(), 50);
     }
 
     function closeModal() {

@@ -45,14 +45,14 @@
 })();
     </script>
 
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="48x48" href="/images/favicon/favicon-48x48.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon/android-chrome-192x192.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="/images/favicon/android-chrome-512x512.png">
-    <link rel="manifest" href="/site.webmanifest">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico?v=2">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png?v=2">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png?v=2">
+    <link rel="icon" type="image/png" sizes="48x48" href="/images/favicon/favicon-48x48.png?v=2">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png?v=2">
+    <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon/android-chrome-192x192.png?v=2">
+    <link rel="icon" type="image/png" sizes="512x512" href="/images/favicon/android-chrome-512x512.png?v=2">
+    <link rel="manifest" href="/site.webmanifest?v=2">
 
     <title>Aventrix Realty</title>
 
@@ -178,7 +178,7 @@
           "name": "Do you help with legal verification?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Every property we list undergoes legal verification, including title checks and approval status, before it reaches our clients."
+            "text": "We review the documents and approval status shared for each property and guide you through the checks involved. We also recommend verifying title and legal details independently with a qualified professional before making a decision."
           }
         },
         {
@@ -692,6 +692,8 @@
             <div class="sf-map-wrap" id="hpMapWrap" hidden>
                 <div class="sf-map-canvas" id="hpMapCanvas" aria-label="Map of properties"></div>
                 <div class="sf-map-loading" id="hpMapLoading" hidden><span></span> Loading map…</div>
+                <button type="button" class="sf-current-location-btn" id="hpCurrentLocationBtn" aria-label="Show my current location"><i class="fas fa-location-crosshairs" aria-hidden="true"></i></button>
+                <p class="sf-current-location-status" id="hpCurrentLocationStatus" role="status" aria-live="polite" hidden></p>
                 <div class="sf-map-preview" id="hpMapPreview" role="dialog" aria-label="Property preview" hidden></div>
             </div>
         </div>
@@ -1232,7 +1234,7 @@ END TEMPORARILY HIDDEN — Featured Locations section -->
                     <i class="fas fa-plus faq-icon" aria-hidden="true"></i>
                 </button>
                 <div class="faq-answer" data-cms-f="answer">
-                    <p>Every property we list undergoes legal verification, including title checks and approval status, before it reaches our clients.</p>
+                    <p>We review the documents and approval status shared for each property and guide you through the checks involved. We also recommend verifying title and legal details independently with a qualified professional before making a decision.</p>
                 </div>
             </div>
 
@@ -1567,7 +1569,7 @@ END TEMPORARILY HIDDEN — Featured Locations section -->
 <script src="js/home-hero-search.js?v=1"></script>
 <script src="js/home-app-experience.js?v=20260927"></script>
 <script src="js/maps-config.js?v=20260926"></script>
-<script src="js/properties-map.js?v=20260927"></script>
+<script src="js/properties-map.js?v=20260927b"></script>
 <script src="script.js?v=20260926b"></script>
 </body>
 </html>

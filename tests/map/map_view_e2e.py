@@ -257,13 +257,20 @@ def run():
         check("url: map state never adds URL parameters (canonical page unchanged)", page.evaluate("location.search") == "" and page.get_attribute('link[rel="canonical"]', "href") == "https://aventrixrealty.com/properties.html")
 
         # ---- no results / no coordinates ----
+        # The map must NEVER go blank: even with zero results, or results
+        # none of which have coordinates, the actual Google Map still shows
+        # (Chennai-centered, fully interactive) — the List View's own empty
+        # state (with its "Clear All Filters" action) can still appear below
+        # it, but it never replaces or hides the map while in Map View.
         page.fill("#sfLocation", "zzzz-nowhere"); page.wait_for_timeout(1600)
-        check("empty: 0 results → existing empty state shown, no map, no error", page.locator("#sfEmptyState").is_visible() and page.locator("#sfMapWrap").is_hidden() and page.locator("#sfMapFallback").is_hidden())
+        check("empty: 0 results → List View's empty state shown, but the map itself stays visible (never blank), no error",
+              page.locator("#sfEmptyState").is_visible() and page.locator("#sfMapWrap").is_visible() and page.locator("#sfMapFallback").is_hidden()
+              and page.evaluate("window.__mockMaps.maps[0].getCenter().toJSON()")["lat"] is not None)
         page.fill("#sfLocation", ""); page.wait_for_timeout(1500)
         page.select_option("#sfCategory", "land"); page.wait_for_timeout(1400)
         page.fill("#sfLocation", "Chromepet"); page.wait_for_timeout(1600)
         nc = set(results_slugs(page))
-        check("no-coords: results without coordinates → map still visible (Chennai-centered), no marker at a made-up place, clear message", nc and not (nc & EXPECTED_ON_MAP) and page.locator("#sfMapWrap").is_visible() and page.locator("#sfMapCanvas .mock-marker").count() == 0 and "map location yet" in page.locator("#sfMapNote").inner_text(), (nc, page.locator("#sfMapNote").inner_text()))
+        check("no-coords: results without coordinates → map still visible (Chennai-centered), no marker at a made-up place, clear message", nc and not (nc & EXPECTED_ON_MAP) and page.locator("#sfMapWrap").is_visible() and page.locator("#sfMapCanvas .mock-marker").count() == 0 and "No mapped properties yet" in page.locator("#sfMapNote").inner_text(), (nc, page.locator("#sfMapNote").inner_text()))
         page.fill("#sfLocation", ""); page.select_option("#sfCategory", ""); page.wait_for_timeout(1600)
 
         # ---- View Details from map opens the right detail page ----

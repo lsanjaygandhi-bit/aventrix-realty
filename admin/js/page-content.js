@@ -39,10 +39,11 @@ const PAGES_LIST = [
     { key: "brokerage-fees", label: "Professional Fees", url: "brokerage-fees.html" },
     { key: "our-realtors", label: "Our Realtors (page intro)", url: "our-realtors.html" },
     { key: "gnanasekaran", label: "Founder profile — Gnanasekaran P", url: "gnanasekaran.html" },
-    { key: "sanjay", label: "Co-Founder profile — Sanjay Gandhi L", url: "sanjay.html" },
+    { key: "sanjay", label: "Co-Founder profile — L. Sanjay Gandhi", url: "sanjay.html" },
     { key: "insights", label: "Insights (page intro)", url: "insights.html" },
     { key: "contact", label: "Contact", url: "contact.html" },
     { key: "enquiry", label: "Property Enquiry", url: "enquiry.html" },
+    { key: "emi-calculator", label: "EMI Calculator", url: "emi-calculator.html" },
     { key: "privacy-policy", label: "Privacy Policy", url: "privacy-policy.html" },
     { key: "terms", label: "Terms & Conditions", url: "terms.html" },
     { key: "sitemap", label: "Sitemap (page intro)", url: "sitemap.html" }

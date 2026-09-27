@@ -38,14 +38,14 @@
 })();
     </script>
 
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="48x48" href="/images/favicon/favicon-48x48.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon/android-chrome-192x192.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="/images/favicon/android-chrome-512x512.png">
-    <link rel="manifest" href="/site.webmanifest">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico?v=2">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png?v=2">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png?v=2">
+    <link rel="icon" type="image/png" sizes="48x48" href="/images/favicon/favicon-48x48.png?v=2">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png?v=2">
+    <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon/android-chrome-192x192.png?v=2">
+    <link rel="icon" type="image/png" sizes="512x512" href="/images/favicon/android-chrome-512x512.png?v=2">
+    <link rel="manifest" href="/site.webmanifest?v=2">
 
     <title>Search Properties | Aventrix Realty</title>
 
@@ -414,6 +414,8 @@
                 <div class="sf-map-canvas" id="sfMapCanvas" aria-label="Map of properties"></div>
                 <div class="sf-map-loading" id="sfMapLoading" hidden><span></span> Loading map…</div>
                 <button type="button" class="sf-map-area-btn" id="sfMapAreaBtn" hidden><i class="fas fa-magnifying-glass" aria-hidden="true"></i> Search this area</button>
+                <button type="button" class="sf-current-location-btn" id="sfCurrentLocationBtn" aria-label="Show my current location"><i class="fas fa-location-crosshairs" aria-hidden="true"></i></button>
+                <p class="sf-current-location-status" id="sfCurrentLocationStatus" role="status" aria-live="polite" hidden></p>
                 <div class="sf-map-preview" id="sfMapPreview" role="dialog" aria-label="Property preview" hidden></div>
             </div>
         </div>
@@ -563,7 +565,7 @@
 <script src="js/property-taxonomy.js?v=20260924"></script>
 <script src="js/properties-search.js?v=20260927"></script>
 <script src="js/maps-config.js?v=20260926"></script>
-<script src="js/properties-map.js?v=20260927"></script>
+<script src="js/properties-map.js?v=20260927b"></script>
 <script src="js/saved-searches.js?v=20260925"></script>
 <script src="js/geo-bridge.js"></script>
 <script src="js/near-me.js"></script>

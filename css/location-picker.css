@@ -1,0 +1,44 @@
+/* =====================================================================
+   AVENTRIX REALTY — PROPERTY LOCATION PICKER (shared)
+   Used on list-with-us.html (customer) and admin/dashboard.html
+   (staff). Additive — matches the site's existing green/gold palette
+   and the Properties page Map View's look, without touching it.
+   ===================================================================== */
+.location-picker-hint{ font-size:13.5px; color:#4b5563; margin:0 0 10px; line-height:1.55; }
+.location-picker-search-row{ display:flex; gap:8px; margin-bottom:10px; }
+.location-picker-search-row input[type="text"]{
+    flex:1 1 auto; min-width:0; padding:12px 14px; border:1px solid #d1d5db; border-radius:8px;
+    font-family:'Montserrat',sans-serif; font-size:14px;
+}
+.location-picker-search-btn{
+    flex:0 0 auto; display:inline-flex; align-items:center; gap:8px;
+    background:#0F3B2E; color:#fff; border:0; border-radius:8px;
+    font-family:'Montserrat',sans-serif; font-size:13.5px; font-weight:600;
+    padding:0 18px; cursor:pointer; white-space:nowrap;
+}
+.location-picker-search-btn:hover{ background:#0c2f24; }
+.location-picker-map{
+    position:relative;
+    width:100%; height:320px; border-radius:10px; overflow:hidden;
+    border:1px solid rgba(17,24,39,.12); background:#e9ecef; margin-bottom:10px;
+}
+.location-picker-status{
+    font-size:13.5px; line-height:1.6; color:#0F3B2E; background:#f2f7f4;
+    border:1px solid rgba(15,59,46,.2); border-radius:8px; padding:10px 14px; margin:0 0 10px;
+}
+.location-picker-status.location-picker-error{ color:#a33; background:#fdf2f2; border-color:rgba(170,51,51,.25); }
+.location-picker-clear-btn{
+    background:none; border:0; color:#6b7280; font-size:13px; text-decoration:underline;
+    cursor:pointer; padding:0; font-family:'Montserrat',sans-serif;
+}
+.location-picker-clear-btn:hover{ color:#0F3B2E; }
+
+@media (max-width: 640px){
+    .location-picker-map{ height:260px; }
+    .location-picker-search-row{ flex-direction:column; }
+    .location-picker-search-btn{ justify-content:center; padding:12px; }
+}
+
+/* Admin — sits inside the existing #fCoordsRow field */
+.admin-location-picker{ margin-top:10px; }
+.admin-location-picker .location-picker-map{ height:280px; }

@@ -7,7 +7,8 @@
 
 /* [hidden] must win over component display rules */
 #sfResultsGrid[hidden], #sfMapView[hidden], #futurePropertiesGrid[hidden], #hpMapView[hidden], .sf-map-wrap[hidden], .sf-map-note[hidden],
-.sf-map-fallback[hidden], .sf-map-preview[hidden], .sf-map-area-btn[hidden], .sf-map-loading[hidden]{ display:none !important; }
+.sf-map-fallback[hidden], .sf-map-preview[hidden], .sf-map-area-btn[hidden], .sf-map-loading[hidden],
+.sf-current-location-btn[hidden], .sf-current-location-status[hidden]{ display:none !important; }
 
 /* ---------- List | Map toggle ---------- */
 .sf-view-toggle{
@@ -71,6 +72,27 @@
 }
 .sf-map-area-btn:hover{ background:#0F3B2E; color:#fff; }
 
+/* "Current Location" control — bottom-right corner, clear of the map-type
+   dropdown (top-left), zoom control (top-right) and "Search this area"
+   (top-center). Hidden automatically while the property preview card is
+   open (see js/properties-map.js) so it never sits on top of it. */
+.sf-current-location-btn{
+    position:absolute; right:12px; bottom:16px; z-index:3;
+    width:44px; height:44px; border-radius:50%;
+    display:inline-flex; align-items:center; justify-content:center;
+    font-size:17px; background:#fff; color:#0F3B2E; border:1.5px solid #0F3B2E;
+    cursor:pointer; box-shadow:0 4px 14px rgba(17,24,39,.18);
+}
+.sf-current-location-btn:hover{ background:#0F3B2E; color:#fff; }
+.sf-current-location-btn[aria-busy="true"] i{ animation:sfMapSpin .8s linear infinite; }
+.sf-current-location-status{
+    position:absolute; right:12px; bottom:66px; z-index:3;
+    max-width:calc(100% - 88px);
+    margin:0; background:#fff; color:#374151; font-size:12.5px; line-height:1.5;
+    border-radius:10px; padding:8px 12px; box-shadow:0 4px 14px rgba(17,24,39,.18);
+}
+.sf-current-location-dot{ width:22px; height:22px; }
+
 /* Advanced-marker content (used only when a Map ID is configured) */
 .sf-map-pin{ width:30px; height:40px; cursor:pointer; }
 .sf-map-pin svg{ display:block; }
@@ -133,6 +155,8 @@ html.is-mobile .sf-map-preview{
     left:8px; right:8px; bottom:8px; width:auto; max-width:none;
     grid-template-columns:96px minmax(0,1fr);
 }
+html.is-mobile .sf-current-location-btn{ right:8px; bottom:12px; }
+html.is-mobile .sf-current-location-status{ right:8px; bottom:60px; max-width:calc(100% - 76px); }
 html.is-mobile .sf-map-preview-img img{ min-height:140px; }
 html.is-mobile .sf-map-preview-body{ padding:10px 12px; }
 html.is-mobile .sf-map-preview-title{ font-size:14px; }

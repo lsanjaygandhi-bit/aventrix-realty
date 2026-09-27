@@ -67,7 +67,8 @@ PAGES = [("home", "index.html"), ("about", "about.html"), ("services", "services
          ("list-with-us", "list-with-us.html"), ("free-valuation", "free-valuation.html"), ("joint-venture", "joint-venture.html"),
          ("nri-services", "nri-services.html"), ("brokerage-fees", "brokerage-fees.html"), ("our-realtors", "our-realtors.html"),
          ("gnanasekaran", "gnanasekaran.html"), ("sanjay", "sanjay.html"), ("insights", "insights.html"), ("contact", "contact.html"),
-         ("enquiry", "enquiry.html"), ("privacy-policy", "privacy-policy.html"), ("terms", "terms.html"), ("sitemap", "sitemap.html")]
+         ("enquiry", "enquiry.html"), ("emi-calculator", "emi-calculator.html"),
+         ("privacy-policy", "privacy-policy.html"), ("terms", "terms.html"), ("sitemap", "sitemap.html")]
 # sections that render on another page than their row
 RENDERED_ON = {("home", "about-legacy"): ["about.html"], ("home", "leadership-intro"): ["index.html", "about.html"]}
 

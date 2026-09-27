@@ -45,14 +45,14 @@
 })();
     </script>
 
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="48x48" href="/images/favicon/favicon-48x48.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon/android-chrome-192x192.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="/images/favicon/android-chrome-512x512.png">
-    <link rel="manifest" href="/site.webmanifest">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico?v=2">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png?v=2">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png?v=2">
+    <link rel="icon" type="image/png" sizes="48x48" href="/images/favicon/favicon-48x48.png?v=2">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png?v=2">
+    <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon/android-chrome-192x192.png?v=2">
+    <link rel="icon" type="image/png" sizes="512x512" href="/images/favicon/android-chrome-512x512.png?v=2">
+    <link rel="manifest" href="/site.webmanifest?v=2">
 
     <title>List with Us | Aventrix Realty</title>
 
@@ -107,6 +107,7 @@
 }
     </script>
     <link rel="stylesheet" href="css/site-fixes.css?v=20260926b">
+    <link rel="stylesheet" href="css/location-picker.css?v=20260927">
 </head>
 
 <body data-page-key="list-with-us">
@@ -440,6 +441,22 @@
             </select>
         </div>
 
+    </div>
+
+    <h3 class="fv-form-group-heading">Property Location</h3>
+    <div class="form-grid fv-form-grid-single">
+        <div class="form-group">
+            <p class="location-picker-hint">Help us find your property faster — search its address or click directly on the map to mark the exact location. This step is optional but recommended.</p>
+            <div class="location-picker-search-row">
+                <input type="text" id="lwuLocationSearch" placeholder="Search property location or address…" autocomplete="off">
+                <button type="button" id="lwuLocationSearchBtn" class="location-picker-search-btn"><i class="fas fa-search" aria-hidden="true"></i> Search</button>
+            </div>
+            <div id="lwuLocationMap" class="location-picker-map" role="application" aria-label="Map — click to mark your property's location"></div>
+            <p id="lwuLocationStatus" class="location-picker-status" hidden></p>
+            <button type="button" id="lwuLocationClearBtn" class="location-picker-clear-btn">Clear selected location</button>
+            <input type="hidden" name="latitude" id="lwuLatitude">
+            <input type="hidden" name="longitude" id="lwuLongitude">
+        </div>
     </div>
 
     <h3 class="fv-form-group-heading">Listing Requirement</h3>
@@ -961,8 +978,33 @@
 <script src="js/public-page-content.js?v=20260926b"></script>
 <script src="js/aventrix-storage.js"></script>
 <script src="js/wishlist-widget.js"></script>
+<script src="js/maps-config.js"></script>
+<script src="js/property-location-picker.js"></script>
 <script src="js/enquiry-supabase.js?v=20260926b"></script>
 <script src="script.js?v=20260926b"></script>
+<script>
+(function () {
+    var mapEl = document.getElementById("lwuLocationMap");
+    if (!mapEl || !window.AventrixLocationPicker) return;
+    var picker = AventrixLocationPicker.attach({
+        mapEl: mapEl,
+        searchInputEl: document.getElementById("lwuLocationSearch"),
+        searchBtnEl: document.getElementById("lwuLocationSearchBtn"),
+        latInputEl: document.getElementById("lwuLatitude"),
+        lngInputEl: document.getElementById("lwuLongitude"),
+        statusEl: document.getElementById("lwuLocationStatus")
+    });
+    var clearBtn = document.getElementById("lwuLocationClearBtn");
+    if (clearBtn) clearBtn.addEventListener("click", function () { picker.clear(); });
+    // Submitting the form successfully also resets the picker's own
+    // visual state, since js/enquiry-supabase.js calls form.reset() —
+    // that clears the hidden lat/lng inputs but not the marker/status.
+    var form = document.getElementById("propertyForm");
+    if (form) form.addEventListener("submit", function () {
+        setTimeout(function () { if (!document.getElementById("success-message") || document.getElementById("success-message").style.display === "none") return; picker.clear(); }, 300);
+    });
+})();
+</script>
 
    </body>
    </html>

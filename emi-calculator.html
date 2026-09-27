@@ -37,14 +37,14 @@
 })();
     </script>
 
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="48x48" href="/images/favicon/favicon-48x48.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon/android-chrome-192x192.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="/images/favicon/android-chrome-512x512.png">
-    <link rel="manifest" href="/site.webmanifest">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico?v=2">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png?v=2">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png?v=2">
+    <link rel="icon" type="image/png" sizes="48x48" href="/images/favicon/favicon-48x48.png?v=2">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png?v=2">
+    <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon/android-chrome-192x192.png?v=2">
+    <link rel="icon" type="image/png" sizes="512x512" href="/images/favicon/android-chrome-512x512.png?v=2">
+    <link rel="manifest" href="/site.webmanifest?v=2">
 
     <title>EMI Calculator | Aventrix Realty</title>
 
@@ -64,7 +64,7 @@
     <link rel="stylesheet" href="style.css?v=20260925">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="stylesheet" href="css/emi-calculator.css?v=20260926c">
+    <link rel="stylesheet" href="css/emi-calculator.css?v=20260927">
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -187,8 +187,15 @@
 
 <!-- ==============================
      EMI CALCULATOR — HERO
-     Reuses the shared .list-hero component (existing background). -->
+     Reuses the shared .list-hero component. The background photo lives on
+     its own layer (.emi-hero-media) so it stays CMS/media-controlled via
+     [data-page-hero-image] (Admin -> Website Content -> EMI Calculator ->
+     Hero Image) without disturbing the dark overlay, which is a separate
+     ::before layer in css/emi-calculator.css. Default photo (used until an
+     Admin value is set): images/emi-calculator-hero.jpg. -->
 <section class="list-hero emi-hero">
+
+    <div class="emi-hero-media" data-page-hero-image aria-hidden="true"></div>
 
     <div class="container">
 

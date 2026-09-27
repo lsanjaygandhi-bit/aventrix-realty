@@ -36,13 +36,25 @@
     function Map(div, opts) {
         Evented.call(this);
         this.div = div; this.opts = opts || {}; this.center = toLL(opts.center); this.zoom = opts.zoom;
+        this.mapTypeId = opts.mapTypeId || "roadmap";
         div.style.overflow = "hidden";
         this.layer = document.createElement("div"); this.layer.className = "mock-map-layer";
         this.layer.style.cssText = "position:absolute;inset:0;background:#dfe7dc";
         div.appendChild(this.layer);
+        var self = this;
+        // Real Google Maps fires a "click" event with the clicked point's
+        // latLng; reproduce that here from the click's pixel offset so
+        // code under test (e.g. js/property-location-picker.js) can be
+        // exercised the same way it behaves against the real API.
+        this.layer.addEventListener("click", function (e) {
+            var rect = self.layer.getBoundingClientRect();
+            var s = self.size(), c = world(self.center, self.zoom);
+            var x = c.x - s.w / 2 + (e.clientX - rect.left);
+            var y = c.y - s.h / 2 + (e.clientY - rect.top);
+            self._fire("click", { latLng: unworld(x, y, self.zoom) });
+        });
         var ctl = document.createElement("div"); ctl.className = "mock-zoom-controls";
         ctl.style.cssText = "position:absolute;top:10px;right:10px;z-index:2;display:flex;flex-direction:column;gap:2px";
-        var self = this;
         ["+", "-"].forEach(function (s) {
             var b = document.createElement("button"); b.type = "button"; b.textContent = s; b.className = "mock-zoom-" + (s === "+" ? "in" : "out");
             b.style.cssText = "width:40px;height:40px;background:#fff;border:0;font-size:20px";
@@ -50,6 +62,18 @@
             ctl.appendChild(b);
         });
         div.appendChild(ctl);
+        if (opts.mapTypeControl) {
+            var mtc = document.createElement("select");
+            mtc.className = "mock-maptype-control";
+            (opts.mapTypeControlOptions && opts.mapTypeControlOptions.mapTypeIds || ["roadmap", "satellite"]).forEach(function (id) {
+                var o = document.createElement("option"); o.value = id; o.textContent = id; mtc.appendChild(o);
+            });
+            mtc.value = this.mapTypeId;
+            mtc.style.cssText = "position:absolute;top:10px;left:10px;z-index:2;height:32px;background:#fff;border:1px solid #ccc";
+            mtc.addEventListener("change", function () { self.setMapTypeId(mtc.value); });
+            div.appendChild(mtc);
+            this._mtc = mtc;
+        }
         var attr = document.createElement("div"); attr.className = "mock-attribution"; attr.textContent = "Map data ©2026 Google (test double)";
         attr.style.cssText = "position:absolute;right:0;bottom:0;font-size:10px;background:rgba(255,255,255,.7);padding:0 4px;z-index:1";
         div.appendChild(attr);
@@ -60,6 +84,8 @@
     Map.prototype = Object.create(Evented.prototype);
     Map.prototype.size = function () { return { w: this.div.clientWidth || 600, h: this.div.clientHeight || 400 }; };
     Map.prototype.getZoom = function () { return this.zoom; };
+    Map.prototype.getMapTypeId = function () { return this.mapTypeId; };
+    Map.prototype.setMapTypeId = function (id) { this.mapTypeId = id; this.div.classList.toggle("mock-map-satellite", id === "satellite" || id === "hybrid"); if (this._mtc) this._mtc.value = id; this._fire("maptypeid_changed"); };
     Map.prototype.getCenter = function () { return this.center; };
     Map.prototype.setZoom = function (z) { z = Math.max(1, Math.min(21, Math.round(z))); if (z !== this.zoom) { this.zoom = z; this._fire("zoom_changed"); } this._schedule(); };
     Map.prototype.setCenter = function (c) { this.center = toLL(c); this._fire("center_changed"); this._schedule(); };
@@ -143,14 +169,32 @@
     }
     AdvancedMarkerElement.prototype = Object.create(Evented.prototype);
 
+    // Test-controlled Geocoder: set window.__mockGeocodeResults = { "some address": {lat, lng} }
+    // before searching. An address not in the map resolves with ZERO_RESULTS,
+    // matching the real API's behaviour for a location it can't find.
+    function Geocoder() {}
+    Geocoder.prototype.geocode = function (req, cb) {
+        var table = window.__mockGeocodeResults || {};
+        var hit = table[(req.address || "").trim()];
+        setTimeout(function () {
+            if (!hit) { cb([], "ZERO_RESULTS"); return; }
+            cb([{ geometry: { location: new LatLng(hit.lat, hit.lng) } }], "OK");
+        }, 10);
+    };
+
     window.google = window.google || {};
     window.google.maps = {
-        Map: Map, Marker: Marker, LatLng: LatLng, LatLngBounds: LatLngBounds,
+        Map: Map, Marker: Marker, LatLng: LatLng, LatLngBounds: LatLngBounds, Geocoder: Geocoder,
         Size: function (w, h) { this.width = w; this.height = h; },
         Point: function (x, y) { this.x = x; this.y = y; },
-        ControlPosition: { RIGHT_TOP: 3, RIGHT_BOTTOM: 12, TOP_CENTER: 2 },
+        ControlPosition: { RIGHT_TOP: 3, RIGHT_BOTTOM: 12, TOP_CENTER: 2, TOP_LEFT: 1 },
+        MapTypeControlStyle: { DEFAULT: 0, HORIZONTAL_BAR: 1, DROPDOWN_MENU: 2 },
+        MapTypeId: { ROADMAP: "roadmap", SATELLITE: "satellite", HYBRID: "hybrid", TERRAIN: "terrain" },
         marker: { AdvancedMarkerElement: AdvancedMarkerElement },
-        event: { addListener: function (o, n, f) { return o.addListener(n, f); } }
+        event: {
+            addListener: function (o, n, f) { return o.addListener(n, f); },
+            trigger: function (o, n, a) { o._fire(n, a); }
+        }
     };
     if (key === "INVALID") {
         // Real API: loads, then calls gm_authFailure after the key check fails.
