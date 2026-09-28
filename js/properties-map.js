@@ -24,13 +24,17 @@
     "use strict";
 
     var FALLBACK_TEXT = "Map view is temporarily unavailable. Please use List View to browse properties.";
-    var CLUSTER_RADIUS_PX = 46;
+    var CLUSTER_RADIUS_PX = 64;  // wide enough that neighbouring price bubbles don't overlap
     var NO_CLUSTER_ZOOM = 18;
     // Default map center when no property has coordinates yet. Only used to
     // point the camera somewhere sensible — never attached to a property or
     // rendered as a marker/pin.
     var CHENNAI_CENTER = { lat: 13.0827, lng: 80.2707 };
     var NO_MARKERS_ZOOM = 11;
+    // Closest zoom the automatic first overview of the results may use —
+    // neighbourhood level, so the initial view shows where properties are
+    // rather than zooming into one of them.
+    var OVERVIEW_MAX_ZOOM = 14;
     // "Current Location" (Properties Map View only) — browser geolocation,
     // shown for this page view only, never treated as a property and
     // never persisted anywhere. See makeCurrentLocationMarker() below.
@@ -94,17 +98,71 @@
     // ------------------------------------------------------------
     // Shared helpers (markers, preview text)
     // ------------------------------------------------------------
-    var PIN_SVG = '<svg xmlns="http://www.w3.org/2000/svg" width="30" height="40" viewBox="0 0 30 40"><path d="M15 0C6.7 0 0 6.6 0 14.8 0 25.9 15 40 15 40s15-14.1 15-25.2C30 6.6 23.3 0 15 0z" fill="#0F3B2E"/><circle cx="15" cy="14.5" r="6" fill="#D4AF37"/></svg>';
-    function clusterSvg(n) {
-        var r = n < 10 ? 18 : n < 100 ? 21 : 25, d = r * 2 + 6;
-        return '<svg xmlns="http://www.w3.org/2000/svg" width="' + d + '" height="' + d + '" viewBox="0 0 ' + d + ' ' + d + '">' +
-            '<circle cx="' + d / 2 + '" cy="' + d / 2 + '" r="' + (r + 3) + '" fill="#D4AF37" fill-opacity=".45"/>' +
-            '<circle cx="' + d / 2 + '" cy="' + d / 2 + '" r="' + r + '" fill="#0F3B2E"/></svg>';
-    }
+    // Property pin: Aventrix green with a white house + gold door, plus a white
+    // ring and soft shadow so it stays clearly visible on satellite imagery.
+    // The tip (bottom-centre) is the exact property coordinate.
+    var MARKER_SHADOW = '<filter id="avxShadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="1" stdDeviation="1.2" flood-color="#000000" flood-opacity="0.45"/></filter>';
+    var PIN_SVG = '<svg xmlns="http://www.w3.org/2000/svg" width="34" height="42" viewBox="-2 -2 34 42"><defs>' + MARKER_SHADOW + '</defs>' +
+        '<path d="M15 0C6.7 0 0 6.6 0 14.8 0 25.9 15 40 15 40s15-14.1 15-25.2C30 6.6 23.3 0 15 0z" fill="#0F3B2E" stroke="#ffffff" stroke-width="2" stroke-linejoin="round" filter="url(#avxShadow)"/>' +
+        '<path d="M15 6.8 7.6 13.2h2.2v7.3h10.4v-7.3h2.2z" fill="#ffffff"/><rect x="13.4" y="16.2" width="3.2" height="4.3" fill="#D4AF37"/></svg>';
     function svgUrl(svg) { return "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg); }
+
+    // ---- Map-only marker artwork: price bubbles + "N Properties" clusters ----
+    // Compact price for a property's map bubble, built ONLY from its own stored
+    // price_value (rupees): ₹68 L, ₹1.10 Cr, ₹50K/mo. No number → null, and the
+    // property keeps the plain house pin (never a made-up or "from" price).
+    function priceShort(p) {
+        var v = Number(p && p.price_value);
+        if (!p || p.price_value === null || p.price_value === "" || !isFinite(v) || v <= 0) return null;
+        var s;
+        if (v >= 1e7) { var cr = v / 1e7; s = (cr >= 100 ? String(Math.round(cr)) : cr.toFixed(2).replace(/\.00$/, "")) + " Cr"; }
+        else if (v >= 1e5) { var l = v / 1e5; s = (l >= 100 ? String(Math.round(l)) : l.toFixed(2).replace(/\.?0+$/, "")) + " L"; }
+        else if (v >= 1000) { s = (v / 1000).toFixed(1).replace(/\.0$/, "") + "K"; }
+        else s = String(Math.round(v));
+        // Rent/lease: only mark the period when the property's own price text states it.
+        var d = String(p.price_display || "");
+        var per = /month|\/\s*mo\b|p\.?\s*m\b/i.test(d) ? "/mo" : /year|annum|\/\s*yr\b|p\.?\s*a\b/i.test(d) ? "/yr" : "";
+        return "₹" + s + (p.listing_type === "lease" ? per : "");
+    }
+    var MARKER_FONT = "700 12px Arial, Helvetica, sans-serif";
+    var CLUSTER_FONT = "700 12.5px Montserrat, Arial, Helvetica, sans-serif";
+    var measureCtx = null;
+    function textWidth(text, font) {
+        try {
+            measureCtx = measureCtx || document.createElement("canvas").getContext("2d");
+            measureCtx.font = font;
+            return Math.ceil(measureCtx.measureText(text).width);
+        } catch (e) { return Math.ceil(String(text).length * 7.4); }
+    }
+    // Price bubble: dark-green pill, white price, gold hairline, small pointer
+    // whose tip is the property's exact coordinate (the marker anchor).
+    // Price bubble: Aventrix-green pill with a white ring + soft shadow (clearly
+    // visible on satellite imagery), white price text, and a pointer whose tip
+    // is the exact property coordinate (bottom-centre = the marker anchor).
+    function priceBubble(text) {
+        var pad = 3, w0 = Math.max(46, textWidth(text, MARKER_FONT) + 22), h0 = 26, tip = 7;
+        var W = w0 + pad * 2, cx = W / 2, x0 = pad, x1 = pad + w0, y0 = pad, y1 = pad + h0, r = h0 / 2, H = y1 + tip;
+        var d = "M" + (x0 + r) + " " + y0 + " H" + (x1 - r) + " A" + r + " " + r + " 0 0 1 " + (x1 - r) + " " + y1 +
+            " H" + (cx + 6) + " L" + cx + " " + H + " L" + (cx - 6) + " " + y1 + " H" + (x0 + r) + " A" + r + " " + r + " 0 0 1 " + (x0 + r) + " " + y0 + " Z";
+        var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="' + W + '" height="' + H + '" viewBox="0 0 ' + W + ' ' + H + '"><defs>' + MARKER_SHADOW + '</defs>' +
+            '<path d="' + d + '" fill="#0F3B2E" stroke="#ffffff" stroke-width="2" stroke-linejoin="round" filter="url(#avxShadow)"/>' +
+            '<text x="' + cx + '" y="' + (y0 + h0 / 2 + 4.2) + '" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#ffffff">' + esc(text) + '</text></svg>';
+        return { svg: svg, w: W, h: H };
+    }
+    var HOUSE_GLYPH = '<path d="M7 1.6 0.8 7h1.9v6h3.2V9.4h2.2V13h3.2V7h1.9z" fill="#D4AF37"/>';
+    function clusterText(n) { return n + (n === 1 ? " Property" : " Properties"); }
+    // Cluster pill: house glyph + "N Properties" (the text itself is drawn by
+    // the marker label so it uses the site font); centred on the cluster point.
+    function clusterPill(n) {
+        var tw = textWidth(clusterText(n), CLUSTER_FONT), w = tw + 46, h = 32;
+        var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="' + w + '" height="' + h + '" viewBox="0 0 ' + w + ' ' + h + '">' +
+            '<rect x="1.5" y="1.5" width="' + (w - 3) + '" height="' + (h - 3) + '" rx="' + ((h - 3) / 2) + '" fill="#0F3B2E" stroke="#D4AF37" stroke-width="1.5"/>' +
+            '<g transform="translate(13 8.5)">' + HOUSE_GLYPH + '</g></svg>';
+        return { svg: svg, w: w, h: h, labelX: 32 + tw / 2, labelY: h / 2 };
+    }
     // Blue "you are here" dot with a soft halo — deliberately unlike the
-    // dark-green/gold property pin (PIN_SVG) and the gold cluster badge
-    // (clusterSvg), so it can never be mistaken for a property marker.
+    // dark-green/gold property pin (PIN_SVG), the price bubbles and the
+    // "N Properties" cluster pills, so it can never be mistaken for a property marker.
     var CURRENT_LOCATION_SVG = '<svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34">' +
         '<circle cx="17" cy="17" r="16" fill="#1A73E8" fill-opacity="0.18"/>' +
         '<circle cx="17" cy="17" r="8" fill="#1A73E8" stroke="#ffffff" stroke-width="3"/></svg>';
@@ -355,19 +413,35 @@
             var g = window.google.maps;
             state.lastGesture = 0;
             hide(els.areaBtn, true);
-            if (list.length === 1) { state.map.setCenter(list[0].pos); state.map.setZoom(15); return; }
+            // One property: center on it at neighbourhood level (roads and
+            // nearby localities readable) rather than zooming into it.
+            if (list.length === 1) { state.map.setCenter(list[0].pos); state.map.setZoom(OVERVIEW_MAX_ZOOM); return; }
             var b = new g.LatLngBounds();
             list.forEach(function (x) { b.extend(x.pos); });
             state.map.fitBounds(b, 56);
+            // fitBounds frames the actual spread of the properties (so
+            // South-Chennai-only listings aren't shown as a tiny speck on an
+            // all-Chennai map), but when they sit close together it would
+            // zoom right in. Cap that first overview once; the visitor's own
+            // zooming afterwards is never limited.
+            var capOnce = state.map.addListener("idle", function () {
+                capOnce.remove();
+                if (state.map.getZoom() > OVERVIEW_MAX_ZOOM) state.map.setZoom(OVERVIEW_MAX_ZOOM);
+            });
         }
 
         // ---- markers (one per property, created once) + clustering ----
-        function makeMarker(kind, pos, title, onClick) {
+        // price: the property's compact price text (priceShort) or null — a
+        // property with a price gets a price bubble, one without keeps the
+        // house pin. Either way the anchor/tip is the exact stored coordinate.
+        function makeMarker(kind, pos, title, onClick, price) {
             var g = window.google.maps;
             if (state.useAdvanced) {
                 var el = document.createElement("div");
-                el.className = kind === "cluster" ? "sf-map-cluster" : "sf-map-pin";
-                if (kind !== "cluster") el.innerHTML = PIN_SVG;
+                el.className = kind === "cluster" ? "sf-map-cluster" : (price ? "sf-map-price" : "sf-map-pin");
+                if (kind !== "cluster") {
+                    if (price) el.textContent = price; else el.innerHTML = PIN_SVG;
+                }
                 var am = new g.marker.AdvancedMarkerElement({ position: pos, content: el, title: title || "", gmpClickable: true });
                 var last = 0, once = function () { var t = Date.now(); if (t - last > 300) { last = t; onClick(); } };
                 am.addListener("click", once);
@@ -376,13 +450,19 @@
                     show: function () { if (am.map !== state.map) am.map = state.map; },
                     hide: function () { if (am.map) am.map = null; },
                     setPos: function (p) { am.position = p; },
-                    setCount: function (n) { el.textContent = String(n); el.setAttribute("data-count", n); am.title = n + " properties"; }
+                    setCount: function (n) {
+                        el.innerHTML = '<svg class="sf-map-cluster-ico" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">' + HOUSE_GLYPH + '</svg>' +
+                            '<span>' + esc(clusterText(n)) + '</span>';
+                        el.setAttribute("data-count", n); am.title = clusterText(n);
+                    }
                 };
             }
-            var mk = new g.Marker({
-                position: pos, title: title || "", optimized: true,
-                icon: kind === "cluster" ? undefined : { url: svgUrl(PIN_SVG), scaledSize: new g.Size(30, 40), anchor: new g.Point(15, 40) }
-            });
+            var icon;
+            if (kind !== "cluster") {
+                if (price) { var pb = priceBubble(price); icon = { url: svgUrl(pb.svg), scaledSize: new g.Size(pb.w, pb.h), anchor: new g.Point(pb.w / 2, pb.h) }; }
+                else icon = { url: svgUrl(PIN_SVG), scaledSize: new g.Size(34, 42), anchor: new g.Point(17, 42) };
+            }
+            var mk = new g.Marker({ position: pos, title: title || "", optimized: true, icon: icon });
             mk.addListener("click", onClick);
             var onMap = false;
             return {
@@ -390,10 +470,13 @@
                 hide: function () { if (onMap) { mk.setMap(null); onMap = false; } },
                 setPos: function (p) { mk.setPosition(p); },
                 setCount: function (n) {
-                    var svg = clusterSvg(n), d = +svg.match(/width="(\d+)"/)[1];
-                    mk.setIcon({ url: svgUrl(svg), scaledSize: new g.Size(d, d), anchor: new g.Point(d / 2, d / 2) });
-                    mk.setLabel({ text: String(n), color: "#ffffff", fontSize: "13px", fontWeight: "700" });
-                    mk.setTitle(n + " properties");
+                    var c = clusterPill(n);
+                    mk.setIcon({ url: svgUrl(c.svg), scaledSize: new g.Size(c.w, c.h), anchor: new g.Point(c.w / 2, c.h / 2),
+                        labelOrigin: new g.Point(c.labelX, c.labelY) });
+                    mk.setLabel({ text: clusterText(n), color: "#ffffff", fontSize: "12.5px", fontWeight: "700", fontFamily: "Montserrat, Arial, Helvetica, sans-serif" });
+                    mk.setTitle(clusterText(n));
+                    // Bigger groups sit on top of price bubbles, but always below the blue Current Location dot (999).
+                    if (mk.setZIndex) mk.setZIndex(Math.min(900, 500 + n));
                 }
             };
         }
@@ -454,7 +537,7 @@
             list.forEach(function (x) {
                 var slug = x.p.slug;
                 keep[slug] = true;
-                if (!state.markers[slug]) state.markers[slug] = makeMarker("pin", x.pos, x.p.title, function () { openPreview([state.markers[slug].data.p]); });
+                if (!state.markers[slug]) state.markers[slug] = makeMarker("pin", x.pos, x.p.title, function () { openPreview([state.markers[slug].data.p]); }, priceShort(x.p));
                 else state.markers[slug].setPos(x.pos);
                 state.markers[slug].data = x;
             });
@@ -534,7 +617,7 @@
                         '</span>' +
                     '</div>' +
                     '<div class="sf-map-preview-foot">' +
-                        '<a class="view-details-btn sf-map-preview-cta" href="' + href + '">View Details</a>' +
+                        '<a class="view-details-btn sf-map-preview-cta" href="' + href + '">View Property</a>' +
                         (pv.items.length > 1
                             ? '<span class="sf-map-preview-pager"><button type="button" class="sf-map-prev" aria-label="Previous property"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>' +
                               '<span>' + (pv.index + 1) + ' / ' + pv.items.length + '</span>' +
@@ -710,8 +793,8 @@
                 // today's results having coordinates, are shown with the
                 // same small, non-blocking note — the map itself (Chennai by
                 // default) stays fully visible and interactive either way.
-                empty: "No mapped properties yet. Explore the map or switch to List View.",
-                none: function () { return "No mapped properties yet. Explore the map or switch to List View."; },
+                empty: "No properties in this area yet.",
+                none: function () { return "No properties in this area yet."; },
                 some: function (on, total) { return "Showing " + on + " of " + total + " properties on the map. Some properties are not currently available on the map — see List View."; },
                 area: function (on) { return "Showing " + on + (on === 1 ? " property" : " properties") + " in this map area."; },
                 emptyViewport: "No properties in this area yet."
@@ -748,7 +831,7 @@
             areaSearch: null,
             messages: {
                 empty: "No properties available right now — please check back soon.",
-                none: function () { return "Map locations will appear as properties are added to the map."; },
+                none: function () { return "No properties in this area yet."; },
                 some: function (on, total) { return "Showing " + on + " of " + total + " properties on the map."; },
                 emptyViewport: "No properties in this area yet."
             },

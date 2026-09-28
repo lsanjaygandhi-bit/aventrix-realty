@@ -145,7 +145,7 @@ values (
     'Aventrix Realty – Head Office',
     'No.27, 1st Main Road, Newcolony, Chromepet, Chennai, Tamil Nadu',
     '+91 91768 87770',
-    'https://maps.app.goo.gl/wQm9KBpQG9rEYFaX7?g_st=ic',
+    'https://maps.app.goo.gl/qoxjshhm6HyLxcsc8',
     true,
     0
 )

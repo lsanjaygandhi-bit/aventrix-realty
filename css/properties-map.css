@@ -94,13 +94,31 @@
 .sf-current-location-dot{ width:22px; height:22px; }
 
 /* Advanced-marker content (used only when a Map ID is configured) */
-.sf-map-pin{ width:30px; height:40px; cursor:pointer; }
+.sf-map-pin{ width:34px; height:42px; cursor:pointer; }
 .sf-map-pin svg{ display:block; }
 .sf-map-cluster{
-    min-width:40px; height:40px; padding:0 8px; border-radius:20px;
-    display:flex; align-items:center; justify-content:center;
-    background:#0F3B2E; color:#fff; font:700 13px 'Montserrat',sans-serif;
-    box-shadow:0 0 0 5px rgba(212,175,55,.45); cursor:pointer;
+    height:32px; padding:0 14px 0 12px; border-radius:16px; gap:7px;
+    display:flex; align-items:center; justify-content:center; white-space:nowrap;
+    background:#0F3B2E; color:#fff; font:700 12.5px 'Montserrat',sans-serif;
+    border:1.5px solid #D4AF37; box-shadow:0 4px 12px rgba(15,59,46,.28); cursor:pointer;
+    transform:translateY(50%); /* centre the pill on the cluster point */
+}
+.sf-map-cluster-ico{ display:block; flex:0 0 auto; }
+/* Price bubble: the pointer tip sits exactly on the property's coordinates */
+.sf-map-price{
+    position:relative; height:26px; padding:0 11px; border-radius:13px; margin-bottom:10px;
+    display:flex; align-items:center; white-space:nowrap;
+    background:#0F3B2E; color:#fff; font:700 12px Arial, Helvetica, sans-serif;
+    border:2px solid #ffffff; box-shadow:0 1px 3px rgba(0,0,0,.45); cursor:pointer;
+}
+/* white ring around the pointer too, so the whole marker stands out on satellite imagery */
+.sf-map-price::before{
+    content:""; position:absolute; left:50%; bottom:-10px; transform:translateX(-50%);
+    border:8px solid transparent; border-top-color:#ffffff; border-bottom:0;
+}
+.sf-map-price::after{
+    content:""; position:absolute; left:50%; bottom:-7px; transform:translateX(-50%);
+    border:6px solid transparent; border-top-color:#0F3B2E; border-bottom:0;
 }
 
 /* ---------- Property preview (card on desktop, bottom sheet on phones) ---------- */

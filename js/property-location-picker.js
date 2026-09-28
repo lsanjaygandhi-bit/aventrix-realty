@@ -12,8 +12,10 @@
  * js/properties-map.js (Properties/Homepage Map View) — this is a
  * second small map instance for picking one point, not a second Map
  * View implementation. Nothing here is guessed: the marker only
- * appears once the visitor searches, clicks the map, or an existing
- * saved location is passed in — never a default/random position.
+ * appears once the visitor clicks the map (or drags the pin), or an
+ * existing saved location is passed in — never a default/random
+ * position. Address search only moves the map to the approximate area;
+ * it never sets the coordinates itself.
  *
  * Usage:
  *   AventrixLocationPicker.attach({
@@ -134,20 +136,69 @@
             state.map.addListener("click", function (e) { setLocation(e.latLng.lat(), e.latLng.lng()); });
             if (opts.initial && validCoords(opts.initial.lat, opts.initial.lng)) {
                 setLocation(opts.initial.lat, opts.initial.lng, { silent: true, keepView: true });
+            } else if (state.lat != null) {
+                // A saved location was set (e.g. Admin opened a property to edit)
+                // before Google Maps finished loading: now draw its pin and open
+                // the map on that exact spot.
+                setLocation(state.lat, state.lng, { silent: true });
             }
+        }
+
+        // Google's reason for a failed search, in words the Admin/visitor can act
+        // on. REQUEST_DENIED almost always means the Maps key isn't allowed to
+        // use the Geocoding API (Google Cloud Console → enable "Geocoding API"
+        // and add it to the key's API restrictions) — previously every such
+        // failure was reported as "couldn't find", which hid the real cause.
+        function searchFailure(status) {
+            if (status === "ZERO_RESULTS") return "Couldn't find that location. Try a more specific address, or click the map directly.";
+            if (status === "REQUEST_DENIED") return "Location search isn't available right now (Google declined the search request). You can still click the map directly to mark the exact spot.";
+            if (status === "OVER_QUERY_LIMIT") return "Too many searches just now. Please wait a moment and try again, or click the map directly.";
+            return "Location search didn't respond. Please try again, or click the map directly.";
         }
 
         function geocode(query) {
             if (!query || !state.geocoder) return;
             say("Searching…");
-            state.geocoder.geocode({ address: query, region: "in", componentRestrictions: { country: "IN" } }, function (results, status) {
+            var req = { address: query, region: "in", componentRestrictions: { country: "IN" } };
+            // Prefer places near the area currently on screen (Chennai by default).
+            // This is only a bias from the live map view — no fixed coordinates.
+            var view = state.map && state.map.getBounds && state.map.getBounds();
+            if (view) req.bounds = view;
+            var handled = false;
+            function done(results, status) {
+                if (handled) return; handled = true;
                 if (status !== "OK" || !results || !results.length) {
-                    say("Couldn't find that location. Try a more specific address, or click the map directly.", true);
+                    if (window.console && status !== "ZERO_RESULTS") console.warn("Location search failed:", status);
+                    say(searchFailure(status), true);
                     return;
                 }
-                var loc = results[0].geometry.location;
-                setLocation(loc.lat(), loc.lng());
-            });
+                // Search only finds the APPROXIMATE AREA: the map moves there, but
+                // no pin is dropped and no latitude/longitude is filled in. A
+                // geocoded point (such as a locality's centre) must never become
+                // a property's saved location — only an explicit map click or
+                // marker drag sets the coordinates (see setLocation). An
+                // already-selected pin is left exactly where it is.
+                var geo = results[0].geometry;
+                if (state.map) {
+                    if (geo.viewport && state.map.fitBounds) {
+                        state.map.fitBounds(geo.viewport);
+                    } else {
+                        state.map.setCenter(geo.location);
+                        state.map.setZoom(PICKED_ZOOM);
+                    }
+                }
+                say(state.lat == null
+                    ? "<strong>Area found.</strong> Now select the exact property location on the map — click the exact spot."
+                    : "<strong>Area found.</strong> Click the exact spot or drag the pin to change the selected location.<br>Latitude: " + fmt(state.lat) + " &nbsp; Longitude: " + fmt(state.lng));
+            }
+            try {
+                var pending = state.geocoder.geocode(req, done);
+                // Newer Maps versions also return a Promise that rejects on failure;
+                // the callback above already reported it, so just keep the console clean.
+                if (pending && typeof pending.catch === "function") pending.catch(function (err) { done(null, (err && err.code) || "ERROR"); });
+            } catch (err) {
+                done(null, "ERROR");
+            }
         }
 
         if (searchEl) {
@@ -159,7 +210,7 @@
         }
         if (confirmBtn) {
             confirmBtn.addEventListener("click", function () {
-                if (state.lat == null) { say("Please search or click the map to select a location first.", true); return; }
+                if (state.lat == null) { say("Please click the exact property location on the map first (search only finds the area).", true); return; }
                 say("<strong>Location selected</strong><br>Latitude: " + fmt(state.lat) + " &nbsp; Longitude: " + fmt(state.lng));
             });
         }

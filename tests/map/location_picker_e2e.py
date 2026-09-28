@@ -96,18 +96,25 @@ def run():
         page.wait_for_timeout(400)
         lat = page.locator("#lwuLatitude").input_value()
         lng = page.locator("#lwuLongitude").input_value()
-        check("customer: searching an address fills latitude", abs(float(lat or 0) - 13.085) < 0.001, lat)
-        check("customer: searching an address fills longitude", abs(float(lng or 0) - 80.2101) < 0.001, lng)
-        check("customer: status shows the selected location", "Location selected" in page.locator("#lwuLocationStatus").inner_text())
+        check("customer: searching an address does NOT set the property coordinates (area only)", lat == "" and lng == "", (lat, lng))
+        c = page.evaluate("window.__mockMaps.maps[0].getCenter().toJSON()")
+        check("customer: search moves the map to the searched area", abs(c["lat"] - 13.085) < 0.001 and abs(c["lng"] - 80.2101) < 0.001, c)
+        check("customer: no pin is dropped by search alone", page.locator("#lwuLocationMap .mock-marker").count() == 0)
+        check("customer: status asks for the exact property location", "Now select the exact property location" in page.locator("#lwuLocationStatus").inner_text(),
+              page.locator("#lwuLocationStatus").inner_text())
 
-        # Click elsewhere on the map moves the marker to a NEW real point, not 0,0
+        # The customer clicks the exact spot: that point (not the geocoded one) is captured.
         page.locator("#lwuLocationMap").scroll_into_view_if_needed()
         box = page.locator("#lwuLocationMap").bounding_box()
         page.mouse.click(box["x"] + box["width"] * 0.7, box["y"] + box["height"] * 0.3)
         page.wait_for_timeout(200)
         lat2 = page.locator("#lwuLatitude").input_value()
-        check("customer: clicking the map updates the location (not left unchanged)", lat2 != lat, (lat, lat2))
+        lng2 = page.locator("#lwuLongitude").input_value()
+        check("customer: clicking the exact spot fills latitude and longitude", lat2 != "" and lng2 != "", (lat2, lng2))
+        check("customer: captured point is the clicked spot, not the geocoded area centre",
+              not (abs(float(lat2) - 13.085) < 1e-6 and abs(float(lng2) - 80.2101) < 1e-6), (lat2, lng2))
         check("customer: clicked location is never 0,0", not (abs(float(lat2)) < 0.0001), lat2)
+        check("customer: status shows the selected location", "Location selected" in page.locator("#lwuLocationStatus").inner_text())
 
         page.click("#lwuLocationClearBtn")
         page.wait_for_timeout(150)
@@ -161,10 +168,18 @@ def run():
         page.fill("#fLocationSearch", "T Nagar, Chennai")
         page.click("#fLocationSearchBtn")
         page.wait_for_timeout(400)
+        check("admin: search does NOT fill Latitude/Longitude (approximate area only)",
+              page.locator("#fLatitude").input_value() == "" and page.locator("#fLongitude").input_value() == "")
+        check("admin: search drops no pin", page.locator("#fLocationMap .mock-marker").count() == 0)
+        check("admin: status asks for the exact property location", "Now select the exact property location" in page.locator("#fLocationStatus").inner_text())
+        # The Admin clicks the exact spot on the map.
+        fbox = page.locator("#fLocationMap").bounding_box()
+        page.mouse.click(fbox["x"] + fbox["width"] * 0.55, fbox["y"] + fbox["height"] * 0.45)
+        page.wait_for_timeout(250)
         alat = page.locator("#fLatitude").input_value()
         alng = page.locator("#fLongitude").input_value()
-        check("admin: searching fills Latitude", abs(float(alat or 0) - 13.0418) < 0.001, alat)
-        check("admin: searching fills Longitude", abs(float(alng or 0) - 80.2341) < 0.001, alng)
+        check("admin: clicking the exact spot fills Latitude", alat != "" and abs(float(alat) - 13.0418) < 0.05, alat)
+        check("admin: clicking the exact spot fills Longitude", alng != "" and abs(float(alng) - 80.2341) < 0.05, alng)
         check("admin: marker now shown on the map", page.locator("#fLocationMap .mock-marker").count() == 1)
 
         page.click("#savePropertyBtn")
@@ -207,6 +222,68 @@ def run():
         page.click("#propertyModalOverlay .admin-modal-close, #cancelPropertyBtn") if page.locator("#cancelPropertyBtn").count() else None
 
         check("admin: no JS errors", not errs, errs)
+        ctx.close()
+
+        # ================= LOCALITY SEARCH (area only) — Velachery / Chromepet / Madipakkam / Tambaram =================
+        # These mock answers stand in for Google's geocoder (the sandbox can't reach Google).
+        # They are only used to move the map in the test and are never saved anywhere.
+        AREAS = {"velachery": [12.9815, 80.2180, [12.965, 80.200, 12.998, 80.236]],
+                 "Chromepet": [12.9516, 80.1462, [12.938, 80.130, 12.965, 80.162]],
+                 "madipakkam": [12.9623, 80.1986, [12.950, 80.185, 12.975, 80.212]],
+                 "Tambaram": [12.9249, 80.1000, [12.905, 80.080, 12.945, 80.120]]}
+        table = {k: {"lat": v[0], "lng": v[1], "viewport": v[2]} for k, v in AREAS.items()}
+        ctx = ctx_for(b, uid=ADMIN, geocode=table)
+        page = ctx.new_page(); errs = []
+        page.on("pageerror", lambda e: errs.append(str(e)[:300]))
+        page.goto(SITE + "/admin/dashboard.html", wait_until="load")
+        page.wait_for_timeout(2500)
+        page.click('#adminNav a[data-section="properties"]'); page.wait_for_timeout(1500)
+        page.click("#addPropertyBtn"); page.wait_for_timeout(1200)
+        page.wait_for_selector("#fLocationMap .mock-map-layer", timeout=10000)
+        pmap = "window.__mockMaps.maps.find(m => m.div && m.div.id === 'fLocationMap')"
+        for name, (la, ln, vp) in AREAS.items():
+            page.fill("#fLocationSearch", name); page.click("#fLocationSearchBtn"); page.wait_for_timeout(450)
+            c = page.evaluate(f"{pmap}.getCenter().toJSON()")
+            inside = vp[0] <= c["lat"] <= vp[2] and vp[1] <= c["lng"] <= vp[3]
+            check(f"locality '{name}': search succeeds and the map moves to that area", inside and "Area found" in page.locator("#fLocationStatus").inner_text(),
+                  (c, page.locator("#fLocationStatus").inner_text()))
+            check(f"locality '{name}': search alone sets NO latitude/longitude and drops no pin",
+                  page.locator("#fLatitude").input_value() == "" and page.locator("#fLongitude").input_value() == "" and page.locator("#fLocationMap .mock-marker").count() == 0)
+        req = page.evaluate("window.__lastGeocodeRequest && { bounds: !!window.__lastGeocodeRequest.bounds, country: window.__lastGeocodeRequest.componentRestrictions && window.__lastGeocodeRequest.componentRestrictions.country }")
+        check("search is biased to the area currently on the map (live view bounds, no fixed coordinates) and limited to India", req and req["bounds"] and req["country"] == "IN", req)
+        # After searching Tambaram: explicit click sets the exact point, drag updates it.
+        page.evaluate("(p) => { const m = " + pmap + "; const g = window.google.maps; g.event.trigger(m, 'click', { latLng: new g.LatLng(p[0], p[1]) }); }", [12.926789, 80.101234])
+        page.wait_for_timeout(200)
+        check("after search, clicking the exact spot sets exactly that latitude/longitude",
+              (page.locator("#fLatitude").input_value(), page.locator("#fLongitude").input_value()) == ("12.926789", "80.101234"))
+        page.evaluate("(p) => { const m = " + pmap + "; const g = window.google.maps; const mk = m.markers.find(x => x._title === 'Selected Property Location'); mk.setPosition(new g.LatLng(p[0], p[1])); g.event.trigger(mk, 'dragend'); }", [12.927011, 80.101456])
+        page.wait_for_timeout(200)
+        check("dragging the pin updates the exact latitude/longitude",
+              (page.locator("#fLatitude").input_value(), page.locator("#fLongitude").input_value()) == ("12.927011", "80.101456"))
+        page.fill("#fLocationSearch", "velachery"); page.click("#fLocationSearchBtn"); page.wait_for_timeout(450)
+        check("searching again keeps the selected exact point (search never moves or replaces the pin)",
+              (page.locator("#fLatitude").input_value(), page.locator("#fLongitude").input_value()) == ("12.927011", "80.101456"))
+        check("no JS errors (locality search)", not errs, errs)
+        ctx.close()
+
+        # ================= Google refuses the search (key not allowed to use Geocoding) =================
+        ctx = ctx_for(b, uid=ADMIN, geocode=table)
+        ctx.add_init_script("window.__mockGeocodeStatus = 'REQUEST_DENIED';")
+        page = ctx.new_page(); errs = []
+        page.on("pageerror", lambda e: errs.append(str(e)[:300]))
+        page.goto(SITE + "/admin/dashboard.html", wait_until="load"); page.wait_for_timeout(2500)
+        page.click('#adminNav a[data-section="properties"]'); page.wait_for_timeout(1500)
+        page.click("#addPropertyBtn"); page.wait_for_timeout(1200)
+        page.wait_for_selector("#fLocationMap .mock-map-layer", timeout=10000)
+        page.fill("#fLocationSearch", "Velachery"); page.click("#fLocationSearchBtn"); page.wait_for_timeout(450)
+        st = page.locator("#fLocationStatus").inner_text()
+        check("REQUEST_DENIED is reported as search being unavailable — not as 'couldn't find that location'",
+              "declined" in st and "Couldn't find" not in st, st)
+        check("REQUEST_DENIED: nothing is filled in, and clicking the map still works",
+              page.locator("#fLatitude").input_value() == "")
+        fb = page.locator("#fLocationMap").bounding_box(); page.mouse.click(fb["x"] + fb["width"] / 2, fb["y"] + fb["height"] / 2); page.wait_for_timeout(200)
+        check("REQUEST_DENIED: a map click still sets the exact location", page.locator("#fLatitude").input_value() != "")
+        check("no JS errors (search refused)", not errs, errs)
         ctx.close()
         b.close()
     print(f"\n{sum(results)}/{len(results)} passed")

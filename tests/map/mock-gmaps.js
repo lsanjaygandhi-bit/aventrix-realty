@@ -176,9 +176,15 @@
     Geocoder.prototype.geocode = function (req, cb) {
         var table = window.__mockGeocodeResults || {};
         var hit = table[(req.address || "").trim()];
+        window.__lastGeocodeRequest = req;
         setTimeout(function () {
+            // window.__mockGeocodeStatus simulates Google refusing the request
+            // (e.g. "REQUEST_DENIED" when the key isn't allowed to use Geocoding).
+            if (window.__mockGeocodeStatus) { cb(null, window.__mockGeocodeStatus); return; }
             if (!hit) { cb([], "ZERO_RESULTS"); return; }
-            cb([{ geometry: { location: new LatLng(hit.lat, hit.lng) } }], "OK");
+            var geometry = { location: new LatLng(hit.lat, hit.lng) };
+            if (hit.viewport) geometry.viewport = new LatLngBounds(new LatLng(hit.viewport[0], hit.viewport[1]), new LatLng(hit.viewport[2], hit.viewport[3]));
+            cb([{ geometry: geometry }], "OK");
         }, 10);
     };
 

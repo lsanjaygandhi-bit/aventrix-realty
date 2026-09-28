@@ -38,7 +38,7 @@ def total_properties(markers):
             continue
         if m.get("kind") == "cluster":
             try:
-                total += int(m.get("label") or "0")
+                total += count_of(m.get("label"))
             except ValueError:
                 pass
         else:

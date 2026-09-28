@@ -113,7 +113,7 @@ def run():
         ctx = home_ctx(b, 390, strip_coords=True); page = ctx.new_page(); errs = []
         page.on("pageerror", lambda e: errs.append(str(e)[:200]))
         goto_home(page); open_home_map(page)
-        check("no coords: map still renders (Chennai-centered), clean message, no markers", page.locator("#hpMapNote").inner_text() == "Map locations will appear as properties are added to the map."
+        check("no coords: map still renders (Chennai-centered), clean message, no markers", page.locator("#hpMapNote").inner_text().strip() == "No properties in this area yet."
               and page.locator("#hpMapWrap").is_visible() and len(ctx.maps_requests) == 1 and page.locator("#hpMapCanvas .mock-marker").count() == 0, page.locator("#hpMapNote").inner_text())
         check("no coords: map centered on Chennai with no properties to fit to", page.evaluate("(() => { const m = window.__mockMaps.maps[0]; const c = m.getCenter(); return Math.abs(c.lat() - 13.0827) < 0.01 && Math.abs(c.lng() - 80.2707) < 0.01; })()"))
         page.click("#hpViewListBtn"); page.wait_for_timeout(200)

@@ -115,6 +115,11 @@ def visible_markers(page):
         kind: e.classList.contains('mock-adv-marker') ? (e.querySelector('.sf-map-cluster') ? 'cluster' : 'pin') : e.dataset.kind,
         title: e.dataset.title || e.getAttribute('title') || '', label: e.dataset.label || (e.querySelector('.sf-map-cluster') ? e.querySelector('.sf-map-cluster').textContent : '')}))""")
 
+def count_of(label):
+    """Cluster label is "N Properties" (or a bare number) — return N."""
+    m = re.match(r"\s*(\d+)", str(label or ""))
+    return int(m.group(1)) if m else 0
+
 def rect_overlap(a, b):
     return max(0, min(a["right"], b["right"]) - max(a["left"], b["left"])) * max(0, min(a["bottom"], b["bottom"]) - max(a["top"], b["top"]))
 
@@ -154,9 +159,9 @@ def run():
         check("map: Google attribution present (not removed)", page.locator("#sfMapCanvas .mock-attribution").count() == 1)
         mk = visible_markers(page)
         pins = [m for m in mk if m["kind"] == "pin"]; clusters = [m for m in mk if m["kind"] == "cluster"]
-        clustered = sum(int(c["label"]) for c in clusters)
+        clustered = sum(count_of(c["label"]) for c in clusters)
         check("map: every mapped property is a pin or inside a cluster", len(pins) + clustered == len(EXPECTED_ON_MAP), (pins, clusters))
-        check("map: nearby Chromepet properties are clustered at city zoom", any(int(c["label"]) >= 3 for c in clusters), clusters)
+        check("map: nearby Chromepet properties are clustered at city zoom", any(count_of(c["label"]) >= 3 for c in clusters), clusters)
         check("map: one marker DOM element per property, no duplicates", page.locator("#sfMapCanvas .mock-marker").count() == len(mk))
         # pin → preview
         page.locator('#sfMapCanvas .mock-marker[data-kind="pin"][data-title="Lease Office Guindy"], #sfMapCanvas .mock-marker[data-kind="pin"]').first.click()
@@ -204,7 +209,7 @@ def run():
         check("filter: Type=Commercial → results = DB, map = results with coordinates", res == exp_res and set(s["mapped"]) == exp_map and count_num(page) == len(exp_res), (res, s["mapped"]))
         z = page.evaluate("[window.__mockMaps.maps[0].getZoom(), window.__mockMaps.maps[0].getCenter().lat(), window.__mockMaps.maps[0].getCenter().lng()]")
         one = sql(f"select latitude||','||longitude from properties where slug='{list(exp_map)[0]}'").split(",") if len(exp_map) == 1 else None
-        check("bounds: a single mapped property is centred at zoom 15", one and z[0] == 15 and abs(z[1] - float(one[0])) < 1e-6 and abs(z[2] - float(one[1])) < 1e-6, (z, one))
+        check("bounds: a single mapped property is centred at neighbourhood zoom 14 (not zoomed into the property)", one and z[0] == 14 and abs(z[1] - float(one[0])) < 1e-6 and abs(z[2] - float(one[1])) < 1e-6, (z, one))
         check("filter: note shows the property without coordinates is only in List View", "1 of 2" in page.locator("#sfMapNote").inner_text(), page.locator("#sfMapNote").inner_text())
         page.click("#sfViewListBtn"); page.wait_for_timeout(200)
         cards = set(page.evaluate("[...document.querySelectorAll('#sfResultsGrid .property-card')].map(c => c.dataset.slug)"))
@@ -270,7 +275,7 @@ def run():
         page.select_option("#sfCategory", "land"); page.wait_for_timeout(1400)
         page.fill("#sfLocation", "Chromepet"); page.wait_for_timeout(1600)
         nc = set(results_slugs(page))
-        check("no-coords: results without coordinates → map still visible (Chennai-centered), no marker at a made-up place, clear message", nc and not (nc & EXPECTED_ON_MAP) and page.locator("#sfMapWrap").is_visible() and page.locator("#sfMapCanvas .mock-marker").count() == 0 and "No mapped properties yet" in page.locator("#sfMapNote").inner_text(), (nc, page.locator("#sfMapNote").inner_text()))
+        check("no-coords: results without coordinates → map still visible (Chennai-centered), no marker at a made-up place, clear message", nc and not (nc & EXPECTED_ON_MAP) and page.locator("#sfMapWrap").is_visible() and page.locator("#sfMapCanvas .mock-marker").count() == 0 and page.locator("#sfMapNote").inner_text().strip() == "No properties in this area yet.", (nc, page.locator("#sfMapNote").inner_text()))
         page.fill("#sfLocation", ""); page.select_option("#sfCategory", ""); page.wait_for_timeout(1600)
 
         # ---- View Details from map opens the right detail page ----
@@ -321,7 +326,7 @@ def run():
         goto_props(page); open_map(page)
         s = snap(page); mk = visible_markers(page)
         check("advanced: Map ID → Advanced Markers used", s["advanced"] and page.locator("#sfMapCanvas .mock-adv-marker").count() >= 1)
-        check("advanced: pins + clusters cover exactly the mapped properties", sum(1 for m in mk if m["kind"] == "pin") + sum(int(m["label"] or 0) for m in mk if m["kind"] == "cluster") == len(EXPECTED_ON_MAP), mk)
+        check("advanced: pins + clusters cover exactly the mapped properties", sum(1 for m in mk if m["kind"] == "pin") + sum(count_of(m["label"]) for m in mk if m["kind"] == "cluster") == len(EXPECTED_ON_MAP), mk)
         page.locator("#sfMapCanvas .mock-adv-marker:not(:has(.sf-map-cluster))").first.click(); page.wait_for_timeout(200)
         check("advanced: marker click opens the preview once", page.locator("#sfMapPreview").is_visible() and not errs, errs)
         ctx.close()
