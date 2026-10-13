@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 560" role="img" aria-labelledby="title desc">
+<title id="title">Joint venture project feasibility illustration</title><desc id="desc">Architectural illustration of premium residential buildings with a site plan, land valuation and calculator dashboard.</desc>
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#183e30"/><stop offset="1" stop-color="#0b241b"/></linearGradient>
+ <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f4d779"/><stop offset="1" stop-color="#c58b20"/></linearGradient>
+ <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d8e7df"/><stop offset="1" stop-color="#769b8a"/></linearGradient>
+ <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#06170f" flood-opacity=".28"/></filter>
+</defs>
+<rect x="24" y="20" width="712" height="520" rx="34" fill="url(#bg)"/>
+<circle cx="590" cy="126" r="94" fill="#d4a32c" opacity=".08"/><circle cx="590" cy="126" r="70" fill="none" stroke="#d4a32c" stroke-opacity=".3" stroke-width="1.5"/>
+<path d="M66 432 L690 432" stroke="#d4a32c" stroke-opacity=".7" stroke-width="2"/>
+<!-- site plan -->
+<g opacity=".25" stroke="#e8d08a" fill="none" stroke-width="1.5"><path d="M76 102H230V216H76Z"/><path d="M95 120H211V198H95Z"/><path d="M76 158H230M153 102V216"/><path d="M96 120L211 198M211 120L96 198"/></g>
+<!-- back tower -->
+<g filter="url(#shadow)">
+ <path d="M365 133 L489 102 L552 130 L552 378 L365 410Z" fill="#b9c9c0"/>
+ <path d="M365 133 L489 102 L489 350 L365 410Z" fill="#edf0e8"/>
+ <path d="M489 102 L552 130 L552 378 L489 350Z" fill="#6b8b7a"/>
+ <path d="M365 163L489 132M365 197L489 166M365 231L489 200M365 265L489 234M365 299L489 268M365 333L489 302M365 367L489 336" stroke="#8ba79a" stroke-width="3"/>
+ <path d="M393 155L393 400M423 147L423 390M453 139L453 380" stroke="#a2b9ac" stroke-width="3"/>
+ <path d="M507 140L507 358M529 150L529 368" stroke="#c4d5cc" stroke-width="3"/>
+</g>
+<!-- front tower -->
+<g filter="url(#shadow)">
+ <path d="M217 204L333 169L391 194V414L217 455Z" fill="#e9eee8"/>
+ <path d="M217 204L333 169V414L217 455Z" fill="#f8f5e9"/>
+ <path d="M333 169L391 194V414L333 414Z" fill="#719180"/>
+ <path d="M217 237L333 205M217 270L333 238M217 303L333 271M217 336L333 304M217 369L333 337M217 402L333 370" stroke="#b0c4b8" stroke-width="3"/>
+ <path d="M242 197V449M268 189V443M294 181V433M318 174V418" stroke="#a3b9ab" stroke-width="3"/>
+ <path d="M350 202V414M371 211V414" stroke="#d1dfd6" stroke-width="3"/>
+</g>
+<!-- gold base -->
+<path d="M183 454L334 416L420 416L562 378L608 399L420 454Z" fill="url(#gold)" opacity=".95"/>
+<path d="M182 454L334 416L420 416L420 435L334 435L182 473Z" fill="#a8791f" opacity=".8"/>
+<!-- calculator card -->
+<g filter="url(#shadow)">
+ <rect x="474" y="283" width="206" height="137" rx="16" fill="#fffdf5"/>
+ <rect x="490" y="299" width="174" height="34" rx="7" fill="#153e30"/>
+ <text x="502" y="313" fill="#f5d778" font-family="Arial,sans-serif" font-size="8" letter-spacing="1.3">JV FEASIBILITY</text>
+ <text x="502" y="326" fill="#ffffff" font-family="Arial,sans-serif" font-size="11" font-weight="700">Land · Cost · Value</text>
+ <text x="491" y="355" fill="#63756b" font-family="Arial,sans-serif" font-size="9">SALEABLE AREA</text>
+ <text x="491" y="373" fill="#183e30" font-family="Arial,sans-serif" font-size="18" font-weight="700">FSI × Efficiency</text>
+ <path d="M492 389H660" stroke="#e2e7df" stroke-width="1.5"/>
+ <circle cx="500" cy="402" r="4" fill="#d4a32c"/><text x="510" y="405" fill="#52655a" font-family="Arial,sans-serif" font-size="9">Sharing recommendation</text>
+</g>
+<!-- floating gold marker -->
+<g filter="url(#shadow)"><rect x="79" y="330" width="127" height="58" rx="12" fill="#fffdf5"/><circle cx="98" cy="350" r="7" fill="#d4a32c"/><text x="112" y="352" fill="#52655a" font-family="Arial,sans-serif" font-size="9">LAND VALUE</text><text x="94" y="373" fill="#183e30" font-family="Arial,sans-serif" font-size="13" font-weight="700">Residual model</text></g>
+<g fill="#f2d77b"><circle cx="654" cy="92" r="4"/><circle cx="681" cy="122" r="2.5"/><circle cx="618" cy="68" r="2.5"/></g>
+<text x="62" y="500" fill="#e9d28b" font-family="Arial,sans-serif" font-size="10" letter-spacing="2">AVENTRIX REALTY</text>
+<text x="62" y="519" fill="#d0dfd5" font-family="Arial,sans-serif" font-size="12">A clearer way to plan your joint venture</text>
+</svg>

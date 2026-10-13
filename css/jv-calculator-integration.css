@@ -1,0 +1,156 @@
+/* Aventrix Realty Master JV Feasibility Calculator — styles scoped to .jvc-box */
+.jvc-box{background:#fff;border:1px solid rgba(17,24,39,.1);border-radius:16px;padding:clamp(18px,3vw,32px);box-shadow:0 10px 32px rgba(17,24,39,.055);color:#1b2632}
+.jvc-box *{box-sizing:border-box}.jvc-box h3{font-size:18px;line-height:1.4;margin:28px 0 7px;color:#163c31}.jvc-box h3:first-of-type{margin-top:24px}.jvc-alert{padding:14px 16px;background:#fffaf0;border:1px solid #eadcae;border-left:4px solid #D4A32C;border-radius:8px;font-size:13px;line-height:1.7;color:#51451f}.jvc-alert p{margin:6px 0 0!important;font-size:12px!important}
+.jvc-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px 20px;margin:20px 0}.jvc-fields>div{min-width:0}.jvc-fields label{display:block;font-weight:700;font-size:13px;line-height:1.5;margin-bottom:7px;color:#273746}.jvc-fields input:not([type=checkbox]),.jvc-fields select{display:block;width:100%;min-height:45px;border:1px solid #cfd5dc;border-radius:8px;padding:10px 12px;background:#fff;color:#17212b;font:inherit;font-size:14px}.jvc-fields input:focus,.jvc-fields select:focus{outline:2px solid rgba(15,59,46,.18);border-color:#0F3B2E}.jvc-fields small{display:block;font-size:11px;line-height:1.6;color:#68717d;margin-top:6px}.jvc-regulatory-note{border:1px solid #d9e1e8;background:#f5f8fb;border-radius:8px;padding:12px 14px;font-size:12px;line-height:1.65;color:#34475a;margin:14px 0}
+.jvc-check-field{background:#f7faf8;border:1px solid #dce8e1;border-radius:9px;padding:12px}.jvc-check-field .jvc-toggle{display:flex;align-items:center;gap:8px;font-weight:700}.jvc-toggle input{width:18px;height:18px;accent-color:#0F3B2E}.jvc-check-field small{margin-top:7px}
+.jvc-metrics,.jvc-financial-metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:20px 0}.jvc-metrics article,.jvc-financial-metrics article{min-width:0;padding:16px;border-radius:10px;background:#f5f8f6;border:1px solid #dce8e1}.jvc-metrics article span,.jvc-financial-metrics article span{display:block;font-size:10px;line-height:1.5;letter-spacing:1px;font-weight:800;color:#56665f}.jvc-metrics article strong,.jvc-financial-metrics article strong{display:block;font-size:clamp(18px,2.6vw,25px);line-height:1.35;margin-top:8px;overflow-wrap:anywhere;color:#123d2f}.jvc-metrics .jvc-metric-highlight{background:#edf6f0;border-color:#bcd7c5}.jvc-metrics .jvc-metric-highlight strong{font-size:clamp(21px,3vw,30px)}.jvc-financial-metrics article{background:#fbf8ef;border-color:#eee2b9}.jvc-financial-metrics article strong{color:#725a0a}
+.jvc-ratio{display:grid;grid-template-columns:1fr 1fr;gap:4px 20px;padding:18px;background:#f7faf8;border:1px solid #e0e9e4;border-radius:10px}.jvc-ratio div{display:grid}.jvc-ratio span{font-size:12px;color:#5d6673}.jvc-ratio strong{font-size:25px;color:#0F3B2E}.jvc-ratio div:nth-child(2){text-align:right}.jvc-ratio input{grid-column:1/-1;width:100%;accent-color:#0F3B2E;margin:15px 0 4px}
+.jvc-results{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0 20px}.jvc-results article{min-width:0;padding:20px;border-radius:10px;background:#f0f7f3;border:1px solid #d6e8dd}.jvc-results article+article{background:#fbf7e9;border-color:#eee2b9}.jvc-results article span{font-size:10px;letter-spacing:1.3px;font-weight:800}.jvc-results article strong{display:block;font-size:clamp(22px,3vw,30px);line-height:1.25;margin:8px 0;overflow-wrap:anywhere;color:#0F3B2E}.jvc-results article+article strong{color:#725a0a}.jvc-results article p{font-size:12px;font-weight:700;margin:0!important;overflow-wrap:anywhere}.jvc-feasibility-panel{padding:17px;border:1px solid #dce3e8;border-radius:10px;background:#fbfcfd}.jvc-feasibility-panel>div{display:flex;align-items:flex-start;justify-content:space-between;gap:15px}.jvc-feasibility-panel>div span{font-size:13px;font-weight:700}.jvc-feasibility-panel>div strong{font-size:20px;color:#163c31;text-align:right;overflow-wrap:anywhere}.jvc-feasibility-panel p{font-size:12px;line-height:1.65;margin:12px 0!important}.jvc-feasibility-panel small{font-size:11px;line-height:1.65;color:#68717d;display:block}.jvc-status-neutral{color:#34475a}.jvc-status-risk{color:#9d2727;background:#fff0f0;padding:9px;border-radius:6px}.jvc-status-review{color:#8a5a00;background:#fff8e7;padding:9px;border-radius:6px}.jvc-status-ok{color:#17613c;background:#edf8f0;padding:9px;border-radius:6px}
+.jvc-muted,.jvc-small{font-size:11px!important;line-height:1.65;color:#68717d!important}.jvc-table-wrap{overflow-x:auto;border:1px solid #e3e7eb;border-radius:8px;margin:12px 0}.jvc-table-wrap table{border-collapse:collapse;width:100%;min-width:720px;font-size:12px}.jvc-table-wrap th,.jvc-table-wrap td{text-align:left;padding:11px;border-bottom:1px solid #e3e7eb;white-space:nowrap}.jvc-table-wrap th{font-size:10px;background:#f8f9fb;text-transform:uppercase;white-space:normal}.jvc-table-wrap tr:last-child td{border-bottom:0}.jvc-table-wrap .jvc-current{background:#f0f7f3;font-weight:700}.jvc-result-note{margin-top:22px}.jvc-actions{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}.jvc-actions a,.jvc-actions button{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:11px 17px;border-radius:7px;font:inherit;font-size:12px;font-weight:700;text-decoration:none;cursor:pointer}.jvc-actions a{background:#0F3B2E;color:#fff;border:1px solid #0F3B2E}.jvc-actions button{background:#fff;color:#0F3B2E;border:1px solid #b8c8c0}.jvc-box .jvc-small{margin-top:10px}.jvc-source-note{font-size:11px;line-height:1.7;color:#68717d}.jvc-source-note a{color:#0F3B2E;text-decoration:underline}
+@media(max-width:650px){.jvc-fields,.jvc-results,.jvc-metrics,.jvc-financial-metrics{grid-template-columns:1fr}.jvc-actions{display:grid}.jvc-actions a,.jvc-actions button{width:100%}.jvc-feasibility-panel>div{display:block}.jvc-feasibility-panel>div strong{display:block;text-align:left;margin-top:7px}.jvc-box h3{margin-top:23px}}
+@media print{.jvc-actions{display:none!important}.jvc-box{box-shadow:none;border:0;padding:0}.jvc-alert,.jvc-results article,.jvc-metrics article,.jvc-financial-metrics article{break-inside:avoid}.jvc-table-wrap{overflow:visible}.jvc-table-wrap table{min-width:0;font-size:9px}.jvc-table-wrap th,.jvc-table-wrap td{padding:5px;white-space:normal}}
+
+/* Recommended JV ratio controls */
+#jvc-recommended-ratio{display:block;font-size:clamp(1.15rem,2vw,1.65rem);line-height:1.35;color:#14523d;font-weight:800;margin:.35rem 0}
+.jvc-recommend-button{display:inline-flex;align-items:center;justify-content:center;margin-top:.65rem;border:1px solid #14523d;border-radius:8px;padding:.7rem 1rem;background:#14523d;color:#fff;font-weight:700;cursor:pointer}
+.jvc-recommend-button:hover{filter:brightness(1.08)}
+@media print{.jvc-recommend-button{display:none}}
+
+
+/* Premium standalone JV Calculator hero */
+.jvc-premium-hero{position:relative;overflow:hidden;padding:clamp(56px,8vw,104px) 0;background:linear-gradient(90deg,rgba(5,20,35,.76) 0%,rgba(5,20,35,.42) 58%,rgba(5,20,35,.18) 100%),url("../images/jv-calculator-hero-user-upload.jpg") center center/cover no-repeat;color:#fff}
+.jvc-premium-hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(4,18,13,.24),transparent 70%);pointer-events:none}
+.jvc-hero-art{display:none!important}
+.jvc-hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(260px,.8fr);gap:clamp(28px,5vw,70px);align-items:center}
+.jvc-hero-copy{max-width:760px}
+.jvc-hero-copy .section-eyebrow{color:#e2b542;letter-spacing:.16em;font-weight:700;font-size:11px}
+.jvc-hero-copy h1{color:#fff;font-size:clamp(34px,5vw,58px);line-height:1.08;letter-spacing:-.03em;margin:18px 0}
+.jvc-hero-copy p{color:rgba(255,255,255,.82);font-size:clamp(16px,1.6vw,19px);line-height:1.75;max-width:660px}
+.jvc-hero-points{display:flex;flex-wrap:wrap;gap:10px 18px;margin:24px 0 30px}
+.jvc-hero-points span{display:inline-flex;align-items:center;gap:8px;color:#f4ead1;font-size:13px}
+.jvc-hero-points i{color:#e2b542}
+.jvc-hero-copy .primary-btn{display:inline-flex;align-items:center;gap:10px;background:#d4a32c;color:#1b0e06;border:1px solid #e2b542;font-weight:800;border-radius:6px;padding:14px 20px;text-decoration:none}
+.jvc-hero-art{position:relative;min-height:320px;display:flex;align-items:center;justify-content:center}
+.jvc-hero-orbit{position:absolute;width:min(330px,85%);aspect-ratio:1;border:1px solid rgba(226,181,66,.45);border-radius:50%;box-shadow:0 0 0 28px rgba(226,181,66,.04),0 0 0 58px rgba(226,181,66,.025)}
+.jvc-hero-building{position:relative;width:180px;height:225px;display:grid;grid-template-columns:repeat(2,1fr);gap:12px;padding:30px 22px 20px;background:linear-gradient(135deg,#e2b542,#9b7625);clip-path:polygon(12% 0,88% 0,100% 100%,0 100%);box-shadow:0 22px 65px rgba(0,0,0,.3)}
+.jvc-hero-building span{background:linear-gradient(135deg,#153d30,#071d16);border:1px solid rgba(255,255,255,.15);border-radius:2px}
+.jvc-hero-stat{position:absolute;right:0;bottom:4px;min-width:210px;padding:16px 18px;border:1px solid rgba(226,181,66,.55);border-radius:8px;background:rgba(7,25,18,.92);box-shadow:0 18px 45px rgba(0,0,0,.25)}
+.jvc-hero-stat small,.jvc-hero-stat span{display:block;color:#d7dfd9;font-size:10px;letter-spacing:.1em}
+.jvc-hero-stat strong{display:block;color:#e2b542;font-size:18px;margin:7px 0}
+@media(max-width:760px){.jvc-premium-hero{padding:48px 0 38px}.jvc-hero-inner{grid-template-columns:1fr}.jvc-hero-art{min-height:250px;max-width:420px;width:100%;margin:0 auto}.jvc-hero-building{transform:scale(.84)}.jvc-hero-stat{right:0;bottom:0;min-width:180px}.jvc-hero-points{display:grid;gap:10px}.jvc-hero-copy h1{font-size:clamp(32px,9vw,44px)}}
+
+/* Premium custom illustration for the Joint Venture Calculator hero */
+.jvc-hero-art-illustration{display:flex;align-items:center;justify-content:center;background:transparent!important;box-shadow:none!important;overflow:visible}
+.jvc-hero-art-illustration img{display:block;width:100%;max-width:560px;height:auto;object-fit:contain;filter:drop-shadow(0 18px 30px rgba(5,25,17,.2))}
+@media(max-width:900px){.jvc-hero-art-illustration{max-width:600px;margin:10px auto 0}.jvc-hero-art-illustration img{max-width:100%}}
+
+
+/* Mobile hero hardening: prevent heading and copy from being clipped at the left edge */
+.jvc-premium-hero,
+.jvc-premium-hero * { box-sizing: border-box; }
+.jvc-premium-hero { width: 100%; max-width: 100%; overflow: clip; }
+.jvc-hero-inner {
+  width: min(100% - 48px, 1240px);
+  max-width: 1240px;
+  margin-inline: auto;
+  padding-inline: 0;
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr);
+}
+.jvc-hero-copy { min-width: 0; width: 100%; overflow-wrap: break-word; }
+.jvc-hero-copy h1,
+.jvc-hero-copy p,
+.jvc-hero-copy .section-eyebrow { max-width: 100%; overflow-wrap: anywhere; }
+.jvc-hero-copy .primary-btn { max-width: 100%; white-space: normal; line-height: 1.35; }
+.jvc-hero-art-illustration { min-width: 0; }
+.jvc-hero-art-illustration img { width: 100%; height: auto; max-height: 520px; }
+
+@media (max-width: 760px) {
+  .jvc-premium-hero { padding: 36px 0 28px; }
+  .jvc-hero-inner {
+    width: calc(100% - 36px);
+    max-width: 560px;
+    margin-inline: auto;
+    padding-inline: 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+  .jvc-hero-copy { width: 100%; min-width: 0; margin: 0; padding: 0; }
+  .jvc-hero-copy .section-eyebrow {
+    display: block;
+    font-size: 10px;
+    line-height: 1.5;
+    letter-spacing: .11em;
+  }
+  .jvc-hero-copy h1 {
+    font-size: clamp(30px, 8.2vw, 42px);
+    line-height: 1.12;
+    letter-spacing: -.025em;
+    margin: 14px 0;
+    width: 100%;
+  }
+  .jvc-hero-copy p {
+    font-size: 16px;
+    line-height: 1.65;
+    margin: 0;
+    width: 100%;
+  }
+  .jvc-hero-points { margin: 20px 0 24px; }
+  .jvc-hero-copy .primary-btn {
+    display: flex;
+    width: fit-content;
+    max-width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 13px 15px;
+    font-size: 14px;
+  }
+  .jvc-hero-art-illustration {
+    display: flex;
+    width: 100%;
+    max-width: 440px;
+    min-height: 0;
+    margin: 4px auto 0;
+    padding: 0;
+    overflow: visible;
+  }
+  .jvc-hero-art-illustration img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    max-height: none;
+    height: auto;
+    object-fit: contain;
+  }
+}
+@media (max-width: 380px) {
+  .jvc-hero-inner { width: calc(100% - 28px); }
+  .jvc-hero-copy h1 { font-size: 30px; }
+  .jvc-hero-copy .primary-btn { font-size: 13px; padding: 12px; }
+}
+
+
+/* Full-bleed background artwork for the Joint Venture Calculator hero */
+.jvc-premium-hero {
+  background-color: #0b241c !important;
+  background-image:
+    linear-gradient(90deg, rgba(5, 20, 14, .96) 0%, rgba(8, 35, 25, .86) 43%, rgba(8, 35, 25, .38) 100%),
+    url("../images/jv-calculator-hero.jpg") !important;
+  background-size: cover, cover !important;
+  background-position: center, 65% center !important;
+  background-repeat: no-repeat, no-repeat !important;
+}
+.jvc-premium-hero:before {
+  background: linear-gradient(90deg, rgba(4,18,13,.20), rgba(4,18,13,.04) 75%) !important;
+}
+@media (max-width: 760px) {
+  .jvc-premium-hero {
+    background-image:
+      linear-gradient(180deg, rgba(5,20,14,.92) 0%, rgba(8,35,25,.80) 54%, rgba(8,35,25,.54) 100%),
+      url("../images/jv-calculator-hero.jpg") !important;
+    background-position: center, 68% center !important;
+  }
+}
+
+/* User-requested removal: JV feasibility hero overlay card only */
+.jvc-premium-hero .jvc-hero-stat { display: none !important; }

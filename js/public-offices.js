@@ -57,6 +57,12 @@
     }
     window.AventrixOffices = { embedUrlFor, isEmbeddable };
 
+    // Site-wide Head Office map icon (header + footer) and footer "Find Us" map.
+    // Owner-supplied link. Office cards keep each office's own CMS link/map.
+    const OWNER_MAP_URL = "https://maps.app.goo.gl/Gfs3JJ4VVN4cxU5G7?g_st=ic";
+    const OWNER_FOOTER_MAP_EMBED = "https://www.google.com/maps?q=" +
+        encodeURIComponent("No.27, 1st Main Road, New Colony, Chromepet, Chennai, Tamil Nadu") + "&output=embed";
+
     function cardTemplate(o) {
         const badge = o.is_head_office ? `<span class="office-card-badge">Head Office</span>` : "";
         const cardClass = o.is_head_office ? "office-card office-card-head" : "office-card";
@@ -113,10 +119,12 @@
             else if (!el.children.length) el.textContent = o.email;
             else el.lastChild.textContent = " " + o.email;
         });
-        document.querySelectorAll('[data-hq="maps"]').forEach((el) => { if (o.maps_url) el.setAttribute("href", o.maps_url); });
+        document.querySelectorAll('[data-hq="maps"]').forEach((el) => { el.setAttribute("href", OWNER_MAP_URL); });
         document.querySelectorAll('[data-hq="map-embed"]').forEach((el) => {
-            const url = embedUrlFor(o);
-            if (url && el.getAttribute("src") !== url) el.setAttribute("src", url);
+            // A maps.app.goo.gl share link cannot be shown in an iframe, so the
+            // footer map embeds the Head Office address; the icon opens OWNER_MAP_URL.
+            const frame = el.tagName === "IFRAME" ? el : el.querySelector("iframe");
+            if (frame && frame.getAttribute("src") !== OWNER_FOOTER_MAP_EMBED) frame.setAttribute("src", OWNER_FOOTER_MAP_EMBED);
         });
         const phones = phonesOf(o);
         if (phones.length) {

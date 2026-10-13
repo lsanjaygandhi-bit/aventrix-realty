@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1000" role="img" aria-label="Modern residential development with site-plan grid">
+<defs>
+ <linearGradient id="base" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#071c15"/><stop offset=".52" stop-color="#123d2f"/><stop offset="1" stop-color="#1b0e06"/></linearGradient>
+ <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f2ead3"/><stop offset=".45" stop-color="#a9c5b5"/><stop offset="1" stop-color="#446e5b"/></linearGradient>
+ <linearGradient id="gold" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#f0d47a"/><stop offset="1" stop-color="#b98020"/></linearGradient>
+ <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M60 0H0V60" fill="none" stroke="#d4a32c" stroke-opacity=".13" stroke-width="1"/></pattern>
+ <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#020b07" flood-opacity=".45"/></filter>
+</defs>
+<rect width="1920" height="1000" fill="url(#base)"/>
+<rect width="1920" height="1000" fill="url(#grid)" opacity=".65"/>
+<circle cx="1510" cy="170" r="300" fill="#d4a32c" opacity=".06"/><circle cx="1510" cy="170" r="220" fill="none" stroke="#d4a32c" stroke-opacity=".18" stroke-width="2"/>
+<!-- quiet site boundary -->
+<g fill="none" stroke="#e2b542" stroke-width="3" stroke-opacity=".28"><path d="M990 150L1790 80L1850 760L1080 900Z"/><path d="M1050 230L1730 170L1780 700L1130 810Z"/><path d="M990 470L1815 390M1410 115L1480 850"/></g>
+<!-- rear residential tower -->
+<g filter="url(#shadow)">
+ <path d="M1260 205L1510 135L1665 205L1665 700L1260 780Z" fill="url(#glass)"/>
+ <path d="M1260 205L1510 135L1510 730L1260 780Z" fill="#e7eadf"/>
+ <path d="M1510 135L1665 205L1665 700L1510 730Z" fill="#426d58"/>
+ <g stroke="#779785" stroke-width="8"><path d="M1260 280L1510 215M1260 355L1510 290M1260 430L1510 365M1260 505L1510 440M1260 580L1510 515M1260 655L1510 590"/><path d="M1315 190V763M1375 174V744M1435 156V735"/><path d="M1555 156V718M1605 177V707"/></g>
+ <g stroke="#d7e1d7" stroke-width="6" opacity=".75"><path d="M1285 245L1480 190M1285 320L1480 265M1285 395L1480 340M1285 470L1480 415M1285 545L1480 490M1285 620L1480 565"/></g>
+</g>
+<!-- front residential building -->
+<g filter="url(#shadow)">
+ <path d="M1000 390L1210 320L1350 380V790L1000 880Z" fill="#e9eee6"/>
+ <path d="M1000 390L1210 320V825L1000 880Z" fill="#f8f3e4"/>
+ <path d="M1210 320L1350 380V790L1210 825Z" fill="#6c927c"/>
+ <g stroke="#a3b9ab" stroke-width="7"><path d="M1000 465L1210 400M1000 540L1210 475M1000 615L1210 550M1000 690L1210 625M1000 765L1210 700"/><path d="M1055 372V866M1110 354V852M1165 337V838"/><path d="M1255 339V807M1300 361V797"/></g>
+ <g stroke="#345b48" stroke-width="3" opacity=".7"><path d="M1025 425L1190 374M1025 500L1190 449M1025 575L1190 524M1025 650L1190 599M1025 725L1190 674"/></g>
+</g>
+<!-- landscape / drive -->
+<path d="M930 890L1210 825L1350 790L1690 720L1810 800L1370 930L1100 980Z" fill="url(#gold)" opacity=".9"/>
+<path d="M930 890L1210 825L1350 790L1350 830L1210 865L930 930Z" fill="#986b1c" opacity=".9"/>
+<path d="M970 955L1240 890L1430 885L1710 800" fill="none" stroke="#e7d69c" stroke-opacity=".7" stroke-width="5"/>
+<!-- feasibility card motif -->
+<g transform="translate(1430 520)" filter="url(#shadow)">
+ <rect width="340" height="185" rx="20" fill="#fffdf5"/>
+ <rect x="18" y="18" width="304" height="42" rx="9" fill="#153e30"/>
+ <circle cx="38" cy="39" r="6" fill="#d4a32c"/><path d="M56 31H178M56 42H143" stroke="#fff" stroke-opacity=".7" stroke-width="4" stroke-linecap="round"/>
+ <rect x="22" y="80" width="135" height="78" rx="8" fill="#f4f0e3"/>
+ <path d="M36 140V119H55V140M66 140V105H85V140M96 140V92H115V140M126 140V112H145V140" fill="#d4a32c" opacity=".85"/>
+ <path d="M178 91H305M178 112H285M178 133H297M178 154H263" stroke="#9cafa3" stroke-width="6" stroke-linecap="round"/>
+</g>
+<!-- subtle gold glints -->
+<g fill="#e2b542"><circle cx="1760" cy="140" r="7"/><circle cx="1685" cy="90" r="4"/><circle cx="1810" cy="225" r="5"/></g>
+</svg>
