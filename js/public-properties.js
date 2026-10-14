@@ -741,7 +741,7 @@
         const seoTitle = property.seo_title || `${property.title} | Aventrix Realty`;
         const seoDescription = property.seo_description || property.short_description || "";
         const canonicalUrl = `https://aventrixrealty.com/property.html?id=${encodeURIComponent(property.slug)}`;
-        const ogImage = property.featured_image || (property.images && property.images[0]) || "https://aventrixrealty.com/images/chennai-marina.jpg";
+        const ogImage = property.featured_image || (property.images && property.images[0]) || "https://aventrixrealty.com/images/og/aventrix-logo-og.jpg";
 
         document.title = seoTitle;
         setMeta("description", seoDescription);
