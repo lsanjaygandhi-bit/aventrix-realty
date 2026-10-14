@@ -3312,36 +3312,36 @@ nav a:hover::after{
 }
 @media (min-width:900px) and (max-width:1023px){
     .container.nav{ width:99.5%; max-width:1480px; }
-    .main-nav{ gap:3px; margin-left:3px; }
+    .main-nav{ gap:1px; margin-left:1px; }
     .main-nav a{ font-weight:600; font-size:8.4px; letter-spacing:0; }
-    .main-nav a.main-nav-admin{ margin-left:2px; }
+    .main-nav a.main-nav-admin{ margin-left:1px; }
     .nav-right{ gap:2px; }
     .logo img{ height:42px; }
 }
 @media (min-width:1024px) and (max-width:1150px){
     .container.nav{ width:99%; max-width:1470px; }
     .logo{ margin-right:8px; }
-    .main-nav{ gap:5px; margin-left:7px; }
+    .main-nav{ gap:4px; margin-left:4px; }
     .main-nav a{ font-weight:600; font-size:9.5px; letter-spacing:.15px; }
-    .main-nav a.main-nav-admin{ margin-left:5px; }
+    .main-nav a.main-nav-admin{ margin-left:4px; }
     .nav-right{ gap:3px; }
     .logo img{ height:42px; }
 }
 @media (min-width:1151px) and (max-width:1300px){
     .container.nav{ width:98%; max-width:1450px; }
     .logo{ margin-right:8px; }
-    .main-nav{ gap:9px; margin-left:11px; }
+    .main-nav{ gap:7px; margin-left:8px; }
     .main-nav a{ font-weight:600; font-size:10.5px; letter-spacing:.3px; }
-    .main-nav a.main-nav-admin{ margin-left:7px; }
+    .main-nav a.main-nav-admin{ margin-left:6px; }
     .nav-right{ gap:4px; }
     .logo img{ height:42px; }
 }
 @media (min-width:1301px) and (max-width:1450px){
     .container.nav{ width:98%; max-width:1460px; }
     .logo{ margin-right:16px; }
-    .main-nav{ gap:14px; margin-left:16px; }
+    .main-nav{ gap:12px; margin-left:14px; }
     .main-nav a{ font-weight:600; font-size:11.5px; letter-spacing:.4px; }
-    .main-nav a.main-nav-admin{ margin-left:11px; }
+    .main-nav a.main-nav-admin{ margin-left:10px; }
     .nav-right{ gap:5px; }
     /* The extra "Services" link no longer fits comfortably at this
        width purely by tightening nav text spacing, so the logo is
@@ -3364,8 +3364,19 @@ nav a:hover::after{
    container, on a single nav row. */
 @media (min-width:1451px){
     html:not(.is-mobile) .logo{ margin-right:8px; }
-    html:not(.is-mobile) .main-nav{ gap:18px; margin-left:20px; }
+    html:not(.is-mobile) .main-nav{ gap:13px; margin-left:16px; }
 }
+
+/* PROPERTY TOOLS NAV ITEM (2026-10-14): the 11th nav link pushed
+   .nav-right (and the call button) past the container/viewport at
+   768 of the 1152 desktop widths between 769 and 1920px. Fixed with
+   spacing only (gaps/margins in the tiers above; font size, weight
+   and letter-spacing unchanged) plus a compact desktop label: the
+   link reads "Tools" in the desktop row and "Property Tools" in the
+   mobile drawer, where there is room. Re-verified 769-1920px at 1px
+   steps on a page with all four .nav-right icons. */
+.main-nav .nav-label-extra{ display:none; }
+html.is-mobile .main-nav .nav-label-extra{ display:inline; }
 
 .dropdown{
     position:relative;
@@ -7319,8 +7330,17 @@ body.qv-open{
    Shortlist, see index.html) — so this standalone mobile-hamburger-
    row version is mobile-only, avoiding a literal duplicate bell
    showing twice on desktop. */
-@media (min-width:901px){
-    .home-app-header-actions{ display:none; }
+/* FIX (2026-10-14): this used to be a plain width query (>=901px),
+   which left the duplicate account icon visible — and pushed past the
+   right edge — on non-touch desktop windows 769-900px, and hid it on
+   touch tablets >=901px (iPad landscape), where .nav-right is also
+   hidden, so those devices had no account icon at all. It now follows
+   the same switch as the drawer layout itself: shown whenever the
+   hamburger layout is active (html.is-mobile, or the <=768px
+   no-JS/narrow-window fallback), hidden on the desktop row. */
+html:not(.is-mobile) .home-app-header-actions{ display:none; }
+@media (max-width:768px){
+    html:not(.is-mobile) .home-app-header-actions{ display:flex; }
 }
 /* NOTE: the redundant duplicate ".nav-right{ gap:14px; }" rule that
    used to sit here has been removed — it set nothing beyond what the

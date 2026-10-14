@@ -1,0 +1,1352 @@
+{
+  "schema_version": 2,
+  "dataset_name": "Aventrix Realty — published indicative rates (Chennai)",
+  "last_reviewed": "2026-10-14",
+  "review_status": "Compiled from public portals on 14 Oct 2026; awaiting Aventrix sign-off. Set a row's status to 'draft' to withdraw it.",
+  "methodology": [
+    "All figures are online ASKING-price indicators published by property portals or developers. None is a government guideline value or registered transaction price.",
+    "One value per publisher: a stated average is used as-is; a stated range is reduced to its midpoint.",
+    "low = lowest publisher value, high = highest publisher value, mid = (low + high) / 2. The range is the spread between sources, not a statistical min/max of transactions.",
+    "A row is 'published' only when at least two independent publishers report a figure. Single-source rows stay 'draft' and are never used by the calculator.",
+    "Confidence 'medium' = 3+ publishers including a dated portal locality page, with sources within 35% of each other; otherwise 'low'.",
+    "Apartment rates are as listed on portals, which normally quote super built-up (saleable) area. Land rates are per sq.ft of plot area; 1 ground = 2,400 sq.ft.",
+    "Not checked: Magicbricks (access blocked) and 99acres (pages could not be retrieved). Square Yards pages for Velachery, Selaiyur, T. Nagar, ECR and OMR could not be retrieved."
+  ],
+  "coverage_gaps": {
+    "commercial": "No portal page found with per-locality commercial sale (capital) values for these localities; only office rents were available. No commercial rate is published."
+  },
+  "rates": [
+    {
+      "id": "adyar-apartment",
+      "locality": "Adyar",
+      "aliases": [],
+      "property_type": "apartment",
+      "status": "published",
+      "rate_basis": "asking",
+      "area_basis": "super_built_up",
+      "unit": "sqft",
+      "low": 17000,
+      "mid": 18425,
+      "high": 19850,
+      "sources_count": 5,
+      "confidence": "medium",
+      "last_checked": "2026-10-14",
+      "notes": "",
+      "sources": [
+        {
+          "name": "Square Yards — locality property rates",
+          "url": "https://www.squareyards.com/property-rates/adyar-chennai",
+          "data_type": "asking_price_locality_average",
+          "period": "Sep 2026",
+          "figure_as_published": "Asking Sale Price ₹19,850/sq.ft (apartment)",
+          "value_used_per_sqft": 19850,
+          "basis_note": "Labelled 'Asking Sale Price' on the page (listing-based). Apartment row used.",
+          "checked": "2026-10-14"
+        },
+        {
+          "name": "Housing.com — Property Rates in Chennai 2026 (city locality table)",
+          "url": "https://housing.com/price-trends/chennai_tamil_nadu-P4bimjmco2m9afw0m",
+          "data_type": "asking_price_locality_average",
+          "period": "2026 (no month stated)",
+          "figure_as_published": "Avg ₹19,316/sq.ft (listing range ₹8,857 – ₹26,988)",
+          "value_used_per_sqft": 19316,
+          "basis_note": "Average of properties listed for sale (all residential listing types). Page title '2026'; no per-locality date.",
+          "checked": "2026-10-14"
+        },
+        {
+          "name": "HomeBazaar — Property Rates in Chennai",
+          "url": "https://homebazaar.com/knowledge/property-rates-in-chennai/",
+          "data_type": "portal_published_average",
+          "period": "Last modified 22 May 2026",
+          "figure_as_published": "₹17,250/sq.ft (average)",
+          "value_used_per_sqft": 17250,
+          "basis_note": "Single average per locality; the article does not state its data source.",
+          "checked": "2026-10-14"
+        },
+        {
+          "name": "NoBroker — Property Rates in Chennai (2026 columns)",
+          "url": "https://www.nobroker.in/blog/property-rates-in-chennai/",
+          "data_type": "portal_published_range",
+          "period": "Updated 7 Apr 2026",
+          "figure_as_published": "2026: ₹15,000 – ₹22,000/sq.ft",
+          "value_used_per_sqft": 18500,
+          "basis_note": "Range per locality for 2026; the article does not state its data source.",
+          "checked": "2026-10-14"
+        },
+        {
+          "name": "LiveHomes — Property Rates in Chennai 2026",
+          "url": "https://www.livehomes.in/blog-details/Property-Rates-in-Chennai-2026",
+          "data_type": "developer_published_range",
+          "period": "29 May 2026",
+          "figure_as_published": "₹14,000 – ₹20,000/sq.ft",
+          "value_used_per_sqft": 17000,
+          "basis_note": "Developer blog; ranges per locality; no data source or method stated.",
+          "checked": "2026-10-14"
+        }
+      ]
+    },
+    {
+      "id": "besant-nagar-apartment",
+      "locality": "Besant Nagar",
+      "aliases": [],
+      "property_type": "apartment",
+      "status": "published",
+      "rate_basis": "asking",
+      "area_basis": "super_built_up",
+      "unit": "sqft",
+      "low": 19000,
+      "mid": 19950,
+      "high": 20900,
+      "sources_count": 3,
+      "confidence": "medium",
+      "last_checked": "2026-10-14",
+      "notes": "",
+      "sources": [
+        {
+          "name": "Square Yards — locality property rates",
+          "url": "https://www.squareyards.com/property-rates/besant-nagar-chennai",
+          "data_type": "asking_price_locality_average",
+          "period": "Jun 2026",
+          "figure_as_published": "Asking Sale Price ₹19,000/sq.ft (apartment)",
+          "value_used_per_sqft": 19000,
+          "basis_note": "Labelled 'Asking Sale Price' on the page (listing-based). Apartment row used.",
+          "checked": "2026-10-14"
+        },
+        {
+          "name": "HomeBazaar — Property Rates in Chennai",
+          "url": "https://homebazaar.com/knowledge/property-rates-in-chennai/",
+          "data_type": "portal_published_average",
+          "period": "Last modified 22 May 2026",
+          "figure_as_published": "₹20,900/sq.ft (average)",
+          "value_used_per_sqft": 20900,
+          "basis_note": "Single average per locality; the article does not state its data source.",
+          "checked": "2026-10-14"
+        },
+        {
+          "name": "NoBroker — Property Rates in Chennai (2026 columns)",
+          "url": "https://www.nobroker.in/blog/property-rates-in-chennai/",
+          "data_type": "portal_published_range",
+          "period": "Updated 7 Apr 2026",
+          "figure_as_published": "2026: ₹15,000 – ₹23,000/sq.ft",
+          "value_used_per_sqft": 19000,
+          "basis_note": "Range per locality for 2026; the article does not state its data source.",
+          "checked": "2026-10-14"
+        }
+      ]
+    },
+    {
+      "id": "thiruvanmiyur-apartment",
+      "locality": "Thiruvanmiyur",
+      "aliases": [
+        "Tiruvanmiyur"
+      ],
+      "property_type": "apartment",
+      "status": "published",
+      "rate_basis": "asking",
+      "area_basis": "super_built_up",
+      "unit": "sqft",
+      "low": 12500,
+      "mid": 13500,
+      "high": 14500,
+      "sources_count": 2,
+      "confidence": "low",
+      "last_checked": "2026-10-14",
+      "notes": "",
+      "sources": [
+        {
+          "name": "Square Yards — locality property rates",
+          "url": "https://www.squareyards.com/property-rates/thiruvanmiyur-chennai",
+          "data_type": "asking_price_locality_average",
+          "period": "Jun 2026",
+          "figure_as_published": "Asking Sale Price ₹12,500/sq.ft (apartment)",
+          "value_used_per_sqft": 12500,
+          "basis_note": "Labelled 'Asking Sale Price' on the page (listing-based). Apartment row used.",
+          "checked": "2026-10-14"
+        },
+        {
+          "name": "HomeBazaar — Property Rates in Chennai",
+          "url": "https://homebazaar.com/knowledge/property-rates-in-chennai/",
+          "data_type": "portal_published_average",
+          "period": "Last modified 22 May 2026",
+          "figure_as_published": "₹14,500/sq.ft (average)",
+          "value_used_per_sqft": 14500,
+          "basis_note": "Single average per locality; the article does not state its data source.",
+          "checked": "2026-10-14"
+        }
+      ]
+    },
+    {
+      "id": "velachery-apartment",
+      "locality": "Velachery",
+      "aliases": [],
+      "property_type": "apartment",
+      "status": "published",
+      "rate_basis": "asking",
+      "area_basis": "super_built_up",
+      "unit": "sqft",
+      "low": 9400,
+      "mid": 10325,
+      "high": 11250,
+      "sources_count": 3,
+      "confidence": "low",
+      "last_checked": "2026-10-14",
+      "notes": "",
+      "sources": [
+        {
+          "name": "HomeBazaar — Property Rates in Chennai",
+          "url": "https://homebazaar.com/knowledge/property-rates-in-chennai/",
+          "data_type": "portal_published_average",
+          "period": "Last modified 22 May 2026",
+          "figure_as_published": "₹9,400/sq.ft (average)",
+          "value_used_per_sqft": 9400,
+          "basis_note": "Single average per locality; the article does not state its data source.",
+          "checked": "2026-10-14"
+        },
+        {
+          "name": "NoBroker — Property Rates in Chennai (2026 columns)",
+          "url": "https://www.nobroker.in/blog/property-rates-in-chennai/",
+          "data_type": "portal_published_range",
+          "period": "Updated 7 Apr 2026",
+          "figure_as_published": "2026: ₹9,500 – ₹13,000/sq.ft",
+          "value_used_per_sqft": 11250,
+          "basis_note": "Range per locality for 2026; the article does not state its data source.",
+          "checked": "2026-10-14"
+        },
+        {
+          "name": "LiveHomes — Property Rates in Chennai 2026",
+          "url": "https://www.livehomes.in/blog-details/Property-Rates-in-Chennai-2026",
+          "data_type": "developer_published_range",
+          "period": "29 May 2026",
+          "figure_as_published": "₹8,000 – ₹12,000/sq.ft",
+          "value_used_per_sqft": 10000,
+          "basis_note": "Developer blog; ranges per locality; no data source or method stated.",
+          "checked": "2026-10-14"
+        }
+      ]
+    },
+    {
+      "id": "perungudi-apartment",
+      "locality": "Perungudi",
+      "aliases": [],
+      "property_type": "apartment",
+      "status": "published",
+      "rate_basis": "asking",
+      "area_basis": "super_built_up",
+      "unit": "sqft",
+      "low": 11050,
+      "mid": 11050,
+      "high": 11050,
+      "sources_count": 2,
+      "confidence": "low",
+      "last_checked": "2026-10-14",
+      "notes": "",
+      "sources": [
+        {
+          "name": "Square Yards — locality property rates",
+          "url": "https://www.squareyards.com/property-rates/perungudi-chennai",
+          "data_type": "asking_price_locality_average",
+          "period": "Jun 2026",
+          "figure_as_published": "Asking Sale Price ₹11,050/sq.ft (apartment)",
+          "value_used_per_sqft": 11050,
+          "basis_note": "Labelled 'Asking Sale Price' on the page (listing-based). Apartment row used.",
+          "checked": "2026-10-14"
+        },
+        {
+          "name": "HomeBazaar — Property Rates in Chennai",
+          "url": "https://homebazaar.com/knowledge/property-rates-in-chennai/",
+          "data_type": "portal_published_average",
+          "period": "Last modified 22 May 2026",
+          "figure_as_published": "₹11,050/sq.ft (average)",
+          "value_used_per_sqft": 11050,
+          "basis_note": "Single average per locality; the article does not state its data source.",
+          "checked": "2026-10-14"
+        }
+      ]
+    },
+    {
+      "id": "thoraipakkam-apartment",
+      "locality": "Thoraipakkam",
+      "aliases": [
+        "Thuraipakkam"
+      ],
+      "property_type": "apartment",
+      "status": "published",
+      "rate_basis": "asking",
+      "area_basis": "super_built_up",
+      "unit": "sqft",
+      "low": 9250,
+      "mid": 9650,
+      "high": 10050,
+      "sources_count": 3,
+      "confidence": "medium",
+      "last_checked": "2026-10-14",
+      "notes": "",
+      "sources": [
+        {
+          "name": "Square Yards — locality property rates",
+          "url": "https://www.squareyards.com/property-rates/thoraipakkam-chennai",
+          "data_type": "asking_price_locality_average",
+          "period": "Jun 2026",
+          "figure_as_published": "Asking Sale Price ₹9,250/sq.ft (apartment) — headline ₹8,500 refers to Mar 2026",
+          "value_used_per_sqft": 9250,
+          "basis_note": "Labelled 'Asking Sale Price' on the page (listing-based). Apartment row used.",
+          "checked": "2026-10-14"
+        },
+        {
+          "name": "HomeBazaar — Property Rates in Chennai",
+          "url": "https://homebazaar.com/knowledge/property-rates-in-chennai/",
+          "data_type": "portal_published_average",
+          "period": "Last modified 22 May 2026",
+          "figure_as_published": "₹10,050/sq.ft (average)",
+          "value_used_per_sqft": 10050,
+          "basis_note": "Single average per locality; the article does not state its data source.",
+          "checked": "2026-10-14"
+        },
+        {
+          "name": "NoBroker — Property Rates in Chennai (2026 columns)",
+          "url": "https://www.nobroker.in/blog/property-rates-in-chennai/",
+          "data_type": "portal_published_range",
+          "period": "Updated 7 Apr 2026",
+          "figure_as_published": "2026: ₹7,450 – ₹11,950/sq.ft",
+          "value_used_per_sqft": 9700,
+          "basis_note": "Range per locality for 2026; the article does not state its data source.",
+          "checked": "2026-10-14"
+        }
+      ]
+    },
+    {
+      "id": "pallikaranai-apartment",
+      "locality": "Pallikaranai",
+      "aliases": [],
+      "property_type": "apartment",
+      "status": "published",
+      "rate_basis": "asking",
+      "area_basis": "super_built_up",
+      "unit": "sqft",
+      "low": 7550,
+      "mid": 8000,
+      "high": 8450,
+      "sources_count": 2,
+      "confidence": "low",
+      "last_checked": "2026-10-14",
+      "notes": "",
+      "sources": [
+        {
+          "name": "Square Yards — locality property rates",
+          "url": "https://www.squareyards.com/property-rates/pallikaranai-chennai",
+          "data_type": "asking_price_locality_average",
+          "period": "Sep 2026",
+          "figure_as_published": "Asking Sale Price ₹8,450/sq.ft (apartment)",
+          "value_used_per_sqft": 8450,
+          "basis_note": "Labelled 'Asking Sale Price' on the page (listing-based). Apartment row used.",
+          "checked": "2026-10-14"
+        },
+        {
+          "name": "HomeBazaar — Property Rates in Chennai",
+          "url": "https://homebazaar.com/knowledge/property-rates-in-chennai/",
+          "data_type": "portal_published_average",
+          "period": "Last modified 22 May 2026",
+          "figure_as_published": "₹7,550/sq.ft (average)",
+          "value_used_per_sqft": 7550,
+          "basis_note": "Single average per locality; the article does not state its data source.",
+          "checked": "2026-10-14"
+        }
+      ]
+    },
+    {
+      "id": "madipakkam-apartment",
+      "locality": "Madipakkam",
+      "aliases": [],
+      "property_type": "apartment",
+      "status": "published",
+      "rate_basis": "asking",
+      "area_basis": "super_built_up",
+      "unit": "sqft",
+      "low": 6500,
+      "mid": 7332,
+      "high": 8163,
+      "sources_count": 4,
+      "confidence": "medium",
+      "last_checked": "2026-10-14",
+      "notes": "",
+      "sources": [
+        {
+          "name": "Square Yards — locality property rates",
+          "url": "https://www.squareyards.com/property-rates/madipakkam-chennai",
+          "data_type": "asking_price_locality_average",
+          "period": "Jun 2026",
+          "figure_as_published": "Asking Sale Price ₹6,500/sq.ft (apartment)",
+          "value_used_per_sqft": 6500,
+          "basis_note": "Labelled 'Asking Sale Price' on the page (listing-based). Apartment row used.",
+          "checked": "2026-10-14"
+        },
+        {
+          "name": "Housing.com — Property Rates in Chennai 2026 (city locality table)",
+          "url": "https://housing.com/price-trends/chennai_tamil_nadu-P4bimjmco2m9afw0m",
+          "data_type": "asking_price_locality_average",
+          "period": "2026 (no month stated)",
+          "figure_as_published": "Avg ₹8,163/sq.ft (listing range ₹5,172 – ₹11,666)",
+          "value_used_per_sqft": 8163,
+          "basis_note": "Average of properties listed for sale (all residential listing types). Page title '2026'; no per-locality date.",
+          "checked": "2026-10-14"
+        },
+        {
+          "name": "HomeBazaar — Property Rates in Chennai",
+          "url": "https://homebazaar.com/knowledge/property-rates-in-chennai/",
+          "data_type": "portal_published_average",
+          "period": "Last modified 22 May 2026",
+          "figure_as_published": "₹7,450/sq.ft (average)",
+          "value_used_per_sqft": 7450,
+          "basis_note": "Single average per locality; the article does not state its data source.",
+          "checked": "2026-10-14"
+        },
+        {
+          "name": "NoBroker — Property Rates in Chennai (2026 columns)",
+          "url": "https://www.nobroker.in/blog/property-rates-in-chennai/",
+          "data_type": "portal_published_range",
+          "period": "Updated 7 Apr 2026",
+          "figure_as_published": "2026: ₹6,500 – ₹8,300/sq.ft",
+          "value_used_per_sqft": 7400,
+          "basis_note": "Range per locality for 2026; the article does not state its data source.",
+          "checked": "2026-10-14"
+        }
+      ]
+    },
+    {
+      "id": "chromepet-apartment",
+      "locality": "Chromepet",
+      "aliases": [
+        "Chrompet"
+      ],
+      "property_type": "apartment",
+      "status": "published",
+      "rate_basis": "asking",
+      "area_basis": "super_built_up",
+      "unit": "sqft",
+      "low": 7300,
+      "mid": 7780,
+      "high": 8261,
+      "sources_count": 3,
+      "confidence": "medium",
+      "last_checked": "2026-10-14",
+      "notes": "",
+      "sources": [
+        {
+          "name": "Square Yards — locality property rates",
+          "url": "https://www.squareyards.com/property-rates/chromepet-chennai",
+          "data_type": "asking_price_locality_average",
+          "period": "Sep 2026",
+          "figure_as_published": "Asking Sale Price ₹8,000/sq.ft (apartment)",
+          "value_used_per_sqft": 8000,
+          "basis_note": "Labelled 'Asking Sale Price' on the page (listing-based). Apartment row used.",
+          "checked": "2026-10-14"
+        },
+        {
+          "name": "Housing.com — Property Rates in Chennai 2026 (city locality table)",
+          "url": "https://housing.com/price-trends/chennai_tamil_nadu-P4bimjmco2m9afw0m",
+          "data_type": "asking_price_locality_average",
+          "period": "2026 (no month stated)",
+          "figure_as_published": "Avg ₹8,261/sq.ft (listing range ₹4,364 – ₹13,333)",
+          "value_used_per_sqft": 8261,
+          "basis_note": "Average of properties listed for sale (all residential listing types). Page title '2026'; no per-locality date.",
+          "checked": "2026-10-14"
+        },
+        {
+          "name": "HomeBazaar — Property Rates in Chennai",
+          "url": "https://homebazaar.com/knowledge/property-rates-in-chennai/",
+          "data_type": "portal_published_average",
+          "period": "Last modified 22 May 2026",
+          "figure_as_published": "₹7,300/sq.ft (average)",
+          "value_used_per_sqft": 7300,
+          "basis_note": "Single average per locality; the article does not state its data source.",
+          "checked": "2026-10-14"
+        }
+      ]
+    },
+    {
+      "id": "tambaram-apartment",
+      "locality": "Tambaram",
+      "aliases": [],
+      "property_type": "apartment",
+      "status": "published",
+      "rate_basis": "asking",
+      "area_basis": "super_built_up",
+      "unit": "sqft",
+      "low": 5800,
+      "mid": 6350,
+      "high": 6900,
+      "sources_count": 3,
+      "confidence": "medium",
+      "last_checked": "2026-10-14",
+      "notes": "",
+      "sources": [
+        {
+          "name": "Square Yards — locality property rates",
+          "url": "https://www.squareyards.com/property-rates/tambaram-chennai",
+          "data_type": "asking_price_locality_average",
+          "period": "Sep 2026",
+          "figure_as_published": "Asking Sale Price ₹5,800/sq.ft (apartment)",
+          "value_used_per_sqft": 5800,
+          "basis_note": "Labelled 'Asking Sale Price' on the page (listing-based). Apartment row used.",
+          "checked": "2026-10-14"
+        },
+        {
+          "name": "HomeBazaar — Property Rates in Chennai",
+          "url": "https://homebazaar.com/knowledge/property-rates-in-chennai/",
+          "data_type": "portal_published_average",
+          "period": "Last modified 22 May 2026",
+          "figure_as_published": "₹6,900/sq.ft (average)",
+          "value_used_per_sqft": 6900,
+          "basis_note": "Single average per locality; the article does not state its data source.",
+          "checked": "2026-10-14"
+        },
+        {
+          "name": "LiveHomes — Property Rates in Chennai 2026",
+          "url": "https://www.livehomes.in/blog-details/Property-Rates-in-Chennai-2026",
+          "data_type": "developer_published_range",
+          "period": "29 May 2026",
+          "figure_as_published": "₹5,000 – ₹7,500/sq.ft",
+          "value_used_per_sqft": 6250,
+          "basis_note": "Developer blog; ranges per locality; no data source or method stated.",
+          "checked": "2026-10-14"
+        }
+      ]
+    },
+    {
+      "id": "selaiyur-apartment",
+      "locality": "Selaiyur",
+      "aliases": [],
+      "property_type": "apartment",
+      "status": "draft",
+      "rate_basis": "asking",
+      "area_basis": "super_built_up",
+      "unit": "sqft",
+      "low": 6600,
+      "mid": 6600,
+      "high": 6600,
+      "sources_count": 1,
+      "confidence": "low",
+      "last_checked": "2026-10-14",
+      "notes": "Only one publisher found — kept as draft until Aventrix reviews it.",
+      "sources": [
+        {
+          "name": "HomeBazaar — Property Rates in Chennai",
+          "url": "https://homebazaar.com/knowledge/property-rates-in-chennai/",
+          "data_type": "portal_published_average",
+          "period": "Last modified 22 May 2026",
+          "figure_as_published": "₹6,600/sq.ft (average)",
+          "value_used_per_sqft": 6600,
+          "basis_note": "Single average per locality; the article does not state its data source.",
+          "checked": "2026-10-14"
+        }
+      ]
+    },
+    {
+      "id": "medavakkam-apartment",
+      "locality": "Medavakkam",
+      "aliases": [],
+      "property_type": "apartment",
+      "status": "published",
+      "rate_basis": "asking",
+      "area_basis": "super_built_up",
+      "unit": "sqft",
+      "low": 6000,
+      "mid": 7082,
+      "high": 8165,
+      "sources_count": 3,
+      "confidence": "low",
+      "last_checked": "2026-10-14",
+      "notes": "Sources disagree by 36%; the range shows the spread between them.",
+      "sources": [
+        {
+          "name": "Square Yards — locality property rates",
+          "url": "https://www.squareyards.com/property-rates/medavakkam-chennai",
+          "data_type": "asking_price_locality_average",
+          "period": "Aug 2026 (trend series to Dec 2025)",
+          "figure_as_published": "Asking Sale Price ₹8,165/sq.ft (apartment)",
+          "value_used_per_sqft": 8165,
+          "basis_note": "Labelled 'Asking Sale Price' on the page (listing-based). Apartment row used.",
+          "checked": "2026-10-14"
+        },
+        {
+          "name": "HomeBazaar — Property Rates in Chennai",
+          "url": "https://homebazaar.com/knowledge/property-rates-in-chennai/",
+          "data_type": "portal_published_average",
+          "period": "Last modified 22 May 2026",
+          "figure_as_published": "₹7,150/sq.ft (average)",
+          "value_used_per_sqft": 7150,
+          "basis_note": "Single average per locality; the article does not state its data source.",
+          "checked": "2026-10-14"
+        },
+        {
+          "name": "LiveHomes — Property Rates in Chennai 2026",
+          "url": "https://www.livehomes.in/blog-details/Property-Rates-in-Chennai-2026",
+          "data_type": "developer_published_range",
+          "period": "29 May 2026",
+          "figure_as_published": "₹5,000 – ₹7,000/sq.ft",
+          "value_used_per_sqft": 6000,
+          "basis_note": "Developer blog; ranges per locality; no data source or method stated.",
+          "checked": "2026-10-14"
+        }
+      ]
+    },
+    {
+      "id": "pallavaram-apartment",
+      "locality": "Pallavaram",
+      "aliases": [],
+      "property_type": "apartment",
+      "status": "published",
+      "rate_basis": "asking",
+      "area_basis": "super_built_up",
+      "unit": "sqft",
+      "low": 7300,
+      "mid": 9050,
+      "high": 10800,
+      "sources_count": 3,
+      "confidence": "low",
+      "last_checked": "2026-10-14",
+      "notes": "Sources disagree by 48%; the range shows the spread between them.",
+      "sources": [
+        {
+          "name": "Square Yards — locality property rates",
+          "url": "https://www.squareyards.com/property-rates/pallavaram-chennai",
+          "data_type": "asking_price_locality_average",
+          "period": "Jun 2026",
+          "figure_as_published": "Asking Sale Price ₹10,800/sq.ft (apartment) — well above the other sources",
+          "value_used_per_sqft": 10800,
+          "basis_note": "Labelled 'Asking Sale Price' on the page (listing-based). Apartment row used.",
+          "checked": "2026-10-14"
+        },
+        {
+          "name": "HomeBazaar — Property Rates in Chennai",
+          "url": "https://homebazaar.com/knowledge/property-rates-in-chennai/",
+          "data_type": "portal_published_average",
+          "period": "Last modified 22 May 2026",
+          "figure_as_published": "₹7,650/sq.ft (average)",
+          "value_used_per_sqft": 7650,
+          "basis_note": "Single average per locality; the article does not state its data source.",
+          "checked": "2026-10-14"
+        },
+        {
+          "name": "LiveHomes — Property Rates in Chennai 2026",
+          "url": "https://www.livehomes.in/blog-details/Property-Rates-in-Chennai-2026",
+          "data_type": "developer_published_range",
+          "period": "29 May 2026",
+          "figure_as_published": "₹4,100 – ₹10,500/sq.ft",
+          "value_used_per_sqft": 7300,
+          "basis_note": "Developer blog; ranges per locality; no data source or method stated.",
+          "checked": "2026-10-14"
+        }
+      ]
+    },
+    {
+      "id": "sholinganallur-apartment",
+      "locality": "Sholinganallur",
+      "aliases": [
+        "Shollinganallur"
+      ],
+      "property_type": "apartment",
+      "status": "published",
+      "rate_basis": "asking",
+      "area_basis": "super_built_up",
+      "unit": "sqft",
+      "low": 7600,
+      "mid": 8775,
+      "high": 9950,
+      "sources_count": 4,
+      "confidence": "medium",
+      "last_checked": "2026-10-14",
+      "notes": "",
+      "sources": [
+        {
+          "name": "Square Yards — locality property rates",
+          "url": "https://www.squareyards.com/property-rates/sholinganallur-chennai",
+          "data_type": "asking_price_locality_average",
+          "period": "Sep 2026",
+          "figure_as_published": "Asking Sale Price ₹9,950/sq.ft (apartment)",
+          "value_used_per_sqft": 9950,
+          "basis_note": "Labelled 'Asking Sale Price' on the page (listing-based). Apartment row used.",
+          "checked": "2026-10-14"
+        },
+        {
+          "name": "HomeBazaar — Property Rates in Chennai",
+          "url": "https://homebazaar.com/knowledge/property-rates-in-chennai/",
+          "data_type": "portal_published_average",
+          "period": "Last modified 22 May 2026",
+          "figure_as_published": "₹7,650/sq.ft (average)",
+          "value_used_per_sqft": 7650,
+          "basis_note": "Single average per locality; the article does not state its data source.",
+          "checked": "2026-10-14"
+        },
+        {
+          "name": "NoBroker — Property Rates in Chennai (2026 columns)",
+          "url": "https://www.nobroker.in/blog/property-rates-in-chennai/",
+          "data_type": "portal_published_range",
+          "period": "Updated 7 Apr 2026",
+          "figure_as_published": "2026: ₹6,000 – ₹9,200/sq.ft",
+          "value_used_per_sqft": 7600,
+          "basis_note": "Range per locality for 2026; the article does not state its data source.",
+          "checked": "2026-10-14"
+        },
+        {
+          "name": "LiveHomes — Property Rates in Chennai 2026",
+          "url": "https://www.livehomes.in/blog-details/Property-Rates-in-Chennai-2026",
+          "data_type": "developer_published_range",
+          "period": "29 May 2026",
+          "figure_as_published": "₹7,500 – ₹11,000/sq.ft",
+          "value_used_per_sqft": 9250,
+          "basis_note": "Developer blog; ranges per locality; no data source or method stated.",
+          "checked": "2026-10-14"
+        }
+      ]
+    },
+    {
+      "id": "ecr-apartment",
+      "locality": "ECR",
+      "aliases": [
+        "East Coast Road"
+      ],
+      "property_type": "apartment",
+      "status": "published",
+      "rate_basis": "asking",
+      "area_basis": "super_built_up",
+      "unit": "sqft",
+      "low": 9375,
+      "mid": 11547,
+      "high": 13719,
+      "sources_count": 2,
+      "confidence": "low",
+      "last_checked": "2026-10-14",
+      "notes": "Sources disagree by 46%; the range shows the spread between them. ECR is a long corridor; rates vary widely by stretch. Prefer the specific locality where possible.",
+      "sources": [
+        {
+          "name": "LiveHomes — Property Rates in Chennai 2026",
+          "url": "https://www.livehomes.in/blog-details/Property-Rates-in-Chennai-2026",
+          "data_type": "developer_published_range",
+          "period": "29 May 2026",
+          "figure_as_published": "₹7,250 – ₹11,500/sq.ft",
+          "value_used_per_sqft": 9375,
+          "basis_note": "Developer blog; ranges per locality; no data source or method stated.",
+          "checked": "2026-10-14"
+        },
+        {
+          "name": "Housing.com — Property Rates in ECR, Chennai 2026",
+          "url": "https://www.housing.com/price-trends/property-rates-for-buy-in-ecr_chennai-Px9auqwvoqf0lcgq",
+          "data_type": "asking_price_locality_average",
+          "period": "2026 (no month stated)",
+          "figure_as_published": "Header avg ₹13,719/sq.ft (FAQ on the same page says ₹7,764); listing range ₹4,367 – ₹41,176",
+          "value_used_per_sqft": 13719,
+          "basis_note": "Listing-based. Page shows two conflicting averages (₹13,719 header, ₹7,764 FAQ).",
+          "checked": "2026-10-14"
+        }
+      ]
+    },
+    {
+      "id": "neelankarai-apartment",
+      "locality": "Neelankarai",
+      "aliases": [],
+      "property_type": "apartment",
+      "status": "draft",
+      "rate_basis": "asking",
+      "area_basis": "super_built_up",
+      "unit": "sqft",
+      "low": 13742,
+      "mid": 13742,
+      "high": 13742,
+      "sources_count": 1,
+      "confidence": "low",
+      "last_checked": "2026-10-14",
+      "notes": "Only one publisher found — kept as draft until Aventrix reviews it.",
+      "sources": [
+        {
+          "name": "Housing.com — Property Rates in ECR, Chennai 2026",
+          "url": "https://www.housing.com/price-trends/property-rates-for-buy-in-ecr_chennai-Px9auqwvoqf0lcgq",
+          "data_type": "asking_price_locality_average",
+          "period": "2026 (no month stated)",
+          "figure_as_published": "Neelankarai sub-locality rows on the ECR page: ₹13,026 / ₹13,742 / ₹13,985 (8–23 listings each)",
+          "value_used_per_sqft": 13742,
+          "basis_note": "Listing-based. Page shows two conflicting averages (₹13,719 header, ₹7,764 FAQ).",
+          "checked": "2026-10-14"
+        }
+      ]
+    },
+    {
+      "id": "perumbakkam-apartment",
+      "locality": "Perumbakkam",
+      "aliases": [],
+      "property_type": "apartment",
+      "status": "published",
+      "rate_basis": "asking",
+      "area_basis": "super_built_up",
+      "unit": "sqft",
+      "low": 6200,
+      "mid": 6250,
+      "high": 6300,
+      "sources_count": 2,
+      "confidence": "low",
+      "last_checked": "2026-10-14",
+      "notes": "",
+      "sources": [
+        {
+          "name": "Square Yards — locality property rates",
+          "url": "https://www.squareyards.com/property-rates/perumbakkam-chennai",
+          "data_type": "asking_price_locality_average",
+          "period": "Sep 2026",
+          "figure_as_published": "Asking Sale Price ₹6,300/sq.ft (apartment)",
+          "value_used_per_sqft": 6300,
+          "basis_note": "Labelled 'Asking Sale Price' on the page (listing-based). Apartment row used.",
+          "checked": "2026-10-14"
+        },
+        {
+          "name": "HomeBazaar — Property Rates in Chennai",
+          "url": "https://homebazaar.com/knowledge/property-rates-in-chennai/",
+          "data_type": "portal_published_average",
+          "period": "Last modified 22 May 2026",
+          "figure_as_published": "₹6,200/sq.ft (average)",
+          "value_used_per_sqft": 6200,
+          "basis_note": "Single average per locality; the article does not state its data source.",
+          "checked": "2026-10-14"
+        }
+      ]
+    },
+    {
+      "id": "omr-apartment",
+      "locality": "OMR",
+      "aliases": [
+        "Old Mahabalipuram Road",
+        "Rajiv Gandhi Salai"
+      ],
+      "property_type": "apartment",
+      "status": "draft",
+      "rate_basis": "asking",
+      "area_basis": "super_built_up",
+      "unit": "sqft",
+      "low": 8000,
+      "mid": 8000,
+      "high": 8000,
+      "sources_count": 1,
+      "confidence": "low",
+      "last_checked": "2026-10-14",
+      "notes": "Only one publisher found — kept as draft until Aventrix reviews it. OMR is a long corridor; rates vary widely by stretch. Prefer the specific locality where possible.",
+      "sources": [
+        {
+          "name": "LiveHomes — Property Rates in Chennai 2026",
+          "url": "https://www.livehomes.in/blog-details/Property-Rates-in-Chennai-2026",
+          "data_type": "developer_published_range",
+          "period": "29 May 2026",
+          "figure_as_published": "OMR (Perungudi–Sholinganallur): ₹6,500 – ₹9,500/sq.ft — the 11 Apr 2026 LiveHomes article gives ₹12,000 – ₹13,000 for OMR",
+          "value_used_per_sqft": 8000,
+          "basis_note": "Developer blog; ranges per locality; no data source or method stated.",
+          "checked": "2026-10-14"
+        }
+      ]
+    },
+    {
+      "id": "porur-apartment",
+      "locality": "Porur",
+      "aliases": [],
+      "property_type": "apartment",
+      "status": "published",
+      "rate_basis": "asking",
+      "area_basis": "super_built_up",
+      "unit": "sqft",
+      "low": 7750,
+      "mid": 8500,
+      "high": 9250,
+      "sources_count": 4,
+      "confidence": "medium",
+      "last_checked": "2026-10-14",
+      "notes": "",
+      "sources": [
+        {
+          "name": "Square Yards — locality property rates",
+          "url": "https://www.squareyards.com/property-rates/porur-chennai",
+          "data_type": "asking_price_locality_average",
+          "period": "Jun 2026",
+          "figure_as_published": "Asking Sale Price ₹9,250/sq.ft (apartment)",
+          "value_used_per_sqft": 9250,
+          "basis_note": "Labelled 'Asking Sale Price' on the page (listing-based). Apartment row used.",
+          "checked": "2026-10-14"
+        },
+        {
+          "name": "HomeBazaar — Property Rates in Chennai",
+          "url": "https://homebazaar.com/knowledge/property-rates-in-chennai/",
+          "data_type": "portal_published_average",
+          "period": "Last modified 22 May 2026",
+          "figure_as_published": "₹8,000/sq.ft (average)",
+          "value_used_per_sqft": 8000,
+          "basis_note": "Single average per locality; the article does not state its data source.",
+          "checked": "2026-10-14"
+        },
+        {
+          "name": "NoBroker — Property Rates in Chennai (2026 columns)",
+          "url": "https://www.nobroker.in/blog/property-rates-in-chennai/",
+          "data_type": "portal_published_range",
+          "period": "Updated 7 Apr 2026",
+          "figure_as_published": "2026: ₹8,000 – ₹9,000/sq.ft",
+          "value_used_per_sqft": 8500,
+          "basis_note": "Range per locality for 2026; the article does not state its data source.",
+          "checked": "2026-10-14"
+        },
+        {
+          "name": "LiveHomes — Property Rates in Chennai 2026",
+          "url": "https://www.livehomes.in/blog-details/Property-Rates-in-Chennai-2026",
+          "data_type": "developer_published_range",
+          "period": "29 May 2026",
+          "figure_as_published": "₹6,500 – ₹9,000/sq.ft",
+          "value_used_per_sqft": 7750,
+          "basis_note": "Developer blog; ranges per locality; no data source or method stated.",
+          "checked": "2026-10-14"
+        }
+      ]
+    },
+    {
+      "id": "guindy-apartment",
+      "locality": "Guindy",
+      "aliases": [],
+      "property_type": "apartment",
+      "status": "draft",
+      "rate_basis": "asking",
+      "area_basis": "super_built_up",
+      "unit": "sqft",
+      "low": 15650,
+      "mid": 15650,
+      "high": 15650,
+      "sources_count": 1,
+      "confidence": "low",
+      "last_checked": "2026-10-14",
+      "notes": "Only one publisher found — kept as draft until Aventrix reviews it.",
+      "sources": [
+        {
+          "name": "Square Yards — locality property rates",
+          "url": "https://www.squareyards.com/property-rates/guindy-chennai",
+          "data_type": "asking_price_locality_average",
+          "period": "Jun 2026",
+          "figure_as_published": "Asking Sale Price ₹15,650/sq.ft (apartment) — based on 7 projects",
+          "value_used_per_sqft": 15650,
+          "basis_note": "Labelled 'Asking Sale Price' on the page (listing-based). Apartment row used.",
+          "checked": "2026-10-14"
+        }
+      ]
+    },
+    {
+      "id": "anna-nagar-apartment",
+      "locality": "Anna Nagar",
+      "aliases": [],
+      "property_type": "apartment",
+      "status": "published",
+      "rate_basis": "asking",
+      "area_basis": "super_built_up",
+      "unit": "sqft",
+      "low": 14600,
+      "mid": 16265,
+      "high": 17930,
+      "sources_count": 5,
+      "confidence": "medium",
+      "last_checked": "2026-10-14",
+      "notes": "",
+      "sources": [
+        {
+          "name": "Square Yards — locality property rates",
+          "url": "https://www.squareyards.com/property-rates/anna-nagar-chennai",
+          "data_type": "asking_price_locality_average",
+          "period": "Sep 2026",
+          "figure_as_published": "Asking Sale Price ₹14,600/sq.ft (apartment)",
+          "value_used_per_sqft": 14600,
+          "basis_note": "Labelled 'Asking Sale Price' on the page (listing-based). Apartment row used.",
+          "checked": "2026-10-14"
+        },
+        {
+          "name": "Housing.com — Property Rates in Chennai 2026 (city locality table)",
+          "url": "https://housing.com/price-trends/chennai_tamil_nadu-P4bimjmco2m9afw0m",
+          "data_type": "asking_price_locality_average",
+          "period": "2026 (no month stated)",
+          "figure_as_published": "Avg ₹17,930/sq.ft (listing range ₹12,976 – ₹22,845)",
+          "value_used_per_sqft": 17930,
+          "basis_note": "Average of properties listed for sale (all residential listing types). Page title '2026'; no per-locality date.",
+          "checked": "2026-10-14"
+        },
+        {
+          "name": "HomeBazaar — Property Rates in Chennai",
+          "url": "https://homebazaar.com/knowledge/property-rates-in-chennai/",
+          "data_type": "portal_published_average",
+          "period": "Last modified 22 May 2026",
+          "figure_as_published": "₹16,150/sq.ft (average)",
+          "value_used_per_sqft": 16150,
+          "basis_note": "Single average per locality; the article does not state its data source.",
+          "checked": "2026-10-14"
+        },
+        {
+          "name": "NoBroker — Property Rates in Chennai (2026 columns)",
+          "url": "https://www.nobroker.in/blog/property-rates-in-chennai/",
+          "data_type": "portal_published_range",
+          "period": "Updated 7 Apr 2026",
+          "figure_as_published": "2026: ₹13,100 – ₹18,819/sq.ft",
+          "value_used_per_sqft": 15960,
+          "basis_note": "Range per locality for 2026; the article does not state its data source.",
+          "checked": "2026-10-14"
+        },
+        {
+          "name": "LiveHomes — Property Rates in Chennai 2026",
+          "url": "https://www.livehomes.in/blog-details/Property-Rates-in-Chennai-2026",
+          "data_type": "developer_published_range",
+          "period": "29 May 2026",
+          "figure_as_published": "₹12,700 – ₹19,500/sq.ft",
+          "value_used_per_sqft": 16100,
+          "basis_note": "Developer blog; ranges per locality; no data source or method stated.",
+          "checked": "2026-10-14"
+        }
+      ]
+    },
+    {
+      "id": "t-nagar-apartment",
+      "locality": "T. Nagar",
+      "aliases": [
+        "T Nagar",
+        "T.Nagar",
+        "Thyagaraya Nagar"
+      ],
+      "property_type": "apartment",
+      "status": "published",
+      "rate_basis": "asking",
+      "area_basis": "super_built_up",
+      "unit": "sqft",
+      "low": 16500,
+      "mid": 18225,
+      "high": 19950,
+      "sources_count": 2,
+      "confidence": "low",
+      "last_checked": "2026-10-14",
+      "notes": "",
+      "sources": [
+        {
+          "name": "HomeBazaar — Property Rates in Chennai",
+          "url": "https://homebazaar.com/knowledge/property-rates-in-chennai/",
+          "data_type": "portal_published_average",
+          "period": "Last modified 22 May 2026",
+          "figure_as_published": "₹19,950/sq.ft (average)",
+          "value_used_per_sqft": 19950,
+          "basis_note": "Single average per locality; the article does not state its data source.",
+          "checked": "2026-10-14"
+        },
+        {
+          "name": "LiveHomes — Location-wise Property Rate per Sq ft in Chennai 2026",
+          "url": "https://www.livehomes.in/blog-details/Location-Wise-Property-Rate-per-Sq-ft-in-Chennai-2026-Updated",
+          "data_type": "developer_published_range",
+          "period": "11 Apr 2026",
+          "figure_as_published": "₹16,000 – ₹17,000/sq.ft",
+          "value_used_per_sqft": 16500,
+          "basis_note": "Developer blog; no data source stated. Used only where the 29 May 2026 LiveHomes article has no figure.",
+          "checked": "2026-10-14"
+        }
+      ]
+    },
+    {
+      "id": "nungambakkam-apartment",
+      "locality": "Nungambakkam",
+      "aliases": [],
+      "property_type": "apartment",
+      "status": "published",
+      "rate_basis": "asking",
+      "area_basis": "super_built_up",
+      "unit": "sqft",
+      "low": 15750,
+      "mid": 18650,
+      "high": 21550,
+      "sources_count": 3,
+      "confidence": "low",
+      "last_checked": "2026-10-14",
+      "notes": "Sources disagree by 37%; the range shows the spread between them.",
+      "sources": [
+        {
+          "name": "Square Yards — locality property rates",
+          "url": "https://www.squareyards.com/property-rates/nungambakkam-chennai",
+          "data_type": "asking_price_locality_average",
+          "period": "Sep 2026",
+          "figure_as_published": "Asking Sale Price ₹15,750/sq.ft (apartment)",
+          "value_used_per_sqft": 15750,
+          "basis_note": "Labelled 'Asking Sale Price' on the page (listing-based). Apartment row used.",
+          "checked": "2026-10-14"
+        },
+        {
+          "name": "HomeBazaar — Property Rates in Chennai",
+          "url": "https://homebazaar.com/knowledge/property-rates-in-chennai/",
+          "data_type": "portal_published_average",
+          "period": "Last modified 22 May 2026",
+          "figure_as_published": "₹21,550/sq.ft (average)",
+          "value_used_per_sqft": 21550,
+          "basis_note": "Single average per locality; the article does not state its data source.",
+          "checked": "2026-10-14"
+        },
+        {
+          "name": "LiveHomes — Property Rates in Chennai 2026",
+          "url": "https://www.livehomes.in/blog-details/Property-Rates-in-Chennai-2026",
+          "data_type": "developer_published_range",
+          "period": "29 May 2026",
+          "figure_as_published": "₹18,000 – ₹25,000/sq.ft",
+          "value_used_per_sqft": 21500,
+          "basis_note": "Developer blog; ranges per locality; no data source or method stated.",
+          "checked": "2026-10-14"
+        }
+      ]
+    },
+    {
+      "id": "adyar-land",
+      "locality": "Adyar",
+      "aliases": [],
+      "property_type": "land",
+      "status": "published",
+      "rate_basis": "asking",
+      "area_basis": "plot_area",
+      "unit": "sqft",
+      "low": 24000,
+      "mid": 27875,
+      "high": 31750,
+      "sources_count": 2,
+      "confidence": "low",
+      "last_checked": "2026-10-14",
+      "notes": "Plot rates depend heavily on road frontage, shape, approvals and title; treat as a broad indication.",
+      "sources": [
+        {
+          "name": "NoBroker — Property Rates in Chennai (2026 columns)",
+          "url": "https://www.nobroker.in/blog/property-rates-in-chennai/",
+          "data_type": "portal_published_range",
+          "period": "Updated 7 Apr 2026",
+          "figure_as_published": "Plot 2026: ₹31,500 – ₹32,000/sq.ft",
+          "value_used_per_sqft": 31750,
+          "basis_note": "Range per locality for 2026; the article does not state its data source.",
+          "checked": "2026-10-14"
+        },
+        {
+          "name": "LiveHomes — Property Rates in Chennai 2026",
+          "url": "https://www.livehomes.in/blog-details/Property-Rates-in-Chennai-2026",
+          "data_type": "developer_published_range",
+          "period": "29 May 2026",
+          "figure_as_published": "Land: ₹20,000 – ₹28,000/sq.ft",
+          "value_used_per_sqft": 24000,
+          "basis_note": "Developer blog; ranges per locality; no data source or method stated.",
+          "checked": "2026-10-14"
+        }
+      ]
+    },
+    {
+      "id": "anna-nagar-land",
+      "locality": "Anna Nagar",
+      "aliases": [],
+      "property_type": "land",
+      "status": "published",
+      "rate_basis": "asking",
+      "area_basis": "plot_area",
+      "unit": "sqft",
+      "low": 29500,
+      "mid": 29538,
+      "high": 29575,
+      "sources_count": 2,
+      "confidence": "low",
+      "last_checked": "2026-10-14",
+      "notes": "Plot rates depend heavily on road frontage, shape, approvals and title; treat as a broad indication.",
+      "sources": [
+        {
+          "name": "NoBroker — Property Rates in Chennai (2026 columns)",
+          "url": "https://www.nobroker.in/blog/property-rates-in-chennai/",
+          "data_type": "portal_published_range",
+          "period": "Updated 7 Apr 2026",
+          "figure_as_published": "Plot 2026: ₹25,000 – ₹34,000/sq.ft",
+          "value_used_per_sqft": 29500,
+          "basis_note": "Range per locality for 2026; the article does not state its data source.",
+          "checked": "2026-10-14"
+        },
+        {
+          "name": "LiveHomes — Property Rates in Chennai 2026",
+          "url": "https://www.livehomes.in/blog-details/Property-Rates-in-Chennai-2026",
+          "data_type": "developer_published_range",
+          "period": "29 May 2026",
+          "figure_as_published": "Land: ₹24,250 – ₹34,900/sq.ft",
+          "value_used_per_sqft": 29575,
+          "basis_note": "Developer blog; ranges per locality; no data source or method stated.",
+          "checked": "2026-10-14"
+        }
+      ]
+    },
+    {
+      "id": "besant-nagar-land",
+      "locality": "Besant Nagar",
+      "aliases": [],
+      "property_type": "land",
+      "status": "draft",
+      "rate_basis": "asking",
+      "area_basis": "plot_area",
+      "unit": "sqft",
+      "low": 30000,
+      "mid": 30000,
+      "high": 30000,
+      "sources_count": 1,
+      "confidence": "low",
+      "last_checked": "2026-10-14",
+      "notes": "Only one publisher found — kept as draft until Aventrix reviews it. Plot rates depend heavily on road frontage, shape, approvals and title; treat as a broad indication.",
+      "sources": [
+        {
+          "name": "NoBroker — Property Rates in Chennai (2026 columns)",
+          "url": "https://www.nobroker.in/blog/property-rates-in-chennai/",
+          "data_type": "portal_published_range",
+          "period": "Updated 7 Apr 2026",
+          "figure_as_published": "Plot 2026: ₹25,000 – ₹35,000/sq.ft",
+          "value_used_per_sqft": 30000,
+          "basis_note": "Range per locality for 2026; the article does not state its data source.",
+          "checked": "2026-10-14"
+        }
+      ]
+    },
+    {
+      "id": "velachery-land",
+      "locality": "Velachery",
+      "aliases": [],
+      "property_type": "land",
+      "status": "draft",
+      "rate_basis": "asking",
+      "area_basis": "plot_area",
+      "unit": "sqft",
+      "low": 12525,
+      "mid": 12525,
+      "high": 12525,
+      "sources_count": 1,
+      "confidence": "low",
+      "last_checked": "2026-10-14",
+      "notes": "Only one publisher found — kept as draft until Aventrix reviews it. Plot rates depend heavily on road frontage, shape, approvals and title; treat as a broad indication.",
+      "sources": [
+        {
+          "name": "NoBroker — Property Rates in Chennai (2026 columns)",
+          "url": "https://www.nobroker.in/blog/property-rates-in-chennai/",
+          "data_type": "portal_published_range",
+          "period": "Updated 7 Apr 2026",
+          "figure_as_published": "Plot 2026: ₹11,500 – ₹13,550/sq.ft",
+          "value_used_per_sqft": 12525,
+          "basis_note": "Range per locality for 2026; the article does not state its data source.",
+          "checked": "2026-10-14"
+        }
+      ]
+    },
+    {
+      "id": "sholinganallur-land",
+      "locality": "Sholinganallur",
+      "aliases": [
+        "Shollinganallur"
+      ],
+      "property_type": "land",
+      "status": "draft",
+      "rate_basis": "asking",
+      "area_basis": "plot_area",
+      "unit": "sqft",
+      "low": 11750,
+      "mid": 11750,
+      "high": 11750,
+      "sources_count": 1,
+      "confidence": "low",
+      "last_checked": "2026-10-14",
+      "notes": "Only one publisher found — kept as draft until Aventrix reviews it. Plot rates depend heavily on road frontage, shape, approvals and title; treat as a broad indication.",
+      "sources": [
+        {
+          "name": "NoBroker — Property Rates in Chennai (2026 columns)",
+          "url": "https://www.nobroker.in/blog/property-rates-in-chennai/",
+          "data_type": "portal_published_range",
+          "period": "Updated 7 Apr 2026",
+          "figure_as_published": "Plot 2026: ₹10,500 – ₹13,000/sq.ft",
+          "value_used_per_sqft": 11750,
+          "basis_note": "Range per locality for 2026; the article does not state its data source.",
+          "checked": "2026-10-14"
+        }
+      ]
+    },
+    {
+      "id": "thoraipakkam-land",
+      "locality": "Thoraipakkam",
+      "aliases": [
+        "Thuraipakkam"
+      ],
+      "property_type": "land",
+      "status": "draft",
+      "rate_basis": "asking",
+      "area_basis": "plot_area",
+      "unit": "sqft",
+      "low": 10022,
+      "mid": 10022,
+      "high": 10022,
+      "sources_count": 1,
+      "confidence": "low",
+      "last_checked": "2026-10-14",
+      "notes": "Only one publisher found — kept as draft until Aventrix reviews it. Plot rates depend heavily on road frontage, shape, approvals and title; treat as a broad indication.",
+      "sources": [
+        {
+          "name": "NoBroker — Property Rates in Chennai (2026 columns)",
+          "url": "https://www.nobroker.in/blog/property-rates-in-chennai/",
+          "data_type": "portal_published_range",
+          "period": "Updated 7 Apr 2026",
+          "figure_as_published": "Plot 2026: ₹8,000 – ₹12,045/sq.ft",
+          "value_used_per_sqft": 10022,
+          "basis_note": "Range per locality for 2026; the article does not state its data source.",
+          "checked": "2026-10-14"
+        }
+      ]
+    },
+    {
+      "id": "ecr-land",
+      "locality": "ECR",
+      "aliases": [
+        "East Coast Road"
+      ],
+      "property_type": "land",
+      "status": "draft",
+      "rate_basis": "asking",
+      "area_basis": "plot_area",
+      "unit": "sqft",
+      "low": 6700,
+      "mid": 6700,
+      "high": 6700,
+      "sources_count": 1,
+      "confidence": "low",
+      "last_checked": "2026-10-14",
+      "notes": "Only one publisher found — kept as draft until Aventrix reviews it. ECR is a long corridor; rates vary widely by stretch. Prefer the specific locality where possible. Plot rates depend heavily on road frontage, shape, approvals and title; treat as a broad indication.",
+      "sources": [
+        {
+          "name": "LiveHomes — Property Rates in Chennai 2026",
+          "url": "https://www.livehomes.in/blog-details/Property-Rates-in-Chennai-2026",
+          "data_type": "developer_published_range",
+          "period": "29 May 2026",
+          "figure_as_published": "Land: ₹2,850 – ₹10,550/sq.ft",
+          "value_used_per_sqft": 6700,
+          "basis_note": "Developer blog; ranges per locality; no data source or method stated.",
+          "checked": "2026-10-14"
+        }
+      ]
+    },
+    {
+      "id": "tambaram-land",
+      "locality": "Tambaram",
+      "aliases": [],
+      "property_type": "land",
+      "status": "draft",
+      "rate_basis": "asking",
+      "area_basis": "plot_area",
+      "unit": "sqft",
+      "low": 4750,
+      "mid": 4750,
+      "high": 4750,
+      "sources_count": 1,
+      "confidence": "low",
+      "last_checked": "2026-10-14",
+      "notes": "Only one publisher found — kept as draft until Aventrix reviews it. Plot rates depend heavily on road frontage, shape, approvals and title; treat as a broad indication.",
+      "sources": [
+        {
+          "name": "LiveHomes — Property Rates in Chennai 2026",
+          "url": "https://www.livehomes.in/blog-details/Property-Rates-in-Chennai-2026",
+          "data_type": "developer_published_range",
+          "period": "29 May 2026",
+          "figure_as_published": "Land: ₹3,000 – ₹6,500/sq.ft",
+          "value_used_per_sqft": 4750,
+          "basis_note": "Developer blog; ranges per locality; no data source or method stated.",
+          "checked": "2026-10-14"
+        }
+      ]
+    }
+  ]
+}

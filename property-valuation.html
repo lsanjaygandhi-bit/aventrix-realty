@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script>
+    (function () {
+    // Manual scroll restoration: we save/restore scroll position
+    // ourselves (see script.js) so users returning via Back land back
+    // exactly where they were, instead of the browser's default
+    // (and often mistimed) automatic restoration.
+    if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+    }
+
+    function evaluateMobile() {
+        // Detect real mobile/touch devices instead of relying only on
+        // viewport width, so the mobile layout survives orientation
+        // changes (landscape too). Also re-checks on resize so a
+        // desktop browser window narrowed below 768px (e.g. during
+        // responsive QA / devtools) correctly gets the mobile layout,
+        // without affecting real touch devices, which stay mobile
+        // via the touch/UA check regardless of width or rotation.
+        var coarsePointer = window.matchMedia &&
+            window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+        var mobileUA = /Android|iPhone|iPad|iPod|IEMobile|BlackBerry|Opera Mini|Mobile/i
+            .test(navigator.userAgent);
+        var narrowViewport = window.innerWidth <= 768;
+
+        var shouldBeMobile = coarsePointer || mobileUA || narrowViewport;
+        document.documentElement.classList.toggle('is-mobile', shouldBeMobile);
+    }
+
+    evaluateMobile();
+
+    var resizeTimer;
+    window.addEventListener('resize', function () {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(evaluateMobile, 150);
+    });
+})();
+    </script>
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico?v=2">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png?v=2">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png?v=2">
+    <link rel="icon" type="image/png" sizes="48x48" href="/images/favicon/favicon-48x48.png?v=2">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png?v=2">
+    <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon/android-chrome-192x192.png?v=2">
+    <link rel="icon" type="image/png" sizes="512x512" href="/images/favicon/android-chrome-512x512.png?v=2">
+    <link rel="manifest" href="/site.webmanifest?v=2">
+
+    <title>Market Rates &amp; Indicative Valuation | Aventrix Realty</title>
+
+    <meta name="description" content="Check an indicative property value in Chennai yourself: Aventrix published locality rates for apartments and land, with sources and dates, or your own reference rate.">
+    <link rel="canonical" href="https://aventrixrealty.com/property-valuation.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Aventrix Realty">
+    <meta property="og:title" content="Market Rates &amp; Indicative Valuation | Aventrix Realty">
+    <meta property="og:description" content="Check an indicative property value in Chennai yourself: Aventrix published locality rates for apartments and land, with sources and dates, or your own reference rate.">
+    <meta property="og:url" content="https://aventrixrealty.com/property-valuation.html">
+    <meta property="og:image" content="https://aventrixrealty.com/images/chennai-marina.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Market Rates &amp; Indicative Valuation | Aventrix Realty">
+    <meta name="twitter:description" content="Check an indicative property value in Chennai yourself: Aventrix published locality rates for apartments and land, with sources and dates, or your own reference rate.">
+    <meta name="twitter:image" content="https://aventrixrealty.com/images/chennai-marina.jpg">
+
+    <link rel="stylesheet" href="style.css?v=20261014">
+    <link rel="stylesheet" href="css/property-tools.css?v=20261014c">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://aventrixrealty.com/index.html"},
+    {"@type": "ListItem", "position": 2, "name": "Property Tools", "item": "https://aventrixrealty.com/property-tools.html"},
+    {"@type": "ListItem", "position": 3, "name": "Market Rates & Valuation", "item": "https://aventrixrealty.com/property-valuation.html"}
+  ]
+}
+    </script>
+    <link rel="stylesheet" href="css/site-fixes.css?v=20261014">
+</head>
+
+<body class="pt-page">
+
+    <header class="header">
+    <div class="container nav">
+        <div class="logo">
+    <a href="index.html" class="logo-text">
+        <img src="images/aventrix-logo.png" alt="Aventrix Realty">
+    </a>
+</div>
+   <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+        <!-- Mobile-only bell — matches index.html's header exactly
+             (site-wide header consistency). Stays visible on every
+             breakpoint, unlike the desktop one inside .nav-right
+             (hidden on mobile by an existing rule). -->
+        <div class="home-app-header-actions">
+            <a href="account.html" class="home-app-bell-btn" aria-label="My Account">
+                <i class="far fa-circle-user" aria-hidden="true"></i>
+            </a>
+        </div>
+    <div class="menu-overlay" id="menuOverlay"></div>
+       <nav class="main-nav" data-hq="phones">
+
+    <a href="index.html">Home</a>
+
+    <a href="about.html">About Us</a>
+
+    <a href="properties.html">Properties</a>
+
+    <a href="services.html">Services</a>
+
+    <a href="list-with-us.html">List With Us</a>
+
+    <a href="free-valuation.html">Free Valuation</a>
+
+    <a href="joint-venture.html">Joint Venture</a>
+
+    <a href="property-tools.html"><span class="nav-label-extra">Property </span>Tools</a>
+    <a href="nri-services.html">NRI Services</a>
+
+    <a href="contact.html">Contact</a>
+
+    <a href="/admin/" class="main-nav-admin">Admin</a>
+
+
+    <div class="mobile-menu-divider"></div>
+    <span class="mobile-menu-contact-label">CONTACT</span>
+    <a href="tel:+919176887770" class="mobile-menu-phone">📞 +91 91768 87770</a>
+    <a href="tel:+917092356222" class="mobile-menu-phone">📞 +91 70923 56222</a>
+    <div class="mobile-menu-socials">
+      <a href="https://wa.me/919176887770" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" data-site="whatsapp-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 3.5a8.5 8.5 0 0 0-7.3 12.8L3.5 20.5l4.4-1.2A8.5 8.5 0 1 0 12 3.5z"/><path d="M8.7 8.6c.2-.5.4-.5.6-.5h.5c.2 0 .4 0 .5.4.2.5.6 1.5.6 1.6.1.1.1.3 0 .4-.1.2-.1.3-.3.4-.1.2-.3.3-.4.5-.1.1-.3.3-.1.5.2.4 1 1.5 2 2.3 1.2 1 1 .8 1.3.7.2 0 .4-.2.5-.4.2-.2.4-.2.6-.1l1.4.7c.2.1.4.2.4.3.1.2.1 1-.3 1.4-.4.5-1.4.9-2 .9-.6 0-1.4-.1-3.3-1-2.4-1.1-3.9-3.4-4-3.6-.1-.2-1-1.3-1-2.5s.6-1.8.8-2z" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="https://www.instagram.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Instagram" data-site="social-instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="0.8" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="https://www.facebook.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Facebook" data-site="social-facebook">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M15 8.5h-2a1.5 1.5 0 0 0-1.5 1.5v2h3.4l-.4 3H11.5v7h-3v-7H6.5v-3h2V9.7C8.5 7 10 5.5 12.5 5.5H15v3z"/></svg>
+      </a>
+      <a href="https://maps.app.goo.gl/Gfs3JJ4VVN4cxU5G7?g_st=ic" target="_blank" rel="noopener noreferrer" aria-label="Google Maps" data-hq="maps">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg>
+      </a>
+    </div>
+
+  </nav>
+
+        <div class="nav-right">
+            <!-- Notification/Bell — matches index.html's header exactly
+                 (site-wide header consistency), same .nav-wishlist-link
+                 styling, same position ahead of the phone number. -->
+            <a href="account.html" class="nav-wishlist-link nav-bell-link" aria-label="My Account">
+                <i class="far fa-circle-user" aria-hidden="true"></i>
+            </a>
+            <a href="tel:+919176887770" class="nav-phone" aria-label="Call Aventrix Realty">
+                <i class="fas fa-phone-alt" aria-hidden="true"></i>
+            </a>
+        </div>
+    </div>
+     </header>
+
+<!-- ==============================
+     PROPERTY INTELLIGENCE CENTRE — Market Rates &amp; Indicative Valuation
+     Page frame (header, footer, floating buttons, shared scripts) is
+     the same markup every other page uses. Page styles:
+     css/property-tools.css; behaviour: js/property-tools.js. -->
+<section class="list-hero pt-hero">
+
+    <div class="pt-hero-media is-valuation" aria-hidden="true"></div>
+
+    <div class="container">
+
+        <span class="section-tag">MARKET RATES &amp; VALUATION</span>
+
+        <h1>Estimate an Indicative Value</h1>
+
+        <p>Pick a locality and property type, enter the area, and see an indicative value range instantly.</p>
+
+    </div>
+
+</section>
+
+<nav class="pt-breadcrumb" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li><a href="property-tools.html">Property Tools</a></li><li aria-current="page">Market Rates &amp; Valuation</li></ol></nav>
+
+<main id="main">
+
+<section class="pt-section">
+    <div class="pt-container">
+        <div class="pt-calc">
+
+            <form class="pt-card" id="valuation-tool" novalidate>
+                <div class="pt-card-head">
+                    <span class="pt-icon"><i class="fas fa-sliders" aria-hidden="true"></i></span>
+                    <h2>Property details</h2>
+                </div>
+                <div class="pt-fields">
+                    <div class="pt-field is-wide">
+                        <span class="pt-label" id="val-type-label">Property type</span>
+                        <div class="pt-choice" role="radiogroup" aria-labelledby="val-type-label">
+                            <label><input type="radio" name="propertyType" value="apartment" checked><span>Apartment / flat</span></label>
+                            <label><input type="radio" name="propertyType" value="land"><span>Residential land / plot</span></label>
+                            <label><input type="radio" name="propertyType" value="commercial"><span>Commercial</span></label>
+                        </div>
+                    </div>
+                    <div class="pt-field">
+                        <label for="val-locality">Locality</label>
+                        <select id="val-locality" name="locality">
+                            <option value="">Select a locality</option>
+                            <option value="__other">Other locality (enter your own rate)</option>
+                        </select>
+                        <p class="pt-hint">Localities with an Aventrix published rate are listed.</p>
+                    </div>
+                    <div class="pt-field">
+                        <label for="val-area">Area</label>
+                        <div class="pt-inline">
+                            <input type="number" id="val-area" name="area" min="0" step="any" inputmode="decimal" placeholder="e.g. 1200" aria-describedby="val-area-error">
+                            <select id="val-area-unit" name="areaUnit" aria-label="Area unit">
+                                <option value="sqft">sq.ft.</option>
+                                <option value="ground">ground</option>
+                                <option value="cent">cent</option>
+                                <option value="acre">acre</option>
+                            </select>
+                        </div>
+                        <p class="pt-error" id="val-area-error" role="alert"></p>
+                    </div>
+                    <div class="pt-field is-wide" id="val-area-basis-wrap">
+                        <label for="val-area-basis">Apartment area measured as</label>
+                        <select id="val-area-basis" name="areaBasis">
+                            <option value="super_built_up">Super built-up area</option>
+                            <option value="built_up">Built-up area</option>
+                            <option value="carpet">Carpet area</option>
+                        </select>
+                    </div>
+                    <div class="pt-field is-wide">
+                        <span class="pt-label" id="val-source-label">Rate to use</span>
+                        <div class="pt-choice" role="radiogroup" aria-labelledby="val-source-label">
+                            <label><input type="radio" name="rateSource" id="val-source-published" value="published" disabled><span>Aventrix published rate<small>Used automatically when we publish a rate for this locality and property type.</small></span></label>
+                            <label><input type="radio" name="rateSource" id="val-source-own" value="own" checked><span>My own reference rate<small>For example the guideline value from TNREGINET, or asking prices you have seen.</small></span></label>
+                        </div>
+                        <div id="val-published-panel" class="pt-published-panel" aria-live="polite"><p class="pt-hint">Loading Aventrix published rates…</p></div>
+                    </div>
+                    <div class="pt-field is-wide" id="val-own-rate">
+                        <div class="pt-fields">
+                            <div class="pt-field">
+                                <label for="val-rate-low">Rate (low)</label>
+                                <div class="pt-inline">
+                                    <input type="number" id="val-rate-low" min="0" step="any" inputmode="decimal" placeholder="₹" aria-describedby="val-rate-low-error">
+                                    <select id="val-rate-unit" aria-label="Rate unit">
+                                        <option value="sqft">per sq.ft.</option>
+                                        <option value="ground">per ground</option>
+                                    </select>
+                                </div>
+                                <p class="pt-error" id="val-rate-low-error" role="alert"></p>
+                            </div>
+                            <div class="pt-field">
+                                <label for="val-rate-high">Rate (high, optional)</label>
+                                <input type="number" id="val-rate-high" min="0" step="any" inputmode="decimal" placeholder="₹ — leave blank for a single figure" aria-describedby="val-rate-high-error">
+                                <p class="pt-error" id="val-rate-high-error" role="alert"></p>
+                            </div>
+                            <div class="pt-field is-wide">
+                                <label for="val-rate-basis">Where does this rate come from?</label>
+                                <select id="val-rate-basis">
+                                    <option value="guideline">Government guideline value (TNREGINET)</option>
+                                    <option value="asking">Online asking prices / listings</option>
+                                    <option value="registered">Registered sale (transaction) evidence</option>
+                                    <option value="opinion">Professional opinion / other</option>
+                                    <option value="unsure">Not sure</option>
+                                </select>
+                                <p class="pt-hint">Guideline values can be searched on the official <a href="https://tnreginet.gov.in/portal/" target="_blank" rel="noopener noreferrer">TNREGINET portal</a>.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pt-actions">
+                    <button type="submit" class="pt-btn"><i class="fas fa-calculator" aria-hidden="true"></i> Calculate</button>
+                    <button type="reset" class="pt-btn is-outline" id="val-reset">Reset</button>
+                </div>
+            </form>
+
+            <div class="pt-card pt-result" aria-live="polite">
+                <div id="val-output-empty" class="pt-result-foot" style="padding-top:22px">
+                    <p><strong>Your estimate will appear here.</strong></p>
+                    <p>Choose a locality and enter the area. Where Aventrix publishes a rate it is used automatically; otherwise enter your own reference rate. Units are converted for you (1 ground = 2,400 sq.ft.; 1 cent = 435.6 sq.ft.).</p>
+                </div>
+                <div id="val-output" hidden>
+                    <div class="pt-result-head">
+                        <span class="pt-result-label">Indicative value</span>
+                        <span class="pt-result-value" id="val-result-value">—</span>
+                        <span class="pt-result-sub" id="val-result-sub"></span>
+                    </div>
+                    <dl class="pt-rows">
+                        <div class="pt-row"><dt>Indicative low</dt><dd id="val-r-low">—</dd></div>
+                        <div class="pt-row" id="val-r-mid-row"><dt>Midpoint</dt><dd id="val-r-mid">—</dd></div>
+                        <div class="pt-row"><dt>Indicative high</dt><dd id="val-r-high">—</dd></div>
+                        <div class="pt-row"><dt>Area used</dt><dd id="val-r-area">—</dd></div>
+                        <div class="pt-row"><dt>Effective rate</dt><dd id="val-r-rate">—</dd></div>
+                        <div class="pt-row" id="val-r-ground-row" hidden><dt>Equivalent per ground</dt><dd id="val-r-ground">—</dd></div>
+                        <div class="pt-row"><dt>Rate basis</dt><dd id="val-r-basis">—</dd></div>
+                        <div class="pt-row"><dt>Rate source</dt><dd id="val-r-source">—</dd></div>
+                    </dl>
+                    <div class="pt-result-foot">
+                        <p id="val-r-note"></p>
+                        <p>This is an indicative figure from locality rates, not a valuation of the specific property. Nothing you enter is sent anywhere.</p>
+                    </div>
+                    <div class="pt-result-foot pt-actions" style="margin-top:0">
+                        <a class="pt-btn is-gold" href="free-valuation.html#valuation-form">Request a professional valuation</a>
+                        <a class="pt-btn is-outline" id="val-whatsapp" href="https://wa.me/919176887770" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" aria-hidden="true"></i> Discuss on WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="pt-section">
+    <div class="pt-container">
+        <div class="pt-section-head">
+            <span class="pt-eyebrow">Know your number</span>
+            <h2>Three different “rates” — and why they differ</h2>
+        </div>
+        <dl class="pt-deflist">
+            <div><dt>Government guideline value</dt><dd>The minimum value notified by the Registration Department for stamp duty and registration, searchable on TNREGINET by village / street and survey number. It is a statutory reference, not a market price, and can sit well above or below what buyers actually pay.</dd></div>
+            <div><dt>Online asking price</dt><dd>What sellers are asking on listing portals. Useful for seeing supply, but asking prices are often negotiated down and include unsold or overpriced stock.</dd></div>
+            <div><dt>Registered transaction price</dt><dd>The consideration stated in registered sale deeds. The closest evidence of actual prices, but it needs comparable properties, recent dates and a check that the stated value reflects the real deal.</dd></div>
+        </dl>
+        <div class="pt-notice"><i class="fas fa-triangle-exclamation" aria-hidden="true"></i><p>An indicative figure from this page is not a valuation report and must not be used for lending, legal, tax or court purposes. Plot shape, frontage, road width, approvals, title, floor, age and condition can move the value of a specific property well outside a locality rate.</p></div>
+    </div>
+</section>
+
+<section class="pt-section">
+    <div class="pt-container">
+        <div class="pt-section-head">
+            <span class="pt-eyebrow">Published rates</span>
+            <h2>Aventrix locality rate table</h2>
+            <p>Indicative <strong>asking-price</strong> rates compiled from online property portals — not guideline values or registered sale prices. A rate is published only when at least two independent sources agree it is available; the range shows the spread between them. <span id="rate-table-reviewed">Loading…</span></p>
+        </div>
+        <div class="pt-table-wrap">
+            <table class="pt-table">
+                <thead><tr><th scope="col">Locality</th><th scope="col">Property type</th><th scope="col">Indicative rate</th><th scope="col">Confidence</th><th scope="col">Last checked</th></tr></thead>
+                <tbody id="rate-table-body"><tr><td colspan="5" class="pt-empty">Loading…</td></tr></tbody>
+            </table>
+        </div>
+        <p class="pt-hint" id="rate-table-gaps" style="margin-top:12px"></p>
+    </div>
+</section>
+
+</main>
+
+<footer class="premium-footer">
+
+    <div class="container premium-footer-top">
+
+        <div class="pf-col pf-brand">
+            <h3 class="pf-logo"><img src="images/aventrix-logo-white.png" alt="Aventrix Realty"></h3>
+            <p class="pf-tagline" data-site="footer-tagline">Where Legacy Meets The Next Generation</p>
+            <p class="pf-desc" data-site="footer-description">
+                Premium real estate advisory across Chennai — residential,
+                commercial, land and joint venture solutions, guided by
+                trust and decades of local expertise.
+            </p>
+            <div class="pf-contact">
+                <!-- Head Office — unchanged, no existing content removed -->
+                <div class="pf-office-block" data-hq="phones">
+                    <p class="pf-office-name" data-hq="name">Aventrix Realty – Head Office</p>
+                    <p data-hq="address">No.27, 1st Main Road, Newcolony, Chromepet, Chennai, Tamil Nadu</p>
+                    <p class="pf-office-label">Phone:</p>
+                    <a href="tel:+919176887770">+91 91768 87770</a>
+                    <a href="tel:+917092356222">+91 70923 56222</a>
+                    <p class="pf-office-label">Email:</p>
+                    <a href="mailto:office@aventrixrealty.com" data-hq="email">office@aventrixrealty.com</a>
+                </div>
+                <!-- Adyar Branch — compact reference only; full details live on the Office Locations section -->
+                <p class="pf-branch-line"><span class="pf-office-label">Branch Office:</span> Adyar, Chennai</p>
+            </div>
+        </div>
+
+        <div class="pf-col">
+            <h4 class="pf-heading">About Aventrix</h4>
+            <ul class="pf-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="index.html#contact">Contact Us</a></li>
+            </ul>
+        </div>
+
+        <div class="pf-col">
+            <h4 class="pf-heading">Quick Links</h4>
+            <ul class="pf-links">
+                <li><a href="services.html">Our Services</a></li>
+                <li><a href="our-realtors.html">Realtors</a></li>
+                <li><a href="brokerage-fees.html">Brokerage &amp; Fees</a></li>
+                <li><a href="emi-calculator.html">EMI Calculator</a></li>
+                <li><a href="jv-calculator.html">Joint Venture Calculator</a></li>
+            </ul>
+        </div>
+
+        <div class="pf-col">
+            <h4 class="pf-heading">Follow Us</h4>
+            <div class="pf-social">
+                <a href="https://www.facebook.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Facebook" data-site="social-facebook">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M15 8.5h-2a1.5 1.5 0 0 0-1.5 1.5v2h3.4l-.4 3H11.5v7h-3v-7H6.5v-3h2V9.7C8.5 7 10 5.5 12.5 5.5H15v3z"/></svg>
+                    <span>Facebook</span>
+                </a>
+                <a href="https://www.instagram.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Instagram" data-site="social-instagram">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="0.8" fill="currentColor" stroke="none"/></svg>
+                    <span>Instagram</span>
+                </a>
+                <a href="https://www.linkedin.com/in/lsanjaygandhi" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" data-site="social-linkedin">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="3"/><path d="M8 10.5v6M8 7.8v.02M12 16.5v-3.7c0-1.2.9-2 2-2s2 .8 2 2v3.7"/></svg>
+                    <span>LinkedIn</span>
+                </a>
+                <a href="https://youtube.com/@sanjaygandhirealty" target="_blank" rel="noopener noreferrer" aria-label="YouTube" data-site="social-youtube">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="3" y="6.5" width="18" height="11" rx="3.5"/><path d="M10.3 9.8l4.4 2.2-4.4 2.2z" fill="currentColor" stroke="none"/></svg>
+                    <span>YouTube</span>
+                </a>
+                <a href="https://wa.me/919176887770" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" data-site="whatsapp-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 3.5a8.5 8.5 0 0 0-7.3 12.8L3.5 20.5l4.4-1.2A8.5 8.5 0 1 0 12 3.5z"/><path d="M8.7 8.6c.2-.5.4-.5.6-.5h.5c.2 0 .4 0 .5.4.2.5.6 1.5.6 1.6.1.1.1.3 0 .4-.1.2-.1.3-.3.4-.1.2-.3.3-.4.5-.1.1-.3.3-.1.5.2.4 1 1.5 2 2.3 1.2 1 1 .8 1.3.7.2 0 .4-.2.5-.4.2-.2.4-.2.6-.1l1.4.7c.2.1.4.2.4.3.1.2.1 1-.3 1.4-.4.5-1.4.9-2 .9-.6 0-1.4-.1-3.3-1-2.4-1.1-3.9-3.4-4-3.6-.1-.2-1-1.3-1-2.5s.6-1.8.8-2z" fill="currentColor" stroke="none"/></svg>
+                    <span>WhatsApp</span>
+                </a>
+                <a href="https://maps.app.goo.gl/Gfs3JJ4VVN4cxU5G7?g_st=ic" target="_blank" rel="noopener noreferrer" aria-label="Google Maps" data-hq="maps">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg>
+                    <span>Google Maps</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Google Map — matches index.html's footer exactly (site-wide
+             footer consistency). Existing 4 columns above unchanged in
+             content; only the shared .premium-footer-top grid column
+             widths (in style.css) accommodate this 5th column. -->
+        <div class="pf-col pf-map-col">
+            <h4 class="pf-heading">Find Us</h4>
+            <div class="pf-map-wrap">
+                <div data-hq="map-embed" class="pf-map-embed-host" style="height:100%;min-height:220px;overflow:hidden;border:1px solid rgba(226,181,66,.35);border-radius:12px;"><iframe class="pf-map-embed-frame" src="https://www.google.com/maps?q=No.27%2C%201st%20Main%20Road%2C%20New%20Colony%2C%20Chromepet%2C%20Chennai%2C%20Tamil%20Nadu&amp;output=embed" width="100%" height="260" style="display:block;border:0;min-height:220px;" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Aventrix Realty Head Office Map" allowfullscreen></iframe></div></div>
+        </div>
+
+    </div>
+
+    <div class="premium-footer-divider"></div>
+
+    <div class="container premium-footer-bottom">
+        <p class="pf-copyright" data-site="copyright-text">© 2026 Aventrix Realty. All Rights Reserved. &#124; Designed with &#10084;&#65039; by L. Sanjay Gandhi</p>
+        <div class="pf-legal">
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="terms.html">Terms &amp; Conditions</a>
+            <a href="sitemap.html">Sitemap</a>
+            <a href="/admin/" class="pf-legal-admin">Admin</a>
+        </div>
+    </div>
+
+</footer>
+
+<a href="https://wa.me/919176887770" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" data-site="whatsapp-link">
+    <img src="images/whatsapp-icon.png" alt="WhatsApp">
+</a>
+
+<button id="backToTop" class="back-to-top" aria-label="Back to top">
+    <i class="fas fa-chevron-up"></i>
+</button>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-client.js"></script>
+<script src="js/public-site-settings.js?v=20260926b"></script>
+<script src="js/public-offices.js?v=20261016-owner-map"></script>
+<script src="js/aventrix-storage.js"></script>
+<script src="js/wishlist-widget.js"></script>
+<script src="script.js?v=20260926b"></script>
+<script src="js/property-tools.js?v=20261014c"></script>
+
+</body>
+
+</html>

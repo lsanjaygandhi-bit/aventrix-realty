@@ -69,8 +69,8 @@
     <meta name="twitter:description" content="Aventrix Realty — trusted real estate advisory in Chennai for residential, commercial, land and joint venture properties. TNRERA-registered agent. Buy, sell, rent or invest with expert local guidance.">
     <meta name="twitter:image" content="https://aventrixrealty.com/images/chennai-marina.jpg">
 
-    <link rel="stylesheet" href="style.css?v=20260925">
-    <link rel="stylesheet" href="css/home-hero.css?v=4">
+    <link rel="stylesheet" href="style.css?v=20261014">
+    <link rel="stylesheet" href="css/home-hero.css?v=5">
     <link rel="stylesheet" href="css/phase2a.css?v=1">
 
 
@@ -196,7 +196,7 @@
     <link rel="stylesheet" href="css/property-cards.css?v=20260926">
     <script src="js/property-card-image-fallback.js?v=20260926" defer></script>
     <link rel="stylesheet" href="css/properties-map.css?v=20260927d">
-    <link rel="stylesheet" href="css/site-fixes.css?v=20260926b">
+    <link rel="stylesheet" href="css/site-fixes.css?v=20261014">
 </head>
   <body class="home-page" data-page-key="home">
     <header class="header">
@@ -236,6 +236,8 @@
     <a href="free-valuation.html">Free Valuation</a>
 
     <a href="joint-venture.html">Joint Venture</a>
+
+    <a href="property-tools.html"><span class="nav-label-extra">Property </span>Tools</a>
     <a href="nri-services.html">NRI Services</a>
 
     <a href="contact.html">Contact</a>
@@ -671,7 +673,15 @@
                 <h2 data-cms-heading>Future Properties</h2>
                 <p data-cms-f="subtitle">Handpicked properties for your future.</p>
             </div>
-            <a href="properties.html" class="home-app-see-all" data-cms-href="link" data-cms-f="link_text">See All <span aria-hidden="true">&rarr;</span></a>
+            <div class="hp-rail-head-actions">
+                <!-- Horizontal rail arrows (js/home-property-rail.js). Hidden
+                     until the cards actually overflow, and in Map View. -->
+                <div class="hp-rail-controls" id="hpRailControls" hidden>
+                    <button type="button" class="hp-rail-btn" id="hpRailPrev" aria-controls="futurePropertiesGrid" aria-label="Scroll to previous properties"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
+                    <button type="button" class="hp-rail-btn" id="hpRailNext" aria-controls="futurePropertiesGrid" aria-label="Scroll to more properties"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
+                </div>
+                <a href="properties.html" class="home-app-see-all" data-cms-href="link" data-cms-f="link_text">See All <span aria-hidden="true">&rarr;</span></a>
+            </div>
         </div>
 
         <!-- List / Map toggle (js/properties-map.js — the same component as
@@ -681,7 +691,10 @@
             <button type="button" id="hpViewMapBtn" aria-pressed="false"><i class="fas fa-map-location-dot" aria-hidden="true"></i> Map View</button>
         </div>
 
-        <div class="home-app-future-grid" id="futurePropertiesGrid"></div>
+        <!-- Horizontal card rail (css/home-hero.css "FUTURE PROPERTIES RAIL").
+             Cards are still rendered by js/home-app-experience.js and the
+             List/Map toggle still hides this element via [hidden]. -->
+        <div class="home-app-future-grid" id="futurePropertiesGrid" role="region" aria-label="Future properties — scroll sideways for more" tabindex="0"></div>
 
         <div class="sf-map-view hp-map-view" id="hpMapView" hidden>
             <p class="sf-map-note" id="hpMapNote" aria-live="polite" hidden></p>
@@ -1482,6 +1495,7 @@ END TEMPORARILY HIDDEN — Featured Locations section -->
             <a href="privacy-policy.html">Privacy Policy</a>
             <a href="terms.html">Terms &amp; Conditions</a>
             <a href="sitemap.html">Sitemap</a>
+            <a href="property-tools.html">Property Tools</a>
             <a href="/admin/" class="pf-legal-admin">Admin</a>
         </div>
     </div>
@@ -1531,7 +1545,7 @@ END TEMPORARILY HIDDEN — Featured Locations section -->
     <a href="properties.html" class="home-app-nav-item">
         <i class="fas fa-search" aria-hidden="true"></i><span>Search</span>
     </a>
-    <a href="list-with-us.html" class="home-app-nav-postfree">
+    <a href="list-with-us.html" class="home-app-nav-postfree" aria-label="Post property free">
         <i class="fas fa-plus" aria-hidden="true"></i>
     </a>
     <a href="wishlist.html" class="home-app-nav-item">
@@ -1561,6 +1575,7 @@ END TEMPORARILY HIDDEN — Featured Locations section -->
 <script src="js/home-app-experience.js?v=20260927"></script>
 <script src="js/maps-config.js?v=20260926"></script>
 <script src="js/properties-map.js?v=20260927d"></script>
+<script src="js/home-property-rail.js?v=20261014"></script>
 <script src="script.js?v=20260926b"></script>
 </body>
 </html>
