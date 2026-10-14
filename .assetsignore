@@ -5,3 +5,8 @@ node_modules
 sql
 tests
 *.md
+
+# keep these off the public site
+.wrangler
+*.sql
+*.csv
