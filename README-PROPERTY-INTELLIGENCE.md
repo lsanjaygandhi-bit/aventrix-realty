@@ -19,7 +19,7 @@ Seven static pages under the site's shared header, footer and scripts. No databa
 The page frame is generated from `about.html` so the header is the real site header. If the shared header or footer changes, update the seven pages the same way as every other page (or regenerate them).
 
 ## Market rate data (Aventrix published rates)
-- `data/market-rates.json` — the live dataset the valuation page reads (schema v2). `data/market-rates-review.csv` — the same data, one row per source, for review in Excel / Sheets.
+- `data/market-rates.json` — the live dataset the valuation page reads (schema v2). `market-rates-review.csv` (project root, not deployed) — the same data, one row per source, for review in Excel / Sheets.
 - Full research notes: `MARKET-RATES-REPORT-2026-10-14.md`.
 
 ### How the page uses it

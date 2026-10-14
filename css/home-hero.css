@@ -1035,3 +1035,69 @@ html.is-mobile .home-app-future-section .hp-rail-controls{ display:none; }
 @media (prefers-reduced-motion:reduce){
     .home-page #futurePropertiesGrid{ scroll-behavior:auto; }
 }
+
+/* ===========================================================
+   FUTURE PROPERTIES RAIL — PHONES: ONE CARD AT A TIME (2026-10-14)
+   Phones (<=640px, or touch devices <700px) show exactly one full
+   card per view: the card is 100% of the rail width and the rail
+   clips everything outside its own box, so no neighbouring card
+   peeks in. Swipe moves one card (scroll-snap-stop: always);
+   Previous / Next + "2 / 20" sit under the card. Tablet and
+   desktop rules above are unchanged.
+=========================================================== */
+.home-app-future-section .hp-rail-mobile-nav{ display:none; }
+.home-app-future-section .hp-rail-mobile-nav[hidden]{ display:none !important; }
+.home-app-future-section .hp-rail-count{
+    min-width:64px;
+    text-align:center;
+    font-size:14px;
+    font-weight:600;
+    color:#0F3B2E;
+    font-variant-numeric:tabular-nums;
+}
+
+@media (max-width:640px){
+    .home-page #futurePropertiesGrid{
+        --hp-rail-cols:1;
+        --hp-rail-gap:16px;
+        scroll-snap-type:x mandatory;
+        scroll-padding-inline:0;
+        padding:4px 0 6px;
+        margin:0;
+        scrollbar-width:none;
+    }
+    .home-page #futurePropertiesGrid::-webkit-scrollbar{ display:none; }
+    .home-page #futurePropertiesGrid > .home-app-property-card{
+        scroll-snap-align:center;
+        scroll-snap-stop:always;
+    }
+    .home-app-future-section .hp-rail-mobile-nav{
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        gap:18px;
+        margin:14px 0 4px;
+    }
+    .home-app-future-section .hp-rail-mobile-nav .hp-rail-btn{ width:44px; height:44px; font-size:15px; }
+
+    /* Readable single card */
+    .home-page #futurePropertiesGrid .home-app-card-content{ padding:14px 16px 12px; }
+    .home-page #futurePropertiesGrid .home-app-card-content h3{ font-size:17px; line-height:1.35; -webkit-line-clamp:2; margin-bottom:6px; }
+    .home-page #futurePropertiesGrid .home-app-card-location{ font-size:13.5px; margin-bottom:8px; }
+    .home-page #futurePropertiesGrid .home-app-card-details{ font-size:16px; }
+    .home-page #futurePropertiesGrid .home-app-card-actions{ flex-wrap:nowrap; gap:10px; padding:0 16px 16px; }
+    .home-page #futurePropertiesGrid .home-app-card-view-btn{ flex:1 1 auto; min-height:44px; font-size:14px; border-radius:10px; }
+    .home-page #futurePropertiesGrid .home-app-card-icon-btn{ flex:0 0 44px; width:44px; height:44px; }
+}
+/* Touch phones that report a slightly wider viewport (up to 699px) */
+@media (max-width:699px){
+    html.is-mobile .home-page #futurePropertiesGrid{
+        --hp-rail-cols:1;
+        --hp-rail-gap:16px;
+        scroll-snap-type:x mandatory;
+        padding:4px 0 6px;
+        margin:0;
+    }
+    html.is-mobile .home-page #futurePropertiesGrid > .home-app-property-card{ scroll-snap-align:center; scroll-snap-stop:always; }
+    html.is-mobile .home-app-future-section .hp-rail-mobile-nav{ display:flex; align-items:center; justify-content:center; gap:18px; margin:14px 0 4px; }
+}

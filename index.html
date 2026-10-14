@@ -70,7 +70,7 @@
     <meta name="twitter:image" content="https://aventrixrealty.com/images/chennai-marina.jpg">
 
     <link rel="stylesheet" href="style.css?v=20261014">
-    <link rel="stylesheet" href="css/home-hero.css?v=5">
+    <link rel="stylesheet" href="css/home-hero.css?v=6">
     <link rel="stylesheet" href="css/phase2a.css?v=1">
 
 
@@ -695,6 +695,15 @@
              Cards are still rendered by js/home-app-experience.js and the
              List/Map toggle still hides this element via [hidden]. -->
         <div class="home-app-future-grid" id="futurePropertiesGrid" role="region" aria-label="Future properties — scroll sideways for more" tabindex="0"></div>
+
+        <!-- Phones only (css/home-hero.css): one card at a time with
+             Previous / Next and a position counter. Hidden until the
+             cards overflow, and in Map View. js/home-property-rail.js -->
+        <div class="hp-rail-mobile-nav" id="hpRailMobileNav" hidden>
+            <button type="button" class="hp-rail-btn" id="hpRailPrevM" aria-controls="futurePropertiesGrid" aria-label="Previous property"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
+            <span class="hp-rail-count" id="hpRailCount" aria-live="polite"></span>
+            <button type="button" class="hp-rail-btn" id="hpRailNextM" aria-controls="futurePropertiesGrid" aria-label="Next property"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
+        </div>
 
         <div class="sf-map-view hp-map-view" id="hpMapView" hidden>
             <p class="sf-map-note" id="hpMapNote" aria-live="polite" hidden></p>
@@ -1575,7 +1584,7 @@ END TEMPORARILY HIDDEN — Featured Locations section -->
 <script src="js/home-app-experience.js?v=20260927"></script>
 <script src="js/maps-config.js?v=20260926"></script>
 <script src="js/properties-map.js?v=20260927d"></script>
-<script src="js/home-property-rail.js?v=20261014"></script>
+<script src="js/home-property-rail.js?v=20261014b"></script>
 <script src="script.js?v=20260926b"></script>
 </body>
 </html>

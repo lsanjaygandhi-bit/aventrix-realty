@@ -1,51 +1,87 @@
 /* =====================================================================
-   AVENTRIX REALTY — HOMEPAGE "FUTURE PROPERTIES" RAIL ARROWS
+   AVENTRIX REALTY — HOMEPAGE "FUTURE PROPERTIES" RAIL CONTROLS
    The rail itself is pure CSS (css/home-hero.css, "FUTURE PROPERTIES
    RAIL") on the existing #futurePropertiesGrid, so swipe / trackpad /
-   keyboard scrolling work even if this file never loads. This only
-   adds the Previous / Next buttons in the section heading:
-     - shown only when the cards overflow the row, and not in Map View
-     - disabled at the start / end of the row
-     - each press moves by one visible "page" of cards
+   keyboard scrolling work even if this file never loads. This adds:
+     - desktop / tablet: Previous / Next in the section heading
+       (#hpRailPrev / #hpRailNext), moving one visible "page" of cards
+     - phones: Previous / Next + "2 / 20" under the single card
+       (#hpRailPrevM / #hpRailNextM / #hpRailCount), moving one card
+   Controls are shown only when the cards overflow the row and are
+   hidden in Map View; buttons are disabled at the first / last card.
    It never changes the cards, their data or js/home-app-experience.js.
    ===================================================================== */
 (function () {
     "use strict";
     var grid = document.getElementById("futurePropertiesGrid");
-    var controls = document.getElementById("hpRailControls");
-    var prev = document.getElementById("hpRailPrev");
-    var next = document.getElementById("hpRailNext");
-    if (!grid || !controls || !prev || !next) return;
+    if (!grid) return;
+
+    var desk = {
+        wrap: document.getElementById("hpRailControls"),
+        prev: document.getElementById("hpRailPrev"),
+        next: document.getElementById("hpRailNext")
+    };
+    var mob = {
+        wrap: document.getElementById("hpRailMobileNav"),
+        prev: document.getElementById("hpRailPrevM"),
+        next: document.getElementById("hpRailNextM"),
+        count: document.getElementById("hpRailCount")
+    };
 
     var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     var ticking = false;
 
-    function cardStep() {
-        var card = grid.querySelector(".home-app-property-card");
-        if (!card) return grid.clientWidth;
+    function cards() { return grid.querySelectorAll(".home-app-property-card"); }
+    function stride() {
+        var card = cards()[0];
+        if (!card) return 0;
         var gap = parseFloat(getComputedStyle(grid).columnGap) || 0;
-        var w = card.getBoundingClientRect().width + gap;
+        return card.getBoundingClientRect().width + gap;
+    }
+    function pageStep() {
+        var w = stride();
+        if (!w) return grid.clientWidth;
         // One full "page" of whole cards, at least one card.
-        return Math.max(w, Math.floor(grid.clientWidth / w) * w);
+        return Math.max(w, Math.floor((grid.clientWidth + 1) / w) * w);
     }
 
     function update() {
         ticking = false;
-        var overflow = grid.scrollWidth - grid.clientWidth > 2;
-        controls.hidden = grid.hidden || !overflow;
-        if (controls.hidden) return;
-        prev.disabled = grid.scrollLeft <= 2;
-        next.disabled = grid.scrollLeft >= grid.scrollWidth - grid.clientWidth - 2;
+        var n = cards().length;
+        var maxLeft = grid.scrollWidth - grid.clientWidth;
+        var overflow = maxLeft > 2;
+        var show = !grid.hidden && overflow && n > 1;
+        var atStart = grid.scrollLeft <= 2;
+        var atEnd = grid.scrollLeft >= maxLeft - 2;
+
+        [desk, mob].forEach(function (c) {
+            if (!c.wrap) return;
+            c.wrap.hidden = !show;
+            if (c.prev) c.prev.disabled = !show || atStart;
+            if (c.next) c.next.disabled = !show || atEnd;
+        });
+
+        if (mob.count && show) {
+            var w = stride();
+            var idx = w ? Math.round(grid.scrollLeft / w) + 1 : 1;
+            if (atEnd) idx = n;
+            idx = Math.min(n, Math.max(1, idx));
+            var text = idx + " / " + n;
+            if (mob.count.textContent !== text) mob.count.textContent = text;
+        }
     }
     function schedule() {
         if (!ticking) { ticking = true; window.requestAnimationFrame(update); }
     }
-    function go(dir) {
-        grid.scrollBy({ left: dir * cardStep(), behavior: reduceMotion ? "auto" : "smooth" });
+    function go(step) {
+        grid.scrollBy({ left: step, behavior: reduceMotion ? "auto" : "smooth" });
     }
 
-    prev.addEventListener("click", function () { go(-1); });
-    next.addEventListener("click", function () { go(1); });
+    if (desk.prev) desk.prev.addEventListener("click", function () { go(-pageStep()); });
+    if (desk.next) desk.next.addEventListener("click", function () { go(pageStep()); });
+    if (mob.prev) mob.prev.addEventListener("click", function () { go(-stride()); });
+    if (mob.next) mob.next.addEventListener("click", function () { go(stride()); });
+
     grid.addEventListener("scroll", schedule, { passive: true });
     window.addEventListener("resize", schedule);
 
@@ -56,7 +92,6 @@
     }
     document.addEventListener("aventrix:home-properties", schedule);
     window.addEventListener("load", schedule);
-    // Lazy images can change card heights but not widths; one late check is enough.
     setTimeout(schedule, 1200);
     update();
 })();
