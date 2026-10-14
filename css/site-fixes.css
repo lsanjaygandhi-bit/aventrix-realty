@@ -47,3 +47,15 @@ html.is-mobile .premium-footer-bottom{
     .sitemap-section .sitemap-grid,
     .sitemap-section .sitemap-dynamic{ grid-template-columns:1fr; gap:6px; }
 }
+
+/* ---------- 3. Page heroes (.list-hero) on phones (2026-10-14) ----------
+   .list-hero .container has no horizontal padding, and .container is
+   full-width on phones, so the hero subtitle ran edge-to-edge (text
+   touching the screen edge at 375/390px) on Services, Free Valuation,
+   List With Us, NRI Services, Enquiry, Insights, Professional Fees and
+   the Property Tools pages. Adds a side gutter only; typography and
+   hero heights are unchanged. */
+html.is-mobile .list-hero .container{ padding-left:20px; padding-right:20px; }
+@media (max-width:768px){
+    html:not(.is-mobile) .list-hero .container{ padding-left:20px; padding-right:20px; }
+}

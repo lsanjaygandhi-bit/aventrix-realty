@@ -925,3 +925,113 @@ html.is-mobile .home-app-see-all{ font-size:13.5px; }
         grid-row:2;
     }
 }
+
+/* ===========================================================
+   FUTURE PROPERTIES RAIL (2026-10-14)
+   #futurePropertiesGrid (rendered by js/home-app-experience.js,
+   cards are .home-app-property-card) used to be a 2-column (phone)
+   / 4-column (>=900px) grid, so the 20 latest properties stacked
+   into a long vertical block. It is now one horizontal row:
+   native overflow scrolling, finger swipe on touch, scroll-snap,
+   keyboard focusable, arrows from js/home-property-rail.js.
+   Card markup, links, hearts, Call/WhatsApp and the List/Map
+   toggle are unchanged ([hidden] still wins — properties-map.css).
+   Only the page scrolls vertically; the rail clips its own
+   overflow, so the homepage itself never scrolls sideways.
+=========================================================== */
+.home-page #futurePropertiesGrid{
+    --hp-rail-gap:16px;
+    --hp-rail-cols:4;
+    display:flex;
+    align-items:stretch;
+    gap:var(--hp-rail-gap);
+    overflow-x:auto;
+    overflow-y:hidden;
+    overscroll-behavior-x:contain;
+    scroll-snap-type:x mandatory;
+    scroll-padding-inline:2px;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:thin;
+    scrollbar-color:#c9c4b4 transparent;
+    padding:4px 2px 14px;
+    margin:0 -2px;
+    border-radius:16px;
+}
+.home-page #futurePropertiesGrid::-webkit-scrollbar{ height:6px; }
+.home-page #futurePropertiesGrid::-webkit-scrollbar-thumb{ background:#c9c4b4; border-radius:6px; }
+.home-page #futurePropertiesGrid::-webkit-scrollbar-track{ background:transparent; }
+.home-page #futurePropertiesGrid:focus{ outline:none; }
+.home-page #futurePropertiesGrid:focus-visible{
+    outline:2px solid #D4AF37;
+    outline-offset:4px;
+}
+.home-page #futurePropertiesGrid > .home-app-property-card{
+    flex:0 0 calc((100% - (var(--hp-rail-cols) - 1) * var(--hp-rail-gap)) / var(--hp-rail-cols));
+    min-width:0;
+    height:auto;
+    scroll-snap-align:start;
+}
+/* Loading / empty / error messages take the full row instead of one card slot */
+.home-page #futurePropertiesGrid > .home-app-loading,
+.home-page #futurePropertiesGrid > .home-app-empty{
+    flex:1 0 100%;
+}
+.home-page #futurePropertiesGrid .home-app-card-linkarea:focus-visible,
+.home-page #futurePropertiesGrid .home-app-card-view-btn:focus-visible,
+.home-page #futurePropertiesGrid .home-app-card-icon-btn:focus-visible,
+.home-page #futurePropertiesGrid .home-app-card-heart:focus-visible{
+    outline:2px solid #D4AF37;
+    outline-offset:2px;
+}
+
+/* Desktop: 4 cards visible; laptops 3; tablets 2.5 (peek shows more) */
+@media (max-width:1180px){ .home-page #futurePropertiesGrid{ --hp-rail-cols:3; } }
+@media (max-width:900px){ .home-page #futurePropertiesGrid{ --hp-rail-cols:2.4; } }
+/* Phones: two compact cards plus a peek of the next one, the same card
+   width the old 2-column phone grid used. */
+html.is-mobile .home-page #futurePropertiesGrid{ --hp-rail-gap:10px; }
+@media (max-width:640px){
+    .home-page #futurePropertiesGrid{ --hp-rail-cols:2.15; --hp-rail-gap:10px; scroll-snap-type:x proximity; }
+}
+/* Touch tablets (700px+, html.is-mobile): 3 cards plus a peek */
+@media (min-width:700px){
+    html.is-mobile .home-page #futurePropertiesGrid{ --hp-rail-cols:3.3; }
+}
+@media (min-width:1100px){
+    html.is-mobile .home-page #futurePropertiesGrid{ --hp-rail-cols:4; }
+}
+
+/* Heading: "See All" + arrows share the right-hand slot */
+.home-app-future-section .hp-rail-head-actions{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    flex-shrink:0;
+}
+.home-app-future-section .hp-rail-controls{ display:flex; gap:8px; }
+.home-app-future-section .hp-rail-controls[hidden]{ display:none; }
+.home-app-future-section .hp-rail-btn{
+    width:38px;
+    height:38px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    border:1px solid #d8d4c8;
+    border-radius:50%;
+    background:#fff;
+    color:#0F3B2E;
+    font-size:13px;
+    cursor:pointer;
+    transition:background .2s ease, border-color .2s ease, opacity .2s ease;
+}
+.home-app-future-section .hp-rail-btn:hover:not(:disabled){ background:#0F3B2E; border-color:#0F3B2E; color:#fff; }
+.home-app-future-section .hp-rail-btn:focus-visible{ outline:2px solid #D4AF37; outline-offset:2px; }
+.home-app-future-section .hp-rail-btn:disabled{ opacity:.35; cursor:default; }
+/* Phones swipe; the arrows would only crowd the heading there */
+html.is-mobile .home-app-future-section .hp-rail-controls{ display:none; }
+@media (max-width:640px){
+    .home-app-future-section .hp-rail-controls{ display:none; }
+}
+@media (prefers-reduced-motion:reduce){
+    .home-page #futurePropertiesGrid{ scroll-behavior:auto; }
+}
