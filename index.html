@@ -75,7 +75,7 @@
     <meta name="twitter:image" content="https://aventrixrealty.com/images/og/aventrix-logo-og.jpg">
 
     <link rel="stylesheet" href="style.css?v=20261014">
-    <link rel="stylesheet" href="css/home-hero.css?v=6">
+    <link rel="stylesheet" href="css/home-hero.css?v=7">
     <link rel="stylesheet" href="css/phase2a.css?v=1">
 
 
@@ -678,15 +678,7 @@
                 <h2 data-cms-heading>Future Properties</h2>
                 <p data-cms-f="subtitle">Handpicked properties for your future.</p>
             </div>
-            <div class="hp-rail-head-actions">
-                <!-- Horizontal rail arrows (js/home-property-rail.js). Hidden
-                     until the cards actually overflow, and in Map View. -->
-                <div class="hp-rail-controls" id="hpRailControls" hidden>
-                    <button type="button" class="hp-rail-btn" id="hpRailPrev" aria-controls="futurePropertiesGrid" aria-label="Scroll to previous properties"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
-                    <button type="button" class="hp-rail-btn" id="hpRailNext" aria-controls="futurePropertiesGrid" aria-label="Scroll to more properties"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
-                </div>
-                <a href="properties.html" class="home-app-see-all" data-cms-href="link" data-cms-f="link_text">See All <span aria-hidden="true">&rarr;</span></a>
-            </div>
+            <a href="properties.html" class="home-app-see-all" data-cms-href="link" data-cms-f="link_text">See All <span aria-hidden="true">&rarr;</span></a>
         </div>
 
         <!-- List / Map toggle (js/properties-map.js — the same component as
@@ -699,7 +691,17 @@
         <!-- Horizontal card rail (css/home-hero.css "FUTURE PROPERTIES RAIL").
              Cards are still rendered by js/home-app-experience.js and the
              List/Map toggle still hides this element via [hidden]. -->
-        <div class="home-app-future-grid" id="futurePropertiesGrid" role="region" aria-label="Future properties — scroll sideways for more" tabindex="0"></div>
+        <div class="hp-rail-wrap">
+            <div class="home-app-future-grid" id="futurePropertiesGrid" role="region" aria-label="Future properties — scroll sideways for more" tabindex="0"></div>
+            <!-- Tablet / desktop arrows, beside the card row and vertically
+                 centred on it (css/home-hero.css "RAIL SIDE ARROWS"). Same
+                 buttons and handlers as before (js/home-property-rail.js);
+                 hidden until the cards overflow, in Map View and on phones. -->
+            <div class="hp-rail-controls" id="hpRailControls" hidden>
+                <button type="button" class="hp-rail-btn hp-rail-prev" id="hpRailPrev" aria-controls="futurePropertiesGrid" aria-label="Scroll to previous properties"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
+                <button type="button" class="hp-rail-btn hp-rail-next" id="hpRailNext" aria-controls="futurePropertiesGrid" aria-label="Scroll to more properties"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
+            </div>
+        </div>
 
         <!-- Phones only (css/home-hero.css): one card at a time with
              Previous / Next and a position counter. Hidden until the

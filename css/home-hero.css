@@ -1001,15 +1001,7 @@ html.is-mobile .home-page #futurePropertiesGrid{ --hp-rail-gap:10px; }
     html.is-mobile .home-page #futurePropertiesGrid{ --hp-rail-cols:4; }
 }
 
-/* Heading: "See All" + arrows share the right-hand slot */
-.home-app-future-section .hp-rail-head-actions{
-    display:flex;
-    align-items:center;
-    gap:14px;
-    flex-shrink:0;
-}
-.home-app-future-section .hp-rail-controls{ display:flex; gap:8px; }
-.home-app-future-section .hp-rail-controls[hidden]{ display:none; }
+/* Rail arrow buttons (side arrows and the phone nav share this look) */
 .home-app-future-section .hp-rail-btn{
     width:38px;
     height:38px;
@@ -1027,11 +1019,6 @@ html.is-mobile .home-page #futurePropertiesGrid{ --hp-rail-gap:10px; }
 .home-app-future-section .hp-rail-btn:hover:not(:disabled){ background:#0F3B2E; border-color:#0F3B2E; color:#fff; }
 .home-app-future-section .hp-rail-btn:focus-visible{ outline:2px solid #D4AF37; outline-offset:2px; }
 .home-app-future-section .hp-rail-btn:disabled{ opacity:.35; cursor:default; }
-/* Phones swipe; the arrows would only crowd the heading there */
-html.is-mobile .home-app-future-section .hp-rail-controls{ display:none; }
-@media (max-width:640px){
-    .home-app-future-section .hp-rail-controls{ display:none; }
-}
 @media (prefers-reduced-motion:reduce){
     .home-page #futurePropertiesGrid{ scroll-behavior:auto; }
 }
@@ -1100,4 +1087,60 @@ html.is-mobile .home-app-future-section .hp-rail-controls{ display:none; }
     }
     html.is-mobile .home-page #futurePropertiesGrid > .home-app-property-card{ scroll-snap-align:center; scroll-snap-stop:always; }
     html.is-mobile .home-app-future-section .hp-rail-mobile-nav{ display:flex; align-items:center; justify-content:center; gap:18px; margin:14px 0 4px; }
+}
+
+/* ===========================================================
+   RAIL SIDE ARROWS (2026-10-14)
+   The Previous / Next buttons sit outside the card row, one on
+   each side, vertically centred on the cards. .hp-rail-wrap is
+   the positioning box around the existing #futurePropertiesGrid
+   (no new scroll container); the buttons hang into the section's
+   side gutter so they never cover a card. Phones keep the
+   under-card nav (#hpRailMobileNav) and swipe instead.
+=========================================================== */
+.home-app-future-section .hp-rail-wrap{ position:relative; }
+.home-app-future-section .hp-rail-controls{
+    position:absolute;
+    inset:0;
+    display:block;
+    pointer-events:none;
+    z-index:3;
+}
+.home-app-future-section .hp-rail-controls[hidden]{ display:none; }
+.home-app-future-section .hp-rail-controls .hp-rail-btn{
+    /* The section container is 90% wide (88% on touch tablets), so each
+       side gutter is at least 5vw (6vw). The arrow is sized and placed to
+       fit inside that gutter: it never covers a card and never leaves the
+       screen. */
+    --hp-gutter:5vw;
+    --hp-arrow:min(44px, calc(var(--hp-gutter) - 6px));
+    --hp-offset:min(calc(var(--hp-arrow) + 14px), calc(var(--hp-gutter) - 2px));
+    position:absolute;
+    /* centre on the cards: the rail has 4px padding on top and 14px
+       (scrollbar room) underneath, so its visual centre is 5px up */
+    top:calc(50% - 5px);
+    transform:translateY(-50%);
+    width:var(--hp-arrow);
+    height:var(--hp-arrow);
+    pointer-events:auto;
+    box-shadow:0 4px 14px rgba(15,59,46,.12);
+    font-size:14px;
+}
+.home-app-future-section .hp-rail-controls .hp-rail-prev{ left:calc(-1 * var(--hp-offset)); }
+.home-app-future-section .hp-rail-controls .hp-rail-next{ right:calc(-1 * var(--hp-offset)); }
+.home-app-future-section .hp-rail-controls .hp-rail-btn:disabled{ opacity:0; pointer-events:none; }
+
+/* Touch tablets: 88% container, so 6vw gutters */
+@media (min-width:700px){
+    html.is-mobile .home-app-future-section .hp-rail-controls{ display:block; }
+    html.is-mobile .home-app-future-section .hp-rail-controls[hidden]{ display:none; }
+    html.is-mobile .home-app-future-section .hp-rail-controls .hp-rail-btn{ --hp-gutter:6vw; }
+}
+/* Phones and narrow windows: no side gutter, so the side arrows are
+   hidden (the under-card nav and swipe remain). */
+@media (max-width:768px){
+    html:not(.is-mobile) .home-app-future-section .hp-rail-controls{ display:none !important; }
+}
+@media (max-width:699px){
+    html.is-mobile .home-app-future-section .hp-rail-controls{ display:none !important; }
 }
