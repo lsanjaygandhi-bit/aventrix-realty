@@ -1,0 +1,369 @@
+/* =====================================================================
+   AVENTRIX REALTY — SHARED SITE FOOTER
+   Markup: partials/footer.html (copied into every page by
+   tools/sync-footer.py). Design reference: images/design/footer-reference.png
+   Every rule is scoped to .site-footer / ft- classes, so nothing here
+   touches the header, page content or the old .premium-footer rules.
+   ===================================================================== */
+
+.site-footer{
+    --ft-gold:#E0B04A;
+    --ft-gold-soft:rgba(224,176,74,.55);
+    --ft-line:rgba(224,176,74,.38);
+    --ft-text:rgba(255,255,255,.88);
+    --ft-muted:rgba(255,255,255,.74);
+    --ft-pad:clamp(16px, 4vw, 40px);
+    position:relative;
+    isolation:isolate;
+    overflow:hidden;
+    background-color:#050f0c;
+    background-image:
+        radial-gradient(120% 70% at 85% 0%, rgba(20,58,44,.55) 0%, rgba(5,15,12,0) 60%),
+        linear-gradient(180deg, #06150f 0%, #050f0c 55%, #040b09 100%);
+    color:var(--ft-text);
+    font-family:'Montserrat', sans-serif;
+    font-size:15px;
+    line-height:1.55;
+    text-align:left;
+}
+/* City skyline, top-right, fading into the dark background */
+.site-footer::before{
+    content:"";
+    position:absolute;
+    z-index:-1;
+    top:0; right:0;
+    width:min(1100px, 78%);
+    height:min(500px, 92vw);
+    background:url('../images/footer-skyline-gold.svg') right top / cover no-repeat;
+    opacity:.8;
+    -webkit-mask-image:linear-gradient(to left, #000 35%, transparent 100%), linear-gradient(to bottom, #000 35%, transparent 100%);
+    -webkit-mask-composite:source-in;
+            mask-image:linear-gradient(to left, #000 35%, transparent 100%), linear-gradient(to bottom, #000 35%, transparent 100%);
+            mask-composite:intersect;
+    pointer-events:none;
+}
+/* Thin gold line along the top edge */
+.site-footer::after{
+    content:"";
+    position:absolute;
+    top:0; left:0; right:0;
+    height:2px;
+    background:linear-gradient(90deg, transparent 0%, var(--ft-gold) 50%, transparent 100%);
+}
+
+.site-footer *,
+.site-footer *::before,
+.site-footer *::after{ box-sizing:border-box; }
+
+.site-footer a{ color:inherit; text-decoration:none; }
+.site-footer a:hover{ color:var(--ft-gold); }
+.site-footer a:focus-visible{ outline:2px solid var(--ft-gold); outline-offset:3px; border-radius:4px; }
+.site-footer p{ margin:0; }
+.site-footer ul{ list-style:none; margin:0; padding:0; }
+.site-footer h4{ margin:0; }
+
+.ft-sr{
+    position:absolute !important;
+    width:1px; height:1px;
+    margin:-1px; padding:0; border:0;
+    overflow:hidden; clip:rect(0 0 0 0); clip-path:inset(50%);
+    white-space:nowrap;
+}
+
+.ft-inner{
+    max-width:1240px;
+    margin:0 auto;
+    padding:clamp(40px, 7vw, 84px) var(--ft-pad) 28px;
+}
+
+/* ---------- Brand ---------- */
+.ft-brand{ max-width:620px; }
+.ft-logo{ display:inline-block; }
+.ft-logo img{
+    display:block;
+    width:clamp(220px, 44vw, 340px);
+    height:auto;
+}
+.ft-tagline{
+    margin-top:14px !important;
+    color:var(--ft-gold);
+    font-size:clamp(11px, 1.6vw, 13px);
+    font-weight:600;
+    letter-spacing:.24em;
+    text-transform:uppercase;
+}
+.ft-tagline::after{
+    content:"";
+    display:block;
+    width:72px;
+    height:2px;
+    margin-top:18px;
+    background:var(--ft-gold);
+}
+.ft-desc{
+    margin-top:18px !important;
+    color:var(--ft-text);
+    font-size:clamp(14px, 1.7vw, 16px);
+    line-height:1.7;
+    max-width:560px;
+}
+
+/* ---------- Contacts row (Head Office / Phone / Email / Branch) ---------- */
+.ft-contacts{
+    display:grid;
+    grid-template-columns:1.25fr 1fr 1.15fr 1fr;
+    margin-top:clamp(28px, 4vw, 40px) !important;
+}
+.ft-contact{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    min-width:0;
+    padding:4px 22px 4px;
+    border-left:1px solid var(--ft-line);
+}
+.ft-contact:first-child{ padding-left:0; border-left:0; }
+.ft-icon{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:46px; height:46px;
+    flex:0 0 auto;
+    border:1.5px solid var(--ft-gold);
+    border-radius:50%;
+    color:var(--ft-gold);
+    font-size:19px;
+}
+.ft-label{
+    color:var(--ft-gold);
+    font-size:12px !important;
+    font-weight:700;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    margin-bottom:4px !important;
+}
+.ft-contact p,
+.ft-contact a{
+    color:var(--ft-text);
+    font-size:14.5px;
+    line-height:1.55;
+    overflow-wrap:anywhere;
+}
+.ft-phones{ display:flex; flex-direction:column; gap:2px; }
+.ft-phones a{ white-space:nowrap; }
+
+.ft-rule{
+    height:1px;
+    margin:clamp(24px, 3.5vw, 34px) 0;
+    background:linear-gradient(90deg, var(--ft-gold-soft), var(--ft-line) 70%, rgba(224,176,74,.15));
+}
+
+/* ---------- About / Quick links / Follow + Map ---------- */
+.ft-main{
+    display:grid;
+    grid-template-columns:1fr 1fr 1.35fr;
+    gap:0 44px;
+    align-items:start;
+}
+.ft-col{ min-width:0; }
+.ft-col + .ft-col{
+    border-left:1px solid var(--ft-line);
+    padding-left:44px;
+    margin-left:-22px;
+}
+.ft-heading{
+    color:var(--ft-gold);
+    font-size:15px !important;
+    font-weight:700;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+}
+.ft-heading::after{
+    content:"";
+    display:block;
+    width:52px;
+    height:3px;
+    margin-top:12px;
+    border-radius:2px;
+    background:var(--ft-gold);
+}
+.ft-links{ margin-top:14px !important; }
+.ft-links li{ border-bottom:1px solid rgba(255,255,255,.14); }
+.ft-links a{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    min-height:48px;
+    padding:8px 0;
+    color:var(--ft-text);
+    font-size:15.5px;
+}
+.ft-links a::after{
+    content:"\f054";                      /* Font Awesome chevron-right */
+    font-family:"Font Awesome 6 Free";
+    font-weight:900;
+    font-size:12px;
+    color:rgba(255,255,255,.75);
+    transition:transform .2s ease, color .2s ease;
+}
+.ft-links a:hover::after{ color:var(--ft-gold); transform:translateX(3px); }
+
+.ft-side{ min-width:0; display:flex; flex-direction:column; gap:24px; }
+.ft-follow{ display:flex; flex-direction:column; gap:16px; }
+.ft-social{ display:flex; flex-wrap:wrap; gap:12px; }
+.ft-social a{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:46px; height:46px;
+    border:1.5px solid var(--ft-gold);
+    border-radius:10px;
+    color:#fff;
+    font-size:20px;
+    background:rgba(0,0,0,.25);
+    transition:background-color .2s ease, color .2s ease, transform .2s ease;
+}
+.ft-social a:hover{ background:var(--ft-gold); color:#0a1612; transform:translateY(-2px); }
+
+.ft-map{
+    position:relative;
+    border:1.5px solid var(--ft-gold-soft);
+    border-radius:16px;
+    overflow:hidden;
+    background:#dfe3e0;
+    box-shadow:0 10px 30px rgba(0,0,0,.35);
+}
+.ft-map-frame,
+.ft-map-frame iframe{
+    display:block;
+    width:100%;
+    height:240px;
+    border:0;
+}
+.ft-map-open{
+    position:absolute;
+    top:10px; right:10px;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    min-height:40px;
+    padding:8px 14px;
+    border-radius:8px;
+    background:#fff;
+    box-shadow:0 2px 8px rgba(0,0,0,.25);
+    color:#1a73e8 !important;
+    font-size:14px;
+    font-weight:600;
+}
+.ft-map-open:hover{ background:#f1f5fe; }
+.ft-map-open i{ font-size:14px; }
+
+/* ---------- Bottom row ---------- */
+.ft-bottom{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap:14px 32px;
+    padding-right:calc(24px + 56px + 16px);   /* clear the floating Back-to-top / WhatsApp buttons */
+}
+.ft-credits{ display:flex; flex-direction:column; gap:6px; }
+.ft-copyright,
+.ft-designer{ color:var(--ft-muted); font-size:14.5px; }
+.ft-legal{ display:flex; flex-wrap:wrap; align-items:center; row-gap:6px; }
+.ft-legal a{
+    display:inline-flex;
+    align-items:center;
+    min-height:36px;
+    color:var(--ft-muted);
+    font-size:14.5px;
+}
+.ft-legal a:not(:last-child)::after{        /* bar sits at the end of a line, never at the start */
+    content:"|";
+    margin:0 14px;
+    color:rgba(255,255,255,.45);
+}
+.ft-legal a:hover{ color:var(--ft-gold); }
+
+/* ---------- Large screens: no floating-button gutter needed ---------- */
+@media (min-width:1440px){
+    .ft-bottom{ padding-right:0; }
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width:1023px){
+    .ft-main{ grid-template-columns:1fr 1fr; gap:0 40px; }
+    .ft-col + .ft-col{ padding-left:40px; margin-left:-20px; }
+    .ft-side{ grid-column:1 / -1; margin-top:28px; gap:22px; }
+    .ft-follow{ flex-direction:row; align-items:flex-start; gap:28px; }
+    .ft-follow .ft-heading{ flex:0 0 auto; padding-top:10px; }
+    .ft-map-frame, .ft-map-frame iframe{ height:260px; }
+    .ft-contacts{ grid-template-columns:1.15fr .95fr 1.4fr .9fr; }
+    .ft-contact{ padding:4px 12px; }
+    .ft-contact p, .ft-contact a{ font-size:13.5px; }
+    .ft-label{ letter-spacing:.08em; white-space:nowrap; }
+}
+
+/* ---------- Phones: Google's own compact embed shows "Open in Maps" in
+   the map's top-left corner at this size (as in the reference), so the
+   site's button would duplicate it; the Maps icon under Follow Us also
+   opens the location. ---------- */
+@media (max-width:767px){
+    .site-footer{ font-size:14px; }
+    .ft-contacts{ grid-template-columns:1fr 1fr; row-gap:22px; }
+    .ft-contact{ padding:2px 0 2px 16px; gap:10px; }
+    .ft-contact:nth-child(odd){ padding-left:0; border-left:0; }
+    .ft-icon{ width:42px; height:42px; font-size:17px; }
+    .ft-label{ font-size:11.5px !important; }
+    .ft-contact p, .ft-contact a{ font-size:13.5px; }
+    .ft-main{ gap:0 24px; }
+    .ft-col + .ft-col{ padding-left:20px; margin-left:-12px; }
+    .ft-tagline{ font-size:11px; letter-spacing:.12em; }
+    .ft-heading{ font-size:13.5px !important; }
+    .ft-heading::after{ width:44px; margin-top:10px; }
+    .ft-links a{ font-size:14.5px; min-height:46px; }
+    .ft-side{ margin-top:24px; }
+    .ft-map-frame, .ft-map-frame iframe{ height:210px; }
+    .ft-map-open{ display:none; }
+    .ft-bottom{ flex-direction:column; align-items:flex-start; padding-right:calc(18px + 52px + 10px); }
+    .ft-copyright, .ft-designer, .ft-legal a{ font-size:13.5px; }
+    .ft-legal a:not(:last-child)::after{ margin:0 10px; }
+    .site-footer::before{ opacity:.6; }
+}
+@media (max-width:519px){
+    .ft-follow{ flex-direction:column; gap:14px; }
+    .ft-follow .ft-heading{ padding-top:0; }
+    .ft-social{ gap:10px; }
+    .ft-social a{ width:44px; height:44px; font-size:19px; }
+}
+@media (max-width:359px){
+    .ft-main{ grid-template-columns:1fr; }
+    .ft-col + .ft-col{ border-left:0; padding-left:0; margin-left:0; margin-top:18px; }
+    .ft-contacts{ grid-template-columns:1fr; }
+    .ft-contact,
+    .ft-contact:nth-child(odd){ padding-left:0; border-left:0; }
+}
+
+/* Phones / touch tablets flagged by the site's html.is-mobile script.
+   The body keeps 90px bottom padding for the fixed mobile navigation;
+   the footer runs underneath it so no light strip shows below the footer. */
+html.is-mobile .site-footer{
+    margin-bottom:-90px;
+    padding-bottom:90px;
+}
+/* The floating Back-to-top / WhatsApp buttons (52px at right:18px) stay
+   on screen at the end of the page, so the bottom row keeps a right-hand
+   gutter and its links never sit underneath them. */
+html.is-mobile .ft-bottom{
+    padding-right:calc(18px + 52px + 10px + env(safe-area-inset-right, 0px));
+}
+
+@media (prefers-reduced-motion:reduce){
+    .site-footer *{ transition:none !important; }
+}
+
+/* Property Tools pages already hide the footer when printing a checklist */
+@media print{
+    .pt-page .site-footer{ display:none !important; }
+}
