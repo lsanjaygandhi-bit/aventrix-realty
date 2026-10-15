@@ -1546,5 +1546,26 @@ END TEMPORARILY HIDDEN — Featured Locations section -->
 <script src="js/properties-map.js?v=20261015a"></script>
 <script src="js/home-property-rail.js?v=20261014b"></script>
 <script src="script.js?v=20260926b"></script>
+
+    <script>
+    (function () {
+        const correctName = "Sanjay Gandhi L";
+        function normalizeCoFounderName() {
+            document.querySelectorAll(".leader-row").forEach(function (row) {
+                const label = row.querySelector(".leader-eyebrow");
+                const name = row.querySelector('[data-cms-f="name"], h3');
+                if (label && name && /MEET OUR CO-FOUNDER/i.test(label.textContent || "")) {
+                    if (name.textContent.trim() !== correctName) name.textContent = correctName;
+                }
+            });
+        }
+        normalizeCoFounderName();
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", normalizeCoFounderName);
+        }
+        const observer = new MutationObserver(normalizeCoFounderName);
+        observer.observe(document.documentElement, { childList: true, subtree: true, characterData: true });
+    })();
+    </script>
 </body>
 </html>
