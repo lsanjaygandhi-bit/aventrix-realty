@@ -29,7 +29,7 @@ async function propertyShareResponse(request, slug) {
   }
 
   const endpoint = new URL(SUPABASE_URL + "/rest/v1/properties");
-  endpoint.searchParams.set("select", "title,slug,short_description,featured_image,images,location,price_display,price");
+  endpoint.searchParams.set("select", "*");
   endpoint.searchParams.set("slug", "eq." + slug);
   endpoint.searchParams.set("publish_status", "eq.Published");
   endpoint.searchParams.set("limit", "1");
