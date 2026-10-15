@@ -40,21 +40,25 @@ export async function onRequest({ params, request }) {
   if (!image) image = "https://aventrixrealty.com/images/og/aventrix-logo-og.jpg";
 
   const propertyUrl = "https://aventrixrealty.com/property.html?id=" + encodeURIComponent(slug);
+  const shareUrl = new URL(request.url).toString();
   const html = `<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${escapeHtml(title)}</title>
 <meta name="description" content="${escapeHtml(description)}">
-<link rel="canonical" href="${escapeHtml(propertyUrl)}">
+<link rel="canonical" href="${escapeHtml(shareUrl)}">
 <meta property="og:type" content="website"><meta property="og:site_name" content="Aventrix Realty">
 <meta property="og:title" content="${escapeHtml(title)}"><meta property="og:description" content="${escapeHtml(description)}">
-<meta property="og:url" content="${escapeHtml(new URL(request.url).toString())}">
+<meta property="og:url" content="${escapeHtml(shareUrl)}">
 <meta property="og:image" content="${escapeHtml(image)}"><meta property="og:image:secure_url" content="${escapeHtml(image)}">
-<meta property="og:image:alt" content="${escapeHtml(property.title || "Property photo")}">
+<meta property="og:image:type" content="image/jpeg"><meta property="og:image:alt" content="${escapeHtml(property.title || "Property photo")}">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${escapeHtml(title)}">
 <meta name="twitter:description" content="${escapeHtml(description)}"><meta name="twitter:image" content="${escapeHtml(image)}">
-<meta http-equiv="refresh" content="0;url=${escapeHtml(propertyUrl)}">
-<script>location.replace(${JSON.stringify(propertyUrl)});</script>
-</head><body><p>Opening property listing… <a href="${escapeHtml(propertyUrl)}">Continue</a></p></body></html>`;
+</head><body style="margin:0;font-family:Arial,sans-serif;color:#123b32">
+<main style="max-width:760px;margin:24px auto;padding:16px">
+<img src="${escapeHtml(image)}" alt="${escapeHtml(property.title || "Property photo")}" style="display:block;width:100%;height:auto;max-height:65vh;object-fit:cover;border-radius:12px">
+<h1>${escapeHtml(property.title || "Property Listing")}</h1><p>${escapeHtml(description)}</p><p>${escapeHtml(property.location || "")}</p>
+<a href="${escapeHtml(propertyUrl)}" style="display:inline-block;padding:12px 18px;background:#123b32;color:#fff;text-decoration:none;border-radius:8px">View Full Property Details</a>
+</main></body></html>`;
   return new Response(html, {
     headers: {
       "content-type": "text/html; charset=utf-8",
