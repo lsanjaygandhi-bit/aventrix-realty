@@ -384,7 +384,7 @@
                 },
                 streetViewControl: false, fullscreenControl: false,
                 zoomControl: true,
-                zoomControlOptions: { position: g.ControlPosition ? g.ControlPosition.RIGHT_TOP : undefined }
+                zoomControlOptions: { position: g.ControlPosition ? g.ControlPosition.RIGHT_CENTER : undefined }
             };
             if (mc.mapId) opts.mapId = mc.mapId;
             try { state.map = new g.Map(els.canvas, opts); }
