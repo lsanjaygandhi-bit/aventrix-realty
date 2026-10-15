@@ -59,7 +59,7 @@
 
     // Site-wide Head Office map icon (header + footer) and footer "Find Us" map.
     // Owner-supplied link. Office cards keep each office's own CMS link/map.
-    const OWNER_MAP_URL = "https://maps.app.goo.gl/Gfs3JJ4VVN4cxU5G7?g_st=ic";
+    const OWNER_MAP_URL = "https://maps.app.goo.gl/VjCCdVch9uequeGUA?g_st=ic";
     const OWNER_FOOTER_MAP_EMBED = "https://www.google.com/maps?q=" +
         encodeURIComponent("No.27, 1st Main Road, New Colony, Chromepet, Chennai, Tamil Nadu") + "&output=embed";
 
