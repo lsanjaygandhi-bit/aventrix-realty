@@ -1317,7 +1317,7 @@
             showToast._t = setTimeout(() => toastEl.classList.remove("show"), 2200);
         }
 
-        const shareUrl = window.location.href;
+        const shareUrl = `https://aventrixrealty.com/p/${encodeURIComponent(property.slug)}`;
         const shareTitle = property.title || "Aventrix Realty Property";
 
         async function copyLink() {
