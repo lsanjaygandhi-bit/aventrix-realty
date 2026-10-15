@@ -3119,12 +3119,16 @@ nav a:hover::after{
 }
 
 .profile-photo{
-    width:220px;
-    height:220px;
-    border-radius:50%;
+    display:block;
+    width:100%;
+    max-width:640px;
+    height:auto;
+    aspect-ratio:2 / 3;
     object-fit:cover;
-    border:6px solid #c8a96a;
-    margin-bottom:25px;
+    object-position:center top;
+    border-radius:14px;
+    border:0;
+    margin:0 auto 28px;
 }
 
 .profile-container h1{
@@ -7899,8 +7903,12 @@ html.is-mobile .profile-page{
     padding:64px 8px 40px;
 }
 html.is-mobile .profile-container{
-    padding:32px 15px 36px;
+    width:100%;
+    max-width:100%;
+    padding:24px 16px;
+    border-radius:14px;
 }
+
 html.is-mobile .profile-container p{
     text-align:left;
     font-size:16px;
