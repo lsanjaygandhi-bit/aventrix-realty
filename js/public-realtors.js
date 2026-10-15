@@ -56,7 +56,7 @@
         if (!r) return;
 
         setImg("[data-realtor-photo]", r.photo_url);
-        setText("[data-realtor-name]", slug === "sanjay-gandhi" || slug === "sanjay" ? "Sanjay Gandhi L" : r.name);
+        setText("[data-realtor-name]", slug === "sanjay-gandhi-l" || slug === "sanjay-gandhi" || slug === "sanjay" ? "Sanjay Gandhi L" : r.name);
         setText("[data-realtor-designation]", r.designation);
         setText("[data-realtor-intro]", r.short_intro);
 
