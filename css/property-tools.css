@@ -468,6 +468,7 @@ html.is-mobile .pt-grid-3{ grid-template-columns:1fr; }
     .pt-page #checklist{ width:100%; }
     /* Print masthead: use the actual logo as the sole company name.
        Avoid repeating "AVENTRIX REALTY" as large text beside the logo. */
+    .pt-page .pt-checklist-details{ display:none !important; }
     .pt-page .pt-print-brand{ display:flex !important; flex-direction:column; align-items:center; justify-content:center; gap:7px; padding:0 0 12px; border-bottom:3px solid #d4a32c; margin:0 0 12px; text-align:center; }
     .pt-page .pt-print-brand img{ display:block; width:180px; max-height:72px; object-fit:contain; object-position:center; margin:0 auto; }
     .pt-page .pt-print-brand > div{ display:flex; flex-direction:column; align-items:center; gap:3px; width:100%; text-align:center; }
@@ -515,3 +516,15 @@ html.is-mobile .pt-grid-3{ grid-template-columns:1fr; }
 .pt-sources ul{ margin:8px 0 0; padding-left:18px; line-height:1.55; }
 .pt-sources li + li{ margin-top:6px; }
 .pt-sources a, .pt-table a{ color:#0F3B2E; text-decoration:underline; text-underline-offset:2px; }
+
+
+/* Checklist pre-print property details form */
+.pt-page .pt-checklist-details{ margin:0 0 20px; padding:18px; border:1px solid #dfe5e1; border-radius:12px; background:#fbfcfb; }
+.pt-page .pt-checklist-details h3{ margin:0 0 5px; color:#103d31; font-size:18px; }
+.pt-page .pt-checklist-details p{ margin:0 0 14px; color:#65736d; font-size:13px; }
+.pt-page .pt-checklist-details-grid{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:13px; }
+.pt-page .pt-checklist-details-grid label{ display:flex; flex-direction:column; gap:6px; color:#45564e; font-size:12px; font-weight:600; }
+.pt-page .pt-checklist-details-grid input{ width:100%; min-width:0; min-height:42px; padding:10px 11px; border:1px solid #cfd8d2; border-radius:7px; background:#fff; color:#17221f; font:inherit; font-size:14px; }
+.pt-page .pt-checklist-details-grid input:focus{ outline:2px solid #d4a32c; outline-offset:1px; }
+.pt-page .pt-print-signoff strong{ font-size:8pt; color:#17221f; font-weight:600; min-height:12px; }
+@media(max-width:600px){ .pt-page .pt-checklist-details-grid{ grid-template-columns:1fr; } }
