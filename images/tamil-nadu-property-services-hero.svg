@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+<defs>
+ <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#173b55"/><stop offset=".55" stop-color="#62717a"/><stop offset="1" stop-color="#e6a66a"/></linearGradient>
+ <linearGradient id="city" x2="0" y2="1"><stop stop-color="#173a4d"/><stop offset="1" stop-color="#101f2a"/></linearGradient>
+ <linearGradient id="paper" x2="0" y2="1"><stop stop-color="#e9dfc8"/><stop offset="1" stop-color="#a99c80"/></linearGradient>
+ <linearGradient id="building" x2="1" y2="1"><stop stop-color="#d5c5a7"/><stop offset="1" stop-color="#766b5b"/></linearGradient>
+ <linearGradient id="shade" x2="0" y2="1"><stop stop-color="#061b2a" stop-opacity=".05"/><stop offset="1" stop-color="#061b2a" stop-opacity=".68"/></linearGradient>
+ <pattern id="grid" width="52" height="38" patternUnits="userSpaceOnUse"><path d="M52 0H0V38" fill="none" stroke="#6f756d" stroke-width="1" opacity=".55"/></pattern>
+</defs>
+<rect width="1600" height="900" fill="url(#sky)"/>
+<circle cx="86" cy="330" r="53" fill="#ffd89a" opacity=".9"/>
+<path d="M0 250 Q160 150 330 235 T680 185 T1020 230 T1600 130 V0 H0Z" fill="#203b51" opacity=".7"/>
+<path d="M0 390 Q180 310 390 380 T800 350 T1210 390 T1600 320 V500 H0Z" fill="#71818a" opacity=".55"/>
+<path d="M780 470 L850 390 910 430 960 360 1020 410 1080 330 1140 375 1220 320 1290 390 1390 330 1500 400 1600 370 V630 H780Z" fill="#263c4c" opacity=".75"/>
+<!-- city skyline -->
+<g fill="url(#city)">
+ <path d="M730 550h70v-92h30v92h45v-130h45v130h28v-76h34v76h46v-160h40v160h30v-110h58v110h30v-145h45v145h36v-85h35v85h45v-122h40v122h50v-70h40v70h45v-98h30v98h50v350H730Z"/>
+ <path d="M0 580h60v-100h35v100h30v-145h45v145h30v-80h35v80h40v-120h55v120h35v-90h35v90h40v-140h48v140h35v-100h45v100h40v-65h30v65h40v320H0Z"/>
+</g>
+<!-- Tamil Nadu silhouette -->
+<path d="M825 65 L875 82 914 59 949 84 980 119 1015 143 1003 181 1026 205 1004 240 1012 270 980 300 991 329 962 365 954 405 928 436 916 478 888 514 873 557 846 581 829 546 804 523 795 485 766 462 748 426 726 398 736 365 711 335 733 303 719 269 745 239 739 211 768 188 776 152 805 125Z" fill="#112d44" stroke="#93a4ad" stroke-opacity=".5" stroke-width="2"/>
+<g fill="none" stroke="#9caeb6" stroke-width="1.4" opacity=".45">
+ <path d="M760 222l210 48M740 301l230 28M735 365l219 40M780 185l160 200M810 130l-15 390M865 82l-18 475M915 65l-28 450M960 110l-58 330M750 430l150-120M785 485l145-130"/>
+ <path d="M800 160l100 15 80-20M745 260l140-15 120 10M730 335l160-12 80 20M760 400l140-10 45 30"/>
+</g>
+<!-- heritage government building -->
+<g transform="translate(55 280)">
+ <rect x="0" y="225" width="550" height="180" fill="url(#building)"/>
+ <rect x="25" y="195" width="500" height="35" fill="#e1d2b6"/>
+ <path d="M10 195L270 95 540 195Z" fill="#d6c5a6"/>
+ <rect x="210" y="85" width="120" height="120" fill="#b4a486"/>
+ <path d="M195 88Q270 -10 345 88Z" fill="#d8c8a9"/>
+ <rect x="252" y="20" width="36" height="72" fill="#c4b391"/>
+ <path d="M245 20L270 0 295 20Z" fill="#e0d2b7"/>
+ <circle cx="270" cy="51" r="12" fill="#34434a"/><path d="M270 39v24M258 51h24" stroke="#d6c5a6" stroke-width="2"/>
+ <g fill="#36444b"><rect x="45" y="250" width="28" height="75"/><rect x="105" y="250" width="28" height="75"/><rect x="165" y="250" width="28" height="75"/><rect x="225" y="250" width="28" height="75"/><rect x="285" y="250" width="28" height="75"/><rect x="345" y="250" width="28" height="75"/><rect x="405" y="250" width="28" height="75"/><rect x="465" y="250" width="28" height="75"/></g>
+ <g fill="#d4c4a7"><rect x="35" y="238" width="48" height="10"/><rect x="95" y="238" width="48" height="10"/><rect x="155" y="238" width="48" height="10"/><rect x="215" y="238" width="48" height="10"/><rect x="275" y="238" width="48" height="10"/><rect x="335" y="238" width="48" height="10"/><rect x="395" y="238" width="48" height="10"/><rect x="455" y="238" width="48" height="10"/></g>
+ <rect x="0" y="400" width="550" height="18" fill="#c3b18f"/>
+</g>
+<!-- survey plan foreground -->
+<path d="M0 660 L1040 530 1600 585 V900 H0Z" fill="url(#paper)"/>
+<path d="M0 660 L1040 530 1600 585 V900 H0Z" fill="url(#grid)" opacity=".85"/>
+<g fill="none" stroke="#7c6e55" stroke-width="3" opacity=".8">
+ <path d="M70 720L420 675 500 815 160 870Z"/><path d="M470 660L800 620 900 780 570 825Z"/><path d="M850 610L1200 600 1270 765 940 780Z"/><path d="M1200 600L1490 620 1550 800 1290 770Z"/>
+ <path d="M90 755L470 710M130 800L495 755M520 700L850 665M555 755L880 720M890 660L1225 650M920 715L1245 705M1240 655L1505 670M1270 715L1525 735"/>
+</g>
+<g fill="#4d514c" opacity=".5" font-family="Arial,sans-serif" font-size="20"><text x="590" y="710" transform="rotate(-7 590 710)">LAND SURVEY • PLOT PLAN</text><text x="1010" y="755" transform="rotate(-3 1010 755)">PROPERTY MAP</text></g>
+<!-- compass -->
+<g transform="translate(880 800)"><circle r="70" fill="#8d7446" opacity=".85"/><circle r="57" fill="#d2b77c"/><circle r="48" fill="#5d5b4d"/><path d="M0 -43L12 0 0 43 -12 0Z" fill="#ead8a8"/><path d="M-43 0L0 -12 43 0 0 12Z" fill="#3a4650"/><circle r="8" fill="#e6d6b2"/></g>
+<!-- pen -->
+<g transform="translate(1270 785) rotate(-17)"><rect x="0" y="0" width="250" height="15" rx="7" fill="#142c3a"/><rect x="12" y="-2" width="170" height="4" fill="#d6a04e"/><path d="M250 7L285 7 250 12Z" fill="#c9bda3"/><rect x="25" y="-5" width="35" height="25" rx="3" fill="#9b793f"/></g>
+<rect width="1600" height="900" fill="url(#shade)"/>
+</svg>
