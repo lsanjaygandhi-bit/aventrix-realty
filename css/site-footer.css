@@ -448,3 +448,41 @@ html.is-mobile .ft-bottom{
   .site-footer .ft-legal { align-self: flex-end !important; }
   .site-footer .ft-map-open { display: none !important; }
 }
+
+
+/* Desktop footer polish: keep chevrons clear of divider rules and make the map
+   sit neatly inside the Follow Us column without looking cramped. */
+@media (min-width: 1024px) {
+  .site-footer .ft-links a {
+    padding-right: 18px !important;
+    box-sizing: border-box;
+  }
+  .site-footer .ft-links a::after {
+    flex: 0 0 auto;
+    margin-left: 10px;
+    transform: translateX(-2px);
+  }
+  .site-footer .ft-links a:hover::after {
+    transform: translateX(0);
+  }
+  .site-footer .ft-main {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) !important;
+    column-gap: 32px !important;
+  }
+  .site-footer .ft-col + .ft-col {
+    padding-left: 32px !important;
+    margin-left: 0 !important;
+    min-width: 0;
+  }
+  .site-footer .ft-map {
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 12px;
+  }
+  .site-footer .ft-map-frame,
+  .site-footer .ft-map-frame iframe {
+    width: 100%;
+    max-width: 100%;
+    height: 220px;
+  }
+}
