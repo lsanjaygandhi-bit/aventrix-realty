@@ -71,7 +71,7 @@
 }
 
 .ft-inner{
-    max-width:1240px;
+    max-width:1320px;
     margin:0 auto;
     padding:clamp(40px, 7vw, 84px) var(--ft-pad) 28px;
 }
@@ -435,5 +435,16 @@ html.is-mobile .ft-bottom{
 @media (min-width: 1024px) {
   .site-footer .ft-bottom { align-items: flex-end !important; }
   .site-footer .ft-legal { align-self: flex-end; }
+  .site-footer .ft-map-open { display: none !important; }
+}
+
+
+/* Reference-width correction: max-width includes padding due to border-box,
+   so 1320px yields the intended 1240px inner content width on desktop. */
+@media (min-width: 1024px) {
+  .site-footer .ft-inner { max-width: 1320px !important; }
+  .site-footer .ft-bottom { align-items: flex-end !important; }
+  .site-footer .ft-credits { align-self: flex-end; }
+  .site-footer .ft-legal { align-self: flex-end !important; }
   .site-footer .ft-map-open { display: none !important; }
 }
