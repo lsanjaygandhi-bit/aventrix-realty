@@ -44,6 +44,27 @@
         reset: $("hsReset")
     };
     const tabs = Array.from(document.querySelectorAll(".hh-tab"));
+    // Keep the primary phone search compact: move the existing price controls
+    // into Advanced Filters on mobile, and restore them to the main row on wider screens.
+    const priceField = form.querySelector(".hh-field-price");
+    const mainRow = form.querySelector(".hh-row");
+    const advancedGrid = form.querySelector(".hh-adv-grid");
+    const bedsField = form.querySelector(".hh-field-beds");
+    function placePriceField() {
+        if (!priceField || !mainRow || !advancedGrid || !bedsField) return;
+        const compact = document.documentElement.classList.contains("is-mobile") || window.innerWidth <= 768;
+        if (compact && priceField.parentElement !== advancedGrid) {
+            advancedGrid.insertBefore(priceField, form.querySelector(".hh-adv-actions"));
+        } else if (!compact && priceField.parentElement !== mainRow) {
+            mainRow.insertBefore(priceField, bedsField);
+        }
+    }
+    placePriceField();
+    window.addEventListener("resize", () => {
+        placePriceField();
+        if (typeof updateAdvCount === "function") updateAdvCount();
+    });
+
 
     // ---------------------------------------------------------
     // Price presets. Values are plain rupees, exactly what
@@ -122,12 +143,16 @@
     // ---------------------------------------------------------
     // Advanced Filters panel
     // ---------------------------------------------------------
-    const ADVANCED_FIELDS = ["subType", "baths", "areaMin", "areaMax", "facing", "furnishing", "parking", "roadWidth"];
+    const ADVANCED_FIELDS = ["subType", "baths", "areaMin", "areaMax", "facing", "furnishing", "parking", "roadWidth", "priceMin", "priceMax"];
 
     function updateAdvCount() {
-        let n = ADVANCED_FIELDS.filter((k) => els[k].value && !els[k].disabled).length;
+        const keys = ADVANCED_FIELDS.filter((k) =>
+            (k !== "priceMin" && k !== "priceMax") || priceField.parentElement === advancedGrid
+        );
+        let n = keys.filter((k) => els[k].value && !els[k].disabled).length;
         // Area min + max count as one filter.
         if (els.areaMin.value && els.areaMax.value) n -= 1;
+        if (priceField.parentElement === advancedGrid && els.priceMin.value && els.priceMax.value) n -= 1;
         els.advCount.textContent = String(n);
         els.advCount.hidden = n === 0;
     }

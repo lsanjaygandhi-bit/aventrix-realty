@@ -429,22 +429,23 @@ html.is-mobile .hh-title{ font-size:31px; line-height:1.18; margin-bottom:12px; 
 html.is-mobile .hh-subtitle{ font-size:15px; line-height:1.65; }
 html.is-mobile .hh-tabs{ display:flex; width:100%; border-radius:12px 12px 0 0; }
 html.is-mobile .hh-tab{ flex:1 1 0; padding:10px 6px; font-size:13.5px; }
-html.is-mobile .hh-form{ border-radius:0 0 16px 16px; padding:18px 16px 14px; }
-html.is-mobile .hh-row{ grid-template-columns:1fr 1fr; gap:12px; grid-auto-flow:row dense; }
+html.is-mobile .hh-form{ border-radius:0 0 16px 16px; padding:12px 14px 10px; }
+html.is-mobile .hh-row{ grid-template-columns:1fr 1fr; gap:9px 10px; grid-auto-flow:row dense; }
 html.is-mobile .hh-field-location,
 html.is-mobile .hh-field-price,
 html.is-mobile .hh-submit{ grid-column:1 / -1; }
-html.is-mobile .hh-field label{ font-size:10.5px; margin-bottom:6px; }
-html.is-mobile .hh-control{ height:48px; }
+html.is-mobile .hh-field label{ font-size:10.5px; margin-bottom:4px; }
+html.is-mobile .hh-control{ height:44px; }
 html.is-mobile .hh-control input,
 html.is-mobile .hh-control select{ font-size:16px; }
-html.is-mobile .hh-submit{ width:100%; height:50px; margin-top:2px; }
-html.is-mobile .hh-foot{ flex-direction:column-reverse; align-items:stretch; gap:10px; }
-html.is-mobile .hh-adv-toggle{ justify-content:center; padding:8px 2px; }
-html.is-mobile .hh-popular{ justify-content:center; font-size:13px; gap:4px 12px; }
+html.is-mobile .hh-submit{ width:100%; height:46px; margin-top:0; }
+html.is-mobile .hh-foot{ flex-direction:row; justify-content:center; align-items:center; gap:0; margin-top:8px; padding-top:6px; }
+html.is-mobile .hh-adv-toggle{ justify-content:center; padding:5px 2px; }
+html.is-mobile .hh-popular{ display:none; }
 html.is-mobile .hh-adv-grid{ grid-template-columns:1fr 1fr; gap:12px; grid-auto-flow:row dense; }
 html.is-mobile .hh-adv-grid > .hh-field:first-child,
 html.is-mobile .hh-adv-grid > .hh-field:nth-child(3){ grid-column:1 / -1; }
+html.is-mobile .hh-adv-grid > .hh-field-price{ grid-column:1 / -1; }
 html.is-mobile .hh-adv-actions{ grid-column:1 / -1; flex-direction:column-reverse; align-items:stretch; gap:6px; height:auto; }
 html.is-mobile .hh-adv-submit{ display:inline-flex; width:100%; }
 html.is-mobile .hh-hero .home-app-hero-post-btn{ top:14px; right:14px; }
@@ -461,18 +462,18 @@ html.is-mobile .hh-hero .home-app-hero-post-btn{ top:14px; right:14px; }
     html:not(.is-mobile) .hh-subtitle{ font-size:15px; line-height:1.65; }
     html:not(.is-mobile) .hh-tabs{ display:flex; width:100%; }
     html:not(.is-mobile) .hh-tab{ flex:1 1 0; padding:10px 6px; font-size:13.5px; }
-    html:not(.is-mobile) .hh-form{ border-radius:0 0 16px 16px; padding:18px 16px 14px; }
-    html:not(.is-mobile) .hh-row{ grid-template-columns:1fr 1fr; gap:12px; grid-auto-flow:row dense; }
+    html:not(.is-mobile) .hh-form{ border-radius:0 0 16px 16px; padding:12px 14px 10px; }
+    html:not(.is-mobile) .hh-row{ grid-template-columns:1fr 1fr; gap:9px 10px; grid-auto-flow:row dense; }
     html:not(.is-mobile) .hh-field-location,
-    html:not(.is-mobile) .hh-field-price,
     html:not(.is-mobile) .hh-submit{ grid-column:1 / -1; }
     html:not(.is-mobile) .hh-submit{ width:100%; }
-    html:not(.is-mobile) .hh-foot{ flex-direction:column-reverse; align-items:stretch; gap:10px; }
+    html:not(.is-mobile) .hh-foot{ flex-direction:row; justify-content:center; align-items:center; gap:0; margin-top:8px; padding-top:6px; }
     html:not(.is-mobile) .hh-adv-toggle{ justify-content:center; }
-    html:not(.is-mobile) .hh-popular{ justify-content:center; }
+    html:not(.is-mobile) .hh-popular{ display:none; }
     html:not(.is-mobile) .hh-adv-grid{ grid-template-columns:1fr 1fr; gap:12px; grid-auto-flow:row dense; }
     html:not(.is-mobile) .hh-adv-grid > .hh-field:first-child,
     html:not(.is-mobile) .hh-adv-grid > .hh-field:nth-child(3){ grid-column:1 / -1; }
+    html:not(.is-mobile) .hh-adv-grid > .hh-field-price{ grid-column:1 / -1; }
     html:not(.is-mobile) .hh-adv-actions{ grid-column:1 / -1; flex-direction:column-reverse; align-items:stretch; gap:6px; height:auto; }
     html:not(.is-mobile) .hh-adv-submit{ display:inline-flex; width:100%; }
 }
