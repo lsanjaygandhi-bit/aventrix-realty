@@ -113,6 +113,17 @@
     <link rel="stylesheet" href="css/site-footer.css?v=20261015b">
     <link rel="stylesheet" href="css/site-fixes.css?v=20261014">
 
+<style id="property-map-location-search-style">
+body.property-map-page .property-map-search{display:block!important;max-width:100%;margin:0 0 12px;padding:14px 16px;background:#fff;border:1px solid #e5e7eb;border-radius:14px;box-shadow:0 2px 10px rgba(15,59,46,.06)}
+body.property-map-page .property-map-search label{display:block;margin-bottom:7px;color:#0f3b2e;font-size:14px;font-weight:650}
+body.property-map-page .property-map-search-row{display:flex;gap:8px}
+body.property-map-page #propertyMapLocationSearch{box-sizing:border-box;min-width:0;flex:1;height:46px;padding:0 13px;border:1px solid #d1d5db;border-radius:10px;background:#fff;color:#111827;font-size:16px}
+body.property-map-page #propertyMapLocationSearchBtn{flex:0 0 auto;min-height:46px;padding:0 16px;border:0;border-radius:10px;background:#0f3b2e;color:#fff;font-size:15px;font-weight:600}
+body.property-map-page .property-map-search p{margin:7px 0 0;color:#6b7280;font-size:12px;line-height:1.4}
+body.property-map-page .sf-map-view[hidden]{display:none!important}
+body.property-map-page .sf-map-view:not([hidden]){display:block!important}
+@media(max-width:480px){body.property-map-page .property-map-search{padding:12px}body.property-map-page #propertyMapLocationSearchBtn{padding:0 12px}}
+</style>
 <style id="dedicated-property-map-page">
 body.property-map-page .sf-search-form,
 body.property-map-page .sf-results-bar,
@@ -437,6 +448,14 @@ body.property-map-page .sf-map-note { margin:8px 0; }
 
         <div class="property-grid" id="sfResultsGrid"></div>
 
+        <div class="property-map-search" role="search" aria-label="Search property map by area">
+            <label for="propertyMapLocationSearch">Search by location</label>
+            <div class="property-map-search-row">
+                <input type="search" id="propertyMapLocationSearch" placeholder="Enter an area, e.g. Uthandi, Chromepet, ECR" autocomplete="street-address">
+                <button type="button" id="propertyMapLocationSearchBtn"><i class="fas fa-search" aria-hidden="true"></i> Search</button>
+            </div>
+            <p>Type an area name and tap Search to show matching properties on the map.</p>
+        </div>
         <div class="sf-map-view" id="sfMapView" hidden>
             <p class="sf-map-note" id="sfMapNote" aria-live="polite" hidden></p>
             <div class="sf-map-fallback" id="sfMapFallback" role="status" hidden>
@@ -598,9 +617,9 @@ body.property-map-page .sf-map-note { margin:8px 0; }
 <script src="js/recent-searches.js"></script>
 <script src="js/wishlist-widget.js"></script>
 <script src="js/property-taxonomy.js?v=20260924"></script>
-<script src="js/properties-search.js?v=20260927"></script>
+<script src="js/properties-search.js?v=20261016-mapsearch"></script>
 <script src="js/maps-config.js?v=20260926"></script>
-<script src="js/properties-map.js?v=20261015a"></script>
+<script src="js/properties-map.js?v=20261016-mapsearch"></script>
 <script src="js/saved-searches.js?v=20260925"></script>
 <script src="js/geo-bridge.js"></script>
 <script src="js/near-me.js"></script>
@@ -609,6 +628,22 @@ body.property-map-page .sf-map-note { margin:8px 0; }
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
+    var areaInput = document.getElementById("propertyMapLocationSearch");
+    var sourceInput = document.getElementById("sfLocation");
+    var applyButton = document.getElementById("sfApplyFilters");
+    var searchButton = document.getElementById("propertyMapLocationSearchBtn");
+    function runAreaSearch() {
+        if (!areaInput || !sourceInput || !applyButton) return;
+        sourceInput.value = areaInput.value.trim();
+        applyButton.click();
+    }
+    if (areaInput && sourceInput) {
+        areaInput.value = sourceInput.value || new URLSearchParams(window.location.search).get("location") || "";
+        if (searchButton) searchButton.addEventListener("click", runAreaSearch);
+        areaInput.addEventListener("keydown", function (event) {
+            if (event.key === "Enter") { event.preventDefault(); runAreaSearch(); }
+        });
+    }
     var mapButton = document.getElementById("sfViewMapBtn");
     if (mapButton) {
         mapButton.click();
