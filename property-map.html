@@ -159,6 +159,32 @@ body.property-map-page .sf-map-wrap{position:relative;width:100%;height:calc(100
 body.property-map-page #sfMapCanvas{width:100%;height:100%;min-height:400px}
 body.property-map-page .sf-map-fallback{margin:12px}
 @media(max-width:480px){body.property-map-page .property-map-search{padding:8px 10px}body.property-map-page #propertyMapLocationSearchBtn{padding:0 12px}body.property-map-page .sf-map-wrap{height:calc(100dvh - 110px);min-height:360px}body.property-map-page #sfMapCanvas{height:100%;min-height:360px}}
+<style id="compact-map-only-layout">
+/* Map-only landing: remove the large Search Properties hero and keep a compact search strip. */
+body.property-map-page .sf-header,
+body.property-map-page section.sf-header,
+body.property-map-page .near-me-section,
+body.property-map-page .sf-page-intro { display:none!important; }
+body.property-map-page .property-map-search{
+  margin:0!important;padding:7px 10px!important;border:0!important;border-bottom:1px solid #e5e7eb!important;
+  border-radius:0!important;box-shadow:none!important;background:#fff!important;
+}
+body.property-map-page .property-map-search label{margin:0 0 5px!important;font-size:13px!important;line-height:1.2!important}
+body.property-map-page .property-map-search-row{gap:7px!important}
+body.property-map-page #propertyMapLocationSearch,
+body.property-map-page #propertyMapLocationSearchBtn{height:40px!important;min-height:40px!important;font-size:15px!important}
+body.property-map-page .property-map-search p{display:none!important}
+body.property-map-page .sf-map-view:not([hidden]){margin:0!important;padding:0!important}
+body.property-map-page .sf-map-wrap{height:calc(100dvh - 80px)!important;min-height:300px!important;border-radius:0!important}
+body.property-map-page #sfMapCanvas{height:100%!important;min-height:300px!important}
+@media(max-width:480px){
+ body.property-map-page .property-map-search{padding:6px 9px!important}
+ body.property-map-page .property-map-search label{font-size:12px!important;margin-bottom:4px!important}
+ body.property-map-page #propertyMapLocationSearch,
+ body.property-map-page #propertyMapLocationSearchBtn{height:38px!important;min-height:38px!important;font-size:15px!important}
+ body.property-map-page .sf-map-wrap{height:calc(100dvh - 70px)!important;min-height:280px!important}
+}
+</style>
 </style>
 <style id="dedicated-property-map-page">
 body.property-map-page .sf-search-form,
