@@ -367,3 +367,64 @@ html.is-mobile .ft-bottom{
 @media print{
     .pt-page .site-footer{ display:none !important; }
 }
+
+
+/* ================================================================
+   FOOTER ALIGNMENT REFINEMENT — 2026-10-16
+   Match the approved alignment reference: equal-width contact and
+   footer columns, with a consistent bottom-row baseline and safe
+   clearance from the floating action buttons.
+================================================================ */
+@media (min-width:1024px) {
+    .ft-contacts {
+        grid-template-columns:repeat(4, minmax(0, 1fr)) !important;
+        column-gap:0 !important;
+        align-items:stretch;
+    }
+    .ft-contact {
+        min-width:0;
+        padding:4px 20px !important;
+        border-left:1px solid var(--ft-line);
+    }
+    .ft-contact:first-child {
+        padding-left:0 !important;
+        border-left:0 !important;
+    }
+    .ft-contact:last-child { padding-right:0 !important; }
+    .ft-contact > div { min-width:0; }
+    .ft-main {
+        grid-template-columns:repeat(3, minmax(0, 1fr)) !important;
+        column-gap:0 !important;
+        align-items:start;
+    }
+    .ft-col,
+    .ft-side { min-width:0; width:100%; }
+    .ft-col + .ft-col {
+        padding-left:24px !important;
+        margin-left:0 !important;
+        border-left:1px solid var(--ft-line);
+    }
+    .ft-side {
+        padding-left:24px;
+        border-left:1px solid var(--ft-line);
+        gap:20px;
+    }
+    .ft-map,
+    .ft-map-frame,
+    .ft-map-frame iframe { width:100%; max-width:100%; }
+    .ft-bottom {
+        align-items:center !important;
+        padding-right:88px !important;
+        gap:14px 24px;
+    }
+    .ft-credits { flex:0 0 auto; }
+    .ft-legal {
+        justify-content:flex-end;
+        align-items:center;
+        min-width:0;
+    }
+    .ft-legal a { white-space:nowrap; }
+}
+@media (min-width:1440px) {
+    .ft-bottom { padding-right:88px !important; }
+}
