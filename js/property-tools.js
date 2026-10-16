@@ -101,10 +101,10 @@
                 '<div class="pt-print-meta pt-print-only">' +
                     '<div><span>Checklist</span><strong>' + escapeHtml(list.title) + '</strong></div>' +
                     '<div><span>Date</span><strong>' + escapeHtml(new Date().toLocaleDateString("en-IN", { day: "2-digit", month: "long", year: "numeric" })) + '</strong></div>' +
-                    '<div><span>Property / Project</span><strong>________________________________</strong></div>' +
-                    '<div><span>Location</span><strong>________________________________</strong></div>' +
-                    '<div><span>Owner / Contact</span><strong>________________________________</strong></div>' +
-                    '<div><span>Reviewed by</span><strong>________________________________</strong></div>' +
+                    '<div><span>Property / Project</span><strong id="print-property">—</strong></div>' +
+                    '<div><span>Location</span><strong id="print-location">—</strong></div>' +
+                    '<div><span>Owner / Contact</span><strong id="print-owner">—</strong></div>' +
+                    '<div><span>Reviewed by</span><strong id="print-reviewed">—</strong></div>' +
                 '</div>' +
                 '<h2 id="checklist-title">' + escapeHtml(list.title) + " checklist</h2>" +
                 '<p class="pt-print-instructions pt-print-only">Tick each item after checking the relevant document or site condition. Mark items that need follow-up and record notes where necessary.</p>' +
@@ -113,14 +113,47 @@
                     var id = "chk-" + key + "-" + i;
                     return '<label class="pt-check-item" for="' + id + '"><input type="checkbox" id="' + id + '"><span class="pt-check-label-text">' + escapeHtml(text) + '</span><span class="pt-print-status pt-print-only">☐ Yes&nbsp;&nbsp; ☐ No&nbsp;&nbsp; ☐ N/A</span><span class="pt-print-notes pt-print-only"></span></label>';
                 }).join("") +
-                '<div class="pt-print-signoff pt-print-only"><div><span>Prepared / Checked by</span><i></i></div><div><span>Signature</span><i></i></div><div><span>Date</span><i></i></div></div>' +
+                '<div class="pt-print-signoff pt-print-only"><div><span>Prepared / Checked by</span><strong id="print-prepared">—</strong><i></i></div><div><span>Signature / Signatory</span><strong id="print-signature">—</strong><i></i></div><div><span>Date</span><strong id="print-date">—</strong><i></i></div></div>' +
                 '<div class="pt-print-disclaimer pt-print-only"><strong>Important:</strong> This checklist is a preparation aid, not a title-clearance certificate, legal opinion or technical certification. Obtain independent legal and technical due diligence from qualified professionals before paying an advance or signing an agreement.' +
                 '<small>Aventrix Realty · Chennai, Tamil Nadu · aventrixrealty.com</small></div>';
             host.setAttribute("aria-labelledby", "checklist-title");
+            syncPrintDetails();
             progress();
         }
 
+        function inputValue(id) {
+            var el = $(id);
+            return el ? String(el.value || "").trim() : "";
+        }
+        function displayDate(value) {
+            if (!value) return "—";
+            var d = new Date(value + "T00:00:00");
+            return isNaN(d.getTime()) ? value : d.toLocaleDateString("en-IN", { day: "2-digit", month: "long", year: "numeric" });
+        }
+        function syncPrintDetails() {
+            var pairs = [
+                ["print-property", inputValue("cd-property")],
+                ["print-location", inputValue("cd-location")],
+                ["print-owner", inputValue("cd-owner")],
+                ["print-reviewed", inputValue("cd-reviewed")],
+                ["print-prepared", inputValue("cd-prepared")],
+                ["print-signature", inputValue("cd-signature")],
+                ["print-date", displayDate(inputValue("cd-date"))]
+            ];
+            pairs.forEach(function (pair) {
+                var el = $(pair[0]);
+                if (el) el.textContent = pair[1] || "—";
+            });
+        }
+
         host.addEventListener("change", progress);
+        ["cd-property","cd-location","cd-owner","cd-reviewed","cd-prepared","cd-signature","cd-date"].forEach(function (id) {
+            var field = $(id);
+            if (field) field.addEventListener("input", syncPrintDetails);
+            if (field) field.addEventListener("change", syncPrintDetails);
+        });
+        var dateField = $("cd-date");
+        if (dateField) dateField.value = new Date().toISOString().slice(0,10);
         select.addEventListener("change", function () {
             render();
             try {
