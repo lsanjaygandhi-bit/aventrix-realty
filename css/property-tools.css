@@ -46,7 +46,7 @@
 .pt-page .pt-hero-media.is-jv{ background-image:url("../images/jv-calculator-hero.jpg"); }
 .pt-page .pt-hero-media.is-commercial{ background-image:url("../images/commercial-rental.jpg"); }
 /* Government Services hero image is set here; replace the asset with the supplied Tamil Nadu property-map visual. */
-.pt-page .pt-hero-media.is-government{ background-image:url("../images/insight-3.jpg"); }
+.pt-page .pt-hero-media.is-government{ background-image:url("../images/tamil-nadu-property-services-hero.svg"); background-position:center 46%; }
 .pt-page .pt-hero-media.is-seller{ background-image:url("../images/list-property-banner.jpg"); }
 .pt-page .pt-hero .pt-hero-note{
     font-size:13px;
