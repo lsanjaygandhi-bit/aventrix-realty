@@ -8704,27 +8704,19 @@ html.is-mobile .about-why-item{
     }
 }
 
-/* SECTION 8.5 — Declaration: dark full-bleed statement band, a brief
-   emotional beat before the Final CTA. Reuses chennai-marina.jpg with
-   the same green-tint overlay treatment already used for .cta-section
-   and .contact-page-hero elsewhere in this file — no new image
-   introduced. .about-accent is a small reusable two-tone accent span,
-   also used inside .about-statement h2 above. */
+/* SECTION 8.5 — About page commitment band: architectural imagery, no logo watermark. */
 .about-accent{
     color:#D4AF37;
 }
 .about-declaration{
     background:
-        linear-gradient(rgba(15,59,46,0.72), rgba(15,59,46,0.72)),
-        url("images/chennai-marina.jpg");
+        linear-gradient(90deg, rgba(15,59,46,0.80) 0%, rgba(15,59,46,0.52) 56%, rgba(15,59,46,0.16) 100%),
+        url("images/about-commitment-architecture.jpg");
     background-size:cover;
     background-position:center;
     background-repeat:no-repeat;
     padding:80px 8%;
     text-align:center;
-    /* This section sits directly above .fv-final-cta, which shares
-       the same brand-green tone — a thin gold hairline keeps the two
-       dark sections from visually fusing into one oversized block. */
     border-bottom:1px solid rgba(212,175,55,.28);
 }
 .about-declaration .container{
@@ -8742,20 +8734,17 @@ html.is-mobile .about-why-item{
     line-height:1.4;
     margin:16px 0 0;
 }
-
-/* ---- Mobile (both the JS is-mobile path and the JS-disabled
-   narrow-window @media fallback are kept in sync, per this file's
-   established convention) ---- */
 html.is-mobile .about-declaration{
     padding:52px 6%;
+    background-position:58% center;
 }
 html.is-mobile .about-declaration h2{
     font-size:23px;
 }
-
 @media(max-width:768px){
     html:not(.is-mobile) .about-declaration{
         padding:52px 6%;
+        background-position:58% center;
     }
     html:not(.is-mobile) .about-declaration h2{
         font-size:23px;
