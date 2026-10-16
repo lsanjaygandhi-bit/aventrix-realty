@@ -846,24 +846,31 @@ html.is-mobile .home-app-future-section{ padding:24px 0 40px; }
 html.is-mobile .home-explore-title,
 html.is-mobile .home-app-future-heading h2{ font-size:21px; }
 html.is-mobile .home-explore-title{ margin-bottom:14px; }
-/* Phones: 3 equal columns (3 + 2), never a cramped single row */
+/* Phones: match the reference layout — two columns with horizontal icon/text cards */
 html.is-mobile .home-app-shortcuts-section .home-app-shortcuts-row{
-    grid-template-columns:repeat(3,minmax(0,1fr));
-    gap:10px;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:12px;
     justify-content:stretch;
 }
 html.is-mobile .home-app-shortcuts-section .home-app-shortcut{
-    flex-direction:column;
-    justify-content:center;
-    gap:6px;
-    height:84px;
-    padding:0 6px;
-    font-size:13px;
+    flex-direction:row;
+    justify-content:flex-start;
+    align-items:center;
+    gap:12px;
+    height:118px;
+    padding:12px;
+    font-size:14px;
+    text-align:left;
 }
 html.is-mobile .home-app-shortcuts-section .home-app-shortcut-icon{
-    width:36px;
-    height:36px;
-    font-size:14px;
+    flex:0 0 56px;
+    width:56px;
+    height:56px;
+    font-size:20px;
+}
+html.is-mobile .home-app-shortcuts-section .home-app-shortcut > span:last-child{
+    min-width:0;
+    text-align:left;
 }
 /* Phones: label and link on one line, chips on the full row below */
 html.is-mobile .home-app-recent-section .home-app-recent-row{
@@ -915,8 +922,28 @@ html.is-mobile .home-app-see-all{ font-size:13.5px; }
         padding:0 16px;
     }
     html:not(.is-mobile) .home-app-shortcuts-section .home-app-shortcuts-row{
-        grid-template-columns:repeat(3,minmax(0,1fr));
-        gap:10px;
+        grid-template-columns:repeat(2,minmax(0,1fr));
+        gap:12px;
+    }
+    html:not(.is-mobile) .home-app-shortcuts-section .home-app-shortcut{
+        flex-direction:row;
+        justify-content:flex-start;
+        align-items:center;
+        gap:12px;
+        height:118px;
+        padding:12px;
+        font-size:14px;
+        text-align:left;
+    }
+    html:not(.is-mobile) .home-app-shortcuts-section .home-app-shortcut-icon{
+        flex:0 0 56px;
+        width:56px;
+        height:56px;
+        font-size:20px;
+    }
+    html:not(.is-mobile) .home-app-shortcuts-section .home-app-shortcut > span:last-child{
+        min-width:0;
+        text-align:left;
     }
     html:not(.is-mobile) .home-app-recent-section .home-app-recent-row{
         grid-template-columns:minmax(0,1fr) auto;
