@@ -428,3 +428,12 @@ html.is-mobile .ft-bottom{
 @media (min-width:1440px) {
     .ft-bottom { padding-right:88px !important; }
 }
+
+
+/* Desktop footer finishing pass: align the legal row with the final credit
+   line and avoid stacking a second site CTA over Google's own map control. */
+@media (min-width: 1024px) {
+  .site-footer .ft-bottom { align-items: flex-end !important; }
+  .site-footer .ft-legal { align-self: flex-end; }
+  .site-footer .ft-map-open { display: none !important; }
+}
