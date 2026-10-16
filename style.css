@@ -8756,3 +8756,108 @@ html.is-mobile .about-declaration h2{
    (no static/placeholder testimonials are shipped). */
 .testimonials-section[hidden],
 .ssi-segment[hidden]{ display:none !important; }
+
+
+
+/* Homepage contact area: distinct contact, form and footer colour hierarchy (Oct 2026). */
+body.home-page .quick-enquiry-section {
+  background: #F7F5EF !important;
+  color: #123F33 !important;
+}
+body.home-page .quick-enquiry-section::before {
+  display: none !important;
+  content: none !important;
+}
+body.home-page .quick-enquiry-section::after {
+  display: none !important;
+  content: none !important;
+}
+body.home-page .quick-enquiry-info {
+  background: #123F33 !important;
+  color: #FFFFFF !important;
+  border: 1px solid rgba(212,175,55,.35) !important;
+  box-shadow: 0 12px 30px rgba(18,63,51,.12) !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+body.home-page .quick-enquiry-info h2 { color: #FFFFFF !important; }
+body.home-page .quick-enquiry-info .quick-enquiry-desc { color: #E0E7E3 !important; }
+body.home-page .quick-enquiry-form-wrap {
+  background: #FFFFFF !important;
+  color: #123F33 !important;
+  border: 1px solid #E4E1D8 !important;
+  box-shadow: 0 12px 30px rgba(18,63,51,.07) !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+body.home-page .quick-enquiry-form-wrap .qe-field label { color: #123F33 !important; }
+body.home-page .quick-enquiry-form-wrap .qe-field input,
+body.home-page .quick-enquiry-form-wrap .qe-field textarea {
+  background: #FBFAF7 !important;
+  border: 1px solid #DCDCD5 !important;
+  color: #17231E !important;
+}
+body.home-page .quick-enquiry-form-wrap .qe-field input:focus,
+body.home-page .quick-enquiry-form-wrap .qe-field textarea:focus {
+  border-color: #123F33 !important;
+  box-shadow: 0 0 0 3px rgba(18,63,51,.12) !important;
+}
+body.home-page .quick-enquiry-form-wrap .qe-submit-btn {
+  background: #C9A13B !important;
+  color: #17231E !important;
+}
+body.home-page .quick-enquiry-form-wrap .qe-submit-btn:hover { background: #B58B2E !important; }
+body.home-page .qe-primary-contact .qe-call-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  width: fit-content;
+  padding: 11px 16px;
+  margin-top: 5px;
+  border: 1px solid rgba(212,175,55,.65);
+  border-radius: 999px;
+  color: #FFFFFF !important;
+  background: rgba(255,255,255,.08);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+body.home-page .qe-primary-contact .qe-call-cta:hover {
+  background: #C9A13B;
+  color: #17231E !important;
+}
+@media (max-width: 768px) {
+  body.home-page .quick-enquiry-section { padding: 28px 16px !important; }
+  body.home-page .quick-enquiry-grid { gap: 18px !important; }
+  body.home-page .quick-enquiry-info {
+    padding: 24px 20px !important;
+    border-radius: 18px !important;
+  }
+  body.home-page .quick-enquiry-info h2 {
+    font-size: clamp(27px, 7vw, 34px) !important;
+    line-height: 1.2 !important;
+    margin: 12px 0 14px !important;
+  }
+  body.home-page .quick-enquiry-desc {
+    font-size: 14px !important;
+    line-height: 1.65 !important;
+    margin-bottom: 22px !important;
+  }
+  body.home-page .quick-enquiry-details { gap: 16px !important; }
+  body.home-page .quick-enquiry-form-wrap {
+    padding: 20px 16px !important;
+    border-radius: 18px !important;
+  }
+  body.home-page .quick-enquiry-form-wrap .qe-field { margin-bottom: 16px !important; gap: 7px !important; }
+  body.home-page .quick-enquiry-form-wrap .qe-field input,
+  body.home-page .quick-enquiry-form-wrap .qe-field textarea {
+    padding: 13px 14px !important;
+    border-radius: 10px !important;
+    font-size: 15px !important;
+  }
+  body.home-page .quick-enquiry-form-wrap .qe-submit-btn {
+    padding: 14px !important;
+    font-size: 15px !important;
+  }
+}
