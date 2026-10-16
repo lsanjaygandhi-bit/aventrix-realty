@@ -153,6 +153,17 @@
     }
 
     function applyList(listEl, items) {
+        // The homepage investment cards are CMS-backed. Keep the approved
+        // Rental Demand & Returns card visible even if the older CMS record
+        // still contains only the original three items.
+        if (listEl.closest && listEl.closest("#invest") &&
+            !items.some((item) => /rental demand/i.test(String((item || {}).title || "")))) {
+            items = items.concat([{
+                title: "Rental Demand & Returns",
+                text: "Explore rental demand and potential income across Chennai property markets."
+            }]);
+        }
+
         // Keep the page's original items as templates (captured once).
         if (!listEl.__cmsTemplates) {
             listEl.__cmsTemplates = Array.from(listEl.children).filter((c) => c.hasAttribute("data-cms-item")).map((c) => c.cloneNode(true));
