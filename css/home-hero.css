@@ -1145,3 +1145,49 @@ html.is-mobile .home-page #futurePropertiesGrid{ --hp-rail-gap:10px; }
 @media (max-width:699px){
     html.is-mobile .home-app-future-section .hp-rail-controls{ display:none !important; }
 }
+
+
+/* ===========================================================
+   YOUR ACCOUNT — mobile-only compact spacing
+   Scope is limited to #homeAppSegments; hero/search and the
+   sections below remain visually unchanged.
+=========================================================== */
+html.is-mobile #homeAppSegments.home-app-segment-section{
+    padding:18px 0 18px;
+}
+html.is-mobile #homeAppSegments .home-app-segment-label{
+    margin-bottom:8px;
+}
+html.is-mobile #homeAppSegments .home-app-segment-control{
+    margin-bottom:8px;
+}
+html.is-mobile #homeAppSegments .home-app-segment-btn{
+    padding:7px 10px;
+}
+html.is-mobile #homeAppSegments .home-app-empty,
+html.is-mobile #homeAppSegments .home-app-loading,
+html.is-mobile #homeAppSegments .home-app-recent-empty{
+    padding-top:2px;
+    line-height:1.4;
+}
+@media (max-width:768px){
+    html:not(.is-mobile) #homeAppSegments.home-app-segment-section{
+        padding:18px 0 18px;
+    }
+    html:not(.is-mobile) #homeAppSegments .home-app-segment-label{
+        margin-bottom:8px;
+    }
+    html:not(.is-mobile) #homeAppSegments .home-app-segment-control{
+        margin-bottom:8px;
+    }
+    html:not(.is-mobile) #homeAppSegments .home-app-segment-btn{
+        padding:7px 10px;
+    }
+    html:not(.is-mobile) #homeAppSegments .home-app-empty,
+    html:not(.is-mobile) #homeAppSegments .home-app-loading,
+    html:not(.is-mobile) #homeAppSegments .home-app-recent-empty{
+        padding-top:2px;
+        line-height:1.4;
+    }
+}
+
