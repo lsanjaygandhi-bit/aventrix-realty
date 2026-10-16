@@ -75,7 +75,7 @@
     <meta name="twitter:image" content="https://aventrixrealty.com/images/og/aventrix-logo-og.jpg">
 
     <link rel="stylesheet" href="style.css?v=20261014">
-    <link rel="stylesheet" href="css/property-tools.css?v=20261016print3">
+    <link rel="stylesheet" href="css/property-tools.css?v=20261016details1">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
@@ -221,6 +221,19 @@
             </div>
             <p id="check-progress" class="pt-progress pt-no-print" aria-live="polite"></p>
             <div class="pt-progress-bar pt-no-print" aria-hidden="true"><span id="check-progress-bar"></span></div>
+            <div class="pt-checklist-details" id="checklist-details">
+                <h3>Property &amp; Verification Details</h3>
+                <p>Fill these details before printing. They will appear automatically in the PDF.</p>
+                <div class="pt-checklist-details-grid">
+                    <label>Property / Project Name<input id="cd-property" type="text" placeholder="Enter property or project name"></label>
+                    <label>Property Location<input id="cd-location" type="text" placeholder="Area, city, district"></label>
+                    <label>Owner / Contact<input id="cd-owner" type="text" placeholder="Owner name and contact"></label>
+                    <label>Reviewed By<input id="cd-reviewed" type="text" placeholder="Reviewer name / role"></label>
+                    <label>Prepared / Checked By<input id="cd-prepared" type="text" placeholder="Your name"></label>
+                    <label>Signature / Signatory Name<input id="cd-signature" type="text" placeholder="Name of person signing"></label>
+                    <label>Date<input id="cd-date" type="date"></label>
+                </div>
+            </div>
             <section id="checklist" class="pt-checklist"></section>
         </div>
         <div class="pt-notice"><i class="fas fa-scale-balanced" aria-hidden="true"></i><p>Never rely on this checklist alone. Obtain independent legal and technical due diligence before paying an advance or signing an agreement.</p></div>
@@ -357,7 +370,7 @@
 <script src="js/aventrix-storage.js"></script>
 <script src="js/wishlist-widget.js"></script>
 <script src="script.js?v=20260926b"></script>
-<script src="js/property-tools.js?v=20261016print2"></script>
+<script src="js/property-tools.js?v=20261016details1"></script>
 
 </body>
 
