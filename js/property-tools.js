@@ -96,7 +96,7 @@
                 '<div class="pt-print-brand pt-print-only">' +
                     '<img src="images/aventrix-logo.png" alt="Aventrix Realty logo">' +
                     '<div><p class="pt-print-kicker">PROPERTY INTELLIGENCE CENTRE</p>' +
-                    '<h1>AVENTRIX REALTY</h1><p>Property Due-Diligence Checklist</p></div>' +
+                    '<p class="pt-print-subtitle">Property Due-Diligence Checklist</p></div>' +
                 '</div>' +
                 '<div class="pt-print-meta pt-print-only">' +
                     '<div><span>Checklist</span><strong>' + escapeHtml(list.title) + '</strong></div>' +
