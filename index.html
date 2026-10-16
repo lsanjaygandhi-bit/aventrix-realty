@@ -414,6 +414,35 @@
 }
 </style>
 
+<style id="fix-faq-outer-background-2026-10-16">
+/* Ensure the FAQ section itself stays light; the image belongs only to its heading panel. */
+body.home-page section#faq.faq-section,
+body.home-page #faq.faq-section {
+  background: #fbfaf7 !important;
+  background-color: #fbfaf7 !important;
+  background-image: none !important;
+}
+body.home-page section#faq.faq-section::before,
+body.home-page section#faq.faq-section::after,
+body.home-page #faq.faq-section::before,
+body.home-page #faq.faq-section::after {
+  content: none !important;
+  display: none !important;
+  background: none !important;
+  background-image: none !important;
+  opacity: 0 !important;
+}
+body.home-page #faq .faq-list {
+  background: #fbfaf7 !important;
+  background-color: #fbfaf7 !important;
+  background-image: none !important;
+}
+body.home-page #faq .section-heading {
+  background-color: #f7f5ef !important;
+  background-image: linear-gradient(rgba(255,255,255,.88),rgba(255,255,255,.91)),url('images/cat-luxury-villas.jpg') !important;
+}
+</style>
+
 </head>
   <body class="home-page" data-page-key="home">
     <header class="header">
