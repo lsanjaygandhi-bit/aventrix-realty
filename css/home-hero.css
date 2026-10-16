@@ -846,31 +846,63 @@ html.is-mobile .home-app-future-section{ padding:24px 0 40px; }
 html.is-mobile .home-explore-title,
 html.is-mobile .home-app-future-heading h2{ font-size:21px; }
 html.is-mobile .home-explore-title{ margin-bottom:14px; }
-/* Phones: match the reference layout — two columns with horizontal icon/text cards */
+/* Phones: compact reference cards — two columns, icon + title + subtitle */
+html.is-mobile .home-app-shortcuts-section{ padding:18px 0 16px; }
+html.is-mobile .home-app-shortcuts-section .home-explore-title{ margin-bottom:12px; }
 html.is-mobile .home-app-shortcuts-section .home-app-shortcuts-row{
     grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:12px;
+    gap:10px 12px;
     justify-content:stretch;
 }
 html.is-mobile .home-app-shortcuts-section .home-app-shortcut{
+    box-sizing:border-box;
     flex-direction:row;
     justify-content:flex-start;
     align-items:center;
     gap:12px;
-    height:118px;
-    padding:12px;
+    height:84px;
+    min-width:0;
+    padding:10px 12px;
     font-size:14px;
     text-align:left;
 }
 html.is-mobile .home-app-shortcuts-section .home-app-shortcut-icon{
-    flex:0 0 56px;
-    width:56px;
-    height:56px;
-    font-size:20px;
+    flex:0 0 48px;
+    width:48px;
+    height:48px;
+    font-size:18px;
 }
-html.is-mobile .home-app-shortcuts-section .home-app-shortcut > span:last-child{
+html.is-mobile .home-app-shortcuts-section .home-app-shortcut-copy{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    justify-content:center;
     min-width:0;
-    text-align:left;
+    gap:3px;
+    line-height:1.2;
+}
+html.is-mobile .home-app-shortcuts-section .home-app-shortcut-copy strong{
+    font-size:14px;
+    font-weight:650;
+    line-height:1.2;
+}
+html.is-mobile .home-app-shortcuts-section .home-app-shortcut-copy small{
+    display:block;
+    color:#6b7280;
+    font-size:11.5px;
+    font-weight:400;
+    line-height:1.25;
+    white-space:normal;
+}
+html.is-mobile .home-app-shortcuts-section .home-app-shortcut::after{
+    content:"";
+    flex:0 0 7px;
+    width:7px;
+    height:7px;
+    margin-left:auto;
+    border-top:2px solid currentColor;
+    border-right:2px solid currentColor;
+    transform:rotate(45deg);
 }
 /* Phones: label and link on one line, chips on the full row below */
 html.is-mobile .home-app-recent-section .home-app-recent-row{
@@ -921,29 +953,39 @@ html.is-mobile .home-app-see-all{ font-size:13.5px; }
         width:100%;
         padding:0 16px;
     }
+    html:not(.is-mobile) .home-app-shortcuts-section{ padding:18px 0 16px; }
+    html:not(.is-mobile) .home-app-shortcuts-section .home-explore-title{ margin-bottom:12px; }
     html:not(.is-mobile) .home-app-shortcuts-section .home-app-shortcuts-row{
         grid-template-columns:repeat(2,minmax(0,1fr));
-        gap:12px;
+        gap:10px 12px;
     }
     html:not(.is-mobile) .home-app-shortcuts-section .home-app-shortcut{
+        box-sizing:border-box;
         flex-direction:row;
         justify-content:flex-start;
         align-items:center;
         gap:12px;
-        height:118px;
-        padding:12px;
+        height:84px;
+        min-width:0;
+        padding:10px 12px;
         font-size:14px;
         text-align:left;
     }
     html:not(.is-mobile) .home-app-shortcuts-section .home-app-shortcut-icon{
-        flex:0 0 56px;
-        width:56px;
-        height:56px;
-        font-size:20px;
+        flex:0 0 48px;
+        width:48px;
+        height:48px;
+        font-size:18px;
     }
-    html:not(.is-mobile) .home-app-shortcuts-section .home-app-shortcut > span:last-child{
-        min-width:0;
-        text-align:left;
+    html:not(.is-mobile) .home-app-shortcuts-section .home-app-shortcut-copy{
+        display:flex; flex-direction:column; align-items:flex-start; justify-content:center;
+        min-width:0; gap:3px; line-height:1.2;
+    }
+    html:not(.is-mobile) .home-app-shortcuts-section .home-app-shortcut-copy strong{ font-size:14px; font-weight:650; line-height:1.2; }
+    html:not(.is-mobile) .home-app-shortcuts-section .home-app-shortcut-copy small{ display:block; color:#6b7280; font-size:11.5px; font-weight:400; line-height:1.25; white-space:normal; }
+    html:not(.is-mobile) .home-app-shortcuts-section .home-app-shortcut::after{
+        content:""; flex:0 0 7px; width:7px; height:7px; margin-left:auto;
+        border-top:2px solid currentColor; border-right:2px solid currentColor; transform:rotate(45deg);
     }
     html:not(.is-mobile) .home-app-recent-section .home-app-recent-row{
         grid-template-columns:minmax(0,1fr) auto;
