@@ -60,7 +60,10 @@
         }
     }
     placePriceField();
-    window.addEventListener("resize", placePriceField);
+    window.addEventListener("resize", () => {
+        placePriceField();
+        if (typeof updateAdvCount === "function") updateAdvCount();
+    });
 
 
     // ---------------------------------------------------------
@@ -143,10 +146,13 @@
     const ADVANCED_FIELDS = ["subType", "baths", "areaMin", "areaMax", "facing", "furnishing", "parking", "roadWidth", "priceMin", "priceMax"];
 
     function updateAdvCount() {
-        let n = ADVANCED_FIELDS.filter((k) => els[k].value && !els[k].disabled).length;
+        const keys = ADVANCED_FIELDS.filter((k) =>
+            (k !== "priceMin" && k !== "priceMax") || priceField.parentElement === advancedGrid
+        );
+        let n = keys.filter((k) => els[k].value && !els[k].disabled).length;
         // Area min + max count as one filter.
         if (els.areaMin.value && els.areaMax.value) n -= 1;
-        if (els.priceMin.value && els.priceMax.value) n -= 1;
+        if (priceField.parentElement === advancedGrid && els.priceMin.value && els.priceMax.value) n -= 1;
         els.advCount.textContent = String(n);
         els.advCount.hidden = n === 0;
     }
