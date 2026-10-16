@@ -20,7 +20,7 @@ import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 PARTIAL = (ROOT / "partials" / "footer.html").read_text(encoding="utf-8").strip()
-CSS_VERSION = "20261015b"
+CSS_VERSION = "20261021"
 CSS_LINK = f'<link rel="stylesheet" href="css/site-footer.css?v={CSS_VERSION}">'
 
 BLOCK = re.compile(r"<!-- SITE-FOOTER:START.*?<!-- SITE-FOOTER:END -->", re.S)

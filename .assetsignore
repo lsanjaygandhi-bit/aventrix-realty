@@ -10,3 +10,10 @@ tests
 .wrangler
 *.sql
 *.csv
+
+# not part of the public site
+partials
+tools
+.github
+images/design
+functions
