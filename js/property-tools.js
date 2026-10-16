@@ -93,13 +93,29 @@
             var key = LISTS[select.value] ? select.value : "flat";
             var list = LISTS[key];
             host.innerHTML =
+                '<div class="pt-print-brand pt-print-only">' +
+                    '<img src="images/aventrix-logo.png" alt="Aventrix Realty logo">' +
+                    '<div><p class="pt-print-kicker">PROPERTY INTELLIGENCE CENTRE</p>' +
+                    '<h1>AVENTRIX REALTY</h1><p>Property Due-Diligence Checklist</p></div>' +
+                '</div>' +
+                '<div class="pt-print-meta pt-print-only">' +
+                    '<div><span>Checklist</span><strong>' + escapeHtml(list.title) + '</strong></div>' +
+                    '<div><span>Date</span><strong>' + escapeHtml(new Date().toLocaleDateString("en-IN", { day: "2-digit", month: "long", year: "numeric" })) + '</strong></div>' +
+                    '<div><span>Property / Project</span><strong>________________________________</strong></div>' +
+                    '<div><span>Location</span><strong>________________________________</strong></div>' +
+                    '<div><span>Owner / Contact</span><strong>________________________________</strong></div>' +
+                    '<div><span>Reviewed by</span><strong>________________________________</strong></div>' +
+                '</div>' +
                 '<h2 id="checklist-title">' + escapeHtml(list.title) + " checklist</h2>" +
-                '<p class="pt-print-only pt-hint">Aventrix Realty · Property due-diligence checklist · Printed ' +
-                escapeHtml(new Date().toLocaleDateString("en-IN", { day: "2-digit", month: "long", year: "numeric" })) + "</p>" +
+                '<p class="pt-print-instructions pt-print-only">Tick each item after checking the relevant document or site condition. Mark items that need follow-up and record notes where necessary.</p>' +
+                '<div class="pt-print-column-head pt-print-only"><span>Verification item</span><span>Status</span><span>Notes / Follow-up</span></div>' +
                 list.items.map(function (text, i) {
                     var id = "chk-" + key + "-" + i;
-                    return '<label class="pt-check-item" for="' + id + '"><input type="checkbox" id="' + id + '"><span>' + escapeHtml(text) + "</span></label>";
-                }).join("");
+                    return '<label class="pt-check-item" for="' + id + '"><input type="checkbox" id="' + id + '"><span class="pt-check-label-text">' + escapeHtml(text) + '</span><span class="pt-print-status pt-print-only">☐ Yes&nbsp;&nbsp; ☐ No&nbsp;&nbsp; ☐ N/A</span><span class="pt-print-notes pt-print-only"></span></label>';
+                }).join("") +
+                '<div class="pt-print-signoff pt-print-only"><div><span>Prepared / Checked by</span><i></i></div><div><span>Signature</span><i></i></div><div><span>Date</span><i></i></div></div>' +
+                '<div class="pt-print-disclaimer pt-print-only"><strong>Important:</strong> This checklist is a preparation aid, not a title-clearance certificate, legal opinion or technical certification. Obtain independent legal and technical due diligence from qualified professionals before paying an advance or signing an agreement.' +
+                '<small>Aventrix Realty · Chennai, Tamil Nadu · aventrixrealty.com</small></div>';
             host.setAttribute("aria-labelledby", "checklist-title");
             progress();
         }
