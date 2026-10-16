@@ -349,15 +349,25 @@
 </style>
 
 <style id="faq-white-card-design-2026-10-16">
-/* Option 2: white FAQ cards with green text and gold controls. Preserve content and accordion behavior. */
+/* White FAQ cards; only the heading panel gets a subtle architecture image. */
 #faq.faq-section {
   background: #fbfaf7 !important;
   background-image: none !important;
   color: #123f33 !important;
   position: relative;
 }
-#faq.faq-section::before,
-#faq.faq-section::after { background-image: none !important; opacity: 0 !important; }
+#faq .section-heading {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 22px;
+  padding: 28px 16px 26px;
+  margin: 0 0 22px;
+  background-color: #f7f5ef;
+  background-image: linear-gradient(rgba(255,255,255,.88),rgba(255,255,255,.91)),url('images/cat-luxury-villas.jpg');
+  background-size: cover;
+  background-position: center 45%;
+}
 #faq .section-heading h2 { color: #123f33 !important; }
 #faq .section-eyebrow { color: #b58b35 !important; }
 #faq .faq-item {
@@ -379,23 +389,28 @@
 }
 @media (max-width: 768px) {
   #faq.faq-section {
-    padding-top: 34px !important;
-    padding-bottom: 30px !important;
+    padding-top: 29px !important;
+    padding-bottom: 25px !important;
   }
-  #faq .section-heading { margin-bottom: 22px !important; }
+  #faq .section-heading {
+    padding: 22px 12px 20px !important;
+    margin-bottom: 18px !important;
+    border-radius: 18px !important;
+  }
   #faq .section-heading h2 {
-    font-size: clamp(28px, 7vw, 35px) !important;
-    line-height: 1.2 !important;
+    font-size: clamp(25px, 6.5vw, 30px) !important;
+    line-height: 1.18 !important;
   }
-  #faq .faq-list { gap: 10px !important; }
-  #faq .faq-item { border-radius: 16px !important; }
+  #faq .section-eyebrow { font-size: 11px !important; margin-bottom: 7px !important; }
+  #faq .faq-list { gap: 9px !important; }
+  #faq .faq-item { border-radius: 15px !important; }
   #faq .faq-question {
-    min-height: 64px !important;
-    padding: 16px 18px !important;
-    font-size: 16px !important;
-    line-height: 1.4 !important;
+    min-height: 58px !important;
+    padding: 14px 16px !important;
+    font-size: 15px !important;
+    line-height: 1.35 !important;
   }
-  #faq .faq-answer { padding: 0 18px 16px !important; }
+  #faq .faq-answer { padding: 0 16px 14px !important; }
 }
 </style>
 
