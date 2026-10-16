@@ -445,6 +445,7 @@ html.is-mobile .hh-popular{ display:none; }
 html.is-mobile .hh-adv-grid{ grid-template-columns:1fr 1fr; gap:12px; grid-auto-flow:row dense; }
 html.is-mobile .hh-adv-grid > .hh-field:first-child,
 html.is-mobile .hh-adv-grid > .hh-field:nth-child(3){ grid-column:1 / -1; }
+html.is-mobile .hh-adv-grid > .hh-field-price{ grid-column:1 / -1; }
 html.is-mobile .hh-adv-actions{ grid-column:1 / -1; flex-direction:column-reverse; align-items:stretch; gap:6px; height:auto; }
 html.is-mobile .hh-adv-submit{ display:inline-flex; width:100%; }
 html.is-mobile .hh-hero .home-app-hero-post-btn{ top:14px; right:14px; }
@@ -472,6 +473,7 @@ html.is-mobile .hh-hero .home-app-hero-post-btn{ top:14px; right:14px; }
     html:not(.is-mobile) .hh-adv-grid{ grid-template-columns:1fr 1fr; gap:12px; grid-auto-flow:row dense; }
     html:not(.is-mobile) .hh-adv-grid > .hh-field:first-child,
     html:not(.is-mobile) .hh-adv-grid > .hh-field:nth-child(3){ grid-column:1 / -1; }
+    html:not(.is-mobile) .hh-adv-grid > .hh-field-price{ grid-column:1 / -1; }
     html:not(.is-mobile) .hh-adv-actions{ grid-column:1 / -1; flex-direction:column-reverse; align-items:stretch; gap:6px; height:auto; }
     html:not(.is-mobile) .hh-adv-submit{ display:inline-flex; width:100%; }
 }
