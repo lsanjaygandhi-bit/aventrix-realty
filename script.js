@@ -453,7 +453,7 @@ function initFaqAccordion() {
             } else {
                 item.classList.add("open");
                 question.setAttribute("aria-expanded", "true");
-                answer.style.maxHeight = answer.scrollHeight + 40 + "px";
+                answer.style.maxHeight = answer.scrollHeight + "px";
             }
         });
     });

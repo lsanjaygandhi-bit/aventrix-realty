@@ -485,6 +485,24 @@ body.home-page #faq .section-heading {
 }
 </style>
 
+
+<style id="fix-faq-answer-visibility-and-height-2026-10-16">
+/* Fix FAQ answers hidden by the legacy white-on-dark text colour. */
+body.home-page #faq .faq-answer,
+body.home-page #faq .faq-answer p {
+  color: #596675 !important;
+}
+body.home-page #faq .faq-answer p {
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+  margin: 0 !important;
+}
+@media (max-width: 768px) {
+  body.home-page #faq .faq-answer { padding: 0 16px !important; }
+  body.home-page #faq .faq-item.open .faq-answer { padding: 0 16px 14px !important; }
+}
+</style>
+
 </head>
   <body class="home-page" data-page-key="home">
     <header class="header">
