@@ -486,3 +486,18 @@ html.is-mobile .ft-bottom{
     height: 220px;
   }
 }
+
+
+/* Desktop: lift the map closer to the social row; keep Follow Us heading aligned. */
+@media (min-width: 1024px) {
+  .site-footer .ft-side {
+    gap: 12px !important;
+  }
+  .site-footer .ft-follow {
+    gap: 12px !important;
+  }
+  .site-footer .ft-map {
+    margin-top: 0 !important;
+    align-self: stretch;
+  }
+}
