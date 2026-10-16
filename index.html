@@ -503,6 +503,34 @@ body.home-page #faq .faq-answer p {
 }
 </style>
 
+
+<style id="desktop-faq-heading-full-bleed-alignment-2026-10-16">
+/* Desktop only: extend the FAQ heading image panel edge-to-edge across the viewport. */
+@media (min-width: 769px) {
+  body.home-page #faq .section-heading {
+    width: 100vw !important;
+    max-width: none !important;
+    box-sizing: border-box !important;
+    position: relative !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    margin: 0 0 48px !important;
+    padding: 34px 24px 30px !important;
+    border-radius: 0 !important;
+    background-size: cover !important;
+    background-position: center 45% !important;
+    text-align: center !important;
+  }
+  body.home-page #faq .section-heading h2 {
+    max-width: 760px !important;
+    margin-inline: auto !important;
+  }
+  body.home-page #faq .faq-list {
+    margin-top: 0 !important;
+  }
+}
+</style>
+
 </head>
   <body class="home-page" data-page-key="home">
     <header class="header">
