@@ -1,0 +1,121 @@
+/* =====================================================================
+   AVENTRIX REALTY — HOMEPAGE DESKTOP LAYOUT (2026-10-17)
+   Loaded by index.html only, after every other stylesheet.
+   Desktop only: every rule sits inside min-width:1025px and is scoped
+   to html:not(.is-mobile) + a homepage section, so phones, touch
+   tablets and the 769–1024px tablet layout are unchanged, and no other
+   page is affected.
+   ===================================================================== */
+@media (min-width:1025px){
+
+    /* ---------- 1. Explore Properties ----------
+       Each tile's copy is <span class="home-app-shortcut-copy"><strong>Buy</strong><small>Find…</small></span>
+       with no space between the two. Only the phone/tablet rules turned
+       that span into a column; on desktop both stayed inline, so the
+       browser drew "BuyFind your dream home". The grid also had five
+       columns for six tiles (5 + 1). */
+    html:not(.is-mobile) .home-app-shortcuts-section .home-app-shortcuts-row{
+        grid-template-columns:repeat(3,minmax(0,1fr));
+        grid-auto-rows:1fr;            /* equal tile heights */
+        gap:14px;
+    }
+    html:not(.is-mobile) .home-app-shortcuts-section .home-app-shortcut{
+        box-sizing:border-box;
+        height:auto;
+        min-height:76px;
+        padding:14px 18px;
+        gap:14px;
+        align-items:center;
+    }
+    html:not(.is-mobile) .home-app-shortcuts-section .home-app-shortcut-icon{
+        flex:0 0 44px;
+        width:44px;
+        height:44px;
+        font-size:16px;
+    }
+    html:not(.is-mobile) .home-app-shortcuts-section .home-app-shortcut-copy{
+        display:flex;
+        flex-direction:column;
+        align-items:flex-start;
+        justify-content:center;
+        gap:3px;
+        min-width:0;
+        line-height:1.25;
+    }
+    html:not(.is-mobile) .home-app-shortcuts-section .home-app-shortcut-copy strong{
+        display:block;
+        font-size:15px;
+        font-weight:650;
+        line-height:1.25;
+        color:#111827;
+    }
+    html:not(.is-mobile) .home-app-shortcuts-section .home-app-shortcut-copy small{
+        display:block;
+        color:#6b7280;
+        font-size:12.5px;
+        font-weight:400;
+        line-height:1.35;
+        white-space:normal;
+    }
+
+    /* ---------- 2. What We Do ---------- */
+    html:not(.is-mobile) #what-we-do .section-heading{ margin-bottom:28px; }
+    html:not(.is-mobile) #what-we-do .bsl-grid{
+        grid-template-columns:repeat(6,minmax(0,1fr));
+        gap:12px;
+        align-items:stretch;
+    }
+    html:not(.is-mobile) #what-we-do .bsl-card{
+        box-sizing:border-box;
+        height:100%;
+        padding:20px 12px 18px;
+        justify-content:flex-start;
+    }
+    html:not(.is-mobile) #what-we-do .bsl-card h3{ margin:0 0 6px; }
+    html:not(.is-mobile) #what-we-do .bsl-card p{ margin:0; }
+    /* "Learn More" sits on the same line in every card */
+    html:not(.is-mobile) #what-we-do .bsl-more{ margin-top:auto; padding-top:12px; }
+
+    /* ---------- 3. The Aventrix Standard ----------
+       Four points: one row of four. Six points: the existing 3 × 2. */
+    html:not(.is-mobile) #why-us .why-grid{ align-items:stretch; }
+    html:not(.is-mobile) #why-us .why-grid:has(> .why-item:nth-child(4):last-child){
+        grid-template-columns:repeat(4,minmax(0,1fr));
+        gap:20px;
+    }
+    html:not(.is-mobile) #why-us .why-item{
+        box-sizing:border-box;
+        height:100%;
+    }
+
+    /* ---------- 4. Why Invest in Chennai ----------
+       Four cards: one row of four (was 3 + 1). */
+    html:not(.is-mobile) #invest .invest-grid{ align-items:stretch; }
+    html:not(.is-mobile) #invest .invest-grid:has(> .invest-card:nth-child(4):last-child){
+        grid-template-columns:repeat(4,minmax(0,1fr));
+        gap:20px;
+    }
+    html:not(.is-mobile) #invest .invest-card{
+        box-sizing:border-box;
+        height:100%;
+        padding:32px 24px;
+    }
+}
+
+/* Wide desktops: all six Explore Properties tiles in one row */
+@media (min-width:1280px){
+    html:not(.is-mobile) .home-app-shortcuts-section .home-app-shortcuts-row{
+        grid-template-columns:repeat(6,minmax(0,1fr));
+        gap:12px;
+    }
+    html:not(.is-mobile) .home-app-shortcuts-section .home-app-shortcut{
+        flex-direction:column;
+        align-items:center;
+        justify-content:flex-start;
+        text-align:center;
+        min-height:132px;
+        padding:18px 12px 16px;
+        gap:10px;
+    }
+    html:not(.is-mobile) .home-app-shortcuts-section .home-app-shortcut-copy{ align-items:center; }
+}
