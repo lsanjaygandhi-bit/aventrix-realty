@@ -245,3 +245,26 @@ html.is-mobile .hp-view-all .view-details-btn{ width:100%; min-width:0; min-heig
     .hp-view-toggle > button{gap:5px;padding:0 6px;font-size:11px}
     .hp-view-toggle .hp-open-full-map{gap:4px;padding:0 7px;font-size:10px}
 }
+
+
+/* Dedicated property-map page: escape the generic 1200px content container
+   so the desktop map fills the available viewport instead of stopping early. */
+@media (min-width: 769px) {
+  body.property-map-page .sf-map-view:not([hidden]) {
+    width: 100vw !important;
+    max-width: none !important;
+    margin-left: calc(50% - 50vw) !important;
+    margin-right: 0 !important;
+    padding: 0 !important;
+  }
+  body.property-map-page .sf-map-wrap {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+  }
+  body.property-map-page #sfMapCanvas {
+    width: 100% !important;
+    max-width: none !important;
+  }
+}
