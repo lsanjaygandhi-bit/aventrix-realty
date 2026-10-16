@@ -8711,7 +8711,7 @@ html.is-mobile .about-why-item{
 .about-declaration{
     background:
         linear-gradient(90deg, rgba(15,59,46,0.80) 0%, rgba(15,59,46,0.52) 56%, rgba(15,59,46,0.16) 100%),
-        url("images/about-commitment-architecture.jpg");
+        url("images/properties-hero.jpg");
     background-size:cover;
     background-position:center;
     background-repeat:no-repeat;
