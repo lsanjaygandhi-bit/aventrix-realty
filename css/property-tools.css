@@ -466,9 +466,12 @@ html.is-mobile .pt-grid-3{ grid-template-columns:1fr; }
     .pt-page .pt-container{ width:auto; max-width:none; margin:0; }
     .pt-page .pt-card{ border:0; padding:0; box-shadow:none; }
     .pt-page #checklist{ width:100%; }
-    .pt-page .pt-print-brand{ display:flex !important; align-items:center; gap:16px; padding:0 0 12px; border-bottom:3px solid #d4a32c; margin:0 0 12px; }
-    .pt-page .pt-print-brand img{ width:125px; max-height:58px; object-fit:contain; }
-    .pt-page .pt-print-brand h1{ margin:0 0 2px; font-size:19pt; letter-spacing:2px; color:#103d31; }
+    /* Print masthead: use the actual logo as the sole company name.
+       Avoid repeating "AVENTRIX REALTY" as large text beside the logo. */
+    .pt-page .pt-print-brand{ display:flex !important; align-items:center; gap:18px; padding:0 0 12px; border-bottom:3px solid #d4a32c; margin:0 0 12px; }
+    .pt-page .pt-print-brand img{ width:155px; max-height:66px; object-fit:contain; }
+    .pt-page .pt-print-brand > div{ display:flex; flex-direction:column; gap:3px; }
+    .pt-page .pt-print-brand h1{ display:none !important; }
     .pt-page .pt-print-brand p{ margin:2px 0 0; color:#4b5c56; font-size:9pt; }
     .pt-page .pt-print-brand .pt-print-kicker{ color:#a47b17; font-size:7pt; letter-spacing:2px; font-weight:700; }
     .pt-page .pt-print-meta{ display:grid !important; grid-template-columns:1fr 1fr; gap:9px 16px; border:1px solid #d7ded9; border-radius:5px; padding:10px 12px; margin:0 0 12px; }
