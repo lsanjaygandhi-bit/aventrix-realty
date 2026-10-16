@@ -114,30 +114,51 @@
     <link rel="stylesheet" href="css/site-fixes.css?v=20261014">
 
 <style id="property-map-location-search-style">
-/* Truly standalone map page: no site navigation, footer, list view or filters. */
-body.property-map-page header, body.property-map-page footer,
-body.property-map-page .site-header, body.property-map-page .main-header,
-body.property-map-page .navbar, body.property-map-page .mobile-bottom-nav,
-body.property-map-page .bottom-nav, body.property-map-page .whatsapp-float,
-body.property-map-page #backToTop, body.property-map-page .near-me-section,
-body.property-map-page .sf-filter-section, body.property-map-page .sf-results-bar,
-body.property-map-page .sf-save-status, body.property-map-page .sf-view-toggle,
-body.property-map-page .sf-active-chips, body.property-map-page #sfResultsGrid,
-body.property-map-page #sfEmptyState, body.property-map-page #sfErrorState,
-body.property-map-page .sf-empty-state, body.property-map-page .sf-error-state,
-body.property-map-page .sf-recent-searches, body.property-map-page #propertiesRecentSearchSection,
-body.property-map-page .sf-page-intro { display:none!important; }
-body.property-map-page .property-map-search{display:block!important;position:relative;z-index:1000;pointer-events:auto;max-width:100%;margin:10px 0 12px;padding:14px 16px;background:#fff;border:1px solid #e5e7eb;border-radius:14px;box-shadow:0 2px 10px rgba(15,59,46,.06)}
-body.property-map-page .property-map-search label{display:block;margin-bottom:7px;color:#0f3b2e;font-size:14px;font-weight:650}
+/* Standalone full-screen map: deliberately remove the site's global header/footer/navigation. */
+html:has(body.property-map-page), body.property-map-page {margin:0!important;padding:0!important;width:100%;min-height:100%;overflow-x:hidden;background:#fff}
+body.property-map-page header.header,
+body.property-map-page footer,
+body.property-map-page .site-header,
+body.property-map-page .main-header,
+body.property-map-page .navbar,
+body.property-map-page .menu-overlay,
+body.property-map-page .mobile-bottom-nav,
+body.property-map-page .bottom-nav,
+body.property-map-page .mobile-nav,
+body.property-map-page .home-app-mobile-nav,
+body.property-map-page .whatsapp-float,
+body.property-map-page #backToTop,
+body.property-map-page .near-me-section,
+body.property-map-page .sf-filter-section,
+body.property-map-page .sf-results-bar,
+body.property-map-page .sf-save-status,
+body.property-map-page .sf-view-toggle,
+body.property-map-page .sf-active-chips,
+body.property-map-page #sfResultsGrid,
+body.property-map-page #sfEmptyState,
+body.property-map-page #sfErrorState,
+body.property-map-page .sf-empty-state,
+body.property-map-page .sf-error-state,
+body.property-map-page .sf-recent-searches,
+body.property-map-page #propertiesRecentSearchSection,
+body.property-map-page .sf-page-intro,
+body.property-map-page .sf-map-note {display:none!important}
+body.property-map-page main,
+body.property-map-page .main-content,
+body.property-map-page .sf-results-section,
+body.property-map-page .sf-results-section>.container {display:block!important;width:100%!important;max-width:none!important;margin:0!important;padding:0!important}
+body.property-map-page .property-map-search{display:block!important;position:relative;z-index:1000;pointer-events:auto;width:100%;max-width:none;box-sizing:border-box;margin:0;padding:10px 12px;background:#fff;border:0;border-bottom:1px solid #e5e7eb;border-radius:0;box-shadow:none}
+body.property-map-page .property-map-search label{display:block;margin-bottom:6px;color:#0f3b2e;font-size:14px;font-weight:650}
 body.property-map-page .property-map-search-row{display:flex;gap:8px}
 body.property-map-page #propertyMapLocationSearch{display:block!important;position:relative;z-index:1001;pointer-events:auto;touch-action:manipulation;box-sizing:border-box;min-width:0;flex:1;height:48px;padding:0 13px;border:1px solid #d1d5db;border-radius:10px;background:#fff;color:#111827;font-size:16px;opacity:1;-webkit-appearance:none}
 body.property-map-page #propertyMapLocationSearchBtn{position:relative;z-index:1001;flex:0 0 auto;min-height:48px;padding:0 16px;border:0;border-radius:10px;background:#0f3b2e;color:#fff;font-size:15px;font-weight:600}
-body.property-map-page .property-map-search p{margin:7px 0 0;color:#6b7280;font-size:12px;line-height:1.4}
+body.property-map-page .property-map-search p{margin:5px 0 0;color:#6b7280;font-size:12px;line-height:1.35}
 body.property-map-page .sf-map-view[hidden]{display:none!important}
-body.property-map-page .sf-map-view:not([hidden]){display:block!important}
-body.property-map-page .sf-map-wrap{height:calc(100dvh - 200px);min-height:420px}
-body.property-map-page #sfMapCanvas{height:100%;min-height:420px}
-@media(max-width:480px){body.property-map-page .property-map-search{padding:12px}body.property-map-page #propertyMapLocationSearchBtn{padding:0 12px}body.property-map-page .sf-map-wrap,body.property-map-page #sfMapCanvas{height:calc(100dvh - 210px);min-height:400px}}
+body.property-map-page .sf-map-view:not([hidden]){display:block!important;margin:0!important;padding:0!important}
+body.property-map-page .sf-map-wrap{position:relative;width:100%;height:calc(100dvh - 116px);min-height:400px;margin:0!important;padding:0;border:0;border-radius:0;overflow:hidden}
+body.property-map-page #sfMapCanvas{width:100%;height:100%;min-height:400px}
+body.property-map-page .sf-map-fallback{margin:12px}
+@media(max-width:480px){body.property-map-page .property-map-search{padding:8px 10px}body.property-map-page #propertyMapLocationSearchBtn{padding:0 12px}body.property-map-page .sf-map-wrap{height:calc(100dvh - 110px);min-height:360px}body.property-map-page #sfMapCanvas{height:100%;min-height:360px}}
 </style>
 <style id="dedicated-property-map-page">
 body.property-map-page .sf-search-form,
