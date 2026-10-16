@@ -504,19 +504,19 @@ body.home-page #faq .faq-answer p {
 </style>
 
 
-<style id="desktop-faq-heading-full-bleed-alignment-2026-10-16">
-/* Desktop only: extend the FAQ heading image panel edge-to-edge across the viewport. */
+<style id="desktop-faq-heading-match-card-width-2026-10-16">
+/* Desktop: keep the FAQ image heading the same width as the question/answer cards. */
 @media (min-width: 769px) {
   body.home-page #faq .section-heading {
-    width: 100vw !important;
-    max-width: none !important;
+    width: min(820px, 100%) !important;
+    max-width: 820px !important;
     box-sizing: border-box !important;
     position: relative !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    margin: 0 0 48px !important;
+    left: auto !important;
+    transform: none !important;
+    margin: 0 auto 48px !important;
     padding: 34px 24px 30px !important;
-    border-radius: 0 !important;
+    border-radius: 18px !important;
     background-size: cover !important;
     background-position: center 45% !important;
     text-align: center !important;
