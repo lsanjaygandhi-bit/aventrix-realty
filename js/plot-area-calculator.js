@@ -564,50 +564,28 @@
     const areaRows = [["Square feet", `${pre}${fmt(a)} sq ft`], ["Cents", `${pre}${fmt(a / SQFT_PER_CENT, 4)} cents`], ["Acres", `${pre}${fmt(a / SQFT_PER_ACRE, 6)} acres`], ["Square metres", `${pre}${fmt(a * SQM_PER_SQFT)} sq m`], ["Square yards", `${pre}${fmt(a / SQFT_PER_SQYD)} sq yd`]];
     const dims = measurementRows();
     const F = "Arial, Helvetica, sans-serif";
-    const rowsSvg = (arr, x, y, w, h, fs, bold) => arr.map((rw, i) => `<rect x="${x}" y="${y + i * h}" width="${w}" height="${h}" fill="${i % 2 ? "#ffffff" : "#f6faf7"}" stroke="#cbd5ce" stroke-width="0.7"/><text x="${x + 8}" y="${y + i * h + h * 0.66}" font-family="${F}" font-size="${fs}" fill="#17231b">${esc(rw[0])}</text><text x="${x + w - 8}" y="${y + i * h + h * 0.66}" text-anchor="end" font-family="${F}" font-size="${fs}" font-weight="${bold ? 700 : 400}" fill="#17231b">${esc(rw[1])}</text>`).join("");
-    // Right panel layout (x 790–1090, y 126–690)
-    const areaH = 30, areaBlock = 28 + areaRows.length * areaH;
-    const methodLines = wrap(lastResult.method, 44);
-    const methodBlock = 22 + methodLines.length * 15;
-    const dimSpace = 690 - 126 - 28 - 14 - areaBlock - 12 - methodBlock;
-    const dimH = Math.max(15, Math.min(30, dimSpace / Math.max(1, dims.length)));
-    const dimFs = Math.min(11.5, dimH * 0.6);
-    let y = 126;
-    let panel = `<rect x="790" y="${y}" width="300" height="28" fill="#e7f4e9" stroke="#cbd5ce"/><text x="802" y="${y + 19}" font-family="${F}" font-size="13" font-weight="700" fill="#14532d">ENTERED MEASUREMENTS</text>`;
-    y += 28;
-    panel += rowsSvg(dims, 790, y, 300, dimH, dimFs, false);
-    y += dims.length * dimH + 14;
-    panel += `<rect x="790" y="${y}" width="300" height="28" fill="#e7f4e9" stroke="#cbd5ce"/><text x="802" y="${y + 19}" font-family="${F}" font-size="13" font-weight="700" fill="#14532d">${lastResult.approx ? "APPROXIMATE AREA" : "CALCULATED AREA"}</text>`;
-    y += 28;
-    panel += rowsSvg(areaRows, 790, y, 300, areaH, 12, true);
-    y += areaRows.length * areaH + 12;
-    panel += `<text x="790" y="${y + 12}" font-family="${F}" font-size="11.5" font-weight="700" fill="${lastResult.approx ? "#8a4b00" : "#14532d"}">Method</text>`;
-    methodLines.forEach((ln, i) => { panel += `<text x="790" y="${y + 28 + i * 15}" font-family="${F}" font-size="11" fill="#39443c">${esc(ln)}</text>`; });
-
-    const DW = 725, DH = 540;
+    const rowsSvg = (arr, x, y, w, h, fs, bold) => arr.map((rw, i) => `<rect x="${x}" y="${y + i * h}" width="${w}" height="${h}" fill="${i % 2 ? "#ffffff" : "#f6faf7"}" stroke="#cbd5ce" stroke-width="0.6"/><text x="${x + 7}" y="${y + i * h + h * 0.66}" font-family="${F}" font-size="${fs}" fill="#17231b">${esc(rw[0])}</text><text x="${x + w - 7}" y="${y + i * h + h * 0.66}" text-anchor="end" font-family="${F}" font-size="${fs}" font-weight="${bold ? 700 : 400}" fill="#17231b">${esc(rw[1])}</text>`).join("");
+    const DW = 720, DH = 430;
     const diag = plotMarkup(g, DW, DH, { font: 17, interactive: false, roadWidth: roadWidthFt(), corner: selectedShape === "corner", areaText: `${pre}${fmt(a)} sq ft`, areaSub: `${pre}${fmt(a / SQFT_PER_CENT, 3)} cents`, cornerNumbers: !!g.diagonal || !!(SHAPES[effectiveShape()].diagonal) });
-    const scaleNote = ok(roadWidthFt()) ? "Plot drawn to scale from the entered measurements. Road band is indicative, not to scale." : "Plot drawn to scale from the entered measurements (fitted to the page).";
-
-    return `<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="790" viewBox="0 0 1120 790" role="img" aria-label="Aventrix Realty A4 plot measurement drawing">
-<rect width="1120" height="790" fill="#ffffff"/>
-<rect x="8" y="8" width="1104" height="774" fill="none" stroke="#18211c" stroke-width="1.5"/>
-<line x1="8" y1="108" x2="1112" y2="108" stroke="#18211c"/><line x1="290" y1="8" x2="290" y2="108" stroke="#18211c"/><line x1="770" y1="8" x2="770" y2="700" stroke="#18211c"/>
-<text x="149" y="50" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="30" letter-spacing="3" fill="#101512">AVENTRIX</text>
-<text x="149" y="78" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="16" letter-spacing="8" fill="${GREEN}">REALTY</text>
-<text x="530" y="46" text-anchor="middle" font-family="${F}" font-size="22" font-weight="700" fill="#101512">PLOT MEASUREMENT DRAWING</text>
-<text x="530" y="76" text-anchor="middle" font-family="${F}" font-size="15" fill="#101512">${esc(title)}</text>
-<text x="790" y="38" font-family="${F}" font-size="13" fill="#101512">Ref: ${esc(ref)}</text>
-<text x="790" y="62" font-family="${F}" font-size="13" fill="#101512">Date: ${esc(date)}</text>
-<text x="790" y="86" font-family="${F}" font-size="13" fill="#101512">Dimension unit: ${unitLabel() === "m" ? "metres (m)" : "feet (ft)"}</text>
-<svg x="22" y="118" width="${DW}" height="${DH}" viewBox="0 0 ${DW} ${DH}" preserveAspectRatio="xMidYMid meet">${diag}</svg>
-<text x="30" y="682" font-family="${F}" font-size="11" fill="#4b574e">${esc(scaleNote)}</text>
+    const scaleNote = ok(roadWidthFt()) ? "Plot fitted proportionally. Road width is indicative, not to scale." : "Plot fitted proportionally to the drawing area."; 
+    const split = Math.ceil(dims.length / 2), leftDims = dims.slice(0, split), rightDims = dims.slice(split);
+    const leftX = 28, leftW = 360, rightX = 406, rightW = 360, rowH = dims.length > 12 ? 17 : 21, rowFs = dims.length > 12 ? 8.5 : 10;
+    let y = 690;
+    let panel = `<rect x="${leftX}" y="${y}" width="${leftW}" height="25" fill="#e7f4e9" stroke="#cbd5ce"/><text x="${leftX+8}" y="${y+17}" font-family="${F}" font-size="11" font-weight="700" fill="#14532d">ENTERED MEASUREMENTS</text><rect x="${rightX}" y="${y}" width="${rightW}" height="25" fill="#e7f4e9" stroke="#cbd5ce"/><text x="${rightX+8}" y="${y+17}" font-family="${F}" font-size="11" font-weight="700" fill="#14532d">${lastResult.approx ? "APPROXIMATE AREA" : "CALCULATED AREA"}</text>`;
+    y += 25;
+    panel += rowsSvg(leftDims, leftX, y, leftW, rowH, rowFs, false) + rowsSvg(rightDims, rightX, y, rightW, rowH, rowFs, false);
+    y += Math.max(leftDims.length, rightDims.length) * rowH + 10;
+    panel += rowsSvg(areaRows, rightX, y, rightW, 21, 10, true);
+    y += areaRows.length * 21 + 8;
+    panel += `<text x="${rightX}" y="${y+10}" font-family="${F}" font-size="9.5" font-weight="700" fill="${lastResult.approx ? "#8a4b00" : "#14532d"}">Method: ${esc(lastResult.method)}</text>`;
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="794" height="1123" viewBox="0 0 794 1123" role="img" aria-label="Aventrix Realty A4 portrait plot measurement drawing">
+<rect width="794" height="1123" fill="#fff"/><rect x="8" y="8" width="778" height="1107" fill="none" stroke="#18211c" stroke-width="1.5"/>
+<line x1="8" y1="112" x2="786" y2="112" stroke="#18211c"/>
+<text x="30" y="47" font-family="Georgia, Times New Roman, serif" font-size="27" letter-spacing="2" fill="#101512">AVENTRIX</text><text x="32" y="71" font-family="Georgia, Times New Roman, serif" font-size="13" letter-spacing="6" fill="${GREEN}">REALTY</text><text x="30" y="94" font-family="${F}" font-size="10" fill="#39443c">aventrixrealty.com</text>
+<text x="420" y="40" text-anchor="middle" font-family="${F}" font-size="16" font-weight="700" fill="#101512">PLOT MEASUREMENT DRAWING</text><text x="420" y="64" text-anchor="middle" font-family="${F}" font-size="12" fill="#101512">${esc(title)}</text><text x="420" y="86" text-anchor="middle" font-family="${F}" font-size="9.5" fill="#39443c">Ref: ${esc(ref)} · ${esc(date)} · Unit: ${unitLabel()}</text>
+<rect x="24" y="126" width="746" height="492" fill="#fff" stroke="#cbd5ce"/><svg x="37" y="150" width="${DW}" height="${DH}" viewBox="0 0 ${DW} ${DH}" preserveAspectRatio="xMidYMid meet">${diag}</svg><text x="32" y="605" font-family="${F}" font-size="9.5" fill="#4b574e">${esc(scaleNote)}</text>
 ${panel}
-<line x1="8" y1="700" x2="1112" y2="700" stroke="#18211c"/>
-<text x="28" y="732" font-family="Georgia, 'Times New Roman', serif" font-size="19" letter-spacing="1.4" fill="#101512">AVENTRIX REALTY</text>
-<text x="28" y="755" font-family="${F}" font-size="12" fill="#39443c">aventrixrealty.com · +91 91768 87770</text>
-<text x="1090" y="732" text-anchor="end" font-family="${F}" font-size="11" fill="#39443c">Illustrative drawing for preliminary estimation — not an official survey plan.</text>
-<text x="1090" y="752" text-anchor="end" font-family="${F}" font-size="11" fill="#39443c">Verify measurements and area against official survey / patta records before any transaction.</text>
-</svg>`;
+<line x1="8" y1="1025" x2="786" y2="1025" stroke="#18211c"/><text x="28" y="1054" font-family="Georgia, Times New Roman, serif" font-size="16" letter-spacing="1" fill="#101512">AVENTRIX REALTY</text><text x="28" y="1076" font-family="${F}" font-size="10" fill="#39443c">Plot area estimate for reference</text><text x="28" y="1098" font-family="${F}" font-size="9.5" fill="#39443c">Illustrative estimate only — not an official survey plan. Verify with official survey records.</text></svg>`;
   }
   function wrap(text, max) {
     const words = String(text).split(" "), lines = [];
@@ -629,7 +607,7 @@ ${panel}
       const img = new Image();
       img.onload = () => {
         try {
-          const canvas = document.createElement("canvas"); canvas.width = 2240; canvas.height = 1580;
+          const canvas = document.createElement("canvas"); canvas.width = 1588; canvas.height = 2246;
           const ctx = canvas.getContext("2d"); ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, canvas.width, canvas.height);
           ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
           canvas.toBlob((b) => (b ? resolve(b) : reject(new Error("PNG encoding failed"))), "image/png");
@@ -655,7 +633,7 @@ ${panel}
     const win = window.open("", "_blank");
     if (!win) { previewStatus("Pop-up blocked — printing from this page instead. Choose “Save as PDF” as the printer.", "warning"); window.print(); return; }
     win.document.open();
-    win.document.write(`<!doctype html><html><head><meta charset="utf-8"><title>${esc(fileBase())}</title><style>@page{size:A4 landscape;margin:8mm}html,body{margin:0;padding:0;background:#fff}svg{display:block;width:100%;height:auto;max-height:192mm}</style></head><body>${svg}<script>window.addEventListener("load",function(){setTimeout(function(){window.focus();window.print();},250);});<\/script></body></html>`);
+    win.document.write(`<!doctype html><html><head><meta charset="utf-8"><title>${esc(fileBase())}</title><style>@page{size:A4 portrait;margin:5mm}html,body{margin:0;padding:0;background:#fff}svg{display:block;width:100%;height:auto;max-height:287mm}</style></head><body>${svg}<script>window.addEventListener("load",function(){setTimeout(function(){window.focus();window.print();},250);});<\/script></body></html>`);
     win.document.close();
     previewStatus("Print dialog opened in a new tab. Choose “Save as PDF” to save a PDF.", "success");
   }
@@ -689,7 +667,7 @@ ${panel}
     lastFocus = document.activeElement;
     $("preview-drawing").innerHTML = buildA4Sheet();
     const a = lastResult.area, pre = lastResult.approx ? "≈ " : "";
-    $("preview-summary").textContent = `${SHAPES[effectiveShape()].title} · A4 landscape · ${pre}${fmt(a)} sq ft · ${pre}${fmt(a / SQFT_PER_CENT, 4)} cents`;
+    $("preview-summary").textContent = `${SHAPES[effectiveShape()].title} · A4 portrait · ${pre}${fmt(a)} sq ft · ${pre}${fmt(a / SQFT_PER_CENT, 4)} cents`;
     previewStatus("");
     $("drawing-preview-modal").hidden = false;
     document.body.classList.add("avx-modal-open");
