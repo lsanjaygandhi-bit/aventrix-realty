@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script>
+    (function () {
+    // Manual scroll restoration: we save/restore scroll position
+    // ourselves (see script.js) so users returning via Back land back
+    // exactly where they were, instead of the browser's default
+    // (and often mistimed) automatic restoration.
+    if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+    }
+
+    function evaluateMobile() {
+        // Detect real mobile/touch devices instead of relying only on
+        // viewport width, so the mobile layout survives orientation
+        // changes (landscape too). Also re-checks on resize so a
+        // desktop browser window narrowed below 768px (e.g. during
+        // responsive QA / devtools) correctly gets the mobile layout,
+        // without affecting real touch devices, which stay mobile
+        // via the touch/UA check regardless of width or rotation.
+        var coarsePointer = window.matchMedia &&
+            window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+        var mobileUA = /Android|iPhone|iPad|iPod|IEMobile|BlackBerry|Opera Mini|Mobile/i
+            .test(navigator.userAgent);
+        var narrowViewport = window.innerWidth <= 768;
+
+        var shouldBeMobile = coarsePointer || mobileUA || narrowViewport;
+        document.documentElement.classList.toggle('is-mobile', shouldBeMobile);
+    }
+
+    evaluateMobile();
+
+    var resizeTimer;
+    window.addEventListener('resize', function () {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(evaluateMobile, 150);
+    });
+})();
+    </script>
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico?v=2">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png?v=2">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png?v=2">
+    <link rel="icon" type="image/png" sizes="48x48" href="/images/favicon/favicon-48x48.png?v=2">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png?v=2">
+    <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon/android-chrome-192x192.png?v=2">
+    <link rel="icon" type="image/png" sizes="512x512" href="/images/favicon/android-chrome-512x512.png?v=2">
+    <link rel="manifest" href="/site.webmanifest?v=2">
+
+    <title>Plot Area Calculator | Aventrix Realty</title>
+
+    <meta name="description" content="Calculate plot area from dimensions and convert square feet, cents, acres, square metres and square yards.">
+    <link rel="canonical" href="https://aventrixrealty.com/plot-area-calculator.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Aventrix Realty">
+    <meta property="og:title" content="Plot Area Calculator | Aventrix Realty">
+    <meta property="og:description" content="Calculate plot area and convert square feet, cents, acres, square metres and square yards.">
+    <meta property="og:url" content="https://aventrixrealty.com/plot-area-calculator.html">
+    <meta property="og:image" content="https://aventrixrealty.com/images/og/plot-area-calculator-social.jpg">
+    <meta property="og:image:secure_url" content="https://aventrixrealty.com/images/og/plot-area-calculator-social.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Aventrix Realty Plot Area Calculator with plot measurements and professional drawing">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Plot Area Calculator | Aventrix Realty">
+    <meta name="twitter:description" content="Calculate plot area and convert square feet, cents, acres, square metres and square yards.">
+    <meta name="twitter:image" content="https://aventrixrealty.com/images/og/plot-area-calculator-social.jpg">
+
+    <link rel="stylesheet" href="style.css?v=20261014">
+    <link rel="stylesheet" href="css/property-tools.css?v=20261014c">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    
+    <link rel="stylesheet" href="css/site-footer.css?v=20261021">
+    <link rel="stylesheet" href="css/site-fixes.css?v=20261014">
+    <link rel="stylesheet" href="css/plot-area-calculator.css?v=20261017b">
+</head>
+<body class="pt-page">
+
+    <header class="header">
+    <div class="container nav">
+        <div class="logo">
+    <a href="index.html" class="logo-text">
+        <img src="images/aventrix-logo.png" alt="Aventrix Realty">
+    </a>
+</div>
+   <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+        <!-- Mobile-only bell — matches index.html's header exactly
+             (site-wide header consistency). Stays visible on every
+             breakpoint, unlike the desktop one inside .nav-right
+             (hidden on mobile by an existing rule). -->
+        <div class="home-app-header-actions">
+            <a href="account.html" class="home-app-bell-btn" aria-label="My Account">
+                <i class="far fa-circle-user" aria-hidden="true"></i>
+            </a>
+        </div>
+    <div class="menu-overlay" id="menuOverlay"></div>
+       <nav class="main-nav" data-hq="phones">
+
+    <a href="index.html">Home</a>
+
+    <a href="about.html">About Us</a>
+
+    <a href="properties.html">Properties</a>
+
+    <a href="services.html">Services</a>
+
+    <a href="list-with-us.html">List With Us</a>
+
+    <a href="free-valuation.html">Free Valuation</a>
+
+    <a href="joint-venture.html">Joint Venture</a>
+
+    <a href="property-tools.html"><span class="nav-label-extra">Property </span>Tools</a>
+    <a href="nri-services.html">NRI Services</a>
+
+    <a href="contact.html">Contact</a>
+
+    <a href="/admin/" class="main-nav-admin">Admin</a>
+
+
+    <div class="mobile-menu-divider"></div>
+    <span class="mobile-menu-contact-label">CONTACT</span>
+    <a href="tel:+919176887770" class="mobile-menu-phone">📞 +91 91768 87770</a>
+    <a href="tel:+917092356222" class="mobile-menu-phone">📞 +91 70923 56222</a>
+    <div class="mobile-menu-socials">
+      <a href="https://wa.me/919176887770" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" data-site="whatsapp-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 3.5a8.5 8.5 0 0 0-7.3 12.8L3.5 20.5l4.4-1.2A8.5 8.5 0 1 0 12 3.5z"/><path d="M8.7 8.6c.2-.5.4-.5.6-.5h.5c.2 0 .4 0 .5.4.2.5.6 1.5.6 1.6.1.1.1.3 0 .4-.1.2-.1.3-.3.4-.1.2-.3.3-.4.5-.1.1-.3.3-.1.5.2.4 1 1.5 2 2.3 1.2 1 1 .8 1.3.7.2 0 .4-.2.5-.4.2-.2.4-.2.6-.1l1.4.7c.2.1.4.2.4.3.1.2.1 1-.3 1.4-.4.5-1.4.9-2 .9-.6 0-1.4-.1-3.3-1-2.4-1.1-3.9-3.4-4-3.6-.1-.2-1-1.3-1-2.5s.6-1.8.8-2z" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="https://www.instagram.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Instagram" data-site="social-instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="0.8" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="https://www.facebook.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Facebook" data-site="social-facebook">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M15 8.5h-2a1.5 1.5 0 0 0-1.5 1.5v2h3.4l-.4 3H11.5v7h-3v-7H6.5v-3h2V9.7C8.5 7 10 5.5 12.5 5.5H15v3z"/></svg>
+      </a>
+      <a href="https://maps.app.goo.gl/Gfs3JJ4VVN4cxU5G7?g_st=ic" target="_blank" rel="noopener noreferrer" aria-label="Google Maps" data-hq="maps">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg>
+      </a>
+    </div>
+
+  </nav>
+
+        <div class="nav-right">
+            <!-- Notification/Bell — matches index.html's header exactly
+                 (site-wide header consistency), same .nav-wishlist-link
+                 styling, same position ahead of the phone number. -->
+            <a href="account.html" class="nav-wishlist-link nav-bell-link" aria-label="My Account">
+                <i class="far fa-circle-user" aria-hidden="true"></i>
+            </a>
+            <a href="tel:+919176887770" class="nav-phone" aria-label="Call Aventrix Realty">
+                <i class="fas fa-phone-alt" aria-hidden="true"></i>
+            </a>
+        </div>
+    </div>
+     </header>
+
+<main id="main" class="avx-calculator-page">
+  <section class="avx-hero" aria-labelledby="avx-title">
+    <p class="avx-eyebrow">AVENTRIX REALTY · PROPERTY TOOLS</p>
+    <h1 id="avx-title">Plot Area Calculator</h1>
+    <p class="avx-hero-copy">Choose your plot shape, enter its measurements, and calculate the area.</p>
+
+  </section>
+
+  <section class="avx-section" aria-labelledby="shape-heading">
+    <div class="avx-section-heading">
+      <div><p class="avx-kicker">STEP 1</p><h2 id="shape-heading">Select plot shape</h2></div>
+      <label class="avx-unit-control" for="length-unit">Dimension unit
+        <select id="length-unit"><option value="ft">Feet (ft)</option><option value="m">Metres (m)</option></select>
+      </label>
+    </div>
+    <div class="avx-shape-grid" id="shape-grid">
+      <button class="avx-shape-card is-active" type="button" data-shape="square" aria-pressed="true"><span class="avx-shape-icon" aria-hidden="true">□</span><span>Square Plot</span></button>
+      <button class="avx-shape-card" type="button" data-shape="rectangle" aria-pressed="false"><span class="avx-shape-icon" aria-hidden="true">▱</span><span>Rectangular Plot</span></button>
+      <button class="avx-shape-card" type="button" data-shape="triangle" aria-pressed="false"><span class="avx-shape-icon" aria-hidden="true">△</span><span>Triangular Plot</span></button>
+      <button class="avx-shape-card" type="button" data-shape="trapezoid" aria-pressed="false"><span class="avx-shape-icon" aria-hidden="true">⏢</span><span>Trapezoidal Plot</span></button>
+      <button class="avx-shape-card" type="button" data-shape="lshape" aria-pressed="false"><span class="avx-shape-icon" aria-hidden="true">L</span><span>L-Shaped Plot</span></button>
+      <button class="avx-shape-card" type="button" data-shape="tshape" aria-pressed="false"><span class="avx-shape-icon" aria-hidden="true">T</span><span>T-Shaped Plot</span></button>
+      <button class="avx-shape-card" type="button" data-shape="flag" aria-pressed="false"><span class="avx-shape-icon" aria-hidden="true">⚑</span><span>Flag-Shaped Plot</span></button>
+      <button class="avx-shape-card" type="button" data-shape="pentagon" aria-pressed="false"><span class="avx-shape-icon" aria-hidden="true">⬠</span><span>Pentagonal Plot</span></button>
+      <button class="avx-shape-card" type="button" data-shape="polygon" aria-pressed="false"><span class="avx-shape-icon" aria-hidden="true">⬡</span><span>Polygonal Plot</span></button>
+      <button class="avx-shape-card" type="button" data-shape="irregular" aria-pressed="false"><span class="avx-shape-icon" aria-hidden="true">◇</span><span>Irregular Plot</span></button>
+      <button class="avx-shape-card" type="button" data-shape="curved" aria-pressed="false"><span class="avx-shape-icon" aria-hidden="true">⌒</span><span>Curved Boundary</span></button>
+      <button class="avx-shape-card" type="button" data-shape="corner" aria-pressed="false"><span class="avx-shape-icon" aria-hidden="true">⌜</span><span>Corner Plot</span></button>
+    </div>
+  </section>
+
+  <section class="avx-calculator-layout" aria-labelledby="measure-heading">
+    <div class="avx-panel avx-input-panel">
+      <p class="avx-kicker">STEP 2</p>
+      <h2 id="measure-heading">Enter measurements</h2>
+      <p class="avx-panel-copy" id="shape-help">Enter the side length. All dimensions must use the selected unit.</p>
+      <div class="avx-drawing-wrap" id="drawing-wrap" aria-label="Interactive plot drawing"><div class="avx-drawing-heading"><strong>Live plot drawing</strong><span id="drawing-note">Click a measurement on the drawing to edit it.</span></div><div id="plot-drawing" class="avx-plot-drawing"></div></div>
+      <div id="corner-underlying" class="avx-field is-hidden">
+        <label for="corner-shape">Underlying plot geometry</label>
+        <select id="corner-shape">
+          <option value="rectangle">Rectangle</option><option value="square">Square</option><option value="trapezoid">Trapezoid</option><option value="triangle">Triangle</option>
+        </select>
+        <p class="avx-help">“Corner” describes road frontage/location, not a separate area formula.</p>
+      </div>
+      <form id="dimension-form" novalidate>
+        <div id="dimension-fields" class="avx-fields"></div>
+        <div class="avx-field avx-road-width-field"><label for="road-width" id="road-width-label">Road width in front (optional, shown on drawing)</label><div class="avx-inline-unit"><input id="road-width" type="number" min="0" step="any" inputmode="decimal" placeholder="Optional"><span class="avx-field-unit" id="road-width-unit">ft</span></div></div>
+        <p id="validation-message" class="avx-validation" role="status" aria-live="polite">Enter valid positive measurements to calculate the area.</p>
+        <button class="avx-primary-button" type="submit">Calculate Plot Area</button>
+        <button class="avx-secondary-button" id="reset-button" type="button">Reset measurements</button>
+      </form>
+    </div>
+    <aside class="avx-panel avx-result-panel" aria-labelledby="result-heading">
+      <p class="avx-kicker">YOUR RESULT</p>
+      <h2 id="result-heading">Calculated area</h2>
+      <p class="avx-result-caption">Area based on the dimensions you enter</p>
+      <output id="area-main" class="avx-area-main" aria-live="polite">— <small>sq ft</small></output>
+      <p id="area-method" class="avx-area-method"></p>
+      <div class="avx-conversion-list">
+        <div><span>Square feet</span><strong id="out-sqft">—</strong></div>
+        <div><span>Cents</span><strong id="out-cent">—</strong></div>
+        <div><span>Acres</span><strong id="out-acre">—</strong></div>
+        <div><span>Square metres</span><strong id="out-sqm">—</strong></div>
+        <div><span>Square yards</span><strong id="out-sqyd">—</strong></div>
+      </div>
+      <div class="avx-download-actions"><button type="button" class="avx-primary-button" id="view-drawing" disabled>View Drawing</button></div>
+      <p class="avx-result-disclaimer">For preliminary estimation only. Confirm land area using official survey documents before a transaction.</p>
+    </aside>
+  </section>
+
+
+  <section id="drawing-preview-modal" class="avx-preview-modal" role="dialog" aria-modal="true" aria-labelledby="preview-title" hidden>
+    <div class="avx-preview-dialog">
+      <div class="avx-preview-header"><div><p class="avx-kicker">AVENTRIX REALTY</p><h2 id="preview-title">Plot Measurement Drawing</h2></div><button type="button" id="close-preview" class="avx-close-preview" aria-label="Close drawing preview">×</button></div>
+      <p id="preview-summary" class="avx-preview-summary"></p>
+      <div id="preview-drawing" class="avx-preview-drawing"></div>
+      <p class="avx-result-disclaimer">Illustrative calculation based only on the measurements entered. Confirm against official survey records before a transaction.</p>
+      <div class="avx-preview-actions"><button type="button" class="avx-primary-button" id="preview-print">Print / Save PDF</button><button type="button" class="avx-secondary-button" id="preview-share">Share</button><button type="button" class="avx-secondary-button" id="preview-png">Download PNG</button><button type="button" class="avx-secondary-button" id="preview-svg">Download SVG</button></div>
+      <p id="preview-status" class="avx-preview-status" role="status" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <section class="avx-section avx-acre-section" aria-labelledby="acre-heading">
+    <p class="avx-kicker">QUICK CONVERSION</p>
+    <h2 id="acre-heading">Large land area converter</h2>
+    <p class="avx-panel-copy">Useful for larger parcels such as 2 or 3 acres. Enter an area and select its unit.</p>
+    <div class="avx-converter-row">
+      <div class="avx-field"><label for="converter-value">Area value</label><input id="converter-value" type="number" min="0" step="any" placeholder="e.g. 2.5"></div>
+      <div class="avx-field"><label for="converter-unit">Area unit</label><select id="converter-unit"><option value="acre">Acres</option><option value="cent">Cents</option><option value="sqft">Square feet</option><option value="sqm">Square metres</option><option value="sqyd">Square yards</option></select></div>
+    </div>
+    <div class="avx-converter-results" aria-live="polite">
+      <div><span>Square feet</span><strong id="conv-sqft">—</strong></div><div><span>Acres</span><strong id="conv-acre">—</strong></div><div><span>Cents</span><strong id="conv-cent">—</strong></div><div><span>Square metres</span><strong id="conv-sqm">—</strong></div><div><span>Square yards</span><strong id="conv-sqyd">—</strong></div>
+    </div>
+  </section>
+  <section class="avx-page-note"><p><strong>Measurement note:</strong> Side lengths alone do not determine the area of every irregular plot. For complex boundaries, use survey coordinates or the area shown in an authenticated survey record.</p></section>
+</main>
+
+<!-- SITE-FOOTER:START — generated from partials/footer.html by tools/sync-footer.py. Edit the partial, then run: python3 tools/sync-footer.py -->
+<footer class="site-footer" id="footer">
+    <div class="ft-inner">
+
+        <div class="ft-brand">
+            <a href="index.html" class="ft-logo" aria-label="Aventrix Realty — Home"><img src="images/aventrix-logo-white.png" alt="Aventrix Realty" width="1042" height="342" loading="lazy" decoding="async"></a>
+            <p class="ft-tagline" data-site="footer-tagline">Where Legacy Meets The Next Generation</p>
+            <p class="ft-desc" data-site="footer-description">
+                Premium real estate advisory across Chennai — residential,
+                commercial, land and joint venture solutions, guided by
+                trust and decades of local expertise.
+            </p>
+        </div>
+
+        <ul class="ft-contacts">
+            <li class="ft-contact">
+                <span class="ft-icon" aria-hidden="true"><i class="fa-solid fa-location-dot"></i></span>
+                <div>
+                    <h4 class="ft-label">Head Office</h4>
+                    <span class="ft-sr" data-hq="name">Aventrix Realty – Head Office</span>
+                    <p data-hq="address">No.27, 1st Main Road, Newcolony, Chromepet, Chennai, Tamil Nadu</p>
+                </div>
+            </li>
+            <li class="ft-contact">
+                <span class="ft-icon" aria-hidden="true"><i class="fa-solid fa-phone"></i></span>
+                <div>
+                    <h4 class="ft-label">Phone</h4>
+                    <div class="ft-phones" data-hq="phones">
+                        <a href="tel:+919176887770">+91 91768 87770</a>
+                        <a href="tel:+917092356222">+91 70923 56222</a>
+                    </div>
+                </div>
+            </li>
+            <li class="ft-contact">
+                <span class="ft-icon" aria-hidden="true"><i class="fa-regular fa-envelope"></i></span>
+                <div>
+                    <h4 class="ft-label">Email</h4>
+                    <p><a href="mailto:office@aventrixrealty.com" data-hq="email">office@aventrixrealty.com</a></p>
+                </div>
+            </li>
+            <li class="ft-contact">
+                <span class="ft-icon" aria-hidden="true"><i class="fa-regular fa-building"></i></span>
+                <div>
+                    <h4 class="ft-label">Branch Office</h4>
+                    <p>Adyar, Chennai</p>
+                </div>
+            </li>
+        </ul>
+
+        <div class="ft-rule" aria-hidden="true"></div>
+
+        <div class="ft-main">
+            <div class="ft-col" role="navigation" aria-label="About Aventrix">
+                <h4 class="ft-heading">About Aventrix</h4>
+                <ul class="ft-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="index.html#contact">Contact Us</a></li>
+                    <li><a href="services.html">Our Services</a></li>
+                </ul>
+            </div>
+            <div class="ft-col" role="navigation" aria-label="Quick links">
+                <h4 class="ft-heading">Quick Links</h4>
+                <ul class="ft-links">
+                    <li><a href="our-realtors.html">Realtors</a></li>
+                    <li><a href="brokerage-fees.html">Brokerage &amp; Fees</a></li>
+                    <li><a href="emi-calculator.html">EMI Calculator</a></li>
+                    <li><a href="jv-calculator.html">Joint Venture Calculator</a></li>
+                </ul>
+            </div>
+
+            <div class="ft-side">
+                <div class="ft-follow">
+                    <h4 class="ft-heading">Follow Us</h4>
+                    <div class="ft-social">
+                        <a href="https://www.facebook.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Facebook" data-site="social-facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+                        <a href="https://www.instagram.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Instagram" data-site="social-instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+                        <a href="https://www.linkedin.com/in/lsanjaygandhi" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" data-site="social-linkedin"><i class="fa-brands fa-linkedin" aria-hidden="true"></i></a>
+                        <a href="https://youtube.com/@sanjaygandhirealty" target="_blank" rel="noopener noreferrer" aria-label="YouTube" data-site="social-youtube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
+                        <a href="https://wa.me/919176887770" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" data-site="whatsapp-link"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a>
+                        <a href="https://maps.app.goo.gl/VjCCdVch9uequeGUA?g_st=ic" target="_blank" rel="noopener noreferrer" aria-label="Google Maps" data-hq="maps"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+
+                <section class="ft-map" aria-labelledby="ftMapTitle">
+                    <h4 class="ft-sr" id="ftMapTitle">Find Us</h4>
+                    <div class="ft-map-frame" data-hq="map-embed"><iframe src="https://www.google.com/maps?q=No.27%2C%201st%20Main%20Road%2C%20New%20Colony%2C%20Chromepet%2C%20Chennai%2C%20Tamil%20Nadu&amp;output=embed" width="600" height="280" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Aventrix Realty Head Office Map" allowfullscreen></iframe></div>
+                    <a class="ft-map-open" href="https://maps.app.goo.gl/VjCCdVch9uequeGUA?g_st=ic" target="_blank" rel="noopener noreferrer" data-hq="maps"><i class="fa-solid fa-diamond-turn-right" aria-hidden="true"></i><span>Open in Maps</span><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i><span class="ft-sr"> (opens in a new tab)</span></a>
+                </section>
+            </div>
+        </div>
+
+        <div class="ft-rule" aria-hidden="true"></div>
+
+        <div class="ft-bottom">
+            <div class="ft-credits">
+                <p class="ft-copyright" data-site="copyright-text">© 2026 Aventrix Realty. All Rights Reserved.</p>
+                <p class="ft-designer">Designed with <span class="ft-heart" role="img" aria-label="love">&#10084;&#65039;</span> by L. Sanjay Gandhi</p>
+            </div>
+            <div class="ft-legal" role="navigation" aria-label="Legal and utility links">
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms.html">Terms &amp; Conditions</a>
+                <a href="sitemap.html">Sitemap</a>
+                <a href="property-tools.html">Property Tools</a>
+                <a href="/admin/" class="ft-legal-admin">Admin</a>
+            </div>
+        </div>
+
+    </div>
+</footer>
+<script src="js/site-footer.js?v=20261015" defer></script>
+<!-- SITE-FOOTER:END -->
+
+<a href="https://wa.me/919176887770" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" data-site="whatsapp-link">
+    <img src="images/whatsapp-icon.png" alt="WhatsApp">
+</a>
+
+<button id="backToTop" class="back-to-top" aria-label="Back to top">
+    <i class="fas fa-chevron-up"></i>
+</button>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-client.js"></script>
+<script src="js/public-site-settings.js?v=20260926b"></script>
+<script src="js/public-offices.js?v=20261016-owner-map"></script>
+<script src="js/aventrix-storage.js"></script>
+<script src="js/wishlist-widget.js"></script>
+<script src="script.js?v=20260926b"></script>
+<script src="js/plot-area-calculator.js?v=20261017b" defer></script>
+
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+// node tests/plot-area-calculator.test.js — geometry/area tests for js/plot-area-calculator.js
+const assert = require("assert");
+const G = require("../js/plot-area-calculator.js");
+let n = 0;
+const t = (name, fn) => { fn(); n++; console.log("PASS " + name); };
+const near = (a, b, tol = 1e-6) => assert.ok(Math.abs(a - b) <= tol * Math.max(1, Math.abs(b)), `${a} != ${b}`);
+const area = (shape, v, o) => { const r = G.computeGeometry(shape, v, o || {}); assert.ok(r.ok, r.error); return r; };
+const err = (shape, v, o) => { const r = G.computeGeometry(shape, v, o || {}); assert.ok(!r.ok, "expected an error"); return r.error; };
+
+t("square 40 ft = 1600", () => near(area("square", { side: 40 }).area, 1600));
+t("rectangle 60x40 = 2400", () => near(area("rectangle", { length: 60, width: 40 }).area, 2400));
+t("triangle 3-4-5 = 6 exact", () => { const r = area("triangle", { a: 3, b: 4, c: 5 }); near(r.area, 6); assert.strictEqual(r.approx, false); });
+t("triangle inequality rejected", () => err("triangle", { a: 10, b: 3, c: 4 }));
+t("trapezoid from sides (60,40,legs 30) area = 50*h", () => { const r = area("trapezoid", { front: 60, back: 40, left: 30, right: 30 }); near(r.area, 50 * Math.sqrt(900 - 100)); });
+t("trapezoid with depth uses (a+b)/2*h", () => near(area("trapezoid", { front: 60, back: 40, left: 30, right: 30, height: 25 }).area, 1250));
+t("trapezoid equal parallels needs depth", () => err("trapezoid", { front: 40, back: 40, left: 30, right: 30 }));
+t("trapezoid outline sides match input", () => { const r = area("trapezoid", { front: 60, back: 40, left: 31, right: 29 }); const p = r.pts, d = (i, j) => Math.hypot(p[i][0]-p[j][0], p[i][1]-p[j][1]); near(d(0,1),60); near(d(1,2),29,1e-9); near(d(2,3),40); near(d(3,0),31,1e-9); });
+t("L shape 60/25/30/30/30/55 = 2400", () => near(area("lshape", { l1: 60, l2: 25, l3: 30, l4: 30, l5: 30, l6: 55 }).area, 60*25 + 30*30));
+t("L shape not closing rejected", () => err("lshape", { l1: 60, l2: 25, l3: 30, l4: 30, l5: 20, l6: 55 }));
+t("T shape = bar + stem", () => near(area("tshape", { t1: 70, t2: 20, t3: 25, t4: 35, t5: 20, t6: 35, t7: 25, t8: 20 }).area, 70*20 + 20*35));
+t("T shape not closing rejected", () => err("tshape", { t1: 70, t2: 20, t3: 25, t4: 35, t5: 20, t6: 30, t7: 25, t8: 20 }));
+t("flag = main + path", () => near(area("flag", { mainWidth: 50, mainDepth: 40, pathWidth: 12, pathLength: 25 }).area, 2000 + 300));
+t("flag path wider than plot rejected", () => err("flag", { mainWidth: 10, mainDepth: 40, pathWidth: 12, pathLength: 25 }));
+t("regular pentagon sides 10 → regular area (approx flag)", () => { const r = area("pentagon", { side1: 10, side2: 10, side3: 10, side4: 10, side5: 10 }); near(r.area, 5 * 100 / (4 * Math.tan(Math.PI / 5)), 1e-6); assert.strictEqual(r.approx, true); });
+t("irregular 4 sides cyclic = Brahmagupta", () => { const [a,b,c,d]=[40,35,50,30], s=(a+b+c+d)/2; near(area("irregular", { side1:a, side2:b, side3:c, side4:d }, { count: 4 }).area, Math.sqrt((s-a)*(s-b)*(s-c)*(s-d)), 1e-6); });
+t("irregular 4 sides + diagonal exact (rectangle 30x40, diag 50)", () => { const r = area("irregular", { side1:30, side2:40, side3:30, side4:40, diag:50 }, { count: 4 }); near(r.area, 1200, 1e-9); assert.strictEqual(r.approx, false); });
+t("polygon sides preserved in outline", () => { const s=[30,20,25,40,15,35], v={}; s.forEach((x,i)=>v["side"+(i+1)]=x); const r = area("polygon", v, { count: 6 }); r.pts.forEach((p,i)=>{const q=r.pts[(i+1)%6]; near(Math.hypot(q[0]-p[0],q[1]-p[1]), s[i], 1e-6);}); });
+t("polygon center-outside case (one long side)", () => { const s=[80,30,30,30], v={}; s.forEach((x,i)=>v["side"+(i+1)]=x); const r = area("polygon", v, { count: 4 }); const ss=85; near(r.area, Math.sqrt((ss-80)*(ss-30)**3), 1e-6); r.pts.forEach((p,i)=>{const q=r.pts[(i+1)%4]; near(Math.hypot(q[0]-p[0],q[1]-p[1]), s[i], 1e-6);}); });
+t("polygon impossible sides rejected", () => err("polygon", { side1: 100, side2: 10, side3: 10, side4: 10 }, { count: 4 }));
+t("polygon 3 sides is exact", () => assert.strictEqual(area("polygon", { side1: 3, side2: 4, side3: 5 }, { count: 3 }).approx, false));
+t("curved with survey area uses it exactly", () => { const r = area("curved", { front: 50, right: 40, back: 50, left: 40 }, { surveyAreaSqFt: 2100 }); near(r.area, 2100); assert.strictEqual(r.approx, false); });
+t("curved without survey is approximate", () => assert.strictEqual(area("curved", { front: 50, right: 40, back: 50, left: 40 }).approx, true));
+t("curved survey only (no sides) works", () => near(area("curved", {}, { surveyAreaSqFt: 900 }).area, 900));
+t("unit constants", () => { near(G.SQFT_PER_CENT, 435.6); near(G.SQFT_PER_ACRE / G.SQFT_PER_CENT, 100); near(1 / G.SQM_PER_SQFT, 10.7639104, 1e-7); near(G.FT_PER_M * 0.3048, 1, 1e-9); });
+t("missing values rejected", () => err("rectangle", { length: 10, width: NaN }));
+console.log(`\n${n} tests passed`);

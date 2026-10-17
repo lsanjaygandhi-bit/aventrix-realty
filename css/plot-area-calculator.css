@@ -1,0 +1,165 @@
+/* Plot Area Calculator — page-scoped styles only.
+   Does not style the global header, footer or any other page. Palette: black, green, white. */
+main.avx-calculator-page {
+  --avx-ink: #101512;
+  --avx-green: #198754;
+  --avx-green-dark: #11663e;
+  --avx-text: #18211c;
+  --avx-muted: #5b675f;
+  --avx-line: #dce5de;
+  --avx-soft: #f5f8f5;
+  --avx-warn: #8a4b00;
+  color: var(--avx-text);
+  background: #fff;
+  font-family: inherit;
+  line-height: 1.5;
+  padding: 0 0 2.5rem;
+}
+main.avx-calculator-page *, main.avx-calculator-page *::before, main.avx-calculator-page *::after { box-sizing: border-box; }
+main.avx-calculator-page button, main.avx-calculator-page input, main.avx-calculator-page select { font: inherit; }
+
+/* Hero — compact, background image behind a dark green-black gradient */
+main.avx-calculator-page .avx-hero {
+  color: #fff;
+  min-height: 210px;
+  padding: 2rem max(1.1rem, calc((100% - 1120px) / 2));
+  background-color: var(--avx-ink);
+  background-image: linear-gradient(90deg, rgba(9,20,14,.94) 0%, rgba(9,20,14,.80) 44%, rgba(9,20,14,.38) 100%), url("../images/plot-area-calculator-hero.jpg");
+  background-size: cover;
+  background-position: center 56%;
+}
+main.avx-calculator-page .avx-eyebrow, main.avx-calculator-page .avx-kicker { color: var(--avx-green); font-size: .75rem; font-weight: 800; letter-spacing: .13em; margin: 0 0 .55rem; }
+main.avx-calculator-page .avx-hero h1 { color: #fff; font-size: clamp(1.8rem, 3.2vw, 2.65rem); line-height: 1.12; margin: 0; }
+main.avx-calculator-page .avx-hero-copy { color: #eef3ef; font-size: 1.05rem; max-width: 620px; margin: .55rem 0 .5rem; }
+
+/* Layout */
+main.avx-calculator-page .avx-section, main.avx-calculator-page .avx-calculator-layout, main.avx-calculator-page .avx-page-note { max-width: 1120px; width: calc(100% - 2rem); margin: 2rem auto; }
+main.avx-calculator-page h2 { color: var(--avx-ink); font-size: clamp(1.3rem, 2.5vw, 1.75rem); line-height: 1.25; margin: 0 0 .6rem; }
+main.avx-calculator-page .avx-section-heading { display: flex; align-items: end; justify-content: space-between; gap: 1rem; margin-bottom: 1.25rem; }
+main.avx-calculator-page .avx-unit-control { display: grid; gap: .35rem; min-width: 160px; color: var(--avx-muted); font-size: .82rem; font-weight: 700; }
+main.avx-calculator-page .avx-calculator-layout { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(280px, .65fr); gap: 1.1rem; align-items: start; }
+main.avx-calculator-page .avx-panel { border: 1px solid var(--avx-line); border-radius: 16px; padding: clamp(1rem, 3vw, 1.6rem); background: #fff; min-width: 0; }
+main.avx-calculator-page .avx-result-panel { background: var(--avx-soft); }
+main.avx-calculator-page .avx-panel-copy, main.avx-calculator-page .avx-help { color: var(--avx-muted); font-size: .9rem; margin: 0 0 1rem; }
+main.avx-calculator-page .is-hidden { display: none !important; }
+
+/* Form controls */
+main.avx-calculator-page select, main.avx-calculator-page input { width: 100%; min-width: 0; min-height: 46px; border: 1px solid #cfd9d2; border-radius: 9px; background: #fff; color: var(--avx-text); padding: .65rem .75rem; }
+main.avx-calculator-page select:focus, main.avx-calculator-page input:focus, main.avx-calculator-page button:focus-visible { outline: 3px solid #19875455; outline-offset: 2px; }
+main.avx-calculator-page .avx-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .9rem; }
+main.avx-calculator-page .avx-field { display: grid; gap: .35rem; min-width: 0; align-content: start; }
+main.avx-calculator-page .avx-field label { color: var(--avx-text); font-size: .86rem; font-weight: 700; line-height: 1.35; }
+main.avx-calculator-page .avx-full-span { grid-column: 1 / -1; }
+main.avx-calculator-page .avx-inline-unit { display: flex; gap: .5rem; align-items: center; }
+main.avx-calculator-page .avx-inline-unit select { width: auto; flex: 0 0 auto; }
+main.avx-calculator-page .avx-field-unit { color: var(--avx-muted); font-weight: 700; font-size: .9rem; min-width: 1.5rem; }
+main.avx-calculator-page .avx-road-width-field { margin-top: 1rem; max-width: 24rem; }
+main.avx-calculator-page .avx-count-controls { display: flex; gap: .5rem; align-items: center; max-width: 14rem; }
+main.avx-calculator-page .avx-count-controls input { text-align: center; }
+main.avx-calculator-page .avx-step-button { flex: 0 0 46px; height: 46px; border: 1px solid var(--avx-line); border-radius: 9px; background: #fff; color: var(--avx-ink); font-size: 1.3rem; font-weight: 800; cursor: pointer; }
+main.avx-calculator-page .avx-step-button:hover { border-color: var(--avx-green); }
+main.avx-calculator-page .avx-approx-note { margin: .2rem 0 0; padding: .7rem .85rem; border-left: 3px solid var(--avx-green); background: var(--avx-soft); color: var(--avx-text); font-size: .82rem; border-radius: 0 8px 8px 0; }
+main.avx-calculator-page .avx-validation { min-height: 1.5rem; color: var(--avx-muted); font-size: .85rem; margin: .9rem 0; }
+main.avx-calculator-page .avx-validation.is-error { color: #a32d21; font-weight: 600; }
+main.avx-calculator-page .avx-validation.is-success { color: #236b3b; }
+main.avx-calculator-page .avx-validation.is-warning { color: var(--avx-warn); }
+
+/* Buttons */
+main.avx-calculator-page .avx-primary-button, main.avx-calculator-page .avx-secondary-button { width: 100%; min-height: 46px; border-radius: 9px; cursor: pointer; font-weight: 800; padding: .55rem .9rem; }
+main.avx-calculator-page .avx-primary-button { border: 1px solid var(--avx-green-dark); background: var(--avx-green-dark); color: #fff; }
+main.avx-calculator-page .avx-primary-button:hover { background: #0d5633; }
+main.avx-calculator-page .avx-primary-button:disabled { opacity: .45; cursor: not-allowed; }
+main.avx-calculator-page .avx-secondary-button { margin-top: .55rem; border: 1px solid var(--avx-line); background: #fff; color: var(--avx-text); }
+main.avx-calculator-page .avx-secondary-button:hover { border-color: var(--avx-green); }
+
+/* Shape picker */
+main.avx-calculator-page .avx-shape-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: .7rem; }
+main.avx-calculator-page .avx-shape-card { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .45rem; min-height: 100px; padding: .8rem .5rem; border: 1px solid var(--avx-line); border-radius: 12px; background: #fff; color: var(--avx-text); cursor: pointer; text-align: center; transition: border-color .15s, background .15s, transform .15s; }
+main.avx-calculator-page .avx-shape-card:hover { border-color: var(--avx-green); transform: translateY(-1px); }
+main.avx-calculator-page .avx-shape-card.is-active { border: 2px solid var(--avx-green); background: #edf7f0; }
+main.avx-calculator-page .avx-shape-icon { display: grid; place-items: center; min-height: 34px; color: var(--avx-ink); font-size: 1.85rem; font-weight: 700; line-height: 1; }
+main.avx-calculator-page .avx-shape-card span:last-child { font-size: .86rem; font-weight: 700; line-height: 1.25; }
+
+/* Live drawing */
+main.avx-calculator-page .avx-drawing-wrap { border: 1px solid var(--avx-line); border-radius: 12px; padding: .75rem; margin: 1rem 0 1.2rem; background: #fff; }
+main.avx-calculator-page .avx-drawing-heading { display: flex; justify-content: space-between; gap: .4rem .75rem; flex-wrap: wrap; color: var(--avx-text); font-size: .8rem; margin-bottom: .4rem; }
+main.avx-calculator-page .avx-drawing-heading span { color: var(--avx-muted); }
+main.avx-calculator-page .avx-plot-drawing svg { display: block; width: 100%; height: auto; }
+main.avx-calculator-page .avx-dim-label { cursor: pointer; }
+main.avx-calculator-page .avx-dim-label:hover, main.avx-calculator-page .avx-dim-label:focus { fill: #000; outline: none; }
+
+/* Result */
+main.avx-calculator-page .avx-result-caption { color: var(--avx-muted); font-size: .86rem; margin: .8rem 0 .3rem; }
+main.avx-calculator-page .avx-area-main { display: block; color: var(--avx-ink); font-size: clamp(2rem, 4vw, 2.6rem); font-weight: 850; letter-spacing: -.03em; overflow-wrap: anywhere; line-height: 1.15; }
+main.avx-calculator-page .avx-area-main small { color: var(--avx-muted); font-size: .95rem; font-weight: 700; letter-spacing: 0; }
+main.avx-calculator-page .avx-area-method { min-height: 1.2em; margin: .45rem 0 0; color: #236b3b; font-size: .82rem; font-weight: 700; }
+main.avx-calculator-page .avx-area-method.is-approx { color: var(--avx-warn); }
+main.avx-calculator-page .avx-conversion-list { border-top: 1px solid var(--avx-line); margin-top: 1rem; }
+main.avx-calculator-page .avx-conversion-list > div { display: flex; justify-content: space-between; gap: 1rem; padding: .65rem 0; border-bottom: 1px solid var(--avx-line); font-size: .9rem; }
+main.avx-calculator-page .avx-conversion-list span { color: var(--avx-muted); }
+main.avx-calculator-page .avx-conversion-list strong { color: var(--avx-ink); text-align: right; overflow-wrap: anywhere; }
+main.avx-calculator-page .avx-download-actions { display: grid; gap: .55rem; margin-top: 1rem; }
+main.avx-calculator-page .avx-result-disclaimer { color: var(--avx-muted); font-size: .77rem; margin: 1rem 0 0; }
+
+/* Large-area converter */
+main.avx-calculator-page .avx-acre-section { padding: clamp(1.1rem, 3vw, 1.6rem); border: 1px solid var(--avx-line); border-radius: 16px; }
+main.avx-calculator-page .avx-converter-row { display: grid; grid-template-columns: 1fr 1fr; gap: .9rem; max-width: 650px; }
+main.avx-calculator-page .avx-converter-results { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: .8rem; margin-top: 1rem; }
+main.avx-calculator-page .avx-converter-results > div { display: flex; flex-direction: column; gap: .25rem; border: 1px solid var(--avx-line); border-radius: 10px; padding: .8rem; font-size: .9rem; min-width: 0; }
+main.avx-calculator-page .avx-converter-results span { color: var(--avx-muted); }
+main.avx-calculator-page .avx-converter-results strong { color: var(--avx-ink); font-size: 1.05rem; overflow-wrap: anywhere; }
+main.avx-calculator-page .avx-page-note { border-top: 1px solid var(--avx-line); padding-top: 1rem; color: var(--avx-muted); font-size: .82rem; }
+
+/* View Drawing (A4 preview) */
+body.avx-modal-open { overflow: hidden; }
+main.avx-calculator-page .avx-preview-modal[hidden] { display: none !important; }
+main.avx-calculator-page .avx-preview-modal { position: fixed; inset: 0; z-index: 10000; background: rgba(7,14,10,.8); display: flex; align-items: center; justify-content: center; padding: 1rem; overflow: auto; }
+main.avx-calculator-page .avx-preview-dialog { width: min(1240px, 100%); max-height: calc(100vh - 2rem); overflow: auto; background: #fff; color: #111; border-radius: 12px; padding: clamp(.8rem, 2.5vw, 1.6rem); box-shadow: 0 20px 70px rgba(0,0,0,.35); }
+main.avx-calculator-page .avx-preview-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; border-bottom: 2px solid var(--avx-green); padding-bottom: .6rem; }
+main.avx-calculator-page .avx-preview-header h2 { margin: .1rem 0; font-size: clamp(1.25rem, 3vw, 1.75rem); }
+main.avx-calculator-page .avx-close-preview { flex: 0 0 auto; border: 1px solid #bbb; background: #fff; border-radius: 50%; width: 42px; height: 42px; font-size: 1.7rem; line-height: 1; cursor: pointer; }
+main.avx-calculator-page .avx-preview-summary { font-weight: 650; margin: .6rem 0; }
+main.avx-calculator-page .avx-preview-drawing { border: 1px solid var(--avx-line); border-radius: 6px; background: #fff; padding: .35rem; overflow-x: auto; }
+main.avx-calculator-page .avx-preview-drawing > svg { display: block; width: 100%; min-width: 640px; height: auto; aspect-ratio: 1120 / 790; }
+main.avx-calculator-page .avx-preview-actions { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .6rem; margin-top: 1rem; }
+main.avx-calculator-page .avx-preview-actions .avx-secondary-button { margin-top: 0; }
+main.avx-calculator-page .avx-preview-status { min-height: 1.3em; margin: .6rem 0 0; font-size: .85rem; color: var(--avx-muted); }
+main.avx-calculator-page .avx-preview-status.is-success { color: #236b3b; }
+main.avx-calculator-page .avx-preview-status.is-error { color: #a32d21; }
+main.avx-calculator-page .avx-preview-status.is-warning { color: var(--avx-warn); }
+
+/* Responsive */
+@media (max-width: 1020px) {
+  main.avx-calculator-page .avx-shape-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+@media (max-width: 860px) {
+  main.avx-calculator-page .avx-calculator-layout { grid-template-columns: 1fr; }
+  main.avx-calculator-page .avx-converter-results { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  main.avx-calculator-page .avx-preview-actions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  main.avx-calculator-page .avx-hero { background-image: linear-gradient(90deg, rgba(9,20,14,.95) 0%, rgba(9,20,14,.9) 60%, rgba(9,20,14,.82) 100%), url("../images/plot-area-calculator-hero.jpg"); }
+  main.avx-calculator-page .avx-shape-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .5rem; }
+  main.avx-calculator-page .avx-shape-card { min-height: 88px; padding: .6rem .3rem; }
+  main.avx-calculator-page .avx-shape-card span:last-child { font-size: .76rem; }
+  main.avx-calculator-page .avx-shape-icon { font-size: 1.55rem; min-height: 28px; }
+  main.avx-calculator-page .avx-drawing-wrap { margin-left: -.35rem; margin-right: -.35rem; padding: .5rem; }
+  main.avx-calculator-page .avx-preview-modal { padding: .4rem; }
+  main.avx-calculator-page .avx-preview-dialog { max-height: calc(100vh - .8rem); }
+}
+@media (max-width: 430px) {
+  main.avx-calculator-page .avx-section-heading { align-items: stretch; flex-direction: column; }
+  main.avx-calculator-page .avx-fields, main.avx-calculator-page .avx-converter-row { grid-template-columns: 1fr; }
+}
+
+/* Fallback print (used only if the print tab is blocked): print just the A4 sheet */
+@page { size: A4 landscape; margin: 8mm; }
+@media print {
+  body.avx-modal-open > *:not(main) { display: none !important; }
+  body.avx-modal-open main.avx-calculator-page > *:not(#drawing-preview-modal) { display: none !important; }
+  body.avx-modal-open #drawing-preview-modal { position: static !important; display: block !important; background: #fff !important; padding: 0 !important; overflow: visible !important; }
+  body.avx-modal-open .avx-preview-dialog { width: 100% !important; max-height: none !important; overflow: visible !important; box-shadow: none !important; padding: 0 !important; }
+  body.avx-modal-open .avx-preview-header, body.avx-modal-open .avx-preview-summary, body.avx-modal-open .avx-preview-actions, body.avx-modal-open .avx-preview-status, body.avx-modal-open #drawing-preview-modal .avx-result-disclaimer { display: none !important; }
+  body.avx-modal-open .avx-preview-drawing { border: 0 !important; padding: 0 !important; overflow: visible !important; }
+  body.avx-modal-open .avx-preview-drawing > svg { min-width: 0 !important; max-height: 190mm !important; }
+}
