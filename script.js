@@ -493,7 +493,15 @@ window.initFaqAccordion = initFaqAccordion;
             const link = card ? card.querySelector(".view-details-btn") : null;
             const titleEl = card ? card.querySelector("h3") : null;
 
-            const shareUrl = link ? new URL(link.getAttribute("href"), window.location.href).href : window.location.href;
+            let shareUrl = link ? new URL(link.getAttribute("href"), window.location.href).href : window.location.href;
+            // Share the server-rendered /p/<slug> URL so social crawlers receive the property image.
+            if (link) {
+                const detailsUrl = new URL(link.getAttribute("href"), window.location.href);
+                const slug = detailsUrl.searchParams.get("id");
+                if (detailsUrl.pathname.endsWith("/property.html") && slug && /^[a-zA-Z0-9-]+$/.test(slug)) {
+                    shareUrl = detailsUrl.origin + "/p/" + encodeURIComponent(slug);
+                }
+            }
             const shareTitle = titleEl ? titleEl.textContent.trim() : "Aventrix Realty Property";
 
             if (navigator.share) {
