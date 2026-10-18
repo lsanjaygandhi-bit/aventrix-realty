@@ -1,29 +1,34 @@
-# Aventrix Realty AI Property Assistant — setup notes
+# Aventrix Realty Free Property Search Assistant — setup notes
 
 ## Current status
-This feature is isolated on `feature/ai-property-assistant`. It is **not deployed or enabled on the public website**. The homepage widget is deliberately disabled until the backend and safeguards are configured.
+- The free-search Edge Function `free-property-search` is deployed and active in the Aventrix Realty Supabase project.
+- The homepage widget remains disabled (`data-enabled="false"`) until the feature branch is reviewed and the website preview is tested.
+- The free-search endpoint does not call OpenAI and does not require an OpenAI API credit balance.
+- The original AI endpoint is separate and is not used by the free-search widget.
 
-## What it does
-- Answers property questions in English or Tamil.
-- Reads only published property rows from `public.properties`.
-- Returns up to four exact listing slugs from the fetched records; the UI builds links only from those returned rows.
-- Uses a Supabase Edge Function so the OpenAI API key never enters browser JavaScript.
-- Does not write customer messages or contact details to the database.
-
-## Before enabling
-1. Review and merge the feature branch only after code review.
-2. Configure the Supabase Edge Function secret `OPENAI_API_KEY` in the Aventrix Realty project's Edge Function secrets. API usage is billed separately by the AI provider; set usage limits and alerts.
-3. Confirm the Edge Function's built-in environment includes `SUPABASE_URL` and `SUPABASE_ANON_KEY`; if not, configure the correct publishable/anon key as a function secret.
-4. Confirm the existing RLS policy permits anonymous SELECT of published rows in `public.properties`. Do not loosen RLS broadly or use a service-role key for this public lookup.
-5. Add reliable server-side rate limiting / abuse protection (prefer a managed rate limiter and/or Cloudflare Turnstile) before public activation. The current function has request-size and origin checks, but CORS is not a substitute for rate limiting.
-6. Deploy the Edge Function and test with no matches, matching listings, Tamil, malformed requests, large payloads, unavailable AI provider, and mobile layout.
-7. Only then change the widget container's `data-enabled="false"` to `true`, test the preview, and deploy the site after explicit approval.
+## What the free version does
+- Searches published rows in `public.properties` only.
+- Returns up to four matching property links, using listing data from Supabase.
+- Includes basic matching for locations, property type, BHK and a maximum budget when those details can be interpreted.
+- Provides English or Tamil response text based on the query.
+- Does not write messages or customer contact details to the database.
+- Does not use a service-role key or expose a secret key in browser code.
 
 ## Endpoint
-`https://gkrtjeygrqkglsadskcg.supabase.co/functions/v1/ai-property-assistant`
+`https://gkrtjeygrqkglsadskcg.supabase.co/functions/v1/free-property-search`
 
-## Important
-- The UI currently stays hidden while disabled.
+## Before public activation
+1. Review the changes on `feature/ai-property-assistant` and test the branch preview on mobile and desktop.
+2. Test matching and no-match queries in English and Tamil, including budget, location, property type, and BHK.
+3. Confirm property links resolve correctly and the assistant never implies a listing is available without current confirmation.
+4. Add robust server-side rate limiting / abuse protection before public activation. CORS and request-size checks alone are not rate limiting.
+5. Keep `data-enabled="false"` until the website preview is approved.
+6. Merge and deploy only after explicit approval.
+
+## Later optional AI upgrade
+The original `ai-property-assistant` Edge Function calls OpenAI and requires a valid API key and available API credits. ChatGPT subscriptions do not include OpenAI API usage. The free-search version does not depend on that function.
+
+## Security notes
 - Never put `OPENAI_API_KEY`, Supabase secret keys, or service-role keys in public files.
-- Model output is not trusted for listing details; returned properties are filtered against real rows fetched by the function.
-- No live database schema, RLS policy, key, or production deployment is changed by this branch.
+- The search endpoint reads published property records through the public/anon key and existing database access policy.
+- Do not broaden database RLS policies merely to make the assistant work.
