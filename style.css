@@ -8848,3 +8848,46 @@ body.home-page .qe-primary-contact .qe-call-cta:hover {
     font-size: 15px !important;
   }
 }
+
+
+/* ------------------------------------------------------------------
+   GLOBAL PROSE ALIGNMENT
+   Keep long-form explanatory paragraphs evenly aligned on both edges.
+   Do not affect headings, navigation, buttons, form controls or labels.
+   ------------------------------------------------------------------ */
+main p,
+article p,
+.about-content p,
+.about-split-copy p,
+.legacy-text p,
+.leader-row-content p,
+.about-statement p,
+.about-lede,
+.jv-intro p,
+.pm-card p,
+.pm-section p,
+.pm-content p,
+.pm-guide-section p,
+.pm-update-section p,
+.service-item p,
+.pmf-tool p,
+.insight-card p,
+.insight-content p,
+.property-card p,
+.why-item p,
+.bsl-card p,
+.list-hero .hero-description {
+    text-align: justify;
+    text-justify: inter-word;
+    text-align-last: auto;
+}
+
+/* Keep short closing statements and compact labels naturally aligned. */
+.about-closing,
+.about-closing p,
+.service-item h3,
+.pmf-tool h3,
+.insight-card h3,
+.property-card h3 {
+    text-align: initial;
+}
