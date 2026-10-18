@@ -6,9 +6,7 @@
   const root = document.getElementById("avxAiAssistant");
   if (!root || root.dataset.enabled !== "true") return;
 
-  const endpoint = root.dataset.endpoint || "https://gkrtjeygrqkglsadskcg.supabase.co/functions/v1/free-property-search";
-  // Touch devices: don't pop the keyboard automatically (it pushes the panel off-screen on iOS).
-  const isTouch = document.documentElement.classList.contains("is-mobile");
+  const endpoint = "https://gkrtjeygrqkglsadskcg.supabase.co/functions/v1/free-property-search";
   const launcher = root.querySelector(".avx-ai-launcher");
   const panel = root.querySelector(".avx-ai-panel");
   const close = root.querySelector(".avx-ai-close");
@@ -21,8 +19,6 @@
 
   if (!endpoint || !launcher || !panel || !close || !form || !input || !send || !messages || !status || !suggestions) return;
   launcher.hidden = false;
-  // Enables the floating-button group layout in css/ai-property-assistant.css.
-  document.documentElement.classList.add("avx-ai-on");
   let busy = false;
 
   function addMessage(text, role, properties) {
@@ -37,8 +33,7 @@
         if (!p || typeof p.title !== "string" || typeof p.slug !== "string") return;
         const link = document.createElement("a");
         link.className = "avx-ai-result";
-        // property.html reads the slug from ?id= (see js/public-properties.js)
-        link.href = "property.html?id=" + encodeURIComponent(p.slug);
+        link.href = "property.html?slug=" + encodeURIComponent(p.slug);
         const title = document.createElement("div");
         title.className = "avx-ai-result-title";
         title.textContent = p.title;
@@ -68,7 +63,7 @@
   function openPanel() {
     panel.hidden = false;
     launcher.setAttribute("aria-expanded", "true");
-    if (!isTouch) input.focus();
+    input.focus();
   }
   function closePanel() {
     panel.hidden = true;
@@ -78,9 +73,6 @@
 
   launcher.addEventListener("click", openPanel);
   close.addEventListener("click", closePanel);
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && !panel.hidden) closePanel();
-  });
   suggestions.addEventListener("click", (event) => {
     const button = event.target.closest("button[data-query]");
     if (!button || busy) return;
@@ -112,7 +104,7 @@
       addMessage("Sorry, search is temporarily unavailable. Please use the Property Search page or contact Aventrix Realty directly.", "assistant");
     } finally {
       setBusy(false);
-      if (!panel.hidden && !isTouch) input.focus();
+      input.focus();
     }
   });
 })();
