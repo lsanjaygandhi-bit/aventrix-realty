@@ -39,3 +39,9 @@
   .avx-ai-launcher{right:12px;bottom:calc(100px + env(safe-area-inset-bottom, 0px));padding:11px 14px;}
   .avx-ai-panel{right:8px;bottom:calc(162px + env(safe-area-inset-bottom, 0px));width:calc(100vw - 16px);height:min(540px,calc(100dvh - 230px - env(safe-area-inset-bottom, 0px)));}
 }
+
+/* Compact, glass-style floating launcher requested by the owner. */
+.avx-ai-launcher{gap:7px!important;padding:7px 10px!important;min-height:34px!important;border:1px solid rgba(255,255,255,.34)!important;border-radius:999px!important;background:rgba(22,28,24,.48)!important;color:rgba(255,255,255,.94)!important;-webkit-backdrop-filter:blur(16px) saturate(145%)!important;backdrop-filter:blur(16px) saturate(145%)!important;box-shadow:0 4px 18px rgba(0,0,0,.14),inset 0 1px 0 rgba(255,255,255,.18)!important;font-size:11px!important;font-weight:600!important;letter-spacing:.1px!important}
+.avx-ai-launcher-mark{width:21px!important;height:21px!important;background:rgba(255,255,255,.16)!important;border:1px solid rgba(255,255,255,.24)!important;color:#fff!important;font-size:12px!important}
+@media(max-width:768px){.avx-ai-launcher{right:12px;bottom:calc(100px + env(safe-area-inset-bottom,0px));padding:7px 10px!important;min-height:34px!important}}
+@media(max-width:480px){.avx-ai-launcher{right:12px;bottom:calc(100px + env(safe-area-inset-bottom,0px));padding:7px 10px!important;min-height:34px!important;font-size:11px!important}.avx-ai-launcher-mark{width:21px!important;height:21px!important}}
