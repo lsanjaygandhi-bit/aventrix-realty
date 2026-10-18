@@ -8891,3 +8891,46 @@ article p,
 .property-card h3 {
     text-align: initial;
 }
+
+
+/* ------------------------------------------------------------------
+   MOBILE LAYOUT / READABILITY AUDIT — shared safe defaults
+   Long-form copy is justified; short card copy remains left-aligned so
+   narrow screens do not create stretched gaps between words.
+   ------------------------------------------------------------------ */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+*, *::before, *::after { box-sizing: border-box; }
+img, video, canvas, svg { max-width: 100%; }
+@media (max-width: 768px) {
+  body { overflow-wrap: break-word; }
+  main, article, section { min-width: 0; }
+  main p, article p,
+  .about-content p, .about-split-copy p, .legacy-text p,
+  .leader-row-content p, .about-statement p, .about-lede,
+  .jv-intro p, .pm-entry > p, .pm-article p,
+  .pm-guide-copy p, .pm-update-copy p, .legal-content p,
+  .policy-content p, .terms-content p, .privacy-content p,
+  .article-body p, .insight-article p, .long-form-content p {
+    font-size: clamp(14px, 3.8vw, 16px);
+    line-height: 1.7;
+    text-align: justify;
+    text-justify: inter-word;
+    text-align-last: left;
+    overflow-wrap: anywhere;
+  }
+  /* Compact descriptions and UI copy should not be stretched across the row. */
+  .property-card p, .service-item p, .pm-card p, .pmf-tool p,
+  .insight-card p, .bsl-card p, .why-item p,
+  .footer p, .site-footer p, .ft-col p,
+  .avx-ai-message, .avx-ai-note,
+  .quick-enquiry-desc, .qe-detail p,
+  .form-group p, .form-hint, .field-hint {
+    text-align: left;
+    text-align-last: auto;
+    overflow-wrap: anywhere;
+  }
+  /* Keep controls usable on narrow devices without forcing the page wider. */
+  input, select, textarea, button { max-width: 100%; }
+  pre, code { overflow-wrap: anywhere; }
+  table { max-width: 100%; }
+}
