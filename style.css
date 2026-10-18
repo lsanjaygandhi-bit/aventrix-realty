@@ -8978,3 +8978,27 @@ img, video, canvas, svg { max-width: 100%; }
     padding-right: 0;
   }
 }
+
+
+/* Final mobile edge alignment: long profile paragraphs should form clean left/right edges. */
+@media (max-width: 768px) {
+  .leader-row-content p,
+  .about-content p,
+  .about-split-copy p,
+  .legacy-text p,
+  .about-statement p,
+  .pm-entry > p,
+  .pm-layout p,
+  .pm-guide-section p,
+  .pm-content p,
+  .pm-update-section p {
+    text-align: justify !important;
+    text-align-last: left !important;
+    text-justify: inter-word !important;
+    word-spacing: normal !important;
+    letter-spacing: normal !important;
+    line-height: 1.65 !important;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+}
