@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script>
+    (function () {
+    // Manual scroll restoration: we save/restore scroll position
+    // ourselves (see script.js) so users returning via Back land back
+    // exactly where they were, instead of the browser's default
+    // (and often mistimed) automatic restoration.
+    if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+    }
+
+    function evaluateMobile() {
+        // Detect real mobile/touch devices instead of relying only on
+        // viewport width, so the mobile layout survives orientation
+        // changes (landscape too). Also re-checks on resize so a
+        // desktop browser window narrowed below 768px (e.g. during
+        // responsive QA / devtools) correctly gets the mobile layout,
+        // without affecting real touch devices, which stay mobile
+        // via the touch/UA check regardless of width or rotation.
+        var coarsePointer = window.matchMedia &&
+            window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+        var mobileUA = /Android|iPhone|iPad|iPod|IEMobile|BlackBerry|Opera Mini|Mobile/i
+            .test(navigator.userAgent);
+        var narrowViewport = window.innerWidth <= 768;
+
+        var shouldBeMobile = coarsePointer || mobileUA || narrowViewport;
+        document.documentElement.classList.toggle('is-mobile', shouldBeMobile);
+    }
+
+    evaluateMobile();
+
+    var resizeTimer;
+    window.addEventListener('resize', function () {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(evaluateMobile, 150);
+    });
+})();
+    </script>
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico?v=2">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png?v=2">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png?v=2">
+    <link rel="icon" type="image/png" sizes="48x48" href="/images/favicon/favicon-48x48.png?v=2">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png?v=2">
+    <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon/android-chrome-192x192.png?v=2">
+    <link rel="icon" type="image/png" sizes="512x512" href="/images/favicon/android-chrome-512x512.png?v=2">
+    <link rel="manifest" href="/site.webmanifest?v=2">
+
+    <title>Pallikaranai Marsh Guide: Ramsar, 1 km Zone &amp; Buying Property | Aventrix Realty</title>
+    <meta name="description" content="Complete guide to Pallikaranai Marsh for property buyers: Ramsar designation, the 1 km zone, the proposed Zone of Influence, court status and a due-diligence checklist.">
+    <link rel="canonical" href="https://aventrixrealty.com/pallikaranai-marsh-guide.html">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Aventrix Realty">
+    <meta property="og:title" content="Pallikaranai Marsh Guide: Ramsar, 1 km Zone &amp; Buying Property | Aventrix Realty">
+    <meta property="og:description" content="Complete guide to Pallikaranai Marsh for property buyers: Ramsar designation, the 1 km zone, the proposed Zone of Influence, court status and a due-diligence checklist.">
+    <meta property="og:url" content="https://aventrixrealty.com/pallikaranai-marsh-guide.html">
+    <meta property="og:image" content="https://aventrixrealty.com/images/og/aventrix-logo-og.jpg">
+    <meta property="og:image:secure_url" content="https://aventrixrealty.com/images/og/aventrix-logo-og.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Aventrix Realty">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pallikaranai Marsh Guide: Ramsar, 1 km Zone &amp; Buying Property | Aventrix Realty">
+    <meta name="twitter:description" content="Complete guide to Pallikaranai Marsh for property buyers: Ramsar designation, the 1 km zone, the proposed Zone of Influence, court status and a due-diligence checklist.">
+    <meta name="twitter:image" content="https://aventrixrealty.com/images/og/aventrix-logo-og.jpg">
+    <link rel="stylesheet" href="style.css?v=20261014">
+    <link rel="stylesheet" href="css/property-tools.css?v=20261017gov">
+    <link rel="stylesheet" href="css/pallikaranai.css?v=20261018g">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://aventrixrealty.com/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Property Tools",
+          "item": "https://aventrixrealty.com/property-tools.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Pallikaranai Marsh Updates",
+          "item": "https://aventrixrealty.com/pallikaranai-marsh-updates.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Complete Guide",
+          "item": "https://aventrixrealty.com/pallikaranai-marsh-guide.html"
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "@id": "https://aventrixrealty.com/pallikaranai-marsh-guide.html#article",
+      "headline": "Pallikaranai Marsh: Complete Guide for Property Buyers and Landowners",
+      "description": "Complete guide to Pallikaranai Marsh for property buyers: Ramsar designation, the 1 km zone, the proposed Zone of Influence, court status and a due-diligence checklist.",
+      "url": "https://aventrixrealty.com/pallikaranai-marsh-guide.html",
+      "mainEntityOfPage": "https://aventrixrealty.com/pallikaranai-marsh-guide.html",
+      "inLanguage": "en-IN",
+      "author": {
+        "@type": "Organization",
+        "name": "Aventrix Realty",
+        "url": "https://aventrixrealty.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://aventrixrealty.com/images/aventrix-logo.png"
+        }
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Aventrix Realty",
+        "url": "https://aventrixrealty.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://aventrixrealty.com/images/aventrix-logo.png"
+        }
+      },
+      "image": "https://aventrixrealty.com/images/og/aventrix-logo-og.jpg",
+      "about": [
+        {
+          "@type": "Place",
+          "name": "Pallikaranai Marsh"
+        },
+        {
+          "@type": "Thing",
+          "name": "Ramsar Convention"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does Ramsar status mean all construction nearby is banned?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Ramsar designation recognises a wetland's international importance; it does not by itself ban construction around it. The current restriction around Pallikaranai comes from the NGT's September 2025 judgment and, as reported, CMDA's office order that followed."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the proposed 128.19-hectare zone in force?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. It is the State's proposal for an interim Zone of Influence, placed before the Madras High Court in October 2026. It has not been adopted by any order that we have seen."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I buy land within 1 km of the marsh?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Buying and getting permission to build are different questions. A purchase can go through while approvals remain paused, as currently reported. Verify the survey number, title, land classification and written planning status, and take legal advice on the current court position first."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is land outside the 36 survey numbers free to develop?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not automatically. The proposal is interim, the final zone still needs scientific and cadastral study, and no withdrawal of the reported 1 km restriction has been reported. Every parcel still needs its normal approvals."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will existing buildings near the marsh be demolished?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not simply because they are near the wetland. The position of any building depends on its approvals, its land classification and any specific orders that apply to it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When is the next hearing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "One secondary source reports the matter as listed for 11 November 2026; we have not yet confirmed this from the court's cause list. Court dates can change; check the latest update on our news page."
+          }
+        }
+      ]
+    }
+  ]
+}
+    </script>
+    <link rel="stylesheet" href="css/site-footer.css?v=20261021">
+    <link rel="stylesheet" href="css/site-fixes.css?v=20261014">
+</head>
+<body class="pt-page pm-page">
+
+    <header class="header">
+    <div class="container nav">
+        <div class="logo">
+    <a href="index.html" class="logo-text">
+        <img src="images/aventrix-logo.png" alt="Aventrix Realty">
+    </a>
+</div>
+   <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+        <!-- Mobile-only bell — matches index.html's header exactly
+             (site-wide header consistency). Stays visible on every
+             breakpoint, unlike the desktop one inside .nav-right
+             (hidden on mobile by an existing rule). -->
+        <div class="home-app-header-actions">
+            <a href="account.html" class="home-app-bell-btn" aria-label="My Account">
+                <i class="far fa-circle-user" aria-hidden="true"></i>
+            </a>
+        </div>
+    <div class="menu-overlay" id="menuOverlay"></div>
+       <nav class="main-nav" data-hq="phones">
+
+    <a href="index.html">Home</a>
+
+    <a href="about.html">About Us</a>
+
+    <a href="properties.html">Properties</a>
+
+    <a href="services.html">Services</a>
+
+    <a href="list-with-us.html">List With Us</a>
+
+    <a href="free-valuation.html">Free Valuation</a>
+
+    <a href="joint-venture.html">Joint Venture</a>
+
+    <a href="property-tools.html"><span class="nav-label-extra">Property </span>Tools</a>
+    <a href="nri-services.html">NRI Services</a>
+
+    <a href="contact.html">Contact</a>
+
+    <a href="/admin/" class="main-nav-admin">Admin</a>
+
+
+    <div class="mobile-menu-divider"></div>
+    <span class="mobile-menu-contact-label">CONTACT</span>
+    <a href="tel:+919176887770" class="mobile-menu-phone">📞 +91 91768 87770</a>
+    <a href="tel:+917092356222" class="mobile-menu-phone">📞 +91 70923 56222</a>
+    <div class="mobile-menu-socials">
+      <a href="https://wa.me/919176887770" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" data-site="whatsapp-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 3.5a8.5 8.5 0 0 0-7.3 12.8L3.5 20.5l4.4-1.2A8.5 8.5 0 1 0 12 3.5z"/><path d="M8.7 8.6c.2-.5.4-.5.6-.5h.5c.2 0 .4 0 .5.4.2.5.6 1.5.6 1.6.1.1.1.3 0 .4-.1.2-.1.3-.3.4-.1.2-.3.3-.4.5-.1.1-.3.3-.1.5.2.4 1 1.5 2 2.3 1.2 1 1 .8 1.3.7.2 0 .4-.2.5-.4.2-.2.4-.2.6-.1l1.4.7c.2.1.4.2.4.3.1.2.1 1-.3 1.4-.4.5-1.4.9-2 .9-.6 0-1.4-.1-3.3-1-2.4-1.1-3.9-3.4-4-3.6-.1-.2-1-1.3-1-2.5s.6-1.8.8-2z" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="https://www.instagram.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Instagram" data-site="social-instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="0.8" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="https://www.facebook.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Facebook" data-site="social-facebook">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M15 8.5h-2a1.5 1.5 0 0 0-1.5 1.5v2h3.4l-.4 3H11.5v7h-3v-7H6.5v-3h2V9.7C8.5 7 10 5.5 12.5 5.5H15v3z"/></svg>
+      </a>
+      <a href="https://maps.app.goo.gl/Gfs3JJ4VVN4cxU5G7?g_st=ic" target="_blank" rel="noopener noreferrer" aria-label="Google Maps" data-hq="maps">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg>
+      </a>
+    </div>
+
+  </nav>
+
+        <div class="nav-right">
+            <!-- Notification/Bell — matches index.html's header exactly
+                 (site-wide header consistency), same .nav-wishlist-link
+                 styling, same position ahead of the phone number. -->
+            <a href="account.html" class="nav-wishlist-link nav-bell-link" aria-label="My Account">
+                <i class="far fa-circle-user" aria-hidden="true"></i>
+            </a>
+            <a href="tel:+919176887770" class="nav-phone" aria-label="Call Aventrix Realty">
+                <i class="fas fa-phone-alt" aria-hidden="true"></i>
+            </a>
+        </div>
+    </div>
+     </header>
+
+<!-- ==============================
+     PALLIKARANAI MARSH — COMPLETE GUIDE (evergreen)
+     Status strip, latest-update card and the source register are
+     generated from data/pallikaranai-updates.json by
+     tools/build-pallikaranai.py. Styles: css/pallikaranai.css. -->
+<section class="list-hero pt-hero">
+    <div class="pt-hero-media is-marsh" aria-hidden="true"></div>
+    <div class="container">
+        <span class="section-tag">PALLIKARANAI RAMSAR INTELLIGENCE · GUIDE</span>
+        <h1>Pallikaranai Marsh: A Guide for Property Buyers</h1>
+        <p>Ramsar status, the 1 km zone, the proposed Zone of Influence and what each means for land, apartments and development.</p>
+    </div>
+</section>
+<nav class="pt-breadcrumb" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li><a href="property-tools.html">Property Tools</a></li><li><a href="pallikaranai-marsh-updates.html">Pallikaranai Marsh Updates</a></li><li aria-current="page">Complete Guide</li></ol></nav>
+<nav class="pm-subnav" aria-label="Pallikaranai Ramsar Intelligence">
+    <a href="pallikaranai-marsh-updates.html#updates">Latest News &amp; Court Updates</a>
+    <a href="pallikaranai-marsh-guide.html" aria-current="page">Complete Ramsar Guide</a>
+    <a href="pallikaranai-marsh-guide.html#boundaries">Maps &amp; Boundaries</a>
+    <a href="pallikaranai-marsh-updates.html#checklist">Due-Diligence Checklist</a>
+    <a href="pallikaranai-marsh-guide.html#sources">Official Sources</a>
+    <span class="pm-subnav-back">Back to <a href="property-tools.html">Property Tools</a> · <a href="insights.html">Insights</a></span>
+</nav>
+<main id="main">
+<section class="pt-section">
+  <div class="pt-container">
+    <div class="pm-strip" role="status"><!-- PM:STATUS:START -->
+<span><strong>Research coverage from:</strong> <time datetime="2026-08-18">18 Aug 2026</time></span><span><strong>Page published:</strong> Not yet published</span><span><strong>Last substantive update:</strong> <time datetime="2026-10-18">18 Oct 2026</time></span><span><span class="pm-dot" aria-hidden="true"></span><strong>Sources last checked:</strong> <time datetime="2026-10-18">18 Oct 2026</time></span><span><strong>Next listing:</strong> 11 Nov 2026 — reported by a single secondary source, not confirmed</span>
+<!-- PM:STATUS:END --></div>
+    <div class="pm-layout">
+      <article class="pm-prose">
+        <nav class="pm-toc" aria-label="Contents"><h2>Contents</h2><ol>
+          <li><a href="#what">What the marsh is</a></li><li><a href="#ramsar">Ramsar designation</a></li><li><a href="#boundaries">Three boundaries</a></li>
+          <li><a href="#ngt">NGT and CMDA orders</a></li><li><a href="#zoi">The proposed Zone of Influence</a></li><li><a href="#status">Legal status today</a></li>
+          <li><a href="#impact">What it means for you</a></li><li><a href="#checklist">Checklist</a></li><li><a href="#faq">FAQs</a></li><li><a href="#sources">Sources</a></li></ol></nav>
+
+        <h2 id="what">What Pallikaranai Marsh is, and why it matters</h2>
+        <p>Pallikaranai Marsh is one of the last large natural wetlands in Chennai. It sits at the low end of a wide catchment in south Chennai, so rainwater from surrounding neighbourhoods drains into it through a network of lakes, channels and drains before reaching the sea. That role — holding floodwater, recharging groundwater and supporting a large bird population — is why the marsh and the land that drains into it are regulated.</p>
+        <p>For property, the practical point is simple: anything that blocks or diverts the channels feeding or draining the marsh can worsen flooding nearby, and the authorities now assess land around the marsh with that in mind.</p>
+
+        <h2 id="ramsar">The Ramsar designation</h2>
+        <p>The Ramsar Convention (1971) is an international treaty for the conservation and wise use of wetlands. Pallikaranai Marsh Reserve Forest was designated a Ramsar Site — a Wetland of International Importance — on 8 April 2022, as Ramsar Site No. 2481. The Tamil Nadu State Wetlands Authority records its area as 1,247.54 hectares.</p>
+        <p>Ramsar status does not by itself ban construction near a wetland. Restrictions come from national rules (the Wetlands (Conservation and Management) Rules, 2017), from planning authorities, and from court and tribunal orders — which is what applies here.</p>
+        <figure class="pm-map-figure pm-map-figure--world"><img src="images/ramsar-sites-world-map.png" alt="World map showing wetland-related locations across multiple regions" loading="lazy" decoding="async"><figcaption>World map supplied for geographic context. It is not a map of Pallikaranai Marsh or a parcel-level boundary map.</figcaption></figure>
+
+        <h2 id="boundaries">Three boundaries that are often confused</h2>
+        <div class="pm-compare">
+          <div><h3>Wetland boundary</h3><p>The designated wetland itself — about 1,247.5 ha for the Ramsar site. Parcel-level confirmation needs the official boundary and revenue records.</p></div>
+          <div><h3>1 km zone</h3><p>A general distance recommended in a draft management plan and referred to in the NGT judgment; CMDA's October 2025 office order is reported to use it to pause approvals. The NGT judgment records the Wetlands Authority's view that the real zone is site-specific.</p></div>
+          <div><h3>Zone of Influence</h3><p>The land whose drainage actually affects the wetland, to be drawn from hydrology, levels and channels. It can be wide in some places and zero in others. The final zone has not yet been notified.</p></div>
+        </div>
+        <p>Official records for the Ramsar site are on the <a href="https://rsis.ramsar.org/ris/2481" target="_blank" rel="noopener noreferrer">Ramsar Sites Information Service (Site 2481)</a><span class="sr-only"> (opens in a new tab)</span> and the <a href="https://tnswa.tn.gov.in/ramsar-site-information.php?token=Pallikaranai-Marsh-Reserve-Forest" target="_blank" rel="noopener noreferrer">Tamil Nadu State Wetlands Authority site page</a><span class="sr-only"> (opens in a new tab)</span>, which links the site's information sheet and the Authority's GIS viewer. We could not find an official published map of the 1 km zone or of the proposed interim Zone of Influence; the diagram below explains the concepts only.</p>
+        <figure class="pm-map-figure"><a href="images/pallikaranai-ramsar-influence-map.jpg" target="_blank" rel="noopener noreferrer"><img src="images/pallikaranai-ramsar-influence-map.jpg" alt="Ramsar Site and Influence Area Map showing the Pallikaranai wetland area and surrounding Chennai neighbourhoods" loading="lazy" decoding="async"></a><figcaption>Ramsar Site &amp; Influence Area Map supplied for reference. Open the image to view it at full size. Check the relevant official map and survey records before making parcel-level decisions.</figcaption></figure>
+        <figure class="pm-figure"><svg viewBox="0 0 720 440" role="img" aria-labelledby="pmFigTitle pmFigDesc" xmlns="http://www.w3.org/2000/svg">
+  <title id="pmFigTitle">Wetland boundary, 1 km zone and Zone of Influence compared</title>
+  <desc id="pmFigDesc">Schematic. The wetland is shown in green. A dashed line at a uniform distance shows the 1 km zone used for the current approval freeze. Gold patches of varying width, attached where drains and channels connect to the wetland, show a Zone of Influence drawn from hydrology; along some edges it has zero width.</desc>
+  <rect x="0" y="0" width="720" height="440" fill="#f7f9f7" rx="12"/>
+  <path d="M120 190 C 70 60, 330 25, 520 70 C 650 100, 670 260, 560 310 C 430 365, 180 350, 120 190 Z" fill="none" stroke="#6b7280" stroke-width="2" stroke-dasharray="7 6"/>
+  <path d="M205 120 l-55 -30 l-30 40 l70 25 Z" fill="#e9c75f" opacity=".85"/>
+  <path d="M470 105 l40 -45 l45 25 l-45 50 Z" fill="#e9c75f" opacity=".85"/>
+  <path d="M520 255 l70 25 l-15 45 l-75 -30 Z" fill="#e9c75f" opacity=".85"/>
+  <path d="M262 270 l-38 44 l45 15 l32 -46 Z" fill="#e9c75f" opacity=".85"/>
+  <path d="M190 190 C 170 115, 330 85, 470 115 C 560 135, 575 235, 500 262 C 410 292, 230 290, 190 190 Z" fill="#2f6b4a"/>
+  <path d="M150 105 q-40 -40 -95 -50" fill="none" stroke="#3b82c4" stroke-width="3"/>
+  <path d="M590 280 q50 25 90 70" fill="none" stroke="#3b82c4" stroke-width="3"/>
+  <text x="345" y="196" fill="#fff" font-size="17" font-weight="700" text-anchor="middle" font-family="Montserrat, Arial, sans-serif">Wetland</text>
+  <text x="345" y="216" fill="#d9eadf" font-size="12" text-anchor="middle" font-family="Montserrat, Arial, sans-serif">Ramsar site boundary</text>
+  <text x="700" y="32" fill="#4b5563" font-size="13" text-anchor="end" font-family="Montserrat, Arial, sans-serif">1 km zone (uniform distance)</text>
+  <text x="18" y="40" fill="#1f5f99" font-size="12" font-family="Montserrat, Arial, sans-serif">drain / channel</text>
+  <g font-family="Montserrat, Arial, sans-serif" font-size="12">
+    <rect x="22" y="390" width="14" height="14" fill="#2f6b4a"/><text x="42" y="402" fill="#374151">Wetland</text>
+    <rect x="118" y="390" width="14" height="14" fill="#e9c75f"/><text x="138" y="402" fill="#374151">Zone of Influence (variable width)</text>
+    <line x1="372" y1="397" x2="400" y2="397" stroke="#6b7280" stroke-width="2" stroke-dasharray="7 6"/><text x="408" y="402" fill="#374151">1 km zone</text>
+    <text x="22" y="426" fill="#6b7280" font-size="11">Schematic only — not to scale and not a map of any parcel.</text>
+  </g>
+</svg><figcaption>Original Aventrix Realty schematic. Shapes are illustrative; they do not show the real marsh outline, the CMDA map or the proposed schedule.</figcaption></figure>
+
+        <h2 id="ngt">The NGT proceedings and CMDA's order</h2>
+        <p>The National Green Tribunal (Southern Zone) took up the matter on its own motion after a New Indian Express report of 30 June 2023 about a road being laid inside the marsh at Perumbakkam (O.A. No. 91 of 2023). In its judgment of 24 September 2025 it directed that, until the Integrated Management Plan is completed, the authorities should not grant approvals that may alter the character of the marshland, and that CMDA may approve development in the marshland and its zone of influence only after the plan is prepared from the Wetlands Authority's survey (paras 44–46). The judgment refers to a general 1 km zone from a draft plan, records the Authority's view that the zone is site-specific, and sets no deadline.</p>
+        <p>CMDA is reported to have issued Office Order No. 07/2025; two independent secondary sources describe it as dated 9 October 2025, effective 6 October, and directing its divisions and local bodies not to approve or sanction development within the Ramsar site and a 1 km influence zone. <span class="pm-review-note">Not yet confirmed: we have not yet seen an official copy of this order.</span> CREDAI Chennai and landowners have challenged the 1 km restriction in the Madras High Court; in July 2026 the State told the court that 47 planning applications were held up.</p>
+
+        <h2 id="zoi">NCSCM mapping and the proposed interim Zone of Influence</h2>
+        <p>On 20 August 2026 the Wetlands Authority placed before the High Court an interim map prepared by the National Centre for Sustainable Coastal Management. Instead of a uniform 1 km, it proposed a width that varies with local conditions — as reported, zero along long stretches of the 77.85 km boundary studied and more than 100 m elsewhere — and submitted that construction could be regulated rather than banned. <span class="pm-review-note">Not yet confirmed: the width figures come from an excerpt of The Hindu; we have not read the full report or the map.</span></p>
+        <p>After an inter-departmental meeting on 30 September, the Authority proposed a much smaller interim zone: 36 survey numbers covering about 128.19 hectares (316.76 acres), with private patta lands excluded from the proposal. One secondary source lists the survey numbers across seven villages (Injambakkam, Karapakkam, Okkiyam Thoraipakkam, Pallikaranai, Perungudi, Sholinganallur and Perumbakkam), several only in part. <span class="pm-review-note">Not yet confirmed: we have not seen the official schedule or map of the 36 survey numbers, so we do not list them.</span> Its status report of 14 October proposes that construction inside the zone need an NOC from the District Level Wetlands Management Committee, and bars blocking drains and channels, dumping waste or debris in drainage paths, discharging untreated sewage, permanently altering water connections and Red Category industries.</p>
+
+        <h2 id="status">The legal status today</h2>
+        <div class="pm-table-wrap"><table class="pm-table">
+          <thead><tr><th scope="col">Item</th><th scope="col">What it is</th><th scope="col">In force?</th></tr></thead>
+          <tbody>
+            <tr><td>NGT judgment, 24 Sep 2025</td><td>Tribunal order (text checked via a reproduction)</td><td>Yes — no approvals that may alter the marsh until the management plan is ready; under challenge in the High Court</td></tr>
+            <tr><td>CMDA Office Order No. 07/2025</td><td>Planning authority order (official copy not yet reviewed)</td><td>Reported in force; no withdrawal reported</td></tr>
+            <tr><td>NCSCM interim map, Aug 2026</td><td>Submission to court</td><td>No</td></tr>
+            <tr><td>128.19 ha / 36 survey numbers, Oct 2026</td><td>Proposal in a status report</td><td>No — awaiting the High Court</td></tr>
+            <tr><td>Final Zone of Influence</td><td>To be drawn after scientific, cadastral and ground study</td><td>Not yet prepared or notified</td></tr>
+          </tbody></table></div>
+        <p>One secondary source reports that the High Court listed the matter for 11 November 2026 to examine the proposal and its safeguards. <span class="pm-review-note">Not yet confirmed: not yet confirmed from the court's cause list or an order.</span> Follow the <a href="pallikaranai-marsh-updates.html">news page</a> for what happens next.</p>
+
+        <h2 id="impact">What it means for you</h2>
+        <h3>Plot and land buyers</h3>
+        <p>A sale can be registered while approvals remain paused, as currently reported, so the risk is buying land you cannot build on for an uncertain period. Confirm where the survey number falls on every relevant map, and make any advance refundable if approvals are refused.</p>
+        <h3>Landowners</h3>
+        <p>Patta land being excluded from the proposal is encouraging but not final. Keep your revenue records, survey sketch and EC current, and seek a written position from CMDA or the local body before signing a joint development or sale agreement.</p>
+        <h3>Apartment buyers</h3>
+        <p>Ask the developer for the planning permission, building permit, RERA registration and, for completed homes, the completion or occupancy certificate — and confirm independently that they were issued before or are unaffected by the current restrictions.</p>
+        <h3>Developers</h3>
+        <p>Expect site-specific scrutiny of drainage, levels and channels even if the interim zone is adopted. Build the NOC route and the listed safeguards into timelines and agreements.</p>
+
+        <h2 id="checklist">Document checklist</h2>
+        <ol class="pm-checklist"><li>Get the exact survey number and subdivision from the sale deed and patta — a street address or distance from the marsh is not enough.</li><li>Place the parcel against the Ramsar site boundary, the 1 km zone reportedly used in CMDA Office Order No. 07/2025, and the proposed interim Zone of Influence schedule (36 survey numbers, several only in part).</li><li>Check the land classification in the revenue records (Tamil Nilam / patta–chitta). Watercourse, swamp or poramboke classifications need specialist advice.</li><li>Obtain the Encumbrance Certificate and the chain of parent documents, and have title examined by a property advocate.</li><li>Get the planning-permission position in writing from CMDA or the local body. For apartments, also check the approved plan, building permit, RERA registration and completion or occupancy certificate.</li><li>Look at drainage on the ground: is the site on or next to an inlet or outlet channel, a natural drain or low-lying land that floods?</li><li>Ask about pending litigation, stop-work notices and environmental-clearance conditions (for example, a required Wetlands Authority clearance).</li><li>Recheck the court position after every hearing, and do not pay an advance that is not refundable if approvals are refused.</li></ol>
+
+        <h2 id="faq">Frequently asked questions</h2>
+        <div class="pm-faq"><details><summary>Does Ramsar status mean all construction nearby is banned?</summary><p>No. Ramsar designation recognises a wetland's international importance; it does not by itself ban construction around it. The current restriction around Pallikaranai comes from the NGT's September 2025 judgment and, as reported, CMDA's office order that followed.</p></details><details><summary>Is the proposed 128.19-hectare zone in force?</summary><p>No. It is the State's proposal for an interim Zone of Influence, placed before the Madras High Court in October 2026. It has not been adopted by any order that we have seen.</p></details><details><summary>Can I buy land within 1 km of the marsh?</summary><p>Buying and getting permission to build are different questions. A purchase can go through while approvals remain paused, as currently reported. Verify the survey number, title, land classification and written planning status, and take legal advice on the current court position first.</p></details><details><summary>Is land outside the 36 survey numbers free to develop?</summary><p>Not automatically. The proposal is interim, the final zone still needs scientific and cadastral study, and no withdrawal of the reported 1 km restriction has been reported. Every parcel still needs its normal approvals.</p></details><details><summary>Will existing buildings near the marsh be demolished?</summary><p>Not simply because they are near the wetland. The position of any building depends on its approvals, its land classification and any specific orders that apply to it.</p></details><details><summary>When is the next hearing?</summary><p>One secondary source reports the matter as listed for 11 November 2026; we have not yet confirmed this from the court's cause list. Court dates can change; check the latest update on our news page.</p></details></div>
+
+        <h2 id="sources">Official documents and sources</h2>
+        <p>Official records: <a href="https://rsis.ramsar.org/ris/2481" target="_blank" rel="noopener noreferrer">Ramsar Sites Information Service — Site 2481</a>, <a href="https://www.greentribunal.gov.in/" target="_blank" rel="noopener noreferrer">National Green Tribunal</a>, <a href="https://www.cmdachennai.gov.in/" target="_blank" rel="noopener noreferrer">CMDA</a> and <a href="https://tnswa.tn.gov.in/" target="_blank" rel="noopener noreferrer">Tamil Nadu State Wetlands Authority</a>. Every source used on our news page:</p>
+        <!-- PM:REGISTER:START -->
+<div class="pm-table-wrap"><table class="pm-table"><thead><tr><th scope="col">Event</th><th scope="col">Publisher</th><th scope="col">Source</th><th scope="col">Type</th></tr></thead><tbody><tr><td>14 Oct 2026</td><td>DT Next</td><td><a href="https://www.dtnext.in/news/chennai/pallikaranai-wetland-interim-buffer-zone-cut-to-31676-acres-hectares" target="_blank" rel="noopener noreferrer">Pallikaranai wetland: Interim buffer zone cut to 316.76 acres</a></td><td>News report</td></tr><tr><td>14 Oct 2026</td><td>Verified.RealEstate Community</td><td><a href="https://community.verified.realestate/article/pallikaranai-marsh-case-high-court-adjourns-hearing-to-november-11-2026/" target="_blank" rel="noopener noreferrer">Pallikaranai Marsh Case: High Court Adjourns Hearing to November 11, 2026</a></td><td>Real-estate portal article</td></tr><tr><td>13 Oct 2026</td><td>IANS via Punjab Kesari (English)</td><td><a href="https://english.punjabkesari.com/india/anbumani-ramadoss-questions-wetland-authority-over-shrinking-pallikaranai-protection-zone" target="_blank" rel="noopener noreferrer">Anbumani Ramadoss questions wetland authority over shrinking Pallikaranai protection zone</a></td><td>News report</td></tr><tr><td>12 Oct 2026</td><td>The Hindu</td><td><a href="https://www.thehindu.com/news/national/tamil-nadu/interim-zone-of-influence-around-pallikaranai-marshland-can-be-restricted-to-36-survey-numbers-state-wetlands-authority-tells-madras-high-court/article71576000.ece" target="_blank" rel="noopener noreferrer">Interim zone of influence around Pallikaranai marshland can be restricted to 36 survey numbers, State Wetlands Authority tells Madras High Court</a></td><td>News report</td></tr><tr><td>12 Oct 2026</td><td>Patrikai</td><td><a href="https://patrikai.com/pallikaranai-marshland-36-survey-numbers-identified-will-construction-permits-be-granted/" target="_blank" rel="noopener noreferrer">Pallikaranai marshland: 36 survey numbers identified — will construction permits be granted? (Tamil)</a></td><td>News report</td></tr><tr><td>12 Oct 2026</td><td>DT Next</td><td><a href="https://www.dtnext.in/news/tamilnadu/anbumani-demands-scrapping-of-pallikaranai-marsh-wall-project-threatens-protest" target="_blank" rel="noopener noreferrer">Anbumani demands scrapping of Pallikaranai marsh wall project, threatens protest</a></td><td>News report</td></tr><tr><td>30 Sep 2026</td><td>IANS via Punjab Kesari (English)</td><td><a href="https://english.punjabkesari.com/india/anbumani-ramadoss-questions-wetland-authority-over-shrinking-pallikaranai-protection-zone" target="_blank" rel="noopener noreferrer">Anbumani Ramadoss questions wetland authority over shrinking Pallikaranai protection zone</a></td><td>News report</td></tr><tr><td>30 Sep 2026</td><td>Verified.RealEstate Community</td><td><a href="https://community.verified.realestate/article/pallikaranai-building-approvals-conditional-construction-proposed/" target="_blank" rel="noopener noreferrer">Pallikaranai Building Approvals: Conditional Construction Proposed</a></td><td>Real-estate portal article</td></tr><tr><td>6 Sep 2026</td><td>DT Next</td><td><a href="https://www.dtnext.in/news/tamilnadu/cant-wall-pallikaranai-wetlands-natural-flow-warns-pmk-mla-sowmiya" target="_blank" rel="noopener noreferrer">Can&#x27;t wall Pallikaranai wetland&#x27;s natural flow, warns PMK MLA Sowmiya</a></td><td>News report</td></tr><tr><td>20 Aug 2026</td><td>The Hindu (Chennai edition, via PressReader)</td><td><a href="https://www.pressreader.com/india/the-hindu-chennai-9ww3/20260821/282548730113060" target="_blank" rel="noopener noreferrer">&#x27;Construction works around Pallikaranai marshland can be regulated and not banned&#x27;</a></td><td>News report</td></tr><tr><td>20 Aug 2026</td><td>Verified.RealEstate Community</td><td><a href="https://community.verified.realestate/article/pallikaranai-construction-freeze-may-ease-tnswa-submits-new-buffer-plan-to-madras-high-court/" target="_blank" rel="noopener noreferrer">Pallikaranai Construction Freeze May Ease: TNSWA Submits New Buffer Plan to Madras High Court</a></td><td>Real-estate portal article</td></tr><tr><td>24 Jul 2026</td><td>ETV Bharat Tamil Nadu</td><td><a href="https://www.etvbharat.com/ta/state/mhc-order-on-chennai-pallikaranai-apartment-case-tns26072408329" target="_blank" rel="noopener noreferrer">Pallikaranai apartment case: High Court order to Tamil Nadu government (Tamil)</a></td><td>News report</td></tr><tr><td>15 Jul 2026</td><td>DT Next</td><td><a href="https://www.dtnext.in/news/chennai/credai-chennai-challenges-ngts-1-km-construction-restriction-around-pallikaranai-ramsar-site" target="_blank" rel="noopener noreferrer">CREDAI Chennai challenges NGT&#x27;s 1-km construction restriction around Pallikaranai Ramsar site</a></td><td>News report</td></tr><tr><td>14 Jul 2026</td><td>Verified.RealEstate Community</td><td><a href="https://community.verified.realestate/article/real-estate-relief-near-pallikaranai-marsh-tamil-nadu-wetland-authority-clarifies-1-km-buffer-zone-rules/" target="_blank" rel="noopener noreferrer">Real Estate Relief Near Pallikaranai Marsh? Tamil Nadu Wetland Authority Clarifies 1-Km Buffer Zone Rules</a></td><td>Real-estate portal article</td></tr><tr><td>18 Jun 2026</td><td>The News Minute</td><td><a href="https://www.thenewsminute.com/tamil-nadu/environmental-clearance-for-construction-project-in-pallikaranai-ramsar-site-revoked" target="_blank" rel="noopener noreferrer">Environmental Clearance for construction project in Pallikaranai Ramsar site revoked</a></td><td>News report</td></tr><tr><td>10 Feb 2026</td><td>Deccan Chronicle</td><td><a href="https://www.deccanchronicle.com/southern-states/tamil-nadu/hc-dismisses-pils-against-residential-towers-on-pallikaranai-land-1936336" target="_blank" rel="noopener noreferrer">HC Dismisses PILs Against Residential Towers on Pallikaranai Land</a></td><td>News report</td></tr><tr><td>3 Dec 2025</td><td>ETV Bharat Tamil Nadu</td><td><a href="https://www.etvbharat.com/ta/state/tn-govt-informed-mhc-that-measuring-work-of-pallikaranai-marshlands-has-99-percent-completed-tamil-nadu-news-tns25120304571" target="_blank" rel="noopener noreferrer">Pallikaranai marsh measurement work 99% complete — Tamil Nadu government (Tamil)</a></td><td>News report</td></tr><tr><td>9 Oct 2025</td><td>Verified.RealEstate Community</td><td><a href="https://community.verified.realestate/article/cmda-halts-all-building-approvals-around-pallikaranai-marshland-after-ngt-order/" target="_blank" rel="noopener noreferrer">CMDA Halts All Building Approvals Around Pallikaranai Marshland After NGT Order</a></td><td>Real-estate portal article</td></tr><tr><td>9 Oct 2025</td><td>Suzhal Arivom, via Citizen Matters</td><td><a href="https://citizenmatters.in/wp-content/uploads/2026/06/Pallikaranai-Conservation-Report-May-June-2026.pdf" target="_blank" rel="noopener noreferrer">Pallikaranai Ramsar Wetland Conservation Report (May–June 2026), section 4.9 and reference 33</a></td><td>Civil-society report</td></tr><tr><td>24 Sep 2025</td><td>Indian Kanoon</td><td><a href="https://indiankanoon.org/doc/54124420/" target="_blank" rel="noopener noreferrer">Tribunal on its own motion v. Member Secretary, State Wetland Authority — judgment of 24 September 2025 (reproduction)</a></td><td>Court record</td></tr><tr><td>24 Sep 2025</td><td>National Green Tribunal</td><td><a href="https://www.greentribunal.gov.in/gen_pdf_test.php?filepath=L25ndF9kb2N1bWVudHMvbmd0L2Nhc2Vkb2MvanVkZ2VtZW50cy9DSEVOTkFJLzIwMjUtMDktMjQvMTc1ODcxMjI4OTI0NzU1NDYyMTY4ZDNkMWUxOGVlOTUucGRm" target="_blank" rel="noopener noreferrer">O.A. No. 91 of 2023 (SZ) — judgment dated 24.09.2025 (official PDF)</a></td><td>Court record</td></tr><tr><td>24 Sep 2025</td><td>National Green Tribunal</td><td><a href="https://www.greentribunal.gov.in/sites/default/files/cause_list_documents/Supplementary%20Cause%20List%2024.09.2025.pdf" target="_blank" rel="noopener noreferrer">Supplementary Cause List, 24.09.2025 — O.A. No. 91/2023 (SZ), for pronouncement of judgment</a></td><td>Court record</td></tr><tr><td>30 Jun 2023</td><td>Indian Kanoon</td><td><a href="https://indiankanoon.org/doc/54124420/" target="_blank" rel="noopener noreferrer">Judgment of 24 September 2025 (records the origin of the case)</a></td><td>Court record</td></tr><tr><td>30 Jun 2023</td><td>National Green Tribunal</td><td><a href="https://www.greentribunal.gov.in/sites/default/files/news_updates/OA%20No.%2091%20of%202023%20Report%20by%20r-4.pdf" target="_blank" rel="noopener noreferrer">O.A. No. 91 of 2023 (SZ) — report filed by the Tamil Nadu State Wetland Authority</a></td><td>Court filing</td></tr><tr><td>8 Apr 2022</td><td>Tamil Nadu State Wetlands Authority</td><td><a href="https://tnswa.tn.gov.in/ramsar-site-information.php?token=Pallikaranai-Marsh-Reserve-Forest" target="_blank" rel="noopener noreferrer">Pallikaranai Marsh Reserve Forest — Ramsar site information</a></td><td>Official record</td></tr><tr><td>8 Apr 2022</td><td>Ramsar Convention Secretariat</td><td><a href="https://rsis.ramsar.org/ris/2481" target="_blank" rel="noopener noreferrer">Pallikaranai Marsh Reserve Forest — Ramsar Sites Information Service</a></td><td>Official record</td></tr></tbody></table></div>
+<!-- PM:REGISTER:END -->
+      </article>
+      <aside class="pm-aside" aria-label="Latest">
+        <div class="pm-card pm-card--next"><h3>Latest update</h3><!-- PM:LATEST:START -->
+<p><strong>14 Oct 2026</strong> — Wetlands Authority files status report on the proposed interim zone; no order reported</p><a class="pm-btn pm-btn--ghost" href="pallikaranai-marsh-updates.html#2026-10-14-status-report-adjourned">Read the latest update</a>
+<!-- PM:LATEST:END --></div>
+        <div class="pm-card"><h3>Next listed hearing</h3><!-- PM:NEXT:START -->
+<p><strong>11 Nov 2026</strong> — Madras High Court — next listing of the interim Zone of Influence matter.</p><p class="pm-unconfirmed">Reported by one secondary source (a real-estate portal) only. Not yet confirmed from the Madras High Court cause list or any order.</p>
+<!-- PM:NEXT:END --></div>
+        <div class="pm-card pm-card--guide"><h3>Have a specific property?</h3><p>Send us the survey number and we will tell you what to verify.</p><a class="pm-btn" href="contact.html">Contact us</a></div>
+      </aside>
+    </div>
+  </div>
+</section>
+<section class="pt-section">
+  <div class="pt-container">
+    <div class="pm-cta">
+  <div><h2>Own or buying property near Pallikaranai?</h2><p>Share the survey number and we will tell you where it stands and what to verify next.</p></div>
+  <div class="pm-cta-actions"><a class="pm-btn" href="contact.html">Contact Aventrix Realty</a><a class="pm-btn pm-btn--ghost" href="https://wa.me/919176887770" target="_blank" rel="noopener noreferrer" data-site="whatsapp-link">WhatsApp us<span class="sr-only"> (opens in a new tab)</span></a></div>
+</div>
+    <div class="pt-notice" style="margin-top:20px"><i class="fas fa-circle-info" aria-hidden="true"></i><div><p class="pm-disclaimer"><strong>General information only.</strong> This page summarises court proceedings, official orders and news reports for awareness. It is not legal advice and does not confirm that any property can be bought, sold or developed. Proceedings, boundaries and restrictions can change after the date the sources were last checked. Consult the competent authorities and a qualified property advocate before any decision.</p></div></div>
+  </div>
+</section>
+</main>
+<!-- SITE-FOOTER:START — generated from partials/footer.html by tools/sync-footer.py. Edit the partial, then run: python3 tools/sync-footer.py -->
+<footer class="site-footer" id="footer">
+    <div class="ft-inner">
+
+        <div class="ft-brand">
+            <a href="index.html" class="ft-logo" aria-label="Aventrix Realty — Home"><img src="images/aventrix-logo-white.png" alt="Aventrix Realty" width="1042" height="342" loading="lazy" decoding="async"></a>
+            <p class="ft-tagline" data-site="footer-tagline">Where Legacy Meets The Next Generation</p>
+            <p class="ft-desc" data-site="footer-description">
+                Premium real estate advisory across Chennai — residential,
+                commercial, land and joint venture solutions, guided by
+                trust and decades of local expertise.
+            </p>
+        </div>
+
+        <ul class="ft-contacts">
+            <li class="ft-contact">
+                <span class="ft-icon" aria-hidden="true"><i class="fa-solid fa-location-dot"></i></span>
+                <div>
+                    <h4 class="ft-label">Head Office</h4>
+                    <span class="ft-sr" data-hq="name">Aventrix Realty – Head Office</span>
+                    <p data-hq="address">No.27, 1st Main Road, Newcolony, Chromepet, Chennai, Tamil Nadu</p>
+                </div>
+            </li>
+            <li class="ft-contact">
+                <span class="ft-icon" aria-hidden="true"><i class="fa-solid fa-phone"></i></span>
+                <div>
+                    <h4 class="ft-label">Phone</h4>
+                    <div class="ft-phones" data-hq="phones">
+                        <a href="tel:+919176887770">+91 91768 87770</a>
+                        <a href="tel:+917092356222">+91 70923 56222</a>
+                    </div>
+                </div>
+            </li>
+            <li class="ft-contact">
+                <span class="ft-icon" aria-hidden="true"><i class="fa-regular fa-envelope"></i></span>
+                <div>
+                    <h4 class="ft-label">Email</h4>
+                    <p><a href="mailto:office@aventrixrealty.com" data-hq="email">office@aventrixrealty.com</a></p>
+                </div>
+            </li>
+            <li class="ft-contact">
+                <span class="ft-icon" aria-hidden="true"><i class="fa-regular fa-building"></i></span>
+                <div>
+                    <h4 class="ft-label">Branch Office</h4>
+                    <p>Adyar, Chennai</p>
+                </div>
+            </li>
+        </ul>
+
+        <div class="ft-rule" aria-hidden="true"></div>
+
+        <div class="ft-main">
+            <div class="ft-col" role="navigation" aria-label="About Aventrix">
+                <h4 class="ft-heading">About Aventrix</h4>
+                <ul class="ft-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="index.html#contact">Contact Us</a></li>
+                    <li><a href="services.html">Our Services</a></li>
+                </ul>
+            </div>
+            <div class="ft-col" role="navigation" aria-label="Quick links">
+                <h4 class="ft-heading">Quick Links</h4>
+                <ul class="ft-links">
+                    <li><a href="our-realtors.html">Realtors</a></li>
+                    <li><a href="brokerage-fees.html">Brokerage &amp; Fees</a></li>
+                    <li><a href="emi-calculator.html">EMI Calculator</a></li>
+                    <li><a href="jv-calculator.html">Joint Venture Calculator</a></li>
+                </ul>
+            </div>
+
+            <div class="ft-side">
+                <div class="ft-follow">
+                    <h4 class="ft-heading">Follow Us</h4>
+                    <div class="ft-social">
+                        <a href="https://www.facebook.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Facebook" data-site="social-facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+                        <a href="https://www.instagram.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Instagram" data-site="social-instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+                        <a href="https://www.linkedin.com/in/lsanjaygandhi" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" data-site="social-linkedin"><i class="fa-brands fa-linkedin" aria-hidden="true"></i></a>
+                        <a href="https://youtube.com/@sanjaygandhirealty" target="_blank" rel="noopener noreferrer" aria-label="YouTube" data-site="social-youtube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
+                        <a href="https://wa.me/919176887770" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" data-site="whatsapp-link"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a>
+                        <a href="https://maps.app.goo.gl/VjCCdVch9uequeGUA?g_st=ic" target="_blank" rel="noopener noreferrer" aria-label="Google Maps" data-hq="maps"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+
+                <section class="ft-map" aria-labelledby="ftMapTitle">
+                    <h4 class="ft-sr" id="ftMapTitle">Find Us</h4>
+                    <div class="ft-map-frame" data-hq="map-embed"><iframe src="https://www.google.com/maps?q=No.27%2C%201st%20Main%20Road%2C%20New%20Colony%2C%20Chromepet%2C%20Chennai%2C%20Tamil%20Nadu&amp;output=embed" width="600" height="280" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Aventrix Realty Head Office Map" allowfullscreen></iframe></div>
+                    <a class="ft-map-open" href="https://maps.app.goo.gl/VjCCdVch9uequeGUA?g_st=ic" target="_blank" rel="noopener noreferrer" data-hq="maps"><i class="fa-solid fa-diamond-turn-right" aria-hidden="true"></i><span>Open in Maps</span><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i><span class="ft-sr"> (opens in a new tab)</span></a>
+                </section>
+            </div>
+        </div>
+
+        <div class="ft-rule" aria-hidden="true"></div>
+
+        <div class="ft-bottom">
+            <div class="ft-credits">
+                <p class="ft-copyright" data-site="copyright-text">© 2026 Aventrix Realty. All Rights Reserved.</p>
+                <p class="ft-designer">Designed with <span class="ft-heart" role="img" aria-label="love">&#10084;&#65039;</span> by L. Sanjay Gandhi</p>
+            </div>
+            <div class="ft-legal" role="navigation" aria-label="Legal and utility links">
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms.html">Terms &amp; Conditions</a>
+                <a href="sitemap.html">Sitemap</a>
+                <a href="property-tools.html">Property Tools</a>
+                <a href="/admin/" class="ft-legal-admin">Admin</a>
+            </div>
+        </div>
+
+    </div>
+</footer>
+<script src="js/site-footer.js?v=20261015" defer></script>
+<!-- SITE-FOOTER:END -->
+
+<a href="https://wa.me/919176887770" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" data-site="whatsapp-link">
+    <img src="images/whatsapp-icon.png" alt="WhatsApp">
+</a>
+
+<button id="backToTop" class="back-to-top" aria-label="Back to top">
+    <i class="fas fa-chevron-up"></i>
+</button>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-client.js"></script>
+<script src="js/public-site-settings.js?v=20260926b"></script>
+<script src="js/public-offices.js?v=20261016-owner-map"></script>
+<script src="js/aventrix-storage.js"></script>
+<script src="js/wishlist-widget.js"></script>
+<script src="script.js?v=20260926b"></script>
+<script src="js/pallikaranai-updates.js?v=20261018" defer></script>
+
+</body>
+
+</html>
