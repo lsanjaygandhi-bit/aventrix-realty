@@ -1,4 +1,4 @@
-/* Aventrix Realty AI Property Assistant.
+/* Aventrix Realty Free Property Search Assistant.
  * The launcher remains disabled until the Supabase Edge Function is
  * deployed, its secrets are configured, and data-enabled is set to true.
  */
@@ -6,7 +6,7 @@
   const root = document.getElementById("avxAiAssistant");
   if (!root || root.dataset.enabled !== "true") return;
 
-  const endpoint = root.dataset.endpoint;
+  const endpoint = "https://gkrtjeygrqkglsadskcg.supabase.co/functions/v1/free-property-search";
   const launcher = root.querySelector(".avx-ai-launcher");
   const panel = root.querySelector(".avx-ai-panel");
   const close = root.querySelector(".avx-ai-close");
@@ -57,7 +57,7 @@
     busy = value;
     send.disabled = value;
     input.disabled = value;
-    status.textContent = value ? "Finding suitable properties…" : "";
+    status.textContent = value ? "Searching published listings…" : "";
   }
 
   function openPanel() {
@@ -101,7 +101,7 @@
       if (!response.ok) throw new Error(data.error || "The assistant is temporarily unavailable.");
       addMessage(String(data.answer || "I could not find a suitable answer. Please try another question."), "assistant", data.properties);
     } catch {
-      addMessage("Sorry, I couldn't complete that search right now. Please use the Property Search page or contact Aventrix Realty directly.", "assistant");
+      addMessage("Sorry, search is temporarily unavailable. Please use the Property Search page or contact Aventrix Realty directly.", "assistant");
     } finally {
       setBusy(false);
       input.focus();
