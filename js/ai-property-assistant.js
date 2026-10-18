@@ -7,6 +7,7 @@
   if (!root || root.dataset.enabled !== "true") return;
 
   const endpoint = root.dataset.endpoint;
+  launcher.hidden = false;
   const launcher = root.querySelector(".avx-ai-launcher");
   const panel = root.querySelector(".avx-ai-panel");
   const close = root.querySelector(".avx-ai-close");
