@@ -29,3 +29,13 @@
 .avx-ai-note{padding:0 13px 10px;color:#6c756c;font-size:10px;line-height:1.4;background:#fff}
 @media(max-width:480px){.avx-ai-launcher{right:12px;bottom:14px;padding:11px 14px}.avx-ai-panel{right:8px;bottom:72px;width:calc(100vw - 16px);height:min(590px,calc(100dvh - 90px));border-radius:15px}}
 @media(prefers-reduced-motion:reduce){.avx-ai-panel,.avx-ai-launcher{scroll-behavior:auto}}
+
+/* Mobile Safari: keep the assistant above the site's fixed bottom navigation and floating actions. */
+@media(max-width:768px){
+  .avx-ai-launcher{right:14px;bottom:calc(96px + env(safe-area-inset-bottom, 0px));z-index:1500;max-width:calc(100vw - 28px);}
+  .avx-ai-panel{right:8px;bottom:calc(158px + env(safe-area-inset-bottom, 0px));width:calc(100vw - 16px);height:min(560px,calc(100dvh - 230px - env(safe-area-inset-bottom, 0px)));max-height:calc(100dvh - 210px);z-index:1501;}
+}
+@media(max-width:480px){
+  .avx-ai-launcher{right:12px;bottom:calc(100px + env(safe-area-inset-bottom, 0px));padding:11px 14px;}
+  .avx-ai-panel{right:8px;bottom:calc(162px + env(safe-area-inset-bottom, 0px));width:calc(100vw - 16px);height:min(540px,calc(100dvh - 230px - env(safe-area-inset-bottom, 0px)));}
+}
