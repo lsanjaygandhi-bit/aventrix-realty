@@ -53,11 +53,31 @@
 /* Hide with WhatsApp while the mobile drawer is open. */
 html.is-mobile body.mobile-menu-open .avx-ai-launcher{opacity:0;visibility:hidden}
 
-/* Mobile and narrow windows: chat opens as a full-width sheet. */
+/* Mobile: compact floating chat card; keep the page and bottom navigation visible. */
 html.is-mobile .avx-ai-panel{
-  left:8px;right:8px;width:auto;bottom:var(--fab-base);
-  height:min(540px,calc(100dvh - var(--fab-base) - 70px));border-radius:15px;
+  left:auto;
+  right:12px;
+  width:min(330px,calc(100vw - 28px));
+  bottom:calc(var(--fab-base) + 64px);
+  height:min(390px,calc(100dvh - var(--fab-base) - 150px));
+  min-height:280px;
+  border-radius:15px;
 }
+html.is-mobile .avx-ai-head{padding:11px 12px;gap:8px}
+html.is-mobile .avx-ai-brand-mark{width:32px;height:32px;font-size:16px}
+html.is-mobile .avx-ai-brand-title{font-size:12px}
+html.is-mobile .avx-ai-brand-subtitle{font-size:10px}
+html.is-mobile .avx-ai-messages{padding:10px;gap:8px}
+html.is-mobile .avx-ai-message{font-size:12px;padding:9px 10px}
+html.is-mobile .avx-ai-suggestions{gap:5px;padding:0 10px 8px}
+html.is-mobile .avx-ai-suggestion{font-size:10px;padding:6px 8px}
+html.is-mobile .avx-ai-form{gap:6px;padding:8px}
+html.is-mobile .avx-ai-input{font-size:12px;padding:9px 10px}
+html.is-mobile .avx-ai-send{padding:10px 11px}
+html.is-mobile .avx-ai-note{padding:0 9px 8px;font-size:9px}
 @media (max-width:768px){
-  html:not(.is-mobile) .avx-ai-panel{left:8px;right:8px;width:auto;bottom:16px;height:min(540px,calc(100dvh - 32px));border-radius:15px}
+  html:not(.is-mobile) .avx-ai-panel{
+    left:auto;right:12px;width:min(330px,calc(100vw - 28px));
+    bottom:24px;height:min(390px,calc(100dvh - 48px));min-height:280px;border-radius:15px
+  }
 }
