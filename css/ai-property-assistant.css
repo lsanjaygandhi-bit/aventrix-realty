@@ -45,3 +45,11 @@
 .avx-ai-launcher-mark{width:21px!important;height:21px!important;background:rgba(255,255,255,.16)!important;border:1px solid rgba(255,255,255,.24)!important;color:#fff!important;font-size:12px!important}
 @media(max-width:768px){.avx-ai-launcher{right:12px;bottom:calc(100px + env(safe-area-inset-bottom,0px));padding:7px 10px!important;min-height:34px!important}}
 @media(max-width:480px){.avx-ai-launcher{right:12px;bottom:calc(100px + env(safe-area-inset-bottom,0px));padding:7px 10px!important;min-height:34px!important;font-size:11px!important}.avx-ai-launcher-mark{width:21px!important;height:21px!important}}
+
+/* Final alignment: keep AI and WhatsApp as separate, equally compact pills. */
+@media(max-width:768px){
+  .avx-ai-launcher{right:76px!important;bottom:calc(100px + env(safe-area-inset-bottom,0px))!important;max-width:calc(100vw - 150px)!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;}
+}
+@media(max-width:480px){
+  .avx-ai-launcher{right:76px!important;bottom:calc(100px + env(safe-area-inset-bottom,0px))!important;max-width:calc(100vw - 150px)!important;}
+}
