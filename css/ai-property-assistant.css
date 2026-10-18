@@ -1,4 +1,5 @@
 /* Aventrix Realty AI Property Assistant — isolated styles only. */
+#avxAiAssistant[data-enabled="false"]{display:none}
 .avx-ai-launcher{position:fixed;right:20px;bottom:24px;z-index:1200;display:flex;align-items:center;gap:10px;border:0;border-radius:999px;background:#101510;color:#fff;padding:13px 18px;font:600 14px/1.2 Montserrat,Arial,sans-serif;box-shadow:0 8px 28px rgba(0,0,0,.2);cursor:pointer}
 .avx-ai-launcher-mark{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#2f6b3b;color:#fff;font-size:17px}
 .avx-ai-panel{position:fixed;right:20px;bottom:88px;z-index:1201;display:flex;flex-direction:column;width:min(390px,calc(100vw - 28px));height:min(590px,calc(100dvh - 120px));background:#fff;border:1px solid #e3e8e3;border-radius:18px;box-shadow:0 18px 60px rgba(0,0,0,.22);overflow:hidden;color:#171b17;font-family:Montserrat,Arial,sans-serif}
