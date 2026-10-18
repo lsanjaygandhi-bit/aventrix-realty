@@ -1,0 +1,5 @@
+# Public website visitors can use this function without a Supabase Auth session.
+# The function validates request shape and origin; robust rate limiting must be
+# configured before the widget is enabled publicly.
+[functions.ai-property-assistant]
+verify_jwt = false
