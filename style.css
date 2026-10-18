@@ -1961,20 +1961,49 @@ p.copyright .footer-login-link{
     background:#0c2f24;
     transform:translateY(-2px);
 }
+/* ===========================
+   FLOATING BUTTON GROUP — single source of truth
+   Order (top → bottom), one right edge, equal gaps:
+     Scroll-to-Top → AI Assistant (homepage only) → WhatsApp
+   Every size/position below comes from these tokens; no other
+   rule in the site sets width/height/bottom/right for these
+   buttons. Visibility rules (drawer open, map/EMI "step aside",
+   print) live with their features and are unchanged.
+=========================== */
+:root{
+    --fab-size:56px;
+    --fab-gap:8px;
+    --fab-right:24px;
+    --fab-base:24px;                 /* WhatsApp distance from bottom */
+    --fab-icon:26px;                 /* Scroll-to-Top arrow size      */
+    --fab-ai-slot:0;                 /* 1 when the AI launcher is on  */
+    --fab-ai-bottom:calc(var(--fab-base) + var(--fab-size) + var(--fab-gap));
+    --fab-btt-bottom:calc(var(--fab-base) + (var(--fab-size) + var(--fab-gap)) * (1 + var(--fab-ai-slot)));
+}
+html.is-mobile{                      /* phones + tablets: clear of the bottom nav */
+    --fab-size:44px;
+    --fab-gap:12px;
+    --fab-right:calc(18px + env(safe-area-inset-right, 0px));
+    --fab-base:calc(90px + env(safe-area-inset-bottom, 0px));
+    --fab-icon:17px;
+}
+@media (max-width:768px){            /* narrow window without touch signals */
+    html:not(.is-mobile){
+        --fab-size:44px;
+        --fab-gap:8px;
+        --fab-right:18px;
+        --fab-base:20px;
+        --fab-icon:17px;
+    }
+}
+html.avx-ai-on{ --fab-ai-slot:1; }   /* set by js/ai-property-assistant.js */
+
 .whatsapp-float{
     position: fixed;
-    /* DESKTOP OVERLAP FIX: was 85px at bottom:40/right:20, while
-       Back-to-Top was a different size (40px) at bottom:10/right:45
-       — the two boxes genuinely overlapped. Unified size (56px) and
-       right edge (24px) for both, with a clean 8px gap between them
-       vertically. Mobile is untouched — html.is-mobile and the
-       max-width:768px non-mobile-narrow-viewport rules each already
-       set their own width/height/bottom/right independently, so
-       nothing here reaches mobile. */
-    bottom: 24px;
-    right: 24px;
-    width: 56px;
-    height: 56px;
+    bottom: var(--fab-base);
+    right: var(--fab-right);
+    width: var(--fab-size);
+    height: var(--fab-size);
     z-index: 9999;
     /* BUG FIX: border-radius on the <img> alone does not clip its
        content in this browser — confirmed directly with an isolated
@@ -2012,21 +2041,18 @@ p.copyright .footer-login-link{
 =========================== */
 .back-to-top{
     position: fixed;
-    /* DESKTOP OVERLAP FIX: unified size/right-edge with the WhatsApp
-       button above (see .whatsapp-float) and positioned with a
-       clean 8px gap between them (WhatsApp spans 24-80px from the
-       bottom, this spans 88-144px). */
-    bottom: 88px;
-    right: 24px;
-    width: 56px;
-    height: 56px;
+    /* Size and position: see FLOATING BUTTON GROUP tokens above. */
+    bottom: var(--fab-btt-bottom);
+    right: var(--fab-right);
+    width: var(--fab-size);
+    height: var(--fab-size);
     border-radius: 100%;
     display:flex;
     align-items:center;
     justify-content:center;
     background:lab(69.03% 27.33 65.19);
     color:#ffffff;
-    font-size:26px;
+    font-size:var(--fab-icon);
     border:none;
     cursor:pointer;
     box-shadow:0 8px 22px rgba(0,0,0,.25);
@@ -4486,21 +4512,6 @@ html.is-mobile .pf-legal{
     flex-wrap:wrap;
 }
 
-html.is-mobile .whatsapp-float{
-    width:52px;
-    height:52px;
-    bottom:20px;
-    right:18px;
-}
-
-html.is-mobile .back-to-top{
-    width:52px;
-    height:52px;
-    bottom:84px;
-    right:18px;
-    font-size:19px;
-}
-
 html.is-mobile .main-nav{
     position:fixed;
     top:0;
@@ -4690,25 +4701,6 @@ html.is-mobile body.mobile-menu-open .whatsapp-float{
     html:not(.is-mobile) .office-map-embed.office-map-placeholder{ height:180px; }
     html:not(.is-mobile) .office-locations-grid{ grid-template-columns:1fr; gap:20px; }
     html:not(.is-mobile) .office-locations-section{ padding:50px 16px; }
-
-    /* Floating buttons: match html.is-mobile sizing purely by viewport
-       width too, so the two buttons stay an identical-size pair even
-       when the mobile layout is reached via a narrow viewport alone
-       (e.g. browser devtools responsive/mobile view) without the
-       touch/UA signals that set the .is-mobile class. */
-    html:not(.is-mobile) .whatsapp-float{
-        width: 52px;
-        height:52px;
-        bottom:20px;
-        right:18px;
-    }
-    html:not(.is-mobile) .back-to-top{
-        width:52px;
-        height:52px;
-        bottom: 80px;
-        right:18px;
-        font-size:19px;
-    }
 }
 
 /* ==========================================================
@@ -7942,11 +7934,6 @@ html.is-mobile .profile-social{
     text-decoration:none;
 }
 
-/* Keep the existing floating WhatsApp/Back-to-top buttons clear of
-   the new bottom nav on mobile (cascade order wins, no !important
-   needed — these come after the existing html.is-mobile rules) */
-html.is-mobile .whatsapp-float{ bottom:90px; }
-html.is-mobile .back-to-top{ bottom:154px; }
 
 @media (max-width:640px){
     .home-app-listings-grid, .home-app-recent-chips[id="myRecentSearchesPanel"], .home-app-future-grid{

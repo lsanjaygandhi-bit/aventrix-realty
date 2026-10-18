@@ -74,7 +74,7 @@
     <meta name="twitter:description" content="Aventrix Realty — trusted real estate advisory in Chennai for residential, commercial, land and joint venture properties. TNRERA-registered agent. Buy, sell, rent or invest with expert local guidance.">
     <meta name="twitter:image" content="https://aventrixrealty.com/images/og/aventrix-logo-og.jpg">
 
-    <link rel="stylesheet" href="style.css?v=20261015">
+    <link rel="stylesheet" href="style.css?v=20261018-fab2">
     <link rel="stylesheet" href="css/home-hero.css?v=12">
     <link rel="stylesheet" href="css/phase2a.css?v=1">
 
@@ -198,10 +198,11 @@
     }
     </script>
     <!-- Property card alignment fix (2026-09-26) — must stay the last stylesheet -->
-    <link rel="stylesheet" href="css/property-cards.css?v=20260926">
+    <link rel="stylesheet" href="css/property-cards.css?v=20261018-fab2">
     <script src="js/property-card-image-fallback.js?v=20260926" defer></script>
     <link rel="stylesheet" href="css/properties-map.css?v=20261016b">
     <link rel="stylesheet" href="css/site-footer.css?v=20261021">
+    <link rel="stylesheet" href="css/pallikaranai-feature.css?v=20261018b">
     <link rel="stylesheet" href="css/site-fixes.css?v=20261014">
     <link rel="stylesheet" href="css/home-desktop-layout.css?v=20261017">
 <style id="compact-home-service-cards-2026-10-16">
@@ -532,6 +533,9 @@ body.home-page #faq .faq-answer p {
 }
 </style>
 
+
+    <!-- Free Property Search assets (inactive until backend security setup is complete) -->
+    <link rel="stylesheet" href="css/ai-property-assistant.css?v=20261018-fab2">
 </head>
   <body class="home-page" data-page-key="home">
     <header class="header">
@@ -1063,6 +1067,30 @@ body.home-page #faq .faq-answer p {
             <a href="properties.html" class="view-details-btn">View All Properties</a>
         </div>
     </div>
+</section>
+
+<!-- Pallikaranai Ramsar Intelligence — compact homepage card. Content is
+     generated from data/pallikaranai-updates.json by
+     tools/build-pallikaranai.py (do not edit between the PM markers).
+     Shows the latest verified update only when a fully checked source
+     supports it; otherwise the latest confirmed status and its date.
+     Styles: css/pallikaranai-feature.css. -->
+<section class="pmf-section" aria-labelledby="pmfHomeTitle">
+    <div class="pmf-wrap"><!-- PM:HOME:START -->
+<div class="pmf-card">
+  <div>
+    <span class="pmf-eyebrow">Pallikaranai Ramsar Intelligence</span>
+    <h2 class="pmf-title" id="pmfHomeTitle">Pallikaranai Marsh: court and approval updates</h2>
+    <p class="pmf-latest"><span class="pmf-latest-label">Latest update · <time datetime="2026-10-14" data-pm-rel>14 Oct 2026</time></span>Wetlands Authority files status report on the proposed interim zone; no order reported <span class="pmf-chip pmf-chip--court_proceeding">Court proceeding — no decision</span></p>
+    <p class="pmf-status"><strong>Current status:</strong> No order lifting the approval restriction around the Pallikaranai Ramsar site has been reported. CMDA&#x27;s October 2025 office order pausing approvals in the Ramsar site and a 1 km zone is described from reports (official copy not yet reviewed). The State&#x27;s proposed interim Zone of Influence (128.19 ha, 36 survey numbers) is a proposal before the Madras High Court, not an order.</p>
+    <p class="pmf-meta">General information, not legal advice.</p>
+  </div>
+  <div class="pmf-actions">
+    <a class="pmf-btn" href="pallikaranai-marsh-updates.html">Latest updates <span aria-hidden="true">&rarr;</span></a>
+    <a class="pmf-btn pmf-btn--ghost" href="pallikaranai-marsh-guide.html">Complete guide</a>
+  </div>
+</div>
+<!-- PM:HOME:END --></div>
 </section>
 
 
@@ -2034,5 +2062,29 @@ END TEMPORARILY HIDDEN — Featured Locations section -->
 }
 </style>
 
+
+<!-- Aventrix Realty Free Property Search Assistant. Keep disabled until preview testing and approval. -->
+<div id="avxAiAssistant" data-enabled="true" data-endpoint="https://gkrtjeygrqkglsadskcg.supabase.co/functions/v1/free-property-search">
+  <button class="avx-ai-launcher" type="button" aria-controls="avxAiPanel" aria-expanded="false" aria-label="AI Property Assistant" title="AI Property Assistant" hidden>
+    <span class="avx-ai-launcher-mark" aria-hidden="true">✦</span><span class="avx-ai-launcher-label">AI Property Assistant</span>
+  </button>
+  <section class="avx-ai-panel" id="avxAiPanel" role="dialog" aria-label="Aventrix Realty AI Property Assistant" aria-modal="false" hidden>
+    <header class="avx-ai-head">
+      <div class="avx-ai-brand"><span class="avx-ai-brand-mark" aria-hidden="true">✦</span><div><div class="avx-ai-brand-title">Aventrix Realty Property Search</div><div class="avx-ai-brand-subtitle">Free property search · English &amp; தமிழ்</div></div></div>
+      <button class="avx-ai-close" type="button" aria-label="Close assistant">×</button>
+    </header>
+    <div class="avx-ai-messages" aria-live="polite" aria-relevant="additions text"><div class="avx-ai-message assistant">Hello! Tell me what property you are looking for. Search published listings by location, budget, property type or BHK. English and Tamil supported.</div></div>
+    <div class="avx-ai-status" role="status" aria-live="polite"></div>
+    <div class="avx-ai-suggestions" aria-label="Suggested questions">
+      <button class="avx-ai-suggestion" type="button" data-query="2 BHK flat under ₹70 lakhs in Chromepet">2 BHK in Chromepet</button>
+      <button class="avx-ai-suggestion" type="button" data-query="Plots for sale near ECR">Plots near ECR</button>
+      <button class="avx-ai-suggestion" type="button" data-query="I need a rental house in Chennai">Rental house</button>
+    </div>
+    <form class="avx-ai-form"><textarea class="avx-ai-input" rows="1" maxlength="1200" aria-label="Ask about properties" placeholder="Tell us your property requirement…" required></textarea><button class="avx-ai-send" type="submit">Send</button></form>
+    <p class="avx-ai-note">Property details are based on published Aventrix Realty listings. Availability and legal details should be confirmed with our team.</p>
+  </section>
+</div>
+<script src="js/ai-property-assistant.js?v=20261018-fab2" defer></script>
+<script src="js/pallikaranai-updates.js?v=20261018" defer></script>
 </body>
 </html>

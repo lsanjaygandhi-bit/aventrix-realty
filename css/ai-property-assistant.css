@@ -1,0 +1,63 @@
+/* Aventrix Realty AI Property Assistant — isolated styles only. */
+#avxAiAssistant[data-enabled="false"]{display:none}
+.avx-ai-launcher{position:fixed;right:var(--fab-right,24px);bottom:var(--fab-ai-bottom,88px);z-index:9999;box-sizing:border-box;width:var(--fab-size,56px);height:var(--fab-size,56px);display:flex;align-items:center;justify-content:center;padding:0;border-radius:50%;border:1px solid rgba(255,255,255,.72);background:rgba(20,48,36,.88);-webkit-backdrop-filter:blur(16px) saturate(150%);backdrop-filter:blur(16px) saturate(150%);color:#fff;box-shadow:0 4px 14px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.24);cursor:pointer;isolation:isolate;transition:opacity .2s ease,visibility .2s ease}
+.avx-ai-launcher-mark{display:grid;place-items:center;width:100%;height:100%;font-size:calc(var(--fab-size,56px) * .42);line-height:1;color:#fff}
+.avx-ai-panel{position:fixed;right:var(--fab-right,24px);bottom:calc(var(--fab-btt-bottom,152px) + var(--fab-size,56px) + 12px);z-index:10000;display:flex;flex-direction:column;width:min(390px,calc(100vw - 28px));height:min(590px,calc(100dvh - var(--fab-btt-bottom,152px) - var(--fab-size,56px) - 36px));background:#fff;border:1px solid #e3e8e3;border-radius:18px;box-shadow:0 18px 60px rgba(0,0,0,.22);overflow:hidden;color:#171b17;font-family:Montserrat,Arial,sans-serif}
+.avx-ai-panel[hidden],.avx-ai-launcher[hidden]{display:none}
+.avx-ai-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px;background:#101510;color:#fff}
+.avx-ai-brand{display:flex;align-items:center;gap:10px;min-width:0}
+.avx-ai-brand-mark{display:grid;place-items:center;width:38px;height:38px;flex:0 0 auto;border-radius:50%;background:#2f6b3b;font-size:19px}
+.avx-ai-brand-title{font-size:14px;font-weight:700;line-height:1.35}
+.avx-ai-brand-subtitle{margin-top:2px;color:#d3ddd3;font-size:11px}
+.avx-ai-close{border:0;background:transparent;color:#fff;font-size:25px;line-height:1;cursor:pointer;padding:3px 7px}
+.avx-ai-messages{display:flex;flex:1;flex-direction:column;gap:12px;padding:16px;overflow:auto;background:#f7f9f7;overscroll-behavior:contain}
+.avx-ai-message{max-width:92%;padding:11px 13px;border-radius:13px;font-size:13px;line-height:1.55;white-space:pre-wrap;overflow-wrap:anywhere}
+.avx-ai-message.assistant{align-self:flex-start;background:#fff;border:1px solid #e4e9e4;border-bottom-left-radius:4px}
+.avx-ai-message.user{align-self:flex-end;background:#e5f0e6;border-bottom-right-radius:4px}
+.avx-ai-status{font-size:12px;color:#596459;padding:0 16px 8px;background:#f7f9f7}
+.avx-ai-suggestions{display:flex;flex-wrap:wrap;gap:7px;padding:0 14px 12px;background:#f7f9f7}
+.avx-ai-suggestion{border:1px solid #b8c9b9;border-radius:999px;background:#fff;color:#203c25;padding:7px 10px;font-size:11px;line-height:1.3;cursor:pointer}
+.avx-ai-results{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+.avx-ai-result{display:block;padding:10px;border:1px solid #e1e8e1;border-radius:10px;background:#fff;color:#171b17;text-decoration:none}
+.avx-ai-result-title{font-size:12px;font-weight:700}
+.avx-ai-result-meta{margin-top:4px;color:#596459;font-size:11px}
+.avx-ai-form{display:flex;align-items:flex-end;gap:8px;padding:12px;border-top:1px solid #e6eae6;background:#fff}
+.avx-ai-input{min-width:0;flex:1;max-height:100px;resize:none;border:1px solid #d6ddd6;border-radius:12px;padding:11px 12px;font:13px/1.4 Montserrat,Arial,sans-serif;color:#171b17;background:#fff}
+.avx-ai-input:focus{outline:2px solid #4d8456;outline-offset:1px}
+.avx-ai-send{flex:0 0 auto;border:0;border-radius:10px;background:#2f6b3b;color:#fff;padding:11px 14px;font:600 12px Montserrat,Arial,sans-serif;cursor:pointer}
+.avx-ai-send:disabled{opacity:.55;cursor:wait}
+.avx-ai-note{padding:0 13px 10px;color:#6c756c;font-size:10px;line-height:1.4;background:#fff}
+
+
+
+/* ---------------------------------------------------------------------
+   Size and position come from the FLOATING BUTTON GROUP tokens in
+   style.css (same circle, right edge and gap as Scroll-to-Top and
+   WhatsApp). The text label stays for screen readers only.
+   --------------------------------------------------------------------- */
+.avx-ai-launcher-label{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* Subtle ambient glow — AI button only. Opacity-only animation on a
+   pseudo-element: the button itself never moves or scales. */
+.avx-ai-launcher::before{
+  content:"";position:absolute;inset:0;border-radius:50%;z-index:-1;pointer-events:none;
+  box-shadow:0 0 14px 5px rgba(76,175,110,.55),0 0 5px 1px rgba(255,255,255,.75);
+  opacity:.2;animation:avx-ai-glow 2.8s ease-in-out infinite;
+}
+@keyframes avx-ai-glow{0%,100%{opacity:.2}50%{opacity:.9}}
+@media (prefers-reduced-motion:reduce){
+  .avx-ai-launcher::before{animation:none;opacity:.45}
+  .avx-ai-launcher{transition:none}
+}
+
+/* Hide with WhatsApp while the mobile drawer is open. */
+html.is-mobile body.mobile-menu-open .avx-ai-launcher{opacity:0;visibility:hidden}
+
+/* Mobile and narrow windows: chat opens as a full-width sheet. */
+html.is-mobile .avx-ai-panel{
+  left:8px;right:8px;width:auto;bottom:var(--fab-base);
+  height:min(540px,calc(100dvh - var(--fab-base) - 70px));border-radius:15px;
+}
+@media (max-width:768px){
+  html:not(.is-mobile) .avx-ai-panel{left:8px;right:8px;width:auto;bottom:16px;height:min(540px,calc(100dvh - 32px));border-radius:15px}
+}

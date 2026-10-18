@@ -1,0 +1,612 @@
+{
+  "schema": 1,
+  "title": "Pallikaranai Marsh News & Updates",
+  "reviewed_by": "Aventrix Realty editorial",
+  "next_scheduled": {
+    "date": "2026-11-11",
+    "label": "Madras High Court — next listing of the interim Zone of Influence matter",
+    "evidence": "single_secondary",
+    "note": "Reported by one secondary source (a real-estate portal) only. Not yet confirmed from the Madras High Court cause list or any order."
+  },
+  "categories": {
+    "court": "Court Proceedings",
+    "orders": "Government Orders",
+    "wetland": "Wetland Protection",
+    "zoi": "Zone of Influence",
+    "approvals": "Planning Approvals",
+    "buyers": "Property Buyer Guidance"
+  },
+  "legal_status_labels": {
+    "court_order": "Court / tribunal order",
+    "court_proceeding": "Court proceeding — no decision",
+    "court_submission": "Submission to court — not an order",
+    "official_notification": "Official notification / order",
+    "proposal": "Proposal — not in force",
+    "interim_arrangement": "Interim arrangement",
+    "final_decision": "Final judicial decision",
+    "administrative_action": "Administrative action",
+    "statement": "Public statement — no legal effect",
+    "unverified_claim": "Unverified claim"
+  },
+  "verification_labels": {
+    "checked": "Source read and checked",
+    "partial": "Headline / summary checked; full text not accessed",
+    "unverified": "Not independently verified"
+  },
+  "updates": [
+    {
+      "id": "2026-10-14-status-report-adjourned",
+      "event_date": "2026-10-14",
+      "published_date": "2026-10-14",
+      "category": "court",
+      "legal_status": "court_proceeding",
+      "headline": "Wetlands Authority files status report on the proposed interim zone; no order reported",
+      "summary": "The Member Secretary of the Tamil Nadu State Wetlands Authority filed a status report before the Madras High Court setting out a revised interim Zone of Influence of about 316.76 acres (128.19 ha) across 36 survey numbers, prepared after 23 representations from landowners, developers and others. The report proposes that construction inside the zone be regulated according to site-specific scientific and hydrological conditions rather than banned outright, with a No Objection Certificate from the District Level Wetlands Management Committee, and lists safeguards: no blocking or diverting of drains and inlet/outlet channels, no dumping of waste or debris in drainage paths, restrictions on discharging untreated sewage or effluent into connected watercourses, no permanent alteration of hydrological connections and no Red Category industries.",
+      "changed": "The State's proposal is now on record as a written status report, with listed safeguards and a stated NOC route.",
+      "not_changed": "No order adopting the proposal has been reported. The report itself describes the zone as interim, not the final boundary.",
+      "sources": [
+        {
+          "title": "Pallikaranai wetland: Interim buffer zone cut to 316.76 acres",
+          "publisher": "DT Next",
+          "url": "https://www.dtnext.in/news/chennai/pallikaranai-wetland-interim-buffer-zone-cut-to-31676-acres-hectares",
+          "type": "news_report",
+          "published": "2026-10-14",
+          "checked": "2026-10-18",
+          "verification": "checked",
+          "tier": "news"
+        },
+        {
+          "title": "Pallikaranai Marsh Case: High Court Adjourns Hearing to November 11, 2026",
+          "publisher": "Verified.RealEstate Community",
+          "url": "https://community.verified.realestate/article/pallikaranai-marsh-case-high-court-adjourns-hearing-to-november-11-2026/",
+          "type": "portal_article",
+          "published": "2026-10-15",
+          "checked": "2026-10-18",
+          "verification": "checked",
+          "note": "Used for the adjournment date and counsel's submissions.",
+          "tier": "secondary"
+        }
+      ],
+      "review_flags": [
+        {
+          "claim": "Next listing on 11 November 2026",
+          "issue": "Reported by one secondary source only; not confirmed from the court cause list or an order."
+        },
+        {
+          "claim": "Bench asked what protection would apply to land outside the interim zone",
+          "issue": "Reported by one secondary source only; not known whether recorded in an order."
+        }
+      ]
+    },
+    {
+      "id": "2026-10-13-pmk-questions-zone",
+      "event_date": "2026-10-13",
+      "published_date": "2026-10-13",
+      "category": "wetland",
+      "legal_status": "statement",
+      "headline": "PMK leader questions the reduced protection zone and calls for wetland boundaries to be notified",
+      "summary": "PMK leader Anbumani Ramadoss accused the Wetlands Authority of favouring private developers after it told the High Court that, following consultations on 30 September, the zone would be cut to about 316 acres. He described the earlier zone as 8,397 acres. He called for scientifically determined zones with construction regulated rather than banned outright, full survey and notification of wetland boundaries as directed by the Supreme Court on 11 December 2024, and abandonment of the wall and walkway works along the marsh.",
+      "changed": "Political opposition to the reduced zone is now on record.",
+      "not_changed": "A political statement has no legal effect on the court proceedings or on approvals.",
+      "sources": [
+        {
+          "title": "Anbumani Ramadoss questions wetland authority over shrinking Pallikaranai protection zone",
+          "publisher": "IANS via Punjab Kesari (English)",
+          "url": "https://english.punjabkesari.com/india/anbumani-ramadoss-questions-wetland-authority-over-shrinking-pallikaranai-protection-zone",
+          "type": "news_report",
+          "published": "2026-10-13",
+          "checked": "2026-10-18",
+          "verification": "checked",
+          "tier": "news"
+        }
+      ],
+      "review_flags": []
+    },
+    {
+      "id": "2026-10-12-36-survey-numbers",
+      "event_date": "2026-10-12",
+      "published_date": "2026-10-12",
+      "category": "zoi",
+      "legal_status": "court_submission",
+      "headline": "Wetlands Authority tells High Court the interim zone can be limited to 36 survey numbers (128.19 ha)",
+      "summary": "The Tamil Nadu State Wetlands Authority told the Madras High Court that 36 survey numbers covering about 128.19 hectares could serve as the interim Zone of Influence, and that private patta lands had been excluded from this proposal. Counsel for CREDAI Chennai said the proposal was acceptable to the developers' body. The court directed a report to be filed by 14 October and said it would consider orders after reading it.",
+      "changed": "The State's proposed interim zone is far smaller than the 1 km zone reportedly used for the current approval pause.",
+      "not_changed": "This is a submission, not a court order. Exclusion of patta land from the proposal does not by itself make any parcel unrestricted, and land outside the 36 survey numbers is not automatically cleared for construction.",
+      "sources": [
+        {
+          "title": "Interim zone of influence around Pallikaranai marshland can be restricted to 36 survey numbers, State Wetlands Authority tells Madras High Court",
+          "publisher": "The Hindu",
+          "url": "https://www.thehindu.com/news/national/tamil-nadu/interim-zone-of-influence-around-pallikaranai-marshland-can-be-restricted-to-36-survey-numbers-state-wetlands-authority-tells-madras-high-court/article71576000.ece",
+          "type": "news_report",
+          "published": "2026-10-13",
+          "checked": "2026-10-18",
+          "verification": "partial",
+          "note": "Full article could not be opened during review; headline and summary checked via an aggregator.",
+          "tier": "news"
+        },
+        {
+          "title": "Pallikaranai marshland: 36 survey numbers identified — will construction permits be granted? (Tamil)",
+          "publisher": "Patrikai",
+          "url": "https://patrikai.com/pallikaranai-marshland-36-survey-numbers-identified-will-construction-permits-be-granted/",
+          "type": "news_report",
+          "published": "2026-10-12",
+          "checked": "2026-10-18",
+          "verification": "checked",
+          "tier": "news"
+        }
+      ],
+      "review_flags": [
+        {
+          "claim": "Earlier proposed zone of about 3,358 ha",
+          "issue": "Single secondary source; a PMK statement gives 8,397 acres (about 3,398 ha). Not shown as fact."
+        },
+        {
+          "claim": "The 36 survey numbers and the villages they fall in",
+          "issue": "Official schedule and map not seen; several entries are reported as part survey numbers."
+        }
+      ]
+    },
+    {
+      "id": "2026-10-12-wall-project-objection",
+      "event_date": "2026-10-12",
+      "published_date": "2026-10-12",
+      "category": "wetland",
+      "legal_status": "statement",
+      "headline": "PMK demands the 3 km wall and walkway works on the marsh be stopped",
+      "summary": "Anbumani Ramadoss demanded that the State stop and remove a roughly 3 km retaining wall and pathway being built on the marshland under the Neithal Recovery Mission, which the State is funding with a World Bank loan (₹21.5 crore allocated to the Pallikaranai works), saying it could obstruct rainwater flow and raise flood risk for nearby homes. He warned of a protest if the works continue.",
+      "changed": "The wall works have become a public point of contention.",
+      "not_changed": "No order stopping the works has been reported. The works are separate from the Zone of Influence case.",
+      "sources": [
+        {
+          "title": "Anbumani demands scrapping of Pallikaranai marsh wall project, threatens protest",
+          "publisher": "DT Next",
+          "url": "https://www.dtnext.in/news/tamilnadu/anbumani-demands-scrapping-of-pallikaranai-marsh-wall-project-threatens-protest",
+          "type": "news_report",
+          "published": "2026-10-12",
+          "checked": "2026-10-18",
+          "verification": "checked",
+          "tier": "news"
+        }
+      ],
+      "review_flags": []
+    },
+    {
+      "id": "2026-09-30-interdepartmental-meeting",
+      "event_date": "2026-09-30",
+      "published_date": "2026-10-13",
+      "category": "zoi",
+      "legal_status": "proposal",
+      "headline": "Officials meet to revise the proposed interim Zone of Influence",
+      "summary": "Officials met on 30 September to review the proposed boundary, following the court's directions; the reduced proposal presented in court on 12 October followed. One secondary source adds that the review considered satellite imagery, water spread, drainage paths, low-lying land, infrastructure and links to nearby wetlands.",
+      "changed": "The State's working proposal was revised downward.",
+      "not_changed": "An internal meeting outcome is not a notification or an order. Minutes of the meeting have not been seen.",
+      "sources": [
+        {
+          "title": "Anbumani Ramadoss questions wetland authority over shrinking Pallikaranai protection zone",
+          "publisher": "IANS via Punjab Kesari (English)",
+          "url": "https://english.punjabkesari.com/india/anbumani-ramadoss-questions-wetland-authority-over-shrinking-pallikaranai-protection-zone",
+          "type": "news_report",
+          "published": "2026-10-13",
+          "checked": "2026-10-18",
+          "verification": "checked",
+          "note": "Mentions the 30 September meeting in reporting a political statement.",
+          "tier": "news"
+        },
+        {
+          "title": "Pallikaranai Building Approvals: Conditional Construction Proposed",
+          "publisher": "Verified.RealEstate Community",
+          "url": "https://community.verified.realestate/article/pallikaranai-building-approvals-conditional-construction-proposed/",
+          "type": "portal_article",
+          "published": "2026-10-13",
+          "checked": "2026-10-18",
+          "verification": "checked",
+          "note": "the meeting date is also cited in the IANS report of 13 October.",
+          "tier": "secondary"
+        }
+      ],
+      "review_flags": [
+        {
+          "claim": "What the meeting considered",
+          "issue": "Described by one secondary source only; minutes not seen."
+        }
+      ]
+    },
+    {
+      "id": "2026-09-06-wall-concerns-mla",
+      "event_date": "2026-09-06",
+      "event_date_note": "Reported as 'Sunday'; date inferred from the report.",
+      "published_date": "2026-09-07",
+      "category": "wetland",
+      "legal_status": "statement",
+      "headline": "MLA raises flood concerns over concrete wall and walkway around the marsh",
+      "summary": "PMK MLA Sowmiya Anbumani inspected the 3 km concrete compound wall and walkway being built around the marshland under the ₹21 crore Neithal restoration and protection works, and said it could block natural rainwater flow and cause stagnation in nearby residential areas. She suggested a simple fence instead and asked the State to prepare a wetland conservation plan.",
+      "changed": "First public objection in this period to the wall works.",
+      "not_changed": "No government response or order was reported.",
+      "sources": [
+        {
+          "title": "Can't wall Pallikaranai wetland's natural flow, warns PMK MLA Sowmiya",
+          "publisher": "DT Next",
+          "url": "https://www.dtnext.in/news/tamilnadu/cant-wall-pallikaranai-wetlands-natural-flow-warns-pmk-mla-sowmiya",
+          "type": "news_report",
+          "published": "2026-09-07",
+          "checked": "2026-10-18",
+          "verification": "checked",
+          "tier": "news"
+        }
+      ],
+      "review_flags": [
+        {
+          "claim": "Event date 6 September 2026",
+          "issue": "Inferred from 'Sunday' in a report updated 7 September; not stated in the source."
+        }
+      ]
+    },
+    {
+      "id": "2026-08-20-ncscm-interim-map",
+      "event_date": "2026-08-20",
+      "published_date": "2026-08-21",
+      "category": "court",
+      "legal_status": "court_submission",
+      "headline": "Wetlands Authority files NCSCM interim Zone of Influence map; says construction can be regulated, not banned",
+      "summary": "The Tamil Nadu State Wetlands Authority told the Madras High Court that construction in the Zone of Influence could be regulated rather than banned, and placed on record an interim map prepared by the National Centre for Sustainable Coastal Management. The map proposes a variable width instead of a uniform 1 km — zero metres along about 30 km of the 77.85 km boundary studied, and more than 100 m along roughly a third of it. The court took the map on record and gave CREDAI and other parties time to respond, listing the matter for 7 September.",
+      "changed": "The State's position shifted from a uniform 1 km buffer towards a science-based, variable-width zone.",
+      "not_changed": "This was a submission. No order lifting the approval restriction was reported.",
+      "sources": [
+        {
+          "title": "'Construction works around Pallikaranai marshland can be regulated and not banned'",
+          "publisher": "The Hindu (Chennai edition, via PressReader)",
+          "url": "https://www.pressreader.com/india/the-hindu-chennai-9ww3/20260821/282548730113060",
+          "type": "news_report",
+          "published": "2026-08-21",
+          "checked": "2026-10-18",
+          "verification": "partial",
+          "note": "Page could not be opened directly during review; key figures checked from the publisher's search excerpt.",
+          "tier": "news"
+        },
+        {
+          "title": "Pallikaranai Construction Freeze May Ease: TNSWA Submits New Buffer Plan to Madras High Court",
+          "publisher": "Verified.RealEstate Community",
+          "url": "https://community.verified.realestate/article/pallikaranai-construction-freeze-may-ease-tnswa-submits-new-buffer-plan-to-madras-high-court/",
+          "type": "portal_article",
+          "published": "2026-08-24",
+          "checked": "2026-10-18",
+          "verification": "checked",
+          "tier": "secondary",
+          "note": "Real-estate portal; treated as a secondary source."
+        }
+      ],
+      "review_flags": [
+        {
+          "claim": "Map widths: zero along about 30 km of the 77.85 km boundary studied; over 100 m along roughly a third",
+          "issue": "Taken from a search excerpt of The Hindu; full article not reviewed."
+        },
+        {
+          "claim": "Next listing on 7 September 2026",
+          "issue": "Reported by secondary sources; outcome of that hearing not found in any source."
+        }
+      ]
+    }
+  ],
+  "background": [
+    {
+      "id": "bg-2026-07-24-brigade-ec",
+      "event_date": "2026-07-24",
+      "category": "approvals",
+      "legal_status": "court_proceeding",
+      "headline": "High Court asks SEIAA to explain cancelling a housing project's environmental clearance without a hearing",
+      "summary": "On Brigade Enterprises' challenge, the High Court asked the State Environment Impact Assessment Authority why it withdrew the project's environmental clearance without first hearing the company, and listed the matter for 28 July.",
+      "sources": [
+        {
+          "title": "Pallikaranai apartment case: High Court order to Tamil Nadu government (Tamil)",
+          "publisher": "ETV Bharat Tamil Nadu",
+          "url": "https://www.etvbharat.com/ta/state/mhc-order-on-chennai-pallikaranai-apartment-case-tns26072408329",
+          "type": "news_report",
+          "published": "2026-07-24",
+          "checked": "2026-10-18",
+          "verification": "checked",
+          "tier": "news"
+        }
+      ],
+      "review_flags": []
+    },
+    {
+      "id": "bg-2026-07-15-credai-hearing",
+      "event_date": "2026-07-15",
+      "event_date_note": "Reported as 'Wednesday'; date inferred from the report.",
+      "category": "court",
+      "legal_status": "court_proceeding",
+      "headline": "CREDAI challenge to the 1 km restriction: State says 47 planning applications are pending",
+      "summary": "CREDAI Chennai asked the High Court to set aside the NGT's 1 km Zone of Influence direction as unscientific. The State told the court 47 planning-permission applications could not be processed because of the order. Final hearing was listed for 3 August.",
+      "sources": [
+        {
+          "title": "CREDAI Chennai challenges NGT's 1-km construction restriction around Pallikaranai Ramsar site",
+          "publisher": "DT Next",
+          "url": "https://www.dtnext.in/news/chennai/credai-chennai-challenges-ngts-1-km-construction-restriction-around-pallikaranai-ramsar-site",
+          "type": "news_report",
+          "published": "2026-07-16",
+          "checked": "2026-10-18",
+          "verification": "checked",
+          "tier": "news"
+        }
+      ],
+      "review_flags": [
+        {
+          "claim": "Hearing date 15 July 2026",
+          "issue": "Inferred from 'Wednesday' in a report updated 16 July."
+        }
+      ]
+    },
+    {
+      "id": "bg-2026-07-tnswa-indicative",
+      "event_date": "2026-07-14",
+      "event_date_note": "Exact hearing date not stated in the source; date shown is the report's update date.",
+      "category": "zoi",
+      "legal_status": "court_submission",
+      "headline": "Wetlands Authority: the 1 km zone was an indicative marker, not a fixed buffer",
+      "summary": "The Wetlands Authority told the High Court that the 1 km figure came from a draft plan and that the Zone of Influence must be drawn from hydrology — inlet and outlet channels, elevation and natural drainage — rather than as a uniform ring.",
+      "sources": [
+        {
+          "title": "Real Estate Relief Near Pallikaranai Marsh? Tamil Nadu Wetland Authority Clarifies 1-Km Buffer Zone Rules",
+          "publisher": "Verified.RealEstate Community",
+          "url": "https://community.verified.realestate/article/real-estate-relief-near-pallikaranai-marsh-tamil-nadu-wetland-authority-clarifies-1-km-buffer-zone-rules/",
+          "type": "portal_article",
+          "published": "2026-07-14",
+          "checked": "2026-10-18",
+          "verification": "checked",
+          "note": "primary court record not seen.",
+          "tier": "secondary"
+        }
+      ],
+      "review_flags": [
+        {
+          "claim": "Wetlands Authority told the High Court the 1 km figure was indicative",
+          "issue": "Single secondary source; hearing date not stated. The NGT judgment (paras 18, 31) separately records the Authority's view that the zone is site-specific."
+        }
+      ]
+    },
+    {
+      "id": "bg-2026-06-18-brigade-ec-revoked",
+      "event_date": "2026-06-18",
+      "event_date_note": "Date of the report; exact date of withdrawal not stated.",
+      "category": "approvals",
+      "legal_status": "administrative_action",
+      "headline": "SEIAA withdraws environmental clearance for a 1,250-unit project in Perumbakkam",
+      "summary": "The State Environment Impact Assessment Authority withdrew the environmental clearance for Brigade Morgan Heights, reportedly because work began without the Wetlands Authority's permission required by a condition of the clearance.",
+      "sources": [
+        {
+          "title": "Environmental Clearance for construction project in Pallikaranai Ramsar site revoked",
+          "publisher": "The News Minute",
+          "url": "https://www.thenewsminute.com/tamil-nadu/environmental-clearance-for-construction-project-in-pallikaranai-ramsar-site-revoked",
+          "type": "news_report",
+          "published": "2026-06-18",
+          "checked": "2026-10-18",
+          "verification": "checked",
+          "tier": "news"
+        }
+      ],
+      "review_flags": []
+    },
+    {
+      "id": "bg-2026-02-10-pils-dismissed",
+      "event_date": "2026-02-10",
+      "category": "court",
+      "legal_status": "court_order",
+      "headline": "High Court declines PILs against residential towers, noting the Supreme Court is dealing with Ramsar boundaries",
+      "summary": "A Division Bench dismissed two PILs against the Brigade towers, saying it could not entertain them while the Supreme Court was seized of fixing Ramsar site boundaries. The State said boundary demarcation was not complete.",
+      "sources": [
+        {
+          "title": "HC Dismisses PILs Against Residential Towers on Pallikaranai Land",
+          "publisher": "Deccan Chronicle",
+          "url": "https://www.deccanchronicle.com/southern-states/tamil-nadu/hc-dismisses-pils-against-residential-towers-on-pallikaranai-land-1936336",
+          "type": "news_report",
+          "published": "2026-02-10",
+          "checked": "2026-10-18",
+          "verification": "checked",
+          "tier": "news"
+        }
+      ],
+      "review_flags": []
+    },
+    {
+      "id": "bg-2025-12-03-measurement",
+      "event_date": "2025-12-03",
+      "category": "wetland",
+      "legal_status": "court_submission",
+      "headline": "State tells High Court satellite measurement of the marsh is 99% complete",
+      "summary": "In a PIL hearing, the State said satellite-based measurement of the marshland was 99% complete, that the reserve forest notified in 2007 covers about 698 ha, and that boundary demarcation was continuing.",
+      "sources": [
+        {
+          "title": "Pallikaranai marsh measurement work 99% complete — Tamil Nadu government (Tamil)",
+          "publisher": "ETV Bharat Tamil Nadu",
+          "url": "https://www.etvbharat.com/ta/state/tn-govt-informed-mhc-that-measuring-work-of-pallikaranai-marshlands-has-99-percent-completed-tamil-nadu-news-tns25120304571",
+          "type": "news_report",
+          "published": "2025-12-03",
+          "checked": "2026-10-18",
+          "verification": "checked",
+          "tier": "news"
+        }
+      ],
+      "review_flags": []
+    },
+    {
+      "id": "bg-2025-10-cmda-office-order",
+      "event_date": "2025-10-09",
+      "event_date_note": "Reported order date 9 Oct 2025; reported effective date 6 Oct 2025",
+      "category": "orders",
+      "legal_status": "official_notification",
+      "headline": "CMDA Office Order No. 07/2025 reported to pause approvals in the Ramsar site and a 1 km zone",
+      "summary": "Following the NGT judgment, CMDA is reported to have directed its divisions and local bodies not to approve or sanction development within the Ramsar site boundary and a 1 km influence zone. Two independent secondary sources give the order date as 9 October 2025 and the effective date as 6 October 2025.",
+      "sources": [
+        {
+          "title": "CMDA Halts All Building Approvals Around Pallikaranai Marshland After NGT Order",
+          "publisher": "Verified.RealEstate Community",
+          "url": "https://community.verified.realestate/article/cmda-halts-all-building-approvals-around-pallikaranai-marshland-after-ngt-order/",
+          "type": "portal_article",
+          "published": "2025-10-17",
+          "checked": "2026-10-18",
+          "verification": "checked",
+          "note": "Official copy of the office order not seen. The source gives the order date as 9 Oct 2025 and the effective date as 6 Oct 2025; confirm against the official order.",
+          "tier": "secondary"
+        },
+        {
+          "title": "Pallikaranai Ramsar Wetland Conservation Report (May–June 2026), section 4.9 and reference 33",
+          "publisher": "Suzhal Arivom, via Citizen Matters",
+          "url": "https://citizenmatters.in/wp-content/uploads/2026/06/Pallikaranai-Conservation-Report-May-June-2026.pdf",
+          "type": "civil_society_report",
+          "published": "2026-06-10",
+          "checked": "2026-10-18",
+          "verification": "checked",
+          "note": "Independent civil-society report; describes but does not reproduce the order.",
+          "tier": "secondary"
+        }
+      ],
+      "review_flags": [
+        {
+          "claim": "Order number, dates, area and villages",
+          "issue": "Official copy not reviewed; described by two secondary sources only. Effective date (6 Oct) precedes order date (9 Oct) — confirm against the original."
+        }
+      ]
+    },
+    {
+      "id": "bg-2025-09-24-ngt-judgment",
+      "event_date": "2025-09-24",
+      "category": "court",
+      "legal_status": "court_order",
+      "headline": "NGT (Southern Zone) judgment: no approvals that may alter the marsh until the Integrated Management Plan is ready",
+      "summary": "In O.A. No. 91 of 2023 (SZ), the tribunal directed that, until the Integrated Management Plan is completed, the authorities should not grant approvals or permissions that may alter the character of the marshland, and that CMDA may grant approvals in the marshland and its zone of influence only after the plan is prepared on the basis of the Wetlands Authority's survey (paras 44–46). The judgment refers to a general 1 km zone of influence recommended in a draft management plan and records the Wetlands Authority's position that the zone is site-specific; it sets no deadline, directing the agencies to expedite the plan.",
+      "sources": [
+        {
+          "title": "Tribunal on its own motion v. Member Secretary, State Wetland Authority — judgment of 24 September 2025 (reproduction)",
+          "publisher": "Indian Kanoon",
+          "url": "https://indiankanoon.org/doc/54124420/",
+          "type": "court_record",
+          "published": "2025-09-24",
+          "checked": "2026-10-18",
+          "verification": "checked",
+          "note": "Full judgment text read through this reproduction; compare with the tribunal's official copy before relying on paragraph wording.",
+          "tier": "primary"
+        },
+        {
+          "title": "O.A. No. 91 of 2023 (SZ) — judgment dated 24.09.2025 (official PDF)",
+          "publisher": "National Green Tribunal",
+          "url": "https://www.greentribunal.gov.in/gen_pdf_test.php?filepath=L25ndF9kb2N1bWVudHMvbmd0L2Nhc2Vkb2MvanVkZ2VtZW50cy9DSEVOTkFJLzIwMjUtMDktMjQvMTc1ODcxMjI4OTI0NzU1NDYyMTY4ZDNkMWUxOGVlOTUucGRm",
+          "type": "court_record",
+          "published": "2025-09-24",
+          "checked": "2026-10-18",
+          "verification": "partial",
+          "note": "Official link found but the PDF did not open during review.",
+          "tier": "primary"
+        },
+        {
+          "title": "Supplementary Cause List, 24.09.2025 — O.A. No. 91/2023 (SZ), for pronouncement of judgment",
+          "publisher": "National Green Tribunal",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/cause_list_documents/Supplementary%20Cause%20List%2024.09.2025.pdf",
+          "type": "court_record",
+          "published": "2025-09-24",
+          "checked": "2026-10-18",
+          "verification": "checked",
+          "note": "Confirms the date and bench. Official cause list opened on 18 Oct 2026.",
+          "tier": "primary"
+        }
+      ],
+      "review_flags": []
+    },
+    {
+      "id": "bg-2023-06-ngt-suo-motu",
+      "event_date": "2023-06-30",
+      "event_date_note": "Date of the news item that triggered the case.",
+      "category": "court",
+      "legal_status": "court_proceeding",
+      "headline": "NGT takes up a road being laid inside the marsh at Perumbakkam",
+      "summary": "The tribunal registered O.A. No. 91 of 2023 (SZ) on its own motion after a New Indian Express report of 30 June 2023 about a road inside the marshland at Perumbakkam.",
+      "sources": [
+        {
+          "title": "Judgment of 24 September 2025 (records the origin of the case)",
+          "publisher": "Indian Kanoon",
+          "url": "https://indiankanoon.org/doc/54124420/",
+          "type": "court_record",
+          "published": "2025-09-24",
+          "checked": "2026-10-18",
+          "verification": "checked",
+          "tier": "primary"
+        },
+        {
+          "title": "O.A. No. 91 of 2023 (SZ) — report filed by the Tamil Nadu State Wetland Authority",
+          "publisher": "National Green Tribunal",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/OA%20No.%2091%20of%202023%20Report%20by%20r-4.pdf",
+          "type": "court_filing",
+          "published": "2025-08-29",
+          "checked": "2026-10-18",
+          "verification": "checked",
+          "note": "Official PDF opened on 18 Oct 2026.",
+          "tier": "primary"
+        }
+      ],
+      "review_flags": []
+    },
+    {
+      "id": "bg-2022-04-08-ramsar",
+      "event_date": "2022-04-08",
+      "category": "wetland",
+      "legal_status": "official_notification",
+      "headline": "Pallikaranai Marsh Reserve Forest designated a Ramsar Site",
+      "summary": "Pallikaranai Marsh Reserve Forest was designated a Wetland of International Importance (Ramsar Site No. 2481) on 8 April 2022. The Tamil Nadu State Wetlands Authority records its area as 1,247.54 hectares.",
+      "sources": [
+        {
+          "title": "Pallikaranai Marsh Reserve Forest — Ramsar site information",
+          "publisher": "Tamil Nadu State Wetlands Authority",
+          "url": "https://tnswa.tn.gov.in/ramsar-site-information.php?token=Pallikaranai-Marsh-Reserve-Forest",
+          "type": "official_record",
+          "checked": "2026-10-18",
+          "verification": "checked",
+          "tier": "primary"
+        },
+        {
+          "title": "Pallikaranai Marsh Reserve Forest — Ramsar Sites Information Service",
+          "publisher": "Ramsar Convention Secretariat",
+          "url": "https://rsis.ramsar.org/ris/2481",
+          "type": "official_record",
+          "published": "2022-04-08",
+          "checked": "2026-10-18",
+          "verification": "checked",
+          "tier": "primary"
+        }
+      ],
+      "review_flags": []
+    }
+  ],
+  "unresolved": [
+    "Outcome of the 7 September 2026 hearing could not be confirmed from any source; no entry is shown for it.",
+    "The 11 November 2026 listing is reported by one secondary source only; not confirmed from the cause list or an order.",
+    "The official text of CMDA Office Order No. 07/2025 has not been reviewed; it is described from two secondary sources.",
+    "The official NGT PDF of the 24 September 2025 judgment did not open; the judgment text was read via a reproduction (Indian Kanoon).",
+    "The earlier proposed zone is reported as about 3,358 ha by one source and 8,397 acres (about 3,398 ha) by another.",
+    "The official schedule and map of the 36 survey numbers has not been seen; village names come from one secondary source.",
+    "The NCSCM map widths come from a news excerpt and one secondary source; the map itself has not been seen.",
+    "Whether the High Court's concern about land outside the interim zone was recorded in an order is not known.",
+    "Hearing dates of 15 July and 6 September 2026 are inferred from weekday wording in reports."
+  ],
+  "current_status": {
+    "text": "No order lifting the approval restriction around the Pallikaranai Ramsar site has been reported. CMDA's October 2025 office order pausing approvals in the Ramsar site and a 1 km zone is described from reports (official copy not yet reviewed). The State's proposed interim Zone of Influence (128.19 ha, 36 survey numbers) is a proposal before the Madras High Court, not an order.",
+    "as_of": "2026-10-18"
+  },
+  "homepage_window_days": 45,
+  "dates": {
+    "coverage_start": "2026-08-18",
+    "page_published": null,
+    "last_substantive_update": "2026-10-18",
+    "last_source_verification": "2026-10-18",
+    "notes": "coverage_start is the start of the research window, not a creation date. page_published stays null until the page is actually deployed; set it to the deploy date then. last_substantive_update changes only when content changes; last_source_verification when sources are re-checked."
+  },
+  "tier_labels": {
+    "primary": "Primary record",
+    "news": "News report",
+    "secondary": "Secondary source"
+  },
+  "evidence_labels": {
+    "primary": "Primary record checked",
+    "news": "News report checked",
+    "news_partial": "News report — partly checked",
+    "secondary_only": "Secondary source only — unverified"
+  }
+}

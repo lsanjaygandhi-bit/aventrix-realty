@@ -17,3 +17,8 @@ tools
 .github
 images/design
 functions
+
+# review reports and AI assistant code — not public
+MERGE-VERIFICATION-REPORT.txt
+RAMSAR-ASSET-INTEGRATION-REPORT.txt
+supabase

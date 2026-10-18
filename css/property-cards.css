@@ -219,14 +219,6 @@
     }
 }
 
-/* ---------- 7. Floating WhatsApp / Back-to-top: safe area ----------
-   Keeps the existing positions and adds the device safe-area inset
-   (0 on devices/browsers without one, so nothing moves there). */
-html.is-mobile .whatsapp-float{
-    bottom:calc(90px + env(safe-area-inset-bottom, 0px));
-    right:calc(18px + env(safe-area-inset-right, 0px));
-}
-html.is-mobile .back-to-top{
-    bottom:calc(154px + env(safe-area-inset-bottom, 0px));
-    right:calc(18px + env(safe-area-inset-right, 0px));
-}
+/* ---------- 7. Floating WhatsApp / Back-to-top ----------
+   Size, position and safe-area insets now come from the
+   FLOATING BUTTON GROUP tokens in style.css. */

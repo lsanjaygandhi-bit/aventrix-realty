@@ -1,0 +1,15 @@
+RAMSAR ASSET INTEGRATION REPORT
+
+Base: aventrix-realty-ramsar-integrated-review.zip
+Output: aventrix-realty-ramsar-assets-added.zip
+
+Added supplied visuals:
+- images/pallikaranai-marsh-aerial.jpg — used as Ramsar page hero background.
+- images/ramsar-sites-world-map.png — placed in the guide after the Ramsar designation section, with a caption clarifying it is geographic context only.
+- images/pallikaranai-ramsar-influence-map.jpg — rendered from uploaded Ramsar 2.pdf page 1 and placed in the guide's boundaries section.
+
+Changed files:
+- css/pallikaranai.css (Ramsar-only hero image and responsive figure styles)
+- pallikaranai-marsh-guide.html (two responsive figures)
+
+AI-related files, shared header/footer, Supabase, authentication, and business logic were not modified. This is a ZIP-level integration; no live deployment or browser interaction test was performed in this step.

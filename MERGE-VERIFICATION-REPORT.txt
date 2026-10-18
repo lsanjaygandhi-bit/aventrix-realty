@@ -1,0 +1,19 @@
+Aventrix Realty ZIP Merge Verification
+=====================================
+
+Merged package: complete review project + floating-buttons changed-files package.
+The five changed-file entries were compared byte-for-byte with the corresponding
+files already present in aventrix-realty-main/ in the review ZIP.
+
+Results:
+- style.css -> aventrix-realty-main/style.css: IDENTICAL (no overwrite needed); 217782 bytes; SHA-256 8bafb286355deb6b7939e00120696b1aa3879d601f19fa0efe3f3acea6bac321
+- index.html -> aventrix-realty-main/index.html: IDENTICAL (no overwrite needed); 108776 bytes; SHA-256 a750ad4d78c7efe453d65345e72cacdd581acdc6b4eee481284448764c1fc533
+- css/property-cards.css -> aventrix-realty-main/css/property-cards.css: IDENTICAL (no overwrite needed); 7902 bytes; SHA-256 ef9ec4418f7260045e8a10e161124efbe5c652b17cf21db1cfd81d7e969fd77f
+- css/ai-property-assistant.css -> aventrix-realty-main/css/ai-property-assistant.css: IDENTICAL (no overwrite needed); 5460 bytes; SHA-256 dffd3d3ce912f7d58a5f5459a7d4408f0b54635d05570d084768df6db9b8fd2e
+- js/ai-property-assistant.js -> aventrix-realty-main/js/ai-property-assistant.js: IDENTICAL (no overwrite needed); 4965 bytes; SHA-256 e08ac0a77773c4b2bcd990e6798e94de18a582dd93b37b7809238046b5704734
+
+No application files were changed because all five supplied changed files were
+byte-identical to the files already in the review project. This preserves the
+existing AI assistant implementation and avoids introducing a duplicate or
+unverified replacement. The merge does not prove runtime behavior; browser/mobile
+testing is still required to confirm the AI button works on-device.
