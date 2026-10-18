@@ -602,3 +602,67 @@ window.initFaqAccordion = initFaqAccordion;
         });
     });
 })();
+
+
+// ===========================
+// GLOBAL AI PROPERTY ASSISTANT
+// Keep the assistant available on every public page that loads script.js.
+// The homepage already contains the markup; other pages receive the same
+// markup here. Asset loading and DOM insertion are idempotent.
+// ===========================
+(function ensureGlobalAIPropertyAssistant() {
+    function installAssistant() {
+        if (!document.body) return;
+
+        // Load the shared assistant stylesheet on pages that do not already include it.
+        if (!document.querySelector('link[href*="css/ai-property-assistant.css"]')) {
+            const css = document.createElement("link");
+            css.rel = "stylesheet";
+            css.href = "/css/ai-property-assistant.css?v=20261018-7";
+            document.head.appendChild(css);
+        }
+
+        // The homepage has its own markup. Other public pages get the same launcher and panel.
+        if (!document.getElementById("avxAiAssistant")) {
+            const root = document.createElement("div");
+            root.id = "avxAiAssistant";
+            root.dataset.enabled = "true";
+            root.dataset.endpoint = "https://gkrtjeygrqkglsadskcg.supabase.co/functions/v1/free-property-search";
+            root.innerHTML = `
+                <button class="avx-ai-launcher" type="button" aria-controls="avxAiPanel" aria-expanded="false" hidden>
+                    <span class="avx-ai-launcher-mark" aria-hidden="true">✦</span>
+                    <span class="avx-ai-launcher-label">AI Property Assistant</span>
+                </button>
+                <section class="avx-ai-panel" id="avxAiPanel" role="dialog" aria-label="Aventrix Realty AI Property Assistant" aria-modal="false" hidden>
+                    <header class="avx-ai-head">
+                        <div class="avx-ai-brand"><span class="avx-ai-brand-mark" aria-hidden="true">✦</span><div><div class="avx-ai-brand-title">Aventrix Realty Property Search</div><div class="avx-ai-brand-subtitle">Free property search · English &amp; தமிழ்</div></div></div>
+                        <button class="avx-ai-close" type="button" aria-label="Close assistant">×</button>
+                    </header>
+                    <div class="avx-ai-messages" aria-live="polite" aria-relevant="additions text"><div class="avx-ai-message assistant">Hello! Tell me what property you are looking for. Search published listings by location, budget, property type or BHK. English and Tamil supported.</div></div>
+                    <div class="avx-ai-status" role="status" aria-live="polite"></div>
+                    <div class="avx-ai-suggestions" aria-label="Suggested questions">
+                        <button class="avx-ai-suggestion" type="button" data-query="2 BHK flat under ₹70 lakhs in Chromepet">2 BHK in Chromepet</button>
+                        <button class="avx-ai-suggestion" type="button" data-query="Plots for sale near ECR">Plots near ECR</button>
+                        <button class="avx-ai-suggestion" type="button" data-query="I need a rental house in Chennai">Rental house</button>
+                    </div>
+                    <form class="avx-ai-form"><textarea class="avx-ai-input" rows="1" maxlength="1200" aria-label="Ask about properties" placeholder="Tell us your property requirement…" required></textarea><button class="avx-ai-send" type="submit">Send</button></form>
+                    <p class="avx-ai-note">Property details are based on published Aventrix Realty listings. Availability and legal details should be confirmed with our team.</p>
+                </section>`;
+            document.body.appendChild(root);
+        }
+
+        // Do not add a second assistant script if the page already has one.
+        if (!document.querySelector('script[src*="js/ai-property-assistant.js"]')) {
+            const js = document.createElement("script");
+            js.src = "/js/ai-property-assistant.js?v=20261018-3";
+            js.defer = true;
+            document.body.appendChild(js);
+        }
+    }
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", installAssistant, { once: true });
+    } else {
+        installAssistant();
+    }
+})();
