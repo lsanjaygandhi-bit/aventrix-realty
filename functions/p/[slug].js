@@ -33,9 +33,19 @@ export async function onRequest({ params, request }) {
     .replace(/"/g, "&quot;").replace(/'/g, "&#39;");
   const title = (property.title || "Property Listing") + " | Aventrix Realty";
   const description = property.short_description || property.location || "View this property listing on Aventrix Realty.";
-  let image = property.featured_image || (Array.isArray(property.images) ? property.images[0] : "");
-  if (image && !/^https?:\/\//i.test(image)) {
-    image = new URL(image.replace(/^\//, ""), new URL(request.url).origin + "/").toString();
+  // Prefer the listing's featured image; otherwise use its first gallery image.
+  // Gallery entries may be plain URLs or objects such as { url }, { src } or { path }.
+  let image = property.featured_image || "";
+  if (!image && Array.isArray(property.images) && property.images.length) {
+    const first = property.images[0];
+    image = typeof first === "string" ? first : first && (first.url || first.src || first.path) || "";
+  }
+  try {
+    if (image && !/^https?:\/\//i.test(image)) {
+      image = new URL(String(image).replace(/^\//, ""), new URL(request.url).origin + "/").toString();
+    }
+  } catch (_) {
+    image = "";
   }
   if (!image) image = "https://aventrixrealty.com/images/og/aventrix-logo-og.jpg";
 
