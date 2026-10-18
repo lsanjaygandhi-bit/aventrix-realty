@@ -30,9 +30,9 @@
 .pm-select{ border:1px solid #cfd8d2; border-radius:8px; padding:8px 10px; font:inherit; font-size:13px; background:#fff; color:#111827; }
 .pm-count{ font-size:13px; color:#6b7280; margin:0 0 14px; }
 @media (max-width:768px){
-  .pm-chips{ flex-wrap:nowrap; overflow-x:auto; padding-bottom:4px; scrollbar-width:none; width:100%; }
-  .pm-chips::-webkit-scrollbar{ display:none; }
-  .pm-chip{ flex:0 0 auto; }
+  /* Keep every filter visible without horizontal swiping. */
+  .pm-chips{ display:flex; flex-wrap:wrap; overflow:visible; padding-bottom:4px; width:100%; gap:7px; }
+  .pm-chip{ flex:0 1 auto; max-width:100%; white-space:normal; overflow-wrap:anywhere; padding:8px 10px; font-size:12px; }
 }
 
 /* ---------- Feed entries ---------- */
@@ -118,7 +118,7 @@
 .pm-figure svg{ display:block; width:100%; height:auto; }
 .pm-figure figcaption{ margin-top:8px; font-size:13px; color:#6b7280; line-height:1.55; }
 .pm-table-wrap{ overflow-x:auto; border:1px solid rgba(17,24,39,.08); border-radius:12px; }
-.pm-table{ width:100%; min-width:560px; border-collapse:collapse; font-size:13px; background:#fff; }
+.pm-table{ width:100%; min-width:0; border-collapse:collapse; table-layout:fixed; font-size:13px; background:#fff; }
 .pm-table-wrap{ -webkit-overflow-scrolling:touch; }
 .pm-table th,.pm-table td{ padding:10px 12px; border-bottom:1px solid #edf0ee; text-align:left; vertical-align:top; }
 .pm-table th{ background:#f6f9f7; color:#0F3B2E; font-weight:700; white-space:nowrap; }
@@ -139,10 +139,10 @@
 .pm-subnav-back{ margin-left:auto; font-size:13px; color:#6b7280; }
 .pm-subnav-back a{ padding:0; border:0; background:none; text-decoration:underline; text-underline-offset:3px; font-weight:600; }
 @media (max-width:768px){
-  .pm-subnav{ flex-wrap:nowrap; overflow-x:auto; padding-bottom:6px; scrollbar-width:none; }
-  .pm-subnav::-webkit-scrollbar{ display:none; }
-  .pm-subnav a{ flex:0 0 auto; }
-  .pm-subnav-back{ flex:0 0 auto; margin-left:6px; }
+  /* Wrap Ramsar navigation into visible rows instead of forcing sideways scrolling. */
+  .pm-subnav{ width:calc(100% - 28px); max-width:100%; flex-wrap:wrap; overflow:visible; padding-bottom:6px; gap:7px; }
+  .pm-subnav a{ flex:0 1 auto; max-width:100%; white-space:normal; overflow-wrap:anywhere; font-size:12px; padding:7px 9px; }
+  .pm-subnav-back{ flex:1 1 100%; margin-left:0; line-height:1.5; }
 }
 /* ---------- Label legend ---------- */
 .pm-legend{ display:flex; flex-wrap:wrap; gap:6px 8px; margin:0 0 16px; font-size:12px; }
@@ -163,3 +163,15 @@
 .pm-map-figure--world img{max-height:430px;object-fit:contain;background:#eef5f8}
 .pm-map-figure figcaption{margin:10px 2px 0;color:#4b5563;font-size:13px;line-height:1.55}
 @media(max-width:640px){.pm-map-figure{padding:8px;margin:18px 0 22px}.pm-map-figure--world img{max-height:280px}}
+
+
+/* Mobile: Ramsar tables must fit the viewport; no sideways table dragging. */
+@media (max-width: 640px) {
+  .pm-table-wrap { overflow-x:visible; max-width:100%; }
+  .pm-table { width:100%; min-width:0; table-layout:fixed; font-size:11px; }
+  .pm-table th, .pm-table td { padding:7px 5px; white-space:normal; overflow-wrap:anywhere; word-break:normal; }
+  .pm-table th { font-size:10px; }
+  .pm-table td a { overflow-wrap:anywhere; word-break:break-word; }
+  .pm-strip { gap:8px 12px; padding:12px; font-size:12px; }
+  .pm-entry { min-width:0; max-width:100%; }
+}
