@@ -7,7 +7,6 @@
   if (!root || root.dataset.enabled !== "true") return;
 
   const endpoint = root.dataset.endpoint;
-  launcher.hidden = false;
   const launcher = root.querySelector(".avx-ai-launcher");
   const panel = root.querySelector(".avx-ai-panel");
   const close = root.querySelector(".avx-ai-close");
@@ -17,6 +16,9 @@
   const messages = root.querySelector(".avx-ai-messages");
   const status = root.querySelector(".avx-ai-status");
   const suggestions = root.querySelector(".avx-ai-suggestions");
+
+  if (!endpoint || !launcher || !panel || !close || !form || !input || !send || !messages || !status || !suggestions) return;
+  launcher.hidden = false;
   let busy = false;
 
   function addMessage(text, role, properties) {
@@ -98,7 +100,7 @@
       const data = await response.json().catch(() => ({}));
       if (!response.ok) throw new Error(data.error || "The assistant is temporarily unavailable.");
       addMessage(String(data.answer || "I could not find a suitable answer. Please try another question."), "assistant", data.properties);
-    } catch (error) {
+    } catch {
       addMessage("Sorry, I couldn't complete that search right now. Please use the Property Search page or contact Aventrix Realty directly.", "assistant");
     } finally {
       setBusy(false);
