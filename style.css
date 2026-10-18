@@ -8934,3 +8934,47 @@ img, video, canvas, svg { max-width: 100%; }
   pre, code { overflow-wrap: anywhere; }
   table { max-width: 100%; }
 }
+
+
+/* Mobile typography refinement: natural left alignment avoids stretched word gaps. */
+@media (max-width: 768px) {
+  /* Ramsar update cards and guide content */
+  .pm-entry > p,
+  .pm-entry .pm-change dd,
+  .pm-entry .pm-flags li,
+  .pm-layout p,
+  .pm-guide-section p,
+  .pm-content p,
+  .pm-update-section p {
+    text-align: left !important;
+    text-align-last: auto !important;
+    text-justify: auto !important;
+    word-spacing: normal !important;
+    letter-spacing: normal;
+    overflow-wrap: break-word;
+    line-height: 1.65;
+  }
+
+  /* Homepage founder / leadership descriptions */
+  .leader-row-content,
+  .leader-row-content p,
+  .about-content p,
+  .about-split-copy p,
+  .legacy-text p,
+  .about-statement p {
+    text-align: left !important;
+    text-align-last: auto !important;
+    text-justify: auto !important;
+    word-spacing: normal !important;
+    letter-spacing: normal;
+    overflow-wrap: break-word;
+    line-height: 1.65;
+  }
+
+  .leader-row-content p {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
