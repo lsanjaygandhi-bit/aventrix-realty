@@ -9007,3 +9007,15 @@ img, video, canvas, svg { max-width: 100%; }
 .section-scroll-indicator,
 html.is-mobile .section-scroll-indicator,
 .ssi-segment { display:none !important; }
+
+/* Center the homepage leadership profile CTA buttons on mobile. */
+@media (max-width: 768px) {
+  html.is-mobile .leadership-rows .leader-row-content .leader-cta {
+    display: table;
+    width: fit-content;
+    max-width: 100%;
+    margin: 4px auto 0;
+    box-sizing: border-box;
+    text-align: center;
+  }
+}
