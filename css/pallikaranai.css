@@ -180,3 +180,6 @@
 .pm-change div.pm-not{background:#fff8e5;border-left:3px solid #D4AF37;padding:10px 12px;}
 .pm-change div.pm-not dt{color:#6b5a1e;}
 .pm-legend{display:none !important;}
+
+/* Removed the "What changed / What did not change" comparison panels from public Ramsar pages. */
+.pm-change { display:none !important; }
