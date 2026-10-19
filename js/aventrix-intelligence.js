@@ -10,7 +10,7 @@
 (function () {
   "use strict";
   const sb = window.supabaseClient;
-  if (!sb || window.__aventrixIntelligenceStarted) return;
+  if (!sb || window.__aventrixIntelligenceStarted || String(window.location.pathname || "").startsWith("/admin/")) return;
   window.__aventrixIntelligenceStarted = true;
 
   const VISITOR_KEY = "aventrix:visitorKey";
