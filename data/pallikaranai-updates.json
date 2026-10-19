@@ -17,15 +17,15 @@
     "buyers": "Property Buyer Guidance"
   },
   "legal_status_labels": {
-    "court_order": "Court / tribunal order",
-    "court_proceeding": "Court proceeding — no decision",
-    "court_submission": "Submission to court — not an order",
-    "official_notification": "Official notification / order",
-    "proposal": "Proposal — not in force",
+    "court_order": "Court order",
+    "court_proceeding": "Court proceedings",
+    "court_submission": "Court submission",
+    "official_notification": "Official notification",
+    "proposal": "Proposal",
     "interim_arrangement": "Interim arrangement",
-    "final_decision": "Final judicial decision",
+    "final_decision": "Final decision",
     "administrative_action": "Administrative action",
-    "statement": "Public statement — no legal effect",
+    "statement": "Public statement",
     "unverified_claim": "Unverified claim"
   },
   "verification_labels": {
