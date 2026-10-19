@@ -51,7 +51,8 @@ Anonymous visitors cannot be identified by real name unless they submit identify
 - Confirmed the connected Supabase schema contains the existing `public.is_admin()`, `public.is_staff()`, and `public.app_role()` functions.
 - Confirmed `public.properties.slug` and `public.properties.publish_status` exist, and the current published literal is `Published`.
 - Confirmed these checks using read-only SQL queries only. No Supabase schema, policy, data, or configuration was changed.
-- Admin-only registered-user table now includes customer phone from `customer_profiles` alongside Auth email and profile name. Missing phone values display as a dash; existing accounts are not backfilled or guessed.
+- Admin-only registered-user table includes phone from `customer_profiles`, falling back to phone explicitly provided in Supabase Auth signup metadata; existing accounts without either value remain blank.
+- Customer signup asks for a mobile number and stores it in Supabase Auth user metadata so it is available before email-confirmation/login; the customer can later manage profile details through the existing profile page.
 
 
 ## Existing project security baseline (read-only advisory check, 2026-10-19)
