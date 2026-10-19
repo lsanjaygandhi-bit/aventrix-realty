@@ -102,8 +102,13 @@
         e.preventDefault();
         clearMessage();
         const name = document.getElementById("signupName").value.trim();
+        const phone = document.getElementById("signupPhone").value.trim();
         const email = document.getElementById("signupEmail").value.trim();
         const password = document.getElementById("signupPassword").value;
+        if (!/^[+0-9][0-9 +()\\-]{7,18}$/.test(phone)) {
+            showMessage("Please enter a valid mobile number, including country code if applicable.", "error");
+            return;
+        }
         const confirmPassword = document.getElementById("signupPasswordConfirm").value;
 
         if (password !== confirmPassword) {
@@ -120,7 +125,7 @@
             email,
             password,
             options: {
-                data: { full_name: name },
+                data: { full_name: name, phone },
                 emailRedirectTo: window.location.origin + "/account.html"
             }
         });
