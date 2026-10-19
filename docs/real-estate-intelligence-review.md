@@ -70,7 +70,7 @@ These are baseline findings for the project owner to review separately. This PR 
 ## Before merge/deployment
 
 1. Run the read-only preflight queries in `sql/verify-real-estate-intelligence.sql` against staging, then review the SQL proposal and run it only in a non-production Supabase project first.
-2. Add/verify Cloudflare edge rate limiting or a trusted ingestion endpoint. The database function has soft per-visitor event and new-session caps, including heartbeats. These are defence-in-depth only: a public RPC cannot reliably stop an attacker who rotates visitor/session keys, so Cloudflare edge rate limiting or a trusted ingestion endpoint remains required.
+2. Add/verify Cloudflare edge rate limiting or a trusted ingestion endpoint. The database function has soft per-visitor event and new-session caps, including heartbeats, with a composite `(visitor_key, last_seen_at)` index to support the session cap efficiently. Login event validation explicitly rejects null event types. These are defence-in-depth only: a public RPC cannot reliably stop an attacker who rotates visitor/session keys, so Cloudflare edge rate limiting or a trusted ingestion endpoint remains required.
 3. Verify all public routes load the shared Supabase client and do not count staff/admin traffic. Check the heartbeat survives browser back-forward cache restoration.
 4. Test anonymous, customer, realtor, and admin access separately; verify RLS denies non-admin reads of analytics, login history, and user lists.
 5. Test mobile Safari and Chrome, blocked storage, tab restore, heartbeat expiry, and failed RPCs. Analytics failure must never break login, enquiries, or page rendering.
