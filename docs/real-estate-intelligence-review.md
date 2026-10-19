@@ -20,6 +20,7 @@ GitHub repository → Cloudflare Pages/Workers → Supabase Auth/Postgres. The w
 
 - `sql/proposal-2026-10-19-real-estate-intelligence.sql` — proposed additive tables, functions, grants, and RLS.
 - `sql/verify-real-estate-intelligence.sql` — read-only preflight/postflight checks for dependencies, RLS, policies, and function grants.
+- `docs/real-estate-intelligence-staging-test-plan.md` — 24-case acceptance matrix and security go/no-go criteria.
 - `js/aventrix-intelligence.js` — visitor/session/page activity client, including heartbeat restart after browser tab restoration.
 - `admin/js/intelligence.js` — admin-only dashboard module with property performance and CRM summary tabs using explicit admin-checked RPCs.
 - `privacy-policy.html` — privacy disclosure update for the proposed analytics feature.
@@ -41,7 +42,7 @@ Anonymous visitors cannot be identified by real name unless they submit identify
 
 ## Read-only review performed
 
-- Inspected all 39 top-level public HTML pages in the feature branch; each includes the shared Supabase client, which is the loader point for the site-wide analytics script. This is source coverage, not browser/runtime verification.
+- Inspected all 39 top-level public HTML pages in the feature branch; each includes the shared Supabase client, which is the loader point for the site-wide analytics script. This is source coverage only; browser/runtime verification is still pending.
 - Added Property Performance and Lead & CRM Summary tabs, backed by explicit admin-checked RPCs over existing aggregate views; the original property events and CRM records are not duplicated.
 - Fixed the live heartbeat lifecycle so it restarts when a page is restored from the browser back-forward cache.
 - Updated `privacy-policy.html` to describe pseudonymous site activity, account-associated activity when signed in, and the new analytics purposes.
@@ -62,7 +63,7 @@ Anonymous visitors cannot be identified by real name unless they submit identify
 
 ## Known limitations in this draft
 
-- Visitor tracking only starts on pages that load `js/supabase-client.js`; full route coverage must be verified.
+- Visitor tracking source coverage was checked across all 39 top-level public HTML pages; runtime loading and behavior still need browser verification.
 - Page views are de-duplicated per tab session and pathname; repeated refreshes of the same path in one tab are not counted repeatedly.
 - Registered-user listing is capped at the latest 500 accounts.
 - Login/logout history starts after rollout; it is not the complete Supabase Auth audit log.
