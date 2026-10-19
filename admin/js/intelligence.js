@@ -46,8 +46,8 @@
     const today = new Date(); today.setHours(0, 0, 0, 0);
     const todayViews = events.filter(e => e.event_type === "page_view" && new Date(e.created_at) >= today).length;
     const set = (id, value) => { if (el(id)) el(id).textContent = String(value); };
-    set("intelLiveCount", live.length);
-    set("intelPageViews", todayViews);
+    set("intelLiveCount", window.__aventrixIntelCounts ? window.__aventrixIntelCounts.live : live.length);
+    set("intelPageViews", window.__aventrixIntelCounts ? window.__aventrixIntelCounts.viewsToday : todayViews);
     set("intelRegisteredCount", users.length);
     set("intelLoginCount", logins.filter(x => x.event_type === "login").length);
     set("intelUpdatedAt", "Updated " + new Date().toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit", second: "2-digit" }));
@@ -81,18 +81,23 @@
   async function loadData() {
     const sb = window.supabaseClient;
     if (!sb) throw new Error("Supabase client is unavailable.");
-    const [sessionResult, eventResult, userResult, loginResult] = await Promise.all([
+    const today = new Date(); today.setHours(0, 0, 0, 0);
+    const [sessionResult, eventResult, userResult, loginResult, liveCountResult, viewsTodayResult] = await Promise.all([
       sb.from("site_visitor_sessions").select("session_key,visitor_key,user_id,current_path,started_at,last_seen_at").order("last_seen_at", { ascending: false }).limit(500),
       sb.from("site_analytics_events").select("id,session_key,user_id,event_type,page_path,property_slug,created_at").order("created_at", { ascending: false }).limit(500),
       sb.rpc("admin_intelligence_users", { p_limit: 500 }),
-      sb.from("user_login_history").select("user_id,event_type,created_at").order("created_at", { ascending: false }).limit(500)
+      sb.from("user_login_history").select("user_id,event_type,created_at").order("created_at", { ascending: false }).limit(500),
+      sb.from("site_visitor_sessions").select("session_key", { count: "exact", head: true }).gte("last_seen_at", new Date(Date.now() - 120000).toISOString()),
+      sb.from("site_analytics_events").select("id", { count: "exact", head: true }).eq("event_type", "page_view").gte("created_at", today.toISOString())
     ]);
-    const error = sessionResult.error || eventResult.error || userResult.error || loginResult.error;
+    const error = sessionResult.error || eventResult.error || userResult.error || loginResult.error || liveCountResult.error || viewsTodayResult.error;
     if (error) throw error;
     sessions = sessionResult.data || [];
     events = eventResult.data || [];
     users = userResult.data || [];
     logins = loginResult.data || [];
+    // Exact totals come from count queries; the tables remain capped for responsive UI.
+    window.__aventrixIntelCounts = { live: liveCountResult.count || 0, viewsToday: viewsTodayResult.count || 0 };
     renderStats();
     renderTable();
     if (el("intelStatus")) el("intelStatus").textContent = "Live sessions expire after 2 minutes without a heartbeat.";
