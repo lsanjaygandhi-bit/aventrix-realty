@@ -16,6 +16,7 @@ const AdminAuth = {
     },
 
     async logout() {
+        try { await window.supabaseClient.rpc("record_login_activity", { p_event_type: "logout" }); } catch (_) {}
         await window.supabaseClient.auth.signOut();
         window.location.href = "index.html";
     },
@@ -105,6 +106,7 @@ const AdminAuth = {
             return;
         }
 
+        try { await window.supabaseClient.rpc("record_login_activity", { p_event_type: "login" }); } catch (_) {}
         window.location.href = "dashboard.html";
     });
 })();
