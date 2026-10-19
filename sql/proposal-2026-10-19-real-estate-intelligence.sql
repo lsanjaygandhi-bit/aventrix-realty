@@ -102,12 +102,19 @@ declare
 begin
   if p_visitor_key is null or length(p_visitor_key) < 8 or length(p_visitor_key) > 80 then return; end if;
   if p_session_key is null or length(p_session_key) < 16 or length(p_session_key) > 80 then return; end if;
-  if p_event_type not in ('page_view', 'heartbeat', 'enquiry_submit') then return; end if;
+  if p_event_type is null or p_event_type not in ('page_view', 'heartbeat', 'enquiry_submit') then return; end if;
 
-  -- Keep only the path; query strings can contain private or identifying information.
-  v_path := left(coalesce(nullif(trim(p_page_path), ''), '/'), 300);
+  -- Enforce path-only storage server-side too; query strings can contain private data.
+  v_path := left(split_part(split_part(coalesce(nullif(trim(p_page_path), ''), '/'), '?', 1), '#', 1), 300);
   if left(v_path, 1) <> '/' or v_path like '%://%' then return; end if;
   if public.is_staff() then return; end if;
+
+  if p_event_type in ('page_view', 'enquiry_submit') and (
+      select count(*) from public.site_analytics_events e
+      where e.visitor_key = p_visitor_key and e.created_at > now() - interval '1 minute'
+    ) >= 30 then
+    return;
+  end if;
 
   v_slug := nullif(left(coalesce(trim(p_property_slug), ''), 180), '');
 
