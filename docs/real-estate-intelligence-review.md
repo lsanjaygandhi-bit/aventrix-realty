@@ -19,6 +19,7 @@ GitHub repository → Cloudflare Pages/Workers → Supabase Auth/Postgres. The w
 ## Files added
 
 - `sql/proposal-2026-10-19-real-estate-intelligence.sql` — proposed additive tables, functions, grants, and RLS.
+- `sql/verify-real-estate-intelligence.sql` — read-only preflight/postflight checks for dependencies, RLS, policies, and function grants.
 - `js/aventrix-intelligence.js` — visitor/session/page activity client.
 - `admin/js/intelligence.js` — admin-only dashboard module.
 
@@ -37,9 +38,16 @@ The client sends a random browser key, a random tab/session key, an event type, 
 
 Anonymous visitors cannot be identified by real name unless they submit identifying information or sign in. Login history begins after deployment; it does not backfill historical events. Live visitor count is an estimate and can remain stale until the 2-minute expiry.
 
+## Read-only review performed
+
+- Confirmed the connected Supabase schema contains the existing `public.is_admin()`, `public.is_staff()`, and `public.app_role()` functions.
+- Confirmed `public.properties.slug` and `public.properties.publish_status` exist, and the current published literal is `Published`.
+- Confirmed these checks using read-only SQL queries only. No Supabase schema, policy, data, or configuration was changed.
+- Removed phone number from the proposed admin user-list RPC output because the dashboard does not need it.
+
 ## Before merge/deployment
 
-1. Review the SQL proposal and run it only in a non-production Supabase project first.
+1. Run the read-only preflight queries in `sql/verify-real-estate-intelligence.sql` against staging, then review the SQL proposal and run it only in a non-production Supabase project first.
 2. Add/verify Cloudflare edge rate limiting or a trusted ingestion endpoint. The database function has a soft per-visitor event cap, but a public RPC cannot reliably stop an attacker who rotates visitor/session keys.
 3. Verify all public routes load the shared Supabase client and do not count staff/admin traffic.
 4. Test anonymous, customer, realtor, and admin access separately; verify RLS denies non-admin reads of analytics, login history, and user lists.
