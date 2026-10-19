@@ -183,3 +183,36 @@
 
 /* Removed the "What changed / What did not change" comparison panels from public Ramsar pages. */
 .pm-change { display:none !important; }
+
+/* Mobile alignment fix for disclaimer sections shared by both Ramsar pages. */
+.pm-page > .pm-disclaimer {
+  display: block;
+  box-sizing: border-box;
+  width: min(1100px, calc(100% - 32px));
+  max-width: 100%;
+  margin: 28px auto 32px;
+  padding: 18px 16px;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+.pm-page > .pm-disclaimer h2 {
+  margin: 0 0 10px;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+.pm-page > .pm-disclaimer p {
+  margin: 0 0 12px;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+.pm-page > .pm-disclaimer p:last-child { margin-bottom: 0; }
+.pm-page { overflow-x: clip; }
+@media (max-width: 640px) {
+  .pm-page > .pm-disclaimer {
+    width: calc(100% - 32px);
+    margin: 22px auto 26px;
+    padding: 16px 14px;
+  }
+  .pm-page > .pm-disclaimer h2 { font-size: 20px; }
+  .pm-page > .pm-disclaimer p { font-size: 13px; }
+}
