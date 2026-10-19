@@ -52,8 +52,10 @@
   }
 
   function propertySlug() {
-    if (!/\/property\.html$/i.test(window.location.pathname)) return null;
-    const raw = new URLSearchParams(window.location.search).get("id");
+    const params = new URLSearchParams(window.location.search);
+    let raw = null;
+    if (/\/property\.html$/i.test(window.location.pathname)) raw = params.get("id");
+    else if (/\/enquiry\.html$/i.test(window.location.pathname)) raw = params.get("property");
     return raw && /^[a-zA-Z0-9-]{1,180}$/.test(raw) ? raw : null;
   }
 
