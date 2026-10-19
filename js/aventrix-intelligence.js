@@ -87,16 +87,26 @@
   }
 
   send("page_view", true);
-  const heartbeat = window.setInterval(() => {
-    if (document.visibilityState === "visible") send("heartbeat", false);
-  }, HEARTBEAT_MS);
+  let heartbeatTimer = null;
+  function startHeartbeat() {
+    if (heartbeatTimer !== null) window.clearInterval(heartbeatTimer);
+    heartbeatTimer = window.setInterval(() => {
+      if (document.visibilityState === "visible") send("heartbeat", false);
+    }, HEARTBEAT_MS);
+  }
+  function stopHeartbeat() {
+    if (heartbeatTimer !== null) window.clearInterval(heartbeatTimer);
+    heartbeatTimer = null;
+  }
+  startHeartbeat();
 
   document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "visible") send("heartbeat", true);
   });
   window.addEventListener("pagehide", () => {
-    // A final heartbeat is best-effort; live counts also expire automatically.
+    // Best-effort final heartbeat; stop timers while the page is in the back-forward cache.
     send("heartbeat", true);
+    stopHeartbeat();
   });
 
   window.addEventListener("aventrix:enquiry-submitted", () => send("enquiry_submit", true));
@@ -115,9 +125,10 @@
     }
   };
 
-  // Avoid keeping an unnecessary interval in prerendered/hidden documents.
-  window.addEventListener("pagehide", () => { try { window.clearInterval(heartbeat); } catch (_) {} });
+  // Browsers may restore this page from the back-forward cache. Restart the
+  // timer so restored tabs continue to count as live after the initial heartbeat.
   window.addEventListener("pageshow", () => {
+    startHeartbeat();
     send("heartbeat", true);
   });
 })();
