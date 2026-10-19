@@ -28,23 +28,30 @@ async function propertyShareResponse(request, slug, redirectToProperty = true) {
     });
   }
 
-  const endpoint = new URL(SUPABASE_URL + "/rest/v1/properties");
-  endpoint.searchParams.set("select", "*");
-  endpoint.searchParams.set("slug", "eq." + slug);
-  endpoint.searchParams.set("publish_status", "eq.Published");
-  endpoint.searchParams.set("limit", "1");
+  const headers = {
+    apikey: SUPABASE_ANON_KEY,
+    Authorization: "Bearer " + SUPABASE_ANON_KEY
+  };
 
-  let property;
+  // Shared property URLs have historically used the listing ID in
+  // property.html?id=..., while newer URLs may use a slug. Try both.
+  let property = null;
   try {
-    const response = await fetch(endpoint.toString(), {
-      headers: {
-        apikey: SUPABASE_ANON_KEY,
-        Authorization: "Bearer " + SUPABASE_ANON_KEY
+    for (const field of ["slug", "id"]) {
+      const endpoint = new URL(SUPABASE_URL + "/rest/v1/properties");
+      endpoint.searchParams.set("select", "*");
+      endpoint.searchParams.set(field, "eq." + slug);
+      endpoint.searchParams.set("publish_status", "eq.Published");
+      endpoint.searchParams.set("limit", "1");
+      const response = await fetch(endpoint.toString(), { headers });
+      if (!response.ok) {
+        // If a schema does not expose one of the lookup fields, try the other.
+        continue;
       }
-    });
-    if (!response.ok) throw new Error("Property lookup failed: " + response.status);
-    const rows = await response.json();
-    property = Array.isArray(rows) ? rows[0] : null;
+      const rows = await response.json();
+      property = Array.isArray(rows) ? rows[0] : null;
+      if (property) break;
+    }
   } catch (_) {
     return new Response("Unable to load property. Please open the listing directly.", {
       status: 503,
