@@ -6,7 +6,7 @@
   const root = document.getElementById("avxAiAssistant");
   if (!root || root.dataset.enabled !== "true") return;
 
-  const endpoint = root.dataset.endpoint || "https://gkrtjeygrqkglsadskcg.supabase.co/functions/v1/ai-property-assistant";
+  const endpoint = root.dataset.endpoint || "https://gkrtjeygrqkglsadskcg.supabase.co/functions/v1/free-property-search";
   // Touch devices: don't pop the keyboard automatically (it pushes the panel off-screen on iOS).
   const isTouch = document.documentElement.classList.contains("is-mobile");
   const launcher = root.querySelector(".avx-ai-launcher");
