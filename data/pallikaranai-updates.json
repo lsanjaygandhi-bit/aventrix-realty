@@ -578,10 +578,10 @@
   },
   "homepage_window_days": 45,
   "dates": {
-    "coverage_start": "2026-08-18",
-    "page_published": null,
+    "coverage_start": "2026-09-01",
+    "page_published": "2026-09-01",
     "last_substantive_update": "2026-10-18",
-    "last_source_verification": "2026-10-18",
+    "last_source_verification": "2026-10-19",
     "notes": "coverage_start is the start of the research window, not a creation date. page_published stays null until the page is actually deployed; set it to the deploy date then. last_substantive_update changes only when content changes; last_source_verification when sources are re-checked."
   },
   "tier_labels": {
