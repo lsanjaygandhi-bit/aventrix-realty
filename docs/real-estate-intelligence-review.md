@@ -43,6 +43,8 @@ Anonymous visitors cannot be identified by real name unless they submit identify
 ## Read-only review performed
 
 - Inspected all 39 top-level public HTML pages in the feature branch; each includes the shared Supabase client, which is the loader point for the site-wide analytics script. This is source coverage only; browser/runtime verification is still pending.
+- Re-ran JavaScript syntax parsing with `new Function` on all seven changed JavaScript files (`admin/js/auth.js`, `admin/js/dashboard-app.js`, `admin/js/intelligence.js`, `js/account-auth.js`, `js/aventrix-intelligence.js`, `js/enquiry-supabase.js`, and `js/supabase-client.js`); all seven passed syntax parsing. This is not a browser/runtime test.
+- Checked the Website Intelligence dashboard markup against the module's required status/table element IDs; both required IDs exist, all six tab identifiers are present, and the module script is included after the shared Supabase client. Browser behaviour and database RPCs remain untested.
 - Added Property Performance and Lead & CRM Summary tabs, backed by explicit admin-checked RPCs over existing aggregate views; the original property events and CRM records are not duplicated.
 - Fixed the live heartbeat lifecycle so it restarts when a page is restored from the browser back-forward cache.
 - Updated `privacy-policy.html` to describe pseudonymous site activity, account-associated activity when signed in, and the new analytics purposes.
