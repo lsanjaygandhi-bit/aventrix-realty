@@ -662,7 +662,7 @@ window.initFaqAccordion = initFaqAccordion;
         // Do not add a second assistant script if the page already has one.
         if (!document.querySelector('script[src*="js/ai-property-assistant.js"]')) {
             const js = document.createElement("script");
-            js.src = "/js/ai-property-assistant.js?v=20261019-free1";
+            js.src = "/js/ai-property-assistant.js?v=20261019-free2";
             js.defer = true;
             document.body.appendChild(js);
         }
