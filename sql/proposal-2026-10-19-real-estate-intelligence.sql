@@ -22,6 +22,9 @@ create index if not exists idx_site_visitor_sessions_last_seen
   on public.site_visitor_sessions (last_seen_at desc);
 create index if not exists idx_site_visitor_sessions_user
   on public.site_visitor_sessions (user_id, last_seen_at desc);
+-- Supports the soft per-visitor session-creation cap without scanning all sessions.
+create index if not exists idx_site_visitor_sessions_visitor_seen
+  on public.site_visitor_sessions (visitor_key, last_seen_at desc);
 
 create table if not exists public.site_analytics_events (
   id bigint generated always as identity primary key,
@@ -185,7 +188,7 @@ set search_path = public
 as $function$
 begin
   if auth.uid() is null then raise exception 'Authentication required'; end if;
-  if p_event_type not in ('login', 'logout') then raise exception 'Unsupported event'; end if;
+  if p_event_type is null or p_event_type not in ('login', 'logout') then raise exception 'Unsupported event'; end if;
   insert into public.user_login_history(user_id, event_type) values (auth.uid(), p_event_type);
 end;
 $function$;
