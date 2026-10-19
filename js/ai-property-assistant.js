@@ -109,7 +109,7 @@
       if (!response.ok) throw new Error(data.error || "The assistant is temporarily unavailable.");
       addMessage(String(data.answer || "I could not find a suitable answer. Please try another question."), "assistant", data.properties);
     } catch {
-      addMessage("Sorry, the AI assistant is temporarily unavailable. Please try again shortly or contact Aventrix Realty directly.", "assistant");
+      addMessage("Sorry, free property search is temporarily unavailable. Please try again shortly or contact Aventrix Realty directly.", "assistant");
     } finally {
       setBusy(false);
       if (!panel.hidden && !isTouch) input.focus();
