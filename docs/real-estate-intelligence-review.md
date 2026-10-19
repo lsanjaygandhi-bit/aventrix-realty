@@ -22,6 +22,7 @@ GitHub repository → Cloudflare Pages/Workers → Supabase Auth/Postgres. The w
 - `sql/verify-real-estate-intelligence.sql` — read-only preflight/postflight checks for dependencies, RLS, policies, and function grants.
 - `js/aventrix-intelligence.js` — visitor/session/page activity client, including heartbeat restart after browser tab restoration.
 - `admin/js/intelligence.js` — admin-only dashboard module with property performance and CRM summary tabs using explicit admin-checked RPCs.
+- `privacy-policy.html` — privacy disclosure update for the proposed analytics feature.
 
 ## Files changed
 
@@ -40,6 +41,10 @@ Anonymous visitors cannot be identified by real name unless they submit identify
 
 ## Read-only review performed
 
+- Inspected all 39 top-level public HTML pages in the feature branch; each includes the shared Supabase client, which is the loader point for the site-wide analytics script. This is source coverage, not browser/runtime verification.
+- Added Property Performance and Lead & CRM Summary tabs, backed by explicit admin-checked RPCs over existing aggregate views; the original property events and CRM records are not duplicated.
+- Fixed the live heartbeat lifecycle so it restarts when a page is restored from the browser back-forward cache.
+- Updated `privacy-policy.html` to describe pseudonymous site activity, account-associated activity when signed in, and the new analytics purposes.
 - Confirmed the connected Supabase schema contains the existing `public.is_admin()`, `public.is_staff()`, and `public.app_role()` functions.
 - Confirmed `public.properties.slug` and `public.properties.publish_status` exist, and the current published literal is `Published`.
 - Confirmed these checks using read-only SQL queries only. No Supabase schema, policy, data, or configuration was changed.
