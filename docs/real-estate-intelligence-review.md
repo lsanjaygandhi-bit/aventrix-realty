@@ -51,6 +51,20 @@ Anonymous visitors cannot be identified by real name unless they submit identify
 - Confirmed these checks using read-only SQL queries only. No Supabase schema, policy, data, or configuration was changed.
 - Removed phone number from the proposed admin user-list RPC output because the dashboard does not need it.
 
+
+## Existing project security baseline (read-only advisory check, 2026-10-19)
+
+The connected Supabase project currently has **no development branches**, so staging SQL/browser validation cannot be performed there yet without creating a separate branch or project. No branch was created because development branches may incur charges and need cost confirmation.
+
+The Supabase security advisor also reports pre-existing project-level findings. These are not caused by this draft and were not changed as part of this work:
+
+- Two existing SECURITY DEFINER views: `public.crm_dashboard` and `public.crm_dashboard_v2`.
+- Four existing functions with mutable search paths: `public.set_property_code`, `public.set_updated_at`, `public.enforce_notification_read_only_update`, and `public.enforce_site_visit_customer_cancel_only`.
+- Six existing SECURITY DEFINER functions executable by anon/authenticated roles, including `app_role()`, `is_admin()`, `is_staff()`, `protect_last_admin()`, `staff_directory()`, and `track_property_event(...)`. Their intended exposure must be reviewed individually; do not blindly revoke grants because current website flows may depend on them.
+- Supabase Auth leaked-password protection is disabled.
+
+These are baseline findings for the project owner to review separately. This PR does not modify those existing objects. The new admin intelligence RPCs use explicit server-side `public.is_admin()` checks, but still require staging validation and role-by-role tests.
+
 ## Before merge/deployment
 
 1. Run the read-only preflight queries in `sql/verify-real-estate-intelligence.sql` against staging, then review the SQL proposal and run it only in a non-production Supabase project first.
