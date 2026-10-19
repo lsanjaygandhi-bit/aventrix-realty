@@ -9002,3 +9002,8 @@ img, video, canvas, svg { max-width: 100%; }
     hyphens: auto;
   }
 }
+
+/* Removed site-wide: the right-edge section progress dots are no longer needed. */
+.section-scroll-indicator,
+html.is-mobile .section-scroll-indicator,
+.ssi-segment { display:none !important; }
