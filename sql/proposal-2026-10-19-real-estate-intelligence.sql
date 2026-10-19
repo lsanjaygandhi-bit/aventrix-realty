@@ -111,10 +111,26 @@ begin
   if left(v_path, 1) <> '/' or v_path like '%://%' then return; end if;
   if public.is_staff() then return; end if;
 
+  -- Soft per-visitor caps. The event cap limits page/enquiry spam; the
+  -- session cap also covers heartbeats, which do not create event rows.
+  -- These are defence-in-depth only: clients can rotate IDs, so configure
+  -- Cloudflare edge rate limiting before public rollout.
   if p_event_type in ('page_view', 'enquiry_submit') and (
       select count(*) from public.site_analytics_events e
       where e.visitor_key = p_visitor_key and e.created_at > now() - interval '1 minute'
     ) >= 30 then
+    return;
+  end if;
+
+  if (
+      select count(*) from public.site_visitor_sessions s
+      where s.visitor_key = p_visitor_key
+        and s.last_seen_at > now() - interval '1 minute'
+    ) >= 60
+    and not exists (
+      select 1 from public.site_visitor_sessions s
+      where s.session_key = p_session_key and s.visitor_key = p_visitor_key
+    ) then
     return;
   end if;
 
