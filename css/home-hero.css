@@ -1291,3 +1291,34 @@ html.is-mobile .hh-inner {
 html.is-mobile .hh-form {
     width: 100%;
 }
+
+/* Keep the homepage search panel's top and bottom edges perfectly aligned. */
+html.is-mobile .hh-search,
+html:not(.is-mobile) .hh-search {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    border: 1px solid rgba(255,255,255,.30);
+    border-radius: 16px;
+    overflow: hidden;
+}
+html.is-mobile .hh-tabs,
+html:not(.is-mobile) .hh-tabs {
+    display: flex;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    margin: 0;
+    border-radius: 15px 15px 0 0;
+    border: 0;
+    border-bottom: 1px solid rgba(255,255,255,.24);
+}
+html.is-mobile .hh-form,
+html:not(.is-mobile) .hh-form {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+}
