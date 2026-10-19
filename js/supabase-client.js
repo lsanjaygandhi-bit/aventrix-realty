@@ -23,7 +23,7 @@ window.supabaseClient = window.supabase.createClient(
 (function loadAventrixIntelligence() {
     if (window.location.pathname.startsWith("/admin/")) return;
     const script = document.createElement("script");
-    script.src = "/js/aventrix-intelligence.js?v=20261019";
+    script.src = "/js/aventrix-intelligence.js?v=20261019b";
     script.defer = true;
     document.head.appendChild(script);
 })();
