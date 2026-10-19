@@ -91,7 +91,7 @@
         '</tbody></table></div><p class="helper-text">CRM summary is served through an admin-checked RPC. Use the existing Leads & Enquiries section for individual lead details and follow-ups.</p>'
         : '<p class="helper-text">CRM summary is not available.</p>';
     } else {
-      area.innerHTML = events.length ? '<div class="table-wrap"><table class="admin-table"><thead><tr><th>Page</th><th>Visitor</th><th>Property</th><th>Viewed at</th></tr></thead><tbody>'
+      area.innerHTML = events.length ? '<div class="table-wrap"><table class="admin-table"><thead><tr><th>Page</th><th>Visitor</th><th>Property</th><th>Viewed at</th></tr></thead><tbody>' +
         events.filter(x => x.event_type === "page_view").slice(0,100).map(x => '<tr><td><code>' + escapeHtml(x.page_path) + '</code></td><td>' + escapeHtml(userLabel(x.user_id)) + '</td><td>' + escapeHtml(x.property_slug || "—") + '</td><td>' + escapeHtml(dateTime(x.created_at)) + '</td></tr>').join("") +
         '</tbody></table></div>'
         : '<p class="helper-text">No page-view events yet. New events are collected after the migration and script deployment.</p>';
