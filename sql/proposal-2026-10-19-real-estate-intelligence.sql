@@ -204,7 +204,8 @@ returns table (
   registered_at timestamptz,
   last_sign_in_at timestamptz,
   app_role text,
-  full_name text
+  full_name text,
+  phone text
 )
 language plpgsql
 security definer
@@ -214,7 +215,7 @@ begin
   if not public.is_admin() then raise exception 'Admin access required'; end if;
   return query
     select u.id, u.email::text, u.created_at, u.last_sign_in_at,
-           coalesce(ur.role, 'customer')::text, cp.full_name
+           coalesce(ur.role, 'customer')::text, cp.full_name, cp.phone
     from auth.users u
     left join public.user_roles ur on ur.user_id = u.id
     left join public.customer_profiles cp on cp.user_id = u.id
