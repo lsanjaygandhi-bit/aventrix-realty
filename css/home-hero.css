@@ -1267,3 +1267,27 @@ html.is-mobile #homeAppSegments .home-app-recent-empty{
 .hp-open-full-map{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:40px;padding:0 14px;border:1px solid #0f3b2e;border-radius:999px;background:#fff;color:#0f3b2e;font-size:14px;font-weight:600;text-decoration:none}
 .hp-open-full-map:hover{background:#0f3b2e;color:#fff}
 @media(max-width:768px){.hp-open-full-map-wrap{margin:8px 0 12px}.hp-open-full-map{min-height:38px;font-size:13px}}
+
+/* Mobile viewport guard: prevent the homepage hero/search panel from creating a
+   horizontal overflow strip at the right edge on iOS Safari. */
+html.is-mobile,
+html.is-mobile body.home-page {
+    max-width: 100%;
+    overflow-x: clip;
+}
+html.is-mobile .hh-hero,
+html.is-mobile .hh-inner,
+html.is-mobile .hh-search,
+html.is-mobile .hh-form {
+    box-sizing: border-box;
+    max-width: 100%;
+    min-width: 0;
+}
+html.is-mobile .hh-inner {
+    width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+html.is-mobile .hh-form {
+    width: 100%;
+}
