@@ -117,6 +117,12 @@ begin
   end if;
 
   v_slug := nullif(left(coalesce(trim(p_property_slug), ''), 180), '');
+  if v_slug is not null and not exists (
+    select 1 from public.properties p
+    where p.slug = v_slug and p.publish_status = 'Published'
+  ) then
+    v_slug := null;
+  end if;
 
   insert into public.site_visitor_sessions
     (session_key, visitor_key, user_id, current_path, started_at, last_seen_at)
