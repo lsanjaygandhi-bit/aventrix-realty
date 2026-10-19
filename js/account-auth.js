@@ -86,6 +86,9 @@
             return;
         }
 
+        // Best-effort audit event; a missing migration must never block login.
+        try { await sb.rpc("record_login_activity", { p_event_type: "login" }); } catch (_) {}
+
         // Logged in successfully. Wishlist/Shortlist/Recently Viewed
         // still run on localStorage at this stage — that migration is
         // a separate step, not part of this one.
@@ -222,6 +225,8 @@
     // ---------------------------------------------------------
     if (signOutBtn) {
         signOutBtn.addEventListener("click", async () => {
+            // Record before clearing the session; analytics must not block sign-out.
+            try { await sb.rpc("record_login_activity", { p_event_type: "logout" }); } catch (_) {}
             await sb.auth.signOut();
             window.location.reload();
         });
