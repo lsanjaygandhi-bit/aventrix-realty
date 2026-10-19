@@ -20,7 +20,7 @@ function absoluteImage(value, requestUrl) {
   }
 }
 
-async function propertyShareResponse(request, slug) {
+async function propertyShareResponse(request, slug, redirectToProperty = true) {
   if (!slug || !/^[a-zA-Z0-9-]+$/.test(slug)) {
     return new Response("Property not found", {
       status: 404,
@@ -95,8 +95,7 @@ async function propertyShareResponse(request, slug) {
 <meta name="twitter:title" content="${safeTitle}">
 <meta name="twitter:description" content="${safeDescription}">
 <meta name="twitter:image" content="${safeImage}">
-<meta http-equiv="refresh" content="0;url=${safePropertyUrl}">
-<script>location.replace(${JSON.stringify(propertyUrl)});</script>
+${redirectToProperty ? `<meta http-equiv="refresh" content="0;url=${safePropertyUrl}"><script>location.replace(${JSON.stringify(propertyUrl)});</script>` : ""}
 </head>
 <body style="margin:0;font-family:Arial,sans-serif;color:#123b32">
 <main style="max-width:760px;margin:24px auto;padding:16px">
@@ -125,6 +124,14 @@ export default {
     if (url.pathname.startsWith("/p/")) {
       const slug = decodeURIComponent(url.pathname.slice(3).replace(/\/$/, ""));
       return propertyShareResponse(request, slug);
+    }
+    // Social crawlers cannot execute JavaScript that loads property details.
+    // Serve server-rendered property metadata for direct shared property URLs.
+    if (url.pathname === "/property.html" && url.searchParams.has("id")) {
+      const ua = request.headers.get("user-agent") || "";
+      const crawler = /WhatsApp|facebookexternalhit|Facebot|Twitterbot|LinkedInBot|Slackbot|TelegramBot|Discordbot/i.test(ua);
+      const slug = url.searchParams.get("id") || "";
+      if (crawler && slug) return propertyShareResponse(request, slug, false);
     }
     return env.ASSETS.fetch(request);
   }
