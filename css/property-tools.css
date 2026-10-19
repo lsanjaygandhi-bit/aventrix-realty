@@ -528,3 +528,6 @@ html.is-mobile .pt-grid-3{ grid-template-columns:1fr; }
 .pt-page .pt-checklist-details-grid input:focus{ outline:2px solid #d4a32c; outline-offset:1px; }
 .pt-page .pt-print-signoff strong{ font-size:8pt; color:#17221f; font-weight:600; min-height:12px; }
 @media(max-width:600px){ .pt-page .pt-checklist-details-grid{ grid-template-columns:1fr; } }
+
+/* Property Tools hero image, also used for social link previews. */
+.pt-page .pt-hero-media.is-property-tools{background-image:url("../images/properties-hero.jpg");background-position:center 50%;background-size:cover;background-repeat:no-repeat;}
