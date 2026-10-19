@@ -45,6 +45,8 @@ create index if not exists idx_site_analytics_events_created
   on public.site_analytics_events (created_at desc);
 create index if not exists idx_site_analytics_events_path_created
   on public.site_analytics_events (page_path, created_at desc);
+create index if not exists idx_site_analytics_events_visitor_created
+  on public.site_analytics_events (visitor_key, created_at desc);
 create index if not exists idx_site_analytics_events_user_created
   on public.site_analytics_events (user_id, created_at desc);
 
