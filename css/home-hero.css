@@ -1292,9 +1292,9 @@ html.is-mobile .hh-form {
     width: 100%;
 }
 
-/* Keep the homepage search panel's top and bottom edges perfectly aligned. */
-html.is-mobile .hh-search,
-html:not(.is-mobile) .hh-search {
+/* Mobile only: align the search tabs and form to the same outer width.
+   Preserve the existing desktop search-panel layout unchanged. */
+html.is-mobile .hh-search {
     width: 100%;
     min-width: 0;
     box-sizing: border-box;
@@ -1302,8 +1302,7 @@ html:not(.is-mobile) .hh-search {
     border-radius: 16px;
     overflow: hidden;
 }
-html.is-mobile .hh-tabs,
-html:not(.is-mobile) .hh-tabs {
+html.is-mobile .hh-tabs {
     display: flex;
     width: 100%;
     min-width: 0;
@@ -1313,8 +1312,7 @@ html:not(.is-mobile) .hh-tabs {
     border: 0;
     border-bottom: 1px solid rgba(255,255,255,.24);
 }
-html.is-mobile .hh-form,
-html:not(.is-mobile) .hh-form {
+html.is-mobile .hh-form {
     width: 100%;
     min-width: 0;
     box-sizing: border-box;
