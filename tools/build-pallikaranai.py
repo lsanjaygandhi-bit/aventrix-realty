@@ -168,7 +168,6 @@ def entry_html(u, featured=False):
   {latest}<div class="pm-meta"><time class="pm-date" datetime="{u["event_date"]}" data-pm-rel>{fmt(u["event_date"])}</time><span class="pm-cat">{e(CATS[u["category"]])}</span><span class="pm-status pm-status--{u["legal_status"]}">{e(STATUS[u["legal_status"]])}</span></div>
   <h3>{e(u["headline"])}</h3>
   <p>{e(u["summary"])}</p>
-  <dl class="pm-change"><div><dt>What changed</dt><dd>{e(u["changed"])}</dd></div><div class="pm-not"><dt>Legal position</dt><dd>{e(u["not_changed"])}</dd></div></dl>
   {flags_html(u)}
   <p class="pm-dates">{dates}</p>
   {sources_html(u["sources"], open_=featured)}
