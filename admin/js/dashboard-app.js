@@ -36,6 +36,7 @@ function showToast(message, isError) {
         offices: "Office Locations",
         media: "Media Library",
         enquiries: "Leads & Enquiries",
+        intelligence: "Website Intelligence",
         settings: "Site Settings"
     };
 
@@ -57,6 +58,7 @@ function showToast(message, isError) {
         if (key === "offices" && window.OfficesModule) window.OfficesModule.load();
         if (key === "media" && window.MediaLibraryModule) window.MediaLibraryModule.load();
         if (key === "enquiries" && window.EnquiriesModule && !opts.skipLoad) window.EnquiriesModule.load();
+        if (key === "intelligence" && window.AventrixIntelligenceModule) window.AventrixIntelligenceModule.load();
         if (key === "settings" && window.SettingsModule) window.SettingsModule.load();
         if (key === "overview") loadOverviewStats();
     }
