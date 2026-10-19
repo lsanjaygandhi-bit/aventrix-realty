@@ -175,3 +175,8 @@
   .pm-strip { gap:8px 12px; padding:12px; font-size:12px; }
   .pm-entry { min-width:0; max-width:100%; }
 }
+
+/* 2026-10: Keep legal-status qualifiers inside each update, not in a discouraging top legend. */
+.pm-change div.pm-not{background:#fff8e5;border-left:3px solid #D4AF37;padding:10px 12px;}
+.pm-change div.pm-not dt{color:#6b5a1e;}
+.pm-legend{display:none !important;}
