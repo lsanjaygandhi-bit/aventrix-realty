@@ -73,7 +73,7 @@ async function propertyShareResponse(request, slug, redirectToProperty = true) {
     const first = property.images[0];
     rawImage = typeof first === "string" ? first : first && (first.url || first.src || first.path);
   }
-  const image = absoluteImage(rawImage, request.url) || SITE_ORIGIN + "/images/og/aventrix-logo-og.jpg";
+  const image = SITE_ORIGIN + "/p/" + encodeURIComponent(property.slug || slug) + "/image";
   const shareUrl = new URL(request.url).toString();
   const propertyUrl = SITE_ORIGIN + "/property.html?id=" + encodeURIComponent(property.slug || slug);
   const safeTitle = escapeHtml(title);
@@ -129,8 +129,38 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     if (url.pathname.startsWith("/p/")) {
-      const slug = decodeURIComponent(url.pathname.slice(3).replace(/\/$/, ""));
-      return propertyShareResponse(request, slug);
+      const pathPart = decodeURIComponent(url.pathname.slice(3).replace(/\/$/, ""));
+      const imageMatch = pathPart.match(/^([a-zA-Z0-9-]+)\/image$/);
+      if (imageMatch) {
+        const slug = imageMatch[1];
+        const headers = { apikey: SUPABASE_ANON_KEY, Authorization: "Bearer " + SUPABASE_ANON_KEY };
+        let property = null;
+        for (const field of ["slug", "id"]) {
+          const endpoint = new URL(SUPABASE_URL + "/rest/v1/properties");
+          endpoint.searchParams.set("select", "slug,featured_image,images");
+          endpoint.searchParams.set(field, "eq." + slug);
+          endpoint.searchParams.set("publish_status", "eq.Published");
+          endpoint.searchParams.set("limit", "1");
+          const response = await fetch(endpoint.toString(), { headers });
+          if (!response.ok) continue;
+          const rows = await response.json();
+          property = Array.isArray(rows) ? rows[0] : null;
+          if (property) break;
+        }
+        if (!property) return new Response("Image not found", { status: 404 });
+        const firstImage = Array.isArray(property.images) ? property.images[0] : "";
+        const imageUrl = absoluteImage(property.featured_image || firstImage, request.url);
+        if (!imageUrl) return new Response("Image not found", { status: 404 });
+        const imageResponse = await fetch(imageUrl);
+        if (!imageResponse.ok) return new Response("Image unavailable", { status: 502 });
+        return new Response(imageResponse.body, { status: 200, headers: {
+          "content-type": imageResponse.headers.get("content-type") || "image/jpeg",
+          "cache-control": "public, max-age=3600, s-maxage=86400",
+          "x-content-type-options": "nosniff",
+          "access-control-allow-origin": "*"
+        }});
+      }
+      return propertyShareResponse(request, pathPart);
     }
     // Social crawlers cannot execute JavaScript that loads property details.
     // Serve server-rendered property metadata for direct shared property URLs.
