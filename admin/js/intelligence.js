@@ -64,9 +64,9 @@
         '</tbody></table></div><p class="helper-text">Live means a heartbeat was received in the last 2 minutes. A browser may remain listed until the session expires.</p>'
         : '<p class="helper-text">No active visitors in the last 2 minutes. The tracking migration must be applied and deployed before new sessions appear.</p>';
     } else if (activeTab === "users") {
-      area.innerHTML = users.length ? '<div class="table-wrap"><table class="admin-table"><thead><tr><th>Email</th><th>Name</th><th>Role</th><th>Registered</th><th>Last login</th></tr></thead><tbody>' +
-        users.map(u => '<tr><td>' + escapeHtml(u.email) + '</td><td>' + escapeHtml(u.full_name || "—") + '</td><td>' + escapeHtml(u.app_role || "customer") + '</td><td>' + escapeHtml(dateTime(u.registered_at)) + '</td><td>' + escapeHtml(dateTime(u.last_sign_in_at)) + '</td></tr>').join("") +
-        '</tbody></table></div><p class="helper-text">Showing up to 500 latest accounts. Email is read from Supabase Auth through an admin-only database function.</p>'
+      area.innerHTML = users.length ? '<div class="table-wrap"><table class="admin-table"><thead><tr><th>Name</th><th>Email</th><th>Phone</th><th>Role</th><th>Registered</th><th>Last login</th></tr></thead><tbody>' +
+        users.map(u => '<tr><td>' + escapeHtml(u.full_name || "—") + '</td><td>' + escapeHtml(u.email || "—") + '</td><td>' + escapeHtml(u.phone || "—") + '</td><td>' + escapeHtml(u.app_role || "customer") + '</td><td>' + escapeHtml(dateTime(u.registered_at)) + '</td><td>' + escapeHtml(dateTime(u.last_sign_in_at)) + '</td></tr>').join("") +
+        '</tbody></table></div><p class="helper-text">Showing up to 500 latest accounts. Email comes from Supabase Auth; name and phone come from customer_profiles. Phone is blank when the customer has not provided it. Visible to administrators only.</p>'
         : '<p class="helper-text">No registered accounts returned.</p>';
     } else if (activeTab === "logins") {
       area.innerHTML = logins.length ? '<div class="table-wrap"><table class="admin-table"><thead><tr><th>Account</th><th>Event</th><th>Time</th></tr></thead><tbody>' +
