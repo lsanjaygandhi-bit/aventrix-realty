@@ -40,7 +40,7 @@ Static preflight completed on 2026-10-19: seven changed JavaScript files passed 
 | T21 | A public client rotates visitor/session IDs rapidly | Cloudflare edge rate limiting must limit abusive request volume; the SQL soft cap alone is not sufficient | Not run |
 | T22 | Realtor/admin browses public pages | Staff sessions are not added to public visitor analytics | Not run |
 | T23 | Existing property performance dashboard is compared before/after | Existing counts and CRM data are unchanged by this additive feature | Not run |
-| T24 | Mobile Safari and Chrome are tested | No console errors or blocking overlays; tabs and tables remain usable | Not run |\n| T25 | A visitor submits many distinct session IDs in one minute | The soft per-visitor session cap blocks further new sessions; edge rate limiting is also verified | Not run |
+| T24 | Mobile Safari and Chrome are tested | No console errors or blocking overlays; tabs and tables remain usable | Not run |\n| T25 | A visitor submits many distinct session IDs in one minute | The soft per-visitor session cap blocks further new sessions; edge rate limiting is also verified | Not run |\n| T26 | Login-history RPC receives a null or unsupported event type | The function rejects the request and no invalid row is inserted | Not run |
 
 ## Security checks
 
