@@ -2,6 +2,8 @@
 
 Status: prepared for staging; **not yet executed**. This document is a test specification, not evidence that the feature has passed runtime tests.
 
+Static preflight completed on 2026-10-19: seven changed JavaScript files passed syntax parsing, and the dashboard's required intelligence IDs/tab identifiers/script inclusion were checked. All database, role-permission, and browser acceptance cases below remain **Not run**.
+
 ## Preconditions
 
 - Use a dedicated non-production Supabase project and a preview deployment of branch `feature/real-estate-intelligence`.
