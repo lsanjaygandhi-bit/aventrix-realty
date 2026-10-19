@@ -20,8 +20,8 @@ GitHub repository → Cloudflare Pages/Workers → Supabase Auth/Postgres. The w
 
 - `sql/proposal-2026-10-19-real-estate-intelligence.sql` — proposed additive tables, functions, grants, and RLS.
 - `sql/verify-real-estate-intelligence.sql` — read-only preflight/postflight checks for dependencies, RLS, policies, and function grants.
-- `js/aventrix-intelligence.js` — visitor/session/page activity client.
-- `admin/js/intelligence.js` — admin-only dashboard module.
+- `js/aventrix-intelligence.js` — visitor/session/page activity client, including heartbeat restart after browser tab restoration.
+- `admin/js/intelligence.js` — admin-only dashboard module with property performance and CRM summary tabs using explicit admin-checked RPCs.
 
 ## Files changed
 
@@ -49,7 +49,7 @@ Anonymous visitors cannot be identified by real name unless they submit identify
 
 1. Run the read-only preflight queries in `sql/verify-real-estate-intelligence.sql` against staging, then review the SQL proposal and run it only in a non-production Supabase project first.
 2. Add/verify Cloudflare edge rate limiting or a trusted ingestion endpoint. The database function has a soft per-visitor event cap, but a public RPC cannot reliably stop an attacker who rotates visitor/session keys.
-3. Verify all public routes load the shared Supabase client and do not count staff/admin traffic.
+3. Verify all public routes load the shared Supabase client and do not count staff/admin traffic. Check the heartbeat survives browser back-forward cache restoration.
 4. Test anonymous, customer, realtor, and admin access separately; verify RLS denies non-admin reads of analytics, login history, and user lists.
 5. Test mobile Safari and Chrome, blocked storage, tab restore, heartbeat expiry, and failed RPCs. Analytics failure must never break login, enquiries, or page rendering.
 6. Confirm privacy notice/cookie disclosures are appropriate for the site's use of persistent pseudonymous identifiers.
