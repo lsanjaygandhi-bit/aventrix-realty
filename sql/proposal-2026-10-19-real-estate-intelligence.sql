@@ -106,6 +106,18 @@ begin
   if p_session_key is null or length(p_session_key) < 16 or length(p_session_key) > 80 then return; end if;
   if p_event_type is null or p_event_type not in ('page_view', 'heartbeat', 'enquiry_submit') then return; end if;
 
+  -- Throttle repeated heartbeats for an existing session. This reduces
+  -- write amplification from accidental duplicate timers or noisy clients;
+  -- it is not a substitute for Cloudflare edge rate limiting.
+  if p_event_type = 'heartbeat' and exists (
+    select 1 from public.site_visitor_sessions s
+    where s.session_key = p_session_key
+      and s.visitor_key = p_visitor_key
+      and s.last_seen_at > now() - interval '10 seconds'
+  ) then
+    return;
+  end if;
+
   -- Enforce path-only storage server-side too; query strings can contain private data.
   v_path := left(split_part(split_part(coalesce(nullif(trim(p_page_path), ''), '/'), '?', 1), '#', 1), 300);
   if left(v_path, 1) <> '/' or v_path like '%://%' then return; end if;
