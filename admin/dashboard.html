@@ -42,6 +42,7 @@
             <li data-admin-only><a data-section="offices"><i class="fas fa-map-location-dot"></i> Office Locations</a></li>
             <li data-admin-only><a data-section="media"><i class="fas fa-images"></i> Media Library</a></li>
             <li><a data-section="enquiries"><i class="fas fa-address-book"></i> Leads &amp; Enquiries <span class="nav-badge" id="enquiryBadge" style="display:none;">0</span></a></li>
+            <li data-admin-only><a data-section="intelligence"><i class="fas fa-chart-line"></i> Website Intelligence</a></li>
             <li data-admin-only><a data-section="settings"><i class="fas fa-gear"></i> Site Settings</a></li>
         </ul>
         <div class="admin-sidebar-footer">
@@ -104,6 +105,32 @@
                         <div id="overviewPerformance"><p class="helper-text">Loading…</p></div>
                         <p class="helper-text ov-note">Counted from real visitor actions since tracking went live — one of each action per visitor, per property, per day. Staff activity is not counted.</p>
                     </div>
+                </div>
+            </section>
+
+            <!-- WEBSITE INTELLIGENCE — requires sql/proposal-2026-10-19-real-estate-intelligence.sql -->
+            <section id="section-intelligence" class="admin-section" style="display:none;">
+                <div class="admin-card">
+                    <h2 class="ov-heading">Website Intelligence</h2>
+                    <p class="helper-text">Live activity is based on a heartbeat in the last 2 minutes. Visitor identities are pseudonymous unless the person signs in.</p>
+                    <p class="helper-text" id="intelStatus">Loading visitor intelligence…</p>
+                    <div class="admin-stats-grid">
+                        <div class="admin-stat-card"><div class="num" id="intelLiveCount">–</div><div class="label">Live Visitors</div></div>
+                        <div class="admin-stat-card"><div class="num" id="intelPageViews">–</div><div class="label">Page Views Today*</div></div>
+                        <div class="admin-stat-card"><div class="num" id="intelRegisteredCount">–</div><div class="label">Accounts Loaded</div></div>
+                        <div class="admin-stat-card"><div class="num" id="intelLoginCount">–</div><div class="label">Login Events Loaded</div></div>
+                    </div>
+                    <p class="helper-text" id="intelUpdatedAt">Not updated yet</p>
+                </div>
+                <div class="admin-card">
+                    <div class="ov-perf-tabs" id="intelTabs">
+                        <button type="button" class="active" data-intel-tab="visitors">Live Visitors</button>
+                        <button type="button" data-intel-tab="users">Registered Users</button>
+                        <button type="button" data-intel-tab="logins">Login History</button>
+                        <button type="button" data-intel-tab="pages">Page Activity</button>
+                    </div>
+                    <div id="intelTableArea"><p class="helper-text">Loading…</p></div>
+                    <p class="helper-text">*Page views count tracked page paths per browser tab session, not every repeated refresh. Historical activity begins when this feature is deployed.</p>
                 </div>
             </section>
 
@@ -876,6 +903,7 @@
 <script src="js/media-library.js"></script>
 <script src="js/enquiries.js?v=20260925"></script>
 <script src="js/settings.js?v=20260926b"></script>
+<script src="js/intelligence.js?v=20261019"></script>
 <script src="js/dashboard-app.js?v=20260926"></script>
 </body>
 </html>
