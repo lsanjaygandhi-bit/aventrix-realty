@@ -128,7 +128,7 @@ def sources_html(sources, open_=False):
             bits.append(TIERS[s["tier"]])
         if s.get("published"):
             bits.append("published " + fmt(s["published"]))
-        note = f'<span class="pm-src-note">{e(s["note"])}</span>' if s.get("note") else ""
+        note = ""  # Editorial verification notes remain in the internal source register.
         items.append(
             f'<li><a href="{e(s["url"])}" target="_blank" rel="noopener noreferrer">{e(s["title"])}'
             f'<span class="sr-only"> (opens in a new tab)</span></a>'
@@ -153,11 +153,8 @@ def evidence(u):
 
 
 def flags_html(u):
-    fl = u.get("review_flags") or []
-    if not fl:
-        return ""
-    items = "".join(f'<li><strong>{e(f["claim"])}:</strong> {e(f["issue"])}</li>' for f in fl)
-    return f'<div class="pm-flags"><p class="pm-flags-title">Not yet confirmed</p><ul>{items}</ul></div>'
+    """Keep editorial review flags in the internal source register, not the public page."""
+    return ""
 
 
 def entry_html(u, featured=False):
@@ -271,7 +268,7 @@ def render_regions():
         "INSIGHTS": feature_html("insights"),
         "FEED": feed, "MONTHS": month_opts, "CHIPS": chips, "TIMELINE": timeline,
         "STATUS": status, "LATEST": latest_card, "REGISTER": register,
-        "NEXT": (f'<p><strong>{fmt(nxt["date"])}</strong> — {e(nxt["label"])}.</p><p class="pm-unconfirmed">{e(nxt["note"])}</p>' if nxt else ""),
+        "NEXT": (f'<p><strong>{fmt(nxt["date"])}</strong> — {e(nxt["label"])}.</p>' if nxt else ""),
         "COUNT": f"Showing all {len(ups)} updates",
     }
 
