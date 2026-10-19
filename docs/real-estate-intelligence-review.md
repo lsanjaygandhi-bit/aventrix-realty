@@ -1,0 +1,56 @@
+# Aventrix Realty — Complete Real Estate Intelligence
+
+Status: **Draft implementation on `feature/real-estate-intelligence`**. Not merged, not deployed, and the SQL proposal has not been applied to Supabase.
+
+## Scope
+
+- Site-wide page-path tracking with pseudonymous browser and tab IDs.
+- Live-session estimate based on a heartbeat in the previous 2 minutes.
+- Property-level analytics remain on the existing `property_events` and `property_performance` implementation.
+- Registered user listing through an admin-only RPC that reads Supabase Auth users and joins role/profile data.
+- Successful customer/staff login and logout history from explicit auth flows.
+- Admin → Website Intelligence section with Live Visitors, Registered Users, Login History, and Page Activity tabs.
+- Successful enquiry submissions send a site analytics event.
+
+## Existing architecture preserved
+
+GitHub repository → Cloudflare Pages/Workers → Supabase Auth/Postgres. The work adds files and an additive SQL proposal; it does not replace hosting, existing CRM tables, or the current property event table.
+
+## Files added
+
+- `sql/proposal-2026-10-19-real-estate-intelligence.sql` — proposed additive tables, functions, grants, and RLS.
+- `js/aventrix-intelligence.js` — visitor/session/page activity client.
+- `admin/js/intelligence.js` — admin-only dashboard module.
+
+## Files changed
+
+- `js/supabase-client.js` — loads the tracking client on public pages using the shared Supabase client.
+- `js/account-auth.js` — records successful customer login/logout events.
+- `admin/js/auth.js` — records successful staff login/logout events.
+- `js/enquiry-supabase.js` — records successful enquiry submission as a site event.
+- `admin/dashboard.html` — adds Website Intelligence section and module script.
+- `admin/js/dashboard-app.js` — adds navigation title and module loading.
+
+## Data minimisation
+
+The client sends a random browser key, a random tab/session key, an event type, pathname, and optional property slug. Query strings, referrers, IP address, user-agent, and precise location are not stored by this feature. Names/emails are only returned to the authenticated administrator through an admin-checked RPC.
+
+Anonymous visitors cannot be identified by real name unless they submit identifying information or sign in. Login history begins after deployment; it does not backfill historical events. Live visitor count is an estimate and can remain stale until the 2-minute expiry.
+
+## Before merge/deployment
+
+1. Review the SQL proposal and run it only in a non-production Supabase project first.
+2. Add/verify Cloudflare edge rate limiting or a trusted ingestion endpoint. The database function has a soft per-visitor event cap, but a public RPC cannot reliably stop an attacker who rotates visitor/session keys.
+3. Verify all public routes load the shared Supabase client and do not count staff/admin traffic.
+4. Test anonymous, customer, realtor, and admin access separately; verify RLS denies non-admin reads of analytics, login history, and user lists.
+5. Test mobile Safari and Chrome, blocked storage, tab restore, heartbeat expiry, and failed RPCs. Analytics failure must never break login, enquiries, or page rendering.
+6. Confirm privacy notice/cookie disclosures are appropriate for the site's use of persistent pseudonymous identifiers.
+7. Merge only after review; Cloudflare deployment is a separate step.
+
+## Known limitations in this draft
+
+- Visitor tracking only starts on pages that load `js/supabase-client.js`; full route coverage must be verified.
+- Page views are de-duplicated per tab session and pathname; repeated refreshes of the same path in one tab are not counted repeatedly.
+- Registered-user listing is capped at the latest 500 accounts.
+- Login/logout history starts after rollout; it is not the complete Supabase Auth audit log.
+- This draft has not been deployed or tested against a staging database/browser yet.
