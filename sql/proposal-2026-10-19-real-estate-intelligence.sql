@@ -215,7 +215,7 @@ begin
   if not public.is_admin() then raise exception 'Admin access required'; end if;
   return query
     select u.id, u.email::text, u.created_at, u.last_sign_in_at,
-           coalesce(ur.role, 'customer')::text, cp.full_name, cp.phone
+           coalesce(ur.role, 'customer')::text, coalesce(cp.full_name, u.raw_user_meta_data->>'full_name'), coalesce(cp.phone, u.raw_user_meta_data->>'phone')
     from auth.users u
     left join public.user_roles ur on ur.user_id = u.id
     left join public.customer_profiles cp on cp.user_id = u.id
