@@ -9019,3 +9019,14 @@ html.is-mobile .section-scroll-indicator,
     text-align: center;
   }
 }
+
+/* Center founder / co-founder eyebrow labels and names on mobile. */
+@media (max-width: 768px) {
+  html.is-mobile .leadership-rows .leader-row-content .leader-eyebrow,
+  html.is-mobile .leadership-rows .leader-row-content h3 {
+    text-align: center !important;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
