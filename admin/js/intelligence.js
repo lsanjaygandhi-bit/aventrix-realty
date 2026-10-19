@@ -12,6 +12,8 @@
   let sessions = [];
   let events = [];
   let logins = [];
+  let propertyRows = [];
+  let crmSummary = null;
   let activeTab = "visitors";
 
   function el(id) { return document.getElementById(id); }
@@ -71,8 +73,25 @@
         logins.slice(0,100).map(x => '<tr><td>' + escapeHtml(userLabel(x.user_id)) + '</td><td>' + escapeHtml(x.event_type) + '</td><td>' + escapeHtml(dateTime(x.created_at)) + '</td></tr>').join("") +
         '</tbody></table></div><p class="helper-text">History begins after this feature is deployed. Existing Supabase Auth logs are not backfilled.</p>'
         : '<p class="helper-text">No login activity recorded yet.</p>';
+    } else if (activeTab === "properties") {
+      area.innerHTML = propertyRows.length ? '<div class="table-wrap"><table class="admin-table"><thead><tr><th>Property</th><th>Views</th><th>Enquiry events</th><th>WhatsApp</th><th>Calls</th><th>Wishlists</th><th>Shares</th><th>Leads</th></tr></thead><tbody>' +
+        propertyRows.map(p => '<tr><td><strong>' + escapeHtml(p.title || p.property_code || p.slug) + '</strong><br><code>' + escapeHtml(p.property_code || p.slug || "") + '</code></td><td>' + escapeHtml(p.views) + '</td><td>' + escapeHtml(p.enquiry_events) + '</td><td>' + escapeHtml(p.whatsapp_clicks) + '</td><td>' + escapeHtml(p.call_clicks) + '</td><td>' + escapeHtml(p.wishlist_adds) + '</td><td>' + escapeHtml(p.shares) + '</td><td>' + escapeHtml(p.leads) + '</td></tr>').join("") +
+        '</tbody></table></div><p class="helper-text">Metrics come from the existing property_performance aggregation through an admin-checked RPC. This preserves existing property event tracking instead of duplicating it.</p>'
+        : '<p class="helper-text">No property performance rows returned.</p>';
+    } else if (activeTab === "crm") {
+      area.innerHTML = crmSummary ? '<div class="table-wrap"><table class="admin-table"><tbody>' +
+        '<tr><th>Open leads</th><td>' + escapeHtml(crmSummary.open_leads) + '</td></tr>' +
+        '<tr><th>New leads</th><td>' + escapeHtml(crmSummary.new_leads) + '</td></tr>' +
+        '<tr><th>Hot requirements</th><td>' + escapeHtml(crmSummary.hot_requirements) + '</td></tr>' +
+        '<tr><th>Overdue follow-ups</th><td>' + escapeHtml(crmSummary.overdue_tasks) + '</td></tr>' +
+        '<tr><th>Upcoming site visits</th><td>' + escapeHtml(crmSummary.upcoming_site_visits) + '</td></tr>' +
+        '<tr><th>Active deals</th><td>' + escapeHtml(crmSummary.active_deals) + '</td></tr>' +
+        '<tr><th>Closed value this month</th><td>' + escapeHtml(crmSummary.closed_value_this_month) + '</td></tr>' +
+        '<tr><th>Brokerage this month</th><td>' + escapeHtml(crmSummary.brokerage_this_month) + '</td></tr>' +
+        '</tbody></table></div><p class="helper-text">CRM summary is served through an admin-checked RPC. Use the existing Leads & Enquiries section for individual lead details and follow-ups.</p>'
+        : '<p class="helper-text">CRM summary is not available.</p>';
     } else {
-      area.innerHTML = events.length ? '<div class="table-wrap"><table class="admin-table"><thead><tr><th>Page</th><th>Visitor</th><th>Property</th><th>Viewed at</th></tr></thead><tbody>' +
+      area.innerHTML = events.length ? '<div class="table-wrap"><table class="admin-table"><thead><tr><th>Page</th><th>Visitor</th><th>Property</th><th>Viewed at</th></tr></thead><tbody>'
         events.filter(x => x.event_type === "page_view").slice(0,100).map(x => '<tr><td><code>' + escapeHtml(x.page_path) + '</code></td><td>' + escapeHtml(userLabel(x.user_id)) + '</td><td>' + escapeHtml(x.property_slug || "—") + '</td><td>' + escapeHtml(dateTime(x.created_at)) + '</td></tr>').join("") +
         '</tbody></table></div>'
         : '<p class="helper-text">No page-view events yet. New events are collected after the migration and script deployment.</p>';
@@ -82,20 +101,24 @@
     const sb = window.supabaseClient;
     if (!sb) throw new Error("Supabase client is unavailable.");
     const today = new Date(); today.setHours(0, 0, 0, 0);
-    const [sessionResult, eventResult, userResult, loginResult, liveCountResult, viewsTodayResult] = await Promise.all([
+    const [sessionResult, eventResult, userResult, loginResult, liveCountResult, viewsTodayResult, propertyResult, crmResult] = await Promise.all([
       sb.from("site_visitor_sessions").select("session_key,visitor_key,user_id,current_path,started_at,last_seen_at").order("last_seen_at", { ascending: false }).limit(500),
       sb.from("site_analytics_events").select("id,session_key,user_id,event_type,page_path,property_slug,created_at").order("created_at", { ascending: false }).limit(500),
       sb.rpc("admin_intelligence_users", { p_limit: 500 }),
       sb.from("user_login_history").select("user_id,event_type,created_at").order("created_at", { ascending: false }).limit(500),
       sb.from("site_visitor_sessions").select("session_key", { count: "exact", head: true }).gte("last_seen_at", new Date(Date.now() - 120000).toISOString()),
-      sb.from("site_analytics_events").select("id", { count: "exact", head: true }).eq("event_type", "page_view").gte("created_at", today.toISOString())
+      sb.from("site_analytics_events").select("id", { count: "exact", head: true }).eq("event_type", "page_view").gte("created_at", today.toISOString()),
+      sb.rpc("admin_intelligence_property_performance", { p_limit: 100 }),
+      sb.rpc("admin_intelligence_crm_summary")
     ]);
-    const error = sessionResult.error || eventResult.error || userResult.error || loginResult.error || liveCountResult.error || viewsTodayResult.error;
+    const error = sessionResult.error || eventResult.error || userResult.error || loginResult.error || liveCountResult.error || viewsTodayResult.error || propertyResult.error || crmResult.error;
     if (error) throw error;
     sessions = sessionResult.data || [];
     events = eventResult.data || [];
     users = userResult.data || [];
     logins = loginResult.data || [];
+    propertyRows = propertyResult.data || [];
+    crmSummary = (crmResult.data && crmResult.data[0]) || null;
     // Exact totals come from count queries; the tables remain capped for responsive UI.
     window.__aventrixIntelCounts = { live: liveCountResult.count || 0, viewsToday: viewsTodayResult.count || 0 };
     renderStats();
