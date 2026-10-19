@@ -195,4 +195,73 @@ $function$;
 revoke all on function public.admin_intelligence_users(integer) from public, anon;
 grant execute on function public.admin_intelligence_users(integer) to authenticated;
 
+
+-- Controlled admin-only wrappers for existing aggregate views.
+-- These functions do not expose the underlying SECURITY DEFINER views directly.
+create or replace function public.admin_intelligence_property_performance(p_limit integer default 100)
+returns table (
+  property_id uuid,
+  property_code text,
+  slug text,
+  title text,
+  publish_status text,
+  views bigint,
+  enquiry_events bigint,
+  whatsapp_clicks bigint,
+  call_clicks bigint,
+  wishlist_adds bigint,
+  shortlist_adds bigint,
+  shares bigint,
+  site_visit_requests bigint,
+  leads bigint
+)
+language plpgsql
+security definer
+set search_path = public
+as $function$
+begin
+  if not public.is_admin() then raise exception 'Admin access required'; end if;
+  return query
+    select pp.id, pp.property_code, pp.slug, pp.title, pp.publish_status,
+           pp.views, pp.enquiry_events, pp.whatsapp_clicks, pp.call_clicks,
+           pp.wishlist_adds, pp.shortlist_adds, pp.shares,
+           pp.site_visit_requests, pp.leads
+    from public.property_performance pp
+    order by pp.views desc, pp.title asc
+    limit greatest(1, least(coalesce(p_limit, 100), 500));
+end;
+$function$;
+
+revoke all on function public.admin_intelligence_property_performance(integer) from public, anon;
+grant execute on function public.admin_intelligence_property_performance(integer) to authenticated;
+
+create or replace function public.admin_intelligence_crm_summary()
+returns table (
+  open_leads bigint,
+  new_leads bigint,
+  hot_requirements bigint,
+  overdue_tasks bigint,
+  upcoming_site_visits bigint,
+  active_deals bigint,
+  closed_value_this_month numeric,
+  brokerage_this_month numeric
+)
+language plpgsql
+security definer
+set search_path = public
+as $function$
+begin
+  if not public.is_admin() then raise exception 'Admin access required'; end if;
+  return query
+    select d.open_leads, d.new_leads, d.hot_requirements, d.overdue_tasks,
+           d.upcoming_site_visits, d.active_deals, d.closed_value_this_month,
+           d.brokerage_this_month
+    from public.crm_dashboard_v2 d
+    limit 1;
+end;
+$function$;
+
+revoke all on function public.admin_intelligence_crm_summary() from public, anon;
+grant execute on function public.admin_intelligence_crm_summary() to authenticated;
+
 commit;
