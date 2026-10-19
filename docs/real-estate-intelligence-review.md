@@ -7,7 +7,7 @@ Status: **Draft implementation on `feature/real-estate-intelligence`**. Not merg
 - Site-wide page-path tracking with pseudonymous browser and tab IDs.
 - Live-session estimate based on a heartbeat in the previous 2 minutes.
 - Property-level analytics remain on the existing `property_events` and `property_performance` implementation.
-- Registered user listing through an admin-only RPC that reads Supabase Auth users and joins role/profile data.
+- Registered user listing through an admin-only RPC that reads Supabase Auth users and joins customer profile name and phone when provided.
 - Successful customer/staff login and logout history from explicit auth flows.
 - Admin → Website Intelligence section with Live Visitors, Registered Users, Login History, and Page Activity tabs.
 - Successful enquiry submissions send a site analytics event.
@@ -51,7 +51,7 @@ Anonymous visitors cannot be identified by real name unless they submit identify
 - Confirmed the connected Supabase schema contains the existing `public.is_admin()`, `public.is_staff()`, and `public.app_role()` functions.
 - Confirmed `public.properties.slug` and `public.properties.publish_status` exist, and the current published literal is `Published`.
 - Confirmed these checks using read-only SQL queries only. No Supabase schema, policy, data, or configuration was changed.
-- Removed phone number from the proposed admin user-list RPC output because the dashboard does not need it.
+- Admin-only registered-user table now includes customer phone from `customer_profiles` alongside Auth email and profile name. Missing phone values display as a dash; existing accounts are not backfilled or guessed.
 
 
 ## Existing project security baseline (read-only advisory check, 2026-10-19)
