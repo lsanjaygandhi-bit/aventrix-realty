@@ -25,8 +25,9 @@
     return "v-" + Date.now().toString(36) + "-" + Math.random().toString(36).slice(2) + Math.random().toString(36).slice(2);
   }
 
-  function getStored(storage, key) {
+  function getStored(storageName, key) {
     try {
+      const storage = window[storageName];
       let value = storage.getItem(key);
       if (!value) { value = makeId(); storage.setItem(key, value); }
       return value;
@@ -37,8 +38,8 @@
     }
   }
 
-  const visitorKey = getStored(window.localStorage, VISITOR_KEY);
-  const sessionKey = getStored(window.sessionStorage, SESSION_KEY);
+  const visitorKey = getStored("localStorage", VISITOR_KEY);
+  const sessionKey = getStored("sessionStorage", SESSION_KEY);
   let lastPath = "";
   let lastHeartbeat = 0;
   let pending = Promise.resolve();
@@ -113,5 +114,8 @@
   };
 
   // Avoid keeping an unnecessary interval in prerendered/hidden documents.
-  window.addEventListener("pagehide", () => { try { window.clearInterval(heartbeat); } catch (_) {} }, { once: true });
+  window.addEventListener("pagehide", () => { try { window.clearInterval(heartbeat); } catch (_) {} });
+  window.addEventListener("pageshow", () => {
+    send("heartbeat", true);
+  });
 })();
