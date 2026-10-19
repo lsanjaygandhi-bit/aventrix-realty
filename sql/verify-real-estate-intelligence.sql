@@ -35,7 +35,9 @@ from (
     ('user_login_history', 'table'),
     ('track_site_activity', 'function'),
     ('record_login_activity', 'function'),
-    ('admin_intelligence_users', 'function')
+    ('admin_intelligence_users', 'function'),
+    ('admin_intelligence_property_performance', 'function'),
+    ('admin_intelligence_crm_summary', 'function')
 ) as expected(object_name, object_kind)
 cross join lateral (
   select case expected.object_kind
@@ -70,7 +72,7 @@ order by tablename, policyname;
 select routine_name, grantee, privilege_type
 from information_schema.routine_privileges
 where specific_schema = 'public'
-  and routine_name in ('track_site_activity', 'record_login_activity', 'admin_intelligence_users')
+  and routine_name in ('track_site_activity', 'record_login_activity', 'admin_intelligence_users', 'admin_intelligence_property_performance', 'admin_intelligence_crm_summary')
 order by routine_name, grantee, privilege_type;
 
 -- Do not use this read-only checklist as a substitute for role-by-role
