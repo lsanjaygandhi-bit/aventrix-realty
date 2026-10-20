@@ -265,8 +265,8 @@ body.land-knowledge-body .lk-page .lk-hero-bottom { display:none; }
     align-items: center !important;
     flex: 0 0 auto !important;
     margin-left: 8px !important;
-    position: relative !important;
-    z-index: 1008 !important;
+    position: static !important;
+    z-index: auto !important;
   }
   body.land-knowledge-body .header .main-nav,
   body.land-knowledge-body .header .main-nav.active {
