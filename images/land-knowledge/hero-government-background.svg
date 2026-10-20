@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 900" role="img" aria-labelledby="title desc">
+<title id="title">Tamil Nadu land administration and survey records background</title>
+<desc id="desc">A dignified government-office silhouette, archival land registers and cadastral survey boundaries in a dark green editorial composition.</desc>
+<defs>
+  <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#183d2a"/><stop offset=".55" stop-color="#10271c"/><stop offset="1" stop-color="#07140e"/></linearGradient>
+  <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e9dfc5"/><stop offset="1" stop-color="#bcae8c"/></linearGradient>
+  <linearGradient id="stone" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#c9c0a7" stop-opacity=".42"/><stop offset="1" stop-color="#8f967f" stop-opacity=".18"/></linearGradient>
+  <pattern id="grid" width="84" height="84" patternUnits="userSpaceOnUse"><path d="M84 0H0V84" fill="none" stroke="#b4d6b8" stroke-opacity=".13" stroke-width="1"/></pattern>
+</defs>
+<rect width="1920" height="900" fill="url(#sky)"/>
+<rect width="1920" height="900" fill="url(#grid)"/>
+<!-- subdued cadastral boundary lines on the right -->
+<g fill="none" stroke="#9dc9a5" stroke-width="2" stroke-opacity=".2">
+ <path d="M800 0 1020 130 990 270 1190 355 1130 520 1330 635 1300 900"/><path d="M1040 0 1200 105 1170 250 1370 330 1330 480 1510 585 1480 900"/>
+ <path d="M1370 0 1510 150 1480 275 1660 360 1620 525 1800 620 1780 900"/><path d="M900 180 1130 170 1190 355 1370 330 1510 150 1690 180 1920 90"/>
+ <path d="M760 390 990 270 1130 520 1330 635 1510 585 1620 525 1830 700 1920 675"/>
+</g>
+<!-- understated Secretariat / colonial-era public office silhouette; not an exact official emblem -->
+<g transform="translate(1030 120)" fill="url(#stone)" stroke="#d9d1b8" stroke-opacity=".34" stroke-width="2">
+ <path d="M0 235 340 70 680 235Z"/><path d="M42 238H638V280H42Z"/>
+ <path d="M65 280H615V510H65Z"/>
+ <g fill="#0e2519" fill-opacity=".75" stroke="#d9d1b8" stroke-opacity=".28">
+  <path d="M98 300H143V488H98Z"/><path d="M182 300H227V488H182Z"/><path d="M266 300H311V488H266Z"/><path d="M350 300H395V488H350Z"/><path d="M434 300H479V488H434Z"/><path d="M518 300H563V488H518Z"/>
+ </g>
+ <path d="M28 510H652V538H28Z"/><path d="M0 538H680V560H0Z"/>
+ <path d="M290 70V28H390V70" fill="none"/><path d="M315 28V0H365V28" fill="none"/>
+</g>
+<!-- archival register and folded cadastral plan -->
+<g transform="translate(1190 590) rotate(-8)">
+ <rect x="55" y="38" width="410" height="235" rx="7" fill="#000" opacity=".24"/>
+ <rect x="0" y="0" width="410" height="235" rx="7" fill="url(#paper)" stroke="#f2e9d2" stroke-opacity=".7"/>
+ <path d="M28 35H380M28 55H380M28 75H380M28 95H380M28 115H380M28 135H380M28 155H380M28 175H380M28 195H380" stroke="#526e55" stroke-opacity=".35" stroke-width="2"/>
+ <path d="M100 20V215M220 20V215M305 20V215" stroke="#6c7e62" stroke-opacity=".4" stroke-width="1.5"/>
+ <g fill="none" stroke="#416a4a" stroke-width="3"><path d="M245 52 292 68 278 112 324 132 310 178 356 190"/><path d="M245 52 210 83 222 124 190 156 202 196"/></g>
+</g>
+<g transform="translate(1530 490) rotate(11)">
+ <path d="M0 35 270 0 325 225 55 260Z" fill="url(#paper)" stroke="#f3e7cb" stroke-opacity=".65" stroke-width="3"/>
+ <path d="M35 65 270 34M43 105 280 74M52 145 290 114M62 185 300 154" stroke="#8b9b7b" stroke-opacity=".5" stroke-width="2"/>
+ <path d="M80 60 160 82 145 148 205 175 190 220M160 82 230 95 245 142 290 154" fill="none" stroke="#537c57" stroke-width="3"/>
+</g>
+<!-- subtle gold survey marker -->
+<g transform="translate(1760 220)" opacity=".75"><circle r="45" fill="none" stroke="#c4a96a" stroke-width="2"/><circle r="28" fill="none" stroke="#c4a96a" stroke-width="1.5"/><path d="M-60 0H60M0-60V60M-30-30 30 30M30-30-30 30" stroke="#c4a96a" stroke-width="1.5"/></g>
+<!-- dark left-side veil keeps headline readable -->
+<rect width="1920" height="900" fill="url(#leftveil)" opacity=".9"/>
+<defs><linearGradient id="leftveil" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#07140e" stop-opacity=".97"/><stop offset=".36" stop-color="#0b1d13" stop-opacity=".83"/><stop offset=".68" stop-color="#0c2116" stop-opacity=".28"/><stop offset="1" stop-color="#07140e" stop-opacity=".08"/></linearGradient></defs>
+</svg>

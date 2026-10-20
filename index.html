@@ -45,13 +45,13 @@
 })();
     </script>
 
-    <link rel="icon" type="image/x-icon" href="/favicon.ico?v=2">
-    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png?v=2">
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png?v=2">
-    <link rel="icon" type="image/png" sizes="48x48" href="/images/favicon/favicon-48x48.png?v=2">
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png?v=2">
-    <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon/android-chrome-192x192.png?v=2">
-    <link rel="icon" type="image/png" sizes="512x512" href="/images/favicon/android-chrome-512x512.png?v=2">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico?v=3">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png?v=3">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png?v=3">
+    <link rel="icon" type="image/png" sizes="48x48" href="/images/favicon/favicon-48x48.png?v=3">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png?v=3">
+    <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon/android-chrome-192x192.png?v=3">
+    <link rel="icon" type="image/png" sizes="512x512" href="/images/favicon/android-chrome-512x512.png?v=3">
     <link rel="manifest" href="/site.webmanifest?v=2">
 
     <title>Aventrix Realty</title>
@@ -208,12 +208,22 @@
 /* Keep the role unchanged; centre and highlight only the TNRERA number beneath it. */
 #leadership .leader-row .leader-rera,
 .leadership-rows .leader-row .leader-rera {
+<<<<<<< HEAD
   text-align: center !important;
   color: #0f3b2e !important;
   font-weight: 700 !important;
   width: 100%;
   margin-left: auto !important;
   margin-right: auto !important;
+=======
+  display: block;
+  text-align: center !important;
+  color: #064b37 !important;
+  font-weight: 500 !important;
+  width: 100%;
+  margin: 3px auto 18px !important;
+  line-height: 1.45 !important;
+>>>>>>> ad7a0d3 (Update Aventrix Realty website)
 }
 </style>
 <style id="compact-home-service-cards-2026-10-16">
@@ -255,6 +265,18 @@
     font-size: 12px !important;
     line-height: 1.25 !important;
   }
+}
+</style>
+
+<style id="homepage-desktop-rera-alignment-fix-2026-10-21">
+/* Keep the RERA number directly below the co-founder designation and aligned to its left edge. */
+#leadership .leader-row-content h4[data-cms-f="role"] { margin-bottom: 2px !important; }
+#leadership .leader-row-content h4[data-cms-f="role"] + p.leader-rera {
+  display:block !important; width:100% !important; max-width:none !important;
+  margin:2px 0 18px !important; padding:0 !important;
+  text-align:left !important; text-align-last:left !important;
+  color:#064b37 !important; font-size:13px !important; font-weight:500 !important;
+  line-height:1.4 !important; box-sizing:border-box !important;
 }
 </style>
 
@@ -2072,5 +2094,35 @@ END TEMPORARILY HIDDEN — Featured Locations section -->
   </section>
 </div>
 <script src="js/ai-property-assistant.js?v=20261019-free2" defer></script>
+<<<<<<< HEAD
+=======
+
+<script id="avx-mobile-rera-runtime-fix-20261021">
+(function(){
+  function fixMobileCoFounderRera(){
+    var mobile = window.matchMedia('(max-width: 1100px)').matches;
+    document.querySelectorAll('#leadership .leader-row').forEach(function(row){
+      var label=row.querySelector('.leader-eyebrow');
+      if(!label || !/MEET OUR CO-FOUNDER/i.test(label.textContent||'')) return;
+      var role=row.querySelector('[data-cms-f="role"]');
+      var rera=row.querySelector('[data-cms-f="rera"], .leader-rera');
+      if(!role || !rera) return;
+      if(mobile){
+        role.style.setProperty('text-align','center','important');
+        ['display','block','float','none','position','static','width','100%','max-width','100%','margin','0 auto 14px','padding','0','text-align','center','text-align-last','center','text-indent','0','color','#064B37','font-size','12.5px','font-weight','500','line-height','1.5','box-sizing','border-box'].reduce(function(_,v,i,a){if(i%2===0)rera.style.setProperty(v,a[i+1],'important');return _;},null);
+      } else {
+        ['display','float','position','width','max-width','margin','padding','text-align','text-align-last','text-indent','color','font-size','font-weight','line-height','box-sizing'].forEach(function(p){rera.style.removeProperty(p);});
+        role.style.removeProperty('text-align');
+      }
+    });
+  }
+  fixMobileCoFounderRera();
+  window.addEventListener('resize',fixMobileCoFounderRera,{passive:true});
+  new MutationObserver(fixMobileCoFounderRera).observe(document.documentElement,{childList:true,subtree:true,attributes:true,attributeFilter:['class','style']});
+  document.addEventListener('DOMContentLoaded',fixMobileCoFounderRera);
+})();
+</script>
+
+>>>>>>> ad7a0d3 (Update Aventrix Realty website)
 </body>
 </html>

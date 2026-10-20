@@ -1,0 +1,19 @@
+{
+  "page": "/land-knowledge/",
+  "language": "en",
+  "integrated_into_existing_site": true,
+  "shared_header_footer_modified": false,
+  "deployment_performed": false,
+  "assets": [
+    "/images/land-knowledge/hero-survey.svg",
+    "/images/land-knowledge/documents.svg",
+    "/images/land-knowledge/classification.svg",
+    "/images/land-knowledge/waterbody.svg",
+    "/images/land-knowledge/history.svg",
+    "/images/land-knowledge/checklist.svg",
+    "/images/land-knowledge/survey-fmb.svg"
+  ],
+  "styles": "/css/land-knowledge.css",
+  "script": "/js/land-knowledge.js",
+  "legal_review_status": "pending"
+}

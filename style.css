@@ -9142,6 +9142,7 @@ html.is-mobile #leadership .leader-row-content [data-cms-f="rera"] {
   }
 }
 
+<<<<<<< HEAD
 
 /* Desktop only: place the registration number immediately below the role.
    Mobile order and styling are intentionally left unchanged. */
@@ -9158,3 +9159,51 @@ html.is-mobile #leadership .leader-row-content [data-cms-f="rera"] {
   html:not(.is-mobile) #leadership .leader-row-content > p[data-cms-f="bio"] { order: 5; }
   html:not(.is-mobile) #leadership .leader-row-content > .leader-cta { order: 6; }
 }
+=======
+/* FINAL MOBILE/TABLET FIX: center Sanjay Gandhi L's RERA line directly
+   under the designation. Keep desktop styles unchanged. The wider breakpoint
+   covers responsive layouts used by this page before the phone-width breakpoint. */
+@media (max-width: 991px) {
+  .leader-row-content h4[data-cms-f="role"] + p[data-cms-f="rera"],
+  .leader-row-content p.leader-rera[data-cms-f="rera"] {
+    display: block !important;
+    float: none !important;
+    position: static !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto 14px !important;
+    padding: 0 !important;
+    text-align: center !important;
+    text-align-last: center !important;
+    text-indent: 0 !important;
+    font-size: 12.5px !important;
+    font-weight: 500 !important;
+    line-height: 1.5 !important;
+    color: #064B37 !important;
+    box-sizing: border-box !important;
+  }
+}
+
+
+/* VERIFIED FINAL MOBILE RERA ALIGNMENT: keep desktop rules unchanged. */
+@media screen and (max-width: 1100px) {
+  html body #leadership .leader-row .leader-row-content h4[data-cms-f="role"] {
+    text-align: center !important;
+  }
+  html body #leadership .leader-row .leader-row-content h4[data-cms-f="role"] + p[data-cms-f="rera"],
+  html body #leadership .leader-row .leader-row-content p.leader-rera {
+    display: block !important; float: none !important; position: static !important;
+    width: 100% !important; max-width: 100% !important;
+    margin: 0 auto 14px !important; padding: 0 !important;
+    text-align: center !important; text-align-last: center !important; text-indent: 0 !important;
+    color: #064B37 !important; font-size: 12.5px !important; font-weight: 500 !important;
+    line-height: 1.5 !important; box-sizing: border-box !important;
+  }
+}
+
+
+/* Aventrix symbol integration: preserve the existing wordmark and header layout. */
+.avx-logo-with-symbol{display:flex;align-items:center;gap:10px;}
+.avx-logo-with-symbol .avx-brand-symbol{display:block;width:44px;height:44px;object-fit:contain;flex:0 0 44px;}
+@media (max-width: 767px){.avx-logo-with-symbol{gap:7px;}.avx-logo-with-symbol .avx-brand-symbol{width:34px;height:34px;flex-basis:34px;}}
+>>>>>>> ad7a0d3 (Update Aventrix Realty website)
