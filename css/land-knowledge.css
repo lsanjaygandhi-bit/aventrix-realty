@@ -173,88 +173,91 @@ body.land-knowledge-body .lk-page .lk-hero-bottom { display:none; }
 
 
 
-/* Use the exact shared mobile navigation dimensions and spacing on this page.
-   Keep all rules scoped to Land Knowledge; do not alter the shared header. */
-html.is-mobile body.land-knowledge-body .main-nav,
-html.is-mobile body.land-knowledge-body .main-nav.active {
-  position: fixed !important;
-  top: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  left: auto !important;
-  width: 76% !important;
-  max-width: 340px !important;
-  height: 100vh !important;
-  height: 100dvh !important;
-  max-height: 100dvh !important;
-  padding: calc(28px + env(safe-area-inset-top, 0px)) 0 calc(24px + env(safe-area-inset-bottom, 0px)) !important;
-  margin: 0 !important;
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: flex-start !important;
-  justify-content: flex-start !important;
-  gap: 0 !important;
-  overflow-y: auto !important;
-  -webkit-overflow-scrolling: touch !important;
-  background: #fff !important;
-  border-left: 3px solid #0F3B2E !important;
-  box-shadow: -10px 0 30px rgba(0,0,0,.15) !important;
-  transform: translateX(100%) !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
-  z-index: 10001 !important;
-  transition: transform .32s cubic-bezier(.4,0,.2,1), visibility .32s !important;
-}
-html.is-mobile body.land-knowledge-body .main-nav.active {
-  transform: translateX(0) !important;
-  visibility: visible !important;
-  pointer-events: auto !important;
-}
-html.is-mobile body.land-knowledge-body .main-nav > a {
-  display: flex !important;
-  position: relative !important;
-  align-items: center !important;
-  width: 100% !important;
-  min-height: 0 !important;
-  padding: 15px 28px !important;
-  margin: 0 !important;
-  box-sizing: border-box !important;
-  border-bottom: 1px solid #f0f0f0 !important;
-  font-family: 'Montserrat', sans-serif !important;
-  font-size: 16px !important;
-  font-weight: 600 !important;
-  line-height: normal !important;
-  letter-spacing: .4px !important;
-  white-space: normal !important;
-  color: #111 !important;
-}
-html.is-mobile body.land-knowledge-body .main-nav > a:first-child {
-  border-top: 1px solid #f0f0f0 !important;
-}
-html.is-mobile body.land-knowledge-body .home-app-header-actions {
-  position: static !important;
-  z-index: auto !important;
-}
-html.is-mobile body.land-knowledge-body .menu-overlay,
-html.is-mobile body.land-knowledge-body .menu-overlay.active {
-  position: fixed !important;
-  inset: 0 !important;
-  background: rgba(0,0,0,.45) !important;
-  opacity: 0 !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
-  z-index: 9998 !important;
-  transition: opacity .3s, visibility .3s !important;
-}
-html.is-mobile body.land-knowledge-body .menu-overlay.active {
-  opacity: 1 !important;
-  visibility: visible !important;
-  pointer-events: auto !important;
-}
-html.is-mobile body.land-knowledge-body.mobile-menu-open {
-  overflow: hidden !important;
+/* Match the site's working mobile drawer on this page.
+   Do not depend on the html.is-mobile class: Safari can omit it while the
+   shared script still opens the overlay, leaving the page dimmed with no drawer. */
+@media (max-width: 768px) {
+  body.land-knowledge-body .main-nav,
+  body.land-knowledge-body .main-nav.active {
+    position: fixed !important;
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: auto !important;
+    width: min(76%, 500px) !important;
+    max-width: 500px !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    max-height: 100dvh !important;
+    padding: calc(28px + env(safe-area-inset-top, 0px)) 0 calc(24px + env(safe-area-inset-bottom, 0px)) !important;
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+    gap: 0 !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    background: #fff !important;
+    border-left: 3px solid #0F3B2E !important;
+    box-shadow: -10px 0 30px rgba(0,0,0,.15) !important;
+    transform: translateX(100%) !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    z-index: 10001 !important;
+    transition: transform .32s cubic-bezier(.4,0,.2,1), visibility .32s !important;
+  }
+  body.land-knowledge-body .main-nav.active {
+    transform: translateX(0) !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+  }
+  body.land-knowledge-body .main-nav > a {
+    display: flex !important;
+    position: relative !important;
+    align-items: center !important;
+    width: 100% !important;
+    min-height: 0 !important;
+    padding: 15px 28px !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    border-bottom: 1px solid #f0f0f0 !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    line-height: normal !important;
+    letter-spacing: .4px !important;
+    white-space: normal !important;
+    color: #111 !important;
+  }
+  body.land-knowledge-body .main-nav > a:first-child {
+    border-top: 1px solid #f0f0f0 !important;
+  }
+  body.land-knowledge-body .home-app-header-actions {
+    position: static !important;
+    z-index: auto !important;
+  }
+  body.land-knowledge-body .menu-overlay,
+  body.land-knowledge-body .menu-overlay.active {
+    position: fixed !important;
+    inset: 0 !important;
+    background: rgba(0,0,0,.45) !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    z-index: 9998 !important;
+    transition: opacity .3s, visibility .3s !important;
+  }
+  body.land-knowledge-body .menu-overlay.active {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+  }
+  body.land-knowledge-body.mobile-menu-open {
+    overflow: hidden !important;
+  }
 }
 @media (prefers-reduced-motion: reduce) {
-  html.is-mobile body.land-knowledge-body .main-nav,
-  html.is-mobile body.land-knowledge-body .menu-overlay { transition: none !important; }
+  body.land-knowledge-body .main-nav,
+  body.land-knowledge-body .menu-overlay { transition: none !important; }
 }
