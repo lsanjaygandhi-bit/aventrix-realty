@@ -9128,3 +9128,16 @@ html.is-mobile #leadership .leader-row-content [data-cms-f="rera"] {
   text-indent: 0 !important;
   box-sizing: border-box !important;
 }
+
+
+/* Tighten only the role-to-RERA spacing on the homepage leadership card. */
+@media (max-width: 768px) {
+  #leadership .leader-row-content h4[data-cms-f="role"] {
+    margin-bottom: 5px !important;
+  }
+  #leadership .leader-row-content h4[data-cms-f="role"] + p[data-cms-f="rera"],
+  #leadership .leader-row-content p.leader-rera {
+    margin-top: 0 !important;
+    margin-bottom: 14px !important;
+  }
+}
