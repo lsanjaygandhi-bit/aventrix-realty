@@ -240,3 +240,18 @@ body.land-knowledge-body .lk-page .lk-hero-bottom { display:none; }
   body.land-knowledge-body .header .main-nav,
   body.land-knowledge-body .header .menu-overlay { transition:none !important; }
 }
+
+
+/* Align this page's mobile drawer with the site's shared menu pattern:
+   preserve the full navigation list and leave the close control clear. */
+@media (max-width: 768px) {
+  body.land-knowledge-body .header .main-nav {
+    padding-top: 104px !important;
+  }
+  body.land-knowledge-body .header .main-nav > a:first-child {
+    display:flex !important;
+  }
+  body.land-knowledge-body .header .main-nav .mobile-menu-divider {
+    margin-top:12px !important;
+  }
+}
