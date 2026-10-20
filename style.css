@@ -9141,3 +9141,20 @@ html.is-mobile #leadership .leader-row-content [data-cms-f="rera"] {
     margin-bottom: 14px !important;
   }
 }
+
+
+/* Desktop only: place the registration number immediately below the role.
+   Mobile order and styling are intentionally left unchanged. */
+@media (min-width: 769px) {
+  html:not(.is-mobile) #leadership .leader-row-content {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  html:not(.is-mobile) #leadership .leader-row-content > .leader-eyebrow { order: 1; }
+  html:not(.is-mobile) #leadership .leader-row-content > h3 { order: 2; }
+  html:not(.is-mobile) #leadership .leader-row-content > h4[data-cms-f="role"] { order: 3; }
+  html:not(.is-mobile) #leadership .leader-row-content > p.leader-rera { order: 4; }
+  html:not(.is-mobile) #leadership .leader-row-content > p[data-cms-f="bio"] { order: 5; }
+  html:not(.is-mobile) #leadership .leader-row-content > .leader-cta { order: 6; }
+}
