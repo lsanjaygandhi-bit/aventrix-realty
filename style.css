@@ -9035,4 +9035,15 @@ html.is-mobile .section-scroll-indicator,
     color: #171717 !important;
     font-weight: 600 !important;
   }
+
+  /* Keep the registration number directly below the co-founder role,
+     centered and high-contrast without changing the biography text. */
+  html.is-mobile .leadership-rows .leader-row-content h4 + p {
+    text-align: center !important;
+    color: #171717 !important;
+    font-weight: 500 !important;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
