@@ -9106,3 +9106,25 @@ html.is-mobile .leadership-rows .leader-row-content p.leader-rera {
   text-indent: 0 !important;
   box-sizing: border-box !important;
 }
+
+
+/* FINAL CMS-SAFE RERA OVERRIDE: target the field itself, even if CMS changes its class. */
+#leadership .leader-row-content [data-cms-f="rera"],
+#leadership .leader-row-content p.leader-rera,
+.leadership-rows .leader-row-content [data-cms-f="rera"],
+html.is-mobile #leadership .leader-row-content [data-cms-f="rera"] {
+  display: block !important;
+  float: none !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 8px auto 10px !important;
+  padding: 0 !important;
+  color: #064e3b !important;
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  line-height: 1.5 !important;
+  text-align: center !important;
+  text-align-last: center !important;
+  text-indent: 0 !important;
+  box-sizing: border-box !important;
+}
