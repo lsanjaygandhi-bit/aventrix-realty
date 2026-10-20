@@ -9070,19 +9070,14 @@ html.is-mobile .section-scroll-indicator,
 
 
 
-/* Minimal RERA alignment fix: preserve original founder photos and layout */
-#leadership .leader-row-content p.leader-rera{
-  display:block;
-  width:100%;
-  max-width:100%;
-  margin:0 auto 18px;
+/* Only the RERA registration line: force mobile/desktop center and green. */
+html.is-mobile .profile-container p.profile-rera,
+.profile-container p.profile-rera{
   text-align:center !important;
-  color:#0F3B2E;
-  font-weight:700;
-  box-sizing:border-box;
+  color:#0F3B2E !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
 }
-html.is-mobile #leadership .leader-row-content p.leader-rera{
-  text-align:center !important;
-  margin-left:auto;
-  margin-right:auto;
+.profile-container p.profile-rera strong{
+  color:#0F3B2E !important;
 }
