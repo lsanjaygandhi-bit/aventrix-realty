@@ -4937,7 +4937,8 @@ html.is-mobile body.mobile-menu-open .whatsapp-float{
     margin-top:14px;
     font-family:'Montserrat',sans-serif;
     font-size:14px;
-    color:#555;
+    color:#0F3B2E;
+    text-align:center;
 }
 
 .profile-rera strong{
