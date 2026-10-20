@@ -14,3 +14,47 @@
 .lk-page .lk-history-bridge strong{color:var(--lk-ink)}
 .lk-page .lk-timeline .lk-time-item p{line-height:1.78}
 @media(max-width:760px){.lk-page .lk-history-intro,.lk-page .lk-history-bridge{padding:20px}}
+
+
+/* LAND KNOWLEDGE PAGE QA FIX — keep shared header behavior on narrow
+   touch screens even if the site-wide device-class script is delayed. */
+@media (max-width: 768px) {
+  body.land-knowledge-body .header { background:#fff; }
+  body.land-knowledge-body .header .container.nav {
+    display:flex; justify-content:space-between; align-items:center;
+    padding:12px 16px; min-height:64px; gap:12px;
+  }
+  body.land-knowledge-body .header .logo { flex:0 1 auto; min-width:0; }
+  body.land-knowledge-body .header .logo img { width:auto; height:36px; max-width:170px; object-fit:contain; }
+  body.land-knowledge-body .header .menu-toggle { display:flex; flex:0 0 44px; margin-left:auto; }
+  body.land-knowledge-body .header .home-app-header-actions { display:none; }
+  body.land-knowledge-body .header .nav-right { display:none; }
+  body.land-knowledge-body .header .main-nav { display:none; }
+  body.land-knowledge-body .header .main-nav.active { display:flex; }
+  body.land-knowledge-body .lk-hero { min-height:0; padding:34px 18px 0; }
+  body.land-knowledge-body .lk-hero-grid { padding-bottom:24px; }
+  body.land-knowledge-body .lk-page h1 { font-size:clamp(2rem, 8.2vw, 2.7rem); line-height:1.12; margin-bottom:14px; }
+  body.land-knowledge-body .lk-page .lk-eyebrow { justify-content:center; font-size:.66rem; letter-spacing:.12em; margin-bottom:14px; }
+  body.land-knowledge-body .lk-page .lk-hero-lead { font-size:.96rem; line-height:1.5; margin-bottom:12px; }
+  body.land-knowledge-body .lk-page .lk-hero-sub { font-size:.9rem; line-height:1.5; }
+  body.land-knowledge-body .lk-page .lk-hero-actions { gap:9px; margin:16px 0; }
+  body.land-knowledge-body .lk-page .lk-btn { padding:12px 15px; font-size:.86rem; }
+  body.land-knowledge-body .lk-page .lk-hero-trust { gap:8px 14px; font-size:.76rem; }
+  body.land-knowledge-body .lk-page .lk-hero-bottom { padding:13px 0; gap:7px; font-size:.49rem; letter-spacing:.05em; }
+}
+@media (max-width: 420px) {
+  body.land-knowledge-body .header .logo img { height:32px; max-width:145px; }
+  body.land-knowledge-body .lk-hero { padding:28px 15px 0; }
+  body.land-knowledge-body .lk-page h1 { font-size:clamp(1.85rem, 8.5vw, 2.25rem); }
+  body.land-knowledge-body .lk-page .lk-hero-lead { font-size:.9rem; }
+  body.land-knowledge-body .lk-page .lk-hero-sub { font-size:.84rem; }
+  body.land-knowledge-body .lk-page .lk-hero-bottom { font-size:.44rem; }
+}
+@media (min-width: 769px) {
+  body.land-knowledge-body .lk-hero { min-height:360px; padding-top:44px; }
+  body.land-knowledge-body .lk-hero-grid { max-width:780px; padding-bottom:24px; }
+  body.land-knowledge-body .lk-page h1 { font-size:clamp(2.1rem, 3.2vw, 2.85rem); margin-bottom:14px; }
+  body.land-knowledge-body .lk-page .lk-hero-lead { font-size:1rem; max-width:700px; }
+  body.land-knowledge-body .lk-page .lk-hero-sub { font-size:.92rem; }
+  body.land-knowledge-body .lk-page .lk-hero-actions { margin:16px 0; }
+}
