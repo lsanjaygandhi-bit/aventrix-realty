@@ -9030,4 +9030,9 @@ html.is-mobile .section-scroll-indicator,
     margin-left: auto;
     margin-right: auto;
   }
+
+  html.is-mobile .leadership-rows .leader-row-content h4 {
+    color: #171717 !important;
+    font-weight: 600 !important;
+  }
 }
