@@ -116,3 +116,57 @@ body.land-knowledge-body .lk-page .lk-hero-bottom {
   body.land-knowledge-body .lk-page .lk-hero-actions .lk-btn { width:min(100%, 290px); }
   body.land-knowledge-body .lk-page .lk-hero-trust { flex-direction:column; gap:8px; }
 }
+
+
+/* Final hero-only refinement: match the compact scale of the existing Services hero.
+   No shared header/footer, page sections, or site-wide colors are changed. */
+body.land-knowledge-body .lk-page .lk-hero {
+  min-height:0;
+  padding:48px 24px 34px;
+}
+body.land-knowledge-body .lk-page .lk-hero::before {
+  background-image:linear-gradient(90deg,rgba(7,20,14,.82) 0%,rgba(10,29,19,.68) 48%,rgba(7,20,14,.48) 100%),url("/images/land-knowledge/hero-history-background.jpg");
+}
+body.land-knowledge-body .lk-page .lk-eyebrow {
+  color:#fff;
+  justify-content:center;
+  margin-bottom:14px;
+}
+body.land-knowledge-body .lk-page .lk-eyebrow span {
+  background:#fff;
+}
+body.land-knowledge-body .lk-page h1 {
+  color:#fff;
+  font-size:clamp(2rem,3.5vw,2.8rem);
+  line-height:1.12;
+  max-width:780px;
+  margin:0 auto 14px;
+  text-align:center;
+}
+body.land-knowledge-body .lk-page h1 em {
+  color:#fff;
+  display:inline;
+}
+body.land-knowledge-body .lk-page .lk-hero-lead {
+  color:#fff;
+  max-width:720px;
+  font-size:1rem;
+  line-height:1.55;
+  margin:0 auto 18px;
+  text-align:center;
+}
+body.land-knowledge-body .lk-page .lk-hero-actions {
+  margin:0;
+  justify-content:center;
+}
+body.land-knowledge-body .lk-page .lk-hero-bottom { display:none; }
+@media (min-width:769px) {
+  body.land-knowledge-body .lk-page .lk-hero { min-height:0; padding-top:42px; padding-bottom:32px; }
+  body.land-knowledge-body .lk-page .lk-hero-grid { padding-bottom:0; max-width:820px; }
+}
+@media (max-width:768px) {
+  body.land-knowledge-body .lk-page .lk-hero { padding:34px 18px 28px; }
+  body.land-knowledge-body .lk-page h1 { font-size:clamp(1.9rem,7.4vw,2.35rem); }
+  body.land-knowledge-body .lk-page .lk-hero-lead { font-size:.94rem; margin-bottom:16px; }
+  body.land-knowledge-body .lk-page .lk-hero-actions .lk-btn { width:auto; max-width:100%; }
+}
