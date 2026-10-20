@@ -86,6 +86,9 @@
             return;
         }
 
+        // Best-effort audit event; a missing migration must never block login.
+        try { await sb.rpc("record_login_activity", { p_event_type: "login" }); } catch (_) {}
+
         // Logged in successfully. Wishlist/Shortlist/Recently Viewed
         // still run on localStorage at this stage — that migration is
         // a separate step, not part of this one.
@@ -99,8 +102,13 @@
         e.preventDefault();
         clearMessage();
         const name = document.getElementById("signupName").value.trim();
+        const phone = document.getElementById("signupPhone").value.trim();
         const email = document.getElementById("signupEmail").value.trim();
         const password = document.getElementById("signupPassword").value;
+        if (!/^[+0-9][0-9 +()\\-]{7,18}$/.test(phone)) {
+            showMessage("Please enter a valid mobile number, including country code if applicable.", "error");
+            return;
+        }
         const confirmPassword = document.getElementById("signupPasswordConfirm").value;
 
         if (password !== confirmPassword) {
@@ -117,7 +125,7 @@
             email,
             password,
             options: {
-                data: { full_name: name },
+                data: { full_name: name, phone },
                 emailRedirectTo: window.location.origin + "/account.html"
             }
         });
@@ -222,6 +230,8 @@
     // ---------------------------------------------------------
     if (signOutBtn) {
         signOutBtn.addEventListener("click", async () => {
+            // Record before clearing the session; analytics must not block sign-out.
+            try { await sb.rpc("record_login_activity", { p_event_type: "logout" }); } catch (_) {}
             await sb.auth.signOut();
             window.location.reload();
         });

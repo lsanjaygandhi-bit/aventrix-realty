@@ -17,3 +17,13 @@ window.supabaseClient = window.supabase.createClient(
     SUPABASE_URL,
     SUPABASE_ANON_KEY
 );
+
+// Shared site-wide visitor tracking. The server-side RPC and RLS remain the
+// security boundary; this client sends only pseudonymous IDs and pathnames.
+(function loadAventrixIntelligence() {
+    if (window.location.pathname.startsWith("/admin/")) return;
+    const script = document.createElement("script");
+    script.src = "/js/aventrix-intelligence.js?v=20261019b";
+    script.defer = true;
+    document.head.appendChild(script);
+})();

@@ -182,6 +182,11 @@
                     <input type="text" id="signupName" required autocomplete="name">
                 </div>
                 <div class="acct-field">
+                    <label for="signupPhone">Mobile Number</label>
+                    <input type="tel" id="signupPhone" required autocomplete="tel" inputmode="tel" pattern="[+0-9][0-9 +()-]{7,18}" aria-describedby="signupPhoneHint">
+                    <p class="acct-hint" id="signupPhoneHint">Include country code if applicable, e.g. +91 98765 43210.</p>
+                </div>
+                <div class="acct-field">
                     <label for="signupEmail">Email Address</label>
                     <input type="email" id="signupEmail" required autocomplete="email">
                 </div>

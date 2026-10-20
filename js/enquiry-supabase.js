@@ -110,6 +110,7 @@
             }
 
             if (!error) {
+                window.dispatchEvent(new CustomEvent("aventrix:enquiry-submitted"));
                 if (propertySlug && window.AventrixTracking) window.AventrixTracking.track(propertySlug, "enquiry");
                 form.style.display = "none";
                 const successEl = document.getElementById("success-message");
