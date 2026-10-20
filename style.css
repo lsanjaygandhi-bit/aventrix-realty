@@ -9047,3 +9047,21 @@ html.is-mobile .section-scroll-indicator,
     margin-right: auto;
   }
 }
+
+
+/* Mobile co-founder registration: directly below name, centered and dark. */
+@media (max-width: 768px) {
+  html.is-mobile #leadership .leader-row-content .leader-rera,
+  #leadership .leader-row-content .leader-rera {
+    display: block !important;
+    width: 100% !important;
+    margin: 8px auto 10px !important;
+    padding: 0 !important;
+    text-align: center !important;
+    color: #111111 !important;
+    font-weight: 600 !important;
+    font-size: 15px !important;
+    line-height: 1.5 !important;
+    box-sizing: border-box !important;
+  }
+}
