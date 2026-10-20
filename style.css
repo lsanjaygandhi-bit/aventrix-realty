@@ -9087,3 +9087,22 @@ html.is-mobile .profile-container p.profile-rera,
 .profile-container p.profile-rera strong{
   color:#0F3B2E !important;
 }
+
+
+/* FINAL OVERRIDE: homepage co-founder RERA line (must remain after legacy mobile rules). */
+html.is-mobile #leadership .leader-row-content p.leader-rera,
+#leadership .leader-row-content p.leader-rera,
+html.is-mobile .leadership-rows .leader-row-content p.leader-rera {
+  display: block !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 8px auto 10px !important;
+  padding: 0 !important;
+  color: #0f7a45 !important;
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  line-height: 1.5 !important;
+  text-align: center !important;
+  text-indent: 0 !important;
+  box-sizing: border-box !important;
+}
