@@ -1,0 +1,449 @@
+/* About Chennai — all new rules are scoped to .ac-page; shared header/footer remain untouched. */
+.ac-page{--ac-ink:#15251b;--ac-green:#246b43;--ac-green-dark:#10251b;--ac-green-soft:#eaf4ec;--ac-border:#dce6dd;--ac-muted:#607064;--ac-paper:#fff;--ac-wash:#f5f8f5;color:var(--ac-ink);background:#fff;font-family:inherit;line-height:1.65;overflow:hidden}
+.ac-page *{box-sizing:border-box}.ac-page a{color:inherit}.ac-page img{max-width:100%;height:auto;display:block}.ac-page h1,.ac-page h2,.ac-page h3,.ac-page p{margin-top:0}.ac-page h1,.ac-page h2,.ac-page h3{line-height:1.16;letter-spacing:-.025em}.ac-page h1{font-size:clamp(2.55rem,5.5vw,5rem);font-weight:850;max-width:1000px;margin:0 auto 20px}.ac-page h1 em{font-style:normal;color:#8bd29d;display:block}.ac-page h2{font-size:clamp(1.9rem,3.4vw,3.1rem);font-weight:800;margin:0 0 18px}.ac-page h3{font-size:1.16rem;font-weight:780;margin:0 0 10px}.ac-page p{color:var(--ac-muted);margin-bottom:14px}.ac-page .ac-skip{position:absolute;left:-9999px;top:auto}.ac-page .ac-skip:focus{left:16px;top:16px;z-index:1000;background:#fff;color:#123;padding:12px 18px;border-radius:8px}
+.ac-page .ac-hero{position:relative;isolation:isolate;min-height:420px;display:flex;flex-direction:column;justify-content:center;overflow:hidden;padding:40px 24px 0;background:#10251b;color:#fff;text-align:center}.ac-page .ac-hero:before{content:"";position:absolute;inset:0;z-index:-2;background-image:url("/images/about-chennai/madras-then-chennai-now.jpeg");background-position:center;background-size:cover;filter:saturate(.78)}.ac-page .ac-hero-shade{position:absolute;inset:0;z-index:-1;background:linear-gradient(100deg,rgba(7,20,14,.58),rgba(10,29,19,.28) 48%,rgba(7,20,14,.30))}.ac-page .ac-hero-inner{max-width:1030px;margin:0 auto;padding:0 0 46px}.ac-page .ac-eyebrow,.ac-page .ac-kicker{font-size:.76rem;font-weight:850;letter-spacing:.16em;text-transform:uppercase;color:var(--ac-green);margin:0 0 18px}.ac-page .ac-eyebrow{color:#b1e5bd;display:flex;justify-content:center;align-items:center;gap:10px}.ac-page .ac-eyebrow span{width:8px;height:8px;background:#8bd29d;border-radius:50%;display:inline-block}.ac-page .ac-lead{font-size:clamp(1.05rem,1.65vw,1.28rem);color:#e1ede4;max-width:820px;margin:0 auto 22px;line-height:1.7}.ac-page .ac-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin:26px 0}.ac-page .ac-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 20px;border-radius:8px;text-decoration:none;font-size:.94rem;font-weight:800;transition:transform .18s ease,background .18s ease;border:1px solid transparent}.ac-page .ac-btn:hover{transform:translateY(-2px)}.ac-page .ac-btn-primary{background:#88d39b;color:#10251b}.ac-page .ac-btn-primary:hover{background:#a0e4ae}.ac-page .ac-btn-outline{border-color:#789081;color:#fff}.ac-page .ac-btn-outline:hover{background:#1a3827}.ac-page .ac-hero-note{max-width:760px;margin:0 auto;display:flex;gap:12px;align-items:flex-start;text-align:left;border:1px solid #ffffff35;border-radius:10px;padding:13px 16px;background:#07140e55;color:#e1ede4;font-size:.88rem}.ac-page .ac-hero-note i{color:#9be0aa;margin-top:4px}.ac-page .ac-hero-caption{width:100%;max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:16px;border-top:1px solid #ffffff24;padding:19px 0;color:#c5d9cb;font-size:.67rem;font-weight:850;letter-spacing:.14em}.ac-page .ac-hero-caption span:nth-child(even){height:1px;background:#476552;flex:1}
+.ac-page .ac-section{max-width:1200px;margin:0 auto;padding:82px 24px}.ac-page .ac-section-head{max-width:820px;margin-bottom:32px}.ac-page .ac-section-head>p:last-child{max-width:780px}.ac-page .ac-three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.ac-page .ac-pillar{position:relative;padding:28px;border:1px solid var(--ac-border);border-radius:14px;background:#fff;min-height:240px}.ac-page .ac-pillar>i{font-size:1.35rem;color:var(--ac-green);display:block;margin-bottom:20px}.ac-page .ac-pillar-no{position:absolute;right:20px;top:18px;color:#a6b5a9;font-size:.75rem;font-weight:850;letter-spacing:.1em}.ac-page .ac-pillar p{margin-bottom:0}.ac-page .ac-boundary-note{display:flex;gap:13px;align-items:flex-start;margin-top:22px;padding:18px 20px;background:var(--ac-green-soft);border-left:4px solid var(--ac-green);border-radius:8px;color:var(--ac-ink)}.ac-page .ac-boundary-note>i{color:var(--ac-green);margin-top:4px}.ac-page .ac-boundary-note div{color:#405346}.ac-page .ac-boundary-note strong{color:var(--ac-ink)}
+.ac-page .ac-timeline-section{max-width:none;background:var(--ac-wash);padding-left:max(24px,calc((100% - 1152px)/2));padding-right:max(24px,calc((100% - 1152px)/2))}.ac-page .ac-timeline-tools,.ac-page .ac-region-filters{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 28px}.ac-page .ac-timeline-tools button,.ac-page .ac-region-filters button{appearance:none;border:1px solid #cbd9ce;background:#fff;color:#31483a;padding:9px 14px;border-radius:999px;font:inherit;font-size:.83rem;font-weight:750;cursor:pointer}.ac-page .ac-timeline-tools button.is-active,.ac-page .ac-region-filters button.is-active{background:var(--ac-green-dark);border-color:var(--ac-green-dark);color:#fff}.ac-page .ac-timeline{max-width:960px;border-left:2px solid #c7d9ca;margin-left:8px}.ac-page .ac-era[hidden]{display:none}.ac-page .ac-era{position:relative;display:grid;grid-template-columns:150px minmax(0,1fr);gap:24px;padding:0 0 34px 30px}.ac-page .ac-era:before{content:"";position:absolute;left:-8px;top:7px;width:14px;height:14px;border-radius:50%;background:var(--ac-green);border:3px solid var(--ac-wash)}.ac-page .ac-era-date{font-size:.85rem;font-weight:850;color:var(--ac-green);padding-top:2px}.ac-page .ac-era h3{margin-bottom:8px}.ac-page .ac-era p{max-width:760px;margin-bottom:10px}.ac-page .ac-status{display:inline-block;font-size:.73rem;font-weight:750;color:#59695d;background:#e6ece7;border-radius:5px;padding:4px 8px}.ac-page .ac-status-source{color:#1e6037;background:#e1f2e5}.ac-page .ac-smallprint{font-size:.82rem;color:#748176;margin-top:16px}
+.ac-page .ac-area-controls{padding:22px;border:1px solid var(--ac-border);border-radius:14px;background:#f9fbf9;margin-bottom:22px}.ac-page .ac-search-label{display:block;font-size:.84rem;font-weight:800;margin-bottom:8px}.ac-page .ac-search-wrap{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #cbd9ce;border-radius:9px;padding:0 12px;margin-bottom:16px}.ac-page .ac-search-wrap>i{color:#66786b}.ac-page .ac-search-wrap input{width:100%;min-width:0;border:0;outline:none;background:transparent;padding:14px 0;font:inherit;color:var(--ac-ink)}.ac-page .ac-search-wrap button{border:0;background:transparent;color:var(--ac-green);font:inherit;font-weight:800;cursor:pointer;padding:10px 4px}.ac-page .ac-area-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.ac-page .ac-area-card{padding:22px;border:1px solid var(--ac-border);border-radius:12px;background:#fff;min-height:215px;display:flex;flex-direction:column;align-items:flex-start}.ac-page .ac-area-card[hidden]{display:none}.ac-page .ac-area-tag{display:inline-flex;background:var(--ac-green-soft);color:var(--ac-green);padding:4px 8px;border-radius:5px;font-size:.7rem;font-weight:850;margin-bottom:14px}.ac-page .ac-area-card h3{font-size:1.08rem}.ac-page .ac-area-card p{font-size:.91rem;margin-bottom:18px}.ac-page .ac-area-state{margin-top:auto;font-size:.76rem;font-weight:800;color:#647568}.ac-page .ac-empty{padding:22px;border:1px dashed #a9b9ad;border-radius:10px;text-align:center}.ac-page .ac-empty[hidden]{display:none}
+.ac-page .ac-price-section{max-width:none;background:#10251b;color:#fff;padding-left:max(24px,calc((100% - 1152px)/2));padding-right:max(24px,calc((100% - 1152px)/2))}.ac-page .ac-price-section .ac-kicker{color:#a5deb2}.ac-page .ac-price-section .ac-section-head>p:last-child{color:#c4d4c8}.ac-page .ac-price-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}.ac-page .ac-price-card{padding:26px;border:1px solid #395342;border-radius:14px;background:#172f22}.ac-page .ac-price-index{display:grid;place-items:center;width:36px;height:36px;background:#88d39b;color:#10251b;border-radius:9px;font-weight:900;margin-bottom:20px}.ac-page .ac-price-card h3{color:#fff}.ac-page .ac-price-card p{color:#c3d5c7;font-size:.92rem}.ac-page .ac-price-card ul{padding-left:19px;margin:14px 0 0;color:#dce9df;font-size:.85rem}.ac-page .ac-price-card li{margin:7px 0}.ac-page .ac-price-status{display:flex;gap:18px;align-items:flex-start;padding:24px;margin-top:20px;border:1px solid #476653;border-radius:12px;background:#0b1d13}.ac-page .ac-status-icon{display:grid;place-items:center;flex:0 0 48px;height:48px;border-radius:12px;background:#244d33;color:#9be0aa;font-size:1.2rem}.ac-page .ac-price-status h3{color:#fff}.ac-page .ac-price-status p{color:#c3d5c7}.ac-page .ac-price-status a{color:#9be0aa;font-weight:800;text-decoration-thickness:1px;text-underline-offset:3px}.ac-page .ac-period-strip{display:flex;align-items:center;gap:12px;margin-top:24px}.ac-page .ac-period-strip>span{font-size:.8rem;font-weight:800;color:#fff;min-width:0}.ac-page .ac-period-strip small{display:block;font-size:.68rem;font-weight:500;color:#b6c9bc;margin-top:4px}.ac-page .ac-period-strip>i{height:1px;background:#5a7763;flex:1;min-width:12px}.ac-page .ac-price-section .ac-smallprint{color:#a9beaf}
+.ac-page .ac-driver-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.ac-page .ac-driver-grid article{padding:22px;border:1px solid var(--ac-border);border-radius:12px;min-height:180px}.ac-page .ac-driver-grid i{color:var(--ac-green);font-size:1.3rem;margin-bottom:18px}.ac-page .ac-driver-grid h3{font-size:1rem}.ac-page .ac-driver-grid p{font-size:.88rem;margin-bottom:0}
+.ac-page .ac-source-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.ac-page .ac-source{display:flex;flex-direction:column;align-items:flex-start;padding:20px;border:1px solid var(--ac-border);border-radius:12px;text-decoration:none;transition:border-color .18s ease,transform .18s ease}.ac-page .ac-source:hover{border-color:#8fbea0;transform:translateY(-2px)}.ac-page .ac-source-type{font-size:.7rem;text-transform:uppercase;letter-spacing:.09em;font-weight:850;color:var(--ac-green);margin-bottom:10px}.ac-page .ac-source strong{font-size:1rem;margin-bottom:7px}.ac-page .ac-source>span:last-child{font-size:.85rem;color:var(--ac-muted)}.ac-page .ac-source>span:last-child i{color:var(--ac-green);margin-left:3px}
+.ac-page .ac-method{border-top:1px solid var(--ac-border)}.ac-page .ac-method-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.ac-page .ac-method-grid article{padding:20px;background:var(--ac-wash);border-radius:12px}.ac-page .ac-method-grid article>span{display:block;font-size:.75rem;color:var(--ac-green);font-weight:900;margin-bottom:18px}.ac-page .ac-method-grid h3{font-size:1rem}.ac-page .ac-method-grid p{font-size:.88rem;margin-bottom:0}.ac-page .ac-editorial-note{padding:18px 20px;border:1px solid #d7e6d9;border-radius:9px;background:#f2f8f3;color:#405346;margin-top:18px;font-size:.9rem}.ac-page .ac-editorial-note strong{color:var(--ac-ink)}
+.ac-page .ac-disclaimer{max-width:1152px;margin:0 auto 64px;padding:24px;border:1px solid var(--ac-border);border-radius:14px;background:#f8faf8}.ac-page .ac-disclaimer>div{display:flex;gap:13px;align-items:flex-start}.ac-page .ac-disclaimer>div>i{color:var(--ac-green);margin-top:4px}.ac-page .ac-disclaimer p{font-size:.86rem;margin-bottom:12px}.ac-page .ac-disclaimer strong{color:var(--ac-ink)}.ac-page .ac-disclaimer>a{display:inline-flex;gap:8px;align-items:center;font-size:.88rem;font-weight:850;color:var(--ac-green);text-decoration:none}
+@media(max-width:900px){.ac-page .ac-area-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.ac-page .ac-driver-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.ac-page .ac-method-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.ac-page .ac-price-grid{grid-template-columns:1fr}.ac-page .ac-price-card{min-height:0}.ac-page .ac-period-strip{align-items:flex-start;flex-wrap:wrap}.ac-page .ac-period-strip>i{display:none}.ac-page .ac-period-strip>span{flex:1 1 30%;border-left:2px solid #5a7763;padding-left:10px}.ac-page .ac-three{grid-template-columns:1fr}.ac-page .ac-pillar{min-height:0}}
+@media(max-width:600px){.ac-page .ac-hero{min-height:0;padding:58px 18px 0}.ac-page .ac-hero-inner{padding-bottom:30px}.ac-page .ac-eyebrow{font-size:.66rem;letter-spacing:.11em}.ac-page h1{font-size:clamp(2.3rem,11vw,3.5rem)}.ac-page .ac-lead{font-size:1rem}.ac-page .ac-actions{flex-direction:column;align-items:stretch}.ac-page .ac-btn{width:100%}.ac-page .ac-hero-note{font-size:.82rem}.ac-page .ac-hero-caption{font-size:.55rem;letter-spacing:.08em;gap:7px}.ac-page .ac-section{padding:58px 18px}.ac-page .ac-timeline-section,.ac-page .ac-price-section{padding-left:18px;padding-right:18px}.ac-page .ac-era{grid-template-columns:1fr;gap:6px;padding-left:22px;padding-bottom:28px}.ac-page .ac-era-date{font-size:.8rem}.ac-page .ac-area-controls{padding:15px}.ac-page .ac-area-grid,.ac-page .ac-source-list,.ac-page .ac-driver-grid,.ac-page .ac-method-grid{grid-template-columns:1fr}.ac-page .ac-area-card{min-height:0}.ac-page .ac-price-status{padding:17px;gap:12px}.ac-page .ac-status-icon{flex-basis:38px;height:38px}.ac-page .ac-period-strip>span{flex-basis:44%;font-size:.76rem}.ac-page .ac-disclaimer{margin:0 18px 42px;padding:18px}.ac-page .ac-region-filters button,.ac-page .ac-timeline-tools button{font-size:.76rem;padding:8px 11px}}
+@media(prefers-reduced-motion:reduce){.ac-page *{scroll-behavior:auto!important;transition:none!important}}
+
+/* 21 Oct 2026 refinement: match the site's compact hero rhythm; keep all styling page-scoped. */
+.ac-page .ac-hero{min-height:350px;padding:38px 24px 0}
+.ac-page .ac-hero-inner{max-width:900px;padding:0 0 26px}
+.ac-page .ac-hero h1{font-size:clamp(2.2rem,4.2vw,3.65rem);font-weight:650;letter-spacing:-.035em;margin-bottom:14px}
+.ac-page .ac-hero h1 em{display:none}
+.ac-page .ac-lead{font-size:clamp(1rem,1.35vw,1.13rem);color:#fff;max-width:720px;line-height:1.55;margin-bottom:18px}
+.ac-page .ac-hero:before{filter:saturate(.72)}
+.ac-page .ac-hero-shade{background:linear-gradient(90deg,rgba(5,14,10,.56),rgba(5,14,10,.34) 55%,rgba(5,14,10,.30))}
+.ac-page .ac-actions{margin:18px 0 0;gap:10px}
+.ac-page .ac-btn{padding:11px 17px;border-radius:5px;font-size:.88rem}
+.ac-page .ac-btn-primary{background:#fff;color:#14251b}
+.ac-page .ac-btn-primary:hover{background:#edf3ee}
+.ac-page .ac-btn-outline{border-color:#ffffffa8;color:#fff;background:transparent}
+.ac-page .ac-btn-outline:hover{background:#ffffff16}
+.ac-page .ac-eyebrow,.ac-page .ac-hero-note,.ac-page .ac-hero-caption{display:none}
+.ac-page .ac-price-section{background:#edf5ef;color:var(--ac-ink)}
+.ac-page .ac-price-section .ac-kicker{color:#315e43}
+.ac-page .ac-price-section .ac-section-head>p:last-child{color:#53665a}
+.ac-page .ac-price-card{background:#fff;border:1px solid #d4e2d7;border-radius:8px;padding:22px}
+.ac-page .ac-price-card h3{color:#1c3224}
+.ac-page .ac-price-card p,.ac-page .ac-price-card ul{color:#53665a}
+.ac-page .ac-price-index{background:#e1eee4;color:#244d33;border-radius:5px}
+.ac-page .ac-price-status{background:#fff;border-color:#d4e2d7;border-radius:8px}
+.ac-page .ac-price-status h3{color:#1c3224}
+.ac-page .ac-price-status p{color:#53665a}
+.ac-page .ac-price-status a{color:#246b43}
+.ac-page .ac-status-icon{background:#e1eee4;color:#246b43;border-radius:8px}
+.ac-page .ac-period-strip>span{color:#1c3224}
+.ac-page .ac-period-strip small{color:#65766a}
+.ac-page .ac-period-strip>i{background:#b9cdbd}
+.ac-page .ac-price-section .ac-smallprint{color:#65766a}
+.ac-page .ac-area-card{border-radius:8px}
+@media(max-width:600px){.ac-page .ac-hero{min-height:0;padding:48px 18px 0}.ac-page .ac-hero h1{font-size:clamp(2rem,9vw,2.8rem)}.ac-page .ac-hero-inner{padding-bottom:24px}}
+
+
+/* 21 Oct 2026 QA hardening: prevent clipped text, long URLs and table overflow.
+   Scoped exclusively to About Chennai pages; no shared site CSS is changed. */
+.ac-page{overflow-x:clip;overflow-y:visible}
+.ac-page :where(h1,h2,h3,h4,p,li,a,strong,span,td,th,small,figcaption){overflow-wrap:anywhere}
+.ac-page :where(.ac-section,.ac-section-head,.ac-hero-inner,.ac-era,.ac-era>div,.ac-area-card,.ac-pillar,.ac-price-card,.ac-price-status,.ac-source,.ac-method-grid article,.ac-driver-grid article){min-width:0}
+.ac-page .ac-hero{height:auto;min-height:350px}
+.ac-page .ac-hero-inner{width:100%}
+.ac-page table{width:100%;max-width:100%;border-collapse:collapse}
+.ac-page :where(.ac-section, .ac-method, .ac-editorial-note){overflow-wrap:anywhere}
+.ac-page td,.ac-page th{vertical-align:top;overflow-wrap:anywhere}
+.ac-page .ac-area-card,.ac-page .ac-pillar,.ac-page .ac-price-card,.ac-page .ac-driver-grid article,.ac-page .ac-source{height:auto}
+.ac-page img{max-width:100%}
+@media(max-width:600px){.ac-page .ac-hero{height:auto;min-height:0}.ac-page .ac-hero-inner{padding-bottom:24px}.ac-page .ac-period-strip{flex-wrap:wrap}.ac-page .ac-period-strip>span{flex:1 1 42%;min-width:0}.ac-page table{display:block;overflow-x:auto;white-space:normal}.ac-page th,.ac-page td{min-width:120px}}
+
+/* About Chennai: restore an obvious pointer on the shared Property Tools menu.
+   Scoped to this section so the site's global header styles remain untouched. */
+.ac-page .aventrix-tools-dropdown > .dropdown-toggle,
+.ac-page .aventrix-tools-menu a,
+.ac-page .aventrix-tools-dropdown .dropdown-toggle i {
+  cursor: pointer;
+}
+.ac-page .aventrix-tools-dropdown:focus-within > .aventrix-tools-menu {
+  display: block;
+}
+
+
+/* 21 Oct 2026: prevent date/kicker labels from overlapping card titles across all corridor dossiers. */
+.ac-page .ac-area-card,
+.ac-page .ac-pillar,
+.ac-page .ac-driver-grid article,
+.ac-page .ac-method-grid article,
+.ac-page .ac-price-card,
+.ac-page .ac-source { position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: 0; }
+.ac-page .ac-area-card .ac-area-tag,
+.ac-page .ac-era-date,
+.ac-page .ac-pillar-no,
+.ac-page .ac-kicker,
+.ac-page .ac-status { position: static; inset: auto; transform: none; float: none; display: block; max-width: 100%; width: fit-content; white-space: normal; overflow-wrap: anywhere; line-height: 1.45; }
+.ac-page .ac-area-card .ac-area-tag { margin: 0 0 12px; flex: 0 0 auto; }
+.ac-page .ac-area-card h3,
+.ac-page .ac-pillar h3,
+.ac-page .ac-driver-grid article h3,
+.ac-page .ac-method-grid article h3,
+.ac-page .ac-price-card h3,
+.ac-page .ac-source strong { position: static; clear: both; display: block; width: 100%; margin: 0 0 12px; line-height: 1.28; overflow-wrap: anywhere; }
+.ac-page .ac-area-card p,
+.ac-page .ac-pillar p,
+.ac-page .ac-driver-grid article p,
+.ac-page .ac-method-grid article p,
+.ac-page .ac-price-card p { width: 100%; line-height: 1.6; overflow-wrap: anywhere; }
+.ac-page .ac-pillar-no { margin: 0 0 14px; }
+.ac-page .ac-era { align-items: start; }
+.ac-page .ac-era-date { margin: 0 0 8px; }
+.ac-page .ac-era > div { min-width: 0; }
+@media (max-width: 900px) {
+ .ac-page .ac-area-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+ .ac-page .ac-era { grid-template-columns: minmax(110px, 28%) minmax(0, 1fr); gap: 14px; }
+}
+@media (max-width: 600px) {
+ .ac-page .ac-area-grid { grid-template-columns: minmax(0, 1fr); }
+ .ac-page .ac-era { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+ .ac-page .ac-area-card { padding: 18px; }
+}
+
+
+/* About Chennai: responsive header fallback for viewport-based mobile testing.
+   Keep shared site-wide header CSS untouched; mirror the existing is-mobile menu. */
+@media (max-width: 768px) {
+  body.about-chennai-body .header .container.nav {
+    display:flex !important;
+    flex-wrap:nowrap !important;
+    justify-content:space-between !important;
+    align-items:center !important;
+    gap:10px !important;
+    padding:12px 14px !important;
+    min-height:64px;
+  }
+  body.about-chennai-body .header .logo { flex:1 1 auto; min-width:0; margin-right:0 !important; }
+  body.about-chennai-body .header .logo img { max-width:min(190px,48vw); height:auto; }
+  body.about-chennai-body .header .menu-toggle {
+    display:flex !important;
+    flex:0 0 44px;
+    width:44px;
+    height:44px;
+    order:3;
+    z-index:10002;
+  }
+  body.about-chennai-body .header .home-app-header-actions { display:flex !important; order:2; }
+  body.about-chennai-body .header .main-nav {
+    position:fixed !important;
+    top:0 !important; right:0 !important; bottom:0 !important; left:auto !important;
+    width:min(82vw,340px) !important; max-width:340px !important;
+    height:100vh !important; height:100dvh !important;
+    display:flex !important; flex-direction:column !important; align-items:stretch !important;
+    gap:0 !important; margin:0 !important;
+    padding:calc(24px + env(safe-area-inset-top,0px)) 0 calc(24px + env(safe-area-inset-bottom,0px)) !important;
+    background:#fff !important; box-shadow:-10px 0 30px rgba(0,0,0,.18) !important;
+    border-left:3px solid #0f3b2e !important;
+    transform:translateX(105%) !important;
+    transition:transform .32s cubic-bezier(.4,0,.2,1) !important;
+    overflow-y:auto !important; -webkit-overflow-scrolling:touch;
+    z-index:10001 !important; visibility:visible !important;
+  }
+  body.about-chennai-body .header .main-nav.active { transform:translateX(0) !important; }
+  body.about-chennai-body .header .main-nav > a,
+  body.about-chennai-body .header .main-nav .dropdown-toggle {
+    display:flex !important; width:100% !important; box-sizing:border-box !important;
+    padding:14px 24px !important; color:#17231e !important;
+    font-size:15px !important; line-height:1.35 !important; white-space:normal !important;
+  }
+  body.about-chennai-body .header .av-tools-about-mobile {
+    display:flex !important; order:0; font-weight:700 !important;
+    color:#0f3b2e !important; background:#f1f6f0 !important;
+    border-bottom:1px solid #dce6dc;
+  }
+  body.about-chennai-body .header .av-tools-about-mobile::before {
+    content:""; display:inline-block; width:4px; align-self:stretch;
+    margin-right:10px; background:#4c8a5d; border-radius:4px;
+  }
+  body.about-chennai-body .header .dropdown { display:block !important; width:100% !important; }
+  body.about-chennai-body .header .dropdown-content {
+    display:none !important; position:static !important; width:100% !important;
+    padding:0 0 8px 16px !important; background:#f8faf7 !important;
+    box-shadow:none !important;
+  }
+  body.about-chennai-body .header .dropdown.open .dropdown-content { display:block !important; }
+  body.about-chennai-body .header .dropdown-content a {
+    display:block !important; padding:12px 24px !important; color:#17231e !important;
+  }
+  body.about-chennai-body .header .menu-overlay.active {
+    opacity:1 !important; visibility:visible !important;
+  }
+}
+@media (min-width: 769px) {
+  body.about-chennai-body .header .av-tools-about-mobile { display:none !important; }
+}
+
+
+/* FINAL OVERRIDE: these dossier sections sit directly under body, not .ac-page.
+   Target the real DOM so responsive rules actually apply. */
+body.about-chennai-body .ac-research-dossier .ac-grid {
+  display:grid !important;
+  grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+  align-items:stretch !important;
+  gap:14px !important;
+}
+body.about-chennai-body .ac-research-dossier .ac-grid article {
+  display:flex !important;
+  flex-direction:column !important;
+  min-width:0 !important;
+  height:auto !important;
+  min-height:0 !important;
+  padding:16px !important;
+  text-align:left !important;
+  overflow-wrap:anywhere !important;
+}
+body.about-chennai-body .ac-research-dossier .ac-grid article h3 {
+  font-size:16px !important;
+  line-height:1.3 !important;
+  margin:0 0 8px !important;
+  text-align:left !important;
+}
+body.about-chennai-body .ac-research-dossier .ac-grid article p {
+  font-size:14px !important;
+  line-height:1.55 !important;
+  margin:0 0 10px !important;
+  text-align:left !important;
+  text-align-last:auto !important;
+  text-justify:auto !important;
+  word-spacing:normal !important;
+  letter-spacing:normal !important;
+}
+body.about-chennai-body .ac-research-dossier .ac-grid article .ac-card-summary {
+  display:-webkit-box !important;
+  -webkit-box-orient:vertical !important;
+  -webkit-line-clamp:3 !important;
+  overflow:hidden !important;
+}
+body.about-chennai-body .ac-research-dossier .ac-grid article .ac-card-summary.ac-expanded {
+  display:block !important;
+  -webkit-line-clamp:unset !important;
+  overflow:visible !important;
+}
+body.about-chennai-body .ac-research-dossier .ac-view-more {
+  display:inline-flex !important;
+  align-self:flex-start !important;
+  align-items:center !important;
+  gap:6px !important;
+  margin:0 0 12px !important;
+  padding:7px 12px !important;
+  border:1px solid #c7d7c8 !important;
+  border-radius:7px !important;
+  background:#f3f7f1 !important;
+  color:#17432f !important;
+  font:600 13px/1.3 inherit !important;
+  cursor:pointer !important;
+}
+body.about-chennai-body .ac-research-dossier .ac-grid article a {
+  overflow-wrap:anywhere !important;
+  font-size:13px !important;
+  line-height:1.5 !important;
+}
+@media(max-width:700px) {
+  body.about-chennai-body .ac-research-dossier {
+    margin:16px 12px !important;
+    padding:14px !important;
+  }
+  body.about-chennai-body .ac-research-dossier .ac-grid {
+    grid-template-columns:minmax(0,1fr) !important;
+    gap:11px !important;
+  }
+  body.about-chennai-body .ac-research-dossier .ac-grid article {
+    padding:13px 14px !important;
+  }
+  body.about-chennai-body .ac-research-dossier .ac-grid article h3 {
+    font-size:15px !important;
+    line-height:1.3 !important;
+  }
+  body.about-chennai-body .ac-research-dossier .ac-grid article p {
+    font-size:13.5px !important;
+    line-height:1.5 !important;
+  }
+  body.about-chennai-body .ac-research-dossier .ac-grid article .ac-card-summary {
+    -webkit-line-clamp:3 !important;
+  }
+}
+@media(min-width:701px) and (max-width:1000px) {
+  body.about-chennai-body .ac-research-dossier .ac-grid {
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  }
+}
+
+
+/* Mobile compact treatment for the land-price evidence table.
+   Desktop keeps the existing comparison table; mobile converts each row to a readable compact card. */
+@media (max-width: 600px) {
+  body.about-chennai-body .ac-research-dossier table {
+    display:block !important;
+    width:100% !important;
+    overflow:visible !important;
+    border:0 !important;
+    border-collapse:separate !important;
+    white-space:normal !important;
+    font-size:13px !important;
+  }
+  body.about-chennai-body .ac-research-dossier table thead {
+    display:none !important;
+  }
+  body.about-chennai-body .ac-research-dossier table tbody {
+    display:grid !important;
+    grid-template-columns:minmax(0,1fr) !important;
+    gap:9px !important;
+    width:100% !important;
+  }
+  body.about-chennai-body .ac-research-dossier table tbody tr {
+    display:block !important;
+    min-width:0 !important;
+    padding:10px 12px !important;
+    border:1px solid #dfe5dc !important;
+    border-radius:10px !important;
+    background:#fff !important;
+    box-shadow:0 1px 4px rgba(15,45,30,.05) !important;
+  }
+  body.about-chennai-body .ac-research-dossier table tbody td {
+    display:grid !important;
+    grid-template-columns:minmax(92px, 34%) minmax(0,1fr) !important;
+    gap:8px !important;
+    width:100% !important;
+    min-width:0 !important;
+    box-sizing:border-box !important;
+    padding:6px 0 !important;
+    border:0 !important;
+    border-bottom:1px solid #edf0eb !important;
+    font-size:12.5px !important;
+    line-height:1.45 !important;
+    text-align:left !important;
+    overflow-wrap:anywhere !important;
+  }
+  body.about-chennai-body .ac-research-dossier table tbody td:last-child {
+    border-bottom:0 !important;
+  }
+  body.about-chennai-body .ac-research-dossier table tbody td:nth-child(1)::before {
+    content:"Series";
+    font-weight:700;
+    color:#385544;
+  }
+  body.about-chennai-body .ac-research-dossier table tbody td:nth-child(2)::before {
+    content:"Definition";
+    font-weight:700;
+    color:#385544;
+  }
+  body.about-chennai-body .ac-research-dossier table tbody td:nth-child(3)::before {
+    content:"How to verify";
+    font-weight:700;
+    color:#385544;
+  }
+  body.about-chennai-body .ac-research-dossier table tbody td {
+    align-items:start;
+  }
+  body.about-chennai-body .ac-research-dossier h2 {
+    font-size:1.25rem !important;
+    line-height:1.3 !important;
+    text-wrap:balance;
+  }
+}
+
+
+/* Compact the editorial process and notices without changing shared site styles. */
+body.about-chennai-body .ac-method-grid {
+  display:grid !important;
+  grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  gap:12px !important;
+}
+body.about-chennai-body .ac-method-grid article {
+  min-width:0 !important;
+  padding:16px !important;
+  min-height:0 !important;
+  height:auto !important;
+}
+body.about-chennai-body .ac-method-grid article h3 {
+  font-size:1.05rem !important;
+  line-height:1.3 !important;
+  margin:8px 0 !important;
+}
+body.about-chennai-body .ac-method-grid article p {
+  font-size:14px !important;
+  line-height:1.5 !important;
+  margin:0 !important;
+  text-align:left !important;
+}
+body.about-chennai-body .ac-compact-notes-grid {
+  display:grid !important;
+  grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  align-items:stretch !important;
+  gap:12px !important;
+  margin-top:14px !important;
+}
+body.about-chennai-body .ac-compact-notes-grid .ac-editorial-note,
+body.about-chennai-body .ac-compact-notes-grid .ac-disclaimer {
+  min-width:0 !important;
+  margin:0 !important;
+  padding:14px !important;
+  height:100% !important;
+  box-sizing:border-box !important;
+  border-radius:12px !important;
+  overflow-wrap:anywhere !important;
+}
+body.about-chennai-body .ac-compact-notes-grid .ac-editorial-note p,
+body.about-chennai-body .ac-compact-notes-grid .ac-disclaimer p {
+  font-size:13px !important;
+  line-height:1.5 !important;
+  text-align:left !important;
+  margin:7px 0 0 !important;
+}
+body.about-chennai-body .ac-compact-notes-grid .ac-disclaimer > a {
+  display:inline-block !important;
+  margin-top:10px !important;
+  font-size:12px !important;
+  line-height:1.4 !important;
+}
+@media(max-width:600px) {
+  body.about-chennai-body .ac-method-grid {
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    gap:8px !important;
+  }
+  body.about-chennai-body .ac-method-grid article {
+    padding:11px !important;
+  }
+  body.about-chennai-body .ac-method-grid article > span {
+    font-size:12px !important;
+  }
+  body.about-chennai-body .ac-method-grid article h3 {
+    font-size:14px !important;
+    margin:6px 0 !important;
+  }
+  body.about-chennai-body .ac-method-grid article p {
+    font-size:12px !important;
+    line-height:1.4 !important;
+  }
+  body.about-chennai-body .ac-compact-notes-grid {
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    gap:8px !important;
+  }
+  body.about-chennai-body .ac-compact-notes-grid .ac-editorial-note,
+  body.about-chennai-body .ac-compact-notes-grid .ac-disclaimer {
+    padding:10px !important;
+    border-radius:9px !important;
+  }
+  body.about-chennai-body .ac-compact-notes-grid .ac-editorial-note p,
+  body.about-chennai-body .ac-compact-notes-grid .ac-disclaimer p {
+    font-size:11.5px !important;
+    line-height:1.4 !important;
+  }
+  body.about-chennai-body .ac-compact-notes-grid .ac-disclaimer > a {
+    font-size:11px !important;
+    line-height:1.35 !important;
+  }
+}
