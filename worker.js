@@ -170,6 +170,17 @@ export default {
       const slug = url.searchParams.get("id") || "";
       if (crawler && slug) return propertyShareResponse(request, slug, false);
     }
-    return env.ASSETS.fetch(request);
+    const assetResponse = await env.ASSETS.fetch(request);
+    const contentType = assetResponse.headers.get("content-type") || "";
+    if (!contentType.includes("text/html") || assetResponse.status !== 200) return assetResponse;
+
+    // Add adaptive low-data behaviour site-wide without editing every HTML page.
+    return new HTMLRewriter()
+      .on("head", {
+        element(element) {
+          element.append('<script src="/js/low-data-mode.js" defer></script>', { html: true });
+        }
+      })
+      .transform(assetResponse);
   }
 };
