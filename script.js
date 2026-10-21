@@ -7,10 +7,16 @@
 // ===========================
 const heroVideo = document.getElementById("heroVideo");
 
-// Data Saver on, or "reduce motion" requested: keep the poster image and
-// don't download/play the background video.
+// Respect Data Saver, slow connections, and reduced-motion preferences.
+// Keep the poster image instead of downloading a multi-megabyte background video.
+const heroConnection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
 const heroVideoSkip = !!(heroVideo && (
-    (navigator.connection && navigator.connection.saveData) ||
+    (heroConnection && (
+        heroConnection.saveData ||
+        heroConnection.effectiveType === "slow-2g" ||
+        heroConnection.effectiveType === "2g" ||
+        (typeof heroConnection.downlink === "number" && heroConnection.downlink > 0 && heroConnection.downlink < 0.8)
+    )) ||
     (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches)));
 if (heroVideoSkip) {
     heroVideo.removeAttribute("autoplay");
