@@ -45,7 +45,7 @@
         <img src="/images/aventrix-logo.png" alt="Aventrix Realty">
     </a>
 </div>
-   <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+   <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" data-i18n-aria-label="shared.header.openMenu">
     <span></span>
     <span></span>
     <span></span>
@@ -55,43 +55,43 @@
              breakpoint, unlike the desktop one inside .nav-right
              (hidden on mobile by an existing rule). -->
         <div class="home-app-header-actions">
-            <a href="/account.html" class="home-app-bell-btn" aria-label="My Account">
+            <a href="/account.html" class="home-app-bell-btn" aria-label="My Account" data-i18n-aria-label="shared.header.myAccount">
                 <i class="far fa-circle-user" aria-hidden="true"></i>
             </a>
         </div>
     <div class="menu-overlay" id="menuOverlay"></div>
        <nav class="main-nav" data-hq="phones">
 
-    <a href="/">Home</a>
+    <a href="/" data-i18n="Home">Home</a>
 
-    <a href="/about.html">About Us</a>
+    <a href="/about.html" data-i18n="About Us">About Us</a>
 
-    <a href="/properties.html">Properties</a>
+    <a href="/properties.html" data-i18n="Properties">Properties</a>
 
-    <a href="/services.html">Services</a>
+    <a href="/services.html" data-i18n="Services">Services</a>
 
-    <a href="/list-with-us.html">List With Us</a>
+    <a href="/list-with-us.html" data-i18n="List With Us">List With Us</a>
 
-    <a href="/free-valuation.html">Free Valuation</a>
+    <a href="/free-valuation.html" data-i18n="Free Valuation">Free Valuation</a>
 
-    <a href="/joint-venture.html">Joint Venture</a>
+    <a href="/joint-venture.html" data-i18n="Joint Venture">Joint Venture</a>
 
     <div class="dropdown aventrix-tools-dropdown">
       <a href="/property-tools.html" class="dropdown-toggle"><span><span class="nav-label-extra">Property </span>Tools</span><i class="fas fa-chevron-down" aria-hidden="true"></i></a>
       <div class="dropdown-content aventrix-tools-menu">
-        <a href="/property-tools.html">All Property Tools</a>
-        <a href="/about-chennai/">About Chennai</a>
+        <a href="/property-tools.html" data-i18n="All Property Tools">All Property Tools</a>
+        <a href="/about-chennai/" data-i18n="About Chennai">About Chennai</a>
       </div>
     </div>
-    <a href="/nri-services.html">NRI Services</a>
+    <a href="/nri-services.html" data-i18n="NRI Services">NRI Services</a>
 
-    <a href="/contact.html">Contact</a>
+    <a href="/contact.html" data-i18n="Contact">Contact</a>
 
-    <a href="/admin/" class="main-nav-admin">Admin</a>
+    <a href="/admin/" class="main-nav-admin" data-i18n="Admin">Admin</a>
 
 
     <div class="mobile-menu-divider"></div>
-    <span class="mobile-menu-contact-label">CONTACT</span>
+    <span class="mobile-menu-contact-label" data-i18n="CONTACT">CONTACT</span>
     <a href="tel:+919176887770" class="mobile-menu-phone">📞 +91 91768 87770</a>
     <a href="tel:+917092356222" class="mobile-menu-phone">📞 +91 70923 56222</a>
     <div class="mobile-menu-socials">
@@ -115,10 +115,10 @@
             <!-- Notification/Bell — matches index.html's header exactly
                  (site-wide header consistency), same .nav-wishlist-link
                  styling, same position ahead of the phone number. -->
-            <a href="/account.html" class="nav-wishlist-link nav-bell-link" aria-label="My Account">
+            <a href="/account.html" class="nav-wishlist-link nav-bell-link" aria-label="My Account" data-i18n-aria-label="shared.header.myAccount">
                 <i class="far fa-circle-user" aria-hidden="true"></i>
             </a>
-            <a href="tel:+919176887770" class="nav-phone" aria-label="Call Aventrix Realty">
+            <a href="tel:+919176887770" class="nav-phone" aria-label="Call Aventrix Realty" data-i18n-aria-label="shared.header.callAventrix">
                 <i class="fas fa-phone-alt" aria-hidden="true"></i>
             </a>
         </div>
@@ -152,7 +152,7 @@
 
         <div class="ft-brand">
             <a href="/" class="ft-logo" aria-label="Aventrix Realty — Home"><img src="/images/aventrix-logo-white.png" alt="Aventrix Realty" width="1042" height="342" loading="lazy" decoding="async"></a>
-            <p class="ft-tagline" data-site="footer-tagline">Where Legacy Meets The Next Generation</p>
+            <p class="ft-tagline" data-site="footer-tagline" data-i18n="shared.footer.tagline">Where Legacy Meets The Next Generation</p>
             <p class="ft-desc" data-site="footer-description">
                 Premium real estate advisory across Chennai — residential,
                 commercial, land and joint venture solutions, guided by
@@ -164,15 +164,15 @@
             <li class="ft-contact">
                 <span class="ft-icon" aria-hidden="true"><i class="fa-solid fa-location-dot"></i></span>
                 <div>
-                    <h4 class="ft-label">Head Office</h4>
-                    <span class="ft-sr" data-hq="name">Aventrix Realty – Head Office</span>
+                    <h4 class="ft-label" data-i18n="shared.footer.headOffice">Head Office</h4>
+                    <span class="ft-sr" data-hq="name" data-i18n="Aventrix Realty – Head Office">Aventrix Realty – Head Office</span>
                     <p data-hq="address">No.27, 1st Main Road, Newcolony, Chromepet, Chennai, Tamil Nadu</p>
                 </div>
             </li>
             <li class="ft-contact">
                 <span class="ft-icon" aria-hidden="true"><i class="fa-solid fa-phone"></i></span>
                 <div>
-                    <h4 class="ft-label">Phone</h4>
+                    <h4 class="ft-label" data-i18n="Phone">Phone</h4>
                     <div class="ft-phones" data-hq="phones">
                         <a href="tel:+919176887770">+91 91768 87770</a>
                         <a href="tel:+917092356222">+91 70923 56222</a>
@@ -182,14 +182,14 @@
             <li class="ft-contact">
                 <span class="ft-icon" aria-hidden="true"><i class="fa-regular fa-envelope"></i></span>
                 <div>
-                    <h4 class="ft-label">Email</h4>
+                    <h4 class="ft-label" data-i18n="Email">Email</h4>
                     <p><a href="mailto:office@aventrixrealty.com" data-hq="email">office@aventrixrealty.com</a></p>
                 </div>
             </li>
             <li class="ft-contact">
                 <span class="ft-icon" aria-hidden="true"><i class="fa-regular fa-building"></i></span>
                 <div>
-                    <h4 class="ft-label">Branch Office</h4>
+                    <h4 class="ft-label" data-i18n="shared.footer.branchOffice">Branch Office</h4>
                     <p>Adyar, Chennai</p>
                 </div>
             </li>
@@ -198,28 +198,28 @@
         <div class="ft-rule" aria-hidden="true"></div>
 
         <div class="ft-main">
-            <div class="ft-col" role="navigation" aria-label="About Aventrix">
-                <h4 class="ft-heading">About Aventrix</h4>
+            <div class="ft-col" role="navigation" aria-label="About Aventrix" data-i18n-aria-label="shared.footer.aboutAventrix">
+                <h4 class="ft-heading" data-i18n="shared.footer.aboutAventrix">About Aventrix</h4>
                 <ul class="ft-links">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/about.html">About Us</a></li>
-                    <li><a href="/#contact">Contact Us</a></li>
-                    <li><a href="/services.html">Our Services</a></li>
+                    <li><a href="/" data-i18n="Home">Home</a></li>
+                    <li><a href="/about.html" data-i18n="About Us">About Us</a></li>
+                    <li><a href="/#contact" data-i18n="Contact Us">Contact Us</a></li>
+                    <li><a href="/services.html" data-i18n="Our Services">Our Services</a></li>
                 </ul>
             </div>
-            <div class="ft-col" role="navigation" aria-label="Quick links">
-                <h4 class="ft-heading">Quick Links</h4>
+            <div class="ft-col" role="navigation" aria-label="Quick links" data-i18n-aria-label="Quick links">
+                <h4 class="ft-heading" data-i18n="shared.footer.quickLinks">Quick Links</h4>
                 <ul class="ft-links">
-                    <li><a href="/our-realtors.html">Realtors</a></li>
-                    <li><a href="/brokerage-fees.html">Brokerage &amp; Fees</a></li>
-                    <li><a href="/emi-calculator.html">EMI Calculator</a></li>
-                    <li><a href="/jv-calculator.html">Joint Venture Calculator</a></li>
+                    <li><a href="/our-realtors.html" data-i18n="shared.footer.realtors">Realtors</a></li>
+                    <li><a href="/brokerage-fees.html" data-i18n="shared.footer.brokerageFees">Brokerage &amp; Fees</a></li>
+                    <li><a href="/emi-calculator.html" data-i18n="shared.footer.emiCalculator">EMI Calculator</a></li>
+                    <li><a href="/jv-calculator.html" data-i18n="shared.footer.jointVentureCalculator">Joint Venture Calculator</a></li>
                 </ul>
             </div>
 
             <div class="ft-side">
                 <div class="ft-follow">
-                    <h4 class="ft-heading">Follow Us</h4>
+                    <h4 class="ft-heading" data-i18n="shared.footer.followUs">Follow Us</h4>
                     <div class="ft-social">
                         <a href="https://www.facebook.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Facebook" data-site="social-facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
                         <a href="https://www.instagram.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Instagram" data-site="social-instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
@@ -231,9 +231,9 @@
                 </div>
 
                 <section class="ft-map" aria-labelledby="ftMapTitle">
-                    <h4 class="ft-sr" id="ftMapTitle">Find Us</h4>
+                    <h4 class="ft-sr" id="ftMapTitle" data-i18n="shared.footer.findUs">Find Us</h4>
                     <div class="ft-map-frame" data-hq="map-embed"><iframe src="https://www.google.com/maps?q=No.27%2C%201st%20Main%20Road%2C%20New%20Colony%2C%20Chromepet%2C%20Chennai%2C%20Tamil%20Nadu&amp;output=embed" width="600" height="280" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Aventrix Realty Head Office Map" allowfullscreen></iframe></div>
-                    <a class="ft-map-open" href="https://maps.app.goo.gl/VjCCdVch9uequeGUA?g_st=ic" target="_blank" rel="noopener noreferrer" data-hq="maps"><i class="fa-solid fa-diamond-turn-right" aria-hidden="true"></i><span>Open in Maps</span><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i><span class="ft-sr"> (opens in a new tab)</span></a>
+                    <a class="ft-map-open" href="https://maps.app.goo.gl/VjCCdVch9uequeGUA?g_st=ic" target="_blank" rel="noopener noreferrer" data-hq="maps"><i class="fa-solid fa-diamond-turn-right" aria-hidden="true"></i><span data-i18n="shared.footer.openInMaps">Open in Maps</span><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i><span class="ft-sr" data-i18n="shared.footer.opensInNewTab"> (opens in a new tab)</span></a>
                 </section>
             </div>
         </div>
@@ -242,15 +242,15 @@
 
         <div class="ft-bottom">
             <div class="ft-credits">
-                <p class="ft-copyright" data-site="copyright-text">© 2026 Aventrix Realty. All Rights Reserved.</p>
+                <p class="ft-copyright" data-site="copyright-text" data-i18n="shared.footer.rights">© 2026 Aventrix Realty. All Rights Reserved.</p>
                 <p class="ft-designer">Designed with <span class="ft-heart" role="img" aria-label="love">&#10084;&#65039;</span> by L. Sanjay Gandhi</p>
             </div>
-            <div class="ft-legal" role="navigation" aria-label="Legal and utility links">
-                <a href="/privacy-policy.html">Privacy Policy</a>
-                <a href="/terms.html">Terms &amp; Conditions</a>
-                <a href="/sitemap.html">Sitemap</a>
-                <a href="/property-tools.html">Property Tools</a>
-                <a href="/admin/" class="ft-legal-admin">Admin</a>
+            <div class="ft-legal" role="navigation" aria-label="Legal and utility links" data-i18n-aria-label="Legal and utility links">
+                <a href="/privacy-policy.html" data-i18n="shared.footer.privacyPolicy">Privacy Policy</a>
+                <a href="/terms.html" data-i18n="shared.footer.termsConditions">Terms &amp; Conditions</a>
+                <a href="/sitemap.html" data-i18n="shared.footer.sitemap">Sitemap</a>
+                <a href="/property-tools.html" data-i18n="shared.footer.propertyTools">Property Tools</a>
+                <a href="/admin/" class="ft-legal-admin" data-i18n="Admin">Admin</a>
             </div>
         </div>
 
@@ -259,26 +259,26 @@
 <script src="/js/site-footer.js?v=20261015" defer></script>
 <!-- SITE-FOOTER:END -->
 <button class="avx-ai-launcher" type="button" aria-controls="avxAiPanel" aria-expanded="false" hidden>
-    <span class="avx-ai-launcher-mark" aria-hidden="true">✦</span><span class="avx-ai-launcher-label">AI Property Assistant</span>
+    <span class="avx-ai-launcher-mark" aria-hidden="true">✦</span><span class="avx-ai-launcher-label" data-i18n="AI Property Assistant">AI Property Assistant</span>
   </button>
-  <section class="avx-ai-panel" id="avxAiPanel" role="dialog" aria-label="Aventrix Realty AI Property Assistant" aria-modal="false" hidden>
+  <section class="avx-ai-panel" id="avxAiPanel" role="dialog" aria-label="Aventrix Realty AI Property Assistant" aria-modal="false" hidden data-i18n-aria-label="chat.accessibility.dialogLabel">
     <header class="avx-ai-head">
-      <div class="avx-ai-brand"><span class="avx-ai-brand-mark" aria-hidden="true">✦</span><div><div class="avx-ai-brand-title">Aventrix Realty AI Assistant</div><div class="avx-ai-brand-subtitle">Free published-property search · English &amp; தமிழ்</div></div></div>
-      <button class="avx-ai-close" type="button" aria-label="Close assistant">×</button>
+      <div class="avx-ai-brand"><span class="avx-ai-brand-mark" aria-hidden="true">✦</span><div><div class="avx-ai-brand-title" data-i18n="Aventrix Realty AI Assistant">Aventrix Realty AI Assistant</div><div class="avx-ai-brand-subtitle" data-i18n="Free published-property search · English &amp; தமிழ்">Free published-property search · English &amp; தமிழ்</div></div></div>
+      <button class="avx-ai-close" type="button" aria-label="Close assistant" data-i18n-aria-label="Close assistant">×</button>
     </header>
-    <div class="avx-ai-messages" aria-live="polite" aria-relevant="additions text"><div class="avx-ai-message assistant">Hello! Tell me the property type, location, BHK and budget you need. I search published Aventrix Realty listings in English and Tamil.</div></div>
+    <div class="avx-ai-messages" aria-live="polite" aria-relevant="additions text"><div class="avx-ai-message assistant" data-i18n="Hello! Tell me the property type, location, BHK and budget you need. I search published Aventrix Realty listings in English and Tamil.">Hello! Tell me the property type, location, BHK and budget you need. I search published Aventrix Realty listings in English and Tamil.</div></div>
     <div class="avx-ai-status" role="status" aria-live="polite"></div>
-    <div class="avx-ai-suggestions" aria-label="Suggested questions">
-      <button class="avx-ai-suggestion" type="button" data-query="2 BHK flat for sale in Velachery">2 BHK Flat · Velachery</button>
-      <button class="avx-ai-suggestion" type="button" data-query="Land for sale in Uthandi ECR">Land · Uthandi ECR</button>
-      <button class="avx-ai-suggestion" type="button" data-query="3 BHK apartment for sale in Sithalapakkam">3 BHK Apartment · Sithalapakkam</button>
+    <div class="avx-ai-suggestions" aria-label="Suggested questions" data-i18n-aria-label="Suggested questions">
+      <button class="avx-ai-suggestion" type="button" data-query="2 BHK flat for sale in Velachery" data-i18n="chat.suggestion.exampleListing">2 BHK Flat · Velachery</button>
+      <button class="avx-ai-suggestion" type="button" data-query="Land for sale in Uthandi ECR" data-i18n="chat.suggestion.landUthandi">Land · Uthandi ECR</button>
+      <button class="avx-ai-suggestion" type="button" data-query="3 BHK apartment for sale in Sithalapakkam" data-i18n="chat.suggestion.apartmentSithalapakkam">3 BHK Apartment · Sithalapakkam</button>
     </div>
-    <form class="avx-ai-form"><textarea class="avx-ai-input" rows="1" maxlength="1200" aria-label="Ask about properties" placeholder="Tell us your property requirement…" required></textarea><button class="avx-ai-send" type="submit">Send</button></form>
-    <p class="avx-ai-note">I use Aventrix Realty website information and published listings. Please confirm current availability and legal details with our team.</p>
+    <form class="avx-ai-form"><textarea class="avx-ai-input" rows="1" maxlength="1200" aria-label="Ask about properties" placeholder="Tell us your property requirement…" required data-i18n-aria-label="Ask about properties" data-i18n-placeholder="Tell us your property requirement…"></textarea><button class="avx-ai-send" type="submit" data-i18n="Send">Send</button></form>
+    <p class="avx-ai-note" data-i18n="chat.note.disclaimer">I use Aventrix Realty website information and published listings. Please confirm current availability and legal details with our team.</p>
   </section>
 </div>
 <a href="https://wa.me/919176887770" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" data-site="whatsapp-link"><img src="/images/whatsapp-icon.png" alt="WhatsApp"></a>
-<button id="backToTop" class="back-to-top" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
+<button id="backToTop" class="back-to-top" aria-label="Back to top" data-i18n-aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="/js/supabase-client.js"></script>
 <script src="/js/public-site-settings.js?v=20260926b"></script>
@@ -289,4 +289,6 @@
 <script src="/js/about-chennai.js?v=1" defer></script>
 
 <script src="/js/ai-property-assistant.js?v=20261019-free2" defer></script>
+
+<script src="/js/language-switcher.js?v=20261023-br-normalization" defer></script>
 </body></html>

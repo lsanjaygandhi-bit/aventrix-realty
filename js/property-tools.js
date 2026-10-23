@@ -16,6 +16,13 @@
     "use strict";
 
     var $ = function (id) { return document.getElementById(id); };
+    function t(key, params) {
+        var value = window.avxI18n ? window.avxI18n.t(key) : key;
+        Object.keys(params || {}).forEach(function (name) {
+            value = value.replace(new RegExp("\\{" + name + "\\}", "g"), String(params[name]));
+        });
+        return value;
+    }
 
     /* -------- number parsing & Indian formatting -------- */
     function readNumber(id) {
@@ -84,7 +91,11 @@
         function progress() {
             var boxes = host.querySelectorAll("input[type=checkbox]");
             var done = Array.prototype.filter.call(boxes, function (b) { return b.checked; }).length;
-            setText("check-progress", done + " of " + boxes.length + " items checked. Use Print / Save PDF to keep a copy — ticks are not saved after you leave this page.");
+            var progressMessage = done + " of " + boxes.length + " items checked. Use Print / Save PDF to keep a copy — ticks are not saved after you leave this page.";
+            if (document.documentElement.getAttribute("data-avx-translations-loaded") === "true") {
+                progressMessage = t("checklist.progress", { done: done, total: boxes.length });
+            }
+            setText("check-progress", progressMessage);
             var bar = $("check-progress-bar");
             if (bar) bar.style.width = (boxes.length ? (done / boxes.length) * 100 : 0) + "%";
         }
@@ -92,6 +103,9 @@
         function render() {
             var key = LISTS[select.value] ? select.value : "flat";
             var list = LISTS[key];
+            var localizedTitle = document.documentElement.getAttribute("data-avx-translations-loaded") === "true"
+                ? t("checklist.generated." + key)
+                : list.title + " checklist";
             host.innerHTML =
                 '<div class="pt-print-brand pt-print-only">' +
                     '<img src="images/aventrix-logo.png" alt="Aventrix Realty logo">' +
@@ -106,7 +120,7 @@
                     '<div><span>Owner / Contact</span><strong id="print-owner">—</strong></div>' +
                     '<div><span>Reviewed by</span><strong id="print-reviewed">—</strong></div>' +
                 '</div>' +
-                '<h2 id="checklist-title">' + escapeHtml(list.title) + " checklist</h2>" +
+                '<h2 id="checklist-title">' + escapeHtml(localizedTitle) + "</h2>" +
                 '<p class="pt-print-instructions pt-print-only">Tick each item after checking the relevant document or site condition. Mark items that need follow-up and record notes where necessary.</p>' +
                 '<div class="pt-print-column-head pt-print-only"><span>Verification item</span><span>Status</span><span>Notes / Follow-up</span></div>' +
                 list.items.map(function (text, i) {
@@ -169,6 +183,9 @@
             progress();
         });
         render();
+        document.addEventListener("avx:i18n-ready", function () {
+            render();
+        });
     }
 
     /* =================================================================
@@ -212,6 +229,12 @@
         if (!form) return;
 
         var state = { rows: [], status: "loading", data: null, lastKey: "", userChoseOwn: false };
+        var typeKeys = { apartment: "valuation.type.apartment", land: "valuation.type.land", commercial: "valuation.type.commercial" };
+        var basisKeys = { asking: "valuation.rateBasis.askingLabel", guideline: "valuation.rateBasis.guidelineLabel", registered: "valuation.rateBasis.registeredLabel", opinion: "valuation.rateBasis.opinionLabel", unsure: "valuation.rateBasis.unsureLabel" };
+        var confidenceKeys = { high: "valuation.confidence.high", medium: "valuation.confidence.medium", low: "valuation.confidence.low" };
+        function localeLabel(key, fallback) {
+            return document.documentElement.getAttribute("data-avx-translations-loaded") === "true" ? t(key) : fallback;
+        }
 
         function currentType() { return form.elements.propertyType.value; }
         function findPublished(locality, type) {
@@ -240,13 +263,12 @@
             var keep = sel.value, names = [];
             state.rows.forEach(function (r) { if (names.indexOf(r.locality) < 0) names.push(r.locality); });
             names.sort(function (a, b) { return a.localeCompare(b); });
-            var short = { apartment: "flat", land: "land", commercial: "commercial" };
-            sel.innerHTML = '<option value="">Select a locality</option>' +
+            sel.innerHTML = '<option value="" data-i18n="valuation.locality.select">Select a locality</option>' +
                 names.map(function (n) {
-                    var types = typesFor(n).map(function (t) { return short[t]; }).join(", ");
+                    var types = typesFor(n).map(function (t) { return localeLabel(typeKeys[t], TYPE_LABEL[t]); }).join(", ");
                     return '<option value="' + escapeHtml(n) + '">' + escapeHtml(n) + (types ? " (" + types + ")" : "") + "</option>";
                 }).join("") +
-                '<option value="__other">Other locality (enter your own rate)</option>';
+                '<option value="__other" data-i18n="valuation.locality.other">Other locality (enter your own rate)</option>';
             if (keep && Array.prototype.some.call(sel.options, function (o) { return o.value === keep; })) sel.value = keep;
         }
 
@@ -254,27 +276,27 @@
             var panel = $("val-published-panel");
             if (!panel) return;
             var loc = locality.trim();
-            if (state.status === "loading") { panel.innerHTML = '<p class="pt-hint">Loading Aventrix published rates…</p>'; return; }
+            if (state.status === "loading") { panel.innerHTML = '<p class="pt-hint" data-i18n="valuation.status.loading">Loading Aventrix published rates…</p>'; return; }
             if (state.status === "error") {
-                panel.innerHTML = '<p class="pt-error">The Aventrix rate table could not be loaded. Please enter your own reference rate below, or try again later.</p>';
+                panel.innerHTML = '<p class="pt-error" data-i18n="valuation.status.loadError">The Aventrix rate table could not be loaded. Please enter your own reference rate below, or try again later.</p>';
                 return;
             }
-            if (!loc) { panel.innerHTML = '<p class="pt-hint">Select a locality above to use its Aventrix published rate.</p>'; return; }
-            if (loc === "__other") { panel.innerHTML = '<p class="pt-hint">No published rate for other localities — enter your own reference rate below.</p>'; return; }
+            if (!loc) { panel.innerHTML = '<p class="pt-hint" data-i18n="valuation.status.selectLocality">Select a locality above to use its Aventrix published rate.</p>'; return; }
+            if (loc === "__other") { panel.innerHTML = '<p class="pt-hint" data-i18n="valuation.status.noOtherRate">No published rate for other localities — enter your own reference rate below.</p>'; return; }
             if (!row) {
                 var other = typesFor(loc).filter(function (t) { return t !== type; });
-                panel.innerHTML = '<p class="pt-error" role="status"><strong>Rate not yet available for this locality/property type.</strong></p>' +
-                    '<p class="pt-hint">No Aventrix published rate for ' + escapeHtml(TYPE_LABEL[type].toLowerCase()) + ' in “' + escapeHtml(loc) + '”. Enter your own reference rate below.' +
-                    (other.length ? " A published rate exists for " + other.map(function (t) { return escapeHtml(TYPE_LABEL[t].toLowerCase()); }).join(" and ") + " in this locality." : "") + "</p>";
+                panel.innerHTML = '<p class="pt-error" role="status"><strong data-i18n="valuation.status.rateUnavailable">Rate not yet available for this locality/property type.</strong></p>' +
+                    '<p class="pt-hint">No Aventrix published rate for ' + escapeHtml(localeLabel(typeKeys[type], TYPE_LABEL[type]).toLowerCase()) + ' in “' + escapeHtml(loc) + '”. Enter your own reference rate below.' +
+                    (other.length ? " A published rate exists for " + other.map(function (t) { return escapeHtml(localeLabel(typeKeys[t], TYPE_LABEL[t]).toLowerCase()); }).join(" and ") + " in this locality." : "") + "</p>";
                 return;
             }
             panel.innerHTML =
                 '<div class="pt-rate-card">' +
                 '<p class="pt-rate-figure"><strong>' + escapeHtml(rateText(Number(row.low), Number(row.high))) + "</strong>" +
                 (row.high > row.low ? ' <span class="pt-hint">midpoint ' + escapeHtml(inr(Number(row.mid))) + "</span>" : "") + "</p>" +
-                '<p class="pt-hint">' + escapeHtml(row.locality) + " · " + escapeHtml(TYPE_LABEL[row.property_type]) + " · " + escapeHtml(BASIS_LABEL[row.rate_basis] || row.rate_basis) +
+                '<p class="pt-hint">' + escapeHtml(row.locality) + " · " + escapeHtml(localeLabel(typeKeys[row.property_type], TYPE_LABEL[row.property_type])) + " · " + escapeHtml(localeLabel(basisKeys[row.rate_basis], BASIS_LABEL[row.rate_basis] || row.rate_basis)) +
                 " · quoted on " + escapeHtml(AREA_BASIS_LABEL[row.area_basis] || "area as listed") +
-                " · confidence: " + escapeHtml(CONF_LABEL[row.confidence] || row.confidence) +
+                " · confidence: " + escapeHtml(localeLabel(confidenceKeys[row.confidence], CONF_LABEL[row.confidence] || row.confidence)) +
                 " · last checked " + escapeHtml(fmtDate(row.last_checked)) + "</p>" +
                 "</div>";
         }
@@ -283,20 +305,20 @@
             var body = $("rate-table-body");
             if (!body) return;
             if (state.status === "error") {
-                body.innerHTML = '<tr><td colspan="5" class="pt-empty">The rate table could not be loaded.</td></tr>';
+                body.innerHTML = '<tr><td colspan="5" class="pt-empty" data-i18n="valuation.status.tableError">The rate table could not be loaded.</td></tr>';
                 return;
             }
             if (!state.rows.length) {
-                body.innerHTML = '<tr><td colspan="5" class="pt-empty">No Aventrix published rates yet.</td></tr>';
+                body.innerHTML = '<tr><td colspan="5" class="pt-empty" data-i18n="valuation.status.noRates">No Aventrix published rates yet.</td></tr>';
                 return;
             }
             var rows = state.rows.slice().sort(function (a, b) {
                 return a.locality.localeCompare(b.locality) || a.property_type.localeCompare(b.property_type);
             });
             body.innerHTML = rows.map(function (r) {
-                return "<tr><td>" + escapeHtml(r.locality) + "</td><td>" + escapeHtml(TYPE_LABEL[r.property_type]) +
+                return "<tr><td>" + escapeHtml(r.locality) + "</td><td>" + escapeHtml(localeLabel(typeKeys[r.property_type], TYPE_LABEL[r.property_type])) +
                     "</td><td>" + escapeHtml(rateText(Number(r.low), Number(r.high))) +
-                    "</td><td>" + escapeHtml(CONF_LABEL[r.confidence] || r.confidence || "—") + "</td><td>" + escapeHtml(fmtDate(r.last_checked)) + "</td></tr>";
+                    "</td><td>" + escapeHtml(localeLabel(confidenceKeys[r.confidence], CONF_LABEL[r.confidence] || r.confidence || "—")) + "</td><td>" + escapeHtml(fmtDate(r.last_checked)) + "</td></tr>";
             }).join("");
             var gaps = $("rate-table-gaps");
             if (gaps && state.data) {
@@ -353,25 +375,25 @@
             var low, high, basis, sourceText, rateUnit = "sqft", ok = true;
 
             if ($("val-area").value === "") { ok = false; setError("val-area", ""); }
-            else if (!(areaRaw > 0)) { ok = false; setError("val-area", "Enter an area greater than zero."); }
-            else if (areaSqft > 5e7) { ok = false; setError("val-area", "That area looks too large — please check the number and unit."); }
+            else if (!(areaRaw > 0)) { ok = false; setError("val-area", localeLabel("valuation.error.area", "Enter an area greater than zero.")); }
+            else if (areaSqft > 5e7) { ok = false; setError("val-area", localeLabel("valuation.error.areaTooLarge", "That area looks too large — please check the number and unit.")); }
             else setError("val-area", "");
 
             if (usePublished) {
                 low = Number(row.low); high = Number(row.high); basis = row.rate_basis;
-                sourceText = "Aventrix published rate · checked " + fmtDate(row.last_checked);
+                sourceText = t("valuation.source.publishedChecked", { date: fmtDate(row.last_checked) });
                 ["val-rate-low", "val-rate-high"].forEach(function (id) { setError(id, ""); });
             } else {
                 rateUnit = $("val-rate-unit").value;
                 low = readNumber("val-rate-low");
                 high = readNumber("val-rate-high");
                 basis = $("val-rate-basis").value;
-                sourceText = "Your entered reference rate";
+                sourceText = localeLabel("valuation.source.ownRate", "Your entered reference rate");
                 if ($("val-rate-low").value === "") { ok = false; setError("val-rate-low", ""); }
-                else if (!(low > 0)) { ok = false; setError("val-rate-low", "Enter a rate greater than zero."); }
+                else if (!(low > 0)) { ok = false; setError("val-rate-low", localeLabel("valuation.error.rate", "Enter a rate greater than zero.")); }
                 else setError("val-rate-low", "");
-                if ($("val-rate-high").value !== "" && !(high > 0)) { ok = false; setError("val-rate-high", "Enter a rate greater than zero, or leave it blank."); }
-                else if (high > 0 && low > 0 && high < low) { setError("val-rate-high", "The high rate is below the low rate — the two have been swapped."); var t = low; low = high; high = t; }
+                if ($("val-rate-high").value !== "" && !(high > 0)) { ok = false; setError("val-rate-high", localeLabel("valuation.error.rateOptional", "Enter a rate greater than zero, or leave it blank.")); }
+                else if (high > 0 && low > 0 && high < low) { setError("val-rate-high", localeLabel("valuation.error.rateOrder", "The high rate is below the low rate — the two have been swapped.")); var tempRate = low; low = high; high = tempRate; }
                 else setError("val-rate-high", "");
                 if (!(high > 0)) high = low;
             }
@@ -394,7 +416,7 @@
             setText("val-r-rate", rateText(perLow, perHigh));
             $("val-r-ground-row").hidden = type !== "land";
             setText("val-r-ground", rateText(perLow * 2400, perHigh * 2400, " / ground"));
-            setText("val-r-basis", BASIS_LABEL[basis] || BASIS_LABEL.unsure);
+            setText("val-r-basis", localeLabel(basisKeys[basis], BASIS_LABEL[basis] || BASIS_LABEL.unsure));
             setText("val-r-source", sourceText);
 
             var note;
@@ -426,7 +448,7 @@
             if (loc) lines.push("Locality: " + loc);
             if (r) {
                 lines.push("Area: " + sqft(r.areaSqft));
-                lines.push("Rate used: " + rateText(r.perLow, r.perHigh) + " (" + (r.published ? "Aventrix published rate" : "my reference rate") + ")");
+                lines.push("Rate used: " + rateText(r.perLow, r.perHigh) + " (" + (r.published ? localeLabel("valuation.rateSource.published", "Aventrix published rate") : localeLabel("valuation.rateSource.own", "my reference rate")) + ")");
                 lines.push("Indicative value from the website tool: " + (r.single ? inr(r.vLow) : inr(r.vLow) + " – " + inr(r.vHigh)));
             }
             lines.push("I would like a professional valuation review.");
@@ -445,6 +467,11 @@
                 ["val-area", "val-rate-low", "val-rate-high"].forEach(function (id) { setError(id, ""); });
                 state.lastKey = "";
                 compute();
+                document.addEventListener("avx:i18n-ready", function () {
+                    fillLocalities();
+                    renderRateTable();
+                    compute();
+                });
             }, 0);
         });
 
@@ -486,28 +513,31 @@
         if (!form) return;
 
         function compute() {
+            function label(key) {
+                return document.documentElement.getAttribute("data-avx-translations-loaded") === "true" ? t(key) : key;
+            }
             var purchase = readNumber("purchase"), rent = readNumber("rent");
             var vacancy = readNumber("vacancy"), operating = readNumber("operating");
             var loan = readNumber("loan"), fitout = readNumber("fitout"), equity = readNumber("equity");
             var ok = true;
 
-            function req(id, v, label) {
-                if (!(v > 0)) { ok = false; setError(id, $(id).value === "" ? "" : label + " must be greater than zero."); }
+            function req(id, v, labelKey) {
+                if (!(v > 0)) { ok = false; setError(id, $(id).value === "" ? "" : t("investment.error.mustPositive", { label: label(labelKey) })); }
                 else setError(id, "");
             }
-            function opt(id, v, label, max) {
-                if (Number.isFinite(v) && v < 0) { ok = false; setError(id, label + " cannot be negative."); return 0; }
-                if (max !== undefined && v > max) { ok = false; setError(id, label + " cannot be more than " + max + "%."); return 0; }
+            function opt(id, v, labelKey, max) {
+                if (Number.isFinite(v) && v < 0) { ok = false; setError(id, t("investment.error.cannotNegative", { label: label(labelKey) })); return 0; }
+                if (max !== undefined && v > max) { ok = false; setError(id, t("investment.error.cannotOver", { label: label(labelKey), max: max })); return 0; }
                 setError(id, "");
                 return Number.isFinite(v) ? v : 0;
             }
-            req("purchase", purchase, "Purchase price");
-            req("rent", rent, "Monthly rent");
-            vacancy = opt("vacancy", vacancy, "Vacancy allowance", 100);
-            operating = opt("operating", operating, "Operating costs");
-            loan = opt("loan", loan, "Loan payments");
-            fitout = opt("fitout", fitout, "Acquisition / fit-out");
-            equity = opt("equity", equity, "Own cash invested");
+            req("purchase", purchase, "investment.field.purchase");
+            req("rent", rent, "investment.field.rent");
+            vacancy = opt("vacancy", vacancy, "investment.field.vacancy", 100);
+            operating = opt("operating", operating, "investment.field.operating");
+            loan = opt("loan", loan, "investment.field.loan");
+            fitout = opt("fitout", fitout, "investment.field.fitout");
+            equity = opt("equity", equity, "investment.field.equity");
 
             var out = $("investment-output"), empty = $("investment-output-empty");
             if (!ok) { out.hidden = true; empty.hidden = false; return; }
@@ -520,7 +550,7 @@
             var totalCost = purchase + fitout;
 
             setText("i-noi-head", inr(noi));
-            setText("i-noi-sub", "Net operating income per year, before tax and loan payments");
+            setText("i-noi-sub", label("investment.result.noiAnnual"));
             setText("i-gross", inr(gross));
             setText("i-effective", inr(effective));
             setText("i-noi", inr(noi));
@@ -528,13 +558,13 @@
             setText("i-netyield", pct(noi / purchase));
             setText("i-yieldcost", pct(noi / totalCost));
             setText("i-cash", inr(cash));
-            setText("i-payback", noi > 0 ? (totalCost / noi).toLocaleString("en-IN", { maximumFractionDigits: 1 }) + " years" : "No payback — NOI is not positive");
+            setText("i-payback", noi > 0 ? (totalCost / noi).toLocaleString("en-IN", { maximumFractionDigits: 1 }) + " " + label("investment.result.years") : label("investment.result.noPaybackNoi"));
             var cocRow = $("i-coc-row"), eqRow = $("i-equity-payback-row");
             var hasEquity = equity > 0;
             cocRow.hidden = !hasEquity; eqRow.hidden = !hasEquity;
             if (hasEquity) {
                 setText("i-coc", pct(cash / equity));
-                setText("i-equity-payback", cash > 0 ? (equity / cash).toLocaleString("en-IN", { maximumFractionDigits: 1 }) + " years" : "No payback — cash flow is not positive");
+                setText("i-equity-payback", cash > 0 ? (equity / cash).toLocaleString("en-IN", { maximumFractionDigits: 1 }) + " " + label("investment.result.years") : label("investment.result.noPaybackCash"));
             }
             ["i-noi", "i-cash"].forEach(function (id) {
                 var el = $(id); if (el) el.classList.toggle("is-negative", /−/.test(el.textContent));
@@ -542,9 +572,9 @@
             var warn = $("investment-warning");
             if (warn) {
                 var msgs = [];
-                if (loan > 0 && !hasEquity) msgs.push("You entered loan payments. Add your own cash invested to see cash-on-cash return; the yields above are measured on the full price.");
-                if (noi <= 0) msgs.push("Operating costs exceed the effective rent at these assumptions.");
-                else if (cash < 0) msgs.push("Loan payments exceed NOI, so the property needs extra cash each year at these assumptions.");
+                if (loan > 0 && !hasEquity) msgs.push(label("investment.warning.addEquity"));
+                if (noi <= 0) msgs.push(label("investment.warning.noiNegative"));
+                else if (cash < 0) msgs.push(label("investment.warning.cashNegative"));
                 warn.textContent = msgs.join(" ");
                 warn.hidden = msgs.length === 0;
             }
@@ -553,6 +583,7 @@
         form.addEventListener("input", compute);
         form.addEventListener("submit", function (e) { e.preventDefault(); compute(); });
         compute();
+        document.addEventListener("avx:i18n-ready", compute);
     }
 
     function boot() {

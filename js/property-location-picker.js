@@ -74,6 +74,10 @@
 
         var state = { map: null, marker: null, lat: null, lng: null, geocoder: null };
 
+        function text(key, fallback) {
+            return window.avxI18n ? window.avxI18n.t(key) : fallback;
+        }
+
         function say(text, isError) {
             if (!statusEl) return;
             if (!text) { statusEl.hidden = true; statusEl.textContent = ""; return; }
@@ -86,7 +90,9 @@
 
         function updateStatusForSelection() {
             if (state.lat == null) { say(""); return; }
-            say("<strong>Location selected</strong><br>Latitude: " + fmt(state.lat) + " &nbsp; Longitude: " + fmt(state.lng));
+            say("<strong>" + text("listing.map.selected", "Location selected") + "</strong><br>" +
+                text("listing.map.latitude", "Latitude:") + " " + fmt(state.lat) + " &nbsp; " +
+                text("listing.map.longitude", "Longitude:") + " " + fmt(state.lng));
         }
 
         function setLocation(lat, lng, opts2) {
@@ -108,7 +114,12 @@
             if (state.map) {
                 var pos = { lat: state.lat, lng: state.lng };
                 if (!state.marker) {
-                    state.marker = new window.google.maps.Marker({ position: pos, map: state.map, draggable: true, title: "Selected Property Location" });
+                    state.marker = new window.google.maps.Marker({
+                        position: pos,
+                        map: state.map,
+                        draggable: true,
+                        title: text("listing.map.markerTitle", "Selected Property Location")
+                    });
                     state.marker.addListener("dragend", function () {
                         var p = state.marker.getPosition();
                         setLocation(p.lat(), p.lng());
@@ -150,15 +161,15 @@
         // and add it to the key's API restrictions) — previously every such
         // failure was reported as "couldn't find", which hid the real cause.
         function searchFailure(status) {
-            if (status === "ZERO_RESULTS") return "Couldn't find that location. Try a more specific address, or click the map directly.";
-            if (status === "REQUEST_DENIED") return "Location search isn't available right now (Google declined the search request). You can still click the map directly to mark the exact spot.";
-            if (status === "OVER_QUERY_LIMIT") return "Too many searches just now. Please wait a moment and try again, or click the map directly.";
-            return "Location search didn't respond. Please try again, or click the map directly.";
+            if (status === "ZERO_RESULTS") return text("listing.map.searchNoResults", "Couldn't find that location. Try a more specific address, or click the map directly.");
+            if (status === "REQUEST_DENIED") return text("listing.map.searchDenied", "Location search isn't available right now (Google declined the search request). You can still click the map directly to mark the exact spot.");
+            if (status === "OVER_QUERY_LIMIT") return text("listing.map.searchLimit", "Too many searches just now. Please wait a moment and try again, or click the map directly.");
+            return text("listing.map.searchFailed", "Location search didn't respond. Please try again, or click the map directly.");
         }
 
         function geocode(query) {
             if (!query || !state.geocoder) return;
-            say("Searching…");
+            say(text("listing.map.searching", "Searching…"));
             var req = { address: query, region: "in", componentRestrictions: { country: "IN" } };
             // Prefer places near the area currently on screen (Chennai by default).
             // This is only a bias from the live map view — no fixed coordinates.
@@ -187,9 +198,12 @@
                         state.map.setZoom(PICKED_ZOOM);
                     }
                 }
-                say(state.lat == null
-                    ? "<strong>Area found.</strong> Now select the exact property location on the map — click the exact spot."
-                    : "<strong>Area found.</strong> Click the exact spot or drag the pin to change the selected location.<br>Latitude: " + fmt(state.lat) + " &nbsp; Longitude: " + fmt(state.lng));
+                say("<strong>" + text("listing.map.areaFound", "Area found.") + "</strong> " +
+                    (state.lat == null
+                        ? text("listing.map.chooseExact", "Now select the exact property location on the map — click the exact spot.")
+                        : text("listing.map.changePin", "Click the exact spot or drag the pin to change the selected location.") +
+                          "<br>" + text("listing.map.latitude", "Latitude:") + " " + fmt(state.lat) + " &nbsp; " +
+                          text("listing.map.longitude", "Longitude:") + " " + fmt(state.lng)));
             }
             try {
                 var pending = state.geocoder.geocode(req, done);
@@ -210,8 +224,8 @@
         }
         if (confirmBtn) {
             confirmBtn.addEventListener("click", function () {
-                if (state.lat == null) { say("Please click the exact property location on the map first (search only finds the area).", true); return; }
-                say("<strong>Location selected</strong><br>Latitude: " + fmt(state.lat) + " &nbsp; Longitude: " + fmt(state.lng));
+                if (state.lat == null) { say(text("listing.map.selectFirst", "Please click the exact property location on the map first (search only finds the area)."), true); return; }
+                updateStatusForSelection();
             });
         }
         // Manual lat/lng edits (typed or pasted directly into the boxes,
@@ -227,7 +241,7 @@
 
         if (mapEl) {
             loadGoogleMaps(function (status) {
-                if (status !== "ready") { say("Map couldn't load right now. You can still enter coordinates manually if you have them.", true); return; }
+                if (status !== "ready") { say(text("listing.map.loadFailed", "Map couldn't load right now. You can still enter coordinates manually if you have them."), true); return; }
                 ensureMap();
             });
         }

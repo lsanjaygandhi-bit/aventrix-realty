@@ -103,7 +103,7 @@
         <img src="images/aventrix-logo.png" alt="Aventrix Realty">
     </a>
 </div>
-   <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+   <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" data-i18n-aria-label="shared.header.openMenu">
     <span></span>
     <span></span>
     <span></span>
@@ -113,30 +113,31 @@
              breakpoint, unlike the desktop one inside .nav-right
              (hidden on mobile by an existing rule). -->
         <div class="home-app-header-actions">
-            <a href="account.html" class="home-app-bell-btn" aria-label="My Account">
+            <a href="account.html" class="home-app-bell-btn" aria-label="My Account" data-i18n-aria-label="shared.header.myAccount">
                 <i class="far fa-circle-user" aria-hidden="true"></i>
             </a>
         </div>
     <div class="menu-overlay" id="menuOverlay"></div>
        <nav class="main-nav" data-hq="phones">
 
-    <a href="index.html">Home</a>
+    <a href="index.html" data-i18n="Home">Home</a>
 
-    <a href="about.html">About Us</a>
+    <a href="about.html" data-i18n="About Us">About Us</a>
 
-    <a href="properties.html">Properties</a>
+    <a href="properties.html" data-i18n="Properties">Properties</a>
 
-    <a href="services.html">Services</a>
+    <a href="services.html" data-i18n="Services">Services</a>
 
-    <a href="list-with-us.html">List With Us</a>
+    <a href="list-with-us.html" data-i18n="List With Us">List With Us</a>
 
-    <a href="free-valuation.html">Free Valuation</a>
+    <a href="free-valuation.html" data-i18n="Free Valuation">Free Valuation</a>
 
-    <a href="joint-venture.html">Joint Venture</a>
+    <a href="joint-venture.html" data-i18n="Joint Venture">Joint Venture</a>
 
     <div class="dropdown aventrix-tools-dropdown">
       <a href="/property-tools.html" class="dropdown-toggle"><span><span class="nav-label-extra">Property </span>Tools</span><i class="fas fa-chevron-down" aria-hidden="true"></i></a>
       <div class="dropdown-content aventrix-tools-menu">
+<<<<<<< HEAD
         <a href="/property-tools.html">All Property Tools</a>
         <a href="/plot-area-calculator.html">Plot Area Calculator</a>
         <a href="/land-knowledge/">Tamil Nadu Land Knowledge Centre</a>
@@ -144,14 +145,23 @@
       </div>
     </div>
     <a href="nri-services.html">NRI Services</a>
+=======
+        <a href="/property-tools.html" data-i18n="All Property Tools">All Property Tools</a>
+        <a href="/plot-area-calculator.html" data-i18n="Plot Area Calculator">Plot Area Calculator</a>
+        <a href="/land-knowledge/" data-i18n="Tamil Nadu Land Knowledge Centre">Tamil Nadu Land Knowledge Centre</a>
+        <a href="/about-chennai/" data-i18n="About Chennai">About Chennai</a>
+      </div>
+    </div>
+    <a href="nri-services.html" data-i18n="NRI Services">NRI Services</a>
+>>>>>>> 172e68a (Update multilingual website support)
 
-    <a href="contact.html">Contact</a>
+    <a href="contact.html" data-i18n="Contact">Contact</a>
 
-    <a href="/admin/" class="main-nav-admin">Admin</a>
+    <a href="/admin/" class="main-nav-admin" data-i18n="Admin">Admin</a>
 
 
     <div class="mobile-menu-divider"></div>
-    <span class="mobile-menu-contact-label">CONTACT</span>
+    <span class="mobile-menu-contact-label" data-i18n="CONTACT">CONTACT</span>
     <a href="tel:+919176887770" class="mobile-menu-phone">📞 +91 91768 87770</a>
     <a href="tel:+917092356222" class="mobile-menu-phone">📞 +91 70923 56222</a>
     <div class="mobile-menu-socials">
@@ -175,10 +185,10 @@
             <!-- Notification/Bell — matches index.html's header exactly
                  (site-wide header consistency), same .nav-wishlist-link
                  styling, same position ahead of the phone number. -->
-            <a href="account.html" class="nav-wishlist-link nav-bell-link" aria-label="My Account">
+            <a href="account.html" class="nav-wishlist-link nav-bell-link" aria-label="My Account" data-i18n-aria-label="shared.header.myAccount">
                 <i class="far fa-circle-user" aria-hidden="true"></i>
             </a>
-            <a href="tel:+919176887770" class="nav-phone" aria-label="Call Aventrix Realty">
+            <a href="tel:+919176887770" class="nav-phone" aria-label="Call Aventrix Realty" data-i18n-aria-label="shared.header.callAventrix">
                 <i class="fas fa-phone-alt" aria-hidden="true"></i>
             </a>
         </div>
@@ -196,17 +206,17 @@
 
     <div class="container">
 
-        <span class="section-tag">PROPERTY INTELLIGENCE CENTRE</span>
+        <span class="section-tag" data-i18n="tools.hero.tag">PROPERTY INTELLIGENCE CENTRE</span>
 
-        <h1>Make Property Decisions<br>With More Clarity</h1>
+        <h1><span data-i18n="tools.hero.titlePart1">Make Property Decisions</span><br><span data-i18n="tools.hero.titlePart2">With More Clarity</span></h1>
 
-        <p>Practical calculators, checklists and official portal links for buyers, sellers, landowners and investors across Chennai.</p>
+        <p data-i18n="tools.hero.description">Practical calculators, checklists and official portal links for buyers, sellers, landowners and investors across Chennai.</p>
 
     </div>
 
 </section>
 
-<nav class="pt-breadcrumb" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li aria-current="page">Property Tools</li></ol></nav>
+<nav class="pt-breadcrumb" aria-label="Breadcrumb"><ol><li><a href="index.html" data-i18n="Home">Home</a></li><li aria-current="page" data-i18n="tools.breadcrumb">Property Tools</li></ol></nav>
 
 <main id="main">
 
@@ -217,51 +227,51 @@
         <div class="pmf-tool">
             <span class="pmf-tool-icon" aria-hidden="true"><i class="fas fa-water"></i></span>
             <div>
-                <h2>Pallikaranai Ramsar Intelligence</h2>
+                <h2 data-i18n="tools.ramsar.title">Pallikaranai Ramsar Intelligence</h2>
                 <p>Follow court proceedings, official notifications, Ramsar boundary information and property due-diligence guidance relating to Pallikaranai Marsh, Chennai.</p>
                 <small>General information only — not legal approval or a guarantee that any property can be built on.</small>
             </div>
-            <a class="pmf-btn" href="pallikaranai-marsh-updates.html">Explore Ramsar Updates <span aria-hidden="true">&rarr;</span></a>
+            <a class="pmf-btn" href="pallikaranai-marsh-updates.html"><span data-i18n="tools.ramsar.action">Explore Ramsar Updates</span> <span aria-hidden="true">&rarr;</span></a>
         </div>
         <div class="pt-section-head">
-            <span class="pt-eyebrow">Calculators</span>
-            <h2 id="pt-calc-title">Run the numbers yourself</h2>
-            <p>Every calculator works in your browser and shows its assumptions. Nothing you type is sent to Aventrix Realty unless you choose to contact us.</p>
+            <span class="pt-eyebrow" data-i18n="tools.calculators.eyebrow">Calculators</span>
+            <h2 id="pt-calc-title" data-i18n="tools.calculators.title">Run the numbers yourself</h2>
+            <p data-i18n="tools.calculators.description">Every calculator works in your browser and shows its assumptions. Nothing you type is sent to Aventrix Realty unless you choose to contact us.</p>
         </div>
         <div class="pt-grid">
             <a class="pt-card pt-link-card" href="plot-area-calculator.html">
                 <span class="pt-icon"><i class="fas fa-draw-polygon" aria-hidden="true"></i></span>
-                <h3>Plot Area Calculator</h3>
-                <p>Calculate plot area for square, rectangular, triangular, L-shaped and other plot layouts, with conversions to sq. ft., cents, acres and more.</p>
-                <span class="pt-link-cta">Calculate plot area <span aria-hidden="true">&rarr;</span></span>
+                <h3 data-i18n="tools.plot.title">Plot Area Calculator</h3>
+                <p data-i18n="tools.plot.description">Calculate plot area for square, rectangular, triangular, L-shaped and other plot layouts, with conversions to sq. ft., cents, acres and more.</p>
+                <span class="pt-link-cta"><span data-i18n="tools.plot.action">Calculate plot area</span> <span aria-hidden="true">&rarr;</span></span>
             </a>
             <a class="pt-card pt-link-card" href="property-valuation.html">
                 <span class="pt-icon"><i class="fas fa-indian-rupee-sign" aria-hidden="true"></i></span>
-                <h3>Market Rates &amp; Valuation</h3>
+                <h3 data-i18n="tools.valuation.title">Market Rates &amp; Valuation</h3>
                 
-                <p>Work out an indicative value from the area and a reference rate — guideline value, asking prices or sale evidence — with the basis shown.</p>
-                <span class="pt-link-cta">Estimate a value <span aria-hidden="true">&rarr;</span></span>
+                <p data-i18n="tools.valuation.description">Work out an indicative value from the area and a reference rate — guideline value, asking prices or sale evidence — with the basis shown.</p>
+                <span class="pt-link-cta"><span data-i18n="tools.valuation.action">Estimate a value</span> <span aria-hidden="true">&rarr;</span></span>
             </a>
             <a class="pt-card pt-link-card" href="jv-calculator.html">
                 <span class="pt-icon"><i class="fas fa-handshake" aria-hidden="true"></i></span>
-                <h3>Joint Venture Calculator</h3>
+                <h3 data-i18n="tools.jv.title">Joint Venture Calculator</h3>
                 
-                <p>Model FSI area, saleable area, project costs, residual land value and landowner / developer sharing, then print a discussion proposal.</p>
-                <span class="pt-link-cta">Open calculator <span aria-hidden="true">&rarr;</span></span>
+                <p data-i18n="tools.jv.description">Model FSI area, saleable area, project costs, residual land value and landowner / developer sharing, then print a discussion proposal.</p>
+                <span class="pt-link-cta"><span data-i18n="tools.jv.action">Open calculator</span> <span aria-hidden="true">&rarr;</span></span>
             </a>
             <a class="pt-card pt-link-card" href="commercial-investment.html">
                 <span class="pt-icon"><i class="fas fa-building" aria-hidden="true"></i></span>
-                <h3>Commercial Investment</h3>
+                <h3 data-i18n="tools.commercial.title">Commercial Investment</h3>
                 
-                <p>Gross and net rental yield, NOI, cash flow after loan payments, cash-on-cash return and simple payback.</p>
-                <span class="pt-link-cta">Calculate returns <span aria-hidden="true">&rarr;</span></span>
+                <p data-i18n="tools.commercial.description">Gross and net rental yield, NOI, cash flow after loan payments, cash-on-cash return and simple payback.</p>
+                <span class="pt-link-cta"><span data-i18n="tools.commercial.action">Calculate returns</span> <span aria-hidden="true">&rarr;</span></span>
             </a>
             <a class="pt-card pt-link-card" href="emi-calculator.html">
                 <span class="pt-icon"><i class="fas fa-calculator" aria-hidden="true"></i></span>
-                <h3>EMI Calculator</h3>
+                <h3 data-i18n="tools.emi.title">EMI Calculator</h3>
                 
-                <p>Monthly EMI, total interest and total repayment for a home loan.</p>
-                <span class="pt-link-cta">Calculate EMI <span aria-hidden="true">&rarr;</span></span>
+                <p data-i18n="tools.emi.description">Monthly EMI, total interest and total repayment for a home loan.</p>
+                <span class="pt-link-cta"><span data-i18n="tools.emi.action">Calculate EMI</span> <span aria-hidden="true">&rarr;</span></span>
             </a>
         </div>
     </div>
@@ -270,40 +280,40 @@
 <section class="pt-section" aria-labelledby="pt-guides-title">
     <div class="pt-container">
         <div class="pt-section-head">
-            <span class="pt-eyebrow">Guides &amp; resources</span>
-            <h2 id="pt-guides-title">Prepare before you commit</h2>
+            <span class="pt-eyebrow" data-i18n="tools.guides.eyebrow">Guides &amp; resources</span>
+            <h2 id="pt-guides-title" data-i18n="tools.guides.title">Prepare before you commit</h2>
         </div>
         <div class="pt-grid">
             <a class="pt-card pt-link-card" href="property-checklists.html">
                 <span class="pt-icon"><i class="fas fa-list-check" aria-hidden="true"></i></span>
-                <h3>Property Checklists</h3>
+                <h3 data-i18n="tools.checklist.title">Property Checklists</h3>
                 
-                <p>Due-diligence checklists for flats, land, commercial property, joint ventures and sellers. Print or save as PDF.</p>
-                <span class="pt-link-cta">View checklists <span aria-hidden="true">&rarr;</span></span>
+                <p data-i18n="tools.checklist.description">Due-diligence checklists for flats, land, commercial property, joint ventures and sellers. Print or save as PDF.</p>
+                <span class="pt-link-cta"><span data-i18n="tools.checklist.action">View checklists</span> <span aria-hidden="true">&rarr;</span></span>
             </a>
             <a class="pt-card pt-link-card" href="jv-feasibility.html">
                 <span class="pt-icon"><i class="fas fa-diagram-project" aria-hidden="true"></i></span>
-                <h3>JV Feasibility Guide</h3>
+                <h3 data-i18n="tools.jvGuide.title">JV Feasibility Guide</h3>
                 
-                <p>What a JV feasibility covers, the formulas the calculator uses and what an architect and advocate must confirm.</p>
-                <span class="pt-link-cta">Read the guide <span aria-hidden="true">&rarr;</span></span>
+                <p data-i18n="tools.jvGuide.description">What a JV feasibility covers, the formulas the calculator uses and what an architect and advocate must confirm.</p>
+                <span class="pt-link-cta"><span data-i18n="tools.jvGuide.action">Read the guide</span> <span aria-hidden="true">&rarr;</span></span>
             </a>
             <a class="pt-card pt-link-card" href="government-services.html">
                 <span class="pt-icon"><i class="fas fa-landmark" aria-hidden="true"></i></span>
-                <h3>Government Property Services</h3>
+                <h3 data-i18n="tools.government.title">Government Property Services</h3>
                 
-                <p>Official Tamil Nadu portals for registration, EC, guideline value, land records, planning and RERA.</p>
-                <span class="pt-link-cta">Open portals <span aria-hidden="true">&rarr;</span></span>
+                <p data-i18n="tools.government.description">Official Tamil Nadu portals for registration, EC, guideline value, land records, planning and RERA.</p>
+                <span class="pt-link-cta"><span data-i18n="tools.government.action">Open portals</span> <span aria-hidden="true">&rarr;</span></span>
             </a>
             <a class="pt-card pt-link-card" href="seller-landowner.html">
                 <span class="pt-icon"><i class="fas fa-signs-post" aria-hidden="true"></i></span>
-                <h3>Seller &amp; Landowner Centre</h3>
+                <h3 data-i18n="tools.seller.title">Seller &amp; Landowner Centre</h3>
                 
-                <p>Choose a route — sell, lease or develop — and go straight to the right valuation, listing or JV page.</p>
-                <span class="pt-link-cta">Get started <span aria-hidden="true">&rarr;</span></span>
+                <p data-i18n="tools.seller.description">Choose a route — sell, lease or develop — and go straight to the right valuation, listing or JV page.</p>
+                <span class="pt-link-cta"><span data-i18n="tools.seller.action">Get started</span> <span aria-hidden="true">&rarr;</span></span>
             </a>
         </div>
-        <div class="pt-notice"><i class="fas fa-circle-info" aria-hidden="true"></i><p>These tools give indicative figures only. Title, approvals, buildability and market value for a specific property need independent verification by an advocate, a licensed architect or surveyor, and a valuer.</p></div>
+        <div class="pt-notice"><i class="fas fa-circle-info" aria-hidden="true"></i><p data-i18n="tools.notice">These tools give indicative figures only. Title, approvals, buildability and market value for a specific property need independent verification by an advocate, a licensed architect or surveyor, and a valuer.</p></div>
     </div>
 </section>
 
@@ -315,8 +325,8 @@
 
         <div class="ft-brand">
             <a href="index.html" class="ft-logo" aria-label="Aventrix Realty — Home"><img src="images/aventrix-logo-white.png" alt="Aventrix Realty" width="1042" height="342" loading="lazy" decoding="async"></a>
-            <p class="ft-tagline" data-site="footer-tagline">Where Legacy Meets The Next Generation</p>
-            <p class="ft-desc" data-site="footer-description">
+            <p class="ft-tagline" data-site="footer-tagline" data-i18n="shared.footer.tagline">Where Legacy Meets The Next Generation</p>
+            <p class="ft-desc" data-site="footer-description" data-i18n="shared.footer.description">
                 Premium real estate advisory across Chennai — residential,
                 commercial, land and joint venture solutions, guided by
                 trust and decades of local expertise.
@@ -327,15 +337,15 @@
             <li class="ft-contact">
                 <span class="ft-icon" aria-hidden="true"><i class="fa-solid fa-location-dot"></i></span>
                 <div>
-                    <h4 class="ft-label">Head Office</h4>
-                    <span class="ft-sr" data-hq="name">Aventrix Realty – Head Office</span>
+                    <h4 class="ft-label" data-i18n="shared.footer.headOffice">Head Office</h4>
+                    <span class="ft-sr" data-hq="name" data-i18n="Aventrix Realty – Head Office">Aventrix Realty – Head Office</span>
                     <p data-hq="address">No.27, 1st Main Road, Newcolony, Chromepet, Chennai, Tamil Nadu</p>
                 </div>
             </li>
             <li class="ft-contact">
                 <span class="ft-icon" aria-hidden="true"><i class="fa-solid fa-phone"></i></span>
                 <div>
-                    <h4 class="ft-label">Phone</h4>
+                    <h4 class="ft-label" data-i18n="Phone">Phone</h4>
                     <div class="ft-phones" data-hq="phones">
                         <a href="tel:+919176887770">+91 91768 87770</a>
                         <a href="tel:+917092356222">+91 70923 56222</a>
@@ -345,14 +355,14 @@
             <li class="ft-contact">
                 <span class="ft-icon" aria-hidden="true"><i class="fa-regular fa-envelope"></i></span>
                 <div>
-                    <h4 class="ft-label">Email</h4>
+                    <h4 class="ft-label" data-i18n="Email">Email</h4>
                     <p><a href="mailto:office@aventrixrealty.com" data-hq="email">office@aventrixrealty.com</a></p>
                 </div>
             </li>
             <li class="ft-contact">
                 <span class="ft-icon" aria-hidden="true"><i class="fa-regular fa-building"></i></span>
                 <div>
-                    <h4 class="ft-label">Branch Office</h4>
+                    <h4 class="ft-label" data-i18n="shared.footer.branchOffice">Branch Office</h4>
                     <p>Adyar, Chennai</p>
                 </div>
             </li>
@@ -361,28 +371,28 @@
         <div class="ft-rule" aria-hidden="true"></div>
 
         <div class="ft-main">
-            <div class="ft-col" role="navigation" aria-label="About Aventrix">
-                <h4 class="ft-heading">About Aventrix</h4>
+            <div class="ft-col" role="navigation" aria-label="About Aventrix" data-i18n-aria-label="shared.footer.aboutAventrix">
+                <h4 class="ft-heading" data-i18n="shared.footer.aboutAventrix">About Aventrix</h4>
                 <ul class="ft-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="index.html#contact">Contact Us</a></li>
-                    <li><a href="services.html">Our Services</a></li>
+                    <li><a href="index.html" data-i18n="Home">Home</a></li>
+                    <li><a href="about.html" data-i18n="About Us">About Us</a></li>
+                    <li><a href="index.html#contact" data-i18n="Contact Us">Contact Us</a></li>
+                    <li><a href="services.html" data-i18n="Our Services">Our Services</a></li>
                 </ul>
             </div>
-            <div class="ft-col" role="navigation" aria-label="Quick links">
-                <h4 class="ft-heading">Quick Links</h4>
+            <div class="ft-col" role="navigation" aria-label="Quick links" data-i18n-aria-label="Quick links">
+                <h4 class="ft-heading" data-i18n="shared.footer.quickLinks">Quick Links</h4>
                 <ul class="ft-links">
-                    <li><a href="our-realtors.html">Realtors</a></li>
-                    <li><a href="brokerage-fees.html">Brokerage &amp; Fees</a></li>
-                    <li><a href="emi-calculator.html">EMI Calculator</a></li>
-                    <li><a href="jv-calculator.html">Joint Venture Calculator</a></li>
+                    <li><a href="our-realtors.html" data-i18n="shared.footer.realtors">Realtors</a></li>
+                    <li><a href="brokerage-fees.html" data-i18n="shared.footer.brokerageFees">Brokerage &amp; Fees</a></li>
+                    <li><a href="emi-calculator.html" data-i18n="shared.footer.emiCalculator">EMI Calculator</a></li>
+                    <li><a href="jv-calculator.html" data-i18n="shared.footer.jointVentureCalculator">Joint Venture Calculator</a></li>
                 </ul>
             </div>
 
             <div class="ft-side">
                 <div class="ft-follow">
-                    <h4 class="ft-heading">Follow Us</h4>
+                    <h4 class="ft-heading" data-i18n="shared.footer.followUs">Follow Us</h4>
                     <div class="ft-social">
                         <a href="https://www.facebook.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Facebook" data-site="social-facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
                         <a href="https://www.instagram.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Instagram" data-site="social-instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
@@ -394,9 +404,9 @@
                 </div>
 
                 <section class="ft-map" aria-labelledby="ftMapTitle">
-                    <h4 class="ft-sr" id="ftMapTitle">Find Us</h4>
+                    <h4 class="ft-sr" id="ftMapTitle" data-i18n="shared.footer.findUs">Find Us</h4>
                     <div class="ft-map-frame" data-hq="map-embed"><iframe src="https://www.google.com/maps?q=No.27%2C%201st%20Main%20Road%2C%20New%20Colony%2C%20Chromepet%2C%20Chennai%2C%20Tamil%20Nadu&amp;output=embed" width="600" height="280" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Aventrix Realty Head Office Map" allowfullscreen></iframe></div>
-                    <a class="ft-map-open" href="https://maps.app.goo.gl/VjCCdVch9uequeGUA?g_st=ic" target="_blank" rel="noopener noreferrer" data-hq="maps"><i class="fa-solid fa-diamond-turn-right" aria-hidden="true"></i><span>Open in Maps</span><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i><span class="ft-sr"> (opens in a new tab)</span></a>
+                    <a class="ft-map-open" href="https://maps.app.goo.gl/VjCCdVch9uequeGUA?g_st=ic" target="_blank" rel="noopener noreferrer" data-hq="maps"><i class="fa-solid fa-diamond-turn-right" aria-hidden="true"></i><span data-i18n="shared.footer.openInMaps">Open in Maps</span><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i><span class="ft-sr" data-i18n="shared.footer.opensInNewTab"> (opens in a new tab)</span></a>
                 </section>
             </div>
         </div>
@@ -405,15 +415,15 @@
 
         <div class="ft-bottom">
             <div class="ft-credits">
-                <p class="ft-copyright" data-site="copyright-text">© 2026 Aventrix Realty. All Rights Reserved.</p>
+                <p class="ft-copyright" data-site="copyright-text" data-i18n="shared.footer.rights">© 2026 Aventrix Realty. All Rights Reserved.</p>
                 <p class="ft-designer">Designed with <span class="ft-heart" role="img" aria-label="love">&#10084;&#65039;</span> by L. Sanjay Gandhi</p>
             </div>
-            <div class="ft-legal" role="navigation" aria-label="Legal and utility links">
-                <a href="privacy-policy.html">Privacy Policy</a>
-                <a href="terms.html">Terms &amp; Conditions</a>
-                <a href="sitemap.html">Sitemap</a>
-                <a href="property-tools.html">Property Tools</a>
-                <a href="/admin/" class="ft-legal-admin">Admin</a>
+            <div class="ft-legal" role="navigation" aria-label="Legal and utility links" data-i18n-aria-label="Legal and utility links">
+                <a href="privacy-policy.html" data-i18n="shared.footer.privacyPolicy">Privacy Policy</a>
+                <a href="terms.html" data-i18n="shared.footer.termsConditions">Terms &amp; Conditions</a>
+                <a href="sitemap.html" data-i18n="shared.footer.sitemap">Sitemap</a>
+                <a href="property-tools.html" data-i18n="shared.footer.propertyTools">Property Tools</a>
+                <a href="/admin/" class="ft-legal-admin" data-i18n="Admin">Admin</a>
             </div>
         </div>
 
@@ -426,7 +436,7 @@
     <img src="images/whatsapp-icon.png" alt="WhatsApp">
 </a>
 
-<button id="backToTop" class="back-to-top" aria-label="Back to top">
+<button id="backToTop" class="back-to-top" aria-label="Back to top" data-i18n-aria-label="Back to top">
     <i class="fas fa-chevron-up"></i>
 </button>
 
@@ -438,6 +448,8 @@
 <script src="js/wishlist-widget.js"></script>
 <script src="script.js?v=20261018-conversational-ai"></script>
 
+
+<script src="/js/language-switcher.js?v=20261023-br-normalization" defer></script>
 </body>
 
 </html>

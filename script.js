@@ -321,7 +321,7 @@ function renderRealtorsGrid() {
                 <h3>${realtor.name}</h3>
                 <span class="realtor-designation">${realtor.designation}</span>
                 <p class="realtor-intro">${realtor.shortIntro}</p>
-                <a href="${profileUrl}" class="realtor-view-btn">View Profile</a>
+                <a href="${profileUrl}" class="realtor-view-btn" data-i18n="shared.profile.viewProfile">View Profile</a>
             </div>
         `;
     }).join("");
@@ -344,8 +344,8 @@ function renderRealtorProfile() {
     if (!realtor) {
         container.innerHTML = `
             <div class="realtor-not-found">
-                <p>Sorry, we couldn't find that profile.</p>
-                <p><a href="our-realtors.html">← Back to Our Realtors</a></p>
+                <p data-i18n="profile.notFound.message">Sorry, we couldn't find that profile.</p>
+                <p><a href="our-realtors.html" data-i18n="profile.notFound.back">← Back to Our Realtors</a></p>
             </div>
         `;
         return;
@@ -389,33 +389,33 @@ function renderRealtorProfile() {
                 <img src="${realtor.photo}" alt="${realtor.name}" class="realtor-profile-photo">
             </div>
             <div class="realtor-profile-info">
-                <span class="section-eyebrow">OUR TEAM</span>
+                <span class="section-eyebrow" data-i18n="realtors.hero.eyebrow">OUR TEAM</span>
                 <h1>${realtor.name}</h1>
                 <span class="realtor-profile-designation">${realtor.designation}</span>
                 <p class="realtor-profile-about">${realtor.about}</p>
 
                 <div class="rp-detail-grid">
                     <div class="rp-detail-block">
-                        <h4>Years of Experience</h4>
+                        <h4 data-i18n="profile.label.experience">Years of Experience</h4>
                         <p>${realtor.experience}</p>
                     </div>
                     <div class="rp-detail-block">
-                        <h4>Languages Spoken</h4>
+                        <h4 data-i18n="profile.label.languages">Languages Spoken</h4>
                         <p>${languages}</p>
                     </div>
                     <div class="rp-detail-block">
-                        <h4>Areas of Expertise</h4>
+                        <h4 data-i18n="profile.label.expertise">Areas of Expertise</h4>
                         <div class="rp-tag-list">${expertiseTags}</div>
                     </div>
                     <div class="rp-detail-block">
-                        <h4>Specializations</h4>
+                        <h4 data-i18n="profile.label.specializations">Specializations</h4>
                         <div class="rp-tag-list">${specializationTags}</div>
                     </div>
                 </div>
 
                 <div class="rp-contact-row">
                     <a href="tel:${realtor.phone}"><i class="fas fa-phone-alt" aria-hidden="true"></i> ${realtor.phone}</a>
-                    <a href="${whatsappLink}" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp</a>
+                    <a href="${whatsappLink}" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" aria-hidden="true"></i> <span data-i18n="profile.action.whatsapp">WhatsApp</span></a>
                     <a href="mailto:${realtor.email}"><i class="fas fa-envelope" aria-hidden="true"></i> ${realtor.email}</a>
                 </div>
             </div>
@@ -645,22 +645,22 @@ window.initFaqAccordion = initFaqAccordion;
             root.innerHTML = `
                 <button class="avx-ai-launcher" type="button" aria-controls="avxAiPanel" aria-expanded="false" hidden>
                     <span class="avx-ai-launcher-mark" aria-hidden="true">✦</span>
-                    <span class="avx-ai-launcher-label">AI Property Assistant</span>
+                    <span class="avx-ai-launcher-label" data-i18n="AI Property Assistant">AI Property Assistant</span>
                 </button>
-                <section class="avx-ai-panel" id="avxAiPanel" role="dialog" aria-label="Aventrix Realty AI Property Assistant" aria-modal="false" hidden>
+                <section class="avx-ai-panel" id="avxAiPanel" role="dialog" aria-label="Aventrix Realty AI Property Assistant" data-i18n-aria-label="chat.accessibility.dialogLabel" aria-modal="false" hidden>
                     <header class="avx-ai-head">
-                        <div class="avx-ai-brand"><span class="avx-ai-brand-mark" aria-hidden="true">✦</span><div><div class="avx-ai-brand-title">Aventrix Realty AI Assistant</div><div class="avx-ai-brand-subtitle">Free published-property search · English &amp; தமிழ்</div></div></div>
-                        <button class="avx-ai-close" type="button" aria-label="Close assistant">×</button>
+                        <div class="avx-ai-brand"><span class="avx-ai-brand-mark" aria-hidden="true">✦</span><div><div class="avx-ai-brand-title" data-i18n="Aventrix Realty AI Assistant">Aventrix Realty AI Assistant</div><div class="avx-ai-brand-subtitle" data-i18n="Free published-property search · English & தமிழ்">Free published-property search · English &amp; தமிழ்</div></div></div>
+                        <button class="avx-ai-close" type="button" aria-label="Close assistant" data-i18n-aria-label="Close assistant">×</button>
                     </header>
-                    <div class="avx-ai-messages" aria-live="polite" aria-relevant="additions text"><div class="avx-ai-message assistant">Hello! Tell me the property type, location, BHK and budget you need. I search published Aventrix Realty listings in English and Tamil.</div></div>
+                    <div class="avx-ai-messages" aria-live="polite" aria-relevant="additions text"><div class="avx-ai-message assistant" data-i18n="Hello! Tell me the property type, location, BHK and budget you need. I search published Aventrix Realty listings in English and Tamil.">Hello! Tell me the property type, location, BHK and budget you need. I search published Aventrix Realty listings in English and Tamil.</div></div>
                     <div class="avx-ai-status" role="status" aria-live="polite"></div>
-                    <div class="avx-ai-suggestions" aria-label="Suggested questions">
-                        <button class="avx-ai-suggestion" type="button" data-query="2 BHK flat for sale in Velachery">2 BHK Flat · Velachery</button>
-                        <button class="avx-ai-suggestion" type="button" data-query="What services does Aventrix Realty offer?">Our Services</button>
-                        <button class="avx-ai-suggestion" type="button" data-query="How do I calculate plot area?">Plot Area Calculator</button>
+                    <div class="avx-ai-suggestions" aria-label="Suggested questions" data-i18n-aria-label="Suggested questions">
+                        <button class="avx-ai-suggestion" type="button" data-query="2 BHK flat for sale in Velachery" data-i18n="chat.suggestion.exampleListing">2 BHK Flat · Velachery</button>
+                        <button class="avx-ai-suggestion" type="button" data-query="What services does Aventrix Realty offer?" data-i18n="Our Services">Our Services</button>
+                        <button class="avx-ai-suggestion" type="button" data-query="How do I calculate plot area?" data-i18n="Plot Area Calculator">Plot Area Calculator</button>
                     </div>
-                    <form class="avx-ai-form"><textarea class="avx-ai-input" rows="1" maxlength="1200" aria-label="Ask about properties" placeholder="Tell us your property requirement…" required></textarea><button class="avx-ai-send" type="submit">Send</button></form>
-                    <p class="avx-ai-note">I use Aventrix Realty website information and published listings. Please confirm current availability and legal details with our team.</p>
+                    <form class="avx-ai-form"><textarea class="avx-ai-input" rows="1" maxlength="1200" aria-label="Ask about properties" data-i18n-aria-label="Ask about properties" placeholder="Tell us your property requirement…" data-i18n-placeholder="Tell us your property requirement…" required></textarea><button class="avx-ai-send" type="submit" data-i18n="Send">Send</button></form>
+                    <p class="avx-ai-note" data-i18n="chat.note.disclaimer">I use Aventrix Realty website information and published listings. Please confirm current availability and legal details with our team.</p>
                 </section>`;
             document.body.appendChild(root);
         }

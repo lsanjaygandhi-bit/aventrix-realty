@@ -50,18 +50,42 @@
     let currentProperties = []; // full property rows for the current shortlist, in shortlist order
     const selected = new Set(); // slugs currently checked for Compare/Enquire
 
+    function t(key, fallback) {
+        if (document.documentElement.getAttribute("data-avx-translations-loaded") !== "true") {
+            return fallback;
+        }
+        return window.avxI18n ? window.avxI18n.t(key) : fallback;
+    }
+
+    function formatMessage(key, fallback, values) {
+        return Object.keys(values).reduce((message, name) => {
+            return message.replace(new RegExp("\\{" + name + "\\}", "g"), values[name]);
+        }, t(key, fallback));
+    }
+
+    function formatCountButton(key, fallback, countId, count) {
+        const template = t(key, fallback);
+        const parts = template.split("{count}");
+        return escapeHtml(parts[0]) + `<span id="${countId}">${count}</span>` +
+            escapeHtml(parts.slice(1).join("{count}"));
+    }
+
     function escapeHtml(str) {
         return String(str || "").replace(/[&<>"']/g, (c) => ({
             "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
         }[c]));
     }
-    function formatBadge(listingType) { return listingType === "lease" ? "FOR LEASE" : "FOR SALE"; }
+    function formatBadge(listingType) {
+        return listingType === "lease"
+            ? t("wishlist.badge.lease", "FOR LEASE")
+            : t("wishlist.badge.sale", "FOR SALE");
+    }
     function badgeClass(listingType) { return listingType === "lease" ? "badge-lease" : "badge-sale"; }
 
     function keyDetailsLine(p) {
         const parts = [];
-        if (p.bedrooms) parts.push(`${p.bedrooms} Bed${p.bedrooms === 1 ? "" : "s"}`);
-        if (p.bathrooms) parts.push(`${p.bathrooms} Bath${p.bathrooms === 1 ? "" : "s"}`);
+        if (p.bedrooms) parts.push(formatMessage("wishlist.details.bedrooms", "{count} bedrooms", { count: p.bedrooms }));
+        if (p.bathrooms) parts.push(formatMessage("wishlist.details.bathrooms", "{count} bathrooms", { count: p.bathrooms }));
         if (p.built_up_area) parts.push(p.built_up_area);
         return parts.join(" · ");
     }
@@ -86,17 +110,20 @@
         const image = p.featured_image || (p.images && p.images[0]) || "images/property1.jpg";
         const details = keyDetailsLine(p);
         const checked = selected.has(p.slug);
+        const viewLabel = formatMessage("wishlist.card.view", "View {title}", { title: p.title });
+        const callLabel = formatMessage("wishlist.card.call", "Call about {title}", { title: p.title });
+        const whatsappLabel = formatMessage("wishlist.card.whatsapp", "WhatsApp about {title}", { title: p.title });
         return `
             <div class="property-card" data-slug="${escapeHtml(p.slug)}">
                 <div class="property-image-wrap">
-                    <a href="property.html?id=${encodeURIComponent(p.slug)}" aria-label="View ${escapeHtml(p.title)}">
+                    <a href="property.html?id=${encodeURIComponent(p.slug)}" aria-label="${escapeHtml(viewLabel)}">
                         <img src="${escapeHtml(image)}" alt="${escapeHtml(p.title)}" loading="lazy">
                     </a>
-                    <span class="property-badge ${badgeClass(p.listing_type)}">${formatBadge(p.listing_type)}</span>
-                    <button class="property-shortlist-remove-btn" aria-label="Remove from Shortlist" data-slug="${escapeHtml(p.slug)}"><i class="fas fa-xmark" aria-hidden="true"></i></button>
+                    <span class="property-badge ${badgeClass(p.listing_type)}">${escapeHtml(formatBadge(p.listing_type))}</span>
+                    <button class="property-shortlist-remove-btn" aria-label="${escapeHtml(t("shortlist.card.remove", "Remove from Shortlist"))}" data-slug="${escapeHtml(p.slug)}"><i class="fas fa-xmark" aria-hidden="true"></i></button>
                     <label class="sc-select-chip">
                         <input type="checkbox" data-slug="${escapeHtml(p.slug)}" ${checked ? "checked" : ""}>
-                        Select
+                        ${escapeHtml(t("shortlist.card.select", "Select"))}
                     </label>
                 </div>
                 <div class="content">
@@ -107,15 +134,15 @@
                         <div class="property-footer-top">
                             <span class="property-price">${escapeHtml(p.price_display || "Contact for Price")}</span>
                             <div class="property-icon-actions">
-                                <a href="tel:${CARD_PHONE_TEL}" data-slug="${escapeHtml(p.slug)}" data-track-event="call_click" class="icon-action-btn icon-call-btn" aria-label="Call about ${escapeHtml(p.title)}" title="Call">
+                                <a href="tel:${CARD_PHONE_TEL}" data-slug="${escapeHtml(p.slug)}" data-track-event="call_click" class="icon-action-btn icon-call-btn" aria-label="${escapeHtml(callLabel)}" title="${escapeHtml(t("wishlist.card.callTitle", "Call"))}">
                                     <i class="fas fa-phone-alt" aria-hidden="true"></i>
                                 </a>
-                                <a href="${escapeHtml(window.AventrixTracking ? window.AventrixTracking.whatsappHref(p) : CARD_WHATSAPP_URL)}" data-slug="${escapeHtml(p.slug)}" data-track-event="whatsapp_click" class="icon-action-btn icon-whatsapp-btn" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp about ${escapeHtml(p.title)}" title="WhatsApp">
+                                <a href="${escapeHtml(window.AventrixTracking ? window.AventrixTracking.whatsappHref(p) : CARD_WHATSAPP_URL)}" data-slug="${escapeHtml(p.slug)}" data-track-event="whatsapp_click" class="icon-action-btn icon-whatsapp-btn" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(whatsappLabel)}" title="${escapeHtml(t("wishlist.card.whatsappTitle", "WhatsApp"))}">
                                     <i class="fab fa-whatsapp" aria-hidden="true"></i>
                                 </a>
                             </div>
                         </div>
-                        <a href="property.html?id=${encodeURIComponent(p.slug)}" class="view-details-btn">View Details</a>
+                        <a href="property.html?id=${encodeURIComponent(p.slug)}" class="view-details-btn">${escapeHtml(t("View Details", "View Details"))}</a>
                     </div>
                 </div>
             </div>`;
@@ -152,6 +179,12 @@
         const n = selected.size;
         els.compareCount.textContent = String(n);
         els.enquireCount.textContent = String(n);
+        els.compareBtn.innerHTML = formatCountButton(
+            "shortlist.compareSelected", "Compare Selected ({count})", "scCompareCount", n
+        );
+        els.enquireBtn.innerHTML = formatCountButton(
+            "shortlist.enquireSelected", "Enquire About Selected ({count})", "scEnquireCount", n
+        );
         els.compareBtn.disabled = n < MIN_COMPARE || n > MAX_COMPARE;
         els.enquireBtn.disabled = n < 1;
     }
@@ -192,22 +225,26 @@
     });
 
     window.addEventListener("aventrix:shortlist-changed", renderShortlist);
+    document.addEventListener("avx:i18n-ready", () => {
+        renderShortlist();
+        if (!els.compareSection.hidden) renderCompareTable();
+    });
 
     // ---------------------------------------------------------
     // COMPARE TABLE
     // ---------------------------------------------------------
     const COMPARE_ROWS = [
-        { label: "Price", get: (p) => p.price_display || "Contact for Price" },
-        { label: "Location", get: (p) => p.location || "—" },
-        { label: "Property Type", get: (p) => p.category ? p.category.charAt(0).toUpperCase() + p.category.slice(1) : "—" },
-        { label: "Listing Type", get: (p) => formatBadge(p.listing_type) },
-        { label: "Bedrooms", get: (p) => p.bedrooms ?? "—" },
-        { label: "Bathrooms", get: (p) => p.bathrooms ?? "—" },
-        { label: "Built-up Area", get: (p) => p.built_up_area || "—" },
-        { label: "Land Area", get: (p) => p.land_area || "—" },
-        { label: "Furnishing", get: (p) => p.furnishing || "—" },
-        { label: "Availability", get: (p) => p.status || "—" },
-        { label: "Key Features", get: (p) => (Array.isArray(p.features) && p.features.length) ? p.features.join(", ") : "—" }
+        { label: "Price", key: "shortlist.compare.price", get: (p) => p.price_display || "Contact for Price" },
+        { label: "Location", key: "shortlist.compare.location", get: (p) => p.location || "—" },
+        { label: "Property Type", key: "shortlist.compare.propertyType", get: (p) => p.category ? p.category.charAt(0).toUpperCase() + p.category.slice(1) : "—" },
+        { label: "Listing Type", key: "shortlist.compare.listingType", get: (p) => formatBadge(p.listing_type) },
+        { label: "Bedrooms", key: "shortlist.compare.bedrooms", get: (p) => p.bedrooms ?? "—" },
+        { label: "Bathrooms", key: "shortlist.compare.bathrooms", get: (p) => p.bathrooms ?? "—" },
+        { label: "Built-up Area", key: "shortlist.compare.builtArea", get: (p) => p.built_up_area || "—" },
+        { label: "Land Area", key: "shortlist.compare.landArea", get: (p) => p.land_area || "—" },
+        { label: "Furnishing", key: "shortlist.compare.furnishing", get: (p) => p.furnishing || "—" },
+        { label: "Availability", key: "shortlist.compare.availability", get: (p) => p.status || "—" },
+        { label: "Key Features", key: "shortlist.compare.features", get: (p) => (Array.isArray(p.features) && p.features.length) ? p.features.join(", ") : "—" }
     ];
 
     function renderCompareTable() {
@@ -222,19 +259,19 @@
 
         const headerRow = `
             <tr>
-                <th class="sc-attr-col">Property</th>
+                <th class="sc-attr-col">${escapeHtml(t("shortlist.compare.property", "Property"))}</th>
                 ${properties.map((p) => `
                     <th class="sc-compare-col-header">
                         <img src="${escapeHtml(p.featured_image || (p.images && p.images[0]) || "images/property1.jpg")}" alt="${escapeHtml(p.title)}">
                         <h4>${escapeHtml(p.title)}</h4>
-                        <a href="property.html?id=${encodeURIComponent(p.slug)}" class="sc-compare-view-link">View Details →</a><br>
-                        <button type="button" class="sc-compare-remove" data-slug="${escapeHtml(p.slug)}">Remove</button>
+                        <a href="property.html?id=${encodeURIComponent(p.slug)}" class="sc-compare-view-link">${escapeHtml(t("View Details", "View Details"))} →</a><br>
+                        <button type="button" class="sc-compare-remove" data-slug="${escapeHtml(p.slug)}">${escapeHtml(t("shortlist.card.remove", "Remove"))}</button>
                     </th>`).join("")}
             </tr>`;
 
         const attrRows = COMPARE_ROWS.map((row) => `
             <tr>
-                <td class="sc-attr-col">${escapeHtml(row.label)}</td>
+                <td class="sc-attr-col">${escapeHtml(t(row.key, row.label))}</td>
                 ${properties.map((p) => `<td>${escapeHtml(String(row.get(p)))}</td>`).join("")}
             </tr>`).join("");
 
@@ -269,7 +306,7 @@
             `${p.title} — ${p.location || ""} — ${p.price_display || "Contact for Price"} (${p.property_code || p.slug})`
         );
 
-        els.enquirySelectedList.innerHTML = `<strong>Enquiring about ${properties.length} propert${properties.length === 1 ? "y" : "ies"}:</strong><br>` +
+        els.enquirySelectedList.innerHTML = `<strong>${escapeHtml(formatMessage("shortlist.enquiry.selectedCount", "Enquiring about {count} selected properties:", { count: properties.length }))}</strong><br>` +
             summaryLines.map((line) => escapeHtml(line)).join("<br>");
 
         els.enquiryPropertiesField.value = summaryLines.join(" | ");

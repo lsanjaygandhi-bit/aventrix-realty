@@ -13,8 +13,27 @@
     const sb = window.supabaseClient;
     if (!sb) return;
 
+    function translateI18n(root) {
+        if (window.avxI18n && typeof window.avxI18n.translate === "function") {
+            window.avxI18n.translate(root);
+        }
+    }
+
+    function setQuickViewReadMore(button, expanded) {
+        if (expanded) {
+            button.removeAttribute("data-i18n");
+            button.textContent = "Read Less";
+        } else {
+            button.setAttribute("data-i18n", "Read More");
+            button.textContent = "Read More";
+            translateI18n(button);
+        }
+    }
+
     function formatBadge(listingType) {
-        return listingType === "lease" ? "FOR LEASE" : "FOR SALE";
+        return listingType === "lease"
+            ? '<span data-i18n="FOR LEASE">FOR LEASE</span>'
+            : '<span data-i18n="FOR SALE">FOR SALE</span>';
     }
 
     function badgeClass(listingType) {
@@ -60,6 +79,7 @@
         }
 
         gridEl.innerHTML = properties.map(cardTemplate).join("");
+        translateI18n(gridEl);
 
         properties.forEach((p) => { propertiesBySlug[p.slug] = p; });
 
@@ -110,6 +130,8 @@
         btn.setAttribute("aria-pressed", active ? "true" : "false");
         btn.setAttribute("aria-label", active ? "Remove from Shortlist" : "Add to Shortlist");
         btn.setAttribute("title", active ? "Shortlisted" : "Add to Shortlist");
+        btn.setAttribute("data-i18n-title", active ? "Shortlisted" : "Add to Shortlist");
+        translateI18n(btn);
     }
 
     function attachShortlistButtonListeners(gridEl) {
@@ -219,9 +241,9 @@
                     <p>${escapeHtml(p.short_description || "")}</p>
                     <div class="property-footer">
                         <div class="property-footer-top">
-                            <span class="property-price">${escapeHtml(p.price_display || "Contact for Price")}</span>
+                            <span class="property-price">${p.price_display ? escapeHtml(p.price_display) : '<span data-i18n="Contact for Price">Contact for Price</span>'}</span>
                             <div class="property-icon-actions">
-                                <button type="button" class="icon-action-btn icon-shortlist-btn${shortlisted ? " active" : ""}" aria-label="${shortlisted ? "Remove from Shortlist" : "Add to Shortlist"}" aria-pressed="${shortlisted ? "true" : "false"}" data-slug="${escapeHtml(p.slug)}" title="${shortlisted ? "Shortlisted" : "Add to Shortlist"}">
+                                <button type="button" class="icon-action-btn icon-shortlist-btn${shortlisted ? " active" : ""}" aria-label="${shortlisted ? "Remove from Shortlist" : "Add to Shortlist"}" data-i18n-aria-label="${shortlisted ? "Remove from Shortlist" : "Add to Shortlist"}" aria-pressed="${shortlisted ? "true" : "false"}" data-slug="${escapeHtml(p.slug)}" title="${shortlisted ? "Shortlisted" : "Add to Shortlist"}" data-i18n-title="${shortlisted ? "Shortlisted" : "Add to Shortlist"}">
                                     <i class="fas fa-bookmark" aria-hidden="true"></i>
                                 </button>
                                 <a href="tel:${CARD_PHONE_TEL}" class="icon-action-btn icon-call-btn" data-track-event="call_click" aria-label="Call about ${escapeHtml(p.title)}" title="Call">
@@ -232,7 +254,7 @@
                                 </a>
                             </div>
                         </div>
-                        <a href="property.html?id=${encodeURIComponent(p.slug)}" class="view-details-btn">View Details</a>
+                        <a href="property.html?id=${encodeURIComponent(p.slug)}" class="view-details-btn" data-i18n="View Details">View Details</a>
                     </div>
                 </div>
             </div>`;
@@ -317,7 +339,7 @@
         el.innerHTML = `
             <div class="qv-backdrop"></div>
             <div class="qv-sheet" role="dialog" aria-modal="true" aria-label="Property quick view">
-                <button type="button" class="qv-close" aria-label="Close">&times;</button>
+                <button type="button" class="qv-close" aria-label="Close" data-i18n-aria-label="Close">&times;</button>
                 <div class="qv-gallery">
                     <div class="qv-gallery-track"></div>
                     <div class="qv-gallery-dots"></div>
@@ -332,7 +354,7 @@
                     <div class="qv-section qv-overview">
                         <h3>Property Overview</h3>
                         <p class="qv-desc"></p>
-                        <button type="button" class="qv-readmore" hidden>Read More</button>
+                        <button type="button" class="qv-readmore" data-i18n="Read More" hidden>Read More</button>
                     </div>
                     <div class="qv-section qv-features" hidden>
                         <h3>Key Features</h3>
@@ -357,6 +379,7 @@
             </div>`;
 
         document.body.appendChild(el);
+        translateI18n(el);
         qvOverlayEl = el;
         wireQuickViewControls(el);
         return el;
@@ -385,7 +408,7 @@
         el.querySelector(".qv-readmore").addEventListener("click", (e) => {
             const desc = el.querySelector(".qv-desc");
             const expanded = desc.classList.toggle("expanded");
-            e.target.textContent = expanded ? "Read Less" : "Read More";
+            setQuickViewReadMore(e.currentTarget, expanded);
         });
 
         const track = el.querySelector(".qv-gallery-track");
@@ -525,7 +548,7 @@
         const description = p.description || p.short_description || "";
         descEl.textContent = description;
         descEl.classList.remove("expanded");
-        readMoreBtn.textContent = "Read More";
+        setQuickViewReadMore(readMoreBtn, false);
         // Only offer Read More once we know the text is long enough to
         // realistically be clamped (avoids showing it for short blurbs).
         readMoreBtn.hidden = description.length < 220;
@@ -841,6 +864,7 @@
 
         section.style.display = "";
         grid.innerHTML = matches.slice(0, MAX_RESULTS).map(cardTemplate).join("");
+        translateI18n(grid);
         attachWishlistButtonListeners(grid);
         attachShortlistButtonListeners(grid);
     }
@@ -880,6 +904,7 @@
 
         section.style.display = "";
         grid.innerHTML = ordered.map(cardTemplate).join("");
+        translateI18n(grid);
         attachWishlistButtonListeners(grid);
         attachShortlistButtonListeners(grid);
     }

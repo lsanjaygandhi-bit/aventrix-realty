@@ -34,6 +34,16 @@
     const form = document.getElementById("propertyForm") || document.querySelector("form");
     if (!sb || !form) return;
 
+    function translateI18n(root) {
+        if (window.avxI18n && typeof window.avxI18n.translate === "function") {
+            window.avxI18n.translate(root);
+        }
+    }
+
+    function translateMessage(key, fallback) {
+        return window.avxI18n ? window.avxI18n.t(key) : fallback;
+    }
+
     // Avoid double-binding if this script is somehow included twice.
     if (form.dataset.supabaseBound) return;
     form.dataset.supabaseBound = "true";
@@ -114,18 +124,37 @@
                 form.style.display = "none";
                 const successEl = document.getElementById("success-message");
                 if (successEl) {
+                    ["Thank You!", "Your enquiry has been submitted successfully.", "Our Aventrix Realty team will contact you shortly."]
+                        .forEach((key) => {
+                            Array.from(successEl.querySelectorAll("h3, p"))
+                                .filter((element) => element.textContent.trim() === key)
+                                .forEach((element) => {
+                                    element.setAttribute("data-i18n", key);
+                                    translateI18n(element);
+                                });
+                        });
                     successEl.style.display = "block";
                 } else {
-                    alert("Thank you — your enquiry has been submitted successfully.");
+                    const thankYou = "Thank You!";
+                    const successText = "Your enquiry has been submitted successfully.";
+                    alert(window.avxI18n
+                        ? window.avxI18n.t(thankYou) + " " + window.avxI18n.t(successText)
+                        : thankYou + " " + successText);
                 }
                 form.reset();
             } else {
                 console.error(error);
-                alert("Something went wrong submitting your enquiry. Please try again or call us directly.");
+                alert(translateMessage(
+                    "enquiry.submit.error",
+                    "Something went wrong submitting your enquiry. Please try again or call us directly."
+                ));
             }
         } catch (err) {
             console.error(err);
-            alert("Something went wrong submitting your enquiry. Please try again or call us directly.");
+            alert(translateMessage(
+                "enquiry.submit.error",
+                "Something went wrong submitting your enquiry. Please try again or call us directly."
+            ));
         }
     });
 })();

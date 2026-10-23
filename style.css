@@ -9142,8 +9142,6 @@ html.is-mobile #leadership .leader-row-content [data-cms-f="rera"] {
   }
 }
 
-<<<<<<< HEAD
-
 /* Desktop only: place the registration number immediately below the role.
    Mobile order and styling are intentionally left unchanged. */
 @media (min-width: 769px) {
@@ -9159,7 +9157,7 @@ html.is-mobile #leadership .leader-row-content [data-cms-f="rera"] {
   html:not(.is-mobile) #leadership .leader-row-content > p[data-cms-f="bio"] { order: 5; }
   html:not(.is-mobile) #leadership .leader-row-content > .leader-cta { order: 6; }
 }
-=======
+
 /* FINAL MOBILE/TABLET FIX: center Sanjay Gandhi L's RERA line directly
    under the designation. Keep desktop styles unchanged. The wider breakpoint
    covers responsive layouts used by this page before the phone-width breakpoint. */
@@ -9206,4 +9204,3 @@ html.is-mobile #leadership .leader-row-content [data-cms-f="rera"] {
 .avx-logo-with-symbol{display:flex;align-items:center;gap:10px;}
 .avx-logo-with-symbol .avx-brand-symbol{display:block;width:44px;height:44px;object-fit:contain;flex:0 0 44px;}
 @media (max-width: 767px){.avx-logo-with-symbol{gap:7px;}.avx-logo-with-symbol .avx-brand-symbol{width:34px;height:34px;flex-basis:34px;}}
->>>>>>> ad7a0d3 (Update Aventrix Realty website)

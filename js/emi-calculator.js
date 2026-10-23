@@ -77,6 +77,13 @@
     var root = document.getElementById("emiCalculator");
     if (!root) return;
     var $ = function (id) { return document.getElementById(id); };
+    function i18n(key, fallback) {
+        if (window.avxI18n && document.documentElement.hasAttribute("data-avx-translations-loaded")) {
+            var translated = window.avxI18n.t(key);
+            return translated === key ? fallback : translated;
+        }
+        return fallback;
+    }
 
     var els = {
         amountRange: $("emiAmountRange"), amountInput: $("emiAmountInput"),
@@ -104,20 +111,28 @@
         els.amountRange.setAttribute("aria-valuetext", shortRupees(state.amount));
         if (source !== "amountInput") els.amountInput.value = document.activeElement === els.amountInput ? inr.format(state.amount) : shortRupees(state.amount);
         els.rateRange.value = String(state.rate);
-        els.rateRange.setAttribute("aria-valuetext", rateText(state.rate) + " per year");
+        els.rateRange.setAttribute("aria-valuetext", rateText(state.rate) + " " + i18n("emi.rate.perYear", "per year"));
         if (source !== "rateInput") els.rateInput.value = trimNum(state.rate, 2);
 
         var tl = tenureLimits();
         els.tenureRange.min = tl.min; els.tenureRange.max = tl.max; els.tenureRange.step = tl.step;
         els.tenureRange.value = String(tenureValue());
-        var tText = state.unit === "yr" ? trimNum(state.months / 12, 2) + (state.months === 12 ? " year" : " years") : state.months + " months";
+        var unitName = state.unit === "yr" ? i18n("emi.tenure.years", "years") : i18n("emi.tenure.months", "months");
+        var unitShort = state.unit === "yr" ? i18n("emi.tenure.year.short", "Yr") : i18n("emi.tenure.month.short", "Mo");
+        var tText = state.unit === "yr"
+            ? trimNum(state.months / 12, 2) + " " + i18n(state.months === 12 ? "emi.tenure.year" : "emi.tenure.years", state.months === 12 ? "year" : "years")
+            : state.months + " " + i18n(state.months === 1 ? "emi.tenure.month" : "emi.tenure.months", state.months === 1 ? "month" : "months");
         els.tenureRange.setAttribute("aria-valuetext", tText);
         if (source !== "tenureInput") els.tenureInput.value = trimNum(tenureValue(), 2);
         els.tenureInput.min = tl.min; els.tenureInput.max = tl.max; els.tenureInput.step = state.unit === "yr" ? "1" : "1";
-        els.tenureMin.textContent = state.unit === "yr" ? "1 Yr" : "12 Mo";
-        els.tenureMax.textContent = state.unit === "yr" ? "30 Yr" : "360 Mo";
-        els.tenureUnitLabel.textContent = state.unit === "yr" ? "years" : "months";
-        els.tenureInput.setAttribute("aria-label", "Loan tenure in " + (state.unit === "yr" ? "years" : "months"));
+        els.tenureMin.textContent = (state.unit === "yr" ? "1 " : "12 ") + unitShort;
+        els.tenureMax.textContent = (state.unit === "yr" ? "30 " : "360 ") + unitShort;
+        els.tenureUnitLabel.textContent = unitName;
+        els.tenureInput.setAttribute("aria-label", i18n("emi.tenure.aria", "Loan Tenure in {unit}").replace("{unit}", unitName));
+        Array.prototype.forEach.call(els.unitBtns, function (b) {
+            var unit = b.getAttribute("data-emi-unit");
+            b.textContent = unit === "yr" ? i18n("emi.tenure.year.short", "Yr") : i18n("emi.tenure.month.short", "Mo");
+        });
         Array.prototype.forEach.call(els.unitBtns, function (b) {
             var on = b.getAttribute("data-emi-unit") === state.unit;
             b.classList.toggle("is-active", on);
@@ -131,7 +146,13 @@
         put("[data-emi-out=principal]", rupees(res.principal));
         put("[data-emi-out=interest]", rupees(res.totalInterest));
         put("[data-emi-out=total]", rupees(res.totalPayable));
-        put("[data-emi-out=months]", res.months + (res.months === 1 ? " month" : " months"));
+        var duration = res.months + " " + i18n(res.months === 1 ? "emi.tenure.month" : "emi.result.months", res.months === 1 ? "month" : "months");
+        put("[data-emi-out=months]", duration);
+        var period = i18n("emi.result.interestPeriod", "Over {duration} at {rate}")
+            .replace("{duration}", duration)
+            .replace("{rate}", rateText(res.annualRate));
+        var periodEl = root.querySelector("[data-emi-period]");
+        if (periodEl) periodEl.textContent = period;
         put("[data-emi-out=principal-pct]", pct(res.principalPct));
         put("[data-emi-out=interest-pct]", pct(res.interestPct));
         put("[data-emi-out=monthly-rate]", trimNum(res.monthlyRate, 3) + "%");
@@ -143,7 +164,11 @@
             arc.setAttribute("stroke-dasharray", res.interestPct + " " + (100 - res.interestPct));
         }
         var chart = $("emiDonut");
-        if (chart) chart.setAttribute("aria-label", "Principal " + pct(res.principalPct) + ", interest " + pct(res.interestPct) + " of the total amount payable");
+        if (chart) {
+            var chartLabel = i18n("emi.chart.label", "Principal {principalPct}, interest {interestPct} of the total amount payable");
+            chartLabel = chartLabel.replace("{principalPct}", pct(res.principalPct)).replace("{interestPct}", pct(res.interestPct));
+            chart.setAttribute("aria-label", chartLabel);
+        }
         root.setAttribute("data-emi-ready", "1");
     }
 
@@ -220,6 +245,7 @@
         });
     });
 
+    document.addEventListener("avx:i18n-ready", function () { render("i18n"); });
     render("init");
 
     // ---------- Floating WhatsApp / Back-to-top ----------

@@ -40,6 +40,29 @@
     // never persisted anywhere. See makeCurrentLocationMarker() below.
     var CURRENT_LOCATION_ZOOM = 16;
 
+    function translateI18n(root) {
+        if (window.avxI18n && typeof window.avxI18n.translate === "function") {
+            window.avxI18n.translate(root);
+        }
+    }
+
+    function instrumentLoadingLabel(element, key) {
+        if (!element || element.querySelector('[data-i18n="' + key + '"]')) return;
+        Array.prototype.slice.call(element.childNodes).some(function (node) {
+            if (node.nodeType !== Node.TEXT_NODE || node.nodeValue.trim() !== key) return false;
+            var match = node.nodeValue.match(/^(\s*)(.*?)(\s*)$/);
+            var label = document.createElement("span");
+            label.setAttribute("data-i18n", key);
+            label.textContent = key;
+            if (match[1]) element.insertBefore(document.createTextNode(match[1]), node);
+            element.insertBefore(label, node);
+            if (match[3]) element.insertBefore(document.createTextNode(match[3]), node);
+            element.removeChild(node);
+            translateI18n(label);
+            return true;
+        });
+    }
+
     function esc(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
 
     // A property's own map coordinates, or null. Never guessed.
@@ -209,6 +232,7 @@
         var grid = cfg.grid;
         if (!grid || !els.listBtn || !els.mapBtn || !els.mapView || !els.wrap || !els.canvas || !els.preview) return null;
         function hide(el, h) { if (el) el.hidden = h; }
+        instrumentLoadingLabel(els.loading, "Loading map…");
 
         var state = {
             view: "list", results: [], status: "loading",
@@ -283,6 +307,8 @@
 
         function showFallback() {
             els.fallbackText.textContent = FALLBACK_TEXT;
+            els.fallbackText.setAttribute("data-i18n", FALLBACK_TEXT);
+            translateI18n(els.fallbackText);
             els.fallback.hidden = false;
             els.wrap.hidden = true;
             hide(els.loading, true);

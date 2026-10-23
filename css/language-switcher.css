@@ -1,0 +1,56 @@
+/* Compact language selector — kept separate from the Post Property CTA. */
+#avxLanguageSlot.avx-language-slot {
+  position: fixed !important;
+  top: 142px !important;
+  right: 18px !important;
+  z-index: 2147483647 !important;
+  display: block !important;
+  width: 96px !important;
+  height: 32px !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 1px solid rgba(255,255,255,.68) !important;
+  border-radius: 999px !important;
+  background: #1B0E06 !important;
+  box-shadow: 0 3px 10px rgba(0,0,0,.24) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transform: none !important;
+  overflow: hidden !important;
+}
+#avxLanguageSlot select.avx-language-select {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  padding: 0 7px 0 11px !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  background: #1B0E06 !important;
+  color: #fff !important;
+  font-family: inherit !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  cursor: pointer !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  appearance: auto !important;
+  -webkit-appearance: menulist !important;
+  outline-offset: -2px !important;
+}
+#avxLanguageSlot option { color: #1B0E06 !important; background: #fff !important; }
+@media (max-width: 768px) {
+  #avxLanguageSlot.avx-language-slot {
+    top: 126px !important;
+    right: 12px !important;
+    width: 82px !important;
+    height: 29px !important;
+  }
+  #avxLanguageSlot select.avx-language-select {
+    padding-left: 8px !important;
+    font-size: 11px !important;
+  }
+}

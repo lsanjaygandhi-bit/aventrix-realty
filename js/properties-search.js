@@ -35,6 +35,34 @@
     }
     const RESULT_CAP = 500; // technical safety cap, not a business/display limit
 
+    function translateI18n(root) {
+        if (window.avxI18n && typeof window.avxI18n.translate === "function") {
+            window.avxI18n.translate(root);
+        }
+    }
+
+    function setI18nAriaLabel(element, key) {
+        element.setAttribute("aria-label", key);
+        element.setAttribute("data-i18n-aria-label", key);
+        translateI18n(element);
+    }
+
+    function setI18nText(element, key, count) {
+        if (count === undefined) element.removeAttribute("data-i18n-count");
+        else element.setAttribute("data-i18n-count", String(count));
+        element.setAttribute("data-i18n", key);
+        element.textContent = count === undefined ? key : key.replace("{count}", String(count));
+        const i18n = window.avxI18n;
+        if (!i18n) return;
+        const apply = () => {
+            if (element.isConnected && element.getAttribute("data-i18n") === key) {
+                i18n.translate(element);
+            }
+        };
+        if (i18n.ready && typeof i18n.ready.then === "function") i18n.ready.then(apply);
+        else document.addEventListener("avx:i18n-ready", apply, { once: true });
+    }
+
     const els = {
         location: document.getElementById("sfLocation"),
         category: document.getElementById("sfCategory"),
@@ -204,6 +232,8 @@
         if (state.parking) params.set("parking", state.parking);
         if (state.roadWidthMin) params.set("roadWidthMin", state.roadWidthMin);
         if (state.sort && state.sort !== "recommended") params.set("sort", state.sort);
+        const language = new URLSearchParams(window.location.search).get("lang");
+        if (language) params.set("lang", language);
 
         const qs = params.toString();
         const url = window.location.pathname + (qs ? "?" + qs : "");
@@ -231,7 +261,9 @@
     }
 
     function formatBadge(listingType) {
-        return listingType === "lease" ? "FOR LEASE" : "FOR SALE";
+        return listingType === "lease"
+            ? '<span data-i18n="FOR LEASE">FOR LEASE</span>'
+            : '<span data-i18n="FOR SALE">FOR SALE</span>';
     }
     function badgeClass(listingType) {
         return listingType === "lease" ? "badge-lease" : "badge-sale";
@@ -248,7 +280,7 @@
                         <img src="${escapeHtml(image)}" alt="${escapeHtml(p.title)}" loading="lazy">
                     </a>
                     <span class="property-badge ${badgeClass(p.listing_type)}">${formatBadge(p.listing_type)}</span>
-                    <button class="property-save-btn${saved ? " saved" : ""}" aria-label="${saved ? "Remove from Wishlist" : "Save to Wishlist"}" aria-pressed="${saved ? "true" : "false"}" data-slug="${escapeHtml(p.slug)}"><i class="${saved ? "fas" : "far"} fa-heart" aria-hidden="true"></i></button>
+                    <button class="property-save-btn${saved ? " saved" : ""}" aria-label="${saved ? "Remove from Wishlist" : "Save to Wishlist"}" data-i18n-aria-label="${saved ? "Remove from Wishlist" : "Save to Wishlist"}" aria-pressed="${saved ? "true" : "false"}" data-slug="${escapeHtml(p.slug)}"><i class="${saved ? "fas" : "far"} fa-heart" aria-hidden="true"></i></button>
                 </div>
                 <div class="content">
                     <span class="property-location"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> ${escapeHtml(p.location || "")}</span>
@@ -256,9 +288,9 @@
                     <p>${escapeHtml(p.short_description || "")}</p>
                     <div class="property-footer">
                         <div class="property-footer-top">
-                            <span class="property-price">${escapeHtml(p.price_display || "Contact for Price")}</span>
+                            <span class="property-price">${p.price_display ? escapeHtml(p.price_display) : '<span data-i18n="Contact for Price">Contact for Price</span>'}</span>
                             <div class="property-icon-actions">
-                                <button type="button" class="icon-action-btn icon-shortlist-btn${shortlisted ? " active" : ""}" aria-label="${shortlisted ? "Remove from Shortlist" : "Add to Shortlist"}" aria-pressed="${shortlisted ? "true" : "false"}" data-slug="${escapeHtml(p.slug)}" title="${shortlisted ? "Shortlisted" : "Add to Shortlist"}">
+                                <button type="button" class="icon-action-btn icon-shortlist-btn${shortlisted ? " active" : ""}" aria-label="${shortlisted ? "Remove from Shortlist" : "Add to Shortlist"}" data-i18n-aria-label="${shortlisted ? "Remove from Shortlist" : "Add to Shortlist"}" aria-pressed="${shortlisted ? "true" : "false"}" data-slug="${escapeHtml(p.slug)}" title="${shortlisted ? "Shortlisted" : "Add to Shortlist"}" data-i18n-title="${shortlisted ? "Shortlisted" : "Add to Shortlist"}">
                                     <i class="fas fa-bookmark" aria-hidden="true"></i>
                                 </button>
                                 <a href="tel:${CARD_PHONE_TEL}" class="icon-action-btn icon-call-btn" data-track-event="call_click" aria-label="Call about ${escapeHtml(p.title)}" title="Call">
@@ -269,7 +301,7 @@
                                 </a>
                             </div>
                         </div>
-                        <a href="property.html?id=${encodeURIComponent(p.slug)}" class="view-details-btn">View Details</a>
+                        <a href="property.html?id=${encodeURIComponent(p.slug)}" class="view-details-btn" data-i18n="View Details">View Details</a>
                     </div>
                 </div>
             </div>`;
@@ -346,8 +378,17 @@
                 expandedEl.hidden = !expanded;
                 chipsEl.hidden = expanded;
                 if (expanded) RS.renderExpandedList(expandedEl);
-                allBtn.textContent = expanded ? "Show Less" : "All Recent Searches";
+                if (expanded) {
+                    allBtn.removeAttribute("data-i18n");
+                    allBtn.textContent = "Show Less";
+                } else {
+                    allBtn.setAttribute("data-i18n", "All Recent Searches");
+                    allBtn.textContent = "All Recent Searches";
+                    translateI18n(allBtn);
+                }
             });
+            allBtn.setAttribute("data-i18n", "All Recent Searches");
+            translateI18n(allBtn);
         }
 
         document.addEventListener("aventrix:recent-searches-changed", () => RS.renderChips(chipsEl));
@@ -441,7 +482,7 @@
         writeStateToUrl(state, !pushHistory);
         updateActiveChips(state);
 
-        els.resultsCount.textContent = "Loading properties…";
+        setI18nText(els.resultsCount, "Loading properties…");
         els.errorState.hidden = true;
         els.emptyState.hidden = true;
         els.resultsGrid.innerHTML = skeletonCardsHtml(6);
@@ -532,14 +573,18 @@
         if (!properties.length) {
             els.resultsGrid.innerHTML = "";
             els.emptyState.hidden = false;
-            els.resultsCount.textContent = "0 properties found";
+            setI18nText(els.resultsCount, "0 properties found");
             return;
         }
 
         els.emptyState.hidden = true;
-        els.resultsCount.textContent =
-            properties.length === 1 ? "1 property found" : `${properties.length} properties found`;
+        if (properties.length === 1) {
+            setI18nText(els.resultsCount, "1 property found");
+        } else {
+            setI18nText(els.resultsCount, "{count} properties found", properties.length);
+        }
         els.resultsGrid.innerHTML = properties.map(cardTemplate).join("");
+        translateI18n(els.resultsGrid);
         attachWishlistButtonListeners();
         attachShortlistButtonListeners();
     }
@@ -560,7 +605,7 @@
             const nowSaved = window.AventrixStorage.wishlist.toggle(slug);
             btn.classList.toggle("saved", nowSaved);
             btn.setAttribute("aria-pressed", nowSaved ? "true" : "false");
-            btn.setAttribute("aria-label", nowSaved ? "Remove from Wishlist" : "Save to Wishlist");
+            setI18nAriaLabel(btn, nowSaved ? "Remove from Wishlist" : "Save to Wishlist");
             const icon = btn.querySelector("i");
             if (icon) {
                 icon.classList.toggle("fas", nowSaved);
@@ -585,8 +630,10 @@
             const nowActive = window.AventrixStorage.shortlist.toggle(slug);
             btn.classList.toggle("active", nowActive);
             btn.setAttribute("aria-pressed", nowActive ? "true" : "false");
-            btn.setAttribute("aria-label", nowActive ? "Remove from Shortlist" : "Add to Shortlist");
+            setI18nAriaLabel(btn, nowActive ? "Remove from Shortlist" : "Add to Shortlist");
             btn.setAttribute("title", nowActive ? "Shortlisted" : "Add to Shortlist");
+            btn.setAttribute("data-i18n-title", nowActive ? "Shortlisted" : "Add to Shortlist");
+            translateI18n(btn);
         });
     }
 

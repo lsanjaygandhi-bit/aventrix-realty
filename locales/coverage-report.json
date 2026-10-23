@@ -1,0 +1,36 @@
+{
+  "locales": {
+    "en": {
+      "dictionary_entries": 63,
+      "name": "English",
+      "native": "English"
+    },
+    "ta": {
+      "dictionary_entries": 159,
+      "name": "Tamil",
+      "native": "தமிழ்"
+    },
+    "hi": {
+      "dictionary_entries": 135,
+      "name": "Hindi",
+      "native": "हिन्दी"
+    },
+    "te": {
+      "dictionary_entries": 135,
+      "name": "Telugu",
+      "native": "తెలుగు"
+    },
+    "kn": {
+      "dictionary_entries": 135,
+      "name": "Kannada",
+      "native": "ಕನ್ನಡ"
+    },
+    "ml": {
+      "dictionary_entries": 135,
+      "name": "Malayalam",
+      "native": "മലയാളം"
+    }
+  },
+  "implementation": "exact phrase dictionary; unknown phrases remain unchanged",
+  "production_ready": false
+}

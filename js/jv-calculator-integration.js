@@ -1,6 +1,13 @@
 (function(){
   "use strict";
   const $=id=>document.getElementById(id);
+  const t=(key,params={})=>{
+    let value=window.avxI18n?window.avxI18n.t(key):key;
+    Object.entries(params).forEach(([name,replacement])=>{
+      value=value.replace(new RegExp('\\{'+name+'\\}','g'),String(replacement));
+    });
+    return value;
+  };
   const ids=["jvc-land-area-input","jvc-road-width","jvc-project-type","jvc-land-deduction","jvc-base-fsi","jvc-premium-pct","jvc-efficiency","jvc-rate","jvc-construction-rate","jvc-cost-basis","jvc-soft-cost-pct","jvc-premium-charge","jvc-other-costs","jvc-profit-pct","jvc-ratio","jvc-net-land","jvc-net-land-duplicate","jvc-land-value-result","jvc-base-builtup","jvc-premium-builtup","jvc-total-fsi-area","jvc-saleable-area","jvc-gdv","jvc-construction-cost","jvc-total-cost","jvc-project-cost","jvc-project-profit","jvc-target-profit","jvc-residual-land-value","jvc-land-value-gap","jvc-contribution-share","jvc-land-pct","jvc-dev-pct","jvc-land-area-result","jvc-land-value-result-detail","jvc-dev-area-result","jvc-dev-value-result","jvc-dev-profit","jvc-feasibility-status","jvc-required-share","jvc-required-share-note","jvc-scenarios","jvc-print","jvc-reset","jvc-deposit-type","jvc-deposit-amount","jvc-deposit-finance-rate","jvc-deposit-months","jvc-recommended-ratio","jvc-recommended-note","jvc-market-ratio","jvc-residual-ratio","jvc-deposit-impact","jvc-use-recommended"];
   if(!ids.every(id=>$(id)))return;
   const n=id=>{const x=Number($(id).value);return Number.isFinite(x)&&x>=0?x:0;};
@@ -9,7 +16,6 @@
   const pct=x=>(x*100).toLocaleString('en-IN',{maximumFractionDigits:1})+'%';
   let ratioManuallyAdjusted=false;
   let lastViable=true;
-  const NO_VIABLE_NOTE='No viable sharing ratio under the current assumptions. The split shown is a reference for comparison only — it is not a recommended or feasible deal.';
   function render(){
     const land=n('jvc-land-area-input');
     const deduction=Math.min(90,n('jvc-land-deduction'))/100;
@@ -46,7 +52,7 @@
     const recommendedOwnerPct=Math.min(.95,Math.max(.05,rawRecommendedOwnerPct));
     const hasViableRecommendation=gdv>0&&residualLandValue>0;
     lastViable=hasViableRecommendation;
-    const ratioNote=$('jvc-ratio-note');if(ratioNote){ratioNote.hidden=hasViableRecommendation;ratioNote.textContent=hasViableRecommendation?'':NO_VIABLE_NOTE;}
+    const ratioNote=$('jvc-ratio-note');if(ratioNote){ratioNote.hidden=hasViableRecommendation;ratioNote.textContent=hasViableRecommendation?'':t('jv.state.noViableNote');}
     // No viable ratio: keep a neutral 50:50 reference instead of the 5% slider floor.
     if(!ratioManuallyAdjusted){$('jvc-ratio').value=hasViableRecommendation?Math.round(recommendedOwnerPct*100):50;}
     const ownerPct=Math.min(95,Math.max(5,n('jvc-ratio')))/100;
@@ -59,7 +65,7 @@
     const requiredShare=gdv>0?(developerInvestment+targetProfit)/gdv:null;
     $('jvc-net-land').textContent=fmt(netLand)+' sq.ft.';
     $('jvc-net-land-duplicate').textContent=fmt(netLand)+' sq.ft.';
-    $('jvc-land-value-result').textContent=gdv>0?money(landValue):'Enter sale price and costs';
+    $('jvc-land-value-result').textContent=gdv>0?money(landValue):t('jv.state.enterSalePrice');
     $('jvc-base-builtup').textContent=fmt(baseArea)+' sq.ft.';
     $('jvc-premium-builtup').textContent=fmt(premiumArea)+' sq.ft.';
     $('jvc-total-fsi-area').textContent=fmt(fsiArea)+' sq.ft.';
@@ -76,25 +82,25 @@
     $('jvc-land-pct').textContent=Math.round(ownerPct*100)+'%';
     $('jvc-dev-pct').textContent=Math.round(devPct*100)+'%';
     $('jvc-land-area-result').textContent=fmt(ownerArea)+' sq.ft.';
-    $('jvc-land-value-result-detail').textContent='Indicative gross value '+money(ownerValue);
+    $('jvc-land-value-result-detail').textContent=t('jv.metric.grossValuePrefix')+' '+money(ownerValue);
     $('jvc-dev-area-result').textContent=fmt(devArea)+' sq.ft.';
-    $('jvc-dev-value-result').textContent='Indicative gross value '+money(devValue);
+    $('jvc-dev-value-result').textContent=t('jv.metric.grossValuePrefix')+' '+money(devValue);
     $('jvc-dev-profit').textContent=money(devSurplus);
     let status,cls;
-    if(land<=0||baseFsi<=0||sellingRate<=0||saleable<=0){status='Enter land area, verified/assumed FSI and selling price to model the proposal.';cls='jvc-status-neutral';}
-    else if(devSurplus<0){status='At this ratio, the developer allocation does not recover the entered developer investment. The proposal is not supported by these assumptions.';cls='jvc-status-risk';}
-    else if(devSurplus<targetProfit){status='The developer allocation covers entered investment but does not meet the target-profit benchmark. Review costs, price and sharing.';cls='jvc-status-review';}
-    else{status='The developer allocation meets the entered investment and target-profit benchmark in this simplified model only; it is not a recommendation or feasibility approval.';cls='jvc-status-ok';}
+    if(land<=0||baseFsi<=0||sellingRate<=0||saleable<=0){status=t('jv.state.insufficientInputs');cls='jvc-status-neutral';}
+    else if(devSurplus<0){status=t('jv.state.developerShortfall');cls='jvc-status-risk';}
+    else if(devSurplus<targetProfit){status=t('jv.state.profitShortfall');cls='jvc-status-review';}
+    else{status=t('jv.state.targetMet');cls='jvc-status-ok';}
     $('jvc-feasibility-status').textContent=status;
     $('jvc-feasibility-status').className='jvc-feasibility-status '+cls;
-    if(requiredShare===null){$('jvc-required-share').textContent='—';$('jvc-required-share-note').textContent='Enter saleable area and selling price first.';}
-    else{$('jvc-required-share').textContent=pct(requiredShare);$('jvc-required-share-note').textContent=requiredShare>1?'Required developer allocation exceeds 100% of GDV; the current assumptions do not support the target profit.': 'At the entered selling rate, this is the developer share needed to recover the entered investment and target profit. It is a negotiation benchmark, not a recommendation.';}
-    $('jvc-recommended-ratio').textContent=gdv<=0?'Enter saleable area and selling price':residualLandValue<=0?'No viable ratio under current assumptions':Math.round(recommendedOwnerPct*100)+'% Landowner / '+(100-Math.round(recommendedOwnerPct*100))+'% Developer';
-    $('jvc-market-ratio').textContent='Not used — no market land rate input';
-    $('jvc-residual-ratio').textContent=gdv>0?pct(Math.max(0,residualLandValue/gdv))+' maximum supported before unit-mix adjustments':'—';
-    $('jvc-recommended-note').textContent=gdv<=0?'Enter sale price, FSI, saleable efficiency and project costs.':(residualLandValue<=0?'Current project assumptions do not support a positive residual land value. No viable landowner allocation is indicated under these assumptions.':'Suggested landowner allocation is based on residual value supported after builder costs and target profit. Non-refundable payment is treated as upfront land consideration. This is a negotiation benchmark, not a final JV ratio.');
-    $('jvc-deposit-impact').textContent=depositType==='none'||depositAmount<=0?'No deposit entered.':depositType==='refundable'?'Refundable principal is treated as a temporary liability, not permanent land value; estimated funding cost '+money(depositFinanceCost)+' is added to builder cost and affects the supported ratio.':'Non-refundable payment '+money(nonRefundablePayment)+' is treated as upfront land consideration and reduces the remaining property allocation benchmark; it is also included in builder cash outlay.';
-    $('jvc-scenarios').innerHTML=[...new Set([20,30,40,50,60,70,80,...(hasViableRecommendation?[Math.round(recommendedOwnerPct*100)]:[]),Math.round(ownerPct*100)])].sort((a,b)=>a-b).map(p=>{const dp=1-p/100;const ov=saleable*p/100*sellingRate;const dv=saleable*dp*sellingRate;const surplus=dv-developerInvestment;return '<tr'+(p===Math.round(ownerPct*100)?' class="jvc-current"':'')+'><td>'+p+':'+(100-p)+(p===Math.round(ownerPct*100)?(hasViableRecommendation?' · Current':' · Reference only'):'')+'</td><td>'+fmt(saleable*p/100)+' sq.ft.</td><td>'+fmt(saleable*dp)+' sq.ft.</td><td>'+money(ov)+'</td><td>'+money(dv)+'</td><td>'+money(surplus)+'</td></tr>';}).join('');
+    if(requiredShare===null){$('jvc-required-share').textContent='—';$('jvc-required-share-note').textContent=t('jv.state.enterSaleable');}
+    else{$('jvc-required-share').textContent=pct(requiredShare);$('jvc-required-share-note').textContent=requiredShare>1?t('jv.state.requiredShareTooHigh'):t('jv.state.requiredShareNote');}
+    $('jvc-recommended-ratio').textContent=gdv<=0?t('jv.state.enterSaleable'):residualLandValue<=0?t('jv.state.noViableRatio'):Math.round(recommendedOwnerPct*100)+'% '+t('jv.party.landowner')+' / '+(100-Math.round(recommendedOwnerPct*100))+'% '+t('jv.party.developer');
+    $('jvc-market-ratio').textContent=t('jv.state.marketRateNotUsed');
+    $('jvc-residual-ratio').textContent=gdv>0?pct(Math.max(0,residualLandValue/gdv))+' '+t('jv.metric.referenceSuffix'):'—';
+    $('jvc-recommended-note').textContent=gdv<=0?t('jv.state.enterRecommendedInputs'):(residualLandValue<=0?t('jv.state.noViableDetail'):t('jv.state.recommendedDetail'));
+    $('jvc-deposit-impact').textContent=depositType==='none'||depositAmount<=0?t('jv.state.noDeposit'):depositType==='refundable'?t('jv.state.depositRefundable',{cost:money(depositFinanceCost)}):t('jv.state.depositNonRefundable',{amount:money(nonRefundablePayment)});
+    $('jvc-scenarios').innerHTML=[...new Set([20,30,40,50,60,70,80,...(hasViableRecommendation?[Math.round(recommendedOwnerPct*100)]:[]),Math.round(ownerPct*100)])].sort((a,b)=>a-b).map(p=>{const dp=1-p/100;const ov=saleable*p/100*sellingRate;const dv=saleable*dp*sellingRate;const surplus=dv-developerInvestment;return '<tr'+(p===Math.round(ownerPct*100)?' class="jvc-current"':'')+'><td>'+p+':'+(100-p)+(p===Math.round(ownerPct*100)?' · '+t(hasViableRecommendation?'jv.state.current':'jv.state.ratioReferenceOnly'):'')+'</td><td>'+fmt(saleable*p/100)+' sq.ft.</td><td>'+fmt(saleable*dp)+' sq.ft.</td><td>'+money(ov)+'</td><td>'+money(dv)+'</td><td>'+money(surplus)+'</td></tr>';}).join('');
   }
   ['jvc-land-area-input','jvc-land-deduction','jvc-base-fsi','jvc-premium-pct','jvc-efficiency','jvc-rate','jvc-construction-rate','jvc-soft-cost-pct','jvc-premium-charge','jvc-other-costs','jvc-profit-pct','jvc-deposit-amount','jvc-deposit-finance-rate','jvc-deposit-months'].forEach(id=>$(id).addEventListener('input',render));
   $('jvc-ratio').addEventListener('input',()=>{ratioManuallyAdjusted=true;render();});
@@ -183,5 +189,6 @@
     }
   }
   $('jvc-reset').addEventListener('click',()=>{const v={'jvc-land-area-input':'2400','jvc-road-width':'30','jvc-project-type':'nonhighrise','jvc-land-deduction':'0','jvc-base-fsi':'2.00','jvc-premium-pct':'0','jvc-efficiency':'80','jvc-rate':'4800','jvc-construction-rate':'3000','jvc-cost-basis':'fsi','jvc-soft-cost-pct':'15','jvc-premium-charge':'0','jvc-other-costs':'0','jvc-profit-pct':'20','jvc-ratio':'50','jvc-deposit-type':'none','jvc-deposit-amount':'0','jvc-deposit-finance-rate':'12','jvc-deposit-months':'12'};Object.keys(v).forEach(id=>$(id).value=v[id]);ratioManuallyAdjusted=false;$('jvc-regulatory-note').textContent='FSI is not determined by road width alone. Confirm jurisdiction, use zone, building category, road width/length, setbacks, exclusions, height, parking, fire access and current amendments with a licensed architect and the competent authority. FSI is a manual, unverified modelling input here.';render();});
+  document.addEventListener('avx:i18n-ready',render,{once:true});
   render();
 })();

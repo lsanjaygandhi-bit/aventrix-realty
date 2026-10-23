@@ -27,18 +27,35 @@
     const CARD_PHONE_TEL = "+919176887770";
     const CARD_WHATSAPP_URL = "https://wa.me/919176887770";
 
+    function t(key, fallback) {
+        if (document.documentElement.getAttribute("data-avx-translations-loaded") !== "true") {
+            return fallback;
+        }
+        return window.avxI18n ? window.avxI18n.t(key) : fallback;
+    }
+
+    function formatMessage(key, fallback, values) {
+        return Object.keys(values).reduce((message, name) => {
+            return message.replace(new RegExp("\\{" + name + "\\}", "g"), values[name]);
+        }, t(key, fallback));
+    }
+
     function escapeHtml(str) {
         return String(str || "").replace(/[&<>"']/g, (c) => ({
             "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
         }[c]));
     }
-    function formatBadge(listingType) { return listingType === "lease" ? "FOR LEASE" : "FOR SALE"; }
+    function formatBadge(listingType) {
+        return listingType === "lease"
+            ? t("wishlist.badge.lease", "FOR LEASE")
+            : t("wishlist.badge.sale", "FOR SALE");
+    }
     function badgeClass(listingType) { return listingType === "lease" ? "badge-lease" : "badge-sale"; }
 
     function keyDetailsLine(p) {
         const parts = [];
-        if (p.bedrooms) parts.push(`${p.bedrooms} Bed${p.bedrooms === 1 ? "" : "s"}`);
-        if (p.bathrooms) parts.push(`${p.bathrooms} Bath${p.bathrooms === 1 ? "" : "s"}`);
+        if (p.bedrooms) parts.push(formatMessage("wishlist.details.bedrooms", "{count} bedrooms", { count: p.bedrooms }));
+        if (p.bathrooms) parts.push(formatMessage("wishlist.details.bathrooms", "{count} bathrooms", { count: p.bathrooms }));
         if (p.built_up_area) parts.push(p.built_up_area);
         return parts.join(" · ");
     }
@@ -47,14 +64,19 @@
         const image = p.featured_image || (p.images && p.images[0]) || "images/property1.jpg";
         const details = keyDetailsLine(p);
         const saved = opts.list === "wishlist" ? true : window.AventrixStorage.wishlist.has(p.slug);
+        const viewLabel = formatMessage("wishlist.card.view", "View {title}", { title: p.title });
+        const callLabel = formatMessage("wishlist.card.call", "Call about {title}", { title: p.title });
+        const whatsappLabel = formatMessage("wishlist.card.whatsapp", "WhatsApp about {title}", { title: p.title });
+        const saveLabel = t(saved ? "wishlist.card.remove" : "wishlist.card.save",
+            saved ? "Remove from Wishlist" : "Save to Wishlist");
         return `
             <div class="property-card" data-slug="${escapeHtml(p.slug)}">
                 <div class="property-image-wrap">
-                    <a href="property.html?id=${encodeURIComponent(p.slug)}" aria-label="View ${escapeHtml(p.title)}">
+                    <a href="property.html?id=${encodeURIComponent(p.slug)}" aria-label="${escapeHtml(viewLabel)}">
                         <img src="${escapeHtml(image)}" alt="${escapeHtml(p.title)}" loading="lazy">
                     </a>
-                    <span class="property-badge ${badgeClass(p.listing_type)}">${formatBadge(p.listing_type)}</span>
-                    <button class="property-save-btn${saved ? " saved" : ""}" aria-label="${saved ? "Remove from Wishlist" : "Save to Wishlist"}" aria-pressed="${saved ? "true" : "false"}" data-slug="${escapeHtml(p.slug)}"><i class="${saved ? "fas" : "far"} fa-heart" aria-hidden="true"></i></button>
+                    <span class="property-badge ${badgeClass(p.listing_type)}">${escapeHtml(formatBadge(p.listing_type))}</span>
+                    <button class="property-save-btn${saved ? " saved" : ""}" aria-label="${escapeHtml(saveLabel)}" aria-pressed="${saved ? "true" : "false"}" data-slug="${escapeHtml(p.slug)}"><i class="${saved ? "fas" : "far"} fa-heart" aria-hidden="true"></i></button>
                 </div>
                 <div class="content">
                     <span class="property-location"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> ${escapeHtml(p.location || "")}</span>
@@ -64,15 +86,15 @@
                         <div class="property-footer-top">
                             <span class="property-price">${escapeHtml(p.price_display || "Contact for Price")}</span>
                             <div class="property-icon-actions">
-                                <a href="tel:${CARD_PHONE_TEL}" data-slug="${escapeHtml(p.slug)}" data-track-event="call_click" class="icon-action-btn icon-call-btn" aria-label="Call about ${escapeHtml(p.title)}" title="Call">
+                                <a href="tel:${CARD_PHONE_TEL}" data-slug="${escapeHtml(p.slug)}" data-track-event="call_click" class="icon-action-btn icon-call-btn" aria-label="${escapeHtml(callLabel)}" title="${escapeHtml(t("wishlist.card.callTitle", "Call"))}">
                                     <i class="fas fa-phone-alt" aria-hidden="true"></i>
                                 </a>
-                                <a href="${escapeHtml(window.AventrixTracking ? window.AventrixTracking.whatsappHref(p) : CARD_WHATSAPP_URL)}" data-slug="${escapeHtml(p.slug)}" data-track-event="whatsapp_click" class="icon-action-btn icon-whatsapp-btn" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp about ${escapeHtml(p.title)}" title="WhatsApp">
+                                <a href="${escapeHtml(window.AventrixTracking ? window.AventrixTracking.whatsappHref(p) : CARD_WHATSAPP_URL)}" data-slug="${escapeHtml(p.slug)}" data-track-event="whatsapp_click" class="icon-action-btn icon-whatsapp-btn" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(whatsappLabel)}" title="${escapeHtml(t("wishlist.card.whatsappTitle", "WhatsApp"))}">
                                     <i class="fab fa-whatsapp" aria-hidden="true"></i>
                                 </a>
                             </div>
                         </div>
-                        <a href="property.html?id=${encodeURIComponent(p.slug)}" class="view-details-btn">View Details</a>
+                        <a href="property.html?id=${encodeURIComponent(p.slug)}" class="view-details-btn">${escapeHtml(t("View Details", "View Details"))}</a>
                     </div>
                 </div>
             </div>`;
@@ -154,6 +176,10 @@
         renderRecentlyViewed();
     });
     window.addEventListener("aventrix:recently-viewed-changed", renderRecentlyViewed);
+    document.addEventListener("avx:i18n-ready", () => {
+        renderWishlist();
+        renderRecentlyViewed();
+    });
 
     renderWishlist();
     renderRecentlyViewed();

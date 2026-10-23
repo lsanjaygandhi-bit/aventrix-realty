@@ -40,7 +40,7 @@
         <img src="images/aventrix-logo.png" alt="Aventrix Realty">
     </a>
 </div>
-   <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+   <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" data-i18n-aria-label="shared.header.openMenu">
     <span></span>
     <span></span>
     <span></span>
@@ -50,30 +50,31 @@
              breakpoint, unlike the desktop one inside .nav-right
              (hidden on mobile by an existing rule). -->
         <div class="home-app-header-actions">
-            <a href="account.html" class="home-app-bell-btn" aria-label="My Account">
+            <a href="account.html" class="home-app-bell-btn" aria-label="My Account" data-i18n-aria-label="shared.header.myAccount">
                 <i class="far fa-circle-user" aria-hidden="true"></i>
             </a>
         </div>
     <div class="menu-overlay" id="menuOverlay"></div>
        <nav class="main-nav" data-hq="phones">
 
-    <a href="index.html">Home</a>
+    <a href="index.html" data-i18n="Home">Home</a>
 
-    <a href="about.html">About Us</a>
+    <a href="about.html" data-i18n="About Us">About Us</a>
 
-    <a href="properties.html">Properties</a>
+    <a href="properties.html" data-i18n="Properties">Properties</a>
 
-    <a href="services.html">Services</a>
+    <a href="services.html" data-i18n="Services">Services</a>
 
-    <a href="list-with-us.html">List With Us</a>
+    <a href="list-with-us.html" data-i18n="List With Us">List With Us</a>
 
-    <a href="free-valuation.html">Free Valuation</a>
+    <a href="free-valuation.html" data-i18n="Free Valuation">Free Valuation</a>
 
-    <a href="joint-venture.html">Joint Venture</a>
+    <a href="joint-venture.html" data-i18n="Joint Venture">Joint Venture</a>
 
     <div class="dropdown aventrix-tools-dropdown">
       <a href="/property-tools.html" class="dropdown-toggle"><span><span class="nav-label-extra">Property </span>Tools</span><i class="fas fa-chevron-down" aria-hidden="true"></i></a>
       <div class="dropdown-content aventrix-tools-menu">
+<<<<<<< HEAD
         <a href="/property-tools.html">All Property Tools</a>
         <a href="/plot-area-calculator.html">Plot Area Calculator</a>
         <a href="/land-knowledge/">Tamil Nadu Land Knowledge Centre</a>
@@ -81,14 +82,23 @@
       </div>
     </div>
     <a href="nri-services.html">NRI Services</a>
+=======
+        <a href="/property-tools.html" data-i18n="All Property Tools">All Property Tools</a>
+        <a href="/plot-area-calculator.html" data-i18n="Plot Area Calculator">Plot Area Calculator</a>
+        <a href="/land-knowledge/" data-i18n="Tamil Nadu Land Knowledge Centre">Tamil Nadu Land Knowledge Centre</a>
+        <a href="/about-chennai/" data-i18n="About Chennai">About Chennai</a>
+      </div>
+    </div>
+    <a href="nri-services.html" data-i18n="NRI Services">NRI Services</a>
+>>>>>>> 172e68a (Update multilingual website support)
 
-    <a href="contact.html">Contact</a>
+    <a href="contact.html" data-i18n="Contact">Contact</a>
 
-    <a href="/admin/" class="main-nav-admin">Admin</a>
+    <a href="/admin/" class="main-nav-admin" data-i18n="Admin">Admin</a>
 
 
     <div class="mobile-menu-divider"></div>
-    <span class="mobile-menu-contact-label">CONTACT</span>
+    <span class="mobile-menu-contact-label" data-i18n="CONTACT">CONTACT</span>
     <a href="tel:+919176887770" class="mobile-menu-phone">📞 +91 91768 87770</a>
     <a href="tel:+917092356222" class="mobile-menu-phone">📞 +91 70923 56222</a>
     <div class="mobile-menu-socials">
@@ -112,10 +122,10 @@
             <!-- Notification/Bell — matches index.html's header exactly
                  (site-wide header consistency), same .nav-wishlist-link
                  styling, same position ahead of the phone number. -->
-            <a href="account.html" class="nav-wishlist-link nav-bell-link" aria-label="My Account">
+            <a href="account.html" class="nav-wishlist-link nav-bell-link" aria-label="My Account" data-i18n-aria-label="shared.header.myAccount">
                 <i class="far fa-circle-user" aria-hidden="true"></i>
             </a>
-            <a href="tel:+919176887770" class="nav-phone" aria-label="Call Aventrix Realty">
+            <a href="tel:+919176887770" class="nav-phone" aria-label="Call Aventrix Realty" data-i18n-aria-label="shared.header.callAventrix">
                 <i class="fas fa-phone-alt" aria-hidden="true"></i>
             </a>
         </div>
@@ -128,7 +138,7 @@
     <div class="lk-hero-grid">
       <div class="lk-hero-copy">
         <p class="lk-eyebrow"><span></span> AVENTRIX REALTY</p>
-        <h1 id="lk-title">Tamil Nadu Land Knowledge Centre</h1>
+        <h1 id="lk-title" data-i18n="Tamil Nadu Land Knowledge Centre">Tamil Nadu Land Knowledge Centre</h1>
         <p class="lk-hero-lead">Understand Tamil Nadu land records, land classifications and property verification.</p>
         <div class="lk-hero-actions"><a class="lk-btn lk-btn-primary" href="/land-knowledge/#lk-start">Explore the guide <i class="fa-solid fa-arrow-down" aria-hidden="true"></i></a></div>
       </div>
@@ -149,25 +159,25 @@
     <section class="lk-section lk-documents" id="lk-documents" aria-labelledby="lk-documents-title">
       <div class="lk-split-head"><div><p class="lk-kicker">THE DOCUMENTS</p><h2 id="lk-documents-title">Each record answers a different question.</h2><p>No single extract should be treated as the entire legal history of a property. Match the survey number, subdivision, extent, boundaries, names and dates across available records.</p></div><img src="/images/land-knowledge/documents.svg" alt="Illustration of land-record papers being compared" width="480" height="320" loading="lazy"></div>
       <div class="lk-document-grid">
-        <article class="lk-document-card"><div class="lk-doc-mark">PT</div><h3>Patta</h3><p>A revenue record identifying the person or persons recorded for a parcel and related survey details. It is important evidence, but it is not by itself conclusive proof of title.</p><details><summary>What to cross-check</summary><p>Patta number, survey and subdivision, extent, recorded names, transfer order and consistency with title deeds and other records.</p></details></article>
-        <article class="lk-document-card"><div class="lk-doc-mark">CH</div><h3>Chitta</h3><p>A land-revenue record associated with ownership and land details. Availability and format depend on the relevant rural or urban record system and current portal.</p><details><summary>What to cross-check</summary><p>Reference number, survey identity, recorded holder and whether the extract is current and verifiable through the official service.</p></details></article>
-        <article class="lk-document-card"><div class="lk-doc-mark">AR</div><h3>A-Register</h3><p>A village account with key survey-level particulars, which may include classification, extent, assessment and pattadar-related entries.</p><details><summary>What to cross-check</summary><p>Recorded classification, survey/subdivision, extent, land type and differences between old and current entries.</p></details></article>
-        <article class="lk-document-card"><div class="lk-doc-mark">AD</div><h3>Adangal</h3><p>A village account traditionally associated with cultivation and crop details. Its content and role should be read in the context of the record and period concerned.</p><details><summary>What to cross-check</summary><p>Relevant season or year, cultivation details, survey number and whether the entry is being incorrectly treated as a title deed.</p></details></article>
-        <article class="lk-document-card"><div class="lk-doc-mark">FMB</div><h3>FMB / Field Measurement Book</h3><p>A field sketch used to understand surveyed parcel geometry, measurements and subdivisions. It helps with boundary investigation; it does not alone establish ownership.</p><details><summary>What to cross-check</summary><p>Correct village, survey and subdivision, adjoining parcels, scale/measurements and whether a licensed surveyor should inspect the ground.</p></details></article>
-        <article class="lk-document-card"><div class="lk-doc-mark">TS</div><h3>TSLR</h3><p>Town Survey Land Register, used for relevant urban town-survey records. Urban records and rural village accounts are not always interchangeable.</p><details><summary>What to cross-check</summary><p>Town, block, ward, town survey number, subdivision and corresponding urban sketch or related extracts.</p></details></article>
-        <article class="lk-document-card"><div class="lk-doc-mark">EC</div><h3>Encumbrance Certificate (EC)</h3><p>A registration search covering transactions recorded in the relevant period and search scope. An EC does not reveal every possible legal, possession or title issue.</p><details><summary>What to cross-check</summary><p>Correct property identifiers, search period, document numbers, names, link documents and possible unregistered claims or litigation.</p></details></article>
-        <article class="lk-document-card"><div class="lk-doc-mark">PD</div><h3>Parent and link documents</h3><p>Earlier registered instruments and supporting records help trace how the claimed title passed from one party to another.</p><details><summary>What to cross-check</summary><p>Continuity of title, undivided shares, legal heirs, release/partition documents, court orders, powers of attorney and registration details.</p></details></article>
+        <article class="lk-document-card"><div class="lk-doc-mark">PT</div><h3>Patta</h3><p>A revenue record identifying the person or persons recorded for a parcel and related survey details. It is important evidence, but it is not by itself conclusive proof of title.</p><details><summary data-i18n="What to cross-check">What to cross-check</summary><p>Patta number, survey and subdivision, extent, recorded names, transfer order and consistency with title deeds and other records.</p></details></article>
+        <article class="lk-document-card"><div class="lk-doc-mark">CH</div><h3>Chitta</h3><p>A land-revenue record associated with ownership and land details. Availability and format depend on the relevant rural or urban record system and current portal.</p><details><summary data-i18n="What to cross-check">What to cross-check</summary><p>Reference number, survey identity, recorded holder and whether the extract is current and verifiable through the official service.</p></details></article>
+        <article class="lk-document-card"><div class="lk-doc-mark">AR</div><h3>A-Register</h3><p>A village account with key survey-level particulars, which may include classification, extent, assessment and pattadar-related entries.</p><details><summary data-i18n="What to cross-check">What to cross-check</summary><p>Recorded classification, survey/subdivision, extent, land type and differences between old and current entries.</p></details></article>
+        <article class="lk-document-card"><div class="lk-doc-mark">AD</div><h3>Adangal</h3><p>A village account traditionally associated with cultivation and crop details. Its content and role should be read in the context of the record and period concerned.</p><details><summary data-i18n="What to cross-check">What to cross-check</summary><p>Relevant season or year, cultivation details, survey number and whether the entry is being incorrectly treated as a title deed.</p></details></article>
+        <article class="lk-document-card"><div class="lk-doc-mark">FMB</div><h3>FMB / Field Measurement Book</h3><p>A field sketch used to understand surveyed parcel geometry, measurements and subdivisions. It helps with boundary investigation; it does not alone establish ownership.</p><details><summary data-i18n="What to cross-check">What to cross-check</summary><p>Correct village, survey and subdivision, adjoining parcels, scale/measurements and whether a licensed surveyor should inspect the ground.</p></details></article>
+        <article class="lk-document-card"><div class="lk-doc-mark">TS</div><h3>TSLR</h3><p>Town Survey Land Register, used for relevant urban town-survey records. Urban records and rural village accounts are not always interchangeable.</p><details><summary data-i18n="What to cross-check">What to cross-check</summary><p>Town, block, ward, town survey number, subdivision and corresponding urban sketch or related extracts.</p></details></article>
+        <article class="lk-document-card"><div class="lk-doc-mark">EC</div><h3>Encumbrance Certificate (EC)</h3><p>A registration search covering transactions recorded in the relevant period and search scope. An EC does not reveal every possible legal, possession or title issue.</p><details><summary data-i18n="What to cross-check">What to cross-check</summary><p>Correct property identifiers, search period, document numbers, names, link documents and possible unregistered claims or litigation.</p></details></article>
+        <article class="lk-document-card"><div class="lk-doc-mark">PD</div><h3>Parent and link documents</h3><p>Earlier registered instruments and supporting records help trace how the claimed title passed from one party to another.</p><details><summary data-i18n="What to cross-check">What to cross-check</summary><p>Continuity of title, undivided shares, legal heirs, release/partition documents, court orders, powers of attorney and registration details.</p></details></article>
       </div>
       <div class="lk-note lk-note-green"><i class="fa-solid fa-circle-info" aria-hidden="true"></i><div><strong>Simple rule:</strong> revenue records, registered instruments, survey records and planning approvals serve different purposes. Compare them and obtain a professional title review where required.</div></div>
     </section>
 
     <section class="lk-section lk-classification" id="lk-classification" aria-labelledby="lk-classification-title">
       <div class="lk-split-head lk-split-reverse"><img src="/images/land-knowledge/classification.svg" alt="Illustration comparing private, waterbody, public-use and agricultural land categories" width="480" height="320" loading="lazy"><div><p class="lk-kicker">LAND CLASSIFICATION</p><h2 id="lk-classification-title">The classification entry is a starting point — not the whole answer.</h2><p>Read the exact wording in the relevant record. Similar-sounding labels can have different implications depending on the original settlement, the land's history, applicable law and later orders.</p></div></div>
-      <div class="lk-class-filters" role="group" aria-label="Filter land classification cards"><button type="button" class="is-active" data-class-filter="all" aria-pressed="true">All categories</button><button type="button" data-class-filter="agri" aria-pressed="false">Agricultural</button><button type="button" data-class-filter="natham" aria-pressed="false">Natham / settlement</button><button type="button" data-class-filter="water" aria-pressed="false">Water and public use</button><button type="button" data-class-filter="other" aria-pressed="false">Other entries</button></div>
+      <div class="lk-class-filters" role="group" aria-label="Filter land classification cards"><button type="button" class="is-active" data-class-filter="all" aria-pressed="true">All categories</button><button type="button" data-class-filter="agri" aria-pressed="false" data-i18n="Agricultural">Agricultural</button><button type="button" data-class-filter="natham" aria-pressed="false">Natham / settlement</button><button type="button" data-class-filter="water" aria-pressed="false">Water and public use</button><button type="button" data-class-filter="other" aria-pressed="false">Other entries</button></div>
       <div class="lk-class-grid">
-        <article class="lk-class-card" data-class="agri"><span class="lk-class-tag">Agricultural</span><h3>Nanjai</h3><p>Traditionally associated with wet or irrigated agricultural land. The actual recorded classification and applicable land-use controls must be checked.</p></article>
-        <article class="lk-class-card" data-class="agri"><span class="lk-class-tag">Agricultural</span><h3>Punjai</h3><p>Traditionally associated with dry agricultural land. The label alone does not establish that residential or commercial development is permitted.</p></article>
-        <article class="lk-class-card" data-class="agri"><span class="lk-class-tag">Agricultural</span><h3>Manavari</h3><p>A term associated with rain-fed cultivation in relevant records. Confirm the exact classification in the village account and applicable rules.</p></article>
+        <article class="lk-class-card" data-class="agri"><span class="lk-class-tag" data-i18n="Agricultural">Agricultural</span><h3>Nanjai</h3><p>Traditionally associated with wet or irrigated agricultural land. The actual recorded classification and applicable land-use controls must be checked.</p></article>
+        <article class="lk-class-card" data-class="agri"><span class="lk-class-tag" data-i18n="Agricultural">Agricultural</span><h3>Punjai</h3><p>Traditionally associated with dry agricultural land. The label alone does not establish that residential or commercial development is permitted.</p></article>
+        <article class="lk-class-card" data-class="agri"><span class="lk-class-tag" data-i18n="Agricultural">Agricultural</span><h3>Manavari</h3><p>A term associated with rain-fed cultivation in relevant records. Confirm the exact classification in the village account and applicable rules.</p></article>
         <article class="lk-class-card" data-class="natham"><span class="lk-class-tag">Settlement</span><h3>Grama Natham</h3><p>A traditional village-residential land classification. The legal effect depends on the precise land, occupation, records and applicable court decisions.</p></article>
         <article class="lk-class-card" data-class="natham"><span class="lk-class-tag">Revenue entry</span><h3>Natham Poramboke</h3><p>A label that may appear in revenue records for land classified as natham poramboke. Do not infer ownership or eligibility for patta from the label alone.</p></article>
         <article class="lk-class-card" data-class="water"><span class="lk-class-tag">Waterbody</span><h3>Eri Poramboke</h3><p>Land recorded in relation to a tank or lake. Check original survey records, tank registers, boundaries and the relevant water resources authority's records.</p></article>
@@ -265,7 +275,7 @@
 
         <div class="ft-brand">
             <a href="index.html" class="ft-logo" aria-label="Aventrix Realty — Home"><img src="images/aventrix-logo-white.png" alt="Aventrix Realty" width="1042" height="342" loading="lazy" decoding="async"></a>
-            <p class="ft-tagline" data-site="footer-tagline">Where Legacy Meets The Next Generation</p>
+            <p class="ft-tagline" data-site="footer-tagline" data-i18n="shared.footer.tagline">Where Legacy Meets The Next Generation</p>
             <p class="ft-desc" data-site="footer-description">
                 Premium real estate advisory across Chennai — residential,
                 commercial, land and joint venture solutions, guided by
@@ -277,15 +287,15 @@
             <li class="ft-contact">
                 <span class="ft-icon" aria-hidden="true"><i class="fa-solid fa-location-dot"></i></span>
                 <div>
-                    <h4 class="ft-label">Head Office</h4>
-                    <span class="ft-sr" data-hq="name">Aventrix Realty – Head Office</span>
+                    <h4 class="ft-label" data-i18n="shared.footer.headOffice">Head Office</h4>
+                    <span class="ft-sr" data-hq="name" data-i18n="Aventrix Realty – Head Office">Aventrix Realty – Head Office</span>
                     <p data-hq="address">No.27, 1st Main Road, Newcolony, Chromepet, Chennai, Tamil Nadu</p>
                 </div>
             </li>
             <li class="ft-contact">
                 <span class="ft-icon" aria-hidden="true"><i class="fa-solid fa-phone"></i></span>
                 <div>
-                    <h4 class="ft-label">Phone</h4>
+                    <h4 class="ft-label" data-i18n="Phone">Phone</h4>
                     <div class="ft-phones" data-hq="phones">
                         <a href="tel:+919176887770">+91 91768 87770</a>
                         <a href="tel:+917092356222">+91 70923 56222</a>
@@ -295,14 +305,14 @@
             <li class="ft-contact">
                 <span class="ft-icon" aria-hidden="true"><i class="fa-regular fa-envelope"></i></span>
                 <div>
-                    <h4 class="ft-label">Email</h4>
+                    <h4 class="ft-label" data-i18n="Email">Email</h4>
                     <p><a href="mailto:office@aventrixrealty.com" data-hq="email">office@aventrixrealty.com</a></p>
                 </div>
             </li>
             <li class="ft-contact">
                 <span class="ft-icon" aria-hidden="true"><i class="fa-regular fa-building"></i></span>
                 <div>
-                    <h4 class="ft-label">Branch Office</h4>
+                    <h4 class="ft-label" data-i18n="shared.footer.branchOffice">Branch Office</h4>
                     <p>Adyar, Chennai</p>
                 </div>
             </li>
@@ -311,28 +321,28 @@
         <div class="ft-rule" aria-hidden="true"></div>
 
         <div class="ft-main">
-            <div class="ft-col" role="navigation" aria-label="About Aventrix">
-                <h4 class="ft-heading">About Aventrix</h4>
+            <div class="ft-col" role="navigation" aria-label="About Aventrix" data-i18n-aria-label="shared.footer.aboutAventrix">
+                <h4 class="ft-heading" data-i18n="shared.footer.aboutAventrix">About Aventrix</h4>
                 <ul class="ft-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="index.html#contact">Contact Us</a></li>
-                    <li><a href="services.html">Our Services</a></li>
+                    <li><a href="index.html" data-i18n="Home">Home</a></li>
+                    <li><a href="about.html" data-i18n="About Us">About Us</a></li>
+                    <li><a href="index.html#contact" data-i18n="Contact Us">Contact Us</a></li>
+                    <li><a href="services.html" data-i18n="Our Services">Our Services</a></li>
                 </ul>
             </div>
-            <div class="ft-col" role="navigation" aria-label="Quick links">
-                <h4 class="ft-heading">Quick Links</h4>
+            <div class="ft-col" role="navigation" aria-label="Quick links" data-i18n-aria-label="Quick links">
+                <h4 class="ft-heading" data-i18n="shared.footer.quickLinks">Quick Links</h4>
                 <ul class="ft-links">
-                    <li><a href="our-realtors.html">Realtors</a></li>
-                    <li><a href="brokerage-fees.html">Brokerage &amp; Fees</a></li>
-                    <li><a href="emi-calculator.html">EMI Calculator</a></li>
-                    <li><a href="jv-calculator.html">Joint Venture Calculator</a></li>
+                    <li><a href="our-realtors.html" data-i18n="shared.footer.realtors">Realtors</a></li>
+                    <li><a href="brokerage-fees.html" data-i18n="shared.footer.brokerageFees">Brokerage &amp; Fees</a></li>
+                    <li><a href="emi-calculator.html" data-i18n="shared.footer.emiCalculator">EMI Calculator</a></li>
+                    <li><a href="jv-calculator.html" data-i18n="shared.footer.jointVentureCalculator">Joint Venture Calculator</a></li>
                 </ul>
             </div>
 
             <div class="ft-side">
                 <div class="ft-follow">
-                    <h4 class="ft-heading">Follow Us</h4>
+                    <h4 class="ft-heading" data-i18n="shared.footer.followUs">Follow Us</h4>
                     <div class="ft-social">
                         <a href="https://www.facebook.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Facebook" data-site="social-facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
                         <a href="https://www.instagram.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Instagram" data-site="social-instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
@@ -344,9 +354,9 @@
                 </div>
 
                 <section class="ft-map" aria-labelledby="ftMapTitle">
-                    <h4 class="ft-sr" id="ftMapTitle">Find Us</h4>
+                    <h4 class="ft-sr" id="ftMapTitle" data-i18n="shared.footer.findUs">Find Us</h4>
                     <div class="ft-map-frame" data-hq="map-embed"><iframe src="https://www.google.com/maps?q=No.27%2C%201st%20Main%20Road%2C%20New%20Colony%2C%20Chromepet%2C%20Chennai%2C%20Tamil%20Nadu&amp;output=embed" width="600" height="280" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Aventrix Realty Head Office Map" allowfullscreen></iframe></div>
-                    <a class="ft-map-open" href="https://maps.app.goo.gl/VjCCdVch9uequeGUA?g_st=ic" target="_blank" rel="noopener noreferrer" data-hq="maps"><i class="fa-solid fa-diamond-turn-right" aria-hidden="true"></i><span>Open in Maps</span><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i><span class="ft-sr"> (opens in a new tab)</span></a>
+                    <a class="ft-map-open" href="https://maps.app.goo.gl/VjCCdVch9uequeGUA?g_st=ic" target="_blank" rel="noopener noreferrer" data-hq="maps"><i class="fa-solid fa-diamond-turn-right" aria-hidden="true"></i><span data-i18n="shared.footer.openInMaps">Open in Maps</span><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i><span class="ft-sr" data-i18n="shared.footer.opensInNewTab"> (opens in a new tab)</span></a>
                 </section>
             </div>
         </div>
@@ -355,15 +365,15 @@
 
         <div class="ft-bottom">
             <div class="ft-credits">
-                <p class="ft-copyright" data-site="copyright-text">© 2026 Aventrix Realty. All Rights Reserved.</p>
+                <p class="ft-copyright" data-site="copyright-text" data-i18n="shared.footer.rights">© 2026 Aventrix Realty. All Rights Reserved.</p>
                 <p class="ft-designer">Designed with <span class="ft-heart" role="img" aria-label="love">&#10084;&#65039;</span> by L. Sanjay Gandhi</p>
             </div>
-            <div class="ft-legal" role="navigation" aria-label="Legal and utility links">
-                <a href="privacy-policy.html">Privacy Policy</a>
-                <a href="terms.html">Terms &amp; Conditions</a>
-                <a href="sitemap.html">Sitemap</a>
-                <a href="property-tools.html">Property Tools</a>
-                <a href="/admin/" class="ft-legal-admin">Admin</a>
+            <div class="ft-legal" role="navigation" aria-label="Legal and utility links" data-i18n-aria-label="Legal and utility links">
+                <a href="privacy-policy.html" data-i18n="shared.footer.privacyPolicy">Privacy Policy</a>
+                <a href="terms.html" data-i18n="shared.footer.termsConditions">Terms &amp; Conditions</a>
+                <a href="sitemap.html" data-i18n="shared.footer.sitemap">Sitemap</a>
+                <a href="property-tools.html" data-i18n="shared.footer.propertyTools">Property Tools</a>
+                <a href="/admin/" class="ft-legal-admin" data-i18n="Admin">Admin</a>
             </div>
         </div>
 
@@ -372,7 +382,7 @@
 <script src="js/site-footer.js?v=20261015" defer></script>
 <!-- SITE-FOOTER:END -->
 <a href="https://wa.me/919176887770" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" data-site="whatsapp-link"><img src="images/whatsapp-icon.png" alt="WhatsApp"></a>
-<button id="backToTop" class="back-to-top" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
+<button id="backToTop" class="back-to-top" aria-label="Back to top" data-i18n-aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="js/supabase-client.js"></script>
 <script src="js/public-site-settings.js?v=20260926b"></script>
@@ -381,4 +391,6 @@
 <script src="js/wishlist-widget.js"></script>
 <script src="script.js?v=20260926b"></script>
 <script src="js/land-knowledge.js?v=20261020a" defer></script>
+
+<script src="/js/language-switcher.js?v=20261023-br-normalization" defer></script>
 </body></html>

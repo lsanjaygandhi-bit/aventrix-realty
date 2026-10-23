@@ -25,11 +25,19 @@
   document.documentElement.classList.add("avx-ai-on");
   let busy = false;
 
-  function addMessage(text, role, properties) {
+  function translateI18n(element) {
+    if (window.avxI18n && typeof window.avxI18n.translate === "function") {
+      window.avxI18n.translate(element);
+    }
+  }
+
+  function addMessage(text, role, properties, i18nKey) {
     const bubble = document.createElement("div");
     bubble.className = "avx-ai-message " + role;
     bubble.textContent = text;
+    if (i18nKey) bubble.setAttribute("data-i18n", i18nKey);
     messages.appendChild(bubble);
+    if (i18nKey) translateI18n(bubble);
     if (Array.isArray(properties) && properties.length) {
       const results = document.createElement("div");
       results.className = "avx-ai-results";
@@ -63,6 +71,12 @@
     send.disabled = value;
     input.disabled = value;
     status.textContent = value ? "Checking Aventrix website…" : "";
+    if (value) {
+      status.setAttribute("data-i18n", "Checking Aventrix website…");
+      translateI18n(status);
+    } else {
+      status.removeAttribute("data-i18n");
+    }
   }
 
   function openPanel() {
@@ -93,7 +107,7 @@
     const message = input.value.trim();
     if (!message || busy) return;
     if (message.length > 1200) {
-      addMessage("Please keep your question under 1,200 characters.", "assistant");
+      addMessage("Please keep your question under 1,200 characters.", "assistant", null, "Please keep your question under 1,200 characters.");
       return;
     }
     addMessage(message, "user");
@@ -107,9 +121,15 @@
       });
       const data = await response.json().catch(() => ({}));
       if (!response.ok) throw new Error(data.error || "The assistant is temporarily unavailable.");
-      addMessage(String(data.answer || "I could not find a suitable answer. Please try another question."), "assistant", data.properties);
+      if (data.answer) {
+        addMessage(String(data.answer), "assistant", data.properties);
+      } else {
+        const fallback = "I could not find a suitable answer. Please try another question.";
+        addMessage(fallback, "assistant", data.properties, fallback);
+      }
     } catch {
-      addMessage("Sorry, free property search is temporarily unavailable. Please try again shortly or contact Aventrix Realty directly.", "assistant");
+      const unavailable = "Sorry, free property search is temporarily unavailable. Please try again shortly or contact Aventrix Realty directly.";
+      addMessage(unavailable, "assistant", null, unavailable);
     } finally {
       setBusy(false);
       if (!panel.hidden && !isTouch) input.focus();

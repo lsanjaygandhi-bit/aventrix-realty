@@ -220,7 +220,7 @@ body.property-map-page .sf-map-note { margin:8px 0; }
         <img src="images/aventrix-logo.png" alt="Aventrix Realty">
     </a>
 </div>
-   <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+   <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" data-i18n-aria-label="shared.header.openMenu">
     <span></span>
     <span></span>
     <span></span>
@@ -230,37 +230,37 @@ body.property-map-page .sf-map-note { margin:8px 0; }
              breakpoint, unlike the desktop one inside .nav-right
              (hidden on mobile by an existing rule). -->
         <div class="home-app-header-actions">
-            <a href="account.html" class="home-app-bell-btn" aria-label="My Account">
+            <a href="account.html" class="home-app-bell-btn" aria-label="My Account" data-i18n-aria-label="shared.header.myAccount">
                 <i class="far fa-circle-user" aria-hidden="true"></i>
             </a>
         </div>
     <div class="menu-overlay" id="menuOverlay"></div>
        <nav class="main-nav" data-hq="phones">
 
-    <a href="index.html">Home</a>
+    <a href="index.html" data-i18n="Home">Home</a>
 
-    <a href="about.html">About Us</a>
+    <a href="about.html" data-i18n="About Us">About Us</a>
 
-    <a href="properties.html" class="active">Properties</a>
+    <a href="properties.html" class="active" data-i18n="Properties">Properties</a>
 
-    <a href="services.html">Services</a>
+    <a href="services.html" data-i18n="Services">Services</a>
 
-    <a href="list-with-us.html">List With Us</a>
+    <a href="list-with-us.html" data-i18n="List With Us">List With Us</a>
 
-    <a href="free-valuation.html">Free Valuation</a>
+    <a href="free-valuation.html" data-i18n="Free Valuation">Free Valuation</a>
 
-    <a href="joint-venture.html">Joint Venture</a>
+    <a href="joint-venture.html" data-i18n="Joint Venture">Joint Venture</a>
 
     <a href="property-tools.html"><span class="nav-label-extra">Property </span>Tools</a>
-    <a href="nri-services.html">NRI Services</a>
+    <a href="nri-services.html" data-i18n="NRI Services">NRI Services</a>
 
-    <a href="contact.html">Contact</a>
+    <a href="contact.html" data-i18n="Contact">Contact</a>
 
-    <a href="/admin/" class="main-nav-admin">Admin</a>
+    <a href="/admin/" class="main-nav-admin" data-i18n="Admin">Admin</a>
 
 
     <div class="mobile-menu-divider"></div>
-    <span class="mobile-menu-contact-label">CONTACT</span>
+    <span class="mobile-menu-contact-label" data-i18n="CONTACT">CONTACT</span>
     <a href="tel:+919176887770" class="mobile-menu-phone">📞 +91 91768 87770</a>
     <a href="tel:+917092356222" class="mobile-menu-phone">📞 +91 70923 56222</a>
 
@@ -286,10 +286,10 @@ body.property-map-page .sf-map-note { margin:8px 0; }
             <!-- Notification/Bell — matches index.html's header exactly
                  (site-wide header consistency), same .nav-wishlist-link
                  styling, same position ahead of the phone number. -->
-            <a href="account.html" class="nav-wishlist-link nav-bell-link" aria-label="My Account">
+            <a href="account.html" class="nav-wishlist-link nav-bell-link" aria-label="My Account" data-i18n-aria-label="shared.header.myAccount">
                 <i class="far fa-circle-user" aria-hidden="true"></i>
             </a>
-            <a href="tel:+919176887770" class="nav-phone" data-site="phone1" aria-label="Call Aventrix Realty">
+            <a href="tel:+919176887770" class="nav-phone" data-site="phone1" aria-label="Call Aventrix Realty" data-i18n-aria-label="shared.header.callAventrix">
                 <i class="fas fa-phone-alt" aria-hidden="true"></i>
             </a>
         </div>
@@ -332,23 +332,23 @@ body.property-map-page .sf-map-note { margin:8px 0; }
                 </div>
 
                 <div class="sf-field">
-                    <label for="sfCategory">Property Type</label>
+                    <label for="sfCategory" data-i18n="Property Type">Property Type</label>
                     <select id="sfCategory">
-                        <option value="">Any Type</option>
-                        <option value="residential">Residential</option>
-                        <option value="commercial">Commercial</option>
-                        <option value="land">Land</option>
+                        <option value="" data-i18n="Any Type">Any Type</option>
+                        <option value="residential" data-i18n="Residential">Residential</option>
+                        <option value="commercial" data-i18n="Commercial">Commercial</option>
+                        <option value="land" data-i18n="Land">Land</option>
                         <option value="industrial">Industrial</option>
                         <option value="special_purpose">Special Purpose</option>
-                        <option value="agricultural">Agricultural</option>
+                        <option value="agricultural" data-i18n="Agricultural">Agricultural</option>
                         <!-- Legacy category values — intentionally not shown in the
                              open dropdown list (hidden), but kept as valid option
                              values so an old bookmarked/shared link such as
                              ?category=apartments still filters
                              correctly instead of silently falling back to "Any Type". -->
-                        <option value="apartments" hidden>Apartments</option>
+                        <option value="apartments" hidden data-i18n="Apartments">Apartments</option>
                         <option value="villas" hidden>Luxury Villas</option>
-                        <option value="investment" hidden>Investment</option>
+                        <option value="investment" hidden data-i18n="Investment">Investment</option>
                     </select>
                 </div>
 
@@ -363,24 +363,24 @@ body.property-map-page .sf-map-note { margin:8px 0; }
                     <label for="sfListingType">Buy / Rent</label>
                     <select id="sfListingType">
                         <option value="">Buy or Rent</option>
-                        <option value="sale">Buy</option>
-                        <option value="lease">Rent &amp; Lease</option>
+                        <option value="sale" data-i18n="Buy">Buy</option>
+                        <option value="lease" data-i18n="Rent &amp; Lease">Rent &amp; Lease</option>
                     </select>
                 </div>
 
                 <div class="sf-field sf-field-range">
                     <label>Price Range (₹)</label>
                     <div class="sf-range-inputs">
-                        <input type="number" id="sfPriceMin" placeholder="Min" min="0">
+                        <input type="number" id="sfPriceMin" placeholder="Min" min="0" data-i18n-placeholder="Min">
                         <span>–</span>
-                        <input type="number" id="sfPriceMax" placeholder="Max" min="0">
+                        <input type="number" id="sfPriceMax" placeholder="Max" min="0" data-i18n-placeholder="Max">
                     </div>
                 </div>
 
                 <div class="sf-field">
-                    <label for="sfBedrooms">Bedrooms</label>
+                    <label for="sfBedrooms" data-i18n="Bedrooms">Bedrooms</label>
                     <select id="sfBedrooms">
-                        <option value="">Any</option>
+                        <option value="" data-i18n="Any">Any</option>
                         <option value="1">1+</option>
                         <option value="2">2+</option>
                         <option value="3">3+</option>
@@ -390,9 +390,9 @@ body.property-map-page .sf-map-note { margin:8px 0; }
                 </div>
 
                 <div class="sf-field">
-                    <label for="sfBathrooms">Bathrooms</label>
+                    <label for="sfBathrooms" data-i18n="Bathrooms">Bathrooms</label>
                     <select id="sfBathrooms">
-                        <option value="">Any</option>
+                        <option value="" data-i18n="Any">Any</option>
                         <option value="1">1+</option>
                         <option value="2">2+</option>
                         <option value="3">3+</option>
@@ -403,16 +403,16 @@ body.property-map-page .sf-map-note { margin:8px 0; }
                 <div class="sf-field sf-field-range">
                     <label>Built-up Area (sq.ft)</label>
                     <div class="sf-range-inputs">
-                        <input type="number" id="sfAreaMin" placeholder="Min" min="0">
+                        <input type="number" id="sfAreaMin" placeholder="Min" min="0" data-i18n-placeholder="Min">
                         <span>–</span>
-                        <input type="number" id="sfAreaMax" placeholder="Max" min="0">
+                        <input type="number" id="sfAreaMax" placeholder="Max" min="0" data-i18n-placeholder="Max">
                     </div>
                 </div>
 
                 <div class="sf-field">
-                    <label for="sfFacing">Facing</label>
+                    <label for="sfFacing" data-i18n="Facing">Facing</label>
                     <select id="sfFacing">
-                        <option value="">Any</option>
+                        <option value="" data-i18n="Any">Any</option>
                         <option>North</option>
                         <option>South</option>
                         <option>East</option>
@@ -425,9 +425,9 @@ body.property-map-page .sf-map-note { margin:8px 0; }
                 </div>
 
                 <div class="sf-field">
-                    <label for="sfFurnishing">Furnishing</label>
+                    <label for="sfFurnishing" data-i18n="Furnishing">Furnishing</label>
                     <select id="sfFurnishing">
-                        <option value="">Any</option>
+                        <option value="" data-i18n="Any">Any</option>
                         <option value="Fully Furnished">Fully Furnished</option>
                         <option value="Semi-Furnished">Semi-Furnished</option>
                         <option value="Unfurnished">Unfurnished</option>
@@ -435,9 +435,9 @@ body.property-map-page .sf-map-note { margin:8px 0; }
                 </div>
 
                 <div class="sf-field">
-                    <label for="sfParking">Parking</label>
+                    <label for="sfParking" data-i18n="Parking">Parking</label>
                     <select id="sfParking">
-                        <option value="">Any</option>
+                        <option value="" data-i18n="Any">Any</option>
                         <option value="1">1+</option>
                         <option value="2">2+</option>
                         <option value="3">3+</option>
@@ -453,7 +453,7 @@ body.property-map-page .sf-map-note { margin:8px 0; }
             </div>
 
             <div class="sf-filter-panel-actions">
-                <button type="button" id="sfClearFilters" class="sf-clear-btn">Clear Filters</button>
+                <button type="button" id="sfClearFilters" class="sf-clear-btn" data-i18n="Clear Filters">Clear Filters</button>
                 <button type="button" id="sfApplyFilters" class="sf-apply-btn">Show Results</button>
             </div>
 
@@ -467,17 +467,17 @@ body.property-map-page .sf-map-note { margin:8px 0; }
 <section class="sf-results-section">
     <div class="container">
 
-        <section class="home-app-recent-section" aria-label="Recent searches" id="propertiesRecentSearchSection">
+        <section class="home-app-recent-section" aria-label="Recent searches" id="propertiesRecentSearchSection" data-i18n-aria-label="Recent searches">
             <div class="home-app-recent-row">
                 <span class="home-app-recent-label"><i class="fas fa-history" aria-hidden="true"></i> Recent Search</span>
                 <div class="home-app-recent-chips" id="sfRecentSearchesChips"></div>
-                <button type="button" class="home-app-recent-all" id="sfAllRecentSearchesBtn">All Recent Searches</button>
+                <button type="button" class="home-app-recent-all" id="sfAllRecentSearchesBtn" data-i18n="All Recent Searches">All Recent Searches</button>
             </div>
             <div class="rs-expanded-wrap" id="sfRecentSearchesExpanded" hidden></div>
         </section>
 
         <div class="sf-results-bar">
-            <p class="sf-results-count" id="sfResultsCount" aria-live="polite">Loading properties…</p>
+            <p class="sf-results-count" id="sfResultsCount" aria-live="polite" data-i18n="Loading properties…">Loading properties…</p>
             <button type="button" class="sf-save-search-btn" id="sfSaveSearchBtn"><i class="far fa-bell" aria-hidden="true"></i> Save this search</button>
             <div class="sf-sort-wrap">
                 <label for="sfSort">Sort by</label>
@@ -515,15 +515,15 @@ body.property-map-page .sf-map-note { margin:8px 0; }
             <p class="sf-map-note" id="sfMapNote" aria-live="polite" hidden></p>
             <div class="sf-map-fallback" id="sfMapFallback" role="status" hidden>
                 <i class="fas fa-map-location-dot" aria-hidden="true"></i>
-                <p id="sfMapFallbackText">Map view is temporarily unavailable. Please use List View to browse properties.</p>
+                <p id="sfMapFallbackText" data-i18n="Map view is temporarily unavailable. Please use List View to browse properties.">Map view is temporarily unavailable. Please use List View to browse properties.</p>
             </div>
             <div class="sf-map-wrap" id="sfMapWrap" hidden>
                 <div class="sf-map-canvas" id="sfMapCanvas" aria-label="Map of properties"></div>
                 <div class="sf-map-loading" id="sfMapLoading" hidden><span></span> Loading map…</div>
                 <button type="button" class="sf-map-area-btn" id="sfMapAreaBtn" hidden><i class="fas fa-magnifying-glass" aria-hidden="true"></i> Search this area</button>
-                <button type="button" class="sf-current-location-btn" id="sfCurrentLocationBtn" aria-label="Show my current location"><i class="fas fa-location-crosshairs" aria-hidden="true"></i></button>
+                <button type="button" class="sf-current-location-btn" id="sfCurrentLocationBtn" aria-label="Show my current location" data-i18n-aria-label="Show my current location"><i class="fas fa-location-crosshairs" aria-hidden="true"></i></button>
                 <p class="sf-current-location-status" id="sfCurrentLocationStatus" role="status" aria-live="polite" hidden></p>
-                <div class="sf-map-preview" id="sfMapPreview" role="dialog" aria-label="Property preview" hidden></div>
+                <div class="sf-map-preview" id="sfMapPreview" role="dialog" aria-label="Property preview" hidden data-i18n-aria-label="Property preview"></div>
             </div>
         </div>
 
@@ -547,7 +547,7 @@ body.property-map-page .sf-map-note { margin:8px 0; }
 
         <div class="ft-brand">
             <a href="index.html" class="ft-logo" aria-label="Aventrix Realty — Home"><img src="images/aventrix-logo-white.png" alt="Aventrix Realty" width="1042" height="342" loading="lazy" decoding="async"></a>
-            <p class="ft-tagline" data-site="footer-tagline">Where Legacy Meets The Next Generation</p>
+            <p class="ft-tagline" data-site="footer-tagline" data-i18n="shared.footer.tagline">Where Legacy Meets The Next Generation</p>
             <p class="ft-desc" data-site="footer-description">
                 Premium real estate advisory across Chennai — residential,
                 commercial, land and joint venture solutions, guided by
@@ -559,15 +559,15 @@ body.property-map-page .sf-map-note { margin:8px 0; }
             <li class="ft-contact">
                 <span class="ft-icon" aria-hidden="true"><i class="fa-solid fa-location-dot"></i></span>
                 <div>
-                    <h4 class="ft-label">Head Office</h4>
-                    <span class="ft-sr" data-hq="name">Aventrix Realty – Head Office</span>
+                    <h4 class="ft-label" data-i18n="shared.footer.headOffice">Head Office</h4>
+                    <span class="ft-sr" data-hq="name" data-i18n="Aventrix Realty – Head Office">Aventrix Realty – Head Office</span>
                     <p data-hq="address">No.27, 1st Main Road, Newcolony, Chromepet, Chennai, Tamil Nadu</p>
                 </div>
             </li>
             <li class="ft-contact">
                 <span class="ft-icon" aria-hidden="true"><i class="fa-solid fa-phone"></i></span>
                 <div>
-                    <h4 class="ft-label">Phone</h4>
+                    <h4 class="ft-label" data-i18n="Phone">Phone</h4>
                     <div class="ft-phones" data-hq="phones">
                         <a href="tel:+919176887770">+91 91768 87770</a>
                         <a href="tel:+917092356222">+91 70923 56222</a>
@@ -577,14 +577,14 @@ body.property-map-page .sf-map-note { margin:8px 0; }
             <li class="ft-contact">
                 <span class="ft-icon" aria-hidden="true"><i class="fa-regular fa-envelope"></i></span>
                 <div>
-                    <h4 class="ft-label">Email</h4>
+                    <h4 class="ft-label" data-i18n="Email">Email</h4>
                     <p><a href="mailto:office@aventrixrealty.com" data-hq="email">office@aventrixrealty.com</a></p>
                 </div>
             </li>
             <li class="ft-contact">
                 <span class="ft-icon" aria-hidden="true"><i class="fa-regular fa-building"></i></span>
                 <div>
-                    <h4 class="ft-label">Branch Office</h4>
+                    <h4 class="ft-label" data-i18n="shared.footer.branchOffice">Branch Office</h4>
                     <p>Adyar, Chennai</p>
                 </div>
             </li>
@@ -593,28 +593,28 @@ body.property-map-page .sf-map-note { margin:8px 0; }
         <div class="ft-rule" aria-hidden="true"></div>
 
         <div class="ft-main">
-            <div class="ft-col" role="navigation" aria-label="About Aventrix">
-                <h4 class="ft-heading">About Aventrix</h4>
+            <div class="ft-col" role="navigation" aria-label="About Aventrix" data-i18n-aria-label="shared.footer.aboutAventrix">
+                <h4 class="ft-heading" data-i18n="shared.footer.aboutAventrix">About Aventrix</h4>
                 <ul class="ft-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="index.html#contact">Contact Us</a></li>
-                    <li><a href="services.html">Our Services</a></li>
+                    <li><a href="index.html" data-i18n="Home">Home</a></li>
+                    <li><a href="about.html" data-i18n="About Us">About Us</a></li>
+                    <li><a href="index.html#contact" data-i18n="Contact Us">Contact Us</a></li>
+                    <li><a href="services.html" data-i18n="Our Services">Our Services</a></li>
                 </ul>
             </div>
-            <div class="ft-col" role="navigation" aria-label="Quick links">
-                <h4 class="ft-heading">Quick Links</h4>
+            <div class="ft-col" role="navigation" aria-label="Quick links" data-i18n-aria-label="Quick links">
+                <h4 class="ft-heading" data-i18n="shared.footer.quickLinks">Quick Links</h4>
                 <ul class="ft-links">
-                    <li><a href="our-realtors.html">Realtors</a></li>
-                    <li><a href="brokerage-fees.html">Brokerage &amp; Fees</a></li>
-                    <li><a href="emi-calculator.html">EMI Calculator</a></li>
-                    <li><a href="jv-calculator.html">Joint Venture Calculator</a></li>
+                    <li><a href="our-realtors.html" data-i18n="shared.footer.realtors">Realtors</a></li>
+                    <li><a href="brokerage-fees.html" data-i18n="shared.footer.brokerageFees">Brokerage &amp; Fees</a></li>
+                    <li><a href="emi-calculator.html" data-i18n="shared.footer.emiCalculator">EMI Calculator</a></li>
+                    <li><a href="jv-calculator.html" data-i18n="shared.footer.jointVentureCalculator">Joint Venture Calculator</a></li>
                 </ul>
             </div>
 
             <div class="ft-side">
                 <div class="ft-follow">
-                    <h4 class="ft-heading">Follow Us</h4>
+                    <h4 class="ft-heading" data-i18n="shared.footer.followUs">Follow Us</h4>
                     <div class="ft-social">
                         <a href="https://www.facebook.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Facebook" data-site="social-facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
                         <a href="https://www.instagram.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Instagram" data-site="social-instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
@@ -626,9 +626,9 @@ body.property-map-page .sf-map-note { margin:8px 0; }
                 </div>
 
                 <section class="ft-map" aria-labelledby="ftMapTitle">
-                    <h4 class="ft-sr" id="ftMapTitle">Find Us</h4>
+                    <h4 class="ft-sr" id="ftMapTitle" data-i18n="shared.footer.findUs">Find Us</h4>
                     <div class="ft-map-frame" data-hq="map-embed"><iframe src="https://www.google.com/maps?q=No.27%2C%201st%20Main%20Road%2C%20New%20Colony%2C%20Chromepet%2C%20Chennai%2C%20Tamil%20Nadu&amp;output=embed" width="600" height="280" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Aventrix Realty Head Office Map" allowfullscreen></iframe></div>
-                    <a class="ft-map-open" href="https://maps.app.goo.gl/VjCCdVch9uequeGUA?g_st=ic" target="_blank" rel="noopener noreferrer" data-hq="maps"><i class="fa-solid fa-diamond-turn-right" aria-hidden="true"></i><span>Open in Maps</span><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i><span class="ft-sr"> (opens in a new tab)</span></a>
+                    <a class="ft-map-open" href="https://maps.app.goo.gl/VjCCdVch9uequeGUA?g_st=ic" target="_blank" rel="noopener noreferrer" data-hq="maps"><i class="fa-solid fa-diamond-turn-right" aria-hidden="true"></i><span data-i18n="shared.footer.openInMaps">Open in Maps</span><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i><span class="ft-sr" data-i18n="shared.footer.opensInNewTab"> (opens in a new tab)</span></a>
                 </section>
             </div>
         </div>
@@ -637,15 +637,15 @@ body.property-map-page .sf-map-note { margin:8px 0; }
 
         <div class="ft-bottom">
             <div class="ft-credits">
-                <p class="ft-copyright" data-site="copyright-text">© 2026 Aventrix Realty. All Rights Reserved.</p>
+                <p class="ft-copyright" data-site="copyright-text" data-i18n="shared.footer.rights">© 2026 Aventrix Realty. All Rights Reserved.</p>
                 <p class="ft-designer">Designed with <span class="ft-heart" role="img" aria-label="love">&#10084;&#65039;</span> by L. Sanjay Gandhi</p>
             </div>
-            <div class="ft-legal" role="navigation" aria-label="Legal and utility links">
-                <a href="privacy-policy.html">Privacy Policy</a>
-                <a href="terms.html">Terms &amp; Conditions</a>
-                <a href="sitemap.html">Sitemap</a>
-                <a href="property-tools.html">Property Tools</a>
-                <a href="/admin/" class="ft-legal-admin">Admin</a>
+            <div class="ft-legal" role="navigation" aria-label="Legal and utility links" data-i18n-aria-label="Legal and utility links">
+                <a href="privacy-policy.html" data-i18n="shared.footer.privacyPolicy">Privacy Policy</a>
+                <a href="terms.html" data-i18n="shared.footer.termsConditions">Terms &amp; Conditions</a>
+                <a href="sitemap.html" data-i18n="shared.footer.sitemap">Sitemap</a>
+                <a href="property-tools.html" data-i18n="shared.footer.propertyTools">Property Tools</a>
+                <a href="/admin/" class="ft-legal-admin" data-i18n="Admin">Admin</a>
             </div>
         </div>
 
@@ -658,7 +658,7 @@ body.property-map-page .sf-map-note { margin:8px 0; }
     <img src="images/whatsapp-icon.png" alt="WhatsApp">
 </a>
 
-<button id="backToTop" class="back-to-top" aria-label="Back to top">
+<button id="backToTop" class="back-to-top" aria-label="Back to top" data-i18n-aria-label="Back to top">
     <i class="fas fa-chevron-up"></i>
 </button>
 
@@ -707,5 +707,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 </script>
+
+<script src="/js/language-switcher.js?v=20261023-br-normalization" defer></script>
 </body>
 </html>

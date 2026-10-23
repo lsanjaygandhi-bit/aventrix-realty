@@ -125,7 +125,7 @@
         <img src="images/aventrix-logo.png" alt="Aventrix Realty">
     </a>
 </div>
-   <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+   <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" data-i18n-aria-label="shared.header.openMenu">
     <span></span>
     <span></span>
     <span></span>
@@ -135,37 +135,37 @@
              breakpoint, unlike the desktop one inside .nav-right
              (hidden on mobile by an existing rule). -->
         <div class="home-app-header-actions">
-            <a href="account.html" class="home-app-bell-btn" aria-label="My Account">
+            <a href="account.html" class="home-app-bell-btn" aria-label="My Account" data-i18n-aria-label="shared.header.myAccount">
                 <i class="far fa-circle-user" aria-hidden="true"></i>
             </a>
         </div>
     <div class="menu-overlay" id="menuOverlay"></div>   
        <nav class="main-nav" data-hq="phones">
 
-    <a href="index.html">Home</a>
+    <a href="index.html" data-i18n="Home">Home</a>
 
-    <a href="about.html">About Us</a>
+    <a href="about.html" data-i18n="About Us">About Us</a>
 
-    <a href="properties.html">Properties</a>
+    <a href="properties.html" data-i18n="Properties">Properties</a>
 
-    <a href="services.html">Services</a>
+    <a href="services.html" data-i18n="Services">Services</a>
 
-    <a href="list-with-us.html">List With Us</a>
+    <a href="list-with-us.html" data-i18n="List With Us">List With Us</a>
 
-    <a href="free-valuation.html">Free Valuation</a>
+    <a href="free-valuation.html" data-i18n="Free Valuation">Free Valuation</a>
 
-    <a href="joint-venture.html">Joint Venture</a>
+    <a href="joint-venture.html" data-i18n="Joint Venture">Joint Venture</a>
 
     <a href="property-tools.html"><span class="nav-label-extra">Property </span>Tools</a>
-    <a href="nri-services.html">NRI Services</a>
+    <a href="nri-services.html" data-i18n="NRI Services">NRI Services</a>
 
-    <a href="contact.html">Contact</a>
+    <a href="contact.html" data-i18n="Contact">Contact</a>
 
-    <a href="/admin/" class="main-nav-admin">Admin</a>
+    <a href="/admin/" class="main-nav-admin" data-i18n="Admin">Admin</a>
 
 
     <div class="mobile-menu-divider"></div>
-    <span class="mobile-menu-contact-label">CONTACT</span>
+    <span class="mobile-menu-contact-label" data-i18n="CONTACT">CONTACT</span>
     <a href="tel:+919176887770" class="mobile-menu-phone">📞 +91 91768 87770</a>
     <a href="tel:+917092356222" class="mobile-menu-phone">📞 +91 70923 56222</a>
 
@@ -191,10 +191,10 @@
             <!-- Notification/Bell — matches index.html's header exactly
                  (site-wide header consistency), same .nav-wishlist-link
                  styling, same position ahead of the phone number. -->
-            <a href="account.html" class="nav-wishlist-link nav-bell-link" aria-label="My Account">
+            <a href="account.html" class="nav-wishlist-link nav-bell-link" aria-label="My Account" data-i18n-aria-label="shared.header.myAccount">
                 <i class="far fa-circle-user" aria-hidden="true"></i>
             </a>
-            <a href="tel:+919176887770" class="nav-phone" aria-label="Call Aventrix Realty">
+            <a href="tel:+919176887770" class="nav-phone" aria-label="Call Aventrix Realty" data-i18n-aria-label="shared.header.callAventrix">
                 <i class="fas fa-phone-alt" aria-hidden="true"></i>
             </a>
         </div>
@@ -347,174 +347,174 @@
                  <form id="propertyForm"
                        action="" method="POST">
 
-                    <h3 class="fv-form-group-heading">Owner Information</h3>
+                    <h3 class="fv-form-group-heading" data-i18n="listing.form.ownerInfo">Owner Information</h3>
                     <div class="form-grid">
 
                         <div class="form-group">
-                             <label>Full Name <span class="required">*</span></label>
-                             <input type="text" name="full-name" placeholder="Full Name" required>
+                             <label><span data-i18n="contact.form.fullName">Full Name</span> <span class="required">*</span></label>
+                             <input type="text" name="full-name" placeholder="Full Name" required data-i18n-placeholder="contact.form.fullName">
                          </div>
 
                          <div class="form-group">
-                             <label>Mobile Number <span class="required">*</span></label>
-                             <input type="tel" name="mobile-number" placeholder="Mobile Number" required>
+                             <label><span data-i18n="enquiry.form.mobile">Mobile Number</span> <span class="required">*</span></label>
+                             <input type="tel" name="mobile-number" placeholder="Mobile Number" required data-i18n-placeholder="enquiry.form.mobile">
                          </div>
 
                          <div class="form-group">
-                             <label>WhatsApp Number <span class="required">*</span></label>
-                             <input type="tel" name="whatsapp-number" placeholder="WhatsApp Number" required>
+                             <label><span data-i18n="listing.form.whatsapp">WhatsApp Number</span> <span class="required">*</span></label>
+                             <input type="tel" name="whatsapp-number" placeholder="WhatsApp Number" required data-i18n-placeholder="listing.form.whatsapp">
                          </div>
 
                          <div class="form-group">
-                            <label>Email Address</label>
-                            <input type="email" name="email-address" placeholder="Email Address">
+                            <label data-i18n="Email Address">Email Address</label>
+                            <input type="email" name="email-address" placeholder="Email Address" data-i18n-placeholder="Email Address">
                          </div>
 
                     </div>
 
-                    <h3 class="fv-form-group-heading">Property Information</h3>
+                    <h3 class="fv-form-group-heading" data-i18n="listing.form.propertyInfo">Property Information</h3>
                     <div class="form-grid">
 
                      <div class="form-group">
-                         <label>Property Type <span class="required">*</span></label>
+                         <label><span data-i18n="Property Type">Property Type</span> <span class="required">*</span></label>
                          <select name="property-type" required>
-                             <option value="">Select Property Type</option>
-                             <option>Residential</option>
-                             <option>Commercial</option>
-                             <option>Land</option>
-                             <option>Industrial</option>
-                             <option>Special Purpose</option>
-                             <option>Agricultural</option>
-                             <option>Other</option>
+                             <option value="" data-i18n="listing.form.selectPropertyType">Select Property Type</option>
+                             <option value="Residential" data-i18n="Residential">Residential</option>
+                             <option value="Commercial" data-i18n="Commercial">Commercial</option>
+                             <option value="Land" data-i18n="Land">Land</option>
+                             <option value="Industrial" data-i18n="listing.option.industrial">Industrial</option>
+                             <option value="Special Purpose" data-i18n="listing.option.specialPurpose">Special Purpose</option>
+                             <option value="Agricultural" data-i18n="Agricultural">Agricultural</option>
+                             <option value="Other" data-i18n="Other">Other</option>
                          </select>
                      </div>
 
                      <div class="form-group">
-                         <label>Property Location</label>
-                         <input type="text" name="property-location" placeholder="Example : Chromepet, Chennai">
+                         <label data-i18n="Property Location">Property Location</label>
+                         <input type="text" name="property-location" placeholder="Property Location" data-i18n-placeholder="Property Location">
                      </div>
 
                      <div class="form-group">
-                         <label>Property Address <span class="required">*</span></label>
-                         <input type="text" name="property-address" placeholder="Property Address" required>
+                         <label><span data-i18n="listing.form.propertyAddress">Property Address</span> <span class="required">*</span></label>
+                         <input type="text" name="property-address" placeholder="Property Address" data-i18n-placeholder="listing.form.propertyAddress" required>
                      </div>
 
         <div class="form-group">
-            <label>Land Area</label>
-            <input type="text" name="land-area" placeholder="Land Area">
+            <label data-i18n="listing.form.landArea">Land Area</label>
+            <input type="text" name="land-area" placeholder="Land Area" data-i18n-placeholder="listing.form.landArea">
         </div>
 
         <div class="form-group">
-            <label>Built-up Area</label>
-            <input type="text" name="built-up-area" placeholder="Built-up Area">
+            <label data-i18n="Built-up Area">Built-up Area</label>
+            <input type="text" name="built-up-area" placeholder="Built-up Area" data-i18n-placeholder="Built-up Area">
         </div>
 
         <div class="form-group">
-            <label>Number of Bedrooms</label>
+            <label data-i18n="listing.form.bedrooms">Number of Bedrooms</label>
             <select name="bedrooms">
-                <option value="">Select (if applicable)</option>
+                <option value="" data-i18n="listing.form.selectApplicable">Select (if applicable)</option>
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
                 <option>4</option>
                 <option>5+</option>
-                <option>Not Applicable</option>
+                <option value="Not Applicable" data-i18n="listing.option.notApplicable">Not Applicable</option>
             </select>
         </div>
 
         <div class="form-group">
-            <label>Property Status</label>
+            <label data-i18n="listing.form.propertyStatus">Property Status</label>
             <select name="property-status">
-                <option value="">Select</option>
-                <option>Ready to Move</option>
-                <option>Under Construction</option>
-                <option>Vacant</option>
-                <option>Tenant Occupied</option>
-                <option>Other</option>
+                <option value="" data-i18n="Select">Select</option>
+                <option value="Ready to Move" data-i18n="listing.option.ready">Ready to Move</option>
+                <option value="Under Construction" data-i18n="listing.option.underConstruction">Under Construction</option>
+                <option value="Vacant" data-i18n="listing.option.vacant">Vacant</option>
+                <option value="Tenant Occupied" data-i18n="listing.option.tenantOccupied">Tenant Occupied</option>
+                <option value="Other" data-i18n="Other">Other</option>
             </select>
         </div>
 
         <div class="form-group">
-            <label>Expected Price <span class="required">*</span></label>
-            <input type="text" name="expected-price" placeholder="Expected Price (₹)" required>
+            <label><span data-i18n="listing.form.expectedPrice">Expected Price</span> <span class="required">*</span></label>
+            <input type="text" name="expected-price" placeholder="Expected Price (₹)" data-i18n-placeholder="listing.form.expectedPricePlaceholder" required>
         </div>
 
         <div class="form-group">
-            <label>Preferred Contact Time</label>
+            <label data-i18n="listing.form.contactTime">Preferred Contact Time</label>
             <select name="preferred-contact-time">
-                <option value="">Select (if any preference)</option>
-                <option>Morning</option>
-                <option>Afternoon</option>
-                <option>Evening</option>
+                <option value="" data-i18n="listing.form.contactPreference">Select (if any preference)</option>
+                <option value="Morning" data-i18n="Morning">Morning</option>
+                <option value="Afternoon" data-i18n="Afternoon">Afternoon</option>
+                <option value="Evening" data-i18n="Evening">Evening</option>
             </select>
         </div>
 
     </div>
 
-    <h3 class="fv-form-group-heading">Property Location</h3>
+    <h3 class="fv-form-group-heading" data-i18n="Property Location">Property Location</h3>
     <div class="form-grid fv-form-grid-single">
         <div class="form-group">
-            <p class="location-picker-hint">Help us find your property faster — search its address or click directly on the map to mark the exact location. This step is optional but recommended.</p>
+            <p class="location-picker-hint" data-i18n="listing.map.hint">Help us find your property faster — search its address or click directly on the map to mark the exact location. This step is optional but recommended.</p>
             <div class="location-picker-search-row">
-                <input type="text" id="lwuLocationSearch" placeholder="Search property location or address…" autocomplete="off">
-                <button type="button" id="lwuLocationSearchBtn" class="location-picker-search-btn"><i class="fas fa-search" aria-hidden="true"></i> Search</button>
+                <input type="text" id="lwuLocationSearch" placeholder="Search property location or address…" data-i18n-placeholder="listing.map.searchPlaceholder" autocomplete="off">
+                <button type="button" id="lwuLocationSearchBtn" class="location-picker-search-btn"><i class="fas fa-search" aria-hidden="true"></i> <span data-i18n="Search">Search</span></button>
             </div>
-            <div id="lwuLocationMap" class="location-picker-map" role="application" aria-label="Map — click to mark your property's location"></div>
+            <div id="lwuLocationMap" class="location-picker-map" role="application" aria-label="Map — click to mark your property's location" data-i18n-aria-label="listing.map.ariaLabel"></div>
             <p id="lwuLocationStatus" class="location-picker-status" hidden></p>
-            <button type="button" id="lwuLocationClearBtn" class="location-picker-clear-btn">Clear selected location</button>
+            <button type="button" id="lwuLocationClearBtn" class="location-picker-clear-btn" data-i18n="listing.map.clear">Clear selected location</button>
             <input type="hidden" name="latitude" id="lwuLatitude">
             <input type="hidden" name="longitude" id="lwuLongitude">
         </div>
     </div>
 
-    <h3 class="fv-form-group-heading">Listing Requirement</h3>
+    <h3 class="fv-form-group-heading" data-i18n="listing.form.requirementHeading">Listing Requirement</h3>
     <div class="form-grid fv-form-grid-single">
 
         <div class="form-group">
-             <label>What Are You Looking to Do? <span class="required">*</span></label>
+             <label><span data-i18n="listing.form.requirement">What Are You Looking to Do?</span> <span class="required">*</span></label>
              <select name="listing-requirement" required>
-                 <option value="">Select Listing Requirement</option>
-                 <option>Sale</option>
-                 <option>Rental / Leasing</option>
-                 <option>Joint Venture</option>
-                 <option>Other</option>
+                 <option value="" data-i18n="listing.form.selectRequirement">Select Listing Requirement</option>
+                 <option value="Sale" data-i18n="listing.option.sale">Sale</option>
+                 <option value="Rental / Leasing" data-i18n="listing.option.rental">Rental / Leasing</option>
+                 <option value="Joint Venture" data-i18n="Joint Venture">Joint Venture</option>
+                 <option value="Other" data-i18n="Other">Other</option>
              </select>
         </div>
 
     </div>
 
-    <h3 class="fv-form-group-heading">Additional Details</h3>
+    <h3 class="fv-form-group-heading" data-i18n="listing.form.additionalHeading">Additional Details</h3>
     <div class="form-grid fv-form-grid-single">
 
         <div class="form-group">
-            <label>Anything Else We Should Know?</label>
-            <textarea name="additional-details" placeholder="Share any additional details about your property, or let us know what you're specifically looking for..." rows="6"></textarea>
+            <label data-i18n="listing.form.additionalLabel">Anything Else We Should Know?</label>
+            <textarea name="additional-details" placeholder="Share any additional details about your property, or let us know what you're specifically looking for..." data-i18n-placeholder="listing.form.additionalPlaceholder" rows="6"></textarea>
         </div>
 
     </div>
 
-    <h3 class="fv-form-group-heading">Optional Document / Image Upload</h3>
+    <h3 class="fv-form-group-heading" data-i18n="listing.form.uploadHeading">Optional Document / Image Upload</h3>
     <div class="form-grid fv-form-grid-single">
 
         <div class="form-group">
-            <label>Upload Property Photos</label>
+            <label data-i18n="listing.form.uploadLabel">Upload Property Photos</label>
             <input type="file" name="property-photos" multiple>
         </div>
 
     </div>
 
     <div class="submit-wrapper">
-         <button type="submit">
+         <button type="submit" data-i18n="listing.form.submit">
               Submit Property
          </button>
     </div>
                  </form>
                  <div id="success-message" class="success-message" style="display:none; text-align:center; padding:40px;">
-                     <h2 style="color:#2e7d32;">✅ Thank You!</h2>
+                     <h2 style="color:#2e7d32;" data-i18n="listing.success.title">✅ Thank You!</h2>
 
-                     <p>Your property details have been submitted successfully.</p>
+                     <p data-i18n="listing.success.body">Your property details have been submitted successfully.</p>
 
-                     <p>Our Aventrix Realty property consultant will contact you shortly.</p>
+                     <p data-i18n="listing.success.followup">Our Aventrix Realty property consultant will contact you shortly.</p>
                  </div>
 
             </div>
@@ -533,19 +533,19 @@
         <div class="fv-grid" data-cms-list="items">
 
             <div class="fv-card" data-cms-item>
-                <h3 data-cms-f="title">Residential Properties</h3>
+                <h3 data-cms-f="title" data-i18n="Residential Properties">Residential Properties</h3>
                 <p data-cms-f="text">Homes for sale or rent, across a range of budgets and
                     configurations.</p>
             </div>
 
             <div class="fv-card" data-cms-item>
-                <h3 data-cms-f="title">Commercial Properties</h3>
+                <h3 data-cms-f="title" data-i18n="Commercial Properties">Commercial Properties</h3>
                 <p data-cms-f="text">Office spaces, showrooms and commercial units suited
                     for business use.</p>
             </div>
 
             <div class="fv-card" data-cms-item>
-                <h3 data-cms-f="title">Land &amp; Plots</h3>
+                <h3 data-cms-f="title" data-i18n="Land &amp; Plots">Land &amp; Plots</h3>
                 <p data-cms-f="text">Residential and investment plots across Chennai and
                     its surrounding areas.</p>
             </div>
@@ -557,7 +557,7 @@
             </div>
 
             <div class="fv-card" data-cms-item>
-                <h3 data-cms-f="title">Apartments</h3>
+                <h3 data-cms-f="title" data-i18n="Apartments">Apartments</h3>
                 <p data-cms-f="text">Flats across a range of configurations, from compact
                     homes to larger units.</p>
             </div>
@@ -638,7 +638,7 @@
     <div class="container">
 
         <div class="section-heading">
-            <span class="section-eyebrow" data-cms-eyebrow>How It Works</span>
+            <span class="section-eyebrow" data-cms-eyebrow data-i18n="How It Works">How It Works</span>
             <h2 data-cms-heading>Our Property Listing Process</h2>
         </div>
 
@@ -864,7 +864,7 @@
 
         <div class="ft-brand">
             <a href="index.html" class="ft-logo" aria-label="Aventrix Realty — Home"><img src="images/aventrix-logo-white.png" alt="Aventrix Realty" width="1042" height="342" loading="lazy" decoding="async"></a>
-            <p class="ft-tagline" data-site="footer-tagline">Where Legacy Meets The Next Generation</p>
+            <p class="ft-tagline" data-site="footer-tagline" data-i18n="shared.footer.tagline">Where Legacy Meets The Next Generation</p>
             <p class="ft-desc" data-site="footer-description">
                 Premium real estate advisory across Chennai — residential,
                 commercial, land and joint venture solutions, guided by
@@ -876,15 +876,15 @@
             <li class="ft-contact">
                 <span class="ft-icon" aria-hidden="true"><i class="fa-solid fa-location-dot"></i></span>
                 <div>
-                    <h4 class="ft-label">Head Office</h4>
-                    <span class="ft-sr" data-hq="name">Aventrix Realty – Head Office</span>
+                    <h4 class="ft-label" data-i18n="shared.footer.headOffice">Head Office</h4>
+                    <span class="ft-sr" data-hq="name" data-i18n="Aventrix Realty – Head Office">Aventrix Realty – Head Office</span>
                     <p data-hq="address">No.27, 1st Main Road, Newcolony, Chromepet, Chennai, Tamil Nadu</p>
                 </div>
             </li>
             <li class="ft-contact">
                 <span class="ft-icon" aria-hidden="true"><i class="fa-solid fa-phone"></i></span>
                 <div>
-                    <h4 class="ft-label">Phone</h4>
+                    <h4 class="ft-label" data-i18n="Phone">Phone</h4>
                     <div class="ft-phones" data-hq="phones">
                         <a href="tel:+919176887770">+91 91768 87770</a>
                         <a href="tel:+917092356222">+91 70923 56222</a>
@@ -894,14 +894,14 @@
             <li class="ft-contact">
                 <span class="ft-icon" aria-hidden="true"><i class="fa-regular fa-envelope"></i></span>
                 <div>
-                    <h4 class="ft-label">Email</h4>
+                    <h4 class="ft-label" data-i18n="Email">Email</h4>
                     <p><a href="mailto:office@aventrixrealty.com" data-hq="email">office@aventrixrealty.com</a></p>
                 </div>
             </li>
             <li class="ft-contact">
                 <span class="ft-icon" aria-hidden="true"><i class="fa-regular fa-building"></i></span>
                 <div>
-                    <h4 class="ft-label">Branch Office</h4>
+                    <h4 class="ft-label" data-i18n="shared.footer.branchOffice">Branch Office</h4>
                     <p>Adyar, Chennai</p>
                 </div>
             </li>
@@ -910,28 +910,28 @@
         <div class="ft-rule" aria-hidden="true"></div>
 
         <div class="ft-main">
-            <div class="ft-col" role="navigation" aria-label="About Aventrix">
-                <h4 class="ft-heading">About Aventrix</h4>
+            <div class="ft-col" role="navigation" aria-label="About Aventrix" data-i18n-aria-label="shared.footer.aboutAventrix">
+                <h4 class="ft-heading" data-i18n="shared.footer.aboutAventrix">About Aventrix</h4>
                 <ul class="ft-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="index.html#contact">Contact Us</a></li>
-                    <li><a href="services.html">Our Services</a></li>
+                    <li><a href="index.html" data-i18n="Home">Home</a></li>
+                    <li><a href="about.html" data-i18n="About Us">About Us</a></li>
+                    <li><a href="index.html#contact" data-i18n="Contact Us">Contact Us</a></li>
+                    <li><a href="services.html" data-i18n="Our Services">Our Services</a></li>
                 </ul>
             </div>
-            <div class="ft-col" role="navigation" aria-label="Quick links">
-                <h4 class="ft-heading">Quick Links</h4>
+            <div class="ft-col" role="navigation" aria-label="Quick links" data-i18n-aria-label="Quick links">
+                <h4 class="ft-heading" data-i18n="shared.footer.quickLinks">Quick Links</h4>
                 <ul class="ft-links">
-                    <li><a href="our-realtors.html">Realtors</a></li>
-                    <li><a href="brokerage-fees.html">Brokerage &amp; Fees</a></li>
-                    <li><a href="emi-calculator.html">EMI Calculator</a></li>
-                    <li><a href="jv-calculator.html">Joint Venture Calculator</a></li>
+                    <li><a href="our-realtors.html" data-i18n="shared.footer.realtors">Realtors</a></li>
+                    <li><a href="brokerage-fees.html" data-i18n="shared.footer.brokerageFees">Brokerage &amp; Fees</a></li>
+                    <li><a href="emi-calculator.html" data-i18n="shared.footer.emiCalculator">EMI Calculator</a></li>
+                    <li><a href="jv-calculator.html" data-i18n="shared.footer.jointVentureCalculator">Joint Venture Calculator</a></li>
                 </ul>
             </div>
 
             <div class="ft-side">
                 <div class="ft-follow">
-                    <h4 class="ft-heading">Follow Us</h4>
+                    <h4 class="ft-heading" data-i18n="shared.footer.followUs">Follow Us</h4>
                     <div class="ft-social">
                         <a href="https://www.facebook.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Facebook" data-site="social-facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
                         <a href="https://www.instagram.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Instagram" data-site="social-instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
@@ -943,9 +943,9 @@
                 </div>
 
                 <section class="ft-map" aria-labelledby="ftMapTitle">
-                    <h4 class="ft-sr" id="ftMapTitle">Find Us</h4>
+                    <h4 class="ft-sr" id="ftMapTitle" data-i18n="shared.footer.findUs">Find Us</h4>
                     <div class="ft-map-frame" data-hq="map-embed"><iframe src="https://www.google.com/maps?q=No.27%2C%201st%20Main%20Road%2C%20New%20Colony%2C%20Chromepet%2C%20Chennai%2C%20Tamil%20Nadu&amp;output=embed" width="600" height="280" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Aventrix Realty Head Office Map" allowfullscreen></iframe></div>
-                    <a class="ft-map-open" href="https://maps.app.goo.gl/VjCCdVch9uequeGUA?g_st=ic" target="_blank" rel="noopener noreferrer" data-hq="maps"><i class="fa-solid fa-diamond-turn-right" aria-hidden="true"></i><span>Open in Maps</span><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i><span class="ft-sr"> (opens in a new tab)</span></a>
+                    <a class="ft-map-open" href="https://maps.app.goo.gl/VjCCdVch9uequeGUA?g_st=ic" target="_blank" rel="noopener noreferrer" data-hq="maps"><i class="fa-solid fa-diamond-turn-right" aria-hidden="true"></i><span data-i18n="shared.footer.openInMaps">Open in Maps</span><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i><span class="ft-sr" data-i18n="shared.footer.opensInNewTab"> (opens in a new tab)</span></a>
                 </section>
             </div>
         </div>
@@ -954,15 +954,15 @@
 
         <div class="ft-bottom">
             <div class="ft-credits">
-                <p class="ft-copyright" data-site="copyright-text">© 2026 Aventrix Realty. All Rights Reserved.</p>
+                <p class="ft-copyright" data-site="copyright-text" data-i18n="shared.footer.rights">© 2026 Aventrix Realty. All Rights Reserved.</p>
                 <p class="ft-designer">Designed with <span class="ft-heart" role="img" aria-label="love">&#10084;&#65039;</span> by L. Sanjay Gandhi</p>
             </div>
-            <div class="ft-legal" role="navigation" aria-label="Legal and utility links">
-                <a href="privacy-policy.html">Privacy Policy</a>
-                <a href="terms.html">Terms &amp; Conditions</a>
-                <a href="sitemap.html">Sitemap</a>
-                <a href="property-tools.html">Property Tools</a>
-                <a href="/admin/" class="ft-legal-admin">Admin</a>
+            <div class="ft-legal" role="navigation" aria-label="Legal and utility links" data-i18n-aria-label="Legal and utility links">
+                <a href="privacy-policy.html" data-i18n="shared.footer.privacyPolicy">Privacy Policy</a>
+                <a href="terms.html" data-i18n="shared.footer.termsConditions">Terms &amp; Conditions</a>
+                <a href="sitemap.html" data-i18n="shared.footer.sitemap">Sitemap</a>
+                <a href="property-tools.html" data-i18n="shared.footer.propertyTools">Property Tools</a>
+                <a href="/admin/" class="ft-legal-admin" data-i18n="Admin">Admin</a>
             </div>
         </div>
 
@@ -975,7 +975,7 @@
     <img src="images/whatsapp-icon.png" alt="WhatsApp">
 </a>
 
-<button id="backToTop" class="back-to-top" aria-label="Back to top">
+<button id="backToTop" class="back-to-top" aria-label="Back to top" data-i18n-aria-label="Back to top">
     <i class="fas fa-chevron-up"></i>
 </button>
 
@@ -1014,5 +1014,6 @@
 })();
 </script>
 
-   </body>
+<script src="/js/language-switcher.js?v=20261023-br-normalization" defer></script>
+</body>
    </html>

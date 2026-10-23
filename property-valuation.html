@@ -103,7 +103,7 @@
         <img src="images/aventrix-logo.png" alt="Aventrix Realty">
     </a>
 </div>
-   <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+   <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" data-i18n-aria-label="shared.header.openMenu">
     <span></span>
     <span></span>
     <span></span>
@@ -113,37 +113,37 @@
              breakpoint, unlike the desktop one inside .nav-right
              (hidden on mobile by an existing rule). -->
         <div class="home-app-header-actions">
-            <a href="account.html" class="home-app-bell-btn" aria-label="My Account">
+            <a href="account.html" class="home-app-bell-btn" aria-label="My Account" data-i18n-aria-label="shared.header.myAccount">
                 <i class="far fa-circle-user" aria-hidden="true"></i>
             </a>
         </div>
     <div class="menu-overlay" id="menuOverlay"></div>
        <nav class="main-nav" data-hq="phones">
 
-    <a href="index.html">Home</a>
+    <a href="index.html" data-i18n="Home">Home</a>
 
-    <a href="about.html">About Us</a>
+    <a href="about.html" data-i18n="About Us">About Us</a>
 
-    <a href="properties.html">Properties</a>
+    <a href="properties.html" data-i18n="Properties">Properties</a>
 
-    <a href="services.html">Services</a>
+    <a href="services.html" data-i18n="Services">Services</a>
 
-    <a href="list-with-us.html">List With Us</a>
+    <a href="list-with-us.html" data-i18n="List With Us">List With Us</a>
 
-    <a href="free-valuation.html">Free Valuation</a>
+    <a href="free-valuation.html" data-i18n="Free Valuation">Free Valuation</a>
 
-    <a href="joint-venture.html">Joint Venture</a>
+    <a href="joint-venture.html" data-i18n="Joint Venture">Joint Venture</a>
 
     <a href="property-tools.html"><span class="nav-label-extra">Property </span>Tools</a>
-    <a href="nri-services.html">NRI Services</a>
+    <a href="nri-services.html" data-i18n="NRI Services">NRI Services</a>
 
-    <a href="contact.html">Contact</a>
+    <a href="contact.html" data-i18n="Contact">Contact</a>
 
-    <a href="/admin/" class="main-nav-admin">Admin</a>
+    <a href="/admin/" class="main-nav-admin" data-i18n="Admin">Admin</a>
 
 
     <div class="mobile-menu-divider"></div>
-    <span class="mobile-menu-contact-label">CONTACT</span>
+    <span class="mobile-menu-contact-label" data-i18n="CONTACT">CONTACT</span>
     <a href="tel:+919176887770" class="mobile-menu-phone">📞 +91 91768 87770</a>
     <a href="tel:+917092356222" class="mobile-menu-phone">📞 +91 70923 56222</a>
     <div class="mobile-menu-socials">
@@ -167,10 +167,10 @@
             <!-- Notification/Bell — matches index.html's header exactly
                  (site-wide header consistency), same .nav-wishlist-link
                  styling, same position ahead of the phone number. -->
-            <a href="account.html" class="nav-wishlist-link nav-bell-link" aria-label="My Account">
+            <a href="account.html" class="nav-wishlist-link nav-bell-link" aria-label="My Account" data-i18n-aria-label="shared.header.myAccount">
                 <i class="far fa-circle-user" aria-hidden="true"></i>
             </a>
-            <a href="tel:+919176887770" class="nav-phone" aria-label="Call Aventrix Realty">
+            <a href="tel:+919176887770" class="nav-phone" aria-label="Call Aventrix Realty" data-i18n-aria-label="shared.header.callAventrix">
                 <i class="fas fa-phone-alt" aria-hidden="true"></i>
             </a>
         </div>
@@ -188,17 +188,17 @@
 
     <div class="container">
 
-        <span class="section-tag">MARKET RATES &amp; VALUATION</span>
+        <span class="section-tag" data-i18n="valuation.hero.tag">MARKET RATES &amp; VALUATION</span>
 
-        <h1>Estimate an Indicative Value</h1>
+        <h1 data-i18n="valuation.hero.title">Estimate an Indicative Value</h1>
 
-        <p>Pick a locality and property type, enter the area, and see an indicative value range instantly.</p>
+        <p data-i18n="valuation.hero.description">Pick a locality and property type, enter the area, and see an indicative value range instantly.</p>
 
     </div>
 
 </section>
 
-<nav class="pt-breadcrumb" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li><a href="property-tools.html">Property Tools</a></li><li aria-current="page">Market Rates &amp; Valuation</li></ol></nav>
+<nav class="pt-breadcrumb" aria-label="Breadcrumb"><ol><li><a href="index.html" data-i18n="Home">Home</a></li><li><a href="property-tools.html" data-i18n="shared.footer.propertyTools">Property Tools</a></li><li aria-current="page" data-i18n="valuation.hero.tag">Market Rates &amp; Valuation</li></ol></nav>
 
 <main id="main">
 
@@ -209,30 +209,30 @@
             <form class="pt-card" id="valuation-tool" novalidate>
                 <div class="pt-card-head">
                     <span class="pt-icon"><i class="fas fa-sliders" aria-hidden="true"></i></span>
-                    <h2>Property details</h2>
+                    <h2 data-i18n="valuation.details.title">Property details</h2>
                 </div>
                 <div class="pt-fields">
                     <div class="pt-field is-wide">
-                        <span class="pt-label" id="val-type-label">Property type</span>
+                        <span class="pt-label" id="val-type-label" data-i18n="valuation.type.label">Property type</span>
                         <div class="pt-choice" role="radiogroup" aria-labelledby="val-type-label">
-                            <label><input type="radio" name="propertyType" value="apartment" checked><span>Apartment / flat</span></label>
-                            <label><input type="radio" name="propertyType" value="land"><span>Residential land / plot</span></label>
-                            <label><input type="radio" name="propertyType" value="commercial"><span>Commercial</span></label>
+                            <label><input type="radio" name="propertyType" value="apartment" checked><span data-i18n="valuation.type.apartment">Apartment / flat</span></label>
+                            <label><input type="radio" name="propertyType" value="land"><span data-i18n="valuation.type.land">Residential land / plot</span></label>
+                            <label><input type="radio" name="propertyType" value="commercial"><span data-i18n="Commercial">Commercial</span></label>
                         </div>
                     </div>
                     <div class="pt-field">
-                        <label for="val-locality">Locality</label>
+                        <label for="val-locality" data-i18n="valuation.locality.label">Locality</label>
                         <select id="val-locality" name="locality">
-                            <option value="">Select a locality</option>
-                            <option value="__other">Other locality (enter your own rate)</option>
+                            <option value="" data-i18n="valuation.locality.select">Select a locality</option>
+                            <option value="__other" data-i18n="valuation.locality.other">Other locality (enter your own rate)</option>
                         </select>
-                        <p class="pt-hint">Localities with an Aventrix published rate are listed.</p>
+                        <p class="pt-hint" data-i18n="valuation.locality.hint">Localities with an Aventrix published rate are listed.</p>
                     </div>
                     <div class="pt-field">
-                        <label for="val-area">Area</label>
+                        <label for="val-area" data-i18n="Area">Area</label>
                         <div class="pt-inline">
                             <input type="number" id="val-area" name="area" min="0" step="any" inputmode="decimal" placeholder="e.g. 1200" aria-describedby="val-area-error">
-                            <select id="val-area-unit" name="areaUnit" aria-label="Area unit">
+                            <select id="val-area-unit" name="areaUnit" aria-label="Area unit" data-i18n-aria-label="valuation.area.unit">
                                 <option value="sqft">sq.ft.</option>
                                 <option value="ground">ground</option>
                                 <option value="cent">cent</option>
@@ -242,28 +242,28 @@
                         <p class="pt-error" id="val-area-error" role="alert"></p>
                     </div>
                     <div class="pt-field is-wide" id="val-area-basis-wrap">
-                        <label for="val-area-basis">Apartment area measured as</label>
+                        <label for="val-area-basis" data-i18n="valuation.areaBasis.label">Apartment area measured as</label>
                         <select id="val-area-basis" name="areaBasis">
-                            <option value="super_built_up">Super built-up area</option>
-                            <option value="built_up">Built-up area</option>
-                            <option value="carpet">Carpet area</option>
+                            <option value="super_built_up" data-i18n="valuation.areaBasis.superBuiltUp">Super built-up area</option>
+                            <option value="built_up" data-i18n="valuation.areaBasis.builtUp">Built-up area</option>
+                            <option value="carpet" data-i18n="valuation.areaBasis.carpet">Carpet area</option>
                         </select>
                     </div>
                     <div class="pt-field is-wide">
-                        <span class="pt-label" id="val-source-label">Rate to use</span>
+                        <span class="pt-label" id="val-source-label" data-i18n="valuation.rateSource.label">Rate to use</span>
                         <div class="pt-choice" role="radiogroup" aria-labelledby="val-source-label">
-                            <label><input type="radio" name="rateSource" id="val-source-published" value="published" disabled><span>Aventrix published rate<small>Used automatically when we publish a rate for this locality and property type.</small></span></label>
-                            <label><input type="radio" name="rateSource" id="val-source-own" value="own" checked><span>My own reference rate<small>For example the guideline value from TNREGINET, or asking prices you have seen.</small></span></label>
+                            <label><input type="radio" name="rateSource" id="val-source-published" value="published" disabled><span><span data-i18n="valuation.rateSource.published">Aventrix published rate</span><small data-i18n="valuation.rateSource.publishedHelp">Used automatically when we publish a rate for this locality and property type.</small></span></label>
+                            <label><input type="radio" name="rateSource" id="val-source-own" value="own" checked><span><span data-i18n="valuation.rateSource.own">My own reference rate</span><small data-i18n="valuation.rateSource.ownHelp">For example the guideline value from TNREGINET, or asking prices you have seen.</small></span></label>
                         </div>
-                        <div id="val-published-panel" class="pt-published-panel" aria-live="polite"><p class="pt-hint">Loading Aventrix published rates…</p></div>
+                        <div id="val-published-panel" class="pt-published-panel" aria-live="polite"><p class="pt-hint" data-i18n="Loading…">Loading Aventrix published rates…</p></div>
                     </div>
                     <div class="pt-field is-wide" id="val-own-rate">
                         <div class="pt-fields">
                             <div class="pt-field">
-                                <label for="val-rate-low">Rate (low)</label>
+                                <label for="val-rate-low" data-i18n="valuation.rate.low">Rate (low)</label>
                                 <div class="pt-inline">
                                     <input type="number" id="val-rate-low" min="0" step="any" inputmode="decimal" placeholder="₹" aria-describedby="val-rate-low-error">
-                                    <select id="val-rate-unit" aria-label="Rate unit">
+                                    <select id="val-rate-unit" aria-label="Rate unit" data-i18n-aria-label="valuation.rate.unit">
                                         <option value="sqft">per sq.ft.</option>
                                         <option value="ground">per ground</option>
                                     </select>
@@ -271,58 +271,58 @@
                                 <p class="pt-error" id="val-rate-low-error" role="alert"></p>
                             </div>
                             <div class="pt-field">
-                                <label for="val-rate-high">Rate (high, optional)</label>
-                                <input type="number" id="val-rate-high" min="0" step="any" inputmode="decimal" placeholder="₹ — leave blank for a single figure" aria-describedby="val-rate-high-error">
+                                <label for="val-rate-high" data-i18n="valuation.rate.high">Rate (high, optional)</label>
+                                <input type="number" id="val-rate-high" min="0" step="any" inputmode="decimal" placeholder="₹ — leave blank for a single figure" data-i18n-placeholder="valuation.rate.highPlaceholder" aria-describedby="val-rate-high-error">
                                 <p class="pt-error" id="val-rate-high-error" role="alert"></p>
                             </div>
                             <div class="pt-field is-wide">
-                                <label for="val-rate-basis">Where does this rate come from?</label>
+                                <label for="val-rate-basis" data-i18n="valuation.rateBasis.label">Where does this rate come from?</label>
                                 <select id="val-rate-basis">
-                                    <option value="guideline">Government guideline value (TNREGINET)</option>
-                                    <option value="asking">Online asking prices / listings</option>
-                                    <option value="registered">Registered sale (transaction) evidence</option>
-                                    <option value="opinion">Professional opinion / other</option>
-                                    <option value="unsure">Not sure</option>
+                                    <option value="guideline" data-i18n="valuation.rateBasis.guideline">Government guideline value (TNREGINET)</option>
+                                    <option value="asking" data-i18n="valuation.rateBasis.asking">Online asking prices / listings</option>
+                                    <option value="registered" data-i18n="valuation.rateBasis.registered">Registered sale (transaction) evidence</option>
+                                    <option value="opinion" data-i18n="valuation.rateBasis.opinion">Professional opinion / other</option>
+                                    <option value="unsure" data-i18n="valuation.rateBasis.unsure">Not sure</option>
                                 </select>
-                                <p class="pt-hint">Guideline values can be searched on the official <a href="https://tnreginet.gov.in/portal/" target="_blank" rel="noopener noreferrer">TNREGINET portal</a>.</p>
+                                <p class="pt-hint"><span data-i18n="valuation.rateBasis.hint">Guideline values can be searched on the official</span> <a href="https://tnreginet.gov.in/portal/" target="_blank" rel="noopener noreferrer">TNREGINET</a>.</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="pt-actions">
-                    <button type="submit" class="pt-btn"><i class="fas fa-calculator" aria-hidden="true"></i> Calculate</button>
-                    <button type="reset" class="pt-btn is-outline" id="val-reset">Reset</button>
+                    <button type="submit" class="pt-btn"><i class="fas fa-calculator" aria-hidden="true"></i> <span data-i18n="valuation.action.calculate">Calculate</span></button>
+                    <button type="reset" class="pt-btn is-outline" id="val-reset" data-i18n="valuation.action.reset">Reset</button>
                 </div>
             </form>
 
             <div class="pt-card pt-result" aria-live="polite">
                 <div id="val-output-empty" class="pt-result-foot" style="padding-top:22px">
-                    <p><strong>Your estimate will appear here.</strong></p>
-                    <p>Choose a locality and enter the area. Where Aventrix publishes a rate it is used automatically; otherwise enter your own reference rate. Units are converted for you (1 ground = 2,400 sq.ft.; 1 cent = 435.6 sq.ft.).</p>
+                    <p><strong data-i18n="valuation.result.emptyTitle">Your estimate will appear here.</strong></p>
+                    <p data-i18n="valuation.result.emptyDescription">Choose a locality and enter the area. Where Aventrix publishes a rate it is used automatically; otherwise enter your own reference rate. Units are converted for you (1 ground = 2,400 sq.ft.; 1 cent = 435.6 sq.ft.).</p>
                 </div>
                 <div id="val-output" hidden>
                     <div class="pt-result-head">
-                        <span class="pt-result-label">Indicative value</span>
+                        <span class="pt-result-label" data-i18n="valuation.result.title">Indicative value</span>
                         <span class="pt-result-value" id="val-result-value">—</span>
                         <span class="pt-result-sub" id="val-result-sub"></span>
                     </div>
                     <dl class="pt-rows">
-                        <div class="pt-row"><dt>Indicative low</dt><dd id="val-r-low">—</dd></div>
-                        <div class="pt-row" id="val-r-mid-row"><dt>Midpoint</dt><dd id="val-r-mid">—</dd></div>
-                        <div class="pt-row"><dt>Indicative high</dt><dd id="val-r-high">—</dd></div>
-                        <div class="pt-row"><dt>Area used</dt><dd id="val-r-area">—</dd></div>
-                        <div class="pt-row"><dt>Effective rate</dt><dd id="val-r-rate">—</dd></div>
-                        <div class="pt-row" id="val-r-ground-row" hidden><dt>Equivalent per ground</dt><dd id="val-r-ground">—</dd></div>
-                        <div class="pt-row"><dt>Rate basis</dt><dd id="val-r-basis">—</dd></div>
-                        <div class="pt-row"><dt>Rate source</dt><dd id="val-r-source">—</dd></div>
+                        <div class="pt-row"><dt data-i18n="valuation.result.low">Indicative low</dt><dd id="val-r-low">—</dd></div>
+                        <div class="pt-row" id="val-r-mid-row"><dt data-i18n="valuation.result.mid">Midpoint</dt><dd id="val-r-mid">—</dd></div>
+                        <div class="pt-row"><dt data-i18n="valuation.result.high">Indicative high</dt><dd id="val-r-high">—</dd></div>
+                        <div class="pt-row"><dt data-i18n="valuation.result.area">Area used</dt><dd id="val-r-area">—</dd></div>
+                        <div class="pt-row"><dt data-i18n="valuation.result.effectiveRate">Effective rate</dt><dd id="val-r-rate">—</dd></div>
+                        <div class="pt-row" id="val-r-ground-row" hidden><dt data-i18n="valuation.result.perGround">Equivalent per ground</dt><dd id="val-r-ground">—</dd></div>
+                        <div class="pt-row"><dt data-i18n="valuation.result.rateBasis">Rate basis</dt><dd id="val-r-basis">—</dd></div>
+                        <div class="pt-row"><dt data-i18n="valuation.result.rateSource">Rate source</dt><dd id="val-r-source">—</dd></div>
                     </dl>
                     <div class="pt-result-foot">
                         <p id="val-r-note"></p>
                         <p>This is an indicative figure from locality rates, not a valuation of the specific property. Nothing you enter is sent anywhere.</p>
                     </div>
                     <div class="pt-result-foot pt-actions" style="margin-top:0">
-                        <a class="pt-btn is-gold" href="free-valuation.html#valuation-form">Request a professional valuation</a>
-                        <a class="pt-btn is-outline" id="val-whatsapp" href="https://wa.me/919176887770" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" aria-hidden="true"></i> Discuss on WhatsApp</a>
+                        <a class="pt-btn is-gold" href="free-valuation.html#valuation-form" data-i18n="valuation.action.requestReview">Request a professional valuation</a>
+                        <a class="pt-btn is-outline" id="val-whatsapp" href="https://wa.me/919176887770" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" aria-hidden="true"></i> <span data-i18n="valuation.action.whatsapp">Discuss on WhatsApp</span></a>
                     </div>
                 </div>
             </div>
@@ -338,7 +338,7 @@
             <h2>Three different “rates” — and why they differ</h2>
         </div>
         <dl class="pt-deflist">
-            <div><dt>Government guideline value</dt><dd>The minimum value notified by the Registration Department for stamp duty and registration, searchable on TNREGINET by village / street and survey number. It is a statutory reference, not a market price, and can sit well above or below what buyers actually pay.</dd></div>
+            <div><dt data-i18n="Government guideline value">Government guideline value</dt><dd>The minimum value notified by the Registration Department for stamp duty and registration, searchable on TNREGINET by village / street and survey number. It is a statutory reference, not a market price, and can sit well above or below what buyers actually pay.</dd></div>
             <div><dt>Online asking price</dt><dd>What sellers are asking on listing portals. Useful for seeing supply, but asking prices are often negotiated down and include unsold or overpriced stock.</dd></div>
             <div><dt>Registered transaction price</dt><dd>The consideration stated in registered sale deeds. The closest evidence of actual prices, but it needs comparable properties, recent dates and a check that the stated value reflects the real deal.</dd></div>
         </dl>
@@ -349,13 +349,13 @@
 <section class="pt-section">
     <div class="pt-container">
         <div class="pt-section-head">
-            <span class="pt-eyebrow">Published rates</span>
-            <h2>Aventrix locality rate table</h2>
-            <p>Indicative <strong>asking-price</strong> rates compiled from online property portals — not guideline values or registered sale prices. A rate is published only when at least two independent sources agree it is available; the range shows the spread between them. <span id="rate-table-reviewed">Loading…</span></p>
+            <span class="pt-eyebrow" data-i18n="valuation.rates.eyebrow">Published rates</span>
+            <h2 data-i18n="valuation.rates.title">Aventrix locality rate table</h2>
+            <p>Indicative <strong>asking-price</strong> rates compiled from online property portals — not guideline values or registered sale prices. A rate is published only when at least two independent sources agree it is available; the range shows the spread between them. <span id="rate-table-reviewed" data-i18n="Loading…">Loading…</span></p>
         </div>
         <div class="pt-table-wrap">
             <table class="pt-table">
-                <thead><tr><th scope="col">Locality</th><th scope="col">Property type</th><th scope="col">Indicative rate</th><th scope="col">Confidence</th><th scope="col">Last checked</th></tr></thead>
+                <thead><tr><th scope="col" data-i18n="valuation.rates.locality">Locality</th><th scope="col" data-i18n="valuation.rates.propertyType">Property type</th><th scope="col" data-i18n="valuation.rates.indicativeRate">Indicative rate</th><th scope="col" data-i18n="valuation.rates.confidence">Confidence</th><th scope="col" data-i18n="valuation.rates.lastChecked">Last checked</th></tr></thead>
                 <tbody id="rate-table-body"><tr><td colspan="5" class="pt-empty">Loading…</td></tr></tbody>
             </table>
         </div>
@@ -371,8 +371,8 @@
 
         <div class="ft-brand">
             <a href="index.html" class="ft-logo" aria-label="Aventrix Realty — Home"><img src="images/aventrix-logo-white.png" alt="Aventrix Realty" width="1042" height="342" loading="lazy" decoding="async"></a>
-            <p class="ft-tagline" data-site="footer-tagline">Where Legacy Meets The Next Generation</p>
-            <p class="ft-desc" data-site="footer-description">
+            <p class="ft-tagline" data-site="footer-tagline" data-i18n="shared.footer.tagline">Where Legacy Meets The Next Generation</p>
+            <p class="ft-desc" data-site="footer-description" data-i18n="shared.footer.description">
                 Premium real estate advisory across Chennai — residential,
                 commercial, land and joint venture solutions, guided by
                 trust and decades of local expertise.
@@ -383,15 +383,15 @@
             <li class="ft-contact">
                 <span class="ft-icon" aria-hidden="true"><i class="fa-solid fa-location-dot"></i></span>
                 <div>
-                    <h4 class="ft-label">Head Office</h4>
-                    <span class="ft-sr" data-hq="name">Aventrix Realty – Head Office</span>
+                    <h4 class="ft-label" data-i18n="shared.footer.headOffice">Head Office</h4>
+                    <span class="ft-sr" data-hq="name" data-i18n="Aventrix Realty – Head Office">Aventrix Realty – Head Office</span>
                     <p data-hq="address">No.27, 1st Main Road, Newcolony, Chromepet, Chennai, Tamil Nadu</p>
                 </div>
             </li>
             <li class="ft-contact">
                 <span class="ft-icon" aria-hidden="true"><i class="fa-solid fa-phone"></i></span>
                 <div>
-                    <h4 class="ft-label">Phone</h4>
+                    <h4 class="ft-label" data-i18n="Phone">Phone</h4>
                     <div class="ft-phones" data-hq="phones">
                         <a href="tel:+919176887770">+91 91768 87770</a>
                         <a href="tel:+917092356222">+91 70923 56222</a>
@@ -401,14 +401,14 @@
             <li class="ft-contact">
                 <span class="ft-icon" aria-hidden="true"><i class="fa-regular fa-envelope"></i></span>
                 <div>
-                    <h4 class="ft-label">Email</h4>
+                    <h4 class="ft-label" data-i18n="Email">Email</h4>
                     <p><a href="mailto:office@aventrixrealty.com" data-hq="email">office@aventrixrealty.com</a></p>
                 </div>
             </li>
             <li class="ft-contact">
                 <span class="ft-icon" aria-hidden="true"><i class="fa-regular fa-building"></i></span>
                 <div>
-                    <h4 class="ft-label">Branch Office</h4>
+                    <h4 class="ft-label" data-i18n="shared.footer.branchOffice">Branch Office</h4>
                     <p>Adyar, Chennai</p>
                 </div>
             </li>
@@ -417,28 +417,28 @@
         <div class="ft-rule" aria-hidden="true"></div>
 
         <div class="ft-main">
-            <div class="ft-col" role="navigation" aria-label="About Aventrix">
-                <h4 class="ft-heading">About Aventrix</h4>
+            <div class="ft-col" role="navigation" aria-label="About Aventrix" data-i18n-aria-label="shared.footer.aboutAventrix">
+                <h4 class="ft-heading" data-i18n="shared.footer.aboutAventrix">About Aventrix</h4>
                 <ul class="ft-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="index.html#contact">Contact Us</a></li>
-                    <li><a href="services.html">Our Services</a></li>
+                    <li><a href="index.html" data-i18n="Home">Home</a></li>
+                    <li><a href="about.html" data-i18n="About Us">About Us</a></li>
+                    <li><a href="index.html#contact" data-i18n="Contact Us">Contact Us</a></li>
+                    <li><a href="services.html" data-i18n="Our Services">Our Services</a></li>
                 </ul>
             </div>
-            <div class="ft-col" role="navigation" aria-label="Quick links">
-                <h4 class="ft-heading">Quick Links</h4>
+            <div class="ft-col" role="navigation" aria-label="Quick links" data-i18n-aria-label="Quick links">
+                <h4 class="ft-heading" data-i18n="shared.footer.quickLinks">Quick Links</h4>
                 <ul class="ft-links">
-                    <li><a href="our-realtors.html">Realtors</a></li>
-                    <li><a href="brokerage-fees.html">Brokerage &amp; Fees</a></li>
-                    <li><a href="emi-calculator.html">EMI Calculator</a></li>
-                    <li><a href="jv-calculator.html">Joint Venture Calculator</a></li>
+                    <li><a href="our-realtors.html" data-i18n="shared.footer.realtors">Realtors</a></li>
+                    <li><a href="brokerage-fees.html" data-i18n="shared.footer.brokerageFees">Brokerage &amp; Fees</a></li>
+                    <li><a href="emi-calculator.html" data-i18n="shared.footer.emiCalculator">EMI Calculator</a></li>
+                    <li><a href="jv-calculator.html" data-i18n="shared.footer.jointVentureCalculator">Joint Venture Calculator</a></li>
                 </ul>
             </div>
 
             <div class="ft-side">
                 <div class="ft-follow">
-                    <h4 class="ft-heading">Follow Us</h4>
+                    <h4 class="ft-heading" data-i18n="shared.footer.followUs">Follow Us</h4>
                     <div class="ft-social">
                         <a href="https://www.facebook.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Facebook" data-site="social-facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
                         <a href="https://www.instagram.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Instagram" data-site="social-instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
@@ -450,9 +450,9 @@
                 </div>
 
                 <section class="ft-map" aria-labelledby="ftMapTitle">
-                    <h4 class="ft-sr" id="ftMapTitle">Find Us</h4>
+                    <h4 class="ft-sr" id="ftMapTitle" data-i18n="shared.footer.findUs">Find Us</h4>
                     <div class="ft-map-frame" data-hq="map-embed"><iframe src="https://www.google.com/maps?q=No.27%2C%201st%20Main%20Road%2C%20New%20Colony%2C%20Chromepet%2C%20Chennai%2C%20Tamil%20Nadu&amp;output=embed" width="600" height="280" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Aventrix Realty Head Office Map" allowfullscreen></iframe></div>
-                    <a class="ft-map-open" href="https://maps.app.goo.gl/VjCCdVch9uequeGUA?g_st=ic" target="_blank" rel="noopener noreferrer" data-hq="maps"><i class="fa-solid fa-diamond-turn-right" aria-hidden="true"></i><span>Open in Maps</span><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i><span class="ft-sr"> (opens in a new tab)</span></a>
+                    <a class="ft-map-open" href="https://maps.app.goo.gl/VjCCdVch9uequeGUA?g_st=ic" target="_blank" rel="noopener noreferrer" data-hq="maps"><i class="fa-solid fa-diamond-turn-right" aria-hidden="true"></i><span data-i18n="shared.footer.openInMaps">Open in Maps</span><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i><span class="ft-sr" data-i18n="shared.footer.opensInNewTab"> (opens in a new tab)</span></a>
                 </section>
             </div>
         </div>
@@ -461,15 +461,15 @@
 
         <div class="ft-bottom">
             <div class="ft-credits">
-                <p class="ft-copyright" data-site="copyright-text">© 2026 Aventrix Realty. All Rights Reserved.</p>
+                <p class="ft-copyright" data-site="copyright-text" data-i18n="shared.footer.rights">© 2026 Aventrix Realty. All Rights Reserved.</p>
                 <p class="ft-designer">Designed with <span class="ft-heart" role="img" aria-label="love">&#10084;&#65039;</span> by L. Sanjay Gandhi</p>
             </div>
-            <div class="ft-legal" role="navigation" aria-label="Legal and utility links">
-                <a href="privacy-policy.html">Privacy Policy</a>
-                <a href="terms.html">Terms &amp; Conditions</a>
-                <a href="sitemap.html">Sitemap</a>
-                <a href="property-tools.html">Property Tools</a>
-                <a href="/admin/" class="ft-legal-admin">Admin</a>
+            <div class="ft-legal" role="navigation" aria-label="Legal and utility links" data-i18n-aria-label="Legal and utility links">
+                <a href="privacy-policy.html" data-i18n="shared.footer.privacyPolicy">Privacy Policy</a>
+                <a href="terms.html" data-i18n="shared.footer.termsConditions">Terms &amp; Conditions</a>
+                <a href="sitemap.html" data-i18n="shared.footer.sitemap">Sitemap</a>
+                <a href="property-tools.html" data-i18n="shared.footer.propertyTools">Property Tools</a>
+                <a href="/admin/" class="ft-legal-admin" data-i18n="Admin">Admin</a>
             </div>
         </div>
 
@@ -482,7 +482,7 @@
     <img src="images/whatsapp-icon.png" alt="WhatsApp">
 </a>
 
-<button id="backToTop" class="back-to-top" aria-label="Back to top">
+<button id="backToTop" class="back-to-top" aria-label="Back to top" data-i18n-aria-label="Back to top">
     <i class="fas fa-chevron-up"></i>
 </button>
 
@@ -495,6 +495,8 @@
 <script src="script.js?v=20260926b"></script>
 <script src="js/property-tools.js?v=20261014c"></script>
 
+
+<script src="/js/language-switcher.js?v=20261023-br-normalization" defer></script>
 </body>
 
 </html>

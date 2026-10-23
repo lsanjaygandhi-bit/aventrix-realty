@@ -25,6 +25,10 @@
     const loggedInEmailEl = document.getElementById("acctLoggedInEmail");
     const signOutBtn = document.getElementById("acctSignOutBtn");
 
+    function translate(key, fallback) {
+        return window.avxI18n ? window.avxI18n.t(key) : fallback;
+    }
+
     function showPanel(name) {
         Object.keys(panels).forEach((key) => { panels[key].hidden = key !== name; });
         signupSuccessEl.hidden = true;
@@ -53,8 +57,9 @@
         const btn = form.querySelector(".acct-submit-btn");
         if (!btn) return;
         btn.disabled = isLoading;
-        btn.dataset.originalText = btn.dataset.originalText || btn.textContent;
-        btn.textContent = isLoading ? "Please wait…" : btn.dataset.originalText;
+        btn.textContent = isLoading
+            ? translate("account.pleaseWait", "Please wait…")
+            : translate(btn.getAttribute("data-i18n"), btn.textContent);
     }
 
     // ---------------------------------------------------------
@@ -104,11 +109,11 @@
         const confirmPassword = document.getElementById("signupPasswordConfirm").value;
 
         if (password !== confirmPassword) {
-            showMessage("Passwords do not match.", "error");
+            showMessage(translate("account.passwordMismatch", "Passwords do not match."), "error");
             return;
         }
         if (password.length < 6) {
-            showMessage("Password must be at least 6 characters.", "error");
+            showMessage(translate("account.passwordMinimum", "Password must be at least 6 characters."), "error");
             return;
         }
 
@@ -161,7 +166,7 @@
             return;
         }
 
-        showMessage("If an account exists for that email, a reset link has been sent.", "success");
+        showMessage(translate("account.resetSent", "If an account exists for that email, a reset link has been sent."), "success");
         panels.forgot.reset();
     });
 
@@ -190,11 +195,11 @@
         const confirmPassword = document.getElementById("resetPasswordConfirm").value;
 
         if (password !== confirmPassword) {
-            showMessage("Passwords do not match.", "error");
+            showMessage(translate("account.passwordMismatch", "Passwords do not match."), "error");
             return;
         }
         if (password.length < 6) {
-            showMessage("Password must be at least 6 characters.", "error");
+            showMessage(translate("account.passwordMinimum", "Password must be at least 6 characters."), "error");
             return;
         }
 
@@ -207,7 +212,7 @@
             return;
         }
 
-        showMessage("Your password has been reset. Redirecting…", "success");
+        showMessage(translate("account.passwordReset", "Your password has been reset. Redirecting…"), "success");
         setTimeout(() => { window.location.href = "index.html"; }, 1800);
     });
 

@@ -275,6 +275,89 @@
 
   const $ = (id) => document.getElementById(id);
   const INK = "#101512", GREEN = "#198754", GREEN_DARK = "#11663e", FILL = "#eaf5ed", MUTED = "#5b675f";
+  const FIELD_KEYS = {
+    "Side length": "plot.label.side",
+    "Front / back length": "plot.label.frontBack",
+    "Depth (left / right side)": "plot.label.depthSides",
+    "Side 1 — Front (base)": "plot.label.side1FrontBase",
+    "Side 2 — Right side": "plot.label.side2Right",
+    "Side 3 — Left side": "plot.label.side3Left",
+    "Front side (parallel)": "plot.label.frontParallel",
+    "Back side (parallel)": "plot.label.backParallel",
+    "Left side": "plot.label.left",
+    "Right side": "plot.label.right",
+    "Perpendicular depth (optional)": "plot.label.depthOptional",
+    "Side 1 — Top": "plot.label.lTop",
+    "Side 2 — Right (upper)": "plot.label.lRightUpper",
+    "Side 3 — Inner step": "plot.label.lInnerStep",
+    "Side 4 — Inner side": "plot.label.lInnerSide",
+    "Side 5 — Bottom": "plot.label.lBottom",
+    "Side 6 — Left": "plot.label.lLeft",
+    "Side 1 — Top (full width)": "plot.label.tTop",
+    "Side 2 — Right end": "plot.label.tRightEnd",
+    "Side 3 — Right inner step": "plot.label.tRightStep",
+    "Side 4 — Stem right side": "plot.label.tStemRight",
+    "Side 5 — Stem bottom": "plot.label.tStemBottom",
+    "Side 6 — Stem left side": "plot.label.tStemLeft",
+    "Side 7 — Left inner step": "plot.label.tLeftStep",
+    "Side 8 — Left end": "plot.label.tLeftEnd",
+    "Main plot width": "plot.label.mainWidth",
+    "Main plot depth": "plot.label.mainDepth",
+    "Access path width": "plot.label.pathWidth",
+    "Access path length": "plot.label.pathLength",
+    "Front (road side)": "plot.label.frontRoad",
+    "Back boundary (curved, measured along the curve)": "plot.label.backCurve"
+  };
+  const MESSAGE_KEYS = {
+    "Enter valid positive measurements to calculate the area.": "plot.validation",
+    "Measurements changed — press Calculate Plot Area to update the result.": "plot.label.measurementsChanged",
+    "The area could not be calculated. Check the measurements.": "plot.message.areaCouldNotCalculate",
+    "Area calculated. Open View Drawing to review, print, share or download it.": "plot.message.areaCalculated",
+    "Approximate area calculated — see the note below the result. Open View Drawing to review it.": "plot.message.approximateCalculated",
+    "Measurements cleared.": "plot.message.measurementsCleared",
+    "Enter a side length greater than zero.": "plot.error.side",
+    "Enter the front length and the depth as positive numbers.": "plot.error.rectangle",
+    "Enter all three sides as positive numbers.": "plot.error.triangle",
+    "These lengths cannot form a triangle: the longest side must be shorter than the other two added together.": "plot.error.triangleImpossible",
+    "Enter the front, back, left and right sides.": "plot.error.trapezoid",
+    "These four sides cannot form a trapezoid with parallel front and back sides. Check the measurements or add the perpendicular depth.": "plot.error.trapezoidImpossible",
+    "Front and back are equal, so the four sides alone do not fix the area. Enter the perpendicular depth.": "plot.error.trapezoidDepth",
+    "Enter all six sides of the L-shaped plot.": "plot.error.lshape",
+    "The sides do not close into an L shape. Side 1 must equal Side 3 + Side 5, and Side 6 must equal Side 2 + Side 4.": "plot.error.lshapeClosure",
+    "Enter all eight sides of the T-shaped plot.": "plot.error.tshape",
+    "The sides do not close into a T shape. Side 1 must equal Sides 3 + 5 + 7, and Sides 2 + 4 must equal Sides 6 + 8.": "plot.error.tshapeClosure",
+    "Enter the main plot width and depth, and the access path width and length.": "plot.error.flag",
+    "The access path must be narrower than the main plot.": "plot.error.flagPath",
+    "Choose between 3 and 20 boundary sides.": "plot.error.sideCount",
+    "These sides cannot close: the longest side must be shorter than all the other sides added together.": "plot.error.polygonClosure",
+    "The diagonal does not fit these sides. Check the diagonal runs from corner 1 to corner 3.": "plot.error.diagonal",
+    "These boundary lengths cannot close. Check the measurements.": "plot.error.curvedClosure",
+    "Enter all four boundary lengths, or the area from your survey record.": "plot.error.curvedInput"
+  };
+  const METHOD_KEYS = {
+    "Exact — side × side": "plot.method.square",
+    "Exact — length × depth": "plot.method.rectangle",
+    "Exact — three-side (Heron's) formula": "plot.method.heron",
+    "Exact — split into rectangles": "plot.method.split",
+    "Exact — main plot + access path": "plot.method.flag",
+    "Exact — two triangles using the diagonal": "plot.method.diagonal",
+    "Approximate — angles not given; shows the largest area these sides can enclose": "plot.method.approximatePolygon",
+    "From the entered survey area": "plot.method.survey",
+    "Approximate — curved boundary treated as a straight line; enter the survey area for an exact figure": "plot.method.approximateCurved",
+    "Exact — (front + back) ÷ 2 × depth": "plot.method.trapezoidDepth",
+    "Exact — depth worked out from the four sides": "plot.method.trapezoidSides"
+  };
+  const SHAPE_KEYS = {
+    square: "plot.shape.square", rectangle: "plot.shape.rectangle", triangle: "plot.shape.triangle",
+    trapezoid: "plot.shape.trapezoid", lshape: "plot.shape.lshape", tshape: "plot.shape.tshape",
+    flag: "plot.shape.flag", pentagon: "plot.shape.pentagon", polygon: "plot.shape.polygon",
+    irregular: "plot.shape.irregular", curved: "plot.shape.curved", corner: "plot.shape.corner"
+  };
+  const uiText = (key, values) => {
+    let value = window.avxI18n ? window.avxI18n.t(key) : key;
+    Object.entries(values || {}).forEach(([name, item]) => { value = value.replace(new RegExp("\\{" + name + "\\}", "g"), String(item)); });
+    return value;
+  };
   let selectedShape = "square";
   let lastResult = null;
   let currentUnit = $("length-unit").value;
@@ -289,22 +372,27 @@
 
   function setMessage(text, type) {
     const el = $("validation-message");
-    el.textContent = text;
+    const numberedSide = /^Enter a positive length for side (\d+)\.$/.exec(text);
+    el.textContent = MESSAGE_KEYS[text] ? uiText(MESSAGE_KEYS[text])
+      : numberedSide ? uiText("plot.error.sideValue", { side: numberedSide[1] })
+        : text;
     el.className = "avx-validation" + (type ? " is-" + type : "");
   }
 
   /* ---------- Form rendering ---------- */
   function inputMarkup(id, label, optional) {
-    return `<div class="avx-field"><label for="${id}">${esc(label)} (${unitLabel()})</label><input id="${id}" name="${id}" type="number" min="0" step="any" inputmode="decimal" placeholder="${optional ? "Optional" : "Enter measurement"}"></div>`;
+    const key = FIELD_KEYS[label], numbered = /^Side (\d+)$/.exec(label);
+    const labelText = key ? `<span data-i18n="${key}">${esc(label)}</span>` : numbered ? `<span data-i18n="plot.label.sideShort">Side</span> ${numbered[1]}` : `<span data-i18n="plot.label.sideShort">Side</span>`;
+    return `<div class="avx-field"><label for="${id}">${labelText} <span class="avx-field-unit">(${unitLabel()})</span></label><input id="${id}" name="${id}" type="number" min="0" step="any" inputmode="decimal" placeholder="${optional ? "Optional" : "Enter measurement"}" data-i18n-placeholder="${optional ? "plot.optional" : "plot.enterMeasurement"}"></div>`;
   }
   function sidesMarkup(cfg, count) {
     let html = "";
     for (let i = 1; i <= count; i++) html += inputMarkup("side" + i, "Side " + i, false);
     if (!cfg.fixedCount) {
-      html += `<div class="avx-field avx-full-span avx-count-row"><label for="point-count">Number of sides (3–20)</label><div class="avx-count-controls"><button type="button" class="avx-step-button" id="count-minus" aria-label="Remove a side">−</button><input id="point-count" type="number" min="3" max="20" step="1" value="${count}"><button type="button" class="avx-step-button" id="count-plus" aria-label="Add a side">+</button></div></div>`;
+      html += `<div class="avx-field avx-full-span avx-count-row"><label for="point-count" data-i18n="plot.label.numberSides">Number of sides (3–20)</label><div class="avx-count-controls"><button type="button" class="avx-step-button" id="count-minus" aria-label="Remove a side" data-i18n-aria-label="plot.label.removeSide">−</button><input id="point-count" type="number" min="3" max="20" step="1" value="${count}"><button type="button" class="avx-step-button" id="count-plus" aria-label="Add a side" data-i18n-aria-label="plot.label.addSide">+</button></div></div>`;
     }
     if (cfg.diagonal) {
-      html += `<div class="avx-field avx-full-span${count === 4 ? "" : " is-hidden"}" id="diag-field"><label for="diag">Diagonal, corner 1 to corner 3 (${unitLabel()}) — optional, makes the area exact</label><input id="diag" name="diag" type="number" min="0" step="any" inputmode="decimal" placeholder="Optional"></div>`;
+      html += `<div class="avx-field avx-full-span${count === 4 ? "" : " is-hidden"}" id="diag-field"><label for="diag"><span data-i18n="plot.label.diagonalOptional">Diagonal, corner 1 to corner 3 ({unit}) — optional, makes the area exact</span></label><input id="diag" name="diag" type="number" min="0" step="any" inputmode="decimal" placeholder="Optional" data-i18n-placeholder="plot.optional"></div>`;
     }
     html += `<p class="avx-approx-note avx-full-span" id="approx-note">Side lengths alone do not fix the shape of a plot with ${count === 3 ? "three" : "four or more"} sides${count === 3 ? " — a triangle is the exception, so this result is exact" : ""}.${count === 3 ? "" : " Without the corner angles, the area shown is an <strong>approximate</strong> estimate (the largest area these sides can enclose). The real plot may be smaller — confirm with a survey."}</p>`;
     return html;
@@ -319,8 +407,10 @@
 
   function renderFields(keep) {
     const shape = effectiveShape(), cfg = SHAPES[shape];
-    $("measure-heading").textContent = selectedShape === "corner" ? "Corner plot measurements" : cfg.title + " measurements";
-    $("shape-help").textContent = selectedShape === "corner" ? SHAPES.corner.help + " " + cfg.help : cfg.help;
+    $("measure-heading").textContent = selectedShape === "corner" ? uiText("plot.measurements.corner") : uiText("plot.measurements") + " — " + uiText(SHAPE_KEYS[shape]);
+    $("shape-help").textContent = selectedShape === "corner"
+      ? uiText("plot.help.corner") + " " + uiText("plot.help." + shape)
+      : uiText("plot.help." + shape);
     $("corner-underlying").classList.toggle("is-hidden", selectedShape !== "corner");
     let html;
     if (cfg.sides) html = sidesMarkup(cfg, keep && keep.count ? keep.count : cfg.sides);
@@ -329,7 +419,19 @@
       html += `<div class="avx-field avx-full-span avx-survey-field"><label for="surveyArea">Area from survey record (optional)</label><div class="avx-inline-unit"><input id="surveyArea" name="surveyArea" type="number" min="0" step="any" inputmode="decimal" placeholder="Optional"><select id="area-unit" aria-label="Survey area unit"><option value="sqft">sq ft</option><option value="sqm">sq m</option><option value="cent">cents</option><option value="acre">acres</option><option value="sqyd">sq yd</option></select></div></div>`;
     }
     $("dimension-fields").innerHTML = html;
-    $("road-width-label").textContent = selectedShape === "corner" ? "Road width (optional — roads shown on two sides)" : "Road width in front (optional, shown on drawing)";
+    $("road-width-label").setAttribute("data-i18n", selectedShape === "corner" ? "plot.roadWidthCorner" : "plot.roadWidth");
+    $("road-width-label").textContent = uiText(selectedShape === "corner" ? "plot.roadWidthCorner" : "plot.roadWidth");
+    if (cfg.survey) {
+      const surveyLabel = $("dimension-fields").querySelector('label[for="surveyArea"]');
+      const surveyUnit = $("dimension-fields").querySelector("#area-unit");
+      if (surveyLabel) surveyLabel.setAttribute("data-i18n", "plot.label.surveyArea");
+      if (surveyUnit) surveyUnit.setAttribute("aria-label", uiText("plot.label.surveyAreaUnit"));
+    }
+    if (window.avxI18n) {
+      window.avxI18n.translate($("dimension-fields"));
+      const diagonalLabel = $("dimension-fields").querySelector('[data-i18n="plot.label.diagonalOptional"]');
+      if (diagonalLabel) diagonalLabel.textContent = uiText("plot.label.diagonalOptional").replace("{unit}", unitLabel());
+    }
     $("road-width-unit").textContent = unitLabel();
     if (keep && keep.values) Object.entries(keep.values).forEach(([id, val]) => { const el = $(id); if (el) el.value = val; });
     clearResult();
@@ -508,16 +610,16 @@
     const W = narrow ? 420 : 640, H = narrow ? 380 : 420;
     const areaText = lastResult ? `${lastResult.approx ? "≈ " : ""}${fmt(lastResult.area)} sq ft` : "";
     const inner = plotMarkup(g, W, H, { font: narrow ? 15 : 16, interactive: true, roadWidth: roadWidthFt(), corner: selectedShape === "corner", areaText, areaSub: lastResult && lastResult.approx ? "approximate" : "", cornerNumbers: !!(SHAPES[effectiveShape()].sides && SHAPES[effectiveShape()].diagonal) });
-    const title = SHAPES[effectiveShape()].title;
+    const title = uiText(SHAPE_KEYS[effectiveShape()]);
     $("plot-drawing").innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(title)} drawing"><rect width="${W}" height="${H}" fill="#ffffff"/>${inner}</svg>`;
-    $("drawing-note").textContent = g.preview ? "Outline shows the shape type. It redraws to scale once your measurements form a valid plot." : "Drawn to scale from your measurements. Click a measurement to edit it.";
+    $("drawing-note").textContent = g.preview ? uiText("plot.drawing.previewHint") : uiText("plot.drawing.liveHint");
   }
 
   /* ---------- Calculate / result ---------- */
   function clearResult() {
     lastResult = null;
     $("view-drawing").disabled = true;
-    $("area-main").innerHTML = "— <small>sq ft</small>";
+    $("area-main").innerHTML = `— <small>${esc(uiText("plot.unit.squareFeet"))}</small>`;
     $("area-method").textContent = "";
     $("area-method").classList.remove("is-approx");
     ["sqft", "cent", "acre", "sqm", "sqyd"].forEach((u) => ($("out-" + u).textContent = "—"));
@@ -528,12 +630,12 @@
     if (!g.ok || !(g.area > 0)) { clearResult(); drawLive(); setMessage(g.error || "The area could not be calculated. Check the measurements.", "error"); return; }
     lastResult = { area: g.area, approx: g.approx, method: g.method, shape };
     const a = g.area, pre = g.approx ? "≈ " : "";
-    $("area-main").innerHTML = `${pre}${fmt(a)} <small>sq ft</small>`;
-    $("area-method").textContent = g.method;
+    $("area-main").innerHTML = `${pre}${fmt(a)} <small>${esc(uiText("plot.unit.squareFeet"))}</small>`;
+    $("area-method").textContent = METHOD_KEYS[g.method] ? uiText(METHOD_KEYS[g.method]) : g.method;
     $("area-method").classList.toggle("is-approx", !!g.approx);
-    $("out-sqft").textContent = pre + fmt(a) + " sq ft";
-    $("out-cent").textContent = pre + fmt(a / SQFT_PER_CENT, 4) + " cents";
-    $("out-acre").textContent = pre + fmt(a / SQFT_PER_ACRE, 6) + " acres";
+    $("out-sqft").textContent = pre + fmt(a) + " " + uiText("plot.unit.squareFeet");
+    $("out-cent").textContent = pre + fmt(a / SQFT_PER_CENT, 4) + " " + uiText("plot.unit.cents");
+    $("out-acre").textContent = pre + fmt(a / SQFT_PER_ACRE, 6) + " " + uiText("plot.unit.acres");
     $("out-sqm").textContent = pre + fmt(a * SQM_PER_SQFT) + " m²";
     $("out-sqyd").textContent = pre + fmt(a / SQFT_PER_SQYD) + " yd²";
     $("view-drawing").disabled = false;
@@ -556,7 +658,7 @@
   function buildA4Sheet() {
     if (!lastResult) return "";
     const g = currentGeometry();
-    const title = SHAPES[effectiveShape()].title + (selectedShape === "corner" ? " (Corner Plot)" : "");
+    const title = uiText(SHAPE_KEYS[effectiveShape()]) + (selectedShape === "corner" ? " (" + uiText(SHAPE_KEYS.corner) + ")" : "");
     const a = lastResult.area, pre = lastResult.approx ? "≈ " : "";
     const now = new Date();
     const date = now.toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" });
@@ -640,7 +742,11 @@ ${panel}
   async function shareSheet() {
     if (!requireResult()) return;
     const a = lastResult.area, pre = lastResult.approx ? "approx. " : "";
-    const text = `Plot area (${SHAPES[effectiveShape()].title}): ${pre}${fmt(a)} sq ft · ${fmt(a / SQFT_PER_CENT, 4)} cents. Calculated with the Aventrix Realty Plot Area Calculator:`;
+    const text = uiText("plot.share.summary", {
+      shape: uiText(SHAPE_KEYS[effectiveShape()]),
+      area: pre + fmt(a),
+      cents: fmt(a / SQFT_PER_CENT, 4)
+    });
     const url = location.origin + location.pathname;
     try {
       if (navigator.share) {
@@ -667,7 +773,11 @@ ${panel}
     lastFocus = document.activeElement;
     $("preview-drawing").innerHTML = buildA4Sheet();
     const a = lastResult.area, pre = lastResult.approx ? "≈ " : "";
-    $("preview-summary").textContent = `${SHAPES[effectiveShape()].title} · A4 portrait · ${pre}${fmt(a)} sq ft · ${pre}${fmt(a / SQFT_PER_CENT, 4)} cents`;
+    $("preview-summary").textContent = uiText("plot.preview.summary", {
+      shape: uiText(SHAPE_KEYS[effectiveShape()]),
+      area: pre + fmt(a),
+      cents: pre + fmt(a / SQFT_PER_CENT, 4)
+    });
     previewStatus("");
     $("drawing-preview-modal").hidden = false;
     document.body.classList.add("avx-modal-open");
@@ -684,11 +794,11 @@ ${panel}
     const raw = $("converter-value").value.trim(), x = Number(raw);
     if (raw === "" || !Number.isFinite(x) || x < 0) { ["sqft", "acre", "cent", "sqm", "sqyd"].forEach((u) => ($("conv-" + u).textContent = "—")); return; }
     const sqft = areaToSqFt(x, $("converter-unit").value);
-    $("conv-sqft").textContent = fmt(sqft) + " sq ft";
-    $("conv-acre").textContent = fmt(sqft / SQFT_PER_ACRE, 6);
-    $("conv-cent").textContent = fmt(sqft / SQFT_PER_CENT, 4);
-    $("conv-sqm").textContent = fmt(sqft * SQM_PER_SQFT) + " m²";
-    $("conv-sqyd").textContent = fmt(sqft / SQFT_PER_SQYD) + " yd²";
+    $("conv-sqft").textContent = fmt(sqft) + " " + uiText("plot.unit.squareFeet");
+    $("conv-acre").textContent = fmt(sqft / SQFT_PER_ACRE, 6) + " " + uiText("plot.unit.acres");
+    $("conv-cent").textContent = fmt(sqft / SQFT_PER_CENT, 4) + " " + uiText("plot.unit.cents");
+    $("conv-sqm").textContent = fmt(sqft * SQM_PER_SQFT) + " " + uiText("plot.unit.squareMetres");
+    $("conv-sqyd").textContent = fmt(sqft / SQFT_PER_SQYD) + " " + uiText("plot.unit.squareYards");
   }
 
   /* ---------- Events ---------- */
@@ -787,4 +897,16 @@ ${panel}
     resizeTimer = setTimeout(() => { const n = $("plot-drawing").clientWidth < 520; if (n !== lastNarrow) { lastNarrow = n; drawLive(); } }, 150);
   });
   renderFields();
+  document.addEventListener("avx:i18n-ready", () => {
+    const count = sideCount(), values = {};
+    $("dimension-fields").querySelectorAll("input[type=number]").forEach((el) => {
+      if (el.id !== "point-count" && el.value.trim() !== "") values[el.id] = el.value;
+    });
+    const road = $("road-width").value, hadResult = !!lastResult;
+    renderFields({ count, values });
+    $("road-width").value = road;
+    if (hadResult) calculate();
+    else drawLive();
+    updateConverter();
+  }, { once: true });
 })(typeof window !== "undefined" ? window : globalThis);

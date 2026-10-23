@@ -68,7 +68,7 @@
             <section id="section-overview" class="admin-section">
                 <div class="admin-stats-grid stats-5">
                     <div class="admin-stat-card"><div class="num" id="statActive">–</div><div class="label">Active Listings</div></div>
-                    <div class="admin-stat-card"><div class="num" id="statPublished">–</div><div class="label">Published</div></div>
+                    <div class="admin-stat-card"><div class="num" id="statPublished">–</div><div class="label" data-i18n="Published">Published</div></div>
                     <div class="admin-stat-card"><div class="num" id="statDraft">–</div><div class="label">Drafts</div></div>
                     <div class="admin-stat-card"><div class="num" id="statTotal">–</div><div class="label">Total Properties</div></div>
                     <div class="admin-stat-card"><div class="num" id="statEnquiries">–</div><div class="label">Unread Enquiries</div></div>
@@ -84,13 +84,13 @@
 
                 <div class="admin-card">
                     <h2 class="ov-heading">Follow-ups</h2>
-                    <div class="followup-grid" id="overviewFollowUps"><p class="helper-text">Loading…</p></div>
+                    <div class="followup-grid" id="overviewFollowUps"><p class="helper-text" data-i18n="Loading…">Loading…</p></div>
                 </div>
 
                 <div class="ov-two-col">
                     <div class="admin-card">
                         <h2 class="ov-heading">Lead Sources</h2>
-                        <div id="overviewLeadSources"><p class="helper-text">Loading…</p></div>
+                        <div id="overviewLeadSources"><p class="helper-text" data-i18n="Loading…">Loading…</p></div>
                     </div>
                     <div class="admin-card" data-admin-only>
                         <h2 class="ov-heading">Property Performance</h2>
@@ -101,7 +101,7 @@
                             <button type="button" data-metric="whatsapp_clicks">WhatsApp</button>
                             <button type="button" data-metric="shares">Most Shared</button>
                         </div>
-                        <div id="overviewPerformance"><p class="helper-text">Loading…</p></div>
+                        <div id="overviewPerformance"><p class="helper-text" data-i18n="Loading…">Loading…</p></div>
                         <p class="helper-text ov-note">Counted from real visitor actions since tracking went live — one of each action per visitor, per property, per day. Staff activity is not counted.</p>
                     </div>
                 </div>
@@ -113,8 +113,8 @@
                     <div class="filters">
                         <select id="filterPublishStatus">
                             <option value="">All Status</option>
-                            <option value="Published">Published</option>
-                            <option value="Draft">Draft</option>
+                            <option value="Published" data-i18n="Published">Published</option>
+                            <option value="Draft" data-i18n="Draft">Draft</option>
                         </select>
                         <select id="filterStatus">
                             <option value="">Any Availability</option>
@@ -151,7 +151,7 @@
                 <div class="admin-card" style="padding:0; overflow-x:auto;">
                     <table class="admin-table" id="officesTable">
                         <thead>
-                            <tr><th>Name</th><th>Address</th><th>Google Maps</th><th>Type</th><th></th></tr>
+                            <tr><th data-i18n="Name">Name</th><th>Address</th><th>Google Maps</th><th>Type</th><th></th></tr>
                         </thead>
                         <tbody id="officesTableBody"></tbody>
                     </table>
@@ -241,7 +241,7 @@
                 </div>
                 <div class="admin-card" style="padding:0; overflow-x:auto;">
                     <table class="admin-table" id="testimonialsTable">
-                        <thead><tr><th>Name</th><th>Role</th><th>Quote</th><th>Status</th><th></th></tr></thead>
+                        <thead><tr><th data-i18n="Name">Name</th><th>Role</th><th>Quote</th><th>Status</th><th></th></tr></thead>
                         <tbody id="testimonialsTableBody"></tbody>
                     </table>
                     <div class="empty-state" id="testimonialsEmptyState" style="display:none;">
@@ -258,7 +258,7 @@
                 </div>
                 <div class="admin-card" style="padding:0; overflow-x:auto;">
                     <table class="admin-table" id="realtorsTable">
-                        <thead><tr><th>Name</th><th>Designation</th><th>Slug</th><th>Status</th><th></th></tr></thead>
+                        <thead><tr><th data-i18n="Name">Name</th><th>Designation</th><th>Slug</th><th>Status</th><th></th></tr></thead>
                         <tbody id="realtorsTableBody"></tbody>
                     </table>
                     <div class="empty-state" id="realtorsEmptyState" style="display:none;">
@@ -435,20 +435,20 @@
                     <input type="text" id="fTitle" required>
                 </div>
                 <div class="admin-field">
-                    <label>Property Type</label>
+                    <label data-i18n="Property Type">Property Type</label>
                     <select id="fCategory">
                         <optgroup label="Property Type">
-                            <option value="residential">Residential</option>
-                            <option value="commercial">Commercial</option>
-                            <option value="land">Land</option>
+                            <option value="residential" data-i18n="Residential">Residential</option>
+                            <option value="commercial" data-i18n="Commercial">Commercial</option>
+                            <option value="land" data-i18n="Land">Land</option>
                             <option value="industrial">Industrial</option>
                             <option value="special_purpose">Special Purpose</option>
-                            <option value="agricultural">Agricultural</option>
+                            <option value="agricultural" data-i18n="Agricultural">Agricultural</option>
                         </optgroup>
                         <optgroup label="Legacy (existing records only)">
                             <option value="villas">Luxury Villas</option>
-                            <option value="apartments">Apartments</option>
-                            <option value="investment">Investment</option>
+                            <option value="apartments" data-i18n="Apartments">Apartments</option>
+                            <option value="investment" data-i18n="Investment">Investment</option>
                         </optgroup>
                     </select>
                 </div>
@@ -459,14 +459,14 @@
                     </select>
                 </div>
                 <div class="admin-field">
-                    <label>Listing Type</label>
+                    <label data-i18n="Listing Type">Listing Type</label>
                     <select id="fListingType">
                         <option value="sale">For Sale</option>
                         <option value="lease">For Lease</option>
                     </select>
                 </div>
                 <div class="admin-field">
-                    <label>Location</label>
+                    <label data-i18n="Location">Location</label>
                     <input type="text" id="fLocation">
                 </div>
                 <div class="admin-field full" id="fCoordsRow" hidden>
@@ -510,15 +510,15 @@
                 <div class="admin-field full"><hr style="border:none; border-top:1px solid var(--admin-border);"></div>
                 <div class="admin-field full"><strong style="font-size:13px;">Property Details <span class="helper-text" style="font-weight:400;">(optional — powers the Quick View stats. Leave blank to hide a stat.)</span></strong></div>
                 <div class="admin-field">
-                    <label>Bedrooms</label>
+                    <label data-i18n="Bedrooms">Bedrooms</label>
                     <input type="number" id="fBedrooms" min="0">
                 </div>
                 <div class="admin-field">
-                    <label>Bathrooms</label>
+                    <label data-i18n="Bathrooms">Bathrooms</label>
                     <input type="number" id="fBathrooms" min="0">
                 </div>
                 <div class="admin-field">
-                    <label>Parking</label>
+                    <label data-i18n="Parking">Parking</label>
                     <input type="number" id="fParking" min="0">
                 </div>
                 <div class="admin-field">
@@ -526,7 +526,7 @@
                     <input type="number" id="fFloors" min="0">
                 </div>
                 <div class="admin-field">
-                    <label>Built-up Area</label>
+                    <label data-i18n="Built-up Area">Built-up Area</label>
                     <input type="text" id="fBuiltUpArea" placeholder="e.g. 1,450 sq.ft">
                 </div>
                 <div class="admin-field">
@@ -546,7 +546,7 @@
                     <input type="text" id="fUdsArea" placeholder="e.g. 1,680 sq.ft">
                 </div>
                 <div class="admin-field">
-                    <label>Furnishing</label>
+                    <label data-i18n="Furnishing">Furnishing</label>
                     <select id="fFurnishing">
                         <option value="">Not specified</option>
                         <option value="Fully Furnished">Fully Furnished</option>
@@ -555,7 +555,7 @@
                     </select>
                 </div>
                 <div class="admin-field">
-                    <label>Facing</label>
+                    <label data-i18n="Facing">Facing</label>
                     <select id="fFacing">
                         <option value="">Not specified</option>
                         <option>North</option>
@@ -600,8 +600,8 @@
                 <div class="admin-field">
                     <label>Publish Status</label>
                     <select id="fPublishStatus">
-                        <option>Draft</option>
-                        <option>Published</option>
+                        <option data-i18n="Draft">Draft</option>
+                        <option data-i18n="Published">Published</option>
                     </select>
                 </div>
                 <div class="admin-field">
@@ -631,7 +631,7 @@
             </div>
 
             <div style="display:flex; gap:10px; margin-top:18px; justify-content:flex-end;">
-                <button type="button" class="admin-btn secondary" id="cancelPropertyBtn">Cancel</button>
+                <button type="button" class="admin-btn secondary" id="cancelPropertyBtn" data-i18n="Cancel">Cancel</button>
                 <button type="submit" class="admin-btn gold" id="savePropertyBtn" style="width:auto;">Save Property</button>
             </div>
         </form>
@@ -655,7 +655,7 @@
                     <textarea id="oAddress" rows="3" required></textarea>
                 </div>
                 <div class="admin-field">
-                    <label>Phone</label>
+                    <label data-i18n="Phone">Phone</label>
                     <input type="text" id="oPhone" placeholder="+91 91768 87770">
                 </div>
                 <div class="admin-field">
@@ -667,7 +667,7 @@
                     <input type="text" id="oMapsUrl" placeholder="https://maps.app.goo.gl/...">
                 </div>
                 <div class="admin-field">
-                    <label>Email</label>
+                    <label data-i18n="Email">Email</label>
                     <input type="text" id="oEmail" placeholder="office@aventrixrealty.com">
                 </div>
                 <div class="admin-field">
@@ -698,12 +698,12 @@
                 <div class="admin-field">
                     <label>Publish Status</label>
                     <select id="oPublishStatus">
-                        <option>Published</option>
-                        <option>Draft</option>
+                        <option data-i18n="Published">Published</option>
+                        <option data-i18n="Draft">Draft</option>
                     </select>
                 </div>
                 <div class="admin-field full">
-                    <label>Head Office</label>
+                    <label data-i18n="shared.footer.headOffice">Head Office</label>
                     <div class="toggle-row">
                         <label class="toggle-switch">
                             <input type="checkbox" id="oIsHeadOffice">
@@ -715,7 +715,7 @@
             </div>
 
             <div style="display:flex; gap:10px; margin-top:18px; justify-content:flex-end;">
-                <button type="button" class="admin-btn secondary" id="cancelOfficeBtn">Cancel</button>
+                <button type="button" class="admin-btn secondary" id="cancelOfficeBtn" data-i18n="Cancel">Cancel</button>
                 <button type="submit" class="admin-btn gold" id="saveOfficeBtn" style="width:auto;">Save Office</button>
             </div>
         </form>
@@ -736,11 +736,11 @@
                 <div class="admin-field"><label>Display Order</label><input type="number" id="tDisplayOrder" value="0"></div>
                 <div class="admin-field">
                     <label>Publish Status</label>
-                    <select id="tPublishStatus"><option>Published</option><option>Draft</option></select>
+                    <select id="tPublishStatus"><option data-i18n="Published">Published</option><option data-i18n="Draft">Draft</option></select>
                 </div>
             </div>
             <div style="display:flex; gap:10px; margin-top:18px; justify-content:flex-end;">
-                <button type="button" class="admin-btn secondary" id="cancelTestimonialBtn">Cancel</button>
+                <button type="button" class="admin-btn secondary" id="cancelTestimonialBtn" data-i18n="Cancel">Cancel</button>
                 <button type="submit" class="admin-btn gold" id="saveTestimonialBtn" style="width:auto;">Save Testimonial</button>
             </div>
         </form>
@@ -764,18 +764,18 @@
                 <div class="admin-field"><label>Experience</label><input type="text" id="rExperience" placeholder="10+ Years"></div>
                 <div class="admin-field full"><label>Languages (comma separated)</label><input type="text" id="rLanguages" placeholder="English, Tamil"></div>
                 <div class="admin-field full"><label>Specializations (comma separated)</label><input type="text" id="rSpecializations" placeholder="Residential, Commercial"></div>
-                <div class="admin-field"><label>Phone</label><input type="text" id="rPhone" placeholder="+919176887770"></div>
-                <div class="admin-field"><label>Email</label><input type="text" id="rEmail"></div>
+                <div class="admin-field"><label data-i18n="Phone">Phone</label><input type="text" id="rPhone" placeholder="+919176887770"></div>
+                <div class="admin-field"><label data-i18n="Email">Email</label><input type="text" id="rEmail"></div>
                 <div class="admin-field"><label>WhatsApp (digits only)</label><input type="text" id="rWhatsapp" placeholder="919176887770"></div>
                 <div class="admin-field"><label>Profile Link Override (optional)</label><input type="text" id="rProfileLink" placeholder="e.g. sanjay.html"></div>
                 <div class="admin-field"><label>Display Order</label><input type="number" id="rDisplayOrder" value="0"></div>
                 <div class="admin-field">
                     <label>Publish Status</label>
-                    <select id="rPublishStatus"><option>Published</option><option>Draft</option></select>
+                    <select id="rPublishStatus"><option data-i18n="Published">Published</option><option data-i18n="Draft">Draft</option></select>
                 </div>
             </div>
             <div style="display:flex; gap:10px; margin-top:18px; justify-content:flex-end;">
-                <button type="button" class="admin-btn secondary" id="cancelRealtorBtn">Cancel</button>
+                <button type="button" class="admin-btn secondary" id="cancelRealtorBtn" data-i18n="Cancel">Cancel</button>
                 <button type="submit" class="admin-btn gold" id="saveRealtorBtn" style="width:auto;">Save Realtor</button>
             </div>
         </form>
@@ -804,11 +804,11 @@
                 <div class="admin-field"><label>Display Order</label><input type="number" id="iDisplayOrder" value="0"></div>
                 <div class="admin-field">
                     <label>Publish Status</label>
-                    <select id="iPublishStatus"><option>Draft</option><option>Published</option></select>
+                    <select id="iPublishStatus"><option data-i18n="Draft">Draft</option><option data-i18n="Published">Published</option></select>
                 </div>
             </div>
             <div style="display:flex; gap:10px; margin-top:18px; justify-content:flex-end;">
-                <button type="button" class="admin-btn secondary" id="cancelInsightBtn">Cancel</button>
+                <button type="button" class="admin-btn secondary" id="cancelInsightBtn" data-i18n="Cancel">Cancel</button>
                 <button type="submit" class="admin-btn gold" id="saveInsightBtn" style="width:auto;">Save Insight</button>
             </div>
         </form>
@@ -818,15 +818,15 @@
 <!-- ENQUIRY DETAIL MODAL -->
 <div class="admin-modal-overlay" id="leadModalOverlay">
     <div class="admin-modal lead-modal">
-        <button class="admin-modal-close" id="closeLeadModal" aria-label="Close">&times;</button>
+        <button class="admin-modal-close" id="closeLeadModal" aria-label="Close" data-i18n-aria-label="Close">&times;</button>
         <h2 id="leadModalTitle">Lead</h2>
 
         <div class="lead-original" id="leadOriginal"></div>
 
         <div class="admin-form-grid" id="leadContactRow">
-            <div class="admin-field"><label for="leadName">Name</label><input type="text" id="leadName"></div>
-            <div class="admin-field"><label for="leadPhone">Phone</label><input type="tel" id="leadPhone"></div>
-            <div class="admin-field full"><label for="leadEmail">Email</label><input type="email" id="leadEmail"></div>
+            <div class="admin-field"><label for="leadName" data-i18n="Name">Name</label><input type="text" id="leadName"></div>
+            <div class="admin-field"><label for="leadPhone" data-i18n="Phone">Phone</label><input type="tel" id="leadPhone"></div>
+            <div class="admin-field full"><label for="leadEmail" data-i18n="Email">Email</label><input type="email" id="leadEmail"></div>
         </div>
 
         <div class="admin-form-grid">
@@ -877,5 +877,7 @@
 <script src="js/enquiries.js?v=20260925"></script>
 <script src="js/settings.js?v=20260926b"></script>
 <script src="js/dashboard-app.js?v=20260926"></script>
+
+<script src="/js/language-switcher.js?v=20261023-br-normalization" defer></script>
 </body>
 </html>

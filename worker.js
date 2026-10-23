@@ -127,7 +127,18 @@ ${redirectToProperty ? `<meta http-equiv="refresh" content="0;url=${safeProperty
 
 export default {
   async fetch(request, env) {
-    const url = new URL(request.url);
+    // Locale prefixes are virtual routes over the same static assets. This keeps
+    // the English source files canonical and avoids maintaining six site copies.
+    const incomingUrl = new URL(request.url);
+    const localeMatch = incomingUrl.pathname.match(/^\/(ta|hi|te|kn|ml)(?=\/|$)/);
+    const requestedLocale = localeMatch ? localeMatch[1] : "en";
+    let url = incomingUrl;
+    if (localeMatch) {
+      url = new URL(incomingUrl.toString());
+      url.pathname = url.pathname.replace(/^\/(ta|hi|te|kn|ml)(?=\/|$)/, "") || "/";
+      if (url.pathname === "") url.pathname = "/";
+      request = new Request(url.toString(), request);
+    }
     if (url.pathname.startsWith("/p/")) {
       const pathPart = decodeURIComponent(url.pathname.slice(3).replace(/\/$/, ""));
       const imageMatch = pathPart.match(/^([a-zA-Z0-9-]+)\/image$/);
@@ -174,11 +185,28 @@ export default {
     const contentType = assetResponse.headers.get("content-type") || "";
     if (!contentType.includes("text/html") || assetResponse.status !== 200) return assetResponse;
 
+<<<<<<< HEAD
     // Add adaptive low-data behaviour site-wide without editing every HTML page.
     return new HTMLRewriter()
       .on("head", {
         element(element) {
           element.append('<script src="/js/low-data-mode.js" defer></script>', { html: true });
+=======
+    // Inject site-wide enhancements without editing the existing page markup.
+    // Header/footer and page layouts remain untouched; the language selector is
+    // inserted by the client-side language-switcher only.
+    return new HTMLRewriter()
+      .on("html", {
+        element(element) {
+          element.setAttribute("lang", requestedLocale);
+          element.setAttribute("data-avx-locale", requestedLocale);
+        }
+      })
+      .on("head", {
+        element(element) {
+          element.append('<script src="/js/low-data-mode.js" defer></script>', { html: true });
+          element.append('<script src="/js/language-switcher.js?v=20261022-emi-4" defer></script>', { html: true });
+>>>>>>> 172e68a (Update multilingual website support)
         }
       })
       .transform(assetResponse);
