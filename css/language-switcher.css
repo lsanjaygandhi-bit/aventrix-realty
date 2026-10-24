@@ -219,3 +219,29 @@
     font-size: 10px !important;
   }
 }
+
+
+/* Site-wide correction: separate language selector from header/hero. */
+#avxLanguageSlot.avx-language-slot.avx-language-row {
+  position: relative !important; inset: auto !important; z-index: 20 !important;
+  display: flex !important; justify-content: flex-end !important; align-items: center !important;
+  width: 100% !important; height: 38px !important; box-sizing: border-box !important;
+  margin: 0 !important; padding: 4px 16px !important; border: 0 !important;
+  border-radius: 0 !important; background: #fff !important; box-shadow: none !important;
+  overflow: visible !important; -webkit-backdrop-filter: none !important; backdrop-filter: none !important;
+  transform: none !important;
+}
+#avxLanguageSlot.avx-language-slot.avx-language-row select.avx-language-select {
+  display: block !important; width: 92px !important; height: 29px !important;
+  box-sizing: border-box !important; padding: 0 5px 0 8px !important;
+  border: 1px solid #d8d8d8 !important; border-radius: 7px !important;
+  background: #fff !important; color: #1B0E06 !important; font-size: 11px !important;
+  font-weight: 600 !important; text-shadow: none !important; appearance: auto !important;
+  -webkit-appearance: menulist !important;
+}
+@media (max-width: 768px) {
+  #avxLanguageSlot.avx-language-slot.avx-language-row { height: 36px !important; padding: 3px 12px !important; }
+  #avxLanguageSlot.avx-language-slot.avx-language-row select.avx-language-select {
+    width: 88px !important; height: 28px !important; font-size: 11px !important;
+  }
+}
