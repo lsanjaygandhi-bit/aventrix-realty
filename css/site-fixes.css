@@ -59,3 +59,78 @@ html.is-mobile .list-hero .container{ padding-left:20px; padding-right:20px; }
 @media (max-width:768px){
     html:not(.is-mobile) .list-hero .container{ padding-left:20px; padding-right:20px; }
 }
+
+
+/* ---------- Mobile property listing cards: compact image, content and actions ----------
+   Scoped to the Properties listing page so homepage cards and detail pages remain unchanged. */
+@media (max-width: 640px) {
+  body[data-page-key="properties"] .property-card {
+    border-radius: 18px;
+  }
+  body[data-page-key="properties"] .property-card .property-image-wrap {
+    height: 210px !important;
+    aspect-ratio: 16 / 9 !important;
+  }
+  body[data-page-key="properties"] .property-card .property-image-wrap img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+  body[data-page-key="properties"] .property-card .property-location {
+    padding: 14px 18px 0 !important;
+    font-size: 11px !important;
+    line-height: 1.45 !important;
+    letter-spacing: .45px !important;
+  }
+  body[data-page-key="properties"] .property-card h3 {
+    padding: 7px 18px 0 !important;
+    margin: 0 0 8px !important;
+    font-size: 21px !important;
+    line-height: 1.28 !important;
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical !important;
+    -webkit-line-clamp: 3 !important;
+    line-clamp: 3 !important;
+    overflow: hidden !important;
+  }
+  body[data-page-key="properties"] .property-card .content > p,
+  body[data-page-key="properties"] .property-card p {
+    padding: 0 18px !important;
+    margin: 0 0 12px !important;
+    height: auto !important;
+    max-height: 4.5em !important;
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical !important;
+    -webkit-line-clamp: 3 !important;
+    line-clamp: 3 !important;
+    overflow: hidden !important;
+  }
+  body[data-page-key="properties"] .property-card .property-footer {
+    padding: 0 18px 18px !important;
+    gap: 10px !important;
+  }
+  body[data-page-key="properties"] .property-card .property-footer-top {
+    gap: 8px !important;
+    row-gap: 8px !important;
+  }
+  body[data-page-key="properties"] .property-card .property-price {
+    font-size: 19px !important;
+    line-height: 1.25 !important;
+  }
+  body[data-page-key="properties"] .property-card .property-icon-actions {
+    gap: 7px !important;
+  }
+  body[data-page-key="properties"] .property-card .property-icon-actions .icon-action-btn {
+    width: 38px !important;
+    height: 38px !important;
+    border-radius: 10px !important;
+    font-size: 14px !important;
+  }
+  body[data-page-key="properties"] .property-card .property-footer .view-details-btn {
+    min-height: 42px !important;
+    padding: 8px 14px !important;
+    font-size: 13px !important;
+  }
+}
