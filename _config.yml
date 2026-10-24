@@ -1,0 +1,16 @@
+# GitHub Pages deployment exclusions for Aventrix Realty.
+# These repository support files are not public website assets.
+exclude:
+  - "*.sql"
+  - "*.csv"
+  - "*.md"
+  - "sql/"
+  - "tests/"
+  - "supabase/"
+  - "functions/"
+  - "tools/"
+  - "partials/"
+  - ".wrangler/"
+  - ".github/"
+  - "node_modules/"
+  - "vendor/"
