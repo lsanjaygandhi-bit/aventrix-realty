@@ -1,3 +1,6 @@
+.sf-map-canvas .leaflet-container{width:100%;height:100%;font-family:'Montserrat',sans-serif;z-index:1}
+.sf-map-canvas .avx-leaflet-marker{background:transparent;border:0}
+.sf-map-canvas .avx-leaflet-marker span{display:flex;align-items:center;justify-content:center;min-width:42px;height:30px;box-sizing:border-box;padding:0 10px;border:2px solid #fff;border-radius:17px;background:#0F3B2E;color:#fff;font:700 12px Arial,Helvetica,sans-serif;box-shadow:0 2px 7px rgba(0,0,0,.35);white-space:nowrap}
 /* =====================================================================
    AVENTRIX REALTY — PROPERTIES: LIST / MAP VIEW (properties.html only)
    Additive. Uses the site's existing colours (#0F3B2E green, #D4AF37
