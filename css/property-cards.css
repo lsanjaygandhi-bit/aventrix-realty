@@ -350,3 +350,92 @@
     line-height: 1.1 !important;
   }
 }
+
+/* MAX-COMPACT cards for the Properties Near You section only.
+   Do not affect the main Find Your Property / #sfResultsGrid cards. */
+@media (max-width: 640px) {
+  #nearMeWidget .property-card {
+    height: auto !important;
+    min-height: 0 !important;
+    align-self: start !important;
+  }
+  #nearMeWidget .property-card .property-image-wrap {
+    height: 112px !important;
+    min-height: 112px !important;
+    max-height: 112px !important;
+    aspect-ratio: 16 / 9 !important;
+    overflow: hidden !important;
+  }
+  #nearMeWidget .property-card .property-image-wrap > a {
+    display: block !important;
+    height: 100% !important;
+  }
+  #nearMeWidget .property-card .property-image-wrap img {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-height: 112px !important;
+    object-fit: cover !important;
+  }
+  #nearMeWidget .property-card .content {
+    padding: 0 !important;
+    gap: 0 !important;
+  }
+  #nearMeWidget .property-card .property-location {
+    padding: 4px 9px 0 !important;
+    margin: 0 0 3px !important;
+    font-size: 9px !important;
+    line-height: 1.15 !important;
+    letter-spacing: .1px !important;
+    -webkit-line-clamp: 1 !important;
+    line-clamp: 1 !important;
+    overflow: hidden !important;
+  }
+  #nearMeWidget .property-card h3 {
+    padding: 0 9px !important;
+    margin: 0 0 3px !important;
+    font-size: 13px !important;
+    line-height: 1.15 !important;
+    -webkit-line-clamp: 2 !important;
+    line-clamp: 2 !important;
+    overflow: hidden !important;
+  }
+  #nearMeWidget .property-card p {
+    padding: 0 9px !important;
+    margin: 0 0 4px !important;
+    height: 2.3em !important;
+    max-height: 2.3em !important;
+    font-size: 10px !important;
+    line-height: 1.15 !important;
+    -webkit-line-clamp: 2 !important;
+    line-clamp: 2 !important;
+    overflow: hidden !important;
+  }
+  #nearMeWidget .property-card .property-footer {
+    padding: 0 9px 6px !important;
+    gap: 4px !important;
+  }
+  #nearMeWidget .property-card .property-footer-top {
+    gap: 4px !important;
+    row-gap: 4px !important;
+  }
+  #nearMeWidget .property-card .property-price {
+    font-size: 12px !important;
+    line-height: 1.1 !important;
+  }
+  #nearMeWidget .property-card .property-icon-actions {
+    gap: 3px !important;
+  }
+  #nearMeWidget .property-card .property-icon-actions .icon-action-btn {
+    width: 27px !important;
+    height: 27px !important;
+    font-size: 10px !important;
+    border-radius: 6px !important;
+  }
+  #nearMeWidget .property-card .property-footer .view-details-btn {
+    min-height: 28px !important;
+    padding: 3px 6px !important;
+    font-size: 10px !important;
+    line-height: 1.1 !important;
+  }
+}
