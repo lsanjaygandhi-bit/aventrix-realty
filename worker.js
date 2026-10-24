@@ -185,13 +185,6 @@ export default {
     const contentType = assetResponse.headers.get("content-type") || "";
     if (!contentType.includes("text/html") || assetResponse.status !== 200) return assetResponse;
 
-<<<<<<< HEAD
-    // Add adaptive low-data behaviour site-wide without editing every HTML page.
-    return new HTMLRewriter()
-      .on("head", {
-        element(element) {
-          element.append('<script src="/js/low-data-mode.js" defer></script>', { html: true });
-=======
     // Inject site-wide enhancements without editing the existing page markup.
     // Header/footer and page layouts remain untouched; the language selector is
     // inserted by the client-side language-switcher only.
@@ -206,7 +199,6 @@ export default {
         element(element) {
           element.append('<script src="/js/low-data-mode.js" defer></script>', { html: true });
           element.append('<script src="/js/language-switcher.js?v=20261022-emi-4" defer></script>', { html: true });
->>>>>>> 172e68a (Update multilingual website support)
         }
       })
       .transform(assetResponse);

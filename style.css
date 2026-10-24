@@ -3430,7 +3430,8 @@ html.is-mobile .main-nav .nav-label-extra{ display:inline; }
 .dropdown-toggle i{
     color:inherit;
 }
-    .dropdown:hover .dropdown-content{
+    .main-nav .dropdown.open > .dropdown-content{display:block;}
+.dropdown:hover .dropdown-content{
         display: block;
     }   
 .dropdown-content{
@@ -3457,6 +3458,26 @@ html.is-mobile .main-nav .nav-label-extra{ display:inline; }
     background:#f5f5f5;
     color:#C8A05A;
 }
+/* Aventrix Tools dropdown reliability fix.
+   Desktop: open on hover and keyboard focus.
+   Mobile: remain controlled by .dropdown.open (tap handler in script.js). */
+@media (hover: hover) and (pointer: fine) {
+    .main-nav .dropdown:hover > .dropdown-content,
+    .main-nav .dropdown:focus-within > .dropdown-content {
+        display: block;
+    }
+}
+.main-nav .aventrix-tools-dropdown > .dropdown-content {
+    min-width: 245px;
+}
+html.is-mobile .main-nav .aventrix-tools-dropdown > .dropdown-content {
+    min-width: 0;
+}
+.main-nav .dropdown-toggle:focus-visible {
+    outline: 2px solid #0F3B2E;
+    outline-offset: 3px;
+}
+
 /* ==========================
    LIST WITH US - HERO
 ========================== */
@@ -9204,3 +9225,69 @@ html.is-mobile #leadership .leader-row-content [data-cms-f="rera"] {
 .avx-logo-with-symbol{display:flex;align-items:center;gap:10px;}
 .avx-logo-with-symbol .avx-brand-symbol{display:block;width:44px;height:44px;object-fit:contain;flex:0 0 44px;}
 @media (max-width: 767px){.avx-logo-with-symbol{gap:7px;}.avx-logo-with-symbol .avx-brand-symbol{width:34px;height:34px;flex-basis:34px;}}
+
+
+/* FINAL MOBILE NAV FIX — explicitly reveal submenu links in the open drawer.
+   These scoped !important declarations override legacy page-level dropdown
+   rules without changing desktop menu styling. */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+    html.is-mobile .main-nav .aventrix-tools-dropdown.open > .aventrix-tools-menu,
+    html.is-mobile .main-nav .dropdown.open > .dropdown-content {
+        display: flex !important;
+        flex-direction: column !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        height: auto !important;
+        min-height: 0 !important;
+        max-height: none !important;
+        overflow: visible !important;
+        position: static !important;
+        width: 100% !important;
+        padding: 0 0 0 14px !important;
+        margin: 0 !important;
+        background: #fff !important;
+        box-shadow: none !important;
+        z-index: 10002 !important;
+    }
+    html.is-mobile .main-nav .aventrix-tools-dropdown.open > .aventrix-tools-menu > a,
+    html.is-mobile .main-nav .dropdown.open > .dropdown-content > a {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        height: auto !important;
+        max-height: none !important;
+        color: #111 !important;
+        background: #fff !important;
+        padding: 13px 22px !important;
+        font-size: 14px !important;
+        line-height: 1.4 !important;
+        white-space: normal !important;
+        text-indent: 0 !important;
+        transform: none !important;
+    }
+}
+
+
+/* Mobile UX update: avoid duplicating Post Property in the hero and bottom bar.
+   The bottom-bar center action is now Account instead of the plus button. */
+@media (max-width: 768px) {
+    .home-app-hero-post-btn {
+        display: none !important;
+    }
+    .home-app-bottom-nav .home-app-nav-account {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .home-app-bottom-nav .home-app-nav-account > i {
+        font-size: 20px;
+        line-height: 1;
+    }
+    .home-app-bottom-nav .home-app-nav-account > span {
+        display: block;
+        font-size: 10px;
+        line-height: 1.2;
+        margin-top: 4px;
+    }
+}

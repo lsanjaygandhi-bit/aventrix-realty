@@ -54,3 +54,168 @@
     font-size: 11px !important;
   }
 }
+
+
+/* Aventrix Realty — Compact Glass language selector (final override). */
+#avxLanguageSlot.avx-language-slot {
+  width: 96px !important;
+  height: 32px !important;
+  box-sizing: border-box !important;
+  border: 1px solid rgba(255,255,255,.62) !important;
+  border-radius: 999px !important;
+  background: rgba(255,255,255,.14) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(140%) !important;
+  backdrop-filter: blur(14px) saturate(140%) !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,.12), inset 0 1px 0 rgba(255,255,255,.14) !important;
+}
+#avxLanguageSlot select.avx-language-select {
+  width: 100% !important;
+  height: 100% !important;
+  box-sizing: border-box !important;
+  padding: 0 7px 0 10px !important;
+  border: 0 !important;
+  border-radius: inherit !important;
+  background: transparent !important;
+  color: #fff !important;
+  font-size: 11px !important;
+  font-weight: 650 !important;
+  letter-spacing: 0 !important;
+  line-height: 1 !important;
+  text-shadow: 0 1px 2px rgba(0,0,0,.35) !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+#avxLanguageSlot option {
+  color: #1b0e06 !important;
+  background: #fff !important;
+}
+@media (max-width: 768px) {
+  #avxLanguageSlot.avx-language-slot {
+    width: 94px !important;
+    height: 31px !important;
+    top: 126px !important;
+    right: 12px !important;
+  }
+  #avxLanguageSlot select.avx-language-select {
+    padding-left: 9px !important;
+    font-size: 11px !important;
+  }
+}
+
+
+/* Mobile-only refinement: move selector upward and tighten label/arrow spacing. */
+@media (max-width: 768px) {
+  #avxLanguageSlot.avx-language-slot {
+    top: 104px !important;
+    right: 12px !important;
+    width: 82px !important;
+    height: 27px !important;
+    padding: 0 !important;
+    border-width: 1px !important;
+    border-radius: 999px !important;
+    background: rgba(255,255,255,.12) !important;
+    -webkit-backdrop-filter: blur(12px) saturate(135%) !important;
+    backdrop-filter: blur(12px) saturate(135%) !important;
+  }
+  #avxLanguageSlot select.avx-language-select {
+    width: 100% !important;
+    height: 100% !important;
+    padding: 0 3px 0 7px !important;
+    font-size: 10px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0 !important;
+    text-indent: 0 !important;
+    line-height: 1 !important;
+  }
+}
+
+
+/* Final selected style: compact rounded rectangle for the mobile language selector. */
+@media (max-width: 768px) {
+  #avxLanguageSlot.avx-language-slot {
+    width: 88px !important;
+    height: 30px !important;
+    top: 104px !important;
+    right: 12px !important;
+    border-radius: 8px !important;
+    border: 1px solid rgba(255,255,255,.62) !important;
+    background: rgba(255,255,255,.13) !important;
+    -webkit-backdrop-filter: blur(12px) saturate(135%) !important;
+    backdrop-filter: blur(12px) saturate(135%) !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,.12), inset 0 1px 0 rgba(255,255,255,.12) !important;
+  }
+  #avxLanguageSlot select.avx-language-select {
+    width: 100% !important;
+    height: 100% !important;
+    padding: 0 4px 0 7px !important;
+    border-radius: 7px !important;
+    background: transparent !important;
+    color: #fff !important;
+    font-size: 10px !important;
+    font-weight: 600 !important;
+    line-height: 1 !important;
+  }
+}
+
+
+/* Final header CTA style: both controls use compact rounded rectangles.
+   The language selector is absolutely positioned inside .hh-hero and scrolls with it. */
+#avxLanguageSlot.avx-language-slot {
+  position: absolute !important;
+  top: 58px !important;
+  right: 18px !important;
+  width: 88px !important;
+  height: 30px !important;
+  border-radius: 8px !important;
+  border: 1px solid rgba(255,255,255,.66) !important;
+  background: rgba(255,255,255,.13) !important;
+  -webkit-backdrop-filter: blur(12px) saturate(135%) !important;
+  backdrop-filter: blur(12px) saturate(135%) !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,.14) !important;
+  overflow: hidden !important;
+}
+#avxLanguageSlot select.avx-language-select {
+  width: 100% !important;
+  height: 100% !important;
+  padding: 0 2px 0 7px !important;
+  border-radius: 7px !important;
+  background: transparent !important;
+  color: #fff !important;
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0 !important;
+  text-shadow: 0 1px 2px rgba(0,0,0,.35) !important;
+}
+@media (max-width: 768px) {
+  #avxLanguageSlot.avx-language-slot {
+    top: 58px !important;
+    right: 12px !important;
+    width: 82px !important;
+    height: 28px !important;
+  }
+  #avxLanguageSlot select.avx-language-select {
+    padding: 0 1px 0 5px !important;
+    font-size: 9px !important;
+  }
+}
+
+/* Compact square-corner Post Property CTA to match the language selector. */
+.home-app-hero-post-btn {
+  border-radius: 8px !important;
+  padding: 6px 10px !important;
+  gap: 4px !important;
+  font-size: 11px !important;
+}
+.home-app-hero-post-btn span {
+  font-size: 10px !important;
+  letter-spacing: .25px !important;
+}
+@media (max-width: 640px) {
+  .home-app-hero-post-btn {
+    top: 16px !important;
+    right: 12px !important;
+    padding: 5px 8px !important;
+    border-radius: 7px !important;
+    font-size: 10px !important;
+  }
+}

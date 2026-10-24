@@ -289,20 +289,65 @@ if (menuToggle && mainNav && menuOverlay) {
 }
 
 // ===========================
-// MOBILE DROPDOWN (Properties submenu)
-// ===========================
-const dropdownToggle = document.querySelector(".dropdown-toggle");
+// MOBILE / DESKTOP NAV DROPDOWNS
+// Delegated handling is used so it continues to work if another script
+// updates navigation labels or language text after page load.
+document.addEventListener("click", function (event) {
+    const target = event.target instanceof Element ? event.target : null;
+    if (!target) return;
 
-if (dropdownToggle) {
-    dropdownToggle.addEventListener("click", function (e) {
-        if (document.documentElement.classList.contains("is-mobile")) {
-            e.preventDefault();
-            e.stopPropagation();
-            this.parentElement.classList.toggle("open");
-        }
+    const toggle = target.closest(".main-nav .dropdown-toggle");
+    if (toggle) {
+        const dropdown = toggle.parentElement;
+        const menu = dropdown && dropdown.querySelector(":scope > .dropdown-content");
+        if (!dropdown || !menu) return;
+
+        // Always treat the parent row as the submenu toggle.
+        // "All Property Tools" inside the submenu navigates to the page.
+        event.preventDefault();
+        event.stopPropagation();
+
+        const opening = !dropdown.classList.contains("open");
+        document.querySelectorAll(".main-nav .dropdown.open").forEach(function (other) {
+            if (other !== dropdown) {
+                other.classList.remove("open");
+                const otherToggle = other.querySelector(":scope > .dropdown-toggle");
+                if (otherToggle) otherToggle.setAttribute("aria-expanded", "false");
+            }
+        });
+
+        dropdown.classList.toggle("open", opening);
+        toggle.setAttribute("aria-expanded", opening ? "true" : "false");
+        menu.setAttribute("aria-hidden", opening ? "false" : "true");
+        return;
+    }
+
+    if (!target.closest(".main-nav .dropdown")) {
+        document.querySelectorAll(".main-nav .dropdown.open").forEach(function (dropdown) {
+            dropdown.classList.remove("open");
+            const parentToggle = dropdown.querySelector(":scope > .dropdown-toggle");
+            const menu = dropdown.querySelector(":scope > .dropdown-content");
+            if (parentToggle) parentToggle.setAttribute("aria-expanded", "false");
+            if (menu) menu.setAttribute("aria-hidden", "true");
+        });
+    }
+});
+
+function initialiseNavigationDropdowns() {
+    document.querySelectorAll(".main-nav .dropdown-toggle").forEach(function (toggle) {
+        const dropdown = toggle.parentElement;
+        const menu = dropdown && dropdown.querySelector(":scope > .dropdown-content");
+        toggle.setAttribute("aria-haspopup", "true");
+        if (!toggle.hasAttribute("aria-expanded")) toggle.setAttribute("aria-expanded", "false");
+        if (menu && !menu.hasAttribute("aria-hidden")) menu.setAttribute("aria-hidden", "true");
     });
 }
-// ===========================
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initialiseNavigationDropdowns, { once: true });
+} else {
+    initialiseNavigationDropdowns();
+}
+
 // OUR REALTORS: RENDER CARD GRID
 // Reads from REALTORS_DATA (realtors-data.js). Only runs if this
 // page has a #realtorsGrid element, so it's a no-op elsewhere.

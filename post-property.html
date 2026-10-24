@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script>
+    (function () {
+    // Manual scroll restoration: we save/restore scroll position
+    // ourselves (see script.js) so users returning via Back land back
+    // exactly where they were, instead of the browser's default
+    // (and often mistimed) automatic restoration.
+    if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+    }
+
+    function evaluateMobile() {
+        // Detect real mobile/touch devices instead of relying only on
+        // viewport width, so the mobile layout survives orientation
+        // changes (landscape too). Also re-checks on resize so a
+        // desktop browser window narrowed below 768px (e.g. during
+        // responsive QA / devtools) correctly gets the mobile layout,
+        // without affecting real touch devices, which stay mobile
+        // via the touch/UA check regardless of width or rotation.
+        var coarsePointer = window.matchMedia &&
+            window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+        var mobileUA = /Android|iPhone|iPad|iPod|IEMobile|BlackBerry|Opera Mini|Mobile/i
+            .test(navigator.userAgent);
+        var narrowViewport = window.innerWidth <= 768;
+
+        var shouldBeMobile = coarsePointer || mobileUA || narrowViewport;
+        document.documentElement.classList.toggle('is-mobile', shouldBeMobile);
+    }
+
+    evaluateMobile();
+
+    var resizeTimer;
+    window.addEventListener('resize', function () {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(evaluateMobile, 150);
+    });
+})();
+    </script>
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico?v=3">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png?v=3">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png?v=3">
+    <link rel="icon" type="image/png" sizes="48x48" href="/images/favicon/favicon-48x48.png?v=3">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png?v=3">
+    <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon/android-chrome-192x192.png?v=3">
+    <link rel="icon" type="image/png" sizes="512x512" href="/images/favicon/android-chrome-512x512.png?v=3">
+    <link rel="manifest" href="/site.webmanifest?v=2">
+
+    <title>Post Your Property | Aventrix Realty</title>
+
+    <meta name="description" content="Sign in to submit your property details to Aventrix Realty for review.">
+    <link rel="canonical" href="https://aventrixrealty.com/post-property.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Aventrix Realty">
+    <meta property="og:title" content="Post Your Property | Aventrix Realty">
+    <meta property="og:description" content="Sign in to submit your property details to Aventrix Realty for review.">
+    <meta property="og:url" content="https://aventrixrealty.com/post-property.html">
+    <meta property="og:image" content="https://aventrixrealty.com/images/og/aventrix-logo-og.jpg">
+    <meta property="og:image:secure_url" content="https://aventrixrealty.com/images/og/aventrix-logo-og.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Aventrix Realty">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="List with Us | Aventrix Realty">
+    <meta name="twitter:description" content="List your property for free with Aventrix Realty — reach verified buyers and tenants across Chennai with expert marketing and advisory support.">
+    <meta name="twitter:image" content="https://aventrixrealty.com/images/og/aventrix-logo-og.jpg">
+
+    <link rel="stylesheet" href="style.css?v=20261018-mobile-audit">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "List with Us | Aventrix Realty",
+  "url": "https://aventrixrealty.com/list-with-us.html",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Aventrix Realty",
+    "url": "https://aventrixrealty.com/"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://aventrixrealty.com/index.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "List With Us",
+      "item": "https://aventrixrealty.com/list-with-us.html"
+    }
+  ]
+}
+    </script>
+    <link rel="stylesheet" href="css/site-footer.css?v=20261021">
+    <link rel="stylesheet" href="css/site-fixes.css?v=20261014">
+    <link rel="stylesheet" href="css/location-picker.css?v=20260927">
+
+<style>
+/* Focused Post Property flow: keep the existing shared header/footer and the existing listing form. */
+body.post-property-quick-page section:not(#owner-form):not(#postAuthGate),
+body.post-property-quick-page .breadcrumb,
+body.post-property-quick-page .page-hero,
+body.post-property-quick-page .hero-section,
+body.post-property-quick-page .owner-benefits,
+body.post-property-quick-page .lwu-hero,
+body.post-property-quick-page .listing-hero { display:none !important; }
+body.post-property-quick-page #owner-form { padding:34px 0 56px; min-height:55vh; }
+body.post-property-quick-page #owner-form .container { max-width:900px; }
+body.post-property-quick-page #owner-form h2 { margin-bottom:10px; }
+body.post-property-quick-page .post-auth-gate {
+  max-width:620px; margin:28px auto; padding:26px; border-radius:20px;
+  border:1px solid rgba(16,75,59,.16); background:rgba(255,255,255,.96);
+  box-shadow:0 18px 50px rgba(15,40,32,.10);
+}
+body.post-property-quick-page .post-auth-gate h2 { margin:0 0 8px; color:#104b3b; }
+body.post-property-quick-page .post-auth-gate p { color:#5c6670; margin:0 0 18px; }
+body.post-property-quick-page .post-auth-gate form { display:grid; gap:12px; }
+body.post-property-quick-page .post-auth-gate input {
+  width:100%; min-height:48px; border:1px solid #d5ddd9; border-radius:10px;
+  padding:12px 14px; font:inherit; box-sizing:border-box; background:#fff;
+}
+body.post-property-quick-page .post-auth-gate button {
+  min-height:48px; border:0; border-radius:10px; background:#104b3b; color:#fff;
+  font:inherit; font-weight:700; padding:12px 18px; cursor:pointer;
+}
+body.post-property-quick-page .post-auth-gate a { color:#104b3b; font-weight:600; }
+body.post-property-quick-page .post-auth-message { margin-top:12px; font-size:14px; }
+body.post-property-quick-page #owner-form.post-auth-locked { display:none !important; }
+@media(max-width:640px) {
+ body.post-property-quick-page #owner-form { padding:24px 0 40px; }
+ body.post-property-quick-page .post-auth-gate { margin:18px 16px; padding:20px; }
+}
+</style>
+
+</head>
+
+<body data-page-key="list-with-us">
+
+    <header class="header">
+    <div class="container nav">
+        <div class="logo">
+    <a href="index.html" class="logo-text">
+        <img src="images/aventrix-logo.png" alt="Aventrix Realty">
+    </a>
+</div>
+   <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" data-i18n-aria-label="shared.header.openMenu">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+        <!-- Mobile-only bell — matches index.html's header exactly
+             (site-wide header consistency). Stays visible on every
+             breakpoint, unlike the desktop one inside .nav-right
+             (hidden on mobile by an existing rule). -->
+        <div class="home-app-header-actions">
+            <a href="account.html" class="home-app-bell-btn" aria-label="My Account" data-i18n-aria-label="shared.header.myAccount">
+                <i class="far fa-circle-user" aria-hidden="true"></i>
+            </a>
+        </div>
+    <div class="menu-overlay" id="menuOverlay"></div>   
+       <nav class="main-nav" data-hq="phones">
+
+    <a href="index.html" data-i18n="Home">Home</a>
+
+    <a href="about.html" data-i18n="About Us">About Us</a>
+
+    <a href="properties.html" data-i18n="Properties">Properties</a>
+
+    <a href="services.html" data-i18n="Services">Services</a>
+
+    <a href="list-with-us.html" data-i18n="List With Us">List With Us</a>
+
+    <a href="free-valuation.html" data-i18n="Free Valuation">Free Valuation</a>
+
+    <a href="joint-venture.html" data-i18n="Joint Venture">Joint Venture</a>
+
+    <a href="property-tools.html"><span class="nav-label-extra">Property </span>Tools</a>
+    <a href="nri-services.html" data-i18n="NRI Services">NRI Services</a>
+
+    <a href="contact.html" data-i18n="Contact">Contact</a>
+
+    <a href="/admin/" class="main-nav-admin" data-i18n="Admin">Admin</a>
+
+
+    <div class="mobile-menu-divider"></div>
+    <span class="mobile-menu-contact-label" data-i18n="CONTACT">CONTACT</span>
+    <a href="tel:+919176887770" class="mobile-menu-phone">📞 +91 91768 87770</a>
+    <a href="tel:+917092356222" class="mobile-menu-phone">📞 +91 70923 56222</a>
+
+
+    <div class="mobile-menu-socials">
+      <a href="https://wa.me/919176887770" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" data-site="whatsapp-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 3.5a8.5 8.5 0 0 0-7.3 12.8L3.5 20.5l4.4-1.2A8.5 8.5 0 1 0 12 3.5z"/><path d="M8.7 8.6c.2-.5.4-.5.6-.5h.5c.2 0 .4 0 .5.4.2.5.6 1.5.6 1.6.1.1.1.3 0 .4-.1.2-.1.3-.3.4-.1.2-.3.3-.4.5-.1.1-.3.3-.1.5.2.4 1 1.5 2 2.3 1.2 1 1 .8 1.3.7.2 0 .4-.2.5-.4.2-.2.4-.2.6-.1l1.4.7c.2.1.4.2.4.3.1.2.1 1-.3 1.4-.4.5-1.4.9-2 .9-.6 0-1.4-.1-3.3-1-2.4-1.1-3.9-3.4-4-3.6-.1-.2-1-1.3-1-2.5s.6-1.8.8-2z" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="https://www.instagram.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Instagram" data-site="social-instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="0.8" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="https://www.facebook.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Facebook" data-site="social-facebook">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M15 8.5h-2a1.5 1.5 0 0 0-1.5 1.5v2h3.4l-.4 3H11.5v7h-3v-7H6.5v-3h2V9.7C8.5 7 10 5.5 12.5 5.5H15v3z"/></svg>
+      </a>
+      <a href="https://maps.app.goo.gl/Gfs3JJ4VVN4cxU5G7?g_st=ic" target="_blank" rel="noopener noreferrer" aria-label="Google Maps" data-hq="maps">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg>
+      </a>
+    </div>
+
+  </nav>
+  
+        <div class="nav-right">
+            <!-- Notification/Bell — matches index.html's header exactly
+                 (site-wide header consistency), same .nav-wishlist-link
+                 styling, same position ahead of the phone number. -->
+            <a href="account.html" class="nav-wishlist-link nav-bell-link" aria-label="My Account" data-i18n-aria-label="shared.header.myAccount">
+                <i class="far fa-circle-user" aria-hidden="true"></i>
+            </a>
+            <a href="tel:+919176887770" class="nav-phone" aria-label="Call Aventrix Realty" data-i18n-aria-label="shared.header.callAventrix">
+                <i class="fas fa-phone-alt" aria-hidden="true"></i>
+            </a>
+        </div>
+    </div>
+     </header>
+
+<section class="list-hero">
+
+    <div class="container">
+
+        <span class="section-tag" data-page-hero-eyebrow>
+            PROPERTY OWNER SERVICES
+        </span>
+
+        <h1 data-page-hero-title>
+            Reach the Right Buyers<br>
+            for Your Property
+        </h1>
+
+        <p data-page-hero-subtitle>
+            List your property with Aventrix Realty and get professional
+            marketing, wider exposure and dedicated support — from the
+            first enquiry through to the transaction.
+        </p>
+
+        <div class="hero-buttons hero-buttons-compact">
+
+            <a href="#owner-form" class="primary-btn" data-page-hero-button>
+                List Your Property
+            </a>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="fv-section" data-cms-section="why-list" data-cms-label="Why list with Aventrix (4 cards)">
+
+    <div class="container">
+
+        <div class="section-heading">
+            <span class="section-eyebrow" data-cms-eyebrow>Property Owner Services</span>
+            <h2 data-cms-heading>Why List With Aventrix Realty?</h2>
+        </div>
+
+        <div class="fv-grid" data-cms-list="items">
+
+            <div class="fv-card" data-cms-item>
+                <span class="fv-card-number" data-cms-f="number">01</span>
+                <h3 data-cms-f="title">Wider Buyer Reach</h3>
+                <p data-cms-f="text">Your property is presented to genuine buyers, tenants
+                    and investors actively looking across Chennai.</p>
+            </div>
+
+            <div class="fv-card" data-cms-item>
+                <span class="fv-card-number" data-cms-f="number">02</span>
+                <h3 data-cms-f="title">Professional Marketing</h3>
+                <p data-cms-f="text">Clear, well-organised property information helps your
+                    listing stand out and get noticed.</p>
+            </div>
+
+            <div class="fv-card" data-cms-item>
+                <span class="fv-card-number" data-cms-f="number">03</span>
+                <h3 data-cms-f="title">End-to-End Support</h3>
+                <p data-cms-f="text">From listing to closing, our team stays involved with
+                    you at every step of the process.</p>
+            </div>
+
+            <div class="fv-card" data-cms-item>
+                <span class="fv-card-number" data-cms-f="number">04</span>
+                <h3 data-cms-f="title">Confidential Handling</h3>
+                <p data-cms-f="text">Your property and contact details are handled
+                    discreetly and shared only with relevant parties.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="fv-section fv-alt" data-cms-section="owner-benefits" data-cms-label="What you gain (6)">
+
+    <div class="container">
+
+        <div class="section-heading">
+            <span class="section-eyebrow" data-cms-eyebrow>Owner Benefits</span>
+            <h2 data-cms-heading>What You Gain by Listing With Us</h2>
+        </div>
+
+        <div class="fv-benefits-grid" data-cms-list="items">
+
+            <div class="fv-benefit" data-cms-item>
+                <h3 data-cms-f="title">Better Visibility</h3>
+                <p data-cms-f="text">Your property gets proper presentation across our
+                    active buyer and tenant network.</p>
+            </div>
+
+            <div class="fv-benefit" data-cms-item>
+                <h3 data-cms-f="title">Relevant Connections</h3>
+                <p data-cms-f="text">We match your property to buyers and tenants whose
+                    requirements genuinely fit.</p>
+            </div>
+
+            <div class="fv-benefit" data-cms-item>
+                <h3 data-cms-f="title">Professional Presentation</h3>
+                <p data-cms-f="text">Clear property details and organised information make
+                    a stronger first impression.</p>
+            </div>
+
+            <div class="fv-benefit" data-cms-item>
+                <h3 data-cms-f="title">Sensible Market Positioning</h3>
+                <p data-cms-f="text">We help position your property sensibly based on its
+                    location and category.</p>
+            </div>
+
+            <div class="fv-benefit" data-cms-item>
+                <h3 data-cms-f="title">Transaction Coordination</h3>
+                <p data-cms-f="text">Our team coordinates communication and next steps
+                    through the process.</p>
+            </div>
+
+            <div class="fv-benefit" data-cms-item>
+                <h3 data-cms-f="title">Ongoing Owner Communication</h3>
+                <p data-cms-f="text">You stay informed and involved throughout, through a
+                    single point of contact.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="post-auth-gate" id="postAuthGate" aria-labelledby="postAuthTitle">
+  <h2 id="postAuthTitle">Log in to post your property</h2>
+  <p>Sign in to continue. Your property details will be submitted to Aventrix Realty for review.</p>
+  <form id="postLoginForm">
+    <label for="postLoginEmail">Email address</label>
+    <input id="postLoginEmail" type="email" autocomplete="email" required placeholder="you@example.com">
+    <label for="postLoginPassword">Password</label>
+    <input id="postLoginPassword" type="password" autocomplete="current-password" required placeholder="Enter your password">
+    <button type="submit" id="postLoginSubmit">Log in and continue</button>
+  </form>
+  <p class="post-auth-message" id="postAuthMessage" role="status" aria-live="polite"></p>
+  <p>New to Aventrix Realty? <a href="account.html">Create an account</a>, then return here to post your property.</p>
+</section>
+
+<section id="owner-form" class="owner-form post-auth-locked" data-cms-section="form-intro" data-cms-label="Listing form (heading and intro)">
+
+             <div class="container">
+
+                 <h2 data-cms-heading>Share Your Property Details</h2>
+
+                 <p data-cms-f="text">
+                     Tell us about your property and what you're looking to do with it —
+                     our team will review the details and get in touch to discuss the next steps.
+                     <br><br>
+                     <strong>🔒 Your information is kept confidential and used only for property-related communication.</strong>
+                 </p>
+
+                 <form id="propertyForm" data-form-type="Property Listing Request"
+                       action="" method="POST">
+
+                    <h3 class="fv-form-group-heading" data-i18n="listing.form.ownerInfo">Owner Information</h3>
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                             <label><span data-i18n="contact.form.fullName">Full Name</span> <span class="required">*</span></label>
+                             <input type="text" name="full-name" placeholder="Full Name" required data-i18n-placeholder="contact.form.fullName">
+                         </div>
+
+                         <div class="form-group">
+                             <label><span data-i18n="enquiry.form.mobile">Mobile Number</span> <span class="required">*</span></label>
+                             <input type="tel" name="mobile-number" placeholder="Mobile Number" required data-i18n-placeholder="enquiry.form.mobile">
+                         </div>
+
+                         <div class="form-group">
+                             <label><span data-i18n="listing.form.whatsapp">WhatsApp Number</span> <span class="required">*</span></label>
+                             <input type="tel" name="whatsapp-number" placeholder="WhatsApp Number" required data-i18n-placeholder="listing.form.whatsapp">
+                         </div>
+
+                         <div class="form-group">
+                            <label data-i18n="Email Address">Email Address</label>
+                            <input type="email" name="email-address" placeholder="Email Address" data-i18n-placeholder="Email Address">
+                         </div>
+
+                    </div>
+
+                    <h3 class="fv-form-group-heading" data-i18n="listing.form.propertyInfo">Property Information</h3>
+                    <div class="form-grid">
+
+                     <div class="form-group">
+                         <label><span data-i18n="Property Type">Property Type</span> <span class="required">*</span></label>
+                         <select name="property-type" required>
+                             <option value="" data-i18n="listing.form.selectPropertyType">Select Property Type</option>
+                             <option value="Residential" data-i18n="Residential">Residential</option>
+                             <option value="Commercial" data-i18n="Commercial">Commercial</option>
+                             <option value="Land" data-i18n="Land">Land</option>
+                             <option value="Industrial" data-i18n="listing.option.industrial">Industrial</option>
+                             <option value="Special Purpose" data-i18n="listing.option.specialPurpose">Special Purpose</option>
+                             <option value="Agricultural" data-i18n="Agricultural">Agricultural</option>
+                             <option value="Other" data-i18n="Other">Other</option>
+                         </select>
+                     </div>
+
+                     <div class="form-group">
+                         <label data-i18n="Property Location">Property Location</label>
+                         <input type="text" name="property-location" placeholder="Property Location" data-i18n-placeholder="Property Location">
+                     </div>
+
+                     <div class="form-group">
+                         <label><span data-i18n="listing.form.propertyAddress">Property Address</span> <span class="required">*</span></label>
+                         <input type="text" name="property-address" placeholder="Property Address" data-i18n-placeholder="listing.form.propertyAddress" required>
+                     </div>
+
+        <div class="form-group">
+            <label data-i18n="listing.form.landArea">Land Area</label>
+            <input type="text" name="land-area" placeholder="Land Area" data-i18n-placeholder="listing.form.landArea">
+        </div>
+
+        <div class="form-group">
+            <label data-i18n="Built-up Area">Built-up Area</label>
+            <input type="text" name="built-up-area" placeholder="Built-up Area" data-i18n-placeholder="Built-up Area">
+        </div>
+
+        <div class="form-group">
+            <label data-i18n="listing.form.bedrooms">Number of Bedrooms</label>
+            <select name="bedrooms">
+                <option value="" data-i18n="listing.form.selectApplicable">Select (if applicable)</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5+</option>
+                <option value="Not Applicable" data-i18n="listing.option.notApplicable">Not Applicable</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label data-i18n="listing.form.propertyStatus">Property Status</label>
+            <select name="property-status">
+                <option value="" data-i18n="Select">Select</option>
+                <option value="Ready to Move" data-i18n="listing.option.ready">Ready to Move</option>
+                <option value="Under Construction" data-i18n="listing.option.underConstruction">Under Construction</option>
+                <option value="Vacant" data-i18n="listing.option.vacant">Vacant</option>
+                <option value="Tenant Occupied" data-i18n="listing.option.tenantOccupied">Tenant Occupied</option>
+                <option value="Other" data-i18n="Other">Other</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label><span data-i18n="listing.form.expectedPrice">Expected Price</span> <span class="required">*</span></label>
+            <input type="text" name="expected-price" placeholder="Expected Price (₹)" data-i18n-placeholder="listing.form.expectedPricePlaceholder" required>
+        </div>
+
+        <div class="form-group">
+            <label data-i18n="listing.form.contactTime">Preferred Contact Time</label>
+            <select name="preferred-contact-time">
+                <option value="" data-i18n="listing.form.contactPreference">Select (if any preference)</option>
+                <option value="Morning" data-i18n="Morning">Morning</option>
+                <option value="Afternoon" data-i18n="Afternoon">Afternoon</option>
+                <option value="Evening" data-i18n="Evening">Evening</option>
+            </select>
+        </div>
+
+    </div>
+
+    <h3 class="fv-form-group-heading" data-i18n="Property Location">Property Location</h3>
+    <div class="form-grid fv-form-grid-single">
+        <div class="form-group">
+            <p class="location-picker-hint" data-i18n="listing.map.hint">Help us find your property faster — search its address or click directly on the map to mark the exact location. This step is optional but recommended.</p>
+            <div class="location-picker-search-row">
+                <input type="text" id="lwuLocationSearch" placeholder="Search property location or address…" data-i18n-placeholder="listing.map.searchPlaceholder" autocomplete="off">
+                <button type="button" id="lwuLocationSearchBtn" class="location-picker-search-btn"><i class="fas fa-search" aria-hidden="true"></i> <span data-i18n="Search">Search</span></button>
+            </div>
+            <div id="lwuLocationMap" class="location-picker-map" role="application" aria-label="Map — click to mark your property's location" data-i18n-aria-label="listing.map.ariaLabel"></div>
+            <p id="lwuLocationStatus" class="location-picker-status" hidden></p>
+            <button type="button" id="lwuLocationClearBtn" class="location-picker-clear-btn" data-i18n="listing.map.clear">Clear selected location</button>
+            <input type="hidden" name="latitude" id="lwuLatitude">
+            <input type="hidden" name="longitude" id="lwuLongitude">
+        </div>
+    </div>
+
+    <h3 class="fv-form-group-heading" data-i18n="listing.form.requirementHeading">Listing Requirement</h3>
+    <div class="form-grid fv-form-grid-single">
+
+        <div class="form-group">
+             <label><span data-i18n="listing.form.requirement">What Are You Looking to Do?</span> <span class="required">*</span></label>
+             <select name="listing-requirement" required>
+                 <option value="" data-i18n="listing.form.selectRequirement">Select Listing Requirement</option>
+                 <option value="Sale" data-i18n="listing.option.sale">Sale</option>
+                 <option value="Rental / Leasing" data-i18n="listing.option.rental">Rental / Leasing</option>
+                 <option value="Joint Venture" data-i18n="Joint Venture">Joint Venture</option>
+                 <option value="Other" data-i18n="Other">Other</option>
+             </select>
+        </div>
+
+    </div>
+
+    <h3 class="fv-form-group-heading" data-i18n="listing.form.additionalHeading">Additional Details</h3>
+    <div class="form-grid fv-form-grid-single">
+
+        <div class="form-group">
+            <label data-i18n="listing.form.additionalLabel">Anything Else We Should Know?</label>
+            <textarea name="additional-details" placeholder="Share any additional details about your property, or let us know what you're specifically looking for..." data-i18n-placeholder="listing.form.additionalPlaceholder" rows="6"></textarea>
+        </div>
+
+    </div>
+
+    <h3 class="fv-form-group-heading" data-i18n="listing.form.uploadHeading">Optional Document / Image Upload</h3>
+    <div class="form-grid fv-form-grid-single">
+
+        <div class="form-group">
+            <label data-i18n="listing.form.uploadLabel">Upload Property Photos</label>
+            <input type="file" name="property-photos" multiple>
+        </div>
+
+    </div>
+
+    <div class="submit-wrapper">
+         <button type="submit" data-i18n="listing.form.submit">
+              Submit Property
+         </button>
+    </div>
+                 </form>
+                 <div id="success-message" class="success-message" style="display:none; text-align:center; padding:40px;">
+                     <h2 style="color:#2e7d32;" data-i18n="listing.success.title">✅ Thank You!</h2>
+
+                     <p data-i18n="listing.success.body">Your property details have been submitted successfully.</p>
+
+                     <p data-i18n="listing.success.followup">Our Aventrix Realty property consultant will contact you shortly.</p>
+                 </div>
+
+            </div>
+
+        </section>
+
+<section class="fv-section" data-cms-section="property-types" data-cms-label="Property types we handle (6)">
+
+    <div class="container">
+
+        <div class="section-heading">
+            <span class="section-eyebrow" data-cms-eyebrow>Property Types</span>
+            <h2 data-cms-heading>Property Types We Handle</h2>
+        </div>
+
+        <div class="fv-grid" data-cms-list="items">
+
+            <div class="fv-card" data-cms-item>
+                <h3 data-cms-f="title" data-i18n="Residential Properties">Residential Properties</h3>
+                <p data-cms-f="text">Homes for sale or rent, across a range of budgets and
+                    configurations.</p>
+            </div>
+
+            <div class="fv-card" data-cms-item>
+                <h3 data-cms-f="title" data-i18n="Commercial Properties">Commercial Properties</h3>
+                <p data-cms-f="text">Office spaces, showrooms and commercial units suited
+                    for business use.</p>
+            </div>
+
+            <div class="fv-card" data-cms-item>
+                <h3 data-cms-f="title" data-i18n="Land &amp; Plots">Land &amp; Plots</h3>
+                <p data-cms-f="text">Residential and investment plots across Chennai and
+                    its surrounding areas.</p>
+            </div>
+
+            <div class="fv-card" data-cms-item>
+                <h3 data-cms-f="title">Independent Houses</h3>
+                <p data-cms-f="text">Standalone homes suited for owners looking for more
+                    space and privacy.</p>
+            </div>
+
+            <div class="fv-card" data-cms-item>
+                <h3 data-cms-f="title" data-i18n="Apartments">Apartments</h3>
+                <p data-cms-f="text">Flats across a range of configurations, from compact
+                    homes to larger units.</p>
+            </div>
+
+            <div class="fv-card" data-cms-item>
+                <h3 data-cms-f="title">Joint Development Opportunities</h3>
+                <p data-cms-f="text">Suitable land matched with development partners for
+                    joint development.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="fv-section fv-alt" data-cms-section="why-owners" data-cms-label="Why owners work with us (6 cards)">
+
+    <div class="container">
+
+        <div class="section-heading">
+            <span class="section-eyebrow" data-cms-eyebrow>Why Aventrix</span>
+            <h2 data-cms-heading>Why Property Owners Work With Us</h2>
+        </div>
+
+        <div class="fv-grid" data-cms-list="items">
+
+            <div class="fv-card" data-cms-item>
+                <span class="fv-card-number" data-cms-f="number">01</span>
+                <h3 data-cms-f="title">Real Estate Experience</h3>
+                <p data-cms-f="text">Led by professionals with 15+ years of real estate
+                    experience in the Chennai market.</p>
+            </div>
+
+            <div class="fv-card" data-cms-item>
+                <span class="fv-card-number" data-cms-f="number">02</span>
+                <h3 data-cms-f="title">Local Market Knowledge</h3>
+                <p data-cms-f="text">A team familiar with Chennai's localities, property
+                    categories and buyer behaviour.</p>
+            </div>
+
+            <div class="fv-card" data-cms-item>
+                <span class="fv-card-number" data-cms-f="number">03</span>
+                <h3 data-cms-f="title">Professional Property Marketing</h3>
+                <p data-cms-f="text">Your property is presented clearly and professionally,
+                    every time.</p>
+            </div>
+
+            <div class="fv-card" data-cms-item>
+                <span class="fv-card-number" data-cms-f="number">04</span>
+                <h3 data-cms-f="title">Buyer &amp; Investor Network</h3>
+                <p data-cms-f="text">Access to a network of buyers, tenants and investors
+                    actively engaging with our team.</p>
+            </div>
+
+            <div class="fv-card" data-cms-item>
+                <span class="fv-card-number" data-cms-f="number">05</span>
+                <h3 data-cms-f="title">Transparent Communication</h3>
+                <p data-cms-f="text">We keep you informed with honest, straightforward
+                    updates through the process.</p>
+            </div>
+
+            <div class="fv-card" data-cms-item>
+                <span class="fv-card-number" data-cms-f="number">06</span>
+                <h3 data-cms-f="title">End-to-End Coordination</h3>
+                <p data-cms-f="text">One team coordinates the process from your first
+                    enquiry to the final transaction.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="fv-section" data-cms-section="listing-process" data-cms-label="Listing process (5 steps)">
+
+    <div class="container">
+
+        <div class="section-heading">
+            <span class="section-eyebrow" data-cms-eyebrow data-i18n="How It Works">How It Works</span>
+            <h2 data-cms-heading>Our Property Listing Process</h2>
+        </div>
+
+        <div class="fv-grid" data-cms-list="items">
+
+            <div class="fv-card" data-cms-item>
+                <span class="fv-card-number" data-cms-f="number">01</span>
+                <h3 data-cms-f="title">Share Your Property</h3>
+                <p data-cms-f="text">Fill in your property and contact details through our
+                    simple listing form.</p>
+            </div>
+
+            <div class="fv-card" data-cms-item>
+                <span class="fv-card-number" data-cms-f="number">02</span>
+                <h3 data-cms-f="title">Property Review</h3>
+                <p data-cms-f="text">Our team reviews the information you've shared to
+                    understand your property better.</p>
+            </div>
+
+            <div class="fv-card" data-cms-item>
+                <span class="fv-card-number" data-cms-f="number">03</span>
+                <h3 data-cms-f="title">Market Positioning</h3>
+                <p data-cms-f="text">We consider your property's location, category and
+                    condition to position it sensibly.</p>
+            </div>
+
+            <div class="fv-card" data-cms-item>
+                <span class="fv-card-number" data-cms-f="number">04</span>
+                <h3 data-cms-f="title">Buyer / Tenant Outreach</h3>
+                <p data-cms-f="text">Your property is shared with relevant buyers, tenants
+                    or investors in our network.</p>
+            </div>
+
+            <div class="fv-card" data-cms-item>
+                <span class="fv-card-number" data-cms-f="number">05</span>
+                <h3 data-cms-f="title">Transaction Coordination</h3>
+                <p data-cms-f="text">We stay involved through discussions, follow-ups and
+                    the steps that follow.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="fv-section fv-alt" data-cms-section="situations" data-cms-label="Common situations (6)">
+
+    <div class="container">
+
+        <div class="section-heading">
+            <span class="section-eyebrow" data-cms-eyebrow>Common Situations</span>
+            <h2 data-cms-heading>Wherever You Are With Your Property, We Can Help</h2>
+        </div>
+
+        <div class="fv-grid" data-cms-list="items">
+
+            <div class="fv-card" data-cms-item>
+                <h3 data-cms-f="title">Selling a Property</h3>
+                <p data-cms-f="text">Looking to sell? We help you reach genuine buyers and
+                    manage the process end-to-end.</p>
+            </div>
+
+            <div class="fv-card" data-cms-item>
+                <h3 data-cms-f="title">Leasing a Property</h3>
+                <p data-cms-f="text">Want to lease your property? We connect you with
+                    suitable tenants and coordinate the details.</p>
+            </div>
+
+            <div class="fv-card" data-cms-item>
+                <h3 data-cms-f="title">Managing an Investment Property</h3>
+                <p data-cms-f="text">Own a property purely as an investment? We help you
+                    stay on top of its market position.</p>
+            </div>
+
+            <div class="fv-card" data-cms-item>
+                <h3 data-cms-f="title">Land or Plot Sale</h3>
+                <p data-cms-f="text">Selling land or a plot? We help present it clearly to
+                    genuinely interested buyers.</p>
+            </div>
+
+            <div class="fv-card" data-cms-item>
+                <h3 data-cms-f="title">Joint Development Opportunity</h3>
+                <p data-cms-f="text">Have land suited for development? We can discuss joint
+                    development possibilities with our partners.</p>
+            </div>
+
+            <div class="fv-card" data-cms-item>
+                <h3 data-cms-f="title">Property Advisory Requirement</h3>
+                <p data-cms-f="text">Not sure of your next step? Our team can walk you
+                    through the options available to you.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="fv-section" data-cms-section="owner-faq" data-cms-label="Owner FAQs (7)">
+
+    <div class="container">
+
+        <div class="section-heading">
+            <span class="section-eyebrow" data-cms-eyebrow>FAQ</span>
+            <h2 data-cms-heading>Questions Property Owners Ask</h2>
+        </div>
+
+        <div class="faq-flat">
+            <div class="faq-list" data-cms-list="faqs">
+
+                <div class="faq-item" data-cms-item>
+                    <button class="faq-question" aria-expanded="false">
+                        <span data-cms-f="question">What information do I need to provide?</span>
+                        <i class="fas fa-plus faq-icon" aria-hidden="true"></i>
+                    </button>
+                    <div class="faq-answer" data-cms-f="answer">
+                        <p>Basic contact details along with your property's type,
+                            location, area and what you're looking to do with it
+                            (sale, rental or joint venture). Anything else can be
+                            added under Additional Details.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-cms-item>
+                    <button class="faq-question" aria-expanded="false">
+                        <span data-cms-f="question">Can I list residential and commercial property?</span>
+                        <i class="fas fa-plus faq-icon" aria-hidden="true"></i>
+                    </button>
+                    <div class="faq-answer" data-cms-f="answer">
+                        <p>Yes. Our form covers residential property types such
+                            as apartments, villas and independent houses, as well
+                            as commercial properties.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-cms-item>
+                    <button class="faq-question" aria-expanded="false">
+                        <span data-cms-f="question">Can you help with land and plots?</span>
+                        <i class="fas fa-plus faq-icon" aria-hidden="true"></i>
+                    </button>
+                    <div class="faq-answer" data-cms-f="answer">
+                        <p>Yes, land and plots are among the property types we
+                            regularly assist with — for sale, investment or joint
+                            development purposes.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-cms-item>
+                    <button class="faq-question" aria-expanded="false">
+                        <span data-cms-f="question">How does property marketing work?</span>
+                        <i class="fas fa-plus faq-icon" aria-hidden="true"></i>
+                    </button>
+                    <div class="faq-answer" data-cms-f="answer">
+                        <p>Once we understand your property, our team presents it
+                            clearly to genuine buyers, tenants or investors within
+                            our network, based on its category and location.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-cms-item>
+                    <button class="faq-question" aria-expanded="false">
+                        <span data-cms-f="question">Can I list a property for lease?</span>
+                        <i class="fas fa-plus faq-icon" aria-hidden="true"></i>
+                    </button>
+                    <div class="faq-answer" data-cms-f="answer">
+                        <p>Yes — select "Rental / Leasing" under Listing
+                            Requirement in the form and our team will assist
+                            accordingly.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-cms-item>
+                    <button class="faq-question" aria-expanded="false">
+                        <span data-cms-f="question">Can you assist with joint development opportunities?</span>
+                        <i class="fas fa-plus faq-icon" aria-hidden="true"></i>
+                    </button>
+                    <div class="faq-answer" data-cms-f="answer">
+                        <p>Yes. If your land may be suited for joint development,
+                            select "Joint Venture" in the form and our team will
+                            discuss the possibilities with you.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-cms-item>
+                    <button class="faq-question" aria-expanded="false">
+                        <span data-cms-f="question">What happens after I submit my property?</span>
+                        <i class="fas fa-plus faq-icon" aria-hidden="true"></i>
+                    </button>
+                    <div class="faq-answer" data-cms-f="answer">
+                        <p>Our team reviews the details you've shared and gets in
+                            touch to discuss your property and the next steps.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="fv-final-cta" data-cms-section="final-cta" data-cms-label="Closing call to action">
+
+    <div class="container">
+
+        <h2 data-cms-heading>Let's Talk About Your Property</h2>
+
+        <p data-cms-f="text">
+            Share your property details and our team will get in touch
+            to discuss the best way forward.
+        </p>
+
+        <a href="#owner-form" class="primary-btn" data-cms-href="link" data-cms-f="button_text">List Your Property</a>
+
+    </div>
+
+</section>
+
+<!-- SITE-FOOTER:START — generated from partials/footer.html by tools/sync-footer.py. Edit the partial, then run: python3 tools/sync-footer.py -->
+<footer class="site-footer" id="footer">
+    <div class="ft-inner">
+
+        <div class="ft-brand">
+            <a href="index.html" class="ft-logo" aria-label="Aventrix Realty — Home"><img src="images/aventrix-logo-white.png" alt="Aventrix Realty" width="1042" height="342" loading="lazy" decoding="async"></a>
+            <p class="ft-tagline" data-site="footer-tagline" data-i18n="shared.footer.tagline">Where Legacy Meets The Next Generation</p>
+            <p class="ft-desc" data-site="footer-description">
+                Premium real estate advisory across Chennai — residential,
+                commercial, land and joint venture solutions, guided by
+                trust and decades of local expertise.
+            </p>
+        </div>
+
+        <ul class="ft-contacts">
+            <li class="ft-contact">
+                <span class="ft-icon" aria-hidden="true"><i class="fa-solid fa-location-dot"></i></span>
+                <div>
+                    <h4 class="ft-label" data-i18n="shared.footer.headOffice">Head Office</h4>
+                    <span class="ft-sr" data-hq="name" data-i18n="Aventrix Realty – Head Office">Aventrix Realty – Head Office</span>
+                    <p data-hq="address">No.27, 1st Main Road, Newcolony, Chromepet, Chennai, Tamil Nadu</p>
+                </div>
+            </li>
+            <li class="ft-contact">
+                <span class="ft-icon" aria-hidden="true"><i class="fa-solid fa-phone"></i></span>
+                <div>
+                    <h4 class="ft-label" data-i18n="Phone">Phone</h4>
+                    <div class="ft-phones" data-hq="phones">
+                        <a href="tel:+919176887770">+91 91768 87770</a>
+                        <a href="tel:+917092356222">+91 70923 56222</a>
+                    </div>
+                </div>
+            </li>
+            <li class="ft-contact">
+                <span class="ft-icon" aria-hidden="true"><i class="fa-regular fa-envelope"></i></span>
+                <div>
+                    <h4 class="ft-label" data-i18n="Email">Email</h4>
+                    <p><a href="mailto:office@aventrixrealty.com" data-hq="email">office@aventrixrealty.com</a></p>
+                </div>
+            </li>
+            <li class="ft-contact">
+                <span class="ft-icon" aria-hidden="true"><i class="fa-regular fa-building"></i></span>
+                <div>
+                    <h4 class="ft-label" data-i18n="shared.footer.branchOffice">Branch Office</h4>
+                    <p>Adyar, Chennai</p>
+                </div>
+            </li>
+        </ul>
+
+        <div class="ft-rule" aria-hidden="true"></div>
+
+        <div class="ft-main">
+            <div class="ft-col" role="navigation" aria-label="About Aventrix" data-i18n-aria-label="shared.footer.aboutAventrix">
+                <h4 class="ft-heading" data-i18n="shared.footer.aboutAventrix">About Aventrix</h4>
+                <ul class="ft-links">
+                    <li><a href="index.html" data-i18n="Home">Home</a></li>
+                    <li><a href="about.html" data-i18n="About Us">About Us</a></li>
+                    <li><a href="index.html#contact" data-i18n="Contact Us">Contact Us</a></li>
+                    <li><a href="services.html" data-i18n="Our Services">Our Services</a></li>
+                </ul>
+            </div>
+            <div class="ft-col" role="navigation" aria-label="Quick links" data-i18n-aria-label="Quick links">
+                <h4 class="ft-heading" data-i18n="shared.footer.quickLinks">Quick Links</h4>
+                <ul class="ft-links">
+                    <li><a href="our-realtors.html" data-i18n="shared.footer.realtors">Realtors</a></li>
+                    <li><a href="brokerage-fees.html" data-i18n="shared.footer.brokerageFees">Brokerage &amp; Fees</a></li>
+                    <li><a href="emi-calculator.html" data-i18n="shared.footer.emiCalculator">EMI Calculator</a></li>
+                    <li><a href="jv-calculator.html" data-i18n="shared.footer.jointVentureCalculator">Joint Venture Calculator</a></li>
+                </ul>
+            </div>
+
+            <div class="ft-side">
+                <div class="ft-follow">
+                    <h4 class="ft-heading" data-i18n="shared.footer.followUs">Follow Us</h4>
+                    <div class="ft-social">
+                        <a href="https://www.facebook.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Facebook" data-site="social-facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+                        <a href="https://www.instagram.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Instagram" data-site="social-instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+                        <a href="https://www.linkedin.com/in/lsanjaygandhi" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" data-site="social-linkedin"><i class="fa-brands fa-linkedin" aria-hidden="true"></i></a>
+                        <a href="https://youtube.com/@sanjaygandhirealty" target="_blank" rel="noopener noreferrer" aria-label="YouTube" data-site="social-youtube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
+                        <a href="https://wa.me/919176887770" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" data-site="whatsapp-link"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a>
+                        <a href="https://maps.app.goo.gl/VjCCdVch9uequeGUA?g_st=ic" target="_blank" rel="noopener noreferrer" aria-label="Google Maps" data-hq="maps"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+
+                <section class="ft-map" aria-labelledby="ftMapTitle">
+                    <h4 class="ft-sr" id="ftMapTitle" data-i18n="shared.footer.findUs">Find Us</h4>
+                    <div class="ft-map-frame" data-hq="map-embed"><iframe src="https://www.google.com/maps?q=No.27%2C%201st%20Main%20Road%2C%20New%20Colony%2C%20Chromepet%2C%20Chennai%2C%20Tamil%20Nadu&amp;output=embed" width="600" height="280" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Aventrix Realty Head Office Map" allowfullscreen></iframe></div>
+                    <a class="ft-map-open" href="https://maps.app.goo.gl/VjCCdVch9uequeGUA?g_st=ic" target="_blank" rel="noopener noreferrer" data-hq="maps"><i class="fa-solid fa-diamond-turn-right" aria-hidden="true"></i><span data-i18n="shared.footer.openInMaps">Open in Maps</span><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i><span class="ft-sr" data-i18n="shared.footer.opensInNewTab"> (opens in a new tab)</span></a>
+                </section>
+            </div>
+        </div>
+
+        <div class="ft-rule" aria-hidden="true"></div>
+
+        <div class="ft-bottom">
+            <div class="ft-credits">
+                <p class="ft-copyright" data-site="copyright-text" data-i18n="shared.footer.rights">© 2026 Aventrix Realty. All Rights Reserved.</p>
+                <p class="ft-designer">Designed with <span class="ft-heart" role="img" aria-label="love">&#10084;&#65039;</span> by L. Sanjay Gandhi</p>
+            </div>
+            <div class="ft-legal" role="navigation" aria-label="Legal and utility links" data-i18n-aria-label="Legal and utility links">
+                <a href="privacy-policy.html" data-i18n="shared.footer.privacyPolicy">Privacy Policy</a>
+                <a href="terms.html" data-i18n="shared.footer.termsConditions">Terms &amp; Conditions</a>
+                <a href="sitemap.html" data-i18n="shared.footer.sitemap">Sitemap</a>
+                <a href="property-tools.html" data-i18n="shared.footer.propertyTools">Property Tools</a>
+                <a href="/admin/" class="ft-legal-admin" data-i18n="Admin">Admin</a>
+            </div>
+        </div>
+
+    </div>
+</footer>
+<script src="js/site-footer.js?v=20261015" defer></script>
+<!-- SITE-FOOTER:END -->
+
+<a href="https://wa.me/919176887770" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" data-site="whatsapp-link">
+    <img src="images/whatsapp-icon.png" alt="WhatsApp">
+</a>
+
+<button id="backToTop" class="back-to-top" aria-label="Back to top" data-i18n-aria-label="Back to top">
+    <i class="fas fa-chevron-up"></i>
+</button>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-client.js"></script>
+
+<script>
+(function () {
+  const gate = document.getElementById("postAuthGate");
+  const ownerFormSection = document.getElementById("owner-form");
+  const loginForm = document.getElementById("postLoginForm");
+  const message = document.getElementById("postAuthMessage");
+  const submitButton = document.getElementById("postLoginSubmit");
+  if (!gate || !ownerFormSection || !loginForm) return;
+
+  function showSignedIn(user) {
+    gate.hidden = true;
+    ownerFormSection.classList.remove("post-auth-locked");
+    ownerFormSection.setAttribute("data-authenticated-user", user.id);
+    const emailField = ownerFormSection.querySelector('input[type="email"], input[name*="email" i]');
+    if (emailField && !emailField.value && user.email) emailField.value = user.email;
+  }
+
+  function showSignedOut() {
+    gate.hidden = false;
+    ownerFormSection.classList.add("post-auth-locked");
+    ownerFormSection.removeAttribute("data-authenticated-user");
+  }
+
+  async function checkSession() {
+    if (!window.supabaseClient) {
+      message.textContent = "Sign-in service is unavailable. Please refresh and try again.";
+      showSignedOut();
+      return;
+    }
+    const { data, error } = await window.supabaseClient.auth.getSession();
+    if (error) {
+      message.textContent = "Could not verify your session. Please sign in again.";
+      showSignedOut();
+      return;
+    }
+    if (data && data.session && data.session.user) showSignedIn(data.session.user);
+    else showSignedOut();
+  }
+
+  loginForm.addEventListener("submit", async function (event) {
+    event.preventDefault();
+    message.textContent = "";
+    submitButton.disabled = true;
+    submitButton.textContent = "Signing in…";
+    try {
+      const { data, error } = await window.supabaseClient.auth.signInWithPassword({
+        email: document.getElementById("postLoginEmail").value.trim(),
+        password: document.getElementById("postLoginPassword").value
+      });
+      if (error) throw error;
+      if (data && data.user) showSignedIn(data.user);
+      else await checkSession();
+    } catch (error) {
+      message.textContent = error && error.message ? error.message : "Sign-in failed. Please check your details.";
+    } finally {
+      submitButton.disabled = false;
+      submitButton.textContent = "Log in and continue";
+    }
+  });
+
+  if (window.supabaseClient) {
+    window.supabaseClient.auth.onAuthStateChange(function (_event, session) {
+      if (session && session.user) showSignedIn(session.user);
+      else showSignedOut();
+    });
+  }
+  checkSession();
+})();
+</script>
+
+<script src="js/public-site-settings.js?v=20260926b"></script>
+<script src="js/public-offices.js?v=20261016-owner-map"></script>
+<script src="js/public-page-content.js?v=20260926b"></script>
+<script src="js/aventrix-storage.js"></script>
+<script src="js/wishlist-widget.js"></script>
+<script src="js/maps-config.js"></script>
+<script src="js/property-location-picker.js"></script>
+<script src="js/enquiry-supabase.js?v=20260926b"></script>
+<script src="script.js?v=20260926b"></script>
+<script>
+(function () {
+    var mapEl = document.getElementById("lwuLocationMap");
+    if (!mapEl || !window.AventrixLocationPicker) return;
+    var picker = AventrixLocationPicker.attach({
+        mapEl: mapEl,
+        searchInputEl: document.getElementById("lwuLocationSearch"),
+        searchBtnEl: document.getElementById("lwuLocationSearchBtn"),
+        latInputEl: document.getElementById("lwuLatitude"),
+        lngInputEl: document.getElementById("lwuLongitude"),
+        statusEl: document.getElementById("lwuLocationStatus")
+    });
+    var clearBtn = document.getElementById("lwuLocationClearBtn");
+    if (clearBtn) clearBtn.addEventListener("click", function () { picker.clear(); });
+    // Submitting the form successfully also resets the picker's own
+    // visual state, since js/enquiry-supabase.js calls form.reset() —
+    // that clears the hidden lat/lng inputs but not the marker/status.
+    var form = document.getElementById("propertyForm");
+    if (form) form.addEventListener("submit", function () {
+        setTimeout(function () { if (!document.getElementById("success-message") || document.getElementById("success-message").style.display === "none") return; picker.clear(); }, 300);
+    });
+})();
+</script>
+
+<script src="/js/language-switcher.js?v=20261023-br-normalization" defer></script>
+</body>
+   </html>

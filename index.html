@@ -621,8 +621,19 @@ body.home-page #faq .faq-answer p {
 
     <a href="joint-venture.html" data-i18n="home.nav.jointVenture">Joint Venture</a>
 
-    <a href="property-tools.html"><span class="nav-label-extra">Property </span>Tools</a>
-    <a href="nri-services.html">NRI Services</a>
+    <div class="dropdown aventrix-tools-dropdown">
+      <a href="/property-tools.html" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+        <span><span class="nav-label-extra">Property </span>Tools</span>
+        <i class="fas fa-chevron-down" aria-hidden="true"></i>
+      </a>
+      <div class="dropdown-content aventrix-tools-menu" aria-hidden="true">
+        <a href="/property-tools.html" data-i18n="All Property Tools">All Property Tools</a>
+        <a href="/plot-area-calculator.html" data-i18n="Plot Area Calculator">Plot Area Calculator</a>
+        <a href="/land-knowledge/" data-i18n="Tamil Nadu Land Knowledge Centre">Tamil Nadu Land Knowledge Centre</a>
+        <a href="/about-chennai/" data-i18n="About Chennai">About Chennai</a>
+      </div>
+    </div>
+    <a href="nri-services.html" data-i18n="home.nav.nriServices">NRI Services</a>
 
     <a href="contact.html" data-i18n="home.nav.contact">Contact</a>
 
@@ -1908,14 +1919,14 @@ END TEMPORARILY HIDDEN — Featured Locations section -->
     <a href="properties.html" class="home-app-nav-item">
         <i class="fas fa-search" aria-hidden="true"></i><span data-i18n="Search">Search</span>
     </a>
-    <a href="list-with-us.html" class="home-app-nav-postfree" aria-label="Post property free" data-i18n-aria-label="Post property free">
+    <a href="post-property.html" class="home-app-nav-postfree" aria-label="Post Property" data-i18n-aria-label="Post Property">
         <i class="fas fa-plus" aria-hidden="true"></i>
     </a>
     <a href="wishlist.html" class="home-app-nav-item">
-        <i class="fas fa-heart" aria-hidden="true"></i><span>Activity</span>
+        <i class="fas fa-heart" aria-hidden="true"></i><span data-i18n="Activity">Activity</span>
     </a>
     <button type="button" class="home-app-nav-item home-app-nav-menu-btn" id="homeAppMenuBtn">
-        <i class="fas fa-bars" aria-hidden="true"></i><span>Menu</span>
+        <i class="fas fa-bars" aria-hidden="true"></i><span data-i18n="Menu">Menu</span>
     </button>
 </nav>
 
