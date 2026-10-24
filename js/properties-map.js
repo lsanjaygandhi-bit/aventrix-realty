@@ -305,15 +305,82 @@
             els.note.hidden = !msg;
         }
 
+        function loadLeaflet(done) {
+            if (window.L && window.L.map) { done(true); return; }
+            window.__avxLeafletWaiters = window.__avxLeafletWaiters || [];
+            window.__avxLeafletWaiters.push(done);
+            if (window.__avxLeafletLoading) return;
+            window.__avxLeafletLoading = true;
+            var settled = false;
+            function finish(ok) {
+                if (settled) return; settled = true; window.__avxLeafletLoading = false;
+                var waiters = window.__avxLeafletWaiters || []; window.__avxLeafletWaiters = [];
+                waiters.forEach(function (fn) { try { fn(ok); } catch (e) {} });
+            }
+            if (!document.querySelector('link[data-avx-leaflet]')) {
+                var css = document.createElement("link"); css.rel = "stylesheet";
+                css.href = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";
+                css.setAttribute("data-avx-leaflet", "1"); document.head.appendChild(css);
+            }
+            var script = document.querySelector('script[data-avx-leaflet]');
+            if (script) {
+                script.addEventListener("load", function () { finish(!!(window.L && window.L.map)); }, { once: true });
+                script.addEventListener("error", function () { finish(false); }, { once: true }); return;
+            }
+            script = document.createElement("script"); script.src = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";
+            script.async = true; script.setAttribute("data-avx-leaflet", "1");
+            script.onload = function () { finish(!!(window.L && window.L.map)); };
+            script.onerror = function () { finish(false); }; document.head.appendChild(script);
+            setTimeout(function () { finish(!!(window.L && window.L.map)); }, 12000);
+        }
+
+        function renderLeafletMap(list) {
+            loadLeaflet(function (ok) {
+                if (!ok) {
+                    els.fallbackText.textContent = "Map tiles could not be loaded. Please check your internet connection or use List View.";
+                    els.fallback.hidden = false; els.wrap.hidden = true; hide(els.loading, true); return;
+                }
+                els.fallback.hidden = true; els.wrap.hidden = false; hide(els.loading, true);
+                hide(els.areaBtn, true); hide(els.currentBtn, true);
+                if (!state.leafletMap) {
+                    state.leafletMap = window.L.map(els.canvas, { zoomControl: true, scrollWheelZoom: true })
+                        .setView([CHENNAI_CENTER.lat, CHENNAI_CENTER.lng], NO_MARKERS_ZOOM);
+                    window.L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+                        maxZoom: 19, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a>'
+                    }).addTo(state.leafletMap);
+                    state.leafletMarkers = {};
+                    state.leafletMap.on("click", closePreview);
+                    state.leafletMap.on("dragstart zoomstart", function () { state.leafletUserMoved = true; });
+                }
+                var keep = {};
+                list.forEach(function (x) {
+                    var slug = x.p.slug; keep[slug] = true;
+                    var label = priceShort(x.p) || "⌂";
+                    var width = Math.max(42, Math.min(110, label.length * 8 + 24));
+                    var icon = window.L.divIcon({ className: "avx-leaflet-marker",
+                        html: '<span>' + esc(label) + '</span>', iconSize: [width, 30], iconAnchor: [width / 2, 30] });
+                    if (!state.leafletMarkers[slug]) {
+                        var marker = window.L.marker([x.pos.lat, x.pos.lng], { icon: icon, title: x.p.title || "Property" }).addTo(state.leafletMap);
+                        marker.on("click", function () { openPreview([x.p]); });
+                        state.leafletMarkers[slug] = marker;
+                    } else state.leafletMarkers[slug].setLatLng([x.pos.lat, x.pos.lng]).setIcon(icon);
+                });
+                Object.keys(state.leafletMarkers).forEach(function (slug) {
+                    if (!keep[slug]) { state.leafletMap.removeLayer(state.leafletMarkers[slug]); delete state.leafletMarkers[slug]; }
+                });
+                state.mapped = list;
+                if (list.length) {
+                    var points = list.map(function (x) { return [x.pos.lat, x.pos.lng]; });
+                    if (list.length === 1) state.leafletMap.setView(points[0], OVERVIEW_MAX_ZOOM);
+                    else if (!state.leafletUserMoved) state.leafletMap.fitBounds(points, { padding: [48, 48], maxZoom: OVERVIEW_MAX_ZOOM });
+                } else state.leafletMap.setView([CHENNAI_CENTER.lat, CHENNAI_CENTER.lng], NO_MARKERS_ZOOM);
+                setTimeout(function () { if (state.leafletMap) state.leafletMap.invalidateSize(); }, 100);
+            });
+        }
+
         function showFallback() {
-            els.fallbackText.textContent = FALLBACK_TEXT;
-            els.fallbackText.setAttribute("data-i18n", FALLBACK_TEXT);
-            translateI18n(els.fallbackText);
-            els.fallback.hidden = false;
-            els.wrap.hidden = true;
-            hide(els.loading, true);
-            hide(els.areaBtn, true);
             closePreview();
+            renderLeafletMap(mappable());
         }
 
         // On opening Map View and on every new result set while open.
@@ -338,7 +405,7 @@
             var list = mappable();
             updateNote(list);
             if (state.status === "loading") return;
-            if (Maps.status === "failed") { showFallback(); return; }
+            if (Maps.status === "failed") { renderLeafletMap(list); return; }
             if (state.status === "error") {
                 els.wrap.hidden = true; els.fallback.hidden = true; hide(els.areaBtn, true);
                 closePreview();
@@ -354,7 +421,7 @@
                 hide(els.loading, false);
                 loadGoogleMaps(function (status) {
                     hide(els.loading, true);
-                    if (status !== "ready") { showFallback(); return; }
+                    if (status !== "ready") { renderLeafletMap(list); return; }
                     var g = window.google.maps, mc = window.AVENTRIX_MAPS_CONFIG || {};
                     state.useAdvanced = !!(mc.mapId && g.marker && g.marker.AdvancedMarkerElement);
                     if (state.view === "map") refresh(false);
