@@ -249,3 +249,21 @@
     font-size: 11px !important;
   }
 }
+
+
+/* Keep the homepage language selector at the top-right of the hero,
+   above the headline, rather than overlapping the headline text. */
+@media (max-width: 768px) {
+  #avxLanguageSlot.avx-language-slot {
+    top: 12px !important;
+    right: 12px !important;
+    width: 82px !important;
+    height: 27px !important;
+  }
+}
+@media (min-width: 769px) {
+  #avxLanguageSlot.avx-language-slot {
+    top: 18px !important;
+    right: 18px !important;
+  }
+}
