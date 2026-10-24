@@ -219,3 +219,33 @@
     font-size: 10px !important;
   }
 }
+
+
+/* Final compact homepage selector sizing: smaller control and tight label/arrow gap. */
+@media (max-width: 768px) {
+  #avxLanguageSlot.avx-language-slot {
+    width: 82px !important;
+    height: 27px !important;
+    top: 104px !important;
+    right: 12px !important;
+    border-radius: 8px !important;
+  }
+  #avxLanguageSlot select.avx-language-select {
+    width: 100% !important;
+    height: 100% !important;
+    padding: 0 3px 0 8px !important;
+    font-size: 10px !important;
+    letter-spacing: 0 !important;
+    border-radius: 7px !important;
+  }
+}
+@media (min-width: 769px) {
+  #avxLanguageSlot.avx-language-slot {
+    width: 88px !important;
+    height: 29px !important;
+  }
+  #avxLanguageSlot select.avx-language-select {
+    padding: 0 4px 0 8px !important;
+    font-size: 11px !important;
+  }
+}
