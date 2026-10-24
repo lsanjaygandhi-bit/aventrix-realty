@@ -247,11 +247,12 @@
 }
 
 
-/* Remove the extra white spacer row: selector floats compactly at the
-   bottom-right of the header boundary without changing page flow. */
+/* Remove the extra white spacer row: selector sits just below the header
+   without taking up layout height or pushing the hero down. */
+header.header, header.site-header { position: relative; }
 #avxLanguageSlot.avx-language-slot.avx-language-row {
   position: absolute !important;
-  top: 278px !important;
+  top: 100% !important;
   right: 12px !important;
   inset-inline-end: 12px !important;
   z-index: 1000 !important;
@@ -275,7 +276,7 @@
 }
 @media (max-width: 768px) {
   #avxLanguageSlot.avx-language-slot.avx-language-row {
-    top: 278px !important; right: 10px !important; width: 84px !important; height: 27px !important;
+    top: 100% !important; right: 10px !important; width: 84px !important; height: 27px !important;
     background: rgba(255,255,255,.94) !important;
   }
   #avxLanguageSlot.avx-language-slot.avx-language-row select.avx-language-select { font-size: 10px !important; }
