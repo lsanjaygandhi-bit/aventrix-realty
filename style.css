@@ -9291,3 +9291,29 @@ html.is-mobile #leadership .leader-row-content [data-cms-f="rera"] {
         margin-top: 4px;
     }
 }
+
+
+/* Properties page only: keep sale/lease labels compact over listing images. */
+#sfResultsGrid .property-card .property-badge {
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: 190px !important;
+  height: auto !important;
+  min-height: 0 !important;
+  padding: 7px 12px !important;
+  font-size: 13px !important;
+  line-height: 1.15 !important;
+  letter-spacing: .3px !important;
+  font-weight: 600 !important;
+  white-space: nowrap !important;
+  flex: 0 0 auto !important;
+}
+@media (max-width: 640px) {
+  #sfResultsGrid .property-card .property-badge {
+    max-width: 190px !important;
+    padding: 7px 12px !important;
+    font-size: 13px !important;
+    line-height: 1.15 !important;
+    letter-spacing: .3px !important;
+  }
+}
