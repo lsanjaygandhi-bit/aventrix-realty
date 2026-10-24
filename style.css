@@ -7863,6 +7863,29 @@ html.is-mobile .home-app-bottom-nav{
     padding:8px 4px calc(8px + env(safe-area-inset-bottom));
     z-index:9998;
 }
+/* Home mobile bottom navigation: keep the centre plus fully inside the
+   white navigation bar, with a soft green glow behind the circular action. */
+html.is-mobile .home-app-bottom-nav .home-app-nav-postfree{
+    position:relative;
+    flex:0 0 48px;
+    width:48px;
+    height:48px;
+    min-width:48px;
+    min-height:48px;
+    margin-top:0 !important;
+    align-self:center;
+    transform:none !important;
+    border-radius:50%;
+    background:#0F3B2E;
+    color:#fff;
+    box-shadow:0 0 0 1px rgba(15,59,46,.08), 0 0 18px 7px rgba(15,59,46,.20), 0 4px 12px rgba(15,59,46,.18);
+    z-index:2;
+}
+html.is-mobile .home-app-bottom-nav .home-app-nav-postfree i{
+    font-size:25px;
+    line-height:1;
+}
+
 /* BUG FIX (QA pass): nothing reserved space for the fixed bottom
    nav, so the last ~43-90px of page content (footer, and anything
    else at the true bottom of the page) rendered underneath it and
