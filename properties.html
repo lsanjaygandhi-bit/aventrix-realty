@@ -115,13 +115,13 @@
     <link rel="stylesheet" href="css/site-fixes.css?v=20261024b">
 
     <style id="properties-page-sale-badge-fix">
-      /* Properties page only. Tiny FOR SALE badge at image top-right. */
-      #nearMeWidget .property-card .property-image-wrap,
-      #sfResultsGrid .property-card .property-image-wrap {
+      /* Properties page only: enforce compact badge and compact inner label text. */
+      body[data-page-key="properties"] #nearMeWidget .property-card .property-image-wrap,
+      body[data-page-key="properties"] #sfResultsGrid .property-card .property-image-wrap {
         position: relative !important;
       }
-      #nearMeWidget .property-card .property-badge,
-      #sfResultsGrid .property-card .property-badge {
+      body[data-page-key="properties"] #nearMeWidget .property-card .property-badge,
+      body[data-page-key="properties"] #sfResultsGrid .property-card .property-badge {
         position: absolute !important;
         top: 8px !important;
         right: 8px !important;
@@ -132,21 +132,35 @@
         align-items: center !important;
         justify-content: center !important;
         box-sizing: border-box !important;
-        width: auto !important;
-        min-width: 0 !important;
+        width: 90px !important;
+        min-width: 90px !important;
         max-width: 90px !important;
         height: 26px !important;
         min-height: 26px !important;
+        max-height: 26px !important;
         margin: 0 !important;
-        padding: 0 8px !important;
+        padding: 0 4px !important;
         font-size: 10px !important;
-        line-height: 1 !important;
+        line-height: 10px !important;
         letter-spacing: 0 !important;
         font-weight: 600 !important;
+        text-transform: uppercase !important;
         white-space: nowrap !important;
-        flex: 0 0 auto !important;
+        flex: 0 0 90px !important;
         border-radius: 4px !important;
         z-index: 5 !important;
+        overflow: hidden !important;
+      }
+      body[data-page-key="properties"] #nearMeWidget .property-card .property-badge span,
+      body[data-page-key="properties"] #sfResultsGrid .property-card .property-badge span {
+        display: inline !important;
+        font-size: 10px !important;
+        line-height: 10px !important;
+        letter-spacing: 0 !important;
+        font-weight: 600 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        transform: none !important;
       }
     </style>
 </head>
