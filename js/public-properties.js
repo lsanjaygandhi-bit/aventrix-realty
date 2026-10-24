@@ -31,9 +31,7 @@
     }
 
     function formatBadge(listingType) {
-        return listingType === "lease"
-            ? '<span data-i18n="FOR LEASE">FOR LEASE</span>'
-            : '<span data-i18n="FOR SALE">FOR SALE</span>';
+        return listingType === "lease" ? "FOR LEASE" : "FOR SALE";
     }
 
     function badgeClass(listingType) {
@@ -230,7 +228,7 @@
             <div class="property-card" data-slug="${escapeHtml(p.slug)}">
                 <div class="property-image-wrap">
                     <img src="${escapeHtml(image)}" alt="${escapeHtml(p.title)}" loading="lazy">
-                    <span class="property-badge ${badgeClass(p.listing_type)}">${formatBadge(p.listing_type)}</span>
+                    <span class="property-badge ${badgeClass(p.listing_type)}" data-i18n="${p.listing_type === "lease" ? "FOR LEASE" : "FOR SALE"}">${formatBadge(p.listing_type)}</span>
                     <button class="property-save-btn${saved ? " saved" : ""}" aria-label="${saved ? "Remove from Wishlist" : "Save to Wishlist"}" aria-pressed="${saved ? "true" : "false"}" data-slug="${escapeHtml(p.slug)}"><i class="${saved ? "fas" : "far"} fa-heart" aria-hidden="true"></i></button>
                     <button class="property-share-btn" data-track-event="share" aria-label="Share this property"><i class="fas fa-share-alt" aria-hidden="true"></i></button>
                     <button type="button" class="qv-hover-cta" aria-label="Quick view ${escapeHtml(p.title)}">Quick View</button>
