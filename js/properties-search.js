@@ -261,9 +261,7 @@
     }
 
     function formatBadge(listingType) {
-        return listingType === "lease"
-            ? '<span data-i18n="FOR LEASE">FOR LEASE</span>'
-            : '<span data-i18n="FOR SALE">FOR SALE</span>';
+        return listingType === "lease" ? "FOR LEASE" : "FOR SALE";
     }
     function badgeClass(listingType) {
         return listingType === "lease" ? "badge-lease" : "badge-sale";
@@ -279,7 +277,7 @@
                     <a href="property.html?id=${encodeURIComponent(p.slug)}" aria-label="View ${escapeHtml(p.title)}">
                         <img src="${escapeHtml(image)}" alt="${escapeHtml(p.title)}" loading="lazy">
                     </a>
-                    <span class="property-badge ${badgeClass(p.listing_type)}">${formatBadge(p.listing_type)}</span>
+                    <span class="property-badge ${badgeClass(p.listing_type)}" data-i18n="${p.listing_type === "lease" ? "FOR LEASE" : "FOR SALE"}">${formatBadge(p.listing_type)}</span>
                     <button class="property-save-btn${saved ? " saved" : ""}" aria-label="${saved ? "Remove from Wishlist" : "Save to Wishlist"}" data-i18n-aria-label="${saved ? "Remove from Wishlist" : "Save to Wishlist"}" aria-pressed="${saved ? "true" : "false"}" data-slug="${escapeHtml(p.slug)}"><i class="${saved ? "fas" : "far"} fa-heart" aria-hidden="true"></i></button>
                 </div>
                 <div class="content">
