@@ -112,26 +112,41 @@
     <script src="js/property-card-image-fallback.js?v=20260926" defer></script>
     <link rel="stylesheet" href="css/properties-map.css?v=20261015a">
     <link rel="stylesheet" href="css/site-footer.css?v=20261021">
-    <link rel="stylesheet" href="css/site-fixes.css?v=20261024a">
+    <link rel="stylesheet" href="css/site-fixes.css?v=20261024b">
 
     <style id="properties-page-sale-badge-fix">
-      /* Properties page only. Override the higher-specificity listing-card rules. */
+      /* Properties page only. Tiny FOR SALE badge at image top-right. */
+      #nearMeWidget .property-card .property-image-wrap,
+      #sfResultsGrid .property-card .property-image-wrap {
+        position: relative !important;
+      }
       #nearMeWidget .property-card .property-badge,
       #sfResultsGrid .property-card .property-badge {
+        position: absolute !important;
+        top: 8px !important;
+        right: 8px !important;
+        bottom: auto !important;
+        left: auto !important;
+        transform: none !important;
         display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
         box-sizing: border-box !important;
-        width: max-content !important;
+        width: auto !important;
         min-width: 0 !important;
-        max-width: calc(100% - 76px) !important;
-        height: auto !important;
-        min-height: 0 !important;
-        padding: 5px 10px !important;
-        font-size: 12px !important;
-        line-height: 1.15 !important;
-        letter-spacing: .25px !important;
+        max-width: 90px !important;
+        height: 26px !important;
+        min-height: 26px !important;
+        margin: 0 !important;
+        padding: 0 8px !important;
+        font-size: 10px !important;
+        line-height: 1 !important;
+        letter-spacing: 0 !important;
         font-weight: 600 !important;
         white-space: nowrap !important;
         flex: 0 0 auto !important;
+        border-radius: 4px !important;
+        z-index: 5 !important;
       }
     </style>
 </head>

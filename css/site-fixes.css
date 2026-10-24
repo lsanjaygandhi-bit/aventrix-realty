@@ -134,3 +134,41 @@ html.is-mobile .list-hero .container{ padding-left:20px; padding-right:20px; }
     font-size: 13px !important;
   }
 }
+
+/* FINAL override: the Properties page sale badge must be tiny and anchored top-right.
+   This file loads after property-cards.css, so these declarations win the cascade.
+   Deliberately scoped to properties.html; homepage badges are untouched. */
+body[data-page-key="properties"] #nearMeWidget .property-card .property-image-wrap,
+body[data-page-key="properties"] #sfResultsGrid .property-card .property-image-wrap,
+body[data-page-key="properties"] .near-me-section .property-card .property-image-wrap {
+  position: relative !important;
+}
+body[data-page-key="properties"] #nearMeWidget .property-card .property-badge,
+body[data-page-key="properties"] #sfResultsGrid .property-card .property-badge,
+body[data-page-key="properties"] .near-me-section .property-card .property-badge {
+  position: absolute !important;
+  top: 8px !important;
+  right: 8px !important;
+  bottom: auto !important;
+  left: auto !important;
+  transform: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: 90px !important;
+  height: 26px !important;
+  min-height: 26px !important;
+  padding: 0 8px !important;
+  margin: 0 !important;
+  font-size: 10px !important;
+  line-height: 1 !important;
+  font-weight: 600 !important;
+  letter-spacing: 0 !important;
+  white-space: nowrap !important;
+  box-sizing: border-box !important;
+  border-radius: 4px !important;
+  flex: 0 0 auto !important;
+  z-index: 5 !important;
+}
