@@ -227,11 +227,12 @@
       if (!document.body) return;
       var existing = document.getElementById("avxLanguageSelect");
       if (existing) return;
-      // Keep the language selector inside the hero so it scrolls away with
-      // the page instead of staying fixed over every section.
-      var hero = document.querySelector(".hh-hero");
-      if (hero) hero.appendChild(slot);
-      else document.body.appendChild(slot);
+      // Place the selector in its own slim row after the site header.
+      // This avoids overlapping the logo/menu across differently structured pages.
+      var header = document.querySelector("header.header, header.site-header, header, .site-header");
+      if (header && header.parentNode) header.insertAdjacentElement("afterend", slot);
+      else document.body.insertBefore(slot, document.body.firstChild);
+      slot.classList.add("avx-language-row");
       // Mark successful mount for easy local DevTools verification.
       document.documentElement.setAttribute("data-avx-language-selector", "mounted");
     }
