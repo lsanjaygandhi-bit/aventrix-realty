@@ -250,8 +250,8 @@
 }
 
 
-/* Compact, consistent FOR SALE / FOR LEASE badges across property cards. */
-.property-card .property-badge {
+/* Properties listing page only: compact sale/lease badges without changing homepage cards. */
+#sfResultsGrid .property-card .property-badge {
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -268,7 +268,7 @@
   border-radius: 5px !important;
 }
 @media (max-width: 640px) {
-  .property-card .property-badge {
+  #sfResultsGrid .property-card .property-badge {
     padding: 6px 11px !important;
     font-size: 12px !important;
     line-height: 1.15 !important;
