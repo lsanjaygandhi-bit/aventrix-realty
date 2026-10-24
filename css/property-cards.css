@@ -308,3 +308,45 @@
     letter-spacing: .25px !important;
   }
 }
+
+
+/* FINAL Properties-page badge treatment: very small label in the image's top-right.
+   Keep this scoped to the Properties page cards; homepage cards remain unchanged. */
+#nearMeWidget .property-card .property-badge,
+.near-me-section .property-card .property-badge,
+#sfResultsGrid .property-card .property-badge {
+  position: absolute !important;
+  top: 10px !important;
+  right: 10px !important;
+  left: auto !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: 90px !important;
+  height: auto !important;
+  min-height: 0 !important;
+  padding: 4px 7px !important;
+  font-size: 10px !important;
+  line-height: 1.1 !important;
+  font-weight: 600 !important;
+  letter-spacing: .1px !important;
+  white-space: nowrap !important;
+  box-sizing: border-box !important;
+  border-radius: 4px !important;
+  flex: 0 0 auto !important;
+}
+@media (max-width: 640px) {
+  #nearMeWidget .property-card .property-badge,
+  .near-me-section .property-card .property-badge,
+  #sfResultsGrid .property-card .property-badge {
+    top: 8px !important;
+    right: 8px !important;
+    left: auto !important;
+    max-width: 90px !important;
+    padding: 4px 7px !important;
+    font-size: 10px !important;
+    line-height: 1.1 !important;
+  }
+}
