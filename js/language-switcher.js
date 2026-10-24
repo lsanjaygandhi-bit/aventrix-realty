@@ -192,6 +192,15 @@
   }
 
   function addSelector() {
+    // The language selector is needed on the homepage only. Remove it
+    // completely from every other page so it cannot overlap page content.
+    var pagePath = location.pathname.replace(/^\/(ta|hi|te|kn|ml)(?=\/|$)/, "") || "/";
+    var isHomePage = pagePath === "/" || pagePath === "/index.html";
+    if (!isHomePage) {
+      var existingSlot = document.getElementById("avxLanguageSlot");
+      if (existingSlot) existingSlot.remove();
+      return;
+    }
     if (document.getElementById("avxLanguageSelect")) return;
 
     // Keep the control in a fixed, high-contrast position so it cannot be
