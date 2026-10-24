@@ -227,15 +227,13 @@
       if (!document.body) return;
       var existing = document.getElementById("avxLanguageSelect");
       if (existing) return;
-      // Keep the selector compact and overlay it at the lower-right edge
-      // of the header area, without inserting a new layout row or pushing
-      // the page hero down.
+      // Mount the selector INSIDE the actual header so its absolute
+      // position is anchored to the header on every page. As a sibling,
+      // top:100% was relative to unrelated page ancestors and drifted.
       var header = document.querySelector("header.header, header.site-header, header, .site-header");
-      var hero = document.querySelector(".hh-hero, .list-hero, .search-hero, main");
-      if (header && header.parentNode) {
-        header.insertAdjacentElement("afterend", slot);
-      } else if (hero) {
-        hero.insertAdjacentElement("afterbegin", slot);
+      if (header) {
+        if (window.getComputedStyle(header).position === "static") header.style.position = "relative";
+        header.appendChild(slot);
       } else {
         document.body.insertBefore(slot, document.body.firstChild);
       }
