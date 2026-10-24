@@ -108,15 +108,21 @@
     </script>
     <!-- Property card alignment fix (2026-09-26) — must stay the last stylesheet -->
     <link rel="stylesheet" href="css/property-cards.css?v=20261024e">
+
+    <script src="js/property-card-image-fallback.js?v=20260926" defer></script>
+    <link rel="stylesheet" href="css/properties-map.css?v=20261015a">
+    <link rel="stylesheet" href="css/site-footer.css?v=20261021">
+    <link rel="stylesheet" href="css/site-fixes.css?v=20261024a">
+
     <style id="properties-page-sale-badge-fix">
-      /* This page only: keep FOR SALE / FOR LEASE labels compact, like homepage cards. */
-      .near-me-section .property-badge,
-      #nearMeWidget .property-badge,
-      #sfResultsGrid .property-badge {
+      /* Properties page only. Override the higher-specificity listing-card rules. */
+      #nearMeWidget .property-card .property-badge,
+      #sfResultsGrid .property-card .property-badge {
         display: inline-flex !important;
-        width: auto !important;
-        max-width: 190px !important;
+        box-sizing: border-box !important;
+        width: max-content !important;
         min-width: 0 !important;
+        max-width: calc(100% - 76px) !important;
         height: auto !important;
         min-height: 0 !important;
         padding: 5px 10px !important;
@@ -128,10 +134,6 @@
         flex: 0 0 auto !important;
       }
     </style>
-    <script src="js/property-card-image-fallback.js?v=20260926" defer></script>
-    <link rel="stylesheet" href="css/properties-map.css?v=20261015a">
-    <link rel="stylesheet" href="css/site-footer.css?v=20261021">
-    <link rel="stylesheet" href="css/site-fixes.css?v=20261024a">
 </head>
 
 <body data-page-key="properties">
