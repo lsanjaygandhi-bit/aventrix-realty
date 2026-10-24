@@ -275,3 +275,36 @@
     letter-spacing: .35px !important;
   }
 }
+
+
+/* Properties page: match compact badge appearance used on homepage cards.
+   Includes both the Near You rail and the main search results grid. */
+#nearMeWidget .property-card .property-badge,
+#sfResultsGrid .property-card .property-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: 190px !important;
+  height: auto !important;
+  min-height: 0 !important;
+  padding: 5px 10px !important;
+  font-size: 12px !important;
+  line-height: 1.15 !important;
+  font-weight: 600 !important;
+  letter-spacing: .25px !important;
+  white-space: nowrap !important;
+  box-sizing: border-box !important;
+  flex: 0 0 auto !important;
+}
+@media (max-width: 640px) {
+  #nearMeWidget .property-card .property-badge,
+  #sfResultsGrid .property-card .property-badge {
+    max-width: 190px !important;
+    padding: 5px 10px !important;
+    font-size: 12px !important;
+    line-height: 1.15 !important;
+    letter-spacing: .25px !important;
+  }
+}
