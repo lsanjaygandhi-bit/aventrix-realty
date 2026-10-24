@@ -1,0 +1,22 @@
+# GitHub Pages deployment exclusions for Aventrix Realty.
+# These repository support files are not public website assets.
+exclude:
+  - "*.sql"
+  - "*.csv"
+  - "*.md"
+  - "sql/"
+  - "tests/"
+  - "supabase/"
+  - "functions/"
+  - "tools/"
+  - "partials/"
+  - "docs/"
+  - "locales/coverage-report.json"
+  - "MERGE-VERIFICATION-REPORT.txt"
+  - "RAMSAR-ASSET-INTEGRATION-REPORT.txt"
+  - ".wrangler/"
+  - ".github/"
+  - "node_modules/"
+  - "vendor/"
+  - "about-chennai/README.md"
+  - "land-knowledge/README.md"
