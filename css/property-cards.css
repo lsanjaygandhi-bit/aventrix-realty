@@ -426,3 +426,76 @@
     font-size: 12px !important;
   }
 }
+
+/* EXTRA-COMPACT mobile cards on the Properties search page only.
+   Strongly reduce total vertical footprint while retaining essential content. */
+@media (max-width: 640px) {
+  #sfResultsGrid .property-card .property-image-wrap {
+    aspect-ratio: 16 / 9 !important;
+    height: auto !important;
+    max-height: 118px !important;
+    min-height: 0 !important;
+  }
+  #sfResultsGrid .property-card .property-image-wrap img {
+    height: 100% !important;
+    max-height: 118px !important;
+    object-fit: cover !important;
+  }
+  #sfResultsGrid .property-card .content {
+    padding: 0 !important;
+    gap: 0 !important;
+  }
+  #sfResultsGrid .property-card .property-location {
+    padding: 5px 10px 0 !important;
+    font-size: 9px !important;
+    line-height: 1.2 !important;
+    letter-spacing: .15px !important;
+    -webkit-line-clamp: 1 !important;
+    line-clamp: 1 !important;
+    margin: 0 0 3px !important;
+  }
+  #sfResultsGrid .property-card h3 {
+    padding: 0 10px !important;
+    margin: 0 0 4px !important;
+    font-size: 14px !important;
+    line-height: 1.18 !important;
+    -webkit-line-clamp: 2 !important;
+    line-clamp: 2 !important;
+  }
+  #sfResultsGrid .property-card p {
+    padding: 0 10px !important;
+    margin: 0 0 5px !important;
+    height: 2.4em !important;
+    max-height: 2.4em !important;
+    font-size: 10.5px !important;
+    line-height: 1.2 !important;
+    -webkit-line-clamp: 2 !important;
+    line-clamp: 2 !important;
+  }
+  #sfResultsGrid .property-card .property-footer {
+    padding: 0 10px 7px !important;
+    gap: 4px !important;
+  }
+  #sfResultsGrid .property-card .property-footer-top {
+    row-gap: 4px !important;
+  }
+  #sfResultsGrid .property-card .property-price {
+    font-size: 13px !important;
+    line-height: 1.1 !important;
+  }
+  #sfResultsGrid .property-card .property-icon-actions {
+    gap: 4px !important;
+  }
+  #sfResultsGrid .property-card .property-icon-actions .icon-action-btn {
+    width: 29px !important;
+    height: 29px !important;
+    font-size: 11px !important;
+    border-radius: 7px !important;
+  }
+  #sfResultsGrid .property-card .property-footer .view-details-btn {
+    min-height: 30px !important;
+    padding: 4px 7px !important;
+    font-size: 10.5px !important;
+    line-height: 1.1 !important;
+  }
+}
