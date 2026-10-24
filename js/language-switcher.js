@@ -227,17 +227,11 @@
       if (!document.body) return;
       var existing = document.getElementById("avxLanguageSelect");
       if (existing) return;
-      // Mount the selector INSIDE the actual header so its absolute
-      // position is anchored to the header on every page. As a sibling,
-      // top:100% was relative to unrelated page ancestors and drifted.
-      var header = document.querySelector("header.header, header.site-header, header, .site-header");
-      if (header) {
-        if (window.getComputedStyle(header).position === "static") header.style.position = "relative";
-        header.appendChild(slot);
-      } else {
-        document.body.insertBefore(slot, document.body.firstChild);
-      }
-      slot.classList.add("avx-language-row");
+      // Keep the language selector inside the hero so it scrolls away with
+      // the page instead of staying fixed over every section.
+      var hero = document.querySelector(".hh-hero");
+      if (hero) hero.appendChild(slot);
+      else document.body.appendChild(slot);
       // Mark successful mount for easy local DevTools verification.
       document.documentElement.setAttribute("data-avx-language-selector", "mounted");
     }
