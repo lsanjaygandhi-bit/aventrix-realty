@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <base href="/">
+  <meta name="robots" content="noindex,nofollow">
+  <title>NRI Property Tax Calculator | Aventrix Realty</title>
+  <link rel="stylesheet" href="style.css?v=20261018-mobile-audit">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="css/site-footer.css?v=20261021">
+  <link rel="stylesheet" href="css/site-fixes.css?v=20261014">
+  <link rel="stylesheet" href="/nri-property-tax-calculator/css/calculator.css?v=20261025-v10">
+</head>
+<body data-page-key="nri-property-tax-calculator">
+  <header class="header">
+    <div class="container nav">
+        <div class="logo">
+    <a href="index.html" class="logo-text">
+        <img src="images/aventrix-logo.png" alt="Aventrix Realty">
+    </a>
+</div>
+   <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" data-i18n-aria-label="shared.header.openMenu">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+        <!-- Mobile-only bell — matches index.html's header exactly
+             (site-wide header consistency). Stays visible on every
+             breakpoint, unlike the desktop one inside .nav-right
+             (hidden on mobile by an existing rule). -->
+        <div class="home-app-header-actions">
+            <a href="account.html" class="home-app-bell-btn" aria-label="My Account" data-i18n-aria-label="shared.header.myAccount">
+                <i class="far fa-circle-user" aria-hidden="true"></i>
+            </a>
+        </div>
+    <div class="menu-overlay" id="menuOverlay"></div>   
+       <nav class="main-nav" data-hq="phones">
+
+    <a href="index.html" data-i18n="Home">Home</a>
+
+    <a href="about.html" data-i18n="About Us">About Us</a>
+
+    <a href="properties.html" data-i18n="Properties">Properties</a>
+
+    <a href="services.html" data-i18n="Services">Services</a>
+
+    <a href="list-with-us.html" data-i18n="List With Us">List With Us</a>
+
+    <a href="free-valuation.html" data-i18n="Free Valuation">Free Valuation</a>
+
+    <a href="joint-venture.html" data-i18n="Joint Venture">Joint Venture</a>
+
+    <div class="dropdown aventrix-tools-dropdown">
+      <a href="/property-tools.html" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+        <span><span class="nav-label-extra">Property </span>Tools</span>
+        <i class="fas fa-chevron-down" aria-hidden="true"></i>
+      </a>
+      <div class="dropdown-content aventrix-tools-menu" aria-hidden="true">
+        <a href="/property-tools.html">All Property Tools</a>
+        <a href="/plot-area-calculator.html">Plot Area Calculator</a>
+        <a href="/nri-property-tax-calculator/">NRI Property Tax Calculator</a>
+        <a href="/land-knowledge/">Tamil Nadu Land Knowledge Centre</a>
+        <a href="/about-chennai/">About Chennai</a>
+      </div>
+    </div>
+    <a href="nri-services.html" data-i18n="NRI Services">NRI Services</a>
+
+    <a href="contact.html" data-i18n="Contact">Contact</a>
+
+    <a href="/admin/" class="main-nav-admin" data-i18n="Admin">Admin</a>
+
+
+    <div class="mobile-menu-divider"></div>
+    <span class="mobile-menu-contact-label" data-i18n="CONTACT">CONTACT</span>
+    <a href="tel:+919176887770" class="mobile-menu-phone">📞 +91 91768 87770</a>
+    <a href="tel:+917092356222" class="mobile-menu-phone">📞 +91 70923 56222</a>
+
+
+    <div class="mobile-menu-socials">
+      <a href="https://wa.me/919176887770" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" data-site="whatsapp-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 3.5a8.5 8.5 0 0 0-7.3 12.8L3.5 20.5l4.4-1.2A8.5 8.5 0 1 0 12 3.5z"/><path d="M8.7 8.6c.2-.5.4-.5.6-.5h.5c.2 0 .4 0 .5.4.2.5.6 1.5.6 1.6.1.1.1.3 0 .4-.1.2-.1.3-.3.4-.1.2-.3.3-.4.5-.1.1-.3.3-.1.5.2.4 1 1.5 2 2.3 1.2 1 1 .8 1.3.7.2 0 .4-.2.5-.4.2-.2.4-.2.6-.1l1.4.7c.2.1.4.2.4.3.1.2.1 1-.3 1.4-.4.5-1.4.9-2 .9-.6 0-1.4-.1-3.3-1-2.4-1.1-3.9-3.4-4-3.6-.1-.2-1-1.3-1-2.5s.6-1.8.8-2z" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="https://www.instagram.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Instagram" data-site="social-instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="0.8" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="https://www.facebook.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Facebook" data-site="social-facebook">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M15 8.5h-2a1.5 1.5 0 0 0-1.5 1.5v2h3.4l-.4 3H11.5v7h-3v-7H6.5v-3h2V9.7C8.5 7 10 5.5 12.5 5.5H15v3z"/></svg>
+      </a>
+      <a href="https://maps.app.goo.gl/Gfs3JJ4VVN4cxU5G7?g_st=ic" target="_blank" rel="noopener noreferrer" aria-label="Google Maps" data-hq="maps">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg>
+      </a>
+    </div>
+
+  </nav>
+  
+        <div class="nav-right">
+            <!-- Notification/Bell — matches index.html's header exactly
+                 (site-wide header consistency), same .nav-wishlist-link
+                 styling, same position ahead of the phone number. -->
+            <a href="account.html" class="nav-wishlist-link nav-bell-link" aria-label="My Account" data-i18n-aria-label="shared.header.myAccount">
+                <i class="far fa-circle-user" aria-hidden="true"></i>
+            </a>
+            <a href="tel:+919176887770" class="nav-phone" aria-label="Call Aventrix Realty" data-i18n-aria-label="shared.header.callAventrix">
+                <i class="fas fa-phone-alt" aria-hidden="true"></i>
+            </a>
+        </div>
+    </div>
+     </header>
+  <main class="shell">
+    <section class="list-hero nri-services-hero nri-tax-calculator-hero">
+  <div class="container">
+    <span class="section-tag">NRI PROPERTY TAX REVIEW</span>
+    <h1>Understand your property sale before you sell.</h1>
+    <p>A guided preliminary review of purchase cost, sale proceeds, capital gains and buyer TDS for property in India.</p>
+    <div class="hero-actions"><button type="button" class="button hero-demo" id="load-demo">Try sample calculation</button><span>Example figures only · no personal data needed</span></div>
+  </div>
+</section>
+    <nav class="steps" aria-label="Calculator steps">
+      <span class="step active" data-step-label="1">1. Profile</span>
+      <span class="step" data-step-label="2">2. Property</span>
+      <span class="step" data-step-label="3">3. Purchase</span>
+      <span class="step" data-step-label="4">4. Sale</span>
+      <span class="step" data-step-label="5">5. Review</span>
+    </nav>
+    <form id="tax-form" novalidate>
+      <section class="panel form-step" data-step="1">
+        <div class="panel-head"><span class="number">01</span><div><h2>Tax profile</h2><p>These details help identify which rules need professional validation.</p></div></div>
+        <div class="form-grid">
+          <label>Country where you currently live<select name="residenceCountry" required><option value="">Select country</option><option>United States</option><option>United Arab Emirates</option><option>United Kingdom</option><option>Singapore</option><option>Canada</option><option>Australia</option><option>Other</option></select></label>
+          <label>Indian tax residential status for relevant year<select name="indiaStatus" required><option value="">Select status</option><option>Non-resident (to be confirmed)</option><option>Resident but not ordinarily resident (to be confirmed)</option><option>Resident (to be confirmed)</option><option>Not sure — professional review required</option></select></label>
+          <label>Proposed sale financial year<select name="taxYear" required><option value="">Select year</option><option>2026–27</option><option>2027–28</option><option>Other / not sure</option></select></label>
+          <label>Property ownership<select name="ownership" required><option value="">Select ownership</option><option>Individual</option><option>Joint ownership</option><option>Inherited</option><option>Gifted</option><option>Company / trust / partnership</option></select></label>
+        </div>
+        <p class="field-note">A self-selected status is not a legal determination. Residency must be reviewed against the applicable law and facts.</p>
+      </section>
+      <section class="panel form-step" data-step="2">
+        <div class="panel-head"><span class="number">02</span><div><h2>Property details</h2><p>Identify the property and the ownership share being sold.</p></div></div>
+        <div class="form-grid">
+          <label>Property state<input name="state" value="Tamil Nadu" required></label>
+          <label>City / district<input name="city" placeholder="e.g., Chennai" required></label>
+          <label>Property type<select name="propertyType" required><option value="">Select type</option><option>Residential flat</option><option>Independent house</option><option>Land / plot</option><option>Commercial property</option><option>Agricultural land</option><option>Other</option></select></label>
+          <label>Ownership share being sold (%)<input name="ownershipShare" type="number" min="1" max="100" step="0.01" placeholder="e.g., 100" required></label>
+          <label>Property use<select name="propertyUse" required><option value="">Select use</option><option>Self-occupied</option><option>Rented</option><option>Vacant</option><option>Other / not sure</option></select></label>
+          <label>How was it acquired?<select name="acquisitionType" required><option value="">Select method</option><option>Purchased</option><option>Inherited</option><option>Gifted</option><option>Other</option></select></label>
+        </div>
+      </section>
+      <section class="panel form-step" data-step="3">
+        <div class="panel-head"><span class="number">03</span><div><h2>Purchase and improvement history</h2><p>Use values from records where available. This prototype does not upload or store documents.</p></div></div>
+        <div class="form-grid">
+          <label>Purchase / acquisition date<input name="purchaseDate" type="date" required></label>
+          <label>Documented purchase price (₹)<input name="purchasePrice" type="number" min="0" step="1" placeholder="e.g., 8000000" required></label>
+          <label>Stamp duty + registration (₹)<input name="acquisitionCosts" type="number" min="0" step="1" placeholder="If known"></label>
+          <label>Potentially eligible improvement costs (₹)<input name="improvementCosts" type="number" min="0" step="1" placeholder="If known"></label>
+          <label>Previous owner / inherited cost details<select name="priorOwnerDocs"><option value="">Select status</option><option>Not applicable</option><option>Available</option><option>Not available</option><option>Need professional guidance</option></select></label>
+          <label>Supporting records status<select name="purchaseEvidence"><option value="">Select status</option><option>Purchase deed available</option><option>Some records available</option><option>Records not available</option><option>Not yet checked</option></select></label>
+        </div>
+        <p class="field-note">Whether costs qualify, whether indexation applies, and which acquisition date/cost is legally relevant must be determined under the rules applicable to the transaction.</p>
+      </section>
+      <section class="panel form-step" data-step="4">
+        <div class="panel-head"><span class="number">04</span><div><h2>Proposed sale details</h2><p>Enter the proposed transaction figures for a preliminary financial summary.</p></div></div>
+        <div class="form-grid">
+          <label>Expected sale / transfer date<input name="saleDate" type="date" required></label>
+          <label>Expected sale consideration (₹)<input name="salePrice" type="number" min="0" step="1" placeholder="e.g., 20000000" required></label>
+          <label>Stamp duty / guideline value (₹, if known)<input name="stampValue" type="number" min="0" step="1" placeholder="Optional"></label>
+          <label>Estimated transfer expenses (₹)<input name="transferCosts" type="number" min="0" step="1" placeholder="e.g., brokerage"></label>
+          <label>Buyer category<select name="buyerType" required><option value="">Select buyer</option><option>Resident individual / HUF (to be confirmed)</option><option>Non-resident buyer</option><option>Company / other entity</option><option>Not sure</option></select></label>
+          <label>TDS already deducted / paid (₹, if any)<input name="tdsPaid" type="number" min="0" step="1" placeholder="Optional"></label>
+          <label>Illustrative buyer TDS rate (%)<input name="tdsRate" type="number" min="0" max="100" step="0.01" value="12.5" required><small>Editable scenario only—not a legal default. Actual withholding may differ; confirm with a CA or valid certificate.</small></label>
+          <label>Provisional surcharge (%)<input name="surchargeRate" type="number" min="0" max="37" step="0.1" value="0"><small>Leave at 0 only if not yet determined; surcharge needs individual tax review.</small></label>
+        </div>
+        <div class="form-grid single">
+          <label>Other relevant facts<textarea name="otherFacts" rows="3" placeholder="e.g., multiple owners, rental history, capital losses, planned reinvestment. Do not include personal identifiers."></textarea></label>
+        </div>
+      </section>
+      <section class="panel form-step" data-step="5">
+        <div class="panel-head"><span class="number">05</span><div><h2>Review and report</h2><p>Review the information you entered. The estimate separates preliminary capital gains from buyer withholding, which is not automatically the same amount.</p></div></div>
+        <section class="results-dashboard" aria-label="Calculated results">
+          <div class="results-heading"><div><span class="results-eyebrow">AVENTRIX REALTY · CALCULATION SUMMARY</span><h3>Your property sale snapshot</h3></div><span class="estimate-chip">Preliminary estimate</span></div>
+          <div id="result-metrics" class="result-metrics" aria-live="polite"></div>
+          <div class="results-footnote">Buyer TDS and final tax are different. TDS is shown as an illustrative scenario using the rate entered above, not as a legally confirmed deduction rate.</div>
+        </section>
+        <div id="summary" class="summary-grid"></div>
+        <div class="notice caution"><strong>Not a final tax result.</strong> This is an indicative estimate, not a final tax computation. It classifies a typical immovable-property holding period and shows an illustrative long-term capital-gains base rate. It does not calculate transaction-specific buyer TDS, surcharge, reliefs, exemptions, treaty effects, or repatriation limits.</div>
+        <label class="consent"><input type="checkbox" name="acknowledgement" required> I understand this is a prototype for reference and not tax advice or a tax filing calculation.</label>
+        <div class="report-actions">
+          <button type="button" class="button primary" id="preview-report">Preview branded report</button>
+        </div>
+        <p class="field-note">Review the branded report preview first. Print / Save as PDF and Share are available from the preview. Your entries remain in this browser session only.</p>
+      </section>
+      <div class="form-controls full-page-note">
+        <span id="step-status" aria-live="polite">All sections are shown on this page. Select a section above to jump to it.</span>
+      </div>
+    </form>
+    <section class="report-footnote">
+      <h2>Professional reconciliation note</h2>
+      <p>This preliminary summary is provided by Aventrix Realty for reference only. Please share the report and supporting records with your qualified Chartered Accountant or relevant tax professional for independent verification, reconciliation with original documents, and confirmation of the applicable tax treatment. The final tax liability, withholding obligations, exemptions and refund position can only be determined after review of the relevant facts, documents and applicable law.</p>
+    </section>
+  </main>
+<!-- SITE-FOOTER:START — generated from partials/footer.html by tools/sync-footer.py. Edit the partial, then run: python3 tools/sync-footer.py -->
+<footer class="site-footer" id="footer">
+    <div class="ft-inner">
+
+        <div class="ft-brand">
+            <a href="index.html" class="ft-logo" aria-label="Aventrix Realty — Home"><img src="images/aventrix-logo-white.png" alt="Aventrix Realty" width="1042" height="342" loading="lazy" decoding="async"></a>
+            <p class="ft-tagline" data-site="footer-tagline" data-i18n="shared.footer.tagline">Where Legacy Meets The Next Generation</p>
+            <p class="ft-desc" data-site="footer-description" data-i18n="shared.footer.description">
+                Premium real estate advisory across Chennai — residential,
+                commercial, land and joint venture solutions, guided by
+                trust and decades of local expertise.
+            </p>
+        </div>
+
+        <ul class="ft-contacts">
+            <li class="ft-contact">
+                <span class="ft-icon" aria-hidden="true"><i class="fa-solid fa-location-dot"></i></span>
+                <div>
+                    <h4 class="ft-label" data-i18n="shared.footer.headOffice">Head Office</h4>
+                    <span class="ft-sr" data-hq="name" data-i18n="Aventrix Realty – Head Office">Aventrix Realty – Head Office</span>
+                    <p data-hq="address">No.27, 1st Main Road, Newcolony, Chromepet, Chennai, Tamil Nadu</p>
+                </div>
+            </li>
+            <li class="ft-contact">
+                <span class="ft-icon" aria-hidden="true"><i class="fa-solid fa-phone"></i></span>
+                <div>
+                    <h4 class="ft-label" data-i18n="Phone">Phone</h4>
+                    <div class="ft-phones" data-hq="phones">
+                        <a href="tel:+919176887770">+91 91768 87770</a>
+                        <a href="tel:+917092356222">+91 70923 56222</a>
+                    </div>
+                </div>
+            </li>
+            <li class="ft-contact">
+                <span class="ft-icon" aria-hidden="true"><i class="fa-regular fa-envelope"></i></span>
+                <div>
+                    <h4 class="ft-label" data-i18n="Email">Email</h4>
+                    <p><a href="mailto:office@aventrixrealty.com" data-hq="email">office@aventrixrealty.com</a></p>
+                </div>
+            </li>
+            <li class="ft-contact">
+                <span class="ft-icon" aria-hidden="true"><i class="fa-regular fa-building"></i></span>
+                <div>
+                    <h4 class="ft-label" data-i18n="shared.footer.branchOffice">Branch Office</h4>
+                    <p>Adyar, Chennai</p>
+                </div>
+            </li>
+        </ul>
+
+        <div class="ft-rule" aria-hidden="true"></div>
+
+        <div class="ft-main">
+            <div class="ft-col" role="navigation" aria-label="About Aventrix" data-i18n-aria-label="shared.footer.aboutAventrix">
+                <h4 class="ft-heading" data-i18n="shared.footer.aboutAventrix">About Aventrix</h4>
+                <ul class="ft-links">
+                    <li><a href="index.html" data-i18n="Home">Home</a></li>
+                    <li><a href="about.html" data-i18n="About Us">About Us</a></li>
+                    <li><a href="index.html#contact" data-i18n="Contact Us">Contact Us</a></li>
+                    <li><a href="services.html" data-i18n="Our Services">Our Services</a></li>
+                </ul>
+            </div>
+            <div class="ft-col" role="navigation" aria-label="Quick links" data-i18n-aria-label="Quick links">
+                <h4 class="ft-heading" data-i18n="shared.footer.quickLinks">Quick Links</h4>
+                <ul class="ft-links">
+                    <li><a href="our-realtors.html" data-i18n="shared.footer.realtors">Realtors</a></li>
+                    <li><a href="brokerage-fees.html" data-i18n="shared.footer.brokerageFees">Brokerage &amp; Fees</a></li>
+                    <li><a href="emi-calculator.html" data-i18n="shared.footer.emiCalculator">EMI Calculator</a></li>
+                    <li><a href="jv-calculator.html" data-i18n="shared.footer.jointVentureCalculator">Joint Venture Calculator</a></li>
+                </ul>
+            </div>
+
+            <div class="ft-side">
+                <div class="ft-follow">
+                    <h4 class="ft-heading" data-i18n="shared.footer.followUs">Follow Us</h4>
+                    <div class="ft-social">
+                        <a href="https://www.facebook.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Facebook" data-site="social-facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+                        <a href="https://www.instagram.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Instagram" data-site="social-instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+                        <a href="https://www.linkedin.com/in/lsanjaygandhi" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" data-site="social-linkedin"><i class="fa-brands fa-linkedin" aria-hidden="true"></i></a>
+                        <a href="https://youtube.com/@sanjaygandhirealty" target="_blank" rel="noopener noreferrer" aria-label="YouTube" data-site="social-youtube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
+                        <a href="https://wa.me/919176887770" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" data-site="whatsapp-link"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a>
+                        <a href="https://maps.app.goo.gl/VjCCdVch9uequeGUA?g_st=ic" target="_blank" rel="noopener noreferrer" aria-label="Google Maps" data-hq="maps"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+
+                <section class="ft-map" aria-labelledby="ftMapTitle">
+                    <h4 class="ft-sr" id="ftMapTitle" data-i18n="shared.footer.findUs">Find Us</h4>
+                    <div class="ft-map-frame" data-hq="map-embed"><iframe src="https://www.google.com/maps?q=No.27%2C%201st%20Main%20Road%2C%20New%20Colony%2C%20Chromepet%2C%20Chennai%2C%20Tamil%20Nadu&amp;output=embed" width="600" height="280" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Aventrix Realty Head Office Map" allowfullscreen></iframe></div>
+                    <a class="ft-map-open" href="https://maps.app.goo.gl/VjCCdVch9uequeGUA?g_st=ic" target="_blank" rel="noopener noreferrer" data-hq="maps"><i class="fa-solid fa-diamond-turn-right" aria-hidden="true"></i><span data-i18n="shared.footer.openInMaps">Open in Maps</span><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i><span class="ft-sr" data-i18n="shared.footer.opensInNewTab"> (opens in a new tab)</span></a>
+                </section>
+            </div>
+        </div>
+
+        <div class="ft-rule" aria-hidden="true"></div>
+
+        <div class="ft-bottom">
+            <div class="ft-credits">
+                <p class="ft-copyright" data-site="copyright-text" data-i18n="shared.footer.rights">© 2026 Aventrix Realty. All Rights Reserved.</p>
+                <p class="ft-designer">Designed with <span class="ft-heart" role="img" aria-label="love">&#10084;&#65039;</span> by L. Sanjay Gandhi</p>
+            </div>
+            <div class="ft-legal" role="navigation" aria-label="Legal and utility links" data-i18n-aria-label="Legal and utility links">
+                <a href="privacy-policy.html" data-i18n="shared.footer.privacyPolicy">Privacy Policy</a>
+                <a href="terms.html" data-i18n="shared.footer.termsConditions">Terms &amp; Conditions</a>
+                <a href="sitemap.html" data-i18n="shared.footer.sitemap">Sitemap</a>
+                <a href="property-tools.html" data-i18n="shared.footer.propertyTools">Property Tools</a>
+                <a href="/admin/" class="ft-legal-admin" data-i18n="Admin">Admin</a>
+            </div>
+        </div>
+
+    </div>
+</footer>
+<a href="https://wa.me/919176887770" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat with Aventrix Realty on WhatsApp" data-site="whatsapp-link">
+  <img src="/images/whatsapp-icon.png" alt="">
+</a>
+  <script src="js/site-footer.js?v=20261015" defer></script>
+  <script src="js/public-site-settings.js?v=20260926b" defer></script>
+  <script src="script.js?v=20261018-conversational-ai" defer></script>
+  <script src="/js/language-switcher.js?v=20261023-br-normalization" defer></script>
+    <script src="/nri-property-tax-calculator/js/calculator.js?v=20261025-v9"></script>
+</body>
+</html>

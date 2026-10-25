@@ -1,0 +1,443 @@
+ :root{--ink:#111713;--green:#064b37;--green2:#0c6a4c;--pale:#edf5f0;--line:#dce5df;--muted:#64716a;--paper:#fff;--warning:#fff7e8;--warningline:#e7ca88}*{box-sizing:border-box}body{margin:0;background:#f5f7f5;color:var(--ink);font:16px/1.55 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.site-header{height:auto;min-height:88px;background:#080b09;border-bottom:3px solid var(--green);display:flex;align-items:center;justify-content:space-between;gap:20px;padding:16px max(24px,calc((100% - 1120px)/2))}.brand img{display:block;width:min(310px,48vw);max-height:72px;object-fit:contain}.prototype-label{color:#b9d8c9;border:1px solid #315846;border-radius:99px;padding:6px 11px;font-size:11px;letter-spacing:.08em;text-align:center}.shell{max-width:1000px;margin:0 auto;padding:32px 20px 64px}.hero{padding:18px 0 24px}.eyebrow{color:var(--green2);font-weight:750;letter-spacing:.13em;font-size:12px}.hero h1{font-size:clamp(32px,5vw,48px);line-height:1.1;letter-spacing:-.035em;max-width:750px;margin:8px 0 14px}.lead{max-width:720px;color:#45524a;font-size:18px}.notice{background:var(--pale);border:1px solid #b9d8c6;border-left:4px solid var(--green2);padding:14px 16px;border-radius:8px;margin:20px 0;color:#25382d}.notice.caution{background:var(--warning);border-color:var(--warningline);border-left-color:#b27b17}.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:12px 0 20px}.step{padding:11px 8px;border:1px solid var(--line);border-radius:8px;background:#fff;text-align:center;color:var(--muted);font-size:13px}.step.active{border-color:var(--green);background:var(--pale);color:var(--green);font-weight:750}.panel{background:#fff;border:1px solid var(--line);border-radius:14px;padding:clamp(18px,3vw,30px);box-shadow:0 5px 22px #14251a08}.panel-head{display:flex;align-items:flex-start;gap:15px;margin-bottom:24px}.number{background:var(--green);color:white;width:42px;height:42px;border-radius:9px;display:grid;place-items:center;font-weight:800;flex-shrink:0}.panel h2{margin:0;font-size:25px;line-height:1.25}.panel-head p{margin:6px 0 0;color:var(--muted)}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.form-grid.single{grid-template-columns:1fr;margin-top:18px}label{display:flex;flex-direction:column;gap:7px;font-weight:650;font-size:14px}input,select,textarea{width:100%;font:inherit;font-weight:400;color:var(--ink);border:1px solid #cbd6ce;background:#fff;border-radius:8px;padding:12px 13px;min-height:46px}input:focus,select:focus,textarea:focus{outline:3px solid #0c6a4c25;border-color:var(--green2)}.field-note{color:var(--muted);font-size:13px;margin:18px 0 0}.form-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:20px}.form-controls #step-status{color:var(--muted);font-size:13px}.button{border:0;border-radius:8px;padding:12px 18px;font:inherit;font-weight:750;cursor:pointer;min-height:46px}.button.primary{background:var(--green);color:white}.button.primary:hover{background:#083d2e}.button.secondary{background:white;border:1px solid #bfcfc4;color:var(--green)}.button:disabled{opacity:.4;cursor:not-allowed}.hidden{display:none!important}.summary-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:20px 0}.summary-card{border:1px solid var(--line);padding:15px;border-radius:9px;background:#fbfcfb}.summary-card .key{font-size:12px;color:var(--muted);display:block}.summary-card .value{font-size:20px;font-weight:800;overflow-wrap:anywhere}.consent{display:flex;flex-direction:row;align-items:flex-start;font-weight:500;margin:20px 0}.consent input{width:18px;min-height:18px;margin-top:4px}.report-actions{display:flex;flex-wrap:wrap;gap:10px}.report-footnote{margin-top:24px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px}.report-footnote h2{font-size:18px;margin:0 0 8px}.report-footnote p{margin:0;color:#4c5951;font-size:14px}@media(max-width:650px){.site-header{align-items:flex-start;flex-direction:column}.brand img{width:min(280px,80vw)}.steps{grid-template-columns:repeat(5,minmax(0,1fr));gap:4px}.step{font-size:10px;padding:9px 3px}.form-grid,.summary-grid{grid-template-columns:1fr}.form-controls{flex-wrap:wrap}.form-controls #step-status{order:3;width:100%;text-align:center}.hero h1{font-size:34px}}@media print{body{background:#fff}.site-header{padding:12px 0;background:#080b09!important;print-color-adjust:exact}.prototype-label,.steps,.form-controls,.report-actions{display:none!important}.shell{max-width:none;padding:12px 0}.hero{padding-top:10px}.form-step{display:block!important;box-shadow:none;break-inside:avoid;margin:12px 0}.form-step:not([data-step="5"]){display:none!important}#summary{display:grid}.report-footnote{break-inside:avoid}.notice{print-color-adjust:exact}}
+
+/* Aventrix site integration: keep the standard site header and full footer,
+   and use the NRI property-tax hero artwork supplied by the site owner. */
+.nri-tax-calculator-hero{
+  background: linear-gradient(rgba(7,18,14,.48),rgba(7,18,14,.60)),
+    url("/nri-property-tax-calculator/assets/nri-property-tax-hero.png") center 48%/cover no-repeat !important;
+  min-height: 420px;
+  display:flex; align-items:center; justify-content:center;
+  color:#fff; text-align:center;
+  margin:0; padding:56px 20px;
+}
+.nri-tax-calculator-hero .container{max-width:900px;margin:auto}
+.nri-tax-calculator-hero .section-tag{color:#dce9df}
+.nri-tax-calculator-hero h1{font-size:clamp(32px,4.4vw,54px);line-height:1.12;max-width:850px;margin:8px auto 16px;color:#fff}
+.nri-tax-calculator-hero p{max-width:780px;margin:0 auto;color:#fff;font-size:clamp(15px,1.6vw,18px)}
+.shell{max-width:none;padding:0 0 56px;min-height:calc(100vh - 88px)}
+.shell > .steps,.shell > #tax-form,.shell > .report-footnote{max-width:1000px;margin-left:auto;margin-right:auto}
+.shell > .steps{padding-left:20px;padding-right:20px;margin-top:24px}
+.shell > #tax-form{padding:0 20px}
+.shell > .report-footnote{margin-top:24px}
+#footer{margin-top:32px}
+@media(max-width:650px){.nri-tax-calculator-hero{min-height:340px;padding:42px 18px}.shell > .steps{padding-left:14px;padding-right:14px}.shell > #tax-form{padding:0 14px}}
+
+/* Estimate detail and accessible step navigation */
+.steps .step{cursor:pointer}
+.steps .step:focus-visible{outline:3px solid #0c6a4c55;outline-offset:2px}
+.summary-tax-note{grid-column:1/-1;background:#fff7e8;border:1px solid #e7ca88;border-left:4px solid #b27b17;border-radius:9px;padding:16px;color:#45391f}
+.summary-tax-note p{margin:8px 0 0;font-size:14px}
+
+/* Calculator-page responsive header correction.
+   Use the same branded mobile drawer at narrow viewport widths even when
+   script.js has not applied html.is-mobile (e.g. responsive desktop preview). */
+@media (max-width: 900px) {
+  body[data-page-key="nri-property-tax-calculator"] .header {
+    position: relative;
+    z-index: 10000;
+    background: #fff;
+  }
+  body[data-page-key="nri-property-tax-calculator"] .container.nav {
+    width: 100%;
+    max-width: none;
+    min-height: 72px;
+    margin: 0;
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  body[data-page-key="nri-property-tax-calculator"] .logo {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    flex: 0 1 auto;
+    min-width: 0;
+    margin: 0 auto 0 0;
+    order: 1;
+  }
+  body[data-page-key="nri-property-tax-calculator"] .logo a {
+    display: inline-flex;
+    align-items: center;
+  }
+  body[data-page-key="nri-property-tax-calculator"] .logo img {
+    display: block !important;
+    width: auto;
+    height: 40px;
+    max-width: min(56vw, 220px);
+    object-fit: contain;
+  }
+  body[data-page-key="nri-property-tax-calculator"] .home-app-header-actions {
+    display: flex !important;
+    align-items: center;
+    flex: 0 0 auto;
+    order: 2;
+    margin-left: auto;
+  }
+  body[data-page-key="nri-property-tax-calculator"] .nav-right {
+    display: none !important;
+  }
+  body[data-page-key="nri-property-tax-calculator"] .menu-toggle {
+    display: flex !important;
+    flex: 0 0 42px;
+    width: 42px;
+    height: 42px;
+    order: 3;
+    margin: 0;
+    padding: 0;
+    z-index: 10003;
+  }
+  body[data-page-key="nri-property-tax-calculator"] .main-nav {
+    position: fixed !important;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    width: min(82vw, 350px);
+    max-width: 350px;
+    height: 100vh;
+    height: 100dvh;
+    margin: 0;
+    padding: calc(76px + env(safe-area-inset-top, 0px)) 0 calc(24px + env(safe-area-inset-bottom, 0px));
+    overflow-y: auto;
+    background: #fff;
+    border-left: 3px solid #0f3b2e;
+    box-shadow: -10px 0 30px rgba(0,0,0,.15);
+    transform: translateX(105%);
+    transition: transform .32s cubic-bezier(.4,0,.2,1);
+    visibility: hidden;
+    z-index: 10002;
+  }
+  body[data-page-key="nri-property-tax-calculator"] .main-nav.active {
+    transform: translateX(0);
+    visibility: visible;
+  }
+  body[data-page-key="nri-property-tax-calculator"] .main-nav > a,
+  body[data-page-key="nri-property-tax-calculator"] .main-nav .dropdown-toggle {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 15px 24px;
+    margin: 0;
+    color: #111;
+    font-size: 15px;
+    font-weight: 650;
+    letter-spacing: .2px;
+    border-bottom: 1px solid #f0f0f0;
+    text-decoration: none;
+  }
+  body[data-page-key="nri-property-tax-calculator"] .main-nav .dropdown {
+    display: block;
+    width: 100%;
+  }
+  body[data-page-key="nri-property-tax-calculator"] .main-nav .dropdown-content {
+    display: none;
+    position: static;
+    width: 100%;
+    padding: 0 0 0 12px;
+    background: #f8faf8;
+    box-shadow: none;
+    border: 0;
+  }
+  body[data-page-key="nri-property-tax-calculator"] .main-nav .dropdown.open .dropdown-content {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+  }
+  body[data-page-key="nri-property-tax-calculator"] .main-nav .dropdown-content a {
+    display: block;
+    padding: 12px 24px;
+    color: #25382d;
+    font-size: 14px;
+    border-bottom: 1px solid #edf1ed;
+  }
+  body[data-page-key="nri-property-tax-calculator"] .menu-overlay {
+    z-index: 10001;
+  }
+}
+
+@media (max-width: 380px) {
+  body[data-page-key="nri-property-tax-calculator"] .container.nav { padding-inline: 12px; }
+  body[data-page-key="nri-property-tax-calculator"] .logo img { height: 36px; max-width: 52vw; }
+}
+
+
+/* Branded report preview: user reviews before print/share. */
+.report-preview-modal{display:none;position:fixed;inset:0;z-index:20000;color:#17231b}
+.report-preview-modal.open{display:block}
+.report-preview-backdrop{position:absolute;inset:0;background:rgba(7,16,11,.72);backdrop-filter:blur(3px)}
+.report-preview-dialog{position:relative;width:min(980px,calc(100% - 28px));height:min(92dvh,1000px);margin:4dvh auto;background:#f2f5f2;border-radius:16px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 24px 80px #0005}
+.report-preview-toolbar{display:flex;justify-content:space-between;align-items:center;padding:13px 18px;background:#101612;color:#fff;font-weight:750}
+.preview-close{border:0;background:transparent;color:#fff;font-size:28px;line-height:1;cursor:pointer}
+.report-preview-document{width:min(760px,100%);margin:18px auto;overflow:auto;background:#fff;padding:clamp(18px,4vw,42px);box-shadow:0 2px 14px #10201812;flex:1}
+.report-preview-brand{display:flex;align-items:center;gap:16px;min-height:56px}
+.report-preview-brand img{display:block;width:150px;max-width:35%;height:auto;max-height:62px;object-fit:contain}
+.report-preview-brand div{display:flex;flex-direction:column;gap:3px}
+.report-preview-brand strong{font-size:15px;letter-spacing:.12em;color:#0b553c}
+.report-preview-brand span{font-size:12px;color:#64716a}
+.report-preview-rule{height:3px;background:#0b553c;margin:18px 0 24px}
+.report-preview-kicker{font-size:11px;letter-spacing:.14em;font-weight:800;color:#0b6a4c}
+.report-preview-document h1{font-size:clamp(26px,4vw,38px);line-height:1.1;margin:8px 0;color:#101612}
+.report-preview-intro{color:#59665e;margin-bottom:22px;font-size:14px}
+.report-preview-data{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.report-preview-row{border:1px solid #e0e8e2;border-radius:8px;padding:12px;min-width:0;break-inside:avoid}
+.report-preview-row span{display:block;color:#64716a;font-size:11px;line-height:1.4;margin-bottom:5px}
+.report-preview-row strong{display:block;font-size:14px;overflow-wrap:anywhere;line-height:1.4}
+.report-preview-note,.report-preview-disclaimer{grid-column:1/-1;margin-top:12px;padding:14px;border:1px solid #e7ca88;border-left:4px solid #b27b17;background:#fff9ed;border-radius:8px;font-size:12px;color:#4e432d}
+.report-preview-note p,.report-preview-disclaimer p{margin-top:6px}
+.report-preview-disclaimer{margin-top:20px}
+.report-preview-footer{display:flex;justify-content:space-between;gap:12px;border-top:1px solid #dce5df;margin-top:24px;padding-top:12px;color:#64716a;font-size:10px}
+.report-preview-actions{display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap;padding:12px 18px;background:#fff;border-top:1px solid #e0e8e2}
+.report-preview-privacy{padding:0 18px 12px;text-align:right;font-size:11px;color:#64716a;background:#fff;margin:0}
+@media(max-width:600px){.report-preview-dialog{width:100%;height:100dvh;max-height:100dvh;margin:0;border-radius:0}.report-preview-document{margin:0;padding:20px 16px}.report-preview-data{grid-template-columns:1fr}.report-preview-brand img{width:120px}.report-preview-actions{display:grid;grid-template-columns:1fr 1fr}.report-preview-actions #print-preview-report{grid-column:1/-1}.report-preview-privacy{text-align:left}.report-preview-footer{flex-direction:column}}
+@media print{
+  body.report-preview-open *{visibility:hidden!important}
+  body.report-preview-open #report-preview-modal,body.report-preview-open #report-preview-modal *{visibility:visible!important}
+  body.report-preview-open #report-preview-modal{display:block!important;position:absolute;inset:0;background:#fff;z-index:999999;overflow:visible}
+  body.report-preview-open .report-preview-backdrop,body.report-preview-open .report-preview-toolbar,body.report-preview-open .report-preview-actions,body.report-preview-open .report-preview-privacy{display:none!important}
+  body.report-preview-open .report-preview-dialog{display:block;width:100%;height:auto;max-height:none;margin:0;overflow:visible;border-radius:0;box-shadow:none;background:#fff}
+  body.report-preview-open .report-preview-document{display:block;width:100%;max-width:none;margin:0;padding:10mm;overflow:visible;box-shadow:none}
+  body.report-preview-open .report-preview-row{break-inside:avoid}
+  body.report-preview-open .report-preview-data{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+/* v9: reference-inspired calculator workspace — dark input panel, clear result cards,
+   and separate tax/TDS/net-proceeds figures. Aventrix black/green/white palette only. */
+.results-dashboard{margin:22px 0 20px;padding:clamp(18px,2.6vw,28px);border-radius:18px;background:#101713;color:#f7fbf8;border:1px solid #27372e;box-shadow:0 16px 38px rgba(9,25,16,.12)}
+.results-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:20px}
+.results-eyebrow{display:block;color:#91c7a7;font-size:11px;font-weight:800;letter-spacing:.13em}
+.results-heading h3{margin:5px 0 0;font-size:clamp(22px,3vw,30px);line-height:1.2;color:#fff}
+.estimate-chip{white-space:nowrap;border:1px solid #47795b;background:#183526;color:#d8f2e1;border-radius:999px;padding:7px 10px;font-size:11px;font-weight:750}
+.result-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.metric-card{min-width:0;min-height:126px;border:1px solid #2d4035;border-radius:12px;padding:16px;background:#19221c;display:flex;flex-direction:column;align-items:flex-start;gap:7px}
+.metric-card>span{color:#b9c9bf;font-size:12px;font-weight:650}
+.metric-card>strong{color:#fff;font-size:clamp(19px,2.2vw,27px);line-height:1.2;letter-spacing:-.02em;overflow-wrap:anywhere}
+.metric-card>small{color:#a4b6aa;font-size:11px;line-height:1.45}
+.metric-gain{border-top:3px solid #69b782}.metric-tax{border-top:3px solid #d9c47a}.metric-tds{border-top:3px solid #7fa9dc}.metric-net{border-top:3px solid #69b782;background:#1b3023}
+.results-footnote{margin-top:14px;padding-top:13px;border-top:1px solid #2d4035;color:#c1d0c6;font-size:12px;line-height:1.5}
+#tax-form .panel{border-radius:16px}
+#tax-form .panel-head .number{background:#0c6a4c}
+#tax-form label small{font-weight:450;color:#64716a;font-size:11px;line-height:1.4}
+#tax-form input[name="tdsRate"],#tax-form input[name="surchargeRate"]{max-width:100%}
+@media(max-width:760px){.result-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.metric-net{grid-column:1/-1}.results-heading{flex-direction:column;gap:10px}.estimate-chip{white-space:normal}}
+@media(max-width:420px){.result-metrics{grid-template-columns:1fr}.metric-net{grid-column:auto}.metric-card{min-height:0}.results-dashboard{padding:15px}.metric-card>strong{font-size:22px}}
+@media print{.results-dashboard{background:#fff!important;color:#111;border:1px solid #ccc;box-shadow:none;print-color-adjust:exact}.results-heading h3,.metric-card>strong{color:#111}.results-eyebrow,.metric-card>span,.metric-card>small,.results-footnote{color:#333}.metric-card{background:#fff;border-color:#bbb;min-height:0}.estimate-chip{color:#111;background:#fff;border-color:#999}}
+/* Reference visual: calculator input surface uses the same dark workspace as result panels. */
+#tax-form .form-step{background:#111914;color:#f7fbf8;border-color:#2b3b30;box-shadow:0 14px 34px rgba(9,25,16,.10)}
+#tax-form .panel h2{color:#fff}
+#tax-form .panel-head p{color:#b5c5ba}
+#tax-form .panel .number{background:#0d7955;color:#fff}
+#tax-form label{color:#e7efe9}
+#tax-form input,#tax-form select,#tax-form textarea{background:#1b251e;color:#f7fbf8;border-color:#3a4b40;color-scheme:dark}
+#tax-form input::placeholder,#tax-form textarea::placeholder{color:#9baea0}
+#tax-form input:focus,#tax-form select:focus,#tax-form textarea:focus{outline:3px solid #61b78338;border-color:#6bb88a}
+#tax-form .field-note{color:#aebeb3}
+#tax-form .summary-card{background:#1a241d;border-color:#34463a}
+#tax-form .summary-card .key{color:#b7c8bc}
+#tax-form .summary-card .value{color:#fff}
+#tax-form .consent{color:#e7efe9}
+#tax-form .consent input{accent-color:#16845b}
+#tax-form .form-controls #step-status{color:#b5c5ba}
+#tax-form .button.secondary{background:#18231c;border-color:#3a5644;color:#e6f4eb}
+#tax-form .summary-tax-note{background:#2a2417;border-color:#715d30;border-left-color:#d5ad48;color:#f4e8c8}
+#tax-form .summary-tax-note p{color:#e0d3b4}
+@media print{#tax-form .form-step{background:#fff!important;color:#111;border-color:#ccc}#tax-form .panel h2,#tax-form label,#tax-form .summary-card .value{color:#111}#tax-form input,#tax-form select,#tax-form textarea{background:#fff;color:#111;border-color:#aaa}}
+
+/* v10: functional reference-led calculator details and mobile-first demo entry. */
+.nri-tax-calculator-hero .hero-actions{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:22px}
+.nri-tax-calculator-hero .hero-actions span{font-size:12px;color:#edf6ef}
+.nri-tax-calculator-hero .hero-demo{background:#0b6a4c;color:#fff;border:1px solid #7ebd98;box-shadow:0 6px 18px #0002}
+.nri-tax-calculator-hero .hero-demo:hover{background:#084c37}
+.steps{position:relative;z-index:1}
+.step{cursor:pointer;transition:background .15s,border-color .15s,color .15s}
+.step:hover{border-color:#0c6a4c;color:#0c6a4c}
+.step:focus-visible{outline:3px solid #62b887;outline-offset:2px}
+.summary-tax-note ul{margin:8px 0 0;padding-left:20px}
+.summary-tax-note li{margin:5px 0}
+@media(max-width:650px){
+  .nri-tax-calculator-hero{min-height:350px;padding:38px 16px}
+  .nri-tax-calculator-hero .hero-actions{align-items:stretch;flex-direction:column;gap:8px}
+  .nri-tax-calculator-hero .hero-actions .button{width:100%}
+  .steps{overflow-x:auto;grid-template-columns:repeat(5,minmax(88px,1fr));padding-bottom:5px;scrollbar-width:thin}
+  .step{min-height:44px;display:flex;align-items:center;justify-content:center;white-space:nowrap}
+  .form-controls{position:sticky;bottom:0;z-index:40;background:#101713;border:1px solid #2b3b30;border-radius:12px;padding:10px;margin:14px 12px 0;box-shadow:0 -6px 20px #0001}
+  .form-controls #step-status{color:#e5efe8!important}
+}
+
+
+/* Full-page form requested by owner: all sections visible in one continuous scroll. */
+#tax-form .form-step, #tax-form .form-step.hidden { display:block !important; margin:0 0 18px; scroll-margin-top:18px; }
+#tax-form .form-controls.full-page-note { position:static; background:transparent; border:0; box-shadow:none; padding:10px 0 0; }
+#step-status { line-height:1.5; }
+.steps { position:sticky; top:8px; z-index:10; background:#f5f7f5; padding-top:8px; padding-bottom:8px; }
+#tax-form input[type="date"] { min-height:48px; cursor:pointer; }
+@media(max-width:650px){ .steps { top:0; } #tax-form .form-step { margin-bottom:14px; } }
+
+/* Calculator page only: white WhatsApp floating-button backing, with the
+   green WhatsApp mark kept legible inside it. */
+body[data-page-key="nri-property-tax-calculator"] .whatsapp-float {
+  background: #fff !important;
+  border: 1px solid rgba(20, 35, 28, .12) !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, .16) !important;
+}
+body[data-page-key="nri-property-tax-calculator"] .whatsapp-float img {
+  background: #fff !important;
+  object-fit: contain !important;
+  padding: 5px !important;
+}
+
+body[data-page-key="nri-property-tax-calculator"] {
+  background: #fff;
+  color: #111713;
+}
+body[data-page-key="nri-property-tax-calculator"] .notice:not(.caution) {
+  background: #fff;
+  border-color: #dce5df;
+  border-left-color: #286847;
+}
+
+/* Hero keeps its photo background and dark overlay; only the controls stay black, not green. */
+.nri-tax-calculator-hero .hero-demo {
+  background: #111713;
+  border: 1px solid rgba(255, 255, 255, .7);
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .25);
+}
+.nri-tax-calculator-hero .hero-demo:hover {
+  background: #29312c;
+}
+#tax-form .button.primary {
+  background: #111713;
+  border: 1px solid #111713;
+  color: #fff;
+  box-shadow: none;
+}
+#tax-form .button.primary:hover {
+  background: #29312c;
+}
+
+.steps {
+  background: #fff;
+}
+.steps .step.active {
+  background: #fff;
+  border-color: #286847;
+  color: #174b32;
+}
+
+#tax-form .form-step {
+  background: #fff;
+  color: #111713;
+  border-color: #dce5df;
+  box-shadow: 0 5px 22px rgba(20, 37, 26, .05);
+}
+#tax-form .panel h2,
+#tax-form label,
+#tax-form .summary-card .value {
+  color: #111713;
+}
+#tax-form .panel-head p,
+#tax-form .field-note,
+#tax-form .summary-card .key {
+  color: #64716a;
+}
+#tax-form .panel .number {
+  background: #fff;
+  color: #155b40;
+  border: 1px solid #b8c9bd;
+}
+#tax-form input,
+#tax-form select,
+#tax-form textarea {
+  background: #fff;
+  color: #111713;
+  border-color: #cbd6ce;
+  color-scheme: light;
+}
+#tax-form input::placeholder,
+#tax-form textarea::placeholder {
+  color: #737d76;
+}
+#tax-form input:focus,
+#tax-form select:focus,
+#tax-form textarea:focus {
+  outline: 3px solid rgba(21, 91, 64, .14);
+  border-color: #286847;
+}
+#tax-form .summary-card {
+  background: #fff;
+  border-color: #dce5df;
+}
+#tax-form .summary-tax-note {
+  background: #fff9ed;
+  border-color: #e7ca88;
+  border-left-color: #b27b17;
+  color: #45391f;
+}
+#tax-form .summary-tax-note p {
+  color: #594b30;
+}
+#tax-form .form-controls #step-status {
+  color: #64716a;
+}
+#tax-form .button.secondary {
+  background: #fff;
+  border-color: #cbd6ce;
+  color: #25382d;
+}
+
+.results-dashboard {
+  background: #fff;
+  color: #111713;
+  border-color: #dce5df;
+  box-shadow: 0 5px 22px rgba(20, 37, 26, .05);
+}
+.results-heading h3,
+.metric-card > strong {
+  color: #111713;
+}
+.results-eyebrow {
+  color: #286847;
+}
+.estimate-chip {
+  background: #fff;
+  border-color: #b8c9bd;
+  color: #174b32;
+}
+.metric-card {
+  background: #fff;
+  border-color: #dce5df;
+}
+.metric-card > span,
+.metric-card > small {
+  color: #59655d;
+}
+.metric-gain,
+.metric-tax,
+.metric-tds,
+.metric-net {
+  border-top: 2px solid #286847;
+}
+.metric-net {
+  background: #fff;
+}
+.results-footnote {
+  border-top-color: #dce5df;
+  color: #59655d;
+}
+
+@media (max-width: 650px) {
+  #tax-form .form-controls {
+    background: #fff;
+    border-color: #dce5df;
+    box-shadow: 0 -6px 20px rgba(0, 0, 0, .06);
+  }
+}

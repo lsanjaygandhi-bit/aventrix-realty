@@ -267,3 +267,58 @@
     right: 18px !important;
   }
 }
+
+
+/* Targeted desktop homepage fix: keep Language selector BELOW Post Property CTA. */
+@media (min-width: 769px) {
+  body:has(.hh-hero) .hh-hero { position: relative !important; }
+  body:has(.hh-hero) #avxLanguageSlot.avx-language-slot {
+    position: absolute !important; top: 104px !important; right: 18px !important;
+    z-index: 30 !important; width: 96px !important; height: 30px !important;
+    margin: 0 !important; transform: none !important;
+  }
+}
+
+
+/* FIX 2026-10: language selector must sit BELOW the Post Property CTA.
+   This final override intentionally supersedes older conflicting top values. */
+@media (min-width: 769px) {
+  body:has(.hh-hero) .hh-hero #avxLanguageSlot.avx-language-slot {
+    position:absolute !important; top:58px !important; right:18px !important;
+    z-index:5 !important; width:96px !important; height:30px !important;
+    margin:0 !important; transform:none !important;
+  }
+}
+@media (max-width: 768px) {
+  body:has(.hh-hero) .hh-hero #avxLanguageSlot.avx-language-slot {
+    position:absolute !important; top:12px !important; right:12px !important;
+    z-index:5 !important; width:82px !important; height:27px !important;
+    margin:0 !important; transform:none !important;
+  }
+}
+
+
+/* Keep the desktop Post Property CTA above the language selector. */
+@media (min-width: 769px) {
+  body:has(.hh-hero) .hh-hero { position: relative !important; }
+  body:has(.hh-hero) .hh-hero > .home-app-hero-post-btn {
+    position: absolute !important; top: 18px !important; right: 18px !important;
+    z-index: 40 !important; margin: 0 !important;
+  }
+  body:has(.hh-hero) #avxLanguageSlot.avx-language-slot {
+    position: absolute !important; top: 108px !important; right: 18px !important;
+    z-index: 39 !important; width: 96px !important; height: 30px !important;
+    margin: 0 !important; transform: none !important;
+  }
+}
+@media (max-width: 768px) {
+  body:has(.hh-hero) .hh-hero > .home-app-hero-post-btn {
+    display: none !important;
+  }
+  body:has(.hh-hero) #avxLanguageSlot.avx-language-slot {
+    top: 12px !important;
+    right: 12px !important;
+    width: 82px !important;
+    height: 27px !important;
+  }
+}

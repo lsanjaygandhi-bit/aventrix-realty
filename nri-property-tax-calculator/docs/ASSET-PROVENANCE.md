@@ -1,0 +1,1 @@
+The image in assets/aventrix-realty-original-logo.png is copied from the logo image supplied by the user in this conversation. It is used without intentional edits. The uploaded full website ZIP was reviewed for the names of relevant reference files; this prototype is separate and does not overwrite or modify that website archive.

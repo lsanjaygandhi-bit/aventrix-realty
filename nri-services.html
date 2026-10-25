@@ -77,6 +77,38 @@
     <link rel="stylesheet" href="style.css?v=20261018-mobile-audit">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        .nri-tax-calculator-promo {
+            display: block;
+            max-width: 1120px;
+            margin: 20px auto 0;
+            padding: 14px 18px;
+            border: 1px solid #dce5df;
+            border-left: 3px solid #286847;
+            border-radius: 8px;
+            background: #fff;
+            color: #17231b;
+            text-decoration: none;
+            animation: nri-tax-calculator-pulse 3.6s ease-in-out infinite;
+        }
+        .nri-tax-calculator-promo strong {
+            color: #155b40;
+        }
+        .nri-tax-calculator-promo:focus-visible {
+            outline: 3px solid rgba(21, 91, 64, .28);
+            outline-offset: 3px;
+        }
+        @keyframes nri-tax-calculator-pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(40, 104, 71, .05); }
+            50% { box-shadow: 0 0 0 4px rgba(40, 104, 71, .10); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .nri-tax-calculator-promo { animation: none; }
+        }
+        @media (max-width: 1160px) {
+            .nri-tax-calculator-promo { margin-right: 20px; margin-left: 20px; }
+        }
+    </style>
 
     <script type="application/ld+json">
 {
@@ -155,7 +187,19 @@
 
     <a href="joint-venture.html" data-i18n="Joint Venture">Joint Venture</a>
 
-    <a href="property-tools.html"><span class="nav-label-extra">Property </span>Tools</a>
+    <div class="dropdown aventrix-tools-dropdown">
+      <a href="/property-tools.html" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+        <span><span class="nav-label-extra">Property </span>Tools</span>
+        <i class="fas fa-chevron-down" aria-hidden="true"></i>
+      </a>
+      <div class="dropdown-content aventrix-tools-menu" aria-hidden="true">
+        <a href="/property-tools.html" data-i18n="All Property Tools">All Property Tools</a>
+        <a href="/plot-area-calculator.html" data-i18n="Plot Area Calculator">Plot Area Calculator</a>
+        <a href="/nri-property-tax-calculator/">NRI Property Tax Calculator</a>
+        <a href="/land-knowledge/" data-i18n="Tamil Nadu Land Knowledge Centre">Tamil Nadu Land Knowledge Centre</a>
+        <a href="/about-chennai/" data-i18n="About Chennai">About Chennai</a>
+      </div>
+    </div>
     <a href="nri-services.html" data-i18n="NRI Services">NRI Services</a>
 
     <a href="contact.html" data-i18n="Contact">Contact</a>
@@ -235,6 +279,10 @@
 <section class="fv-section" data-cms-section="local-support" data-cms-label="Local support while overseas (5)">
 
     <div class="container">
+
+        <a class="nri-tax-calculator-promo" href="/nri-property-tax-calculator/">
+            <strong>NRI Property Tax Calculator</strong> — get a preliminary estimate for a property sale in India.
+        </a>
 
         <div class="section-heading">
             <span class="section-eyebrow" data-cms-eyebrow data-i18n="nri.local.eyebrow">Local Presence</span>
