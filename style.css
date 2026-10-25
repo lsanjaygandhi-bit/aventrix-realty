@@ -9389,3 +9389,24 @@ html.is-mobile #leadership .leader-row-content [data-cms-f="rera"] {
     hyphens: none !important;
   }
 }
+
+
+/* Homepage leadership bios: non-English scripts must not be justified,
+   because Tamil/Indic glyph spacing expands unnaturally on narrow screens.
+   English typography is intentionally left unchanged. */
+@media (max-width: 768px) {
+  html[lang="ta"] #leadership .leader-row-content > p[data-cms-f="bio"],
+  html[lang="hi"] #leadership .leader-row-content > p[data-cms-f="bio"],
+  html[lang="te"] #leadership .leader-row-content > p[data-cms-f="bio"],
+  html[lang="kn"] #leadership .leader-row-content > p[data-cms-f="bio"],
+  html[lang="ml"] #leadership .leader-row-content > p[data-cms-f="bio"] {
+    text-align: left !important;
+    text-align-last: left !important;
+    text-justify: auto !important;
+    word-spacing: normal !important;
+    letter-spacing: normal !important;
+    line-height: 1.7 !important;
+    hyphens: none !important;
+    overflow-wrap: break-word;
+  }
+}
