@@ -9373,3 +9373,19 @@ html.is-mobile #leadership .leader-row-content [data-cms-f="rera"] {
     line-height: 1.7 !important;
   }
 }
+
+
+/* Homepage mobile: match the founder biography alignment to the co-founder profile.
+   Only the founder paragraph is targeted; the co-founder paragraph is untouched. */
+@media (max-width: 768px) {
+  html.is-mobile #leadership .leadership-rows > .leader-row:first-child .leader-row-content > p[data-cms-f="bio"] {
+    text-align: justify !important;
+    text-align-last: left !important;
+    text-justify: inter-word !important;
+    word-spacing: normal !important;
+    letter-spacing: normal !important;
+    line-height: 1.65 !important;
+    overflow-wrap: break-word;
+    hyphens: none !important;
+  }
+}
