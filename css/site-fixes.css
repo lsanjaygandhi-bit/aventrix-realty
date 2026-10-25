@@ -172,3 +172,20 @@ body[data-page-key="properties"] .near-me-section .property-card .property-badge
   flex: 0 0 auto !important;
   z-index: 5 !important;
 }
+
+
+/* Mobile founder bio: apply after all page styles so the text is truly justified.
+   Scoped to Gnanasekaran's page; the Sanjay Gandhi profile is not affected. */
+@media (max-width: 768px) {
+  html.is-mobile body[data-page-key="gnanasekaran"] .profile-container [data-realtor-about],
+  html.is-mobile body[data-page-key="gnanasekaran"] .profile-container [data-cms-section],
+  html.is-mobile body[data-page-key="gnanasekaran"] .profile-container [data-realtor-about] p,
+  html.is-mobile body[data-page-key="gnanasekaran"] .profile-container [data-cms-section] p {
+    text-align: justify !important;
+    text-align-last: auto !important;
+    text-justify: inter-word !important;
+    word-spacing: normal !important;
+    letter-spacing: normal !important;
+    line-height: 1.7 !important;
+  }
+}
