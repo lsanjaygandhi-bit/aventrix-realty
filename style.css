@@ -9357,3 +9357,19 @@ html.is-mobile #leadership .leader-row-content [data-cms-f="rera"] {
     line-height: 1.7 !important;
   }
 }
+
+/* Founder profile only: keep biography text evenly aligned to both edges on mobile.
+   Sanjay Gandhi's co-founder profile retains its existing alignment. */
+@media (max-width: 768px) {
+  html.is-mobile body[data-page-key="gnanasekaran"] .profile-container p,
+  html.is-mobile body[data-page-key="gnanasekaran"] .profile-container [data-realtor-about] p,
+  html.is-mobile body[data-page-key="gnanasekaran"] .profile-container [data-cms-section] p {
+    text-align: justify !important;
+    text-align-last: auto !important;
+    text-justify: inter-word !important;
+    word-spacing: normal !important;
+    letter-spacing: normal !important;
+    overflow-wrap: break-word;
+    line-height: 1.7 !important;
+  }
+}
