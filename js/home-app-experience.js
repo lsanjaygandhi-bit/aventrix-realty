@@ -73,6 +73,45 @@
         const RS = window.AventrixRecentSearches;
         if (!RS) return;
 
+        function localizeRecentSearchContent(root) {
+            if (!root) return;
+            root.querySelectorAll(".home-app-recent-empty, .rs-expanded-empty").forEach((el) => {
+                el.setAttribute("data-i18n", "home.recent.empty");
+            });
+            root.querySelectorAll(".rs-remove-btn").forEach((el) => {
+                el.setAttribute("data-i18n-aria-label", "home.recent.removeSearch");
+            });
+            root.querySelectorAll(".rs-clear-all-btn").forEach((el) => {
+                el.setAttribute("data-i18n", "home.recent.clearAll");
+            });
+        }
+
+        function localizeRecentSearchLabels(root) {
+            if (!root || !window.avxI18n || !document.documentElement.hasAttribute("data-avx-translations-loaded")) return;
+            const entries = RS.read();
+            const links = root.querySelectorAll(".home-app-recent-chip, .rs-expanded-link");
+            links.forEach((link, index) => {
+                const entry = entries[index];
+                if (!entry) return;
+                const url = new URL(RS.urlOf(entry), location.href);
+                const params = url.searchParams;
+                const parts = [];
+                const transaction = params.get("transaction");
+                if (transaction === "buy") parts.push(window.avxI18n.t("home.search.buy"));
+                else if (transaction === "lease") parts.push(window.avxI18n.t("home.search.rentLease"));
+
+                const type = params.get("type");
+                if (type) {
+                    const option = Array.from(document.querySelectorAll("#hsCategory option"))
+                        .find((candidate) => candidate.value === type);
+                    parts.push(option ? option.textContent.trim() : type);
+                }
+                const searchLocation = params.get("location");
+                if (searchLocation) parts.push(searchLocation);
+                link.textContent = parts.length ? parts.join(" · ") : window.avxI18n.t("home.recent.allProperties");
+            });
+        }
+
         const form = document.querySelector(".property-search-form");
         if (form) {
             form.addEventListener("submit", () => {
@@ -106,6 +145,10 @@
         const panelEl = document.getElementById("myRecentSearchesPanel");
         RS.renderChips(chipsEl);
         RS.renderChips(panelEl);
+        localizeRecentSearchContent(chipsEl);
+        localizeRecentSearchContent(panelEl);
+        localizeRecentSearchLabels(chipsEl);
+        localizeRecentSearchLabels(panelEl);
 
         const allBtn = document.getElementById("allRecentSearchesBtn");
         const expandedEl = document.getElementById("recentSearchesExpanded");
@@ -115,15 +158,29 @@
                 expanded = !expanded;
                 expandedEl.hidden = !expanded;
                 chipsEl.hidden = expanded;
-                if (expanded) RS.renderExpandedList(expandedEl);
-                allBtn.textContent = expanded ? "Show Less" : "All Recent Searches";
+                if (expanded) {
+                    RS.renderExpandedList(expandedEl);
+                    localizeRecentSearchContent(expandedEl);
+                    localizeRecentSearchLabels(expandedEl);
+                }
+                const label = expanded ? "Show Less" : "All Recent Searches";
+                allBtn.setAttribute("data-i18n", label);
+                allBtn.textContent = label;
             });
         }
 
         document.addEventListener("aventrix:recent-searches-changed", () => {
             RS.renderChips(chipsEl);
             RS.renderChips(panelEl);
+            localizeRecentSearchContent(chipsEl);
+            localizeRecentSearchContent(panelEl);
+            localizeRecentSearchLabels(chipsEl);
+            localizeRecentSearchLabels(panelEl);
         });
+        document.addEventListener("avx:i18n-ready", () => {
+            localizeRecentSearchLabels(chipsEl);
+            localizeRecentSearchLabels(panelEl);
+        }, { once: true });
     }
 
     // ---------------------------------------------------------
@@ -137,10 +194,14 @@
         const image = p.featured_image || (p.images && p.images[0]) || FALLBACK_IMAGE;
         const saved = window.AventrixStorage && window.AventrixStorage.wishlist.has(p.slug);
         const isLease = p.listing_type === "lease";
-        let badgeHtml = `<span class="home-app-card-badge">${isLease ? "FOR RENT" : "FOR SALE"}</span>`;
+        let badgeHtml = isLease
+            ? '<span class="home-app-card-badge" data-i18n="home.dynamic.badge.forRent">FOR RENT</span>'
+            : '<span class="home-app-card-badge" data-i18n="FOR SALE">FOR SALE</span>';
         if (opts.showApprovalStatus) {
             const pending = p.publish_status !== "Published";
-            badgeHtml = `<span class="home-app-card-badge ${pending ? "pending" : "published"}">${pending ? "PENDING APPROVAL" : "PUBLISHED"}</span>`;
+            const statusKey = pending ? "home.dynamic.badge.pending" : "home.dynamic.badge.published";
+            const statusText = pending ? "PENDING APPROVAL" : "PUBLISHED";
+            badgeHtml = `<span class="home-app-card-badge ${pending ? "pending" : "published"}" data-i18n="${statusKey}">${statusText}</span>`;
         }
         const details = [];
         if (p.bedrooms) details.push(`${p.bedrooms} BHK`);
@@ -156,11 +217,11 @@
         const actionsHtml = opts.showActions
             ? `
                 <div class="home-app-card-actions">
-                    <a class="home-app-card-view-btn" href="${detailHref}">View Details</a>
-                    <a class="home-app-card-icon-btn" href="tel:${CARD_PHONE_TEL}" data-slug="${escapeHtml(p.slug)}" data-track-event="call_click" aria-label="Call about ${escapeHtml(p.title)}" title="Call">
+                    <a class="home-app-card-view-btn" href="${detailHref}"><span data-i18n="View Details">View Details</span></a>
+                    <a class="home-app-card-icon-btn" href="tel:${CARD_PHONE_TEL}" data-slug="${escapeHtml(p.slug)}" data-track-event="call_click" aria-label="Call about ${escapeHtml(p.title)}" title="Call" data-i18n-title="home.dynamic.action.call" data-i18n-aria-label="home.dynamic.action.callAbout" data-i18n-count="${escapeHtml(p.title)}">
                         <i class="fas fa-phone-alt" aria-hidden="true"></i>
                     </a>
-                    <a class="home-app-card-icon-btn" href="${escapeHtml(window.AventrixTracking ? window.AventrixTracking.whatsappHref(p) : CARD_WHATSAPP_URL)}" data-slug="${escapeHtml(p.slug)}" data-track-event="whatsapp_click" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp about ${escapeHtml(p.title)}" title="WhatsApp">
+                    <a class="home-app-card-icon-btn" href="${escapeHtml(window.AventrixTracking ? window.AventrixTracking.whatsappHref(p) : CARD_WHATSAPP_URL)}" data-slug="${escapeHtml(p.slug)}" data-track-event="whatsapp_click" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp about ${escapeHtml(p.title)}" title="WhatsApp" data-i18n-aria-label="home.dynamic.action.whatsappAbout" data-i18n-count="${escapeHtml(p.title)}">
                         <i class="fab fa-whatsapp" aria-hidden="true"></i>
                     </a>
                 </div>`
@@ -180,12 +241,12 @@
                     <div class="home-app-card-image-wrap">
                         <img src="${escapeHtml(image)}" alt="${escapeHtml(p.title)}" loading="lazy">
                         ${badgeHtml}
-                        ${window.AventrixStorage ? `<button type="button" class="home-app-card-heart${saved ? " saved" : ""}" data-slug="${escapeHtml(p.slug)}" aria-label="${saved ? "Remove from Wishlist" : "Save to Wishlist"}"><i class="${saved ? "fas" : "far"} fa-heart" aria-hidden="true"></i></button>` : ""}
+                        ${window.AventrixStorage ? `<button type="button" class="home-app-card-heart${saved ? " saved" : ""}" data-slug="${escapeHtml(p.slug)}" aria-label="${saved ? "Remove from Wishlist" : "Save to Wishlist"}" data-i18n-aria-label="${saved ? "Remove from Wishlist" : "Save to Wishlist"}"><i class="${saved ? "fas" : "far"} fa-heart" aria-hidden="true"></i></button>` : ""}
                     </div>
                     <div class="home-app-card-content">
                         <h3>${escapeHtml(p.title)}</h3>
                         <span class="home-app-card-location"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> ${escapeHtml(p.location || "")}</span>
-                        <span class="home-app-card-details">${detailsLine}${escapeHtml(p.price_display || "Contact for Price")}</span>
+                        <span class="home-app-card-details">${detailsLine}${p.price_display ? escapeHtml(p.price_display) : '<span data-i18n="Contact for Price">Contact for Price</span>'}</span>
                     </div>
                 </a>
                 ${actionsHtml}
@@ -203,7 +264,9 @@
             const nowSaved = window.AventrixStorage.wishlist.toggle(slug);
             btn.classList.toggle("saved", nowSaved);
             btn.querySelector("i").className = nowSaved ? "fas fa-heart" : "far fa-heart";
-            btn.setAttribute("aria-label", nowSaved ? "Remove from Wishlist" : "Save to Wishlist");
+            const label = nowSaved ? "Remove from Wishlist" : "Save to Wishlist";
+            btn.setAttribute("aria-label", label);
+            btn.setAttribute("data-i18n-aria-label", label);
         });
     }
 
@@ -214,7 +277,7 @@
     async function loadFutureProperties() {
         const grid = document.getElementById("futurePropertiesGrid");
         if (!grid || !sb) return;
-        grid.innerHTML = '<p class="home-app-loading">Loading properties…</p>';
+        grid.innerHTML = '<p class="home-app-loading" data-i18n="Loading properties…">Loading properties…</p>';
         const { data, error } = await sb
             .from("properties")
             .select("*")
@@ -223,7 +286,7 @@
             .order("created_at", { ascending: false })
             .limit(20);
         if (error || !data || data.length === 0) {
-            grid.innerHTML = '<p class="home-app-empty">No properties available right now — please check back soon.</p>';
+            grid.innerHTML = '<p class="home-app-empty" data-i18n="home.dynamic.future.empty">No properties available right now — please check back soon.</p>';
             publishHomeResults([], error ? "error" : "ok");
             return;
         }
@@ -247,7 +310,7 @@
     async function loadMyListings() {
         const grid = document.getElementById("myListingsGrid");
         if (!grid || !sb) return;
-        grid.innerHTML = '<p class="home-app-loading">Loading your listings…</p>';
+        grid.innerHTML = '<p class="home-app-loading" data-i18n="home.dynamic.listings.loading">Loading your listings…</p>';
 
         const { data: sessionData } = await sb.auth.getSession();
         const userId = sessionData && sessionData.session && sessionData.session.user && sessionData.session.user.id;
@@ -255,8 +318,8 @@
         if (!userId) {
             grid.innerHTML = `
                 <div class="home-app-signin-prompt">
-                    <p>Sign in to see the properties you've listed with Aventrix Realty.</p>
-                    <a href="account.html" class="home-app-signin-btn">Sign In / Create Account</a>
+                    <p data-i18n="home.dynamic.listings.signInPrompt">Sign in to see the properties you've listed with Aventrix Realty.</p>
+                    <a href="account.html" class="home-app-signin-btn" data-i18n="home.dynamic.listings.signInAction">Sign In / Create Account</a>
                 </div>`;
             return;
         }
@@ -268,11 +331,11 @@
             .order("created_at", { ascending: false });
 
         if (error) {
-            grid.innerHTML = '<p class="home-app-empty">Couldn\'t load your listings. Please try again shortly.</p>';
+            grid.innerHTML = '<p class="home-app-empty" data-i18n="home.dynamic.listings.loadError">Couldn\'t load your listings. Please try again shortly.</p>';
             return;
         }
         if (!data || data.length === 0) {
-            grid.innerHTML = '<p class="home-app-empty">You haven\'t listed any properties yet.</p>';
+            grid.innerHTML = '<p class="home-app-empty" data-i18n="home.dynamic.listings.empty">You haven\'t listed any properties yet.</p>';
             return;
         }
         grid.innerHTML = data.map((p) => compactCardTemplate(p, { showApprovalStatus: true })).join("");

@@ -86,10 +86,14 @@
         const isRent = els.listingType.value === "lease";
         const list = isRent ? RENT_PRICES : SALE_PRICES;
         [els.priceMin, els.priceMax].forEach((sel, i) => {
-            sel.innerHTML = `<option value="">${i === 0 ? "Min" : "Max"}</option>` +
+            const minOrMax = i === 0 ? "Min" : "Max";
+            const minOrMaxKey = i === 0 ? "home.search.min" : "home.search.max";
+            sel.innerHTML = `<option value="" data-i18n="${minOrMaxKey}">${minOrMax}</option>` +
                 list.map(([v, label]) => `<option value="${v}">${label}</option>`).join("");
             sel.value = "";
         });
+        const priceLabelKey = isRent ? "home.search.monthlyRent" : "home.search.priceRange";
+        els.priceLabel.setAttribute("data-i18n", priceLabelKey);
         els.priceLabel.textContent = isRent ? "Monthly Rent (₹)" : "Price Range (₹)";
     }
 
@@ -133,8 +137,10 @@
 
     function fillSubTypes() {
         const list = TYPE_SUBTYPES[els.category.value] || [];
-        els.subType.innerHTML = '<option value="">' + (list.length ? "Any Sub-Type" : "Choose a Property Type first") + "</option>" +
-            list.map((s) => `<option value="${s.value}">${escapeHtml(s.label)}</option>`).join("");
+        const prompt = list.length ? "Any Sub-Type" : "Choose a Property Type first";
+        const promptKey = list.length ? "home.search.anySubType" : "home.search.chooseType";
+        els.subType.innerHTML = `<option value="" data-i18n="${promptKey}">${prompt}</option>` +
+            list.map((s) => `<option value="${s.value}" data-i18n="home.search.subtype.${s.value}">${escapeHtml(s.label)}</option>`).join("");
         els.subType.disabled = list.length === 0;
         updateAdvCount();
     }

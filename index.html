@@ -796,11 +796,11 @@ body.home-page #faq .faq-answer p {
                             <svg class="hh-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg>
                             <select id="hsBeds" name="beds">
                                 <option value="" data-i18n="home.search.any">Any</option>
-                                <option value="1">1+ BHK</option>
-                                <option value="2">2+ BHK</option>
-                                <option value="3">3+ BHK</option>
-                                <option value="4">4+ BHK</option>
-                                <option value="5">5+ BHK</option>
+                                <option value="1" data-i18n="home.search.bhkOnePlus">1+ BHK</option>
+                                <option value="2" data-i18n="home.search.bhkTwoPlus">2+ BHK</option>
+                                <option value="3" data-i18n="home.search.bhkThreePlus">3+ BHK</option>
+                                <option value="4" data-i18n="home.search.bhkFourPlus">4+ BHK</option>
+                                <option value="5" data-i18n="home.search.bhkFivePlus">5+ BHK</option>
                             </select>
                         </div>
                     </div>
@@ -851,14 +851,14 @@ body.home-page #faq .faq-answer p {
                             <div class="hh-control">
                                 <select id="hsFacing" name="facing">
                                     <option value="" data-i18n="home.search.any">Any</option>
-                                    <option>North</option>
-                                    <option>South</option>
-                                    <option>East</option>
-                                    <option>West</option>
-                                    <option>North-East</option>
-                                    <option>North-West</option>
-                                    <option>South-East</option>
-                                    <option>South-West</option>
+                                    <option data-i18n="home.search.north">North</option>
+                                    <option data-i18n="home.search.south">South</option>
+                                    <option data-i18n="home.search.east">East</option>
+                                    <option data-i18n="home.search.west">West</option>
+                                    <option data-i18n="home.search.northEast">North-East</option>
+                                    <option data-i18n="home.search.northWest">North-West</option>
+                                    <option data-i18n="home.search.southEast">South-East</option>
+                                    <option data-i18n="home.search.southWest">South-West</option>
                                 </select>
                             </div>
                         </div>
@@ -868,9 +868,9 @@ body.home-page #faq .faq-answer p {
                             <div class="hh-control">
                                 <select id="hsFurnishing" name="furnishing">
                                     <option value="" data-i18n="home.search.any">Any</option>
-                                    <option value="Fully Furnished">Fully Furnished</option>
-                                    <option value="Semi-Furnished">Semi-Furnished</option>
-                                    <option value="Unfurnished">Unfurnished</option>
+                                    <option value="Fully Furnished" data-i18n="home.search.fullyFurnished">Fully Furnished</option>
+                                    <option value="Semi-Furnished" data-i18n="home.search.semiFurnished">Semi-Furnished</option>
+                                    <option value="Unfurnished" data-i18n="home.search.unfurnished">Unfurnished</option>
                                 </select>
                             </div>
                         </div>
@@ -936,7 +936,7 @@ body.home-page #faq .faq-answer p {
 
         <h2 data-cms-heading data-i18n="Meet Our Leadership">Meet Our Leadership</h2>
 
-        <div data-cms-content><p>Leading Aventrix Realty</p></div>
+        <div data-cms-content><p data-i18n="home.leadership.intro">Leading Aventrix Realty</p></div>
 
         <div class="leadership-rows" data-cms-list="leaders">
 
@@ -945,11 +945,11 @@ body.home-page #faq .faq-answer p {
             <img src="images/founder.jpg" alt="Gnanasekaran P" class="leader-photo" loading="lazy" data-cms-src="photo" data-cms-alt="name">
         </div>
         <div class="leader-row-content">
-            <span class="leader-eyebrow" data-cms-f="label">— MEET OUR FOUNDER</span>
+            <span class="leader-eyebrow" data-cms-f="label" data-i18n="about.leadership.meetFounder">— MEET OUR FOUNDER</span>
             <h3 data-cms-f="name">Gnanasekaran P</h3>
-            <h4 data-cms-f="role">Founder</h4>
-            <p data-cms-f="bio">With over 15 years of experience in Chennai's real estate market, Gnanasekaran P provides the strategic direction and leadership behind Aventrix Realty. His deep understanding of local market cycles and neighbourhood trends shapes how the company sources and evaluates properties across residential, commercial and land segments. Over the years, he has built trusted, long-standing relationships with clients, landowners and developers, grounded in transparency and professional conduct at every stage of a transaction. His focus remains on steady, sustainable business development — growing Aventrix Realty's presence across Chennai while holding firmly to the standards of integrity that lasting real estate relationships depend on.</p>
-            <a href="gnanasekaran.html" class="leader-cta" data-cms-href="profile_link" data-cms-f="link_text">View Profile →</a>
+            <h4 data-cms-f="role" data-i18n="about.leadership.founderRole">Founder</h4>
+            <p data-cms-f="bio" data-i18n="home.leadership.founderBio">With over 15 years of experience in Chennai's real estate market, Gnanasekaran P provides the strategic direction and leadership behind Aventrix Realty. His deep understanding of local market cycles and neighbourhood trends shapes how the company sources and evaluates properties across residential, commercial and land segments. Over the years, he has built trusted, long-standing relationships with clients, landowners and developers, grounded in transparency and professional conduct at every stage of a transaction. His focus remains on steady, sustainable business development — growing Aventrix Realty's presence across Chennai while holding firmly to the standards of integrity that lasting real estate relationships depend on.</p>
+            <a href="gnanasekaran.html" class="leader-cta" data-cms-href="profile_link" data-cms-f="link_text" data-i18n="about.leadership.viewProfile">View Profile →</a>
         </div>
     </div>
 
@@ -958,12 +958,12 @@ body.home-page #faq .faq-answer p {
             <img src="images/sanjay.jpg" alt="Sanjay Gandhi L" class="leader-photo" loading="lazy" data-cms-src="photo" data-cms-alt="name">
         </div>
         <div class="leader-row-content">
-            <span class="leader-eyebrow" data-cms-f="label">— MEET OUR CO-FOUNDER</span>
+            <span class="leader-eyebrow" data-cms-f="label" data-i18n="about.leadership.meetCoFounder">— MEET OUR CO-FOUNDER</span>
             <h3 data-cms-f="name">Sanjay Gandhi L</h3>
-            <h4 data-cms-f="role">Co-Founder & Managing Partner</h4>
+            <h4 data-cms-f="role" data-i18n="about.leadership.coFounderRole">Co-Founder & Managing Partner</h4>
             <p class="leader-rera" data-cms-f="rera">TNRERA Reg. No.: TN/Agent/0284/2026</p>
-            <p data-cms-f="bio">Sanjay Gandhi L brings over 15 years of hands-on real estate experience to his role as Co-Founder and Managing Partner of Aventrix Realty, where he leads day-to-day business and operational activity. His work spans the full property lifecycle — buying, selling and leasing — coordinating property marketing and transaction execution while managing negotiations through to closure. With close familiarity with Chennai's neighbourhoods and property values, he works directly with buyers, sellers, investors and property owners to guide each transaction with clarity and care. His approach is centred on building long-term client relationships, backed by practical market knowledge and dependable, on-ground support.</p>
-            <a href="sanjay.html" class="leader-cta" data-cms-href="profile_link" data-cms-f="link_text">View Profile →</a>
+            <p data-cms-f="bio" data-i18n="home.leadership.coFounderBio">Sanjay Gandhi L brings over 15 years of hands-on real estate experience to his role as Co-Founder and Managing Partner of Aventrix Realty, where he leads day-to-day business and operational activity. His work spans the full property lifecycle — buying, selling and leasing — coordinating property marketing and transaction execution while managing negotiations through to closure. With close familiarity with Chennai's neighbourhoods and property values, he works directly with buyers, sellers, investors and property owners to guide each transaction with clarity and care. His approach is centred on building long-term client relationships, backed by practical market knowledge and dependable, on-ground support.</p>
+            <a href="sanjay.html" class="leader-cta" data-cms-href="profile_link" data-cms-f="link_text" data-i18n="about.leadership.viewProfile">View Profile →</a>
         </div>
     </div>
 
@@ -979,7 +979,7 @@ body.home-page #faq .faq-answer p {
      move needs no JS changes. -->
 <section class="home-app-segment-section" id="homeAppSegments" aria-labelledby="homeAppSegmentsLabel">
     <div class="container">
-        <p class="home-app-segment-label" id="homeAppSegmentsLabel">Your Account</p>
+        <p class="home-app-segment-label" id="homeAppSegmentsLabel" data-i18n="home.account.heading">Your Account</p>
         <div class="home-app-segment-control" role="tablist" aria-label="My Listings or My Searches" data-i18n-aria-label="My Listings or My Searches">
             <button type="button" class="home-app-segment-btn active" data-panel="listings" role="tab" aria-selected="true" data-i18n="My Listings">My Listings</button>
             <button type="button" class="home-app-segment-btn" data-panel="searches" role="tab" aria-selected="false" data-i18n="My Searches">My Searches</button>
@@ -1011,27 +1011,27 @@ body.home-page #faq .faq-answer p {
         <div class="home-app-shortcuts-row">
             <a href="properties.html?transaction=buy" class="home-app-shortcut">
                 <span class="home-app-shortcut-icon"><i class="fas fa-home" aria-hidden="true"></i></span>
-                <span class="home-app-shortcut-copy"><strong data-i18n="Buy">Buy</strong><small>Find your dream home</small></span>
+                <span class="home-app-shortcut-copy"><strong data-i18n="Buy">Buy</strong><small data-i18n="home.shortcut.buyDescription">Find your dream home</small></span>
             </a>
             <a href="properties.html?transaction=lease" class="home-app-shortcut">
                 <span class="home-app-shortcut-icon"><i class="fas fa-key" aria-hidden="true"></i></span>
-                <span class="home-app-shortcut-copy"><strong data-i18n="Rent">Rent</strong><small>Homes for rent</small></span>
+                <span class="home-app-shortcut-copy"><strong data-i18n="Rent">Rent</strong><small data-i18n="home.shortcut.rentDescription">Homes for rent</small></span>
             </a>
             <a href="properties.html?category=commercial" class="home-app-shortcut">
                 <span class="home-app-shortcut-icon"><i class="fas fa-building" aria-hidden="true"></i></span>
-                <span class="home-app-shortcut-copy"><strong data-i18n="Commercial">Commercial</strong><small>Office &amp; retail spaces</small></span>
+                <span class="home-app-shortcut-copy"><strong data-i18n="Commercial">Commercial</strong><small data-i18n="home.shortcut.commercialDescription">Office &amp; retail spaces</small></span>
             </a>
             <a href="properties.html?category=land" class="home-app-shortcut">
                 <span class="home-app-shortcut-icon"><i class="fas fa-map" aria-hidden="true"></i></span>
-                <span class="home-app-shortcut-copy"><strong data-i18n="Land">Land</strong><small>Plots &amp; land investments</small></span>
+                <span class="home-app-shortcut-copy"><strong data-i18n="Land">Land</strong><small data-i18n="home.shortcut.landDescription">Plots &amp; land investments</small></span>
             </a>
             <a href="insights.html" class="home-app-shortcut">
                 <span class="home-app-shortcut-icon"><i class="fas fa-lightbulb" aria-hidden="true"></i></span>
-                <span class="home-app-shortcut-copy"><strong data-i18n="Insights">Insights</strong><small>Market trends &amp; guides</small></span>
+                <span class="home-app-shortcut-copy"><strong data-i18n="Insights">Insights</strong><small data-i18n="home.shortcut.insightsDescription">Market trends &amp; guides</small></span>
             </a>
             <a href="joint-venture.html" class="home-app-shortcut">
                 <span class="home-app-shortcut-icon"><i class="fas fa-handshake" aria-hidden="true"></i></span>
-                <span class="home-app-shortcut-copy"><strong data-i18n="Joint Venture">Joint Venture</strong><small>Landowner &amp; developer partnerships</small></span>
+                <span class="home-app-shortcut-copy"><strong data-i18n="Joint Venture">Joint Venture</strong><small data-i18n="home.shortcut.jointVentureDescription">Landowner &amp; developer partnerships</small></span>
             </a>
         </div>
     </div>
@@ -1045,7 +1045,7 @@ body.home-page #faq .faq-answer p {
 <section class="home-app-recent-section" aria-label="Recent searches" data-i18n-aria-label="Recent searches">
     <div class="container">
         <div class="home-app-recent-row">
-            <span class="home-app-recent-label"><i class="fas fa-history" aria-hidden="true"></i> Recent Searches</span>
+            <span class="home-app-recent-label"><i class="fas fa-history" aria-hidden="true"></i> <span data-i18n="home.recent.heading">Recent Searches</span></span>
             <div class="home-app-recent-chips" id="recentSearchesChips"></div>
             <button type="button" class="home-app-recent-all" id="allRecentSearchesBtn" data-i18n="All Recent Searches">All Recent Searches</button>
         </div>
@@ -1063,19 +1063,19 @@ body.home-page #faq .faq-answer p {
         <div class="home-app-future-heading">
             <div>
                 <h2 data-cms-heading data-i18n="Future Properties">Future Properties</h2>
-                <p data-cms-f="subtitle">Handpicked properties for your future.</p>
+                <p data-cms-f="subtitle" data-i18n="home.future.subtitle">Handpicked properties for your future.</p>
             </div>
-            <a href="properties.html" class="home-app-see-all" data-cms-href="link" data-cms-f="link_text">See All <span aria-hidden="true">&rarr;</span></a>
+            <a href="properties.html" class="home-app-see-all" data-cms-href="link" data-cms-f="link_text"><span data-i18n="home.future.seeAll">See All</span> <span aria-hidden="true">&rarr;</span></a>
         </div>
 
         <!-- List / Map toggle (js/properties-map.js — the same component as
              properties.html). Both views show these same records. -->
         <div class="sf-view-toggle hp-view-toggle" id="hpViewToggle" role="group" aria-label="Choose how to view properties">
-            <button type="button" id="hpViewListBtn" class="is-active" aria-pressed="true"><i class="fas fa-list-ul" aria-hidden="true"></i> List View</button>
-            <button type="button" id="hpViewMapBtn" aria-pressed="false"><i class="fas fa-map-location-dot" aria-hidden="true"></i> Map View</button>
+            <button type="button" id="hpViewListBtn" class="is-active" aria-pressed="true"><i class="fas fa-list-ul" aria-hidden="true"></i> <span data-i18n="List View">List View</span></button>
+            <button type="button" id="hpViewMapBtn" aria-pressed="false"><i class="fas fa-map-location-dot" aria-hidden="true"></i> <span data-i18n="Map View">Map View</span></button>
             <div class="hp-open-full-map-wrap">
                 <a class="hp-open-full-map" href="property-map.html" aria-label="Open the full-screen property map" data-i18n-aria-label="Open the full-screen property map">
-                    <i class="fas fa-expand" aria-hidden="true"></i> Open Full Map
+                    <i class="fas fa-expand" aria-hidden="true"></i> <span data-i18n="home.future.openMap">Open Full Map</span>
                 </a>
             </div>
         </div>
@@ -1120,7 +1120,7 @@ body.home-page #faq .faq-answer p {
         </div>
 
         <div class="view-all-properties-wrap hp-view-all">
-            <a href="properties.html" class="view-details-btn">View All Properties</a>
+            <a href="properties.html" class="view-details-btn" data-i18n="home.future.viewAll">View All Properties</a>
         </div>
     </div>
 </section>
@@ -1144,7 +1144,7 @@ body.home-page #faq .faq-answer p {
     <div class="container">
 
         <div class="section-heading">
-            <span class="section-eyebrow" data-cms-eyebrow>BROWSE BY TYPE</span>
+            <span class="section-eyebrow" data-cms-eyebrow data-i18n="home.categories.eyebrow">BROWSE BY TYPE</span>
             <h2 data-cms-heading data-i18n="Property Categories">Property Categories</h2>
         </div>
 
@@ -1167,7 +1167,7 @@ body.home-page #faq .faq-answer p {
 
             <a href="properties.html?category=villas" class="category-card" style="background-image:url('images/cat-luxury-villas.jpg')" data-cms-item data-cms-href="link" data-cms-bg="image">
                 <span class="category-overlay"></span>
-                <span class="category-label" data-cms-f="label">Luxury Villas</span>
+                <span class="category-label" data-cms-f="label" data-i18n="home.categories.villas">Luxury Villas</span>
             </a>
 
             <a href="properties.html?category=apartments" class="category-card" style="background-image:url('images/cat-apartments.jpg')" data-cms-item data-cms-href="link" data-cms-bg="image">
@@ -1177,7 +1177,7 @@ body.home-page #faq .faq-answer p {
 
             <a href="properties.html?category=investment" class="category-card" style="background-image:url('images/cat-investment.jpg')" data-cms-item data-cms-href="link" data-cms-bg="image">
                 <span class="category-overlay"></span>
-                <span class="category-label" data-cms-f="label">Investment Properties</span>
+                <span class="category-label" data-cms-f="label" data-i18n="home.categories.investment">Investment Properties</span>
             </a>
 
             <a href="joint-venture.html" class="category-card category-card-joint-venture" style="background-image:linear-gradient(135deg,rgba(12,48,37,.18),rgba(12,48,37,.82)),url('images/cat-land-plots.jpg')" data-cms-item data-cms-href="link" data-cms-bg="image">
@@ -1326,7 +1326,7 @@ END TEMPORARILY HIDDEN — Featured Locations section -->
     <div class="container">
 
         <div class="section-heading">
-            <span class="section-eyebrow" data-cms-eyebrow>WHAT WE DO</span>
+            <span class="section-eyebrow" data-cms-eyebrow data-i18n="home.services.eyebrow">WHAT WE DO</span>
             <h2 class="sr-only" data-cms-heading data-i18n="Featured Services">Featured Services</h2>
         </div>
 
@@ -1335,43 +1335,43 @@ END TEMPORARILY HIDDEN — Featured Locations section -->
             <a href="properties.html?transaction=buy" class="bsl-card" data-cms-item data-cms-href="link">
                 <div class="bsl-icon"><i data-cms-class="icon" class="fas fa-home" aria-hidden="true"></i></div>
                 <h3 data-cms-f="title" data-i18n="Buy">Buy</h3>
-                <p data-cms-f="text">Find verified homes, apartments and plots.</p>
-                <span class="bsl-more" data-cms-f="link_text">Learn More &rarr;</span>
+                <p data-cms-f="text" data-i18n="home.services.buyDescription">Find verified homes, apartments and plots.</p>
+                <span class="bsl-more" data-cms-f="link_text" data-i18n="home.services.learnMore">Learn More →</span>
             </a>
 
             <a href="list-with-us.html" class="bsl-card" data-cms-item data-cms-href="link">
                 <div class="bsl-icon"><i data-cms-class="icon" class="fas fa-hand-holding-usd" aria-hidden="true"></i></div>
                 <h3 data-cms-f="title" data-i18n="Sell">Sell</h3>
-                <p data-cms-f="text">List and sell your property with expert guidance.</p>
-                <span class="bsl-more" data-cms-f="link_text">Learn More &rarr;</span>
+                <p data-cms-f="text" data-i18n="home.services.sellDescription">List and sell your property with expert guidance.</p>
+                <span class="bsl-more" data-cms-f="link_text" data-i18n="home.services.learnMore">Learn More →</span>
             </a>
 
             <a href="properties.html?transaction=lease" class="bsl-card" data-cms-item data-cms-href="link">
                 <div class="bsl-icon"><i data-cms-class="icon" class="fas fa-key" aria-hidden="true"></i></div>
-                <h3 data-cms-f="title">Lease</h3>
-                <p data-cms-f="text">Residential and Commercial Leasing.</p>
-                <span class="bsl-more" data-cms-f="link_text">Learn More &rarr;</span>
+                <h3 data-cms-f="title" data-i18n="home.services.lease">Lease</h3>
+                <p data-cms-f="text" data-i18n="home.services.leaseDescription">Residential and Commercial Leasing.</p>
+                <span class="bsl-more" data-cms-f="link_text" data-i18n="home.services.learnMore">Learn More →</span>
             </a>
 
             <a href="joint-venture.html" class="bsl-card" data-cms-item data-cms-href="link">
                 <div class="bsl-icon"><i data-cms-class="icon" class="fas fa-people-arrows" aria-hidden="true"></i></div>
                 <h3 data-cms-f="title" data-i18n="Joint Venture">Joint Venture</h3>
-                <p data-cms-f="text">Developer and landowner partnerships, built on trust.</p>
-                <span class="bsl-more" data-cms-f="link_text">Learn More &rarr;</span>
+                <p data-cms-f="text" data-i18n="home.services.jointVentureDescription">Developer and landowner partnerships, built on trust.</p>
+                <span class="bsl-more" data-cms-f="link_text" data-i18n="home.services.learnMore">Learn More →</span>
             </a>
 
             <a href="services.html#property-advisory" class="bsl-card" data-cms-item data-cms-href="link">
                 <div class="bsl-icon"><i data-cms-class="icon" class="fas fa-user-tie" aria-hidden="true"></i></div>
                 <h3 data-cms-f="title" data-i18n="Property Advisory">Property Advisory</h3>
-                <p data-cms-f="text">Expert guidance for every stage of your property journey.</p>
-                <span class="bsl-more" data-cms-f="link_text">Learn More &rarr;</span>
+                <p data-cms-f="text" data-i18n="home.services.advisoryDescription">Expert guidance for every stage of your property journey.</p>
+                <span class="bsl-more" data-cms-f="link_text" data-i18n="home.services.learnMore">Learn More →</span>
             </a>
 
             <a href="nri-services.html" class="bsl-card" data-cms-item data-cms-href="link">
                 <div class="bsl-icon"><i data-cms-class="icon" class="fas fa-globe-asia" aria-hidden="true"></i></div>
                 <h3 data-cms-f="title" data-i18n="NRI Services">NRI Services</h3>
-                <p data-cms-f="text">Remote-friendly property solutions for NRI clients.</p>
-                <span class="bsl-more" data-cms-f="link_text">Learn More &rarr;</span>
+                <p data-cms-f="text" data-i18n="home.services.nriDescription">Remote-friendly property solutions for NRI clients.</p>
+                <span class="bsl-more" data-cms-f="link_text" data-i18n="home.services.learnMore">Learn More →</span>
             </a>
 
         </div>
@@ -1387,7 +1387,7 @@ END TEMPORARILY HIDDEN — Featured Locations section -->
     <div class="container">
 
         <div class="section-heading">
-            <span class="section-eyebrow" data-cms-eyebrow>WHY AVENTRIX</span>
+            <span class="section-eyebrow" data-cms-eyebrow data-i18n="home.why.eyebrow">WHY AVENTRIX</span>
             <h2 data-cms-heading data-i18n="The Aventrix Standard">The Aventrix Standard</h2>
         </div>
 
@@ -1400,7 +1400,7 @@ END TEMPORARILY HIDDEN — Featured Locations section -->
                     </svg>
                 </div>
                 <h3 data-cms-f="title" data-i18n="Trusted Since 1965">Trusted Since 1965</h3>
-                <p data-cms-f="text">Six decades of legacy, from TP Builders to Aventrix Realty.</p>
+                <p data-cms-f="text" data-i18n="home.why.legacy">Six decades of legacy, from TP Builders to Aventrix Realty.</p>
             </div>
 
             <div class="why-item" data-cms-item>
@@ -1411,7 +1411,7 @@ END TEMPORARILY HIDDEN — Featured Locations section -->
                     </svg>
                 </div>
                 <h3 data-cms-f="title" data-i18n="Local Market Expertise">Local Market Expertise</h3>
-                <p data-cms-f="text">Deep knowledge of Chennai's neighborhoods and value trends.</p>
+                <p data-cms-f="text" data-i18n="home.why.localExpertise">Deep knowledge of Chennai's neighborhoods and value trends.</p>
             </div>
 
             <div class="why-item" data-cms-item>
@@ -1422,7 +1422,7 @@ END TEMPORARILY HIDDEN — Featured Locations section -->
                     </svg>
                 </div>
                 <h3 data-cms-f="title" data-i18n="Verified Properties">Verified Properties</h3>
-                <p data-cms-f="text">Every property is legally verified before listing.</p>
+                <p data-cms-f="text" data-i18n="home.why.verified">Every property is legally verified before listing.</p>
             </div>
 
             <div class="why-item" data-cms-item>
@@ -1433,7 +1433,7 @@ END TEMPORARILY HIDDEN — Featured Locations section -->
                     </svg>
                 </div>
                 <h3 data-cms-f="title" data-i18n="Transparent Process">Transparent Process</h3>
-                <p data-cms-f="text">Clear pricing, documentation and communication at every step.</p>
+                <p data-cms-f="text" data-i18n="home.why.transparent">Clear pricing, documentation and communication at every step.</p>
             </div>
 
             <div class="why-item" data-cms-item>
@@ -1444,7 +1444,7 @@ END TEMPORARILY HIDDEN — Featured Locations section -->
                     </svg>
                 </div>
                 <h3 data-cms-f="title" data-i18n="Professional Guidance">Professional Guidance</h3>
-                <p data-cms-f="text">Expert support from search to registration.</p>
+                <p data-cms-f="text" data-i18n="home.why.guidance">Expert support from search to registration.</p>
             </div>
 
             <div class="why-item" data-cms-item>
@@ -1455,8 +1455,8 @@ END TEMPORARILY HIDDEN — Featured Locations section -->
                         <path d="M9 9.5V7a3 3 0 0 1 6 0v2.5"/>
                     </svg>
                 </div>
-                <h3 data-cms-f="title">Dedicated Support</h3>
-                <p data-cms-f="text">A responsive team, available throughout your journey.</p>
+                <h3 data-cms-f="title" data-i18n="home.why.supportTitle">Dedicated Support</h3>
+                <p data-cms-f="text" data-i18n="home.why.support">A responsive team, available throughout your journey.</p>
             </div>
 
         </div>
@@ -1476,7 +1476,7 @@ END TEMPORARILY HIDDEN — Featured Locations section -->
     <div class="container">
 
         <div class="section-heading">
-            <span class="section-eyebrow" data-cms-eyebrow>CLIENT EXPERIENCES</span>
+            <span class="section-eyebrow" data-cms-eyebrow data-i18n="home.testimonials.eyebrow">CLIENT EXPERIENCES</span>
             <h2 data-cms-heading data-i18n="What Our Clients Say">What Our Clients Say</h2>
         </div>
 
@@ -1497,7 +1497,7 @@ END TEMPORARILY HIDDEN — Featured Locations section -->
     <div class="container">
         <h2 data-cms-heading data-i18n="Ready to Find Your Ideal Property?">Ready to Find Your Ideal Property?</h2>
         <div data-cms-content>
-        <p>
+        <p data-i18n="home.cta.description">
             From your first enquiry to registration day, Aventrix Realty is with
             you at every step — trusted guidance, verified properties, and a
             team that treats your journey as our own.
@@ -1505,7 +1505,7 @@ END TEMPORARILY HIDDEN — Featured Locations section -->
         </div>
         <div class="cta-buttons" data-cms-list="buttons">
             <a href="properties.html" class="btn-primary" data-cms-item data-cms-href="link" data-cms-f="text" data-i18n="Explore Properties">Explore Properties</a>
-            <a href="#contact" class="btn-secondary cta-btn-secondary" data-cms-item data-cms-href="link" data-cms-f="text">Let's Connect</a>
+            <a href="#contact" class="btn-secondary cta-btn-secondary" data-cms-item data-cms-href="link" data-cms-f="text" data-i18n="home.cta.connect">Let's Connect</a>
         </div>
     </div>
 
@@ -1516,11 +1516,11 @@ END TEMPORARILY HIDDEN — Featured Locations section -->
     <div class="container">
 
         <div class="section-heading">
-            <span class="section-eyebrow" data-cms-eyebrow>TRANSPARENCY</span>
+            <span class="section-eyebrow" data-cms-eyebrow data-i18n="home.fees.eyebrow">TRANSPARENCY</span>
             <h2 data-cms-heading data-i18n="Professional Fees, Agreed Upfront">Professional Fees, Agreed Upfront</h2>
         </div>
 
-        <p data-cms-f="text">
+        <p data-cms-f="text" data-i18n="home.fees.description">
             At Aventrix Realty, brokerage and professional fees are always
             communicated upfront — no hidden charges, no surprises. Our fee
             structure is transparent from the very first conversation, so you
@@ -1529,7 +1529,7 @@ END TEMPORARILY HIDDEN — Featured Locations section -->
         </p>
 
         <div class="brokerage-teaser-cta">
-            <a href="brokerage-fees.html" data-cms-href="link" data-cms-f="link_text">How Our Fees Work &rarr;</a>
+            <a href="brokerage-fees.html" data-cms-href="link" data-cms-f="link_text" data-i18n="home.fees.link">How Our Fees Work →</a>
         </div>
 
     </div>
@@ -1541,7 +1541,7 @@ END TEMPORARILY HIDDEN — Featured Locations section -->
     <div class="container">
 
         <div class="section-heading">
-            <span class="section-eyebrow" data-cms-eyebrow>THE OPPORTUNITY</span>
+            <span class="section-eyebrow" data-cms-eyebrow data-i18n="home.invest.eyebrow">THE OPPORTUNITY</span>
             <h2 data-cms-heading data-i18n="Why Invest in Chennai">Why Invest in Chennai</h2>
         </div>
 
@@ -1555,7 +1555,7 @@ END TEMPORARILY HIDDEN — Featured Locations section -->
                     </svg>
                 </div>
                 <h3 data-cms-f="title" data-i18n="Growth Corridors">Growth Corridors</h3>
-                <p data-cms-f="text">Rapidly developing zones offering strong long-term value.</p>
+                <p data-cms-f="text" data-i18n="home.invest.growth">Rapidly developing zones offering strong long-term value.</p>
             </div>
 
             <div class="invest-card" data-cms-item>
@@ -1568,7 +1568,7 @@ END TEMPORARILY HIDDEN — Featured Locations section -->
                     </svg>
                 </div>
                 <h3 data-cms-f="title" data-i18n="Metro &amp; Infrastructure">Metro &amp; Infrastructure</h3>
-                <p data-cms-f="text">Expanding transit access and ongoing infrastructure investment across the city.</p>
+                <p data-cms-f="text" data-i18n="home.invest.transit">Expanding transit access and ongoing infrastructure investment across the city.</p>
             </div>
 
             <div class="invest-card" data-cms-item>
@@ -1581,7 +1581,7 @@ END TEMPORARILY HIDDEN — Featured Locations section -->
                     </svg>
                 </div>
                 <h3 data-cms-f="title" data-i18n="IT &amp; Business Hubs">IT &amp; Business Hubs</h3>
-                <p data-cms-f="text">Proximity to major commercial and technology corridors.</p>
+                <p data-cms-f="text" data-i18n="home.invest.hubs">Proximity to major commercial and technology corridors.</p>
             </div>
 
             <div class="invest-card" data-cms-item>
@@ -1591,13 +1591,13 @@ END TEMPORARILY HIDDEN — Featured Locations section -->
                     </svg>
                 </div>
                 <h3 data-cms-f="title" data-i18n="Rental Demand &amp; Returns">Rental Demand &amp; Returns</h3>
-                <p data-cms-f="text">Explore rental demand and potential income across Chennai property markets.</p>
+                <p data-cms-f="text" data-i18n="home.invest.rentals">Explore rental demand and potential income across Chennai property markets.</p>
             </div>
 
         </div>
 
         <div class="invest-cta">
-            <a href="insights.html" data-cms-href="link" data-cms-f="link_text">Explore Chennai Investment Opportunities &rarr;</a>
+            <a href="insights.html" data-cms-href="link" data-cms-f="link_text" data-i18n="home.invest.link">Explore Chennai Investment Opportunities →</a>
         </div>
 
     </div>
@@ -1919,14 +1919,14 @@ END TEMPORARILY HIDDEN — Featured Locations section -->
     <a href="properties.html" class="home-app-nav-item">
         <i class="fas fa-search" aria-hidden="true"></i><span data-i18n="Search">Search</span>
     </a>
-    <a href="post-property.html" class="home-app-nav-postfree" aria-label="Post Property" data-i18n-aria-label="Post Property">
+    <a href="post-property.html" class="home-app-nav-postfree" aria-label="Post Property" data-i18n-aria-label="home.hero.postProperty">
         <i class="fas fa-plus" aria-hidden="true"></i>
     </a>
     <a href="wishlist.html" class="home-app-nav-item">
-        <i class="fas fa-heart" aria-hidden="true"></i><span data-i18n="Activity">Activity</span>
+        <i class="fas fa-heart" aria-hidden="true"></i><span data-i18n="home.bottomNav.activity">Activity</span>
     </a>
     <button type="button" class="home-app-nav-item home-app-nav-menu-btn" id="homeAppMenuBtn">
-        <i class="fas fa-bars" aria-hidden="true"></i><span data-i18n="Menu">Menu</span>
+        <i class="fas fa-bars" aria-hidden="true"></i><span data-i18n="home.bottomNav.menu">Menu</span>
     </button>
 </nav>
 

@@ -832,7 +832,117 @@
     "home.search.subType": "Property Sub-Type",
     "home.search.anySubType": "Any Sub-Type",
     "home.search.clearAll": "Clear all",
-    "home.search.advancedFilters": "Advanced Filters"
+    "home.search.advancedFilters": "Advanced Filters",
+    "home.search.bhkOnePlus": "1+ BHK",
+    "home.search.bhkTwoPlus": "2+ BHK",
+    "home.search.bhkThreePlus": "3+ BHK",
+    "home.search.bhkFourPlus": "4+ BHK",
+    "home.search.bhkFivePlus": "5+ BHK",
+    "home.search.chooseType": "Choose a Property Type first",
+    "home.search.north": "North",
+    "home.search.south": "South",
+    "home.search.east": "East",
+    "home.search.west": "West",
+    "home.search.northEast": "North-East",
+    "home.search.northWest": "North-West",
+    "home.search.southEast": "South-East",
+    "home.search.southWest": "South-West",
+    "home.search.fullyFurnished": "Fully Furnished",
+    "home.search.semiFurnished": "Semi-Furnished",
+    "home.search.unfurnished": "Unfurnished",
+    "home.search.monthlyRent": "Monthly Rent (₹)",
+    "home.search.subtype.apartment_flat": "Apartment / Flat",
+    "home.search.subtype.villa": "Villa",
+    "home.search.subtype.independent_house": "Independent House",
+    "home.search.subtype.duplex": "Duplex",
+    "home.search.subtype.penthouse": "Penthouse",
+    "home.search.subtype.office_space": "Office Space",
+    "home.search.subtype.shop_retail": "Shop / Retail",
+    "home.search.subtype.showroom": "Showroom",
+    "home.search.subtype.commercial_building": "Commercial Building",
+    "home.search.subtype.residential_plot": "Residential Plot",
+    "home.search.subtype.commercial_plot": "Commercial Plot",
+    "home.search.subtype.vacant_land": "Vacant Land",
+    "home.search.subtype.development_land": "Development Land",
+    "home.search.subtype.layout_plot": "Layout Plot",
+    "home.search.subtype.other_land": "Other Land",
+    "home.search.subtype.factory_manufacturing": "Factory / Manufacturing",
+    "home.search.subtype.warehouse": "Warehouse",
+    "home.search.subtype.industrial_building": "Industrial Building",
+    "home.search.subtype.industrial_plot": "Industrial Plot",
+    "home.search.subtype.hotel": "Hotel",
+    "home.search.subtype.hospital": "Hospital",
+    "home.search.subtype.school_institution": "School / Institution",
+    "home.search.subtype.resort": "Resort",
+    "home.search.subtype.other_special_purpose": "Other Special Purpose",
+    "home.search.subtype.agricultural_land": "Agricultural Land",
+    "home.search.subtype.farm_land": "Farm Land",
+    "home.search.subtype.plantation_estate": "Plantation / Estate",
+    "home.dynamic.future.empty": "No properties available right now — please check back soon.",
+    "home.dynamic.listings.loading": "Loading your listings…",
+    "home.dynamic.listings.signInPrompt": "Sign in to see the properties you've listed with Aventrix Realty.",
+    "home.dynamic.listings.signInAction": "Sign In / Create Account",
+    "home.dynamic.listings.loadError": "Couldn't load your listings. Please try again shortly.",
+    "home.dynamic.listings.empty": "You haven't listed any properties yet.",
+    "home.dynamic.badge.forRent": "FOR RENT",
+    "home.dynamic.badge.pending": "PENDING APPROVAL",
+    "home.dynamic.badge.published": "PUBLISHED",
+    "home.dynamic.action.call": "Call",
+    "home.recent.empty": "No recent searches yet.",
+    "home.recent.removeSearch": "Remove this search",
+    "home.recent.clearAll": "Clear All Recent Searches",
+    "home.recent.allProperties": "All Properties",
+    "home.dynamic.action.callAbout": "Call about {count}",
+    "home.dynamic.action.whatsappAbout": "WhatsApp about {count}",
+    "home.leadership.intro": "Leading Aventrix Realty",
+    "home.leadership.founderBio": "With over 15 years of experience in Chennai's real estate market, Gnanasekaran P provides the strategic direction and leadership behind Aventrix Realty. His deep understanding of local market cycles and neighbourhood trends shapes how the company sources and evaluates properties across residential, commercial and land segments. Over the years, he has built trusted, long-standing relationships with clients, landowners and developers, grounded in transparency and professional conduct at every stage of a transaction. His focus remains on steady, sustainable business development — growing Aventrix Realty's presence across Chennai while holding firmly to the standards of integrity that lasting real estate relationships depend on.",
+    "home.leadership.coFounderBio": "Sanjay Gandhi L brings over 15 years of hands-on real estate experience to his role as Co-Founder and Managing Partner of Aventrix Realty, where he leads day-to-day business and operational activity. His work spans the full property lifecycle — buying, selling and leasing — coordinating property marketing and transaction execution while managing negotiations through to closure. With close familiarity with Chennai's neighbourhoods and property values, he works directly with buyers, sellers, investors and property owners to guide each transaction with clarity and care. His approach is centred on building long-term client relationships, backed by practical market knowledge and dependable, on-ground support.",
+    "home.account.heading": "Your Account",
+    "home.shortcut.buyDescription": "Find your dream home",
+    "home.shortcut.rentDescription": "Homes for rent",
+    "home.shortcut.commercialDescription": "Office & retail spaces",
+    "home.shortcut.landDescription": "Plots & land investments",
+    "home.shortcut.insightsDescription": "Market trends & guides",
+    "home.shortcut.jointVentureDescription": "Landowner & developer partnerships",
+    "home.recent.heading": "Recent Searches",
+    "home.future.subtitle": "Handpicked properties for your future.",
+    "home.future.seeAll": "See All",
+    "home.future.openMap": "Open Full Map",
+    "home.future.viewAll": "View All Properties",
+    "home.categories.eyebrow": "BROWSE BY TYPE",
+    "home.categories.villas": "Luxury Villas",
+    "home.categories.investment": "Investment Properties",
+    "home.services.eyebrow": "WHAT WE DO",
+    "home.services.buyDescription": "Find verified homes, apartments and plots.",
+    "home.services.sellDescription": "List and sell your property with expert guidance.",
+    "home.services.lease": "Lease",
+    "home.services.leaseDescription": "Residential and Commercial Leasing.",
+    "home.services.jointVentureDescription": "Developer and landowner partnerships, built on trust.",
+    "home.services.advisoryDescription": "Expert guidance for every stage of your property journey.",
+    "home.services.nriDescription": "Remote-friendly property solutions for NRI clients.",
+    "home.services.learnMore": "Learn More →",
+    "home.why.eyebrow": "WHY AVENTRIX",
+    "home.why.legacy": "Six decades of legacy, from TP Builders to Aventrix Realty.",
+    "home.why.localExpertise": "Deep knowledge of Chennai's neighborhoods and value trends.",
+    "home.why.verified": "Every property is legally verified before listing.",
+    "home.why.transparent": "Clear pricing, documentation and communication at every step.",
+    "home.why.guidance": "Expert support from search to registration.",
+    "home.why.supportTitle": "Dedicated Support",
+    "home.why.support": "A responsive team, available throughout your journey.",
+    "home.testimonials.eyebrow": "CLIENT EXPERIENCES",
+    "home.cta.description": "From your first enquiry to registration day, Aventrix Realty is with you at every step — trusted guidance, verified properties, and a team that treats your journey as our own.",
+    "home.cta.connect": "Let's Connect",
+    "home.fees.eyebrow": "TRANSPARENCY",
+    "home.fees.description": "At Aventrix Realty, brokerage and professional fees are always communicated upfront — no hidden charges, no surprises. Our fee structure is transparent from the very first conversation, so you always know exactly what to expect at every stage of your transaction.",
+    "home.fees.link": "How Our Fees Work →",
+    "home.invest.eyebrow": "THE OPPORTUNITY",
+    "home.invest.growth": "Rapidly developing zones offering strong long-term value.",
+    "home.invest.transit": "Expanding transit access and ongoing infrastructure investment across the city.",
+    "home.invest.hubs": "Proximity to major commercial and technology corridors.",
+    "home.invest.rentals": "Explore rental demand and potential income across Chennai property markets.",
+    "home.invest.link": "Explore Chennai Investment Opportunities →",
+    "home.bottomNav.activity": "Activity",
+    "home.bottomNav.menu": "Menu"
   },
   "home_ui": {
     "home.nav.property": {
@@ -1002,6 +1112,886 @@
       "te": "అన్నీ క్లియర్ చేయండి",
       "kn": "ಎಲ್ಲವನ್ನೂ ತೆರವುಗೊಳಿಸಿ",
       "ml": "എല്ലാം മായ്ക്കുക"
+    },
+    "home.leadership.intro": {
+      "en": "Leading Aventrix Realty",
+      "ta": "அவென்ட்ரிக்ஸ் ரியால்டியை வழிநடத்துபவர்கள்",
+      "hi": "एवेंट्रिक्स रियल्टी का नेतृत्व",
+      "te": "అవెంట్రిక్స్ రియాల్టీ నాయకత్వం",
+      "kn": "ಅವೆಂಟ್ರಿಕ್ಸ್ ರಿಯಾಲ್ಟಿಯ ನಾಯಕತ್ವ",
+      "ml": "അവെൻട്രിക്സ് റിയൽറ്റിയുടെ നേതൃത്വം"
+    },
+    "home.leadership.founderBio": {
+      "en": "With over 15 years of experience in Chennai's real estate market, Gnanasekaran P provides the strategic direction and leadership behind Aventrix Realty. His deep understanding of local market cycles and neighbourhood trends shapes how the company sources and evaluates properties across residential, commercial and land segments. Over the years, he has built trusted, long-standing relationships with clients, landowners and developers, grounded in transparency and professional conduct at every stage of a transaction. His focus remains on steady, sustainable business development — growing Aventrix Realty's presence across Chennai while holding firmly to the standards of integrity that lasting real estate relationships depend on.",
+      "ta": "சென்னையின் ரியல் எஸ்டேட் சந்தையில் 15 ஆண்டுகளுக்கும் மேலான அனுபவம் கொண்ட Gnanasekaran P, Aventrix Realty-க்கு மூலோபாய வழிகாட்டுதலையும் தலைமைத்துவத்தையும் வழங்குகிறார். உள்ளூர் சந்தைச் சுழற்சிகள் மற்றும் பகுதிகளின் போக்குகள் குறித்த அவரது ஆழமான புரிதல், குடியிருப்பு, வணிகம் மற்றும் நிலப் பிரிவுகளில் சொத்துகளைத் தேர்ந்தெடுத்து மதிப்பிடும் நிறுவனத்தின் அணுகுமுறையை வழிநடத்துகிறது. பரிவர்த்தனையின் ஒவ்வொரு கட்டத்திலும் வெளிப்படைத்தன்மை மற்றும் தொழில்முறை நடத்தையை அடிப்படையாகக் கொண்டு வாடிக்கையாளர்கள், நில உரிமையாளர்கள் மற்றும் மேம்பாட்டாளர்களுடன் நீண்டகால நம்பிக்கையான உறவுகளை உருவாக்கியுள்ளார். நேர்மைத் தரங்களைப் பேணியபடி சென்னையில் Aventrix Realty-யின் வளர்ச்சியை நிலையாகவும் நீடித்த வகையிலும் முன்னெடுப்பதே அவரது கவனம்.",
+      "hi": "चेन्नई के रियल एस्टेट बाज़ार में 15 वर्षों से अधिक के अनुभव के साथ, Gnanasekaran P Aventrix Realty को रणनीतिक दिशा और नेतृत्व देते हैं। स्थानीय बाज़ार के चक्रों और पड़ोस के रुझानों की उनकी गहरी समझ आवासीय, वाणिज्यिक और भूमि क्षेत्रों में संपत्तियों को चुनने और मूल्यांकन करने के कंपनी के तरीके को दिशा देती है। लेन-देन के हर चरण में पारदर्शिता और पेशेवर आचरण के आधार पर उन्होंने ग्राहकों, भूमि-मालिकों और डेवलपरों के साथ लंबे समय के भरोसेमंद संबंध बनाए हैं। ईमानदारी के मानकों को कायम रखते हुए चेन्नई में Aventrix Realty की उपस्थिति को स्थिर और टिकाऊ रूप से बढ़ाना उनका प्रमुख ध्यान है।",
+      "te": "చెన్నై రియల్ ఎస్టేట్ మార్కెట్‌లో 15 సంవత్సరాలకు పైగా అనుభవంతో, Gnanasekaran P Aventrix Realtyకి వ్యూహాత్మక దిశానిర్దేశం మరియు నాయకత్వం అందిస్తున్నారు. స్థానిక మార్కెట్ చక్రాలు, ప్రాంతాల ధోరణులపై ఆయనకు ఉన్న లోతైన అవగాహన నివాస, వాణిజ్య, భూమి విభాగాల్లో ఆస్తులను ఎంపిక చేసి అంచనా వేసే సంస్థ విధానాన్ని నిర్దేశిస్తుంది. లావాదేవీలో ప్రతి దశలో పారదర్శకత, వృత్తిపరమైన నడవడికకు ప్రాధాన్యం ఇస్తూ ఖాతాదారులు, భూయజమానులు, డెవలపర్లతో దీర్ఘకాలిక విశ్వసనీయ సంబంధాలను నిర్మించారు. సమగ్రత ప్రమాణాలను నిలబెట్టి చెన్నైలో Aventrix Realty ఉనికిని స్థిరంగా, సుస్థిరంగా విస్తరించడం ఆయన ప్రధాన లక్ష్యం.",
+      "kn": "ಚೆನ್ನೈನ ರಿಯಲ್ ಎಸ್ಟೇಟ್ ಮಾರುಕಟ್ಟೆಯಲ್ಲಿ 15 ವರ್ಷಗಳಿಗೂ ಹೆಚ್ಚಿನ ಅನುಭವ ಹೊಂದಿರುವ Gnanasekaran P ಅವರು Aventrix Realtyಗೆ ಕಾರ್ಯತಂತ್ರದ ದಿಕ್ಕು ಮತ್ತು ನಾಯಕತ್ವ ನೀಡುತ್ತಾರೆ. ಸ್ಥಳೀಯ ಮಾರುಕಟ್ಟೆಯ ಚಕ್ರಗಳು ಮತ್ತು ನೆರೆಹೊರೆಯ ಪ್ರವೃತ್ತಿಗಳ ಕುರಿತ ಅವರ ಆಳವಾದ ತಿಳುವಳಿಕೆ ವಸತಿ, ವಾಣಿಜ್ಯ ಮತ್ತು ಭೂ ವಿಭಾಗಗಳ ಆಸ್ತಿಗಳನ್ನು ಆಯ್ಕೆಮಾಡಿ ಮೌಲ್ಯಮಾಪನ ಮಾಡುವ ಕಂಪನಿಯ ವಿಧಾನಕ್ಕೆ ಮಾರ್ಗದರ್ಶನ ನೀಡುತ್ತದೆ. ವ್ಯವಹಾರದ ಪ್ರತಿಯೊಂದು ಹಂತದಲ್ಲೂ ಪಾರದರ್ಶಕತೆ ಮತ್ತು ವೃತ್ತಿಪರ ನಡವಳಿಕೆಯನ್ನು ಆಧರಿಸಿ ಗ್ರಾಹಕರು, ಭೂಮಾಲೀಕರು ಮತ್ತು ಡೆವಲಪರ್‌ಗಳೊಂದಿಗೆ ದೀರ್ಘಕಾಲದ ನಂಬಿಕೆಯ ಸಂಬಂಧಗಳನ್ನು ಬೆಳೆಸಿದ್ದಾರೆ. ಸಮಗ್ರತೆಯ ಮಾನದಂಡಗಳನ್ನು ಉಳಿಸಿಕೊಂಡು ಚೆನ್ನೈಯಲ್ಲಿ Aventrix Realtyಯ ಅಸ್ತಿತ್ವವನ್ನು ಸ್ಥಿರವಾಗಿ ಮತ್ತು ಸುಸ್ಥಿರವಾಗಿ ವಿಸ್ತರಿಸುವುದು ಅವರ ಗಮನ.",
+      "ml": "ചെന്നൈയിലെ റിയൽ എസ്റ്റേറ്റ് വിപണിയിൽ 15 വർഷത്തിലേറെ പരിചയമുള്ള Gnanasekaran P, Aventrix Realtyയ്ക്ക് തന്ത്രപരമായ ദിശയും നേതൃത്വവും നൽകുന്നു. പ്രാദേശിക വിപണിയിലെ ചക്രങ്ങളെയും പ്രദേശങ്ങളിലെ പ്രവണതകളെയും കുറിച്ചുള്ള അദ്ദേഹത്തിന്റെ ആഴത്തിലുള്ള അറിവ് താമസ, വാണിജ്യ, ഭൂമി മേഖലകളിലെ സ്വത്തുക്കൾ കണ്ടെത്തി വിലയിരുത്തുന്ന കമ്പനിയുടെ രീതിയെ നയിക്കുന്നു. ഇടപാടിന്റെ ഓരോ ഘട്ടത്തിലും സുതാര്യതയും പ്രൊഫഷണൽ പെരുമാറ്റവും മുൻനിർത്തി ഉപഭോക്താക്കൾ, ഭൂവുടമകൾ, ഡെവലപ്പർമാർ എന്നിവരുമായി ദീർഘകാല വിശ്വാസബന്ധങ്ങൾ അദ്ദേഹം വളർത്തിയിട്ടുണ്ട്. സത്യസന്ധതയുടെ മാനദണ്ഡങ്ങൾ കാത്തുസൂക്ഷിച്ചുകൊണ്ട് ചെന്നൈയിൽ Aventrix Realtyയുടെ സാന്നിധ്യം സ്ഥിരതയോടെയും സുസ്ഥിരമായും വളർത്തുന്നതിലാണ് അദ്ദേഹത്തിന്റെ ശ്രദ്ധ."
+    },
+    "home.leadership.coFounderBio": {
+      "en": "Sanjay Gandhi L brings over 15 years of hands-on real estate experience to his role as Co-Founder and Managing Partner of Aventrix Realty, where he leads day-to-day business and operational activity. His work spans the full property lifecycle — buying, selling and leasing — coordinating property marketing and transaction execution while managing negotiations through to closure. With close familiarity with Chennai's neighbourhoods and property values, he works directly with buyers, sellers, investors and property owners to guide each transaction with clarity and care. His approach is centred on building long-term client relationships, backed by practical market knowledge and dependable, on-ground support.",
+      "ta": "Aventrix Realty-யின் இணை நிறுவனர் மற்றும் நிர்வாகக் கூட்டாளராக உள்ள Sanjay Gandhi L, 15 ஆண்டுகளுக்கும் மேலான நேரடி ரியல் எஸ்டேட் அனுபவத்துடன் அன்றாட வணிக மற்றும் செயல்பாடுகளை வழிநடத்துகிறார். சொத்து வாங்குதல், விற்பனை மற்றும் குத்தகை உள்ளிட்ட முழுச் சொத்து வாழ்க்கைச் சுழற்சியிலும் அவர் செயல்படுகிறார்; சொத்து சந்தைப்படுத்தல், பரிவர்த்தனை நிறைவேற்றம் மற்றும் பேச்சுவார்த்தைகளை முடிவு வரை ஒருங்கிணைக்கிறார். சென்னையின் பகுதிகள் மற்றும் சொத்து மதிப்புகள் குறித்த நெருங்கிய அறிவுடன், வாங்குபவர்கள், விற்பனையாளர்கள், முதலீட்டாளர்கள் மற்றும் சொத்து உரிமையாளர்களுடன் நேரடியாகப் பணியாற்றி ஒவ்வொரு பரிவர்த்தனையையும் தெளிவாகவும் கவனமாகவும் வழிநடத்துகிறார். நடைமுறை சந்தை அறிவு மற்றும் நம்பகமான நேரடி ஆதரவுடன் நீண்டகால வாடிக்கையாளர் உறவுகளை உருவாக்குவதே அவரது அணுகுமுறை.",
+      "hi": "Aventrix Realty के सह-संस्थापक और प्रबंध साझेदार Sanjay Gandhi L को रियल एस्टेट का 15 वर्षों से अधिक का व्यावहारिक अनुभव है और वे दैनिक व्यावसायिक तथा परिचालन गतिविधियों का नेतृत्व करते हैं। उनका कार्य संपत्ति के पूरे चक्र—खरीद, बिक्री और लीज़—को समेटता है; वे संपत्ति के विपणन, लेन-देन के निष्पादन और वार्ता को अंतिम रूप मिलने तक समन्वित करते हैं। चेन्नई के इलाकों और संपत्ति मूल्यों की गहरी जानकारी के साथ वे खरीदारों, विक्रेताओं, निवेशकों और संपत्ति-मालिकों के साथ सीधे काम करते हैं और प्रत्येक लेन-देन को स्पष्टता तथा सावधानी से आगे बढ़ाते हैं। व्यावहारिक बाज़ार ज्ञान और भरोसेमंद स्थानीय सहायता के आधार पर दीर्घकालीन ग्राहक संबंध बनाना उनका दृष्टिकोण है।",
+      "te": "Aventrix Realty సహ వ్యవస్థాపకుడు, మేనేజింగ్ పార్ట్‌నర్ అయిన Sanjay Gandhi Lకు రియల్ ఎస్టేట్‌లో 15 సంవత్సరాలకు పైగా ప్రత్యక్ష అనుభవం ఉంది; ఆయన రోజువారీ వ్యాపార, కార్యకలాపాలను నడిపిస్తారు. కొనుగోలు, అమ్మకం, లీజింగ్‌తో సహా ఆస్తి జీవితచక్రం అంతటా ఆయన పని విస్తరించి ఉంటుంది. ఆస్తుల మార్కెటింగ్, లావాదేవీల అమలు, చర్చలను ముగింపు వరకు సమన్వయం చేస్తారు. చెన్నై ప్రాంతాలు, ఆస్తి విలువలపై సన్నిహిత పరిజ్ఞానంతో కొనుగోలుదారులు, విక్రేతలు, పెట్టుబడిదారులు, ఆస్తి యజమానులతో నేరుగా పనిచేసి ప్రతి లావాదేవీని స్పష్టతతో, శ్రద్ధతో ముందుకు తీసుకెళ్తారు. ఆచరణాత్మక మార్కెట్ పరిజ్ఞానం, నమ్మదగిన ప్రత్యక్ష సహకారంతో దీర్ఘకాలిక ఖాతాదారుల సంబంధాలను నిర్మించడం ఆయన విధానం.",
+      "kn": "Aventrix Realtyಯ ಸಹ-ಸಂಸ್ಥಾಪಕ ಮತ್ತು ವ್ಯವಸ್ಥಾಪಕ ಪಾಲುದಾರರಾದ Sanjay Gandhi L ಅವರಿಗೆ ರಿಯಲ್ ಎಸ್ಟೇಟ್‌ನಲ್ಲಿ 15 ವರ್ಷಗಳಿಗೂ ಹೆಚ್ಚಿನ ಪ್ರಾಯೋಗಿಕ ಅನುಭವವಿದ್ದು, ದೈನಂದಿನ ವ್ಯವಹಾರ ಮತ್ತು ಕಾರ್ಯಾಚರಣೆಗಳನ್ನು ಮುನ್ನಡೆಸುತ್ತಾರೆ. ಖರೀದಿ, ಮಾರಾಟ ಮತ್ತು ಗುತ್ತಿಗೆ ಸೇರಿದಂತೆ ಆಸ್ತಿಯ ಸಂಪೂರ್ಣ ಜೀವನಚಕ್ರ ಅವರ ಕಾರ್ಯವ್ಯಾಪ್ತಿಯಲ್ಲಿದೆ; ಆಸ್ತಿ ಮಾರುಕಟ್ಟೆಗೊಳಿಸುವಿಕೆ, ವ್ಯವಹಾರದ ಅನುಷ್ಠಾನ ಮತ್ತು ಮಾತುಕತೆಗಳನ್ನು ಅಂತಿಮಗೊಳಿಸುವವರೆಗೆ ಸಂಯೋಜಿಸುತ್ತಾರೆ. ಚೆನ್ನೈನ ಪ್ರದೇಶಗಳು ಮತ್ತು ಆಸ್ತಿ ಮೌಲ್ಯಗಳ ಪರಿಚಯದೊಂದಿಗೆ ಖರೀದಿದಾರರು, ಮಾರಾಟಗಾರರು, ಹೂಡಿಕೆದಾರರು ಮತ್ತು ಆಸ್ತಿ ಮಾಲೀಕರೊಂದಿಗೆ ನೇರವಾಗಿ ಕೆಲಸಮಾಡಿ ಪ್ರತಿಯೊಂದು ವ್ಯವಹಾರಕ್ಕೂ ಸ್ಪಷ್ಟತೆ ಮತ್ತು ಕಾಳಜಿಯಿಂದ ಮಾರ್ಗದರ್ಶನ ನೀಡುತ್ತಾರೆ. ಪ್ರಾಯೋಗಿಕ ಮಾರುಕಟ್ಟೆ ಜ್ಞಾನ ಮತ್ತು ನಂಬಲರ್ಹ ಸ್ಥಳೀಯ ಬೆಂಬಲದ ಮೂಲಕ ದೀರ್ಘಕಾಲದ ಗ್ರಾಹಕ ಸಂಬಂಧಗಳನ್ನು ನಿರ್ಮಿಸುವುದು ಅವರ ವಿಧಾನ.",
+      "ml": "Aventrix Realtyയുടെ സഹസ്ഥാപകനും മാനേജിംഗ് പങ്കാളിയുമായ Sanjay Gandhi L-ന് റിയൽ എസ്റ്റേറ്റിൽ 15 വർഷത്തിലേറെ പ്രായോഗിക പരിചയമുണ്ട്; ദൈനംദിന ബിസിനസ്, പ്രവർത്തനങ്ങൾ എന്നിവയ്ക്ക് അദ്ദേഹം നേതൃത്വം നൽകുന്നു. വാങ്ങൽ, വിൽപ്പന, ലീസിംഗ് എന്നിവ ഉൾപ്പെടുന്ന സ്വത്തിന്റെ മുഴുവൻ ജീവിതചക്രവും അദ്ദേഹത്തിന്റെ പ്രവർത്തനപരിധിയിലാണ്. സ്വത്ത് വിപണനം, ഇടപാട് നടപ്പാക്കൽ, ചർച്ചകൾ പൂർത്തിയാകുന്നതുവരെ അവയുടെ ഏകോപനം എന്നിവയും അദ്ദേഹം നിർവഹിക്കുന്നു. ചെന്നൈയിലെ പ്രദേശങ്ങളെയും സ്വത്ത് മൂല്യങ്ങളെയും അടുത്തറിയുന്ന അദ്ദേഹം വാങ്ങുന്നവർ, വിൽക്കുന്നവർ, നിക്ഷേപകർ, സ്വത്തുടമകൾ എന്നിവരോടൊപ്പം നേരിട്ട് പ്രവർത്തിച്ച് ഓരോ ഇടപാടിനും വ്യക്തതയോടെയും ശ്രദ്ധയോടെയും മാർഗനിർദേശം നൽകുന്നു. പ്രായോഗിക വിപണി അറിവും വിശ്വസനീയമായ പ്രാദേശിക പിന്തുണയും ഉപയോഗിച്ച് ദീർഘകാല ഉപഭോക്തൃബന്ധങ്ങൾ വളർത്തുകയാണ് അദ്ദേഹത്തിന്റെ സമീപനം."
+    },
+    "home.search.bhkOnePlus": {
+      "en": "1+ BHK",
+      "ta": "1+ BHK",
+      "hi": "1+ BHK",
+      "te": "1+ BHK",
+      "kn": "1+ BHK",
+      "ml": "1+ BHK"
+    },
+    "home.search.bhkTwoPlus": {
+      "en": "2+ BHK",
+      "ta": "2+ BHK",
+      "hi": "2+ BHK",
+      "te": "2+ BHK",
+      "kn": "2+ BHK",
+      "ml": "2+ BHK"
+    },
+    "home.search.bhkThreePlus": {
+      "en": "3+ BHK",
+      "ta": "3+ BHK",
+      "hi": "3+ BHK",
+      "te": "3+ BHK",
+      "kn": "3+ BHK",
+      "ml": "3+ BHK"
+    },
+    "home.search.bhkFourPlus": {
+      "en": "4+ BHK",
+      "ta": "4+ BHK",
+      "hi": "4+ BHK",
+      "te": "4+ BHK",
+      "kn": "4+ BHK",
+      "ml": "4+ BHK"
+    },
+    "home.search.bhkFivePlus": {
+      "en": "5+ BHK",
+      "ta": "5+ BHK",
+      "hi": "5+ BHK",
+      "te": "5+ BHK",
+      "kn": "5+ BHK",
+      "ml": "5+ BHK"
+    },
+    "home.search.north": {
+      "en": "North",
+      "ta": "வடக்கு",
+      "hi": "उत्तर",
+      "te": "ఉత్తరం",
+      "kn": "ಉತ್ತರ",
+      "ml": "വടക്ക്"
+    },
+    "home.search.south": {
+      "en": "South",
+      "ta": "தெற்கு",
+      "hi": "दक्षिण",
+      "te": "దక్షిణం",
+      "kn": "ದಕ್ಷಿಣ",
+      "ml": "തെക്ക്"
+    },
+    "home.search.east": {
+      "en": "East",
+      "ta": "கிழக்கு",
+      "hi": "पूर्व",
+      "te": "తూర్పు",
+      "kn": "ಪೂರ್ವ",
+      "ml": "കിഴക്ക്"
+    },
+    "home.search.west": {
+      "en": "West",
+      "ta": "மேற்கு",
+      "hi": "पश्चिम",
+      "te": "పడమర",
+      "kn": "ಪಶ್ಚಿಮ",
+      "ml": "പടിഞ്ഞാറ്"
+    },
+    "home.search.northEast": {
+      "en": "North-East",
+      "ta": "வடகிழக்கு",
+      "hi": "उत्तर-पूर्व",
+      "te": "ఈశాన్యం",
+      "kn": "ಈಶಾನ್ಯ",
+      "ml": "വടക്കുകിഴക്ക്"
+    },
+    "home.search.northWest": {
+      "en": "North-West",
+      "ta": "வடமேற்கு",
+      "hi": "उत्तर-पश्चिम",
+      "te": "వాయువ్యం",
+      "kn": "ವಾಯವ್ಯ",
+      "ml": "വടക്കുപടിഞ്ഞാറ്"
+    },
+    "home.search.southEast": {
+      "en": "South-East",
+      "ta": "தென்கிழக்கு",
+      "hi": "दक्षिण-पूर्व",
+      "te": "ఆగ్నేయం",
+      "kn": "ಆಗ್ನೇಯ",
+      "ml": "തെക്കുകിഴക്ക്"
+    },
+    "home.search.southWest": {
+      "en": "South-West",
+      "ta": "தென்மேற்கு",
+      "hi": "दक्षिण-पश्चिम",
+      "te": "నైరుతి",
+      "kn": "ನೈಋತ್ಯ",
+      "ml": "തെക്കുപടിഞ്ഞാറ്"
+    },
+    "home.search.fullyFurnished": {
+      "en": "Fully Furnished",
+      "ta": "முழுமையாகப் பொருத்தப்பட்ட",
+      "hi": "पूरी तरह सुसज्जित",
+      "te": "పూర్తిగా అమర్చబడిన",
+      "kn": "ಸಂಪೂರ್ಣವಾಗಿ ಸಜ್ಜುಗೊಂಡ",
+      "ml": "പൂർണമായി സജ്ജീകരിച്ചത്"
+    },
+    "home.search.semiFurnished": {
+      "en": "Semi-Furnished",
+      "ta": "பகுதியளவு பொருத்தப்பட்ட",
+      "hi": "आंशिक रूप से सुसज्जित",
+      "te": "పాక్షికంగా అమర్చబడిన",
+      "kn": "ಭಾಗಶಃ ಸಜ್ಜುಗೊಂಡ",
+      "ml": "ഭാഗികമായി സജ്ജീകരിച്ചത്"
+    },
+    "home.search.unfurnished": {
+      "en": "Unfurnished",
+      "ta": "பொருத்தப்படாத",
+      "hi": "बिना साज-सज्जा वाला",
+      "te": "అమర్చని",
+      "kn": "ಸಜ್ಜುಗೊಳಿಸದ",
+      "ml": "സജ്ജീകരിക്കാത്തത്"
+    },
+    "home.account.heading": {
+      "en": "Your Account",
+      "ta": "உங்கள் கணக்கு",
+      "hi": "आपका खाता",
+      "te": "మీ ఖాతా",
+      "kn": "ನಿಮ್ಮ ಖಾತೆ",
+      "ml": "നിങ്ങളുടെ അക്കൗണ്ട്"
+    },
+    "home.shortcut.buyDescription": {
+      "en": "Find your dream home",
+      "ta": "உங்கள் கனவு வீட்டைக் கண்டறியுங்கள்",
+      "hi": "अपने सपनों का घर खोजें",
+      "te": "మీ కలల ఇంటిని కనుగొనండి",
+      "kn": "ನಿಮ್ಮ ಕನಸಿನ ಮನೆಯನ್ನು ಹುಡುಕಿ",
+      "ml": "നിങ്ങളുടെ സ്വപ്നഭവനം കണ്ടെത്തൂ"
+    },
+    "home.shortcut.rentDescription": {
+      "en": "Homes for rent",
+      "ta": "வாடகை வீடுகள்",
+      "hi": "किराए के मकान",
+      "te": "అద్దె ఇళ్లు",
+      "kn": "ಬಾಡಿಗೆ ಮನೆಗಳು",
+      "ml": "വാടക വീടുകൾ"
+    },
+    "home.shortcut.commercialDescription": {
+      "en": "Office & retail spaces",
+      "ta": "அலுவலகம் மற்றும் வணிக இடங்கள்",
+      "hi": "कार्यालय और खुदरा स्थान",
+      "te": "కార్యాలయ, రిటైల్ స్థలాలు",
+      "kn": "ಕಚೇರಿ ಮತ್ತು ಚಿಲ್ಲರೆ ವ್ಯಾಪಾರದ ಸ್ಥಳಗಳು",
+      "ml": "ഓഫീസ്, റീട്ടെയിൽ ഇടങ്ങൾ"
+    },
+    "home.shortcut.landDescription": {
+      "en": "Plots & land investments",
+      "ta": "மனை மற்றும் நில முதலீடுகள்",
+      "hi": "प्लॉट और भूमि निवेश",
+      "te": "ప్లాట్లు, భూమి పెట్టుబడులు",
+      "kn": "ಸೈಟ್‌ಗಳು ಮತ್ತು ಭೂ ಹೂಡಿಕೆಗಳು",
+      "ml": "പ്ലോട്ടുകളും ഭൂമി നിക്ഷേപങ്ങളും"
+    },
+    "home.shortcut.insightsDescription": {
+      "en": "Market trends & guides",
+      "ta": "சந்தைப் போக்குகள் மற்றும் வழிகாட்டிகள்",
+      "hi": "बाज़ार के रुझान और मार्गदर्शिकाएँ",
+      "te": "మార్కెట్ ధోరణులు, మార్గదర్శకాలు",
+      "kn": "ಮಾರುಕಟ್ಟೆ ಪ್ರವೃತ್ತಿಗಳು ಮತ್ತು ಮಾರ್ಗದರ್ಶಿಗಳು",
+      "ml": "വിപണി പ്രവണതകളും മാർഗദർശികളും"
+    },
+    "home.shortcut.jointVentureDescription": {
+      "en": "Landowner & developer partnerships",
+      "ta": "நில உரிமையாளர் மற்றும் மேம்பாட்டாளர் கூட்டாண்மைகள்",
+      "hi": "भूमि-मालिक और डेवलपर साझेदारियाँ",
+      "te": "భూయజమాని, డెవలపర్ భాగస్వామ్యాలు",
+      "kn": "ಭೂಮಾಲೀಕರು ಮತ್ತು ಡೆವಲಪರ್‌ಗಳ ಪಾಲುದಾರಿಕೆಗಳು",
+      "ml": "ഭൂവുടമ-ഡെവലപ്പർ പങ്കാളിത്തങ്ങൾ"
+    },
+    "home.recent.heading": {
+      "en": "Recent Searches",
+      "ta": "சமீபத்திய தேடல்கள்",
+      "hi": "हाल की खोजें",
+      "te": "ఇటీవలి శోధనలు",
+      "kn": "ಇತ್ತೀಚಿನ ಹುಡುಕಾಟಗಳು",
+      "ml": "സമീപകാല തിരയലുകൾ"
+    },
+    "home.future.subtitle": {
+      "en": "Handpicked properties for your future.",
+      "ta": "உங்கள் எதிர்காலத்திற்காகத் தேர்ந்தெடுக்கப்பட்ட சொத்துகள்.",
+      "hi": "आपके भविष्य के लिए चुनी गई संपत्तियाँ।",
+      "te": "మీ భవిష్యత్తు కోసం ఎంపిక చేసిన ఆస్తులు.",
+      "kn": "ನಿಮ್ಮ ಭವಿಷ್ಯಕ್ಕಾಗಿ ಆಯ್ದ ಆಸ್ತಿಗಳು.",
+      "ml": "നിങ്ങളുടെ ഭാവിക്കായി തിരഞ്ഞെടുത്ത സ്വത്തുക്കൾ."
+    },
+    "home.future.seeAll": {
+      "en": "See All",
+      "ta": "அனைத்தையும் காண்க",
+      "hi": "सभी देखें",
+      "te": "అన్నీ చూడండి",
+      "kn": "ಎಲ್ಲವನ್ನೂ ನೋಡಿ",
+      "ml": "എല്ലാം കാണുക"
+    },
+    "home.future.openMap": {
+      "en": "Open Full Map",
+      "ta": "முழு வரைபடத்தைத் திறக்கவும்",
+      "hi": "पूरा नक्शा खोलें",
+      "te": "పూర్తి మ్యాప్‌ను తెరవండి",
+      "kn": "ಪೂರ್ಣ ನಕ್ಷೆಯನ್ನು ತೆರೆಯಿರಿ",
+      "ml": "പൂർണ്ണ മാപ്പ് തുറക്കുക"
+    },
+    "home.future.viewAll": {
+      "en": "View All Properties",
+      "ta": "அனைத்து சொத்துகளையும் காண்க",
+      "hi": "सभी संपत्तियाँ देखें",
+      "te": "అన్ని ఆస్తులను చూడండి",
+      "kn": "ಎಲ್ಲಾ ಆಸ್ತಿಗಳನ್ನು ನೋಡಿ",
+      "ml": "എല്ലാ സ്വത്തുക്കളും കാണുക"
+    },
+    "home.categories.eyebrow": {
+      "en": "BROWSE BY TYPE",
+      "ta": "வகையின்படி உலாவுங்கள்",
+      "hi": "श्रेणी के अनुसार देखें",
+      "te": "రకం వారీగా చూడండి",
+      "kn": "ವರ್ಗದ ಪ್ರಕಾರ ವೀಕ್ಷಿಸಿ",
+      "ml": "വിഭാഗം തിരഞ്ഞ് കാണുക"
+    },
+    "home.categories.villas": {
+      "en": "Luxury Villas",
+      "ta": "சொகுசு வில்லாக்கள்",
+      "hi": "लक्ज़री विला",
+      "te": "లగ్జరీ విల్లాలు",
+      "kn": "ಐಷಾರಾಮಿ ವಿಲ್ಲಾಗಳು",
+      "ml": "ആഡംബര വില്ലകൾ"
+    },
+    "home.categories.investment": {
+      "en": "Investment Properties",
+      "ta": "முதலீட்டுச் சொத்துகள்",
+      "hi": "निवेश संपत्तियाँ",
+      "te": "పెట్టుబడి ఆస్తులు",
+      "kn": "ಹೂಡಿಕೆ ಆಸ್ತಿಗಳು",
+      "ml": "നിക്ഷേപ സ്വത്തുക്കൾ"
+    },
+    "home.services.eyebrow": {
+      "en": "WHAT WE DO",
+      "ta": "எங்கள் சேவைகள்",
+      "hi": "हमारी सेवाएँ",
+      "te": "మా సేవలు",
+      "kn": "ನಮ್ಮ ಸೇವೆಗಳು",
+      "ml": "ഞങ്ങളുടെ സേവനങ്ങൾ"
+    },
+    "home.services.buyDescription": {
+      "en": "Find verified homes, apartments and plots.",
+      "ta": "சரிபார்க்கப்பட்ட வீடுகள், அடுக்குமாடி குடியிருப்புகள் மற்றும் மனைகளைக் கண்டறியுங்கள்.",
+      "hi": "सत्यापित घर, अपार्टमेंट और प्लॉट खोजें।",
+      "te": "ధృవీకరించిన ఇళ్లు, అపార్ట్‌మెంట్లు, ప్లాట్లను కనుగొనండి.",
+      "kn": "ಪರಿಶೀಲಿತ ಮನೆಗಳು, ಅಪಾರ್ಟ್‌ಮೆಂಟ್‌ಗಳು ಮತ್ತು ಸೈಟ್‌ಗಳನ್ನು ಹುಡುಕಿ.",
+      "ml": "പരിശോധിച്ച വീടുകളും അപ്പാർട്ട്മെന്റുകളും പ്ലോട്ടുകളും കണ്ടെത്തൂ."
+    },
+    "home.services.learnMore": {
+      "en": "Learn More →",
+      "ta": "மேலும் அறிக →",
+      "hi": "और जानें →",
+      "te": "మరింత తెలుసుకోండి →",
+      "kn": "ಇನ್ನಷ್ಟು ತಿಳಿಯಿರಿ →",
+      "ml": "കൂടുതൽ അറിയുക →"
+    },
+    "home.services.sellDescription": {
+      "en": "List and sell your property with expert guidance.",
+      "ta": "நிபுணர் வழிகாட்டுதலுடன் உங்கள் சொத்தைப் பட்டியலிட்டு விற்பனை செய்யுங்கள்.",
+      "hi": "विशेषज्ञ मार्गदर्शन के साथ अपनी संपत्ति सूचीबद्ध करें और बेचें।",
+      "te": "నిపుణుల మార్గదర్శకత్వంతో మీ ఆస్తిని జాబితా చేసి విక్రయించండి.",
+      "kn": "ತಜ್ಞರ ಮಾರ್ಗದರ್ಶನದೊಂದಿಗೆ ನಿಮ್ಮ ಆಸ್ತಿಯನ್ನು ಪಟ್ಟಿ ಮಾಡಿ ಮಾರಾಟಮಾಡಿ.",
+      "ml": "വിദഗ്ധ മാർഗനിർദേശത്തോടെ നിങ്ങളുടെ സ്വത്ത് പട്ടികപ്പെടുത്തി വിൽക്കൂ."
+    },
+    "home.services.lease": {
+      "en": "Lease",
+      "ta": "குத்தகை",
+      "hi": "लीज़",
+      "te": "లీజు",
+      "kn": "ಗುತ್ತಿಗೆ",
+      "ml": "ലീസ്"
+    },
+    "home.services.leaseDescription": {
+      "en": "Residential and Commercial Leasing.",
+      "ta": "குடியிருப்பு மற்றும் வணிகக் குத்தகை.",
+      "hi": "आवासीय और वाणिज्यिक लीज़।",
+      "te": "నివాస, వాణిజ్య లీజింగ్.",
+      "kn": "ವಸತಿ ಮತ್ತು ವಾಣಿಜ್ಯ ಗುತ್ತಿಗೆ.",
+      "ml": "താമസ, വാണിജ്യ ലീസിംഗ്."
+    },
+    "home.services.jointVentureDescription": {
+      "en": "Developer and landowner partnerships, built on trust.",
+      "ta": "நம்பிக்கையின் அடிப்படையில் உருவாகும் மேம்பாட்டாளர்–நில உரிமையாளர் கூட்டாண்மைகள்.",
+      "hi": "विश्वास पर आधारित डेवलपर और भूमि-मालिक साझेदारियाँ।",
+      "te": "నమ్మకంపై నిర్మితమైన డెవలపర్, భూయజమాని భాగస్వామ్యాలు.",
+      "kn": "ನಂಬಿಕೆಯನ್ನು ಆಧರಿಸಿದ ಡೆವಲಪರ್ ಮತ್ತು ಭೂಮಾಲೀಕರ ಪಾಲುದಾರಿಕೆಗಳು.",
+      "ml": "വിശ്വാസത്തിൽ അധിഷ്ഠിതമായ ഡെവലപ്പർ-ഭൂവുടമ പങ്കാളിത്തങ്ങൾ."
+    },
+    "home.services.advisoryDescription": {
+      "en": "Expert guidance for every stage of your property journey.",
+      "ta": "உங்கள் சொத்து பயணத்தின் ஒவ்வொரு கட்டத்திலும் நிபுணர் வழிகாட்டுதல்.",
+      "hi": "आपकी संपत्ति यात्रा के हर चरण में विशेषज्ञ मार्गदर्शन।",
+      "te": "మీ ఆస్తి ప్రయాణంలోని ప్రతి దశలో నిపుణుల మార్గదర్శకత్వం.",
+      "kn": "ನಿಮ್ಮ ಆಸ್ತಿ ಪ್ರಯಾಣದ ಪ್ರತಿಯೊಂದು ಹಂತದಲ್ಲೂ ತಜ್ಞರ ಮಾರ್ಗದರ್ಶನ.",
+      "ml": "നിങ്ങളുടെ സ്വത്ത് യാത്രയുടെ ഓരോ ഘട്ടത്തിലും വിദഗ്ധ മാർഗനിർദേശം."
+    },
+    "home.services.nriDescription": {
+      "en": "Remote-friendly property solutions for NRI clients.",
+      "ta": "வெளிநாடு வாழ் இந்திய வாடிக்கையாளர்களுக்கான தொலைநிலைச் சொத்து சேவைகள்.",
+      "hi": "एनआरआई ग्राहकों के लिए दूरस्थ रूप से उपलब्ध संपत्ति समाधान।",
+      "te": "ఎన్‌ఆర్‌ఐ ఖాతాదారుల కోసం దూరస్థంగా అందించే ఆస్తి పరిష్కారాలు.",
+      "kn": "ಎನ್‌ಆರ್‌ಐ ಗ್ರಾಹಕರಿಗಾಗಿ ದೂರದಿಂದಲೇ ಬಳಸಬಹುದಾದ ಆಸ್ತಿ ಪರಿಹಾರಗಳು.",
+      "ml": "എൻആർഐ ഉപഭോക്താക്കൾക്കായി ദൂരത്തുനിന്ന് ലഭ്യമാകുന്ന സ്വത്ത് പരിഹാരങ്ങൾ."
+    },
+    "home.why.eyebrow": {
+      "en": "WHY AVENTRIX",
+      "ta": "ஏன் அவென்ட்ரிக்ஸ்",
+      "hi": "एवेंट्रिक्स क्यों",
+      "te": "అవెంట్రిక్స్ ఎందుకు",
+      "kn": "ಅವೆಂಟ್ರಿಕ್ಸ್ ಏಕೆ",
+      "ml": "എന്തുകൊണ്ട് അവെൻട്രിക്സ്"
+    },
+    "home.why.legacy": {
+      "en": "Six decades of legacy, from TP Builders to Aventrix Realty.",
+      "ta": "TP Builders முதல் Aventrix Realty வரை ஆறு தசாப்தங்களின் பாரம்பரியம்.",
+      "hi": "TP Builders से Aventrix Realty तक, छह दशकों की विरासत।",
+      "te": "TP Builders నుంచి Aventrix Realty వరకు ఆరు దశాబ్దాల వారసత్వం.",
+      "kn": "TP Buildersನಿಂದ Aventrix Realtyವರೆಗೆ ಆರು ದಶಕಗಳ ಪರಂಪರೆ.",
+      "ml": "TP Builders മുതൽ Aventrix Realty വരെ ആറു പതിറ്റാണ്ടുകളുടെ പാരമ്പര്യം."
+    },
+    "home.why.localExpertise": {
+      "en": "Deep knowledge of Chennai's neighborhoods and value trends.",
+      "ta": "சென்னையின் பகுதிகள் மற்றும் சொத்து மதிப்புப் போக்குகள் குறித்த ஆழமான அறிவு.",
+      "hi": "चेन्नई के इलाकों और संपत्ति मूल्य के रुझानों की गहरी जानकारी।",
+      "te": "చెన్నై ప్రాంతాలు, ఆస్తి విలువల ధోరణులపై లోతైన పరిజ్ఞానం.",
+      "kn": "ಚೆನ್ನೈನ ಪ್ರದೇಶಗಳು ಮತ್ತು ಆಸ್ತಿ ಮೌಲ್ಯದ ಪ್ರವೃತ್ತಿಗಳ ಕುರಿತು ಆಳವಾದ ತಿಳುವಳಿಕೆ.",
+      "ml": "ചെന്നൈയിലെ പ്രദേശങ്ങളെയും സ്വത്ത് മൂല്യ പ്രവണതകളെയും കുറിച്ചുള്ള ആഴത്തിലുള്ള അറിവ്."
+    },
+    "home.why.verified": {
+      "en": "Every property is legally verified before listing.",
+      "ta": "பட்டியலிடுவதற்கு முன் ஒவ்வொரு சொத்தின் சட்டப்பூர்வ ஆவணங்களும் சரிபார்க்கப்படுகின்றன.",
+      "hi": "सूचीबद्ध करने से पहले हर संपत्ति के कानूनी दस्तावेज़ों की जाँच होती है।",
+      "te": "జాబితా చేయడానికి ముందు ప్రతి ఆస్తి చట్టపరంగా ధృవీకరించబడుతుంది.",
+      "kn": "ಪಟ್ಟಿ ಮಾಡುವ ಮೊದಲು ಪ್ರತಿಯೊಂದು ಆಸ್ತಿಯ ಕಾನೂನು ದಾಖಲೆಗಳನ್ನು ಪರಿಶೀಲಿಸಲಾಗುತ್ತದೆ.",
+      "ml": "പട്ടികപ്പെടുത്തുന്നതിന് മുമ്പ് ഓരോ സ്വത്തിന്റെയും നിയമപരമായ രേഖകൾ പരിശോധിക്കുന്നു."
+    },
+    "home.why.transparent": {
+      "en": "Clear pricing, documentation and communication at every step.",
+      "ta": "ஒவ்வொரு கட்டத்திலும் தெளிவான விலை, ஆவணங்கள் மற்றும் தகவல் தொடர்பு.",
+      "hi": "हर चरण में स्पष्ट मूल्य, दस्तावेज़ और संवाद।",
+      "te": "ప్రతి దశలో స్పష్టమైన ధరలు, పత్రాలు, సమాచార మార్పిడి.",
+      "kn": "ಪ್ರತಿ ಹಂತದಲ್ಲೂ ಸ್ಪಷ್ಟ ಬೆಲೆ, ದಾಖಲೆಗಳು ಮತ್ತು ಸಂವಹನ.",
+      "ml": "ഓരോ ഘട്ടത്തിലും വ്യക്തമായ വില, രേഖകൾ, ആശയവിനിമയം."
+    },
+    "home.why.guidance": {
+      "en": "Expert support from search to registration.",
+      "ta": "தேடல் முதல் பதிவு வரை நிபுணர் ஆதரவு.",
+      "hi": "खोज से पंजीकरण तक विशेषज्ञ सहायता।",
+      "te": "శోధన నుంచి రిజిస్ట్రేషన్ వరకు నిపుణుల సహాయం.",
+      "kn": "ಹುಡುಕಾಟದಿಂದ ನೋಂದಣಿವರೆಗೆ ತಜ್ಞರ ಬೆಂಬಲ.",
+      "ml": "തിരച്ചിൽ മുതൽ രജിസ്ട്രേഷൻ വരെ വിദഗ്ധ സഹായം."
+    },
+    "home.why.supportTitle": {
+      "en": "Dedicated Support",
+      "ta": "தனிப்பட்ட ஆதரவு",
+      "hi": "समर्पित सहायता",
+      "te": "ప్రత్యేక సహాయం",
+      "kn": "ಸಮರ್ಪಿತ ಬೆಂಬಲ",
+      "ml": "പ്രത്യേക പിന്തുണ"
+    },
+    "home.why.support": {
+      "en": "A responsive team, available throughout your journey.",
+      "ta": "உங்கள் பயணம் முழுவதும் உடனிருந்து உதவும் குழு.",
+      "hi": "आपकी पूरी यात्रा में साथ देने वाली तत्पर टीम।",
+      "te": "మీ ప్రయాణమంతా అందుబాటులో ఉండే స్పందనాత్మక బృందం.",
+      "kn": "ನಿಮ್ಮ ಪ್ರಯಾಣದಾದ್ಯಂತ ಲಭ್ಯವಿರುವ ಸ್ಪಂದನಶೀಲ ತಂಡ.",
+      "ml": "നിങ്ങളുടെ യാത്രയിലുടനീളം കൂടെയുണ്ടാകുന്ന സജീവമായ ടീം."
+    },
+    "home.testimonials.eyebrow": {
+      "en": "CLIENT EXPERIENCES",
+      "ta": "வாடிக்கையாளர் அனுபவங்கள்",
+      "hi": "ग्राहकों के अनुभव",
+      "te": "ఖాతాదారుల అనుభవాలు",
+      "kn": "ಗ್ರಾಹಕರ ಅನುಭವಗಳು",
+      "ml": "ഉപഭോക്തൃ അനുഭവങ്ങൾ"
+    },
+    "home.cta.description": {
+      "en": "From your first enquiry to registration day, Aventrix Realty is with you at every step — trusted guidance, verified properties, and a team that treats your journey as our own.",
+      "ta": "உங்கள் முதல் விசாரணையிலிருந்து பதிவு நாள் வரை, Aventrix Realty ஒவ்வொரு கட்டத்திலும் உங்களுடன் இருக்கும் — நம்பகமான வழிகாட்டுதல், சரிபார்க்கப்பட்ட சொத்துகள், உங்கள் பயணத்தைத் தங்களுடையதாகக் கருதும் குழு.",
+      "hi": "आपकी पहली पूछताछ से पंजीकरण के दिन तक, Aventrix Realty हर कदम पर आपके साथ है — भरोसेमंद मार्गदर्शन, सत्यापित संपत्तियाँ और आपकी यात्रा को अपनी यात्रा मानने वाली टीम।",
+      "te": "మీ తొలి విచారణ నుంచి రిజిస్ట్రేషన్ రోజు వరకు Aventrix Realty ప్రతి దశలో మీతో ఉంటుంది — నమ్మకమైన మార్గదర్శకత్వం, ధృవీకరించిన ఆస్తులు, మీ ప్రయాణాన్ని తమదిగా భావించే బృందం.",
+      "kn": "ನಿಮ್ಮ ಮೊದಲ ವಿಚಾರಣೆಯಿಂದ ನೋಂದಣಿ ದಿನದವರೆಗೆ Aventrix Realty ಪ್ರತಿಯೊಂದು ಹಂತದಲ್ಲೂ ನಿಮ್ಮೊಂದಿಗಿರುತ್ತದೆ — ನಂಬಿಕಸ್ತ ಮಾರ್ಗದರ್ಶನ, ಪರಿಶೀಲಿತ ಆಸ್ತಿಗಳು ಮತ್ತು ನಿಮ್ಮ ಪ್ರಯಾಣವನ್ನು ತಮ್ಮದೇ ಎಂದು ಪರಿಗಣಿಸುವ ತಂಡ.",
+      "ml": "നിങ്ങളുടെ ആദ്യ അന്വേഷണത്തിൽ നിന്ന് രജിസ്ട്രേഷൻ ദിവസം വരെ Aventrix Realty ഓരോ ഘട്ടത്തിലും നിങ്ങളോടൊപ്പമുണ്ട് — വിശ്വസനീയമായ മാർഗനിർദേശം, പരിശോധിച്ച സ്വത്തുക്കൾ, നിങ്ങളുടെ യാത്രയെ സ്വന്തം യാത്രയായി കാണുന്ന ടീം."
+    },
+    "home.cta.connect": {
+      "en": "Let's Connect",
+      "ta": "தொடர்புகொள்வோம்",
+      "hi": "आइए संपर्क करें",
+      "te": "సంప్రదిద్దాం",
+      "kn": "ಸಂಪರ್ಕಿಸೋಣ",
+      "ml": "ബന്ധപ്പെടാം"
+    },
+    "home.fees.eyebrow": {
+      "en": "TRANSPARENCY",
+      "ta": "வெளிப்படைத்தன்மை",
+      "hi": "पारदर्शिता",
+      "te": "పారదర్శకత",
+      "kn": "ಪಾರದರ್ಶಕತೆ",
+      "ml": "സുതാര്യത"
+    },
+    "home.fees.description": {
+      "en": "At Aventrix Realty, brokerage and professional fees are always communicated upfront — no hidden charges, no surprises. Our fee structure is transparent from the very first conversation, so you always know exactly what to expect at every stage of your transaction.",
+      "ta": "Aventrix Realty-யில் தரகு மற்றும் தொழில்முறை கட்டணங்கள் முன்கூட்டியே தெரிவிக்கப்படுகின்றன — மறைக்கப்பட்ட கட்டணங்களோ எதிர்பாராத செலவுகளோ இல்லை. முதல் உரையாடலிலிருந்தே கட்டண அமைப்பு தெளிவாக இருக்கும்; எனவே பரிவர்த்தனையின் ஒவ்வொரு கட்டத்திலும் என்ன எதிர்பார்க்கலாம் என்பதை நீங்கள் அறிந்திருப்பீர்கள்.",
+      "hi": "Aventrix Realty में ब्रोकरेज और पेशेवर शुल्क पहले ही स्पष्ट कर दिए जाते हैं — कोई छिपा शुल्क या अप्रत्याशित खर्च नहीं। पहली बातचीत से ही हमारी शुल्क संरचना पारदर्शी रहती है, ताकि लेन-देन के हर चरण में आपको पता हो कि क्या अपेक्षा करनी है।",
+      "te": "Aventrix Realtyలో బ్రోకరేజ్, వృత్తిపరమైన రుసుములు ముందుగానే తెలియజేస్తాం — దాచిన ఛార్జీలు, అనూహ్య ఖర్చులు ఉండవు. తొలి సంభాషణ నుంచే మా రుసుముల నిర్మాణం పారదర్శకంగా ఉంటుంది; కాబట్టి లావాదేవీలో ప్రతి దశలో ఏమి ఆశించాలో మీకు స్పష్టంగా తెలుస్తుంది.",
+      "kn": "Aventrix Realtyಯಲ್ಲಿ ಬ್ರೋಕರೇಜ್ ಮತ್ತು ವೃತ್ತಿಪರ ಶುಲ್ಕಗಳನ್ನು ಮುಂಚಿತವಾಗಿಯೇ ತಿಳಿಸಲಾಗುತ್ತದೆ — ಗುಪ್ತ ಶುಲ್ಕಗಳಿಲ್ಲ, ಅನಿರೀಕ್ಷಿತ ವೆಚ್ಚಗಳಿಲ್ಲ. ಮೊದಲ ಮಾತುಕತೆಯಿಂದಲೇ ನಮ್ಮ ಶುಲ್ಕದ ರಚನೆ ಸ್ಪಷ್ಟವಾಗಿರುತ್ತದೆ; ಆದ್ದರಿಂದ ವ್ಯವಹಾರದ ಪ್ರತಿಯೊಂದು ಹಂತದಲ್ಲೂ ಏನನ್ನು ನಿರೀಕ್ಷಿಸಬಹುದು ಎಂಬುದು ನಿಮಗೆ ತಿಳಿದಿರುತ್ತದೆ.",
+      "ml": "Aventrix Realtyയിൽ ബ്രോക്കറേജ്, പ്രൊഫഷണൽ ഫീസുകൾ മുൻകൂട്ടി അറിയിക്കുന്നു — മറഞ്ഞിരിക്കുന്ന നിരക്കുകളോ അപ്രതീക്ഷിത ചെലവുകളോ ഇല്ല. ആദ്യ സംഭാഷണം മുതൽ ഫീസ് ഘടന സുതാര്യമാണ്; അതിനാൽ ഇടപാടിന്റെ ഓരോ ഘട്ടത്തിലും എന്താണ് പ്രതീക്ഷിക്കേണ്ടതെന്ന് നിങ്ങൾക്ക് വ്യക്തമായിരിക്കും."
+    },
+    "home.fees.link": {
+      "en": "How Our Fees Work →",
+      "ta": "எங்கள் கட்டணங்கள் எவ்வாறு செயல்படுகின்றன →",
+      "hi": "हमारे शुल्क कैसे काम करते हैं →",
+      "te": "మా రుసుములు ఎలా పనిచేస్తాయి →",
+      "kn": "ನಮ್ಮ ಶುಲ್ಕಗಳು ಹೇಗೆ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತವೆ →",
+      "ml": "ഞങ്ങളുടെ ഫീസുകൾ എങ്ങനെ പ്രവർത്തിക്കുന്നു →"
+    },
+    "home.invest.eyebrow": {
+      "en": "THE OPPORTUNITY",
+      "ta": "வாய்ப்பு",
+      "hi": "अवसर",
+      "te": "అవకాశం",
+      "kn": "ಅವಕಾಶ",
+      "ml": "അവസരം"
+    },
+    "home.invest.growth": {
+      "en": "Rapidly developing zones offering strong long-term value.",
+      "ta": "வேகமாக வளர்ந்து வரும் பகுதிகள் நீண்டகாலத்தில் சிறந்த மதிப்பை வழங்குகின்றன.",
+      "hi": "तेज़ी से विकसित हो रहे क्षेत्र लंबे समय में बेहतर मूल्य प्रदान करते हैं।",
+      "te": "వేగంగా అభివృద్ధి చెందుతున్న ప్రాంతాలు దీర్ఘకాలికంగా మంచి విలువను అందిస్తాయి.",
+      "kn": "ವೇಗವಾಗಿ ಅಭಿವೃದ್ಧಿಯಾಗುತ್ತಿರುವ ಪ್ರದೇಶಗಳು ದೀರ್ಘಾವಧಿಯಲ್ಲಿ ಉತ್ತಮ ಮೌಲ್ಯವನ್ನು ನೀಡುತ್ತವೆ.",
+      "ml": "വേഗത്തിൽ വികസിക്കുന്ന മേഖലകൾ ദീർഘകാലത്ത് മികച്ച മൂല്യം നൽകുന്നു."
+    },
+    "home.invest.transit": {
+      "en": "Expanding transit access and ongoing infrastructure investment across the city.",
+      "ta": "நகரம் முழுவதும் விரிவடையும் போக்குவரத்து வசதிகளும் தொடர்ந்து நடைபெறும் உள்கட்டமைப்பு முதலீடுகளும்.",
+      "hi": "शहर भर में बढ़ती परिवहन सुविधा और जारी बुनियादी ढाँचा निवेश।",
+      "te": "నగరమంతటా విస్తరిస్తున్న రవాణా సౌకర్యాలు, కొనసాగుతున్న మౌలిక వసతుల పెట్టుబడులు.",
+      "kn": "ನಗರದಾದ್ಯಂತ ವಿಸ್ತರಿಸುತ್ತಿರುವ ಸಾರಿಗೆ ಸಂಪರ್ಕ ಮತ್ತು ಮುಂದುವರಿಯುತ್ತಿರುವ ಮೂಲಸೌಕರ್ಯ ಹೂಡಿಕೆ.",
+      "ml": "നഗരത്തിലുടനീളം വികസിക്കുന്ന ഗതാഗത സൗകര്യവും തുടരുന്ന അടിസ്ഥാനസൗകര്യ നിക്ഷേപവും."
+    },
+    "home.invest.hubs": {
+      "en": "Proximity to major commercial and technology corridors.",
+      "ta": "முக்கிய வணிக மற்றும் தொழில்நுட்ப வழித்தடங்களுக்கு அருகாமை.",
+      "hi": "प्रमुख वाणिज्यिक और प्रौद्योगिकी गलियारों के निकटता।",
+      "te": "ప్రధాన వాణిజ్య, సాంకేతిక కారిడార్లకు సమీపం.",
+      "kn": "ಪ್ರಮುಖ ವಾಣಿಜ್ಯ ಮತ್ತು ತಂತ್ರಜ್ಞಾನ ಕಾರಿಡಾರ್‌ಗಳಿಗೆ ಸಮೀಪ.",
+      "ml": "പ്രധാന വാണിജ്യ, സാങ്കേതിക ഇടനാഴികൾക്ക് സമീപം."
+    },
+    "home.invest.rentals": {
+      "en": "Explore rental demand and potential income across Chennai property markets.",
+      "ta": "சென்னை சொத்து சந்தைகளில் வாடகைத் தேவை மற்றும் வருமான வாய்ப்புகளை ஆராயுங்கள்.",
+      "hi": "चेन्नई के संपत्ति बाज़ारों में किराये की माँग और संभावित आय जानें।",
+      "te": "చెన్నై ఆస్తి మార్కెట్లలో అద్దె డిమాండ్, ఆదాయ అవకాశాలను పరిశీలించండి.",
+      "kn": "ಚೆನ್ನೈ ಆಸ್ತಿ ಮಾರುಕಟ್ಟೆಗಳಲ್ಲಿ ಬಾಡಿಗೆ ಬೇಡಿಕೆ ಮತ್ತು ಸಂಭಾವ್ಯ ಆದಾಯವನ್ನು ಅನ್ವೇಷಿಸಿ.",
+      "ml": "ചെന്നൈയിലെ സ്വത്ത് വിപണികളിലെ വാടക ആവശ്യവും വരുമാന സാധ്യതയും അറിയുക."
+    },
+    "home.invest.link": {
+      "en": "Explore Chennai Investment Opportunities →",
+      "ta": "சென்னை முதலீட்டு வாய்ப்புகளை ஆராயுங்கள் →",
+      "hi": "चेन्नई में निवेश के अवसर देखें →",
+      "te": "చెన్నై పెట్టుబడి అవకాశాలను అన్వేషించండి →",
+      "kn": "ಚೆನ್ನೈ ಹೂಡಿಕೆ ಅವಕಾಶಗಳನ್ನು ಅನ್ವೇಷಿಸಿ →",
+      "ml": "ചെന്നൈയിലെ നിക്ഷേപ അവസരങ്ങൾ കണ്ടെത്തൂ →"
+    },
+    "home.bottomNav.activity": {
+      "en": "Activity",
+      "ta": "செயல்பாடுகள்",
+      "hi": "गतिविधि",
+      "te": "కార్యకలాపాలు",
+      "kn": "ಚಟುವಟಿಕೆ",
+      "ml": "പ്രവർത്തനം"
+    },
+    "home.bottomNav.menu": {
+      "en": "Menu",
+      "ta": "பட்டியல்",
+      "hi": "मेनू",
+      "te": "మెనూ",
+      "kn": "ಮೆನು",
+      "ml": "മെനു"
+    },
+    "home.search.monthlyRent": {
+      "en": "Monthly Rent (₹)",
+      "ta": "மாத வாடகை (₹)",
+      "hi": "मासिक किराया (₹)",
+      "te": "నెలవారీ అద్దె (₹)",
+      "kn": "ಮಾಸಿಕ ಬಾಡಿಗೆ (₹)",
+      "ml": "പ്രതിമാസ വാടക (₹)"
+    },
+    "home.search.chooseType": {
+      "en": "Choose a Property Type first",
+      "ta": "முதலில் சொத்து வகையைத் தேர்ந்தெடுக்கவும்",
+      "hi": "पहले संपत्ति का प्रकार चुनें",
+      "te": "ముందుగా ఆస్తి రకాన్ని ఎంచుకోండి",
+      "kn": "ಮೊದಲು ಆಸ್ತಿಯ ಪ್ರಕಾರವನ್ನು ಆಯ್ಕೆಮಾಡಿ",
+      "ml": "ആദ്യം സ്വത്തിന്റെ തരം തിരഞ്ഞെടുക്കുക"
+    },
+    "home.search.subtype.apartment_flat": {
+      "en": "Apartment / Flat",
+      "ta": "அடுக்குமாடி குடியிருப்பு / வீடு",
+      "hi": "अपार्टमेंट / फ्लैट",
+      "te": "అపార్ట్‌మెంట్ / ఫ్లాట్",
+      "kn": "ಅಪಾರ್ಟ್‌ಮೆಂಟ್ / ಫ್ಲಾಟ್",
+      "ml": "അപ്പാർട്ട്മെന്റ് / ഫ്ലാറ്റ്"
+    },
+    "home.search.subtype.villa": {
+      "en": "Villa",
+      "ta": "வில்லா",
+      "hi": "विला",
+      "te": "విల్లా",
+      "kn": "ವಿಲ್ಲಾ",
+      "ml": "വില്ല"
+    },
+    "home.search.subtype.independent_house": {
+      "en": "Independent House",
+      "ta": "தனி வீடு",
+      "hi": "स्वतंत्र मकान",
+      "te": "స్వతంత్ర ఇల్లు",
+      "kn": "ಸ್ವತಂತ್ರ ಮನೆ",
+      "ml": "സ്വതന്ത്ര വീട്"
+    },
+    "home.search.subtype.duplex": {
+      "en": "Duplex",
+      "ta": "டூப்ளெக்ஸ் வீடு",
+      "hi": "डुप्लेक्स",
+      "te": "డూప్లెక్స్",
+      "kn": "ಡ್ಯೂಪ್ಲೆಕ್ಸ್",
+      "ml": "ഡ്യൂപ്ലെക്സ്"
+    },
+    "home.search.subtype.penthouse": {
+      "en": "Penthouse",
+      "ta": "பென்ட்ஹவுஸ்",
+      "hi": "पेंटहाउस",
+      "te": "పెంట్‌హౌస్",
+      "kn": "ಪೆಂಟ್‌ಹೌಸ್",
+      "ml": "പെന്റ്ഹൗസ്"
+    },
+    "home.search.subtype.office_space": {
+      "en": "Office Space",
+      "ta": "அலுவலக இடம்",
+      "hi": "कार्यालय स्थान",
+      "te": "కార్యాలయ స్థలం",
+      "kn": "ಕಚೇರಿ ಸ್ಥಳ",
+      "ml": "ഓഫീസ് സ്ഥലം"
+    },
+    "home.search.subtype.shop_retail": {
+      "en": "Shop / Retail",
+      "ta": "கடை / சில்லறை விற்பனை இடம்",
+      "hi": "दुकान / खुदरा स्थान",
+      "te": "దుకాణం / రిటైల్ స్థలం",
+      "kn": "ಅಂಗಡಿ / ಚಿಲ್ಲರೆ ಸ್ಥಳ",
+      "ml": "കട / റീട്ടെയിൽ സ്ഥലം"
+    },
+    "home.search.subtype.showroom": {
+      "en": "Showroom",
+      "ta": "காட்சியகம்",
+      "hi": "शोरूम",
+      "te": "షోరూమ్",
+      "kn": "ಶೋರೂಮ್",
+      "ml": "ഷോറൂം"
+    },
+    "home.search.subtype.commercial_building": {
+      "en": "Commercial Building",
+      "ta": "வணிகக் கட்டிடம்",
+      "hi": "वाणिज्यिक भवन",
+      "te": "వాణిజ్య భవనం",
+      "kn": "ವಾಣಿಜ್ಯ ಕಟ್ಟಡ",
+      "ml": "വാണിജ്യ കെട്ടിടം"
+    },
+    "home.search.subtype.residential_plot": {
+      "en": "Residential Plot",
+      "ta": "குடியிருப்பு மனை",
+      "hi": "आवासीय प्लॉट",
+      "te": "నివాస ప్లాట్",
+      "kn": "ವಸತಿ ನಿವೇಶನ",
+      "ml": "താമസ പ്ലോട്ട്"
+    },
+    "home.search.subtype.commercial_plot": {
+      "en": "Commercial Plot",
+      "ta": "வணிக மனை",
+      "hi": "वाणिज्यिक प्लॉट",
+      "te": "వాణిజ్య ప్లాట్",
+      "kn": "ವಾಣಿಜ್ಯ ನಿವೇಶನ",
+      "ml": "വാണിജ്യ പ്ലോട്ട്"
+    },
+    "home.search.subtype.vacant_land": {
+      "en": "Vacant Land",
+      "ta": "காலி நிலம்",
+      "hi": "खाली भूमि",
+      "te": "ఖాళీ భూమి",
+      "kn": "ಖಾಲಿ ಭೂಮಿ",
+      "ml": "ഒഴിഞ്ഞ ഭൂമി"
+    },
+    "home.search.subtype.development_land": {
+      "en": "Development Land",
+      "ta": "மேம்பாட்டுக்கான நிலம்",
+      "hi": "विकास हेतु भूमि",
+      "te": "అభివృద్ధి భూమి",
+      "kn": "ಅಭಿವೃದ್ಧಿ ಭೂಮಿ",
+      "ml": "വികസന ഭൂമി"
+    },
+    "home.search.subtype.layout_plot": {
+      "en": "Layout Plot",
+      "ta": "மனைப் பிரிவு மனை",
+      "hi": "लेआउट प्लॉट",
+      "te": "లేఅవుట్ ప్లాట్",
+      "kn": "ಲೇಔಟ್ ನಿವೇಶನ",
+      "ml": "ലേഔട്ട് പ്ലോട്ട്"
+    },
+    "home.search.subtype.other_land": {
+      "en": "Other Land",
+      "ta": "பிற வகை நிலம்",
+      "hi": "अन्य भूमि",
+      "te": "ఇతర భూమి",
+      "kn": "ಇತರೆ ಭೂಮಿ",
+      "ml": "മറ്റ് ഭൂമി"
+    },
+    "home.search.subtype.factory_manufacturing": {
+      "en": "Factory / Manufacturing",
+      "ta": "தொழிற்சாலை / உற்பத்தி",
+      "hi": "कारखाना / विनिर्माण",
+      "te": "కర్మాగారం / తయారీ",
+      "kn": "ಕಾರ್ಖಾನೆ / ಉತ್ಪಾದನೆ",
+      "ml": "ഫാക്ടറി / നിർമ്മാണം"
+    },
+    "home.search.subtype.warehouse": {
+      "en": "Warehouse",
+      "ta": "கிடங்கு",
+      "hi": "गोदाम",
+      "te": "గిడ్డంగి",
+      "kn": "ಗೋದಾಮು",
+      "ml": "വെയർഹൗസ്"
+    },
+    "home.search.subtype.industrial_building": {
+      "en": "Industrial Building",
+      "ta": "தொழிற்துறை கட்டிடம்",
+      "hi": "औद्योगिक भवन",
+      "te": "పారిశ్రామిక భవనం",
+      "kn": "ಕೈಗಾರಿಕಾ ಕಟ್ಟಡ",
+      "ml": "വ്യാവസായിക കെട്ടിടം"
+    },
+    "home.search.subtype.industrial_plot": {
+      "en": "Industrial Plot",
+      "ta": "தொழிற்துறை மனை",
+      "hi": "औद्योगिक प्लॉट",
+      "te": "పారిశ్రామిక ప్లాట్",
+      "kn": "ಕೈಗಾರಿಕಾ ನಿವೇಶನ",
+      "ml": "വ്യാവസായിക പ്ലോട്ട്"
+    },
+    "home.search.subtype.hotel": {
+      "en": "Hotel",
+      "ta": "விடுதி",
+      "hi": "होटल",
+      "te": "హోటల్",
+      "kn": "ಹೋಟೆಲ್",
+      "ml": "ഹോട്ടൽ"
+    },
+    "home.search.subtype.hospital": {
+      "en": "Hospital",
+      "ta": "மருத்துவமனை",
+      "hi": "अस्पताल",
+      "te": "ఆసుపత్రి",
+      "kn": "ಆಸ್ಪತ್ರೆ",
+      "ml": "ആശുപത്രി"
+    },
+    "home.search.subtype.school_institution": {
+      "en": "School / Institution",
+      "ta": "பள்ளி / கல்வி நிறுவனம்",
+      "hi": "विद्यालय / संस्थान",
+      "te": "పాఠశాల / సంస్థ",
+      "kn": "ಶಾಲೆ / ಸಂಸ್ಥೆ",
+      "ml": "സ്കൂൾ / സ്ഥാപനം"
+    },
+    "home.search.subtype.resort": {
+      "en": "Resort",
+      "ta": "சுற்றுலா விடுதி",
+      "hi": "रिसॉर्ट",
+      "te": "రిసార్ట్",
+      "kn": "ರೆಸಾರ್ಟ್",
+      "ml": "റിസോർട്ട്"
+    },
+    "home.search.subtype.other_special_purpose": {
+      "en": "Other Special Purpose",
+      "ta": "பிற சிறப்புப் பயன்பாடு",
+      "hi": "अन्य विशेष प्रयोजन",
+      "te": "ఇతర ప్రత్యేక ప్రయోజనం",
+      "kn": "ಇತರೆ ವಿಶೇಷ ಉದ್ದೇಶ",
+      "ml": "മറ്റ് പ്രത്യേക ആവശ്യങ്ങൾ"
+    },
+    "home.search.subtype.agricultural_land": {
+      "en": "Agricultural Land",
+      "ta": "விவசாய நிலம்",
+      "hi": "कृषि भूमि",
+      "te": "వ్యవసాయ భూమి",
+      "kn": "ಕೃಷಿ ಭೂಮಿ",
+      "ml": "കൃഷിഭൂമി"
+    },
+    "home.search.subtype.farm_land": {
+      "en": "Farm Land",
+      "ta": "பண்ணை நிலம்",
+      "hi": "खेत की भूमि",
+      "te": "వ్యవసాయ క్షేత్ర భూమి",
+      "kn": "ಕೃಷಿ ಜಮೀನು",
+      "ml": "കൃഷിയിടം"
+    },
+    "home.search.subtype.plantation_estate": {
+      "en": "Plantation / Estate",
+      "ta": "தோட்டம் / எஸ்டேட்",
+      "hi": "बागान / एस्टेट",
+      "te": "తోట / ఎస్టేట్",
+      "kn": "ತೋಟ / ಎಸ್ಟೇಟ್",
+      "ml": "തോട്ടം / എസ്റ്റേറ്റ്"
+    },
+    "home.dynamic.future.empty": {
+      "en": "No properties available right now — please check back soon.",
+      "ta": "தற்போது சொத்துகள் எதுவும் கிடைக்கவில்லை — விரைவில் மீண்டும் பார்க்கவும்.",
+      "hi": "अभी कोई संपत्ति उपलब्ध नहीं है — कृपया जल्द फिर देखें।",
+      "te": "ప్రస్తుతం ఆస్తులు అందుబాటులో లేవు — దయచేసి త్వరలో మళ్లీ చూడండి.",
+      "kn": "ಪ್ರಸ್ತುತ ಯಾವುದೇ ಆಸ್ತಿಗಳು ಲಭ್ಯವಿಲ್ಲ — ದಯವಿಟ್ಟು ಶೀಘ್ರದಲ್ಲೇ ಮತ್ತೆ ನೋಡಿ.",
+      "ml": "ഇപ്പോൾ സ്വത്തുക്കൾ ലഭ്യമല്ല — ദയവായി ഉടൻ വീണ്ടും പരിശോധിക്കുക."
+    },
+    "home.dynamic.listings.loading": {
+      "en": "Loading your listings…",
+      "ta": "உங்கள் பட்டியல்கள் ஏற்றப்படுகின்றன…",
+      "hi": "आपकी लिस्टिंग लोड हो रही हैं…",
+      "te": "మీ జాబితాలు లోడ్ అవుతున్నాయి…",
+      "kn": "ನಿಮ್ಮ ಪಟ್ಟಿಗಳು ಲೋಡ್ ಆಗುತ್ತಿವೆ…",
+      "ml": "നിങ്ങളുടെ ലിസ്റ്റിംഗുകൾ ലോഡ് ചെയ്യുന്നു…"
+    },
+    "home.dynamic.listings.signInPrompt": {
+      "en": "Sign in to see the properties you've listed with Aventrix Realty.",
+      "ta": "Aventrix Realty-யில் நீங்கள் பட்டியலிட்ட சொத்துகளைக் காண உள்நுழையவும்.",
+      "hi": "Aventrix Realty पर सूचीबद्ध की गई अपनी संपत्तियाँ देखने के लिए साइन इन करें।",
+      "te": "Aventrix Realtyలో మీరు జాబితా చేసిన ఆస్తులను చూడటానికి సైన్ ఇన్ చేయండి.",
+      "kn": "Aventrix Realtyಯಲ್ಲಿ ನೀವು ಪಟ್ಟಿ ಮಾಡಿದ ಆಸ್ತಿಗಳನ್ನು ನೋಡಲು ಸೈನ್ ಇನ್ ಮಾಡಿ.",
+      "ml": "Aventrix Realtyയിൽ നിങ്ങൾ പട്ടികപ്പെടുത്തിയ സ്വത്തുക്കൾ കാണാൻ സൈൻ ഇൻ ചെയ്യുക."
+    },
+    "home.dynamic.listings.signInAction": {
+      "en": "Sign In / Create Account",
+      "ta": "உள்நுழைய / கணக்கை உருவாக்க",
+      "hi": "साइन इन करें / खाता बनाएँ",
+      "te": "సైన్ ఇన్ / ఖాతా సృష్టించండి",
+      "kn": "ಸೈನ್ ಇನ್ / ಖಾತೆ ರಚಿಸಿ",
+      "ml": "സൈൻ ഇൻ / അക്കൗണ്ട് സൃഷ്ടിക്കുക"
+    },
+    "home.dynamic.listings.loadError": {
+      "en": "Couldn't load your listings. Please try again shortly.",
+      "ta": "உங்கள் பட்டியல்களை ஏற்ற முடியவில்லை. சிறிது நேரம் கழித்து மீண்டும் முயற்சிக்கவும்.",
+      "hi": "आपकी लिस्टिंग लोड नहीं हो सकीं। कृपया थोड़ी देर बाद फिर प्रयास करें।",
+      "te": "మీ జాబితాలను లోడ్ చేయలేకపోయాం. కొద్దిసేపటి తర్వాత మళ్లీ ప్రయత్నించండి.",
+      "kn": "ನಿಮ್ಮ ಪಟ್ಟಿಗಳನ್ನು ಲೋಡ್ ಮಾಡಲಾಗಲಿಲ್ಲ. ಸ್ವಲ್ಪ ಸಮಯದ ನಂತರ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+      "ml": "നിങ്ങളുടെ ലിസ്റ്റിംഗുകൾ ലോഡ് ചെയ്യാനായില്ല. കുറച്ച് കഴിഞ്ഞ് വീണ്ടും ശ്രമിക്കുക."
+    },
+    "home.dynamic.listings.empty": {
+      "en": "You haven't listed any properties yet.",
+      "ta": "நீங்கள் இன்னும் எந்தச் சொத்தையும் பட்டியலிடவில்லை.",
+      "hi": "आपने अभी तक कोई संपत्ति सूचीबद्ध नहीं की है।",
+      "te": "మీరు ఇంకా ఆస్తులను జాబితా చేయలేదు.",
+      "kn": "ನೀವು ಇನ್ನೂ ಯಾವುದೇ ಆಸ್ತಿಗಳನ್ನು ಪಟ್ಟಿ ಮಾಡಿಲ್ಲ.",
+      "ml": "നിങ്ങൾ ഇതുവരെ സ്വത്തുക്കളൊന്നും പട്ടികപ്പെടുത്തിയിട്ടില്ല."
+    },
+    "home.dynamic.badge.forRent": {
+      "en": "FOR RENT",
+      "ta": "வாடகைக்கு",
+      "hi": "किराए के लिए",
+      "te": "అద్దెకు",
+      "kn": "ಬಾಡಿಗೆಗೆ",
+      "ml": "വാടകയ്ക്ക്"
+    },
+    "home.dynamic.badge.pending": {
+      "en": "PENDING APPROVAL",
+      "ta": "ஒப்புதலுக்காகக் காத்திருக்கிறது",
+      "hi": "अनुमोदन लंबित",
+      "te": "ఆమోదం కోసం వేచి ఉంది",
+      "kn": "ಅನುಮೋದನೆ ಬಾಕಿ ಇದೆ",
+      "ml": "അംഗീകാരം കാത്തിരിക്കുന്നു"
+    },
+    "home.dynamic.badge.published": {
+      "en": "PUBLISHED",
+      "ta": "வெளியிடப்பட்டது",
+      "hi": "प्रकाशित",
+      "te": "ప్రచురించబడింది",
+      "kn": "ಪ್ರಕಟಿಸಲಾಗಿದೆ",
+      "ml": "പ്രസിദ്ധീകരിച്ചു"
+    },
+    "home.dynamic.action.call": {
+      "en": "Call",
+      "ta": "அழைக்கவும்",
+      "hi": "कॉल करें",
+      "te": "కాల్ చేయండి",
+      "kn": "ಕರೆ ಮಾಡಿ",
+      "ml": "വിളിക്കുക"
+    },
+    "home.recent.empty": {
+      "en": "No recent searches yet.",
+      "ta": "இன்னும் சமீபத்திய தேடல்கள் இல்லை.",
+      "hi": "अभी तक कोई हाल की खोज नहीं है।",
+      "te": "ఇటీవలి శోధనలు ఇంకా లేవు.",
+      "kn": "ಇನ್ನೂ ಇತ್ತೀಚಿನ ಹುಡುಕಾಟಗಳಿಲ್ಲ.",
+      "ml": "സമീപകാല തിരയലുകളൊന്നുമില്ല."
+    },
+    "home.recent.removeSearch": {
+      "en": "Remove this search",
+      "ta": "இந்தத் தேடலை அகற்றவும்",
+      "hi": "यह खोज हटाएँ",
+      "te": "ఈ శోధనను తొలగించండి",
+      "kn": "ಈ ಹುಡುಕಾಟವನ್ನು ತೆಗೆದುಹಾಕಿ",
+      "ml": "ഈ തിരച്ചിൽ നീക്കുക"
+    },
+    "home.recent.clearAll": {
+      "en": "Clear All Recent Searches",
+      "ta": "சமீபத்திய தேடல்கள் அனைத்தையும் அழிக்கவும்",
+      "hi": "हाल की सभी खोजें मिटाएँ",
+      "te": "ఇటీవలి శోధనలన్నింటినీ క్లియర్ చేయండి",
+      "kn": "ಎಲ್ಲಾ ಇತ್ತೀಚಿನ ಹುಡುಕಾಟಗಳನ್ನು ತೆರವುಗೊಳಿಸಿ",
+      "ml": "സമീപകാല തിരയലുകളെല്ലാം മായ്ക്കുക"
+    },
+    "home.recent.allProperties": {
+      "en": "All Properties",
+      "ta": "அனைத்து சொத்துகள்",
+      "hi": "सभी संपत्तियाँ",
+      "te": "అన్ని ఆస్తులు",
+      "kn": "ಎಲ್ಲಾ ಆಸ್ತಿಗಳು",
+      "ml": "എല്ലാ സ്വത്തുക്കളും"
+    },
+    "home.dynamic.action.callAbout": {
+      "en": "Call about {count}",
+      "ta": "{count} குறித்து அழைக்கவும்",
+      "hi": "{count} के बारे में कॉल करें",
+      "te": "{count} గురించి కాల్ చేయండి",
+      "kn": "{count} ಕುರಿತು ಕರೆ ಮಾಡಿ",
+      "ml": "{count}യെക്കുറിച്ച് വിളിക്കുക"
+    },
+    "home.dynamic.action.whatsappAbout": {
+      "en": "WhatsApp about {count}",
+      "ta": "{count} குறித்து WhatsApp செய்யவும்",
+      "hi": "{count} के बारे में WhatsApp करें",
+      "te": "{count} గురించి WhatsApp చేయండి",
+      "kn": "{count} ಕುರಿತು WhatsApp ಮಾಡಿ",
+      "ml": "{count}യെക്കുറിച്ച് WhatsApp ചെയ്യുക"
     }
   },
   "ui_keys": {
