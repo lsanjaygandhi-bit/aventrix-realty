@@ -9340,3 +9340,20 @@ html.is-mobile #leadership .leader-row-content [data-cms-f="rera"] {
     letter-spacing: .3px !important;
   }
 }
+
+/* Profile pages: prevent stretched word spacing in long bios on mobile.
+   Keep profile headings centered, but make body copy naturally left-aligned. */
+@media (max-width: 768px) {
+  html.is-mobile .profile-container p,
+  html.is-mobile .profile-container [data-realtor-about] p,
+  html.is-mobile .profile-container [data-cms-section] p {
+    text-align: left !important;
+    text-align-last: left !important;
+    text-justify: auto !important;
+    word-spacing: normal !important;
+    letter-spacing: normal !important;
+    hyphens: none !important;
+    overflow-wrap: break-word;
+    line-height: 1.7 !important;
+  }
+}
