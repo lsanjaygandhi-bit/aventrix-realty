@@ -2963,7 +2963,122 @@
     "Enter your email address": "Enter your email address",
     "Enter your full name": "Enter your full name",
     "Enter your mobile number": "Enter your mobile number",
-    "Tell us your preferred location, property type, budget or any specific requirements...": "Tell us your preferred location, property type, budget or any specific requirements..."
+    "Tell us your preferred location, property type, budget or any specific requirements...": "Tell us your preferred location, property type, budget or any specific requirements...",
+    "listing.page.hero.1": "PROPERTY OWNER SERVICES",
+    "listing.page.hero.2": "Reach the Right Buyers for Your Property",
+    "listing.page.hero.3": "List your property with Aventrix Realty and get professional marketing, wider exposure and dedicated support — from the first enquiry through to the transaction.",
+    "listing.page.hero.4": "List Your Property",
+    "listing.page.why.1": "Property Owner Services",
+    "listing.page.why.2": "Why List With Aventrix Realty?",
+    "listing.page.why.3": "Wider Buyer Reach",
+    "listing.page.why.4": "Your property is presented to genuine buyers, tenants and investors actively looking across Chennai.",
+    "listing.page.why.5": "Professional Marketing",
+    "listing.page.why.6": "Clear, well-organised property information helps your listing stand out and get noticed.",
+    "listing.page.why.7": "End-to-End Support",
+    "listing.page.why.8": "From listing to closing, our team stays involved with you at every step of the process.",
+    "listing.page.why.9": "Confidential Handling",
+    "listing.page.why.10": "Your property and contact details are handled discreetly and shared only with relevant parties.",
+    "listing.page.benefits.1": "Owner Benefits",
+    "listing.page.benefits.2": "What You Gain by Listing With Us",
+    "listing.page.benefits.3": "Better Visibility",
+    "listing.page.benefits.4": "Your property gets proper presentation across our active buyer and tenant network.",
+    "listing.page.benefits.5": "Relevant Connections",
+    "listing.page.benefits.6": "We match your property to buyers and tenants whose requirements genuinely fit.",
+    "listing.page.benefits.7": "Professional Presentation",
+    "listing.page.benefits.8": "Clear property details and organised information make a stronger first impression.",
+    "listing.page.benefits.9": "Sensible Market Positioning",
+    "listing.page.benefits.10": "We help position your property sensibly based on its location and category.",
+    "listing.page.benefits.11": "Transaction Coordination",
+    "listing.page.benefits.12": "Our team coordinates communication and next steps through the process.",
+    "listing.page.benefits.13": "Ongoing Owner Communication",
+    "listing.page.benefits.14": "You stay informed and involved throughout, through a single point of contact.",
+    "listing.page.intro.1": "Share Your Property Details",
+    "listing.page.intro.2": "🔒 Your information is kept confidential and used only for property-related communication.",
+    "listing.page.types.1": "Property Types",
+    "listing.page.types.2": "Property Types We Handle",
+    "listing.page.types.3": "Homes for sale or rent, across a range of budgets and configurations.",
+    "listing.page.types.4": "Office spaces, showrooms and commercial units suited for business use.",
+    "listing.page.types.5": "Residential and investment plots across Chennai and its surrounding areas.",
+    "listing.page.types.6": "Independent Houses",
+    "listing.page.types.7": "Standalone homes suited for owners looking for more space and privacy.",
+    "listing.page.types.8": "Flats across a range of configurations, from compact homes to larger units.",
+    "listing.page.types.9": "Joint Development Opportunities",
+    "listing.page.types.10": "Suitable land matched with development partners for joint development.",
+    "listing.page.whyUs.1": "Why Aventrix",
+    "listing.page.whyUs.2": "Why Property Owners Work With Us",
+    "listing.page.whyUs.3": "Real Estate Experience",
+    "listing.page.whyUs.4": "Led by professionals with 15+ years of real estate experience in the Chennai market.",
+    "listing.page.whyUs.5": "Local Market Knowledge",
+    "listing.page.whyUs.6": "A team familiar with Chennai's localities, property categories and buyer behaviour.",
+    "listing.page.whyUs.7": "Professional Property Marketing",
+    "listing.page.whyUs.8": "Your property is presented clearly and professionally, every time.",
+    "listing.page.whyUs.9": "Buyer & Investor Network",
+    "listing.page.whyUs.10": "Access to a network of buyers, tenants and investors actively engaging with our team.",
+    "listing.page.whyUs.11": "Transparent Communication",
+    "listing.page.whyUs.12": "We keep you informed with honest, straightforward updates through the process.",
+    "listing.page.whyUs.13": "End-to-End Coordination",
+    "listing.page.whyUs.14": "One team coordinates the process from your first enquiry to the final transaction.",
+    "listing.page.process.1": "Our Property Listing Process",
+    "listing.page.process.2": "Share Your Property",
+    "listing.page.process.3": "Fill in your property and contact details through our simple listing form.",
+    "listing.page.process.4": "Property Review",
+    "listing.page.process.5": "Our team reviews the information you've shared to understand your property better.",
+    "listing.page.process.6": "Market Positioning",
+    "listing.page.process.7": "We consider your property's location, category and condition to position it sensibly.",
+    "listing.page.process.8": "Buyer / Tenant Outreach",
+    "listing.page.process.9": "Your property is shared with relevant buyers, tenants or investors in our network.",
+    "listing.page.process.10": "We stay involved through discussions, follow-ups and the steps that follow.",
+    "listing.page.situations.1": "Common Situations",
+    "listing.page.situations.2": "Wherever You Are With Your Property, We Can Help",
+    "listing.page.situations.3": "Selling a Property",
+    "listing.page.situations.4": "Looking to sell? We help you reach genuine buyers and manage the process end-to-end.",
+    "listing.page.situations.5": "Leasing a Property",
+    "listing.page.situations.6": "Want to lease your property? We connect you with suitable tenants and coordinate the details.",
+    "listing.page.situations.7": "Managing an Investment Property",
+    "listing.page.situations.8": "Own a property purely as an investment? We help you stay on top of its market position.",
+    "listing.page.situations.9": "Land or Plot Sale",
+    "listing.page.situations.10": "Selling land or a plot? We help present it clearly to genuinely interested buyers.",
+    "listing.page.situations.11": "Joint Development Opportunity",
+    "listing.page.situations.12": "Have land suited for development? We can discuss joint development possibilities with our partners.",
+    "listing.page.situations.13": "Property Advisory Requirement",
+    "listing.page.situations.14": "Not sure of your next step? Our team can walk you through the options available to you.",
+    "listing.page.faq.1": "FAQ",
+    "listing.page.faq.2": "Questions Property Owners Ask",
+    "listing.page.faq.3": "What information do I need to provide?",
+    "listing.page.faq.4": "Basic contact details along with your property's type, location, area and what you're looking to do with it (sale, rental or joint venture). Anything else can be added under Additional Details.",
+    "listing.page.faq.5": "Can I list residential and commercial property?",
+    "listing.page.faq.6": "Yes. Our form covers residential property types such as apartments, villas and independent houses, as well as commercial properties.",
+    "listing.page.faq.7": "Can you help with land and plots?",
+    "listing.page.faq.8": "Yes, land and plots are among the property types we regularly assist with — for sale, investment or joint development purposes.",
+    "listing.page.faq.9": "How does property marketing work?",
+    "listing.page.faq.10": "Once we understand your property, our team presents it clearly to genuine buyers, tenants or investors within our network, based on its category and location.",
+    "listing.page.faq.11": "Can I list a property for lease?",
+    "listing.page.faq.12": "Yes — select \"Rental / Leasing\" under Listing Requirement in the form and our team will assist accordingly.",
+    "listing.page.faq.13": "Can you assist with joint development opportunities?",
+    "listing.page.faq.14": "Yes. If your land may be suited for joint development, select \"Joint Venture\" in the form and our team will discuss the possibilities with you.",
+    "listing.page.faq.15": "What happens after I submit my property?",
+    "listing.page.faq.16": "Our team reviews the details you've shared and gets in touch to discuss your property and the next steps.",
+    "listing.page.cta.1": "Let's Talk About Your Property",
+    "listing.page.cta.2": "Share your property details and our team will get in touch to discuss the best way forward.",
+    "listing.page.intro.3": "Tell us about your property and what you're looking to do with it — our team will review the details and get in touch to discuss the next steps.",
+    "listing.post.title": "Log in to post your property",
+    "listing.post.subtitle": "Sign in to continue. Your property details will be submitted to Aventrix Realty for review.",
+    "listing.post.email": "Email address",
+    "listing.post.password": "Password",
+    "listing.post.passwordPlaceholder": "Enter your password",
+    "listing.post.submit": "Log in and continue",
+    "listing.post.newTo": "New to Aventrix Realty?",
+    "listing.post.create": "Create an account",
+    "listing.post.thenReturn": ", then return here to post your property.",
+    "listing.post.unavailable": "Sign-in service is unavailable. Please refresh and try again.",
+    "listing.post.sessionFailed": "Could not verify your session. Please sign in again.",
+    "listing.post.signingIn": "Signing in…",
+    "listing.post.signInFailed": "Sign-in failed. Please check your details.",
+    "listing.post.invalidCredentials": "Invalid login credentials",
+    "listing.post.emailNotConfirmed": "Email not confirmed",
+    "listing.validation.required": "Please fill out this field.",
+    "listing.validation.select": "Please select an item in the list.",
+    "listing.validation.email": "Please enter a valid email address."
   },
   "ui": {
     "jvf.hero.tag":{"en":"JOINT VENTURE & DEVELOPMENT","ta":"கூட்டு மேம்பாடு","hi":"संयुक्त उद्यम और विकास","te":"జాయింట్ వెంచర్ & అభివృద్ధి","kn":"ಜಂಟಿ ಉದ್ಯಮ ಮತ್ತು ಅಭಿವೃದ್ಧಿ","ml":"സംയുക്ത സംരംഭവും വികസനവും"},
@@ -5175,6 +5290,926 @@
         "te": "మీకు నచ్చిన స్థలం, ప్రాపర్టీ రకం, బడ్జెట్ లేదా ప్రత్యేక అవసరాలను తెలియజేయండి...",
         "kn": "ನಿಮ್ಮ ಆಯ್ಕೆಯ ಸ್ಥಳ, ಆಸ್ತಿಯ ವಿಧ, ಬಜೆಟ್ ಅಥವಾ ನಿರ್ದಿಷ್ಟ ಅಗತ್ಯಗಳನ್ನು ತಿಳಿಸಿ...",
         "ml": "നിങ്ങൾക്ക് ഇഷ്ടമുള്ള സ്ഥലം, പ്രോപ്പർട്ടി തരം, ബജറ്റ് അല്ലെങ്കിൽ പ്രത്യേക ആവശ്യങ്ങൾ പറയുക..."
+      },
+      "listing.page.hero.1": {
+        "en": "PROPERTY OWNER SERVICES",
+        "ta": "சொத்து உரிமையாளர் சேவைகள்",
+        "hi": "प्रॉपर्टी ओनर सेवाएँ",
+        "te": "ఆస్తి యజమాని సేవలు",
+        "kn": "ಆಸ್ತಿ ಮಾಲೀಕರ ಸೇವೆಗಳು",
+        "ml": "പ്രോപ്പർട്ടി ഉടമ സേവനങ്ങൾ"
+      },
+      "listing.page.hero.2": {
+        "en": "Reach the Right Buyers for Your Property",
+        "ta": "உங்கள் சொத்துக்கு சரியான வாங்குபவர்களைச் சென்றடையுங்கள்",
+        "hi": "अपनी प्रॉपर्टी के लिए सही खरीदारों तक पहुँचें",
+        "te": "మీ ఆస్తికి సరైన కొనుగోలుదారులను చేరుకోండి",
+        "kn": "ನಿಮ್ಮ ಆಸ್ತಿಗೆ ಸರಿಯಾದ ಖರೀದಿದಾರರನ್ನು ತಲುಪಿ",
+        "ml": "നിങ്ങളുടെ പ്രോപ്പർട്ടിക്ക് അനുയോജ്യരായ വാങ്ങുന്നവരിലേക്ക് എത്തുക"
+      },
+      "listing.page.hero.3": {
+        "en": "List your property with Aventrix Realty and get professional marketing, wider exposure and dedicated support — from the first enquiry through to the transaction.",
+        "ta": "உங்கள் சொத்தை அவென்ட்ரிக்ஸ் ரியால்டியுடன் பட்டியலிட்டு, தொழில்முறை சந்தைப்படுத்தல், பரந்த வெளிப்பாடு மற்றும் அர்ப்பணிப்புள்ள ஆதரவைப் பெறுங்கள் — முதல் விசாரணை முதல் பரிவர்த்தனை வரை.",
+        "hi": "अपनी प्रॉपर्टी को Aventrix Realty के साथ लिस्ट करें और पेशेवर मार्केटिंग, व्यापक पहुँच और समर्पित सहयोग पाएँ — पहली पूछताछ से लेकर लेन-देन तक।",
+        "te": "మీ ఆస్తిని Aventrix Realtyతో లిస్ట్ చేసి, ప్రొఫెషనల్ మార్కెటింగ్, విస్తృత ప్రచారం మరియు అంకితమైన మద్దతు పొందండి — మొదటి విచారణ నుండి లావాదేవీ వరకు.",
+        "kn": "ನಿಮ್ಮ ಆಸ್ತಿಯನ್ನು Aventrix Realty ಜೊತೆ ಪಟ್ಟಿ ಮಾಡಿ ಮತ್ತು ವೃತ್ತಿಪರ ಮಾರುಕಟ್ಟೆ, ವಿಸ್ತೃತ ಪ್ರಚಾರ ಹಾಗೂ ಸಮರ್ಪಿತ ಬೆಂಬಲ ಪಡೆಯಿರಿ — ಮೊದಲ ವಿಚಾರಣೆಯಿಂದ ವಹಿವಾಟಿನವರೆಗೆ.",
+        "ml": "നിങ്ങളുടെ പ്രോപ്പർട്ടി Aventrix Realty-യിൽ ലിസ്റ്റ് ചെയ്ത് പ്രൊഫഷണൽ മാർക്കറ്റിംഗ്, വിശാലമായ എക്സ്പോഷർ, സമർപ്പിത പിന്തുണ എന്നിവ നേടൂ — ആദ്യ അന്വേഷണം മുതൽ ഇടപാട് വരെ."
+      },
+      "listing.page.hero.4": {
+        "en": "List Your Property",
+        "ta": "உங்கள் சொத்தைப் பட்டியலிடுங்கள்",
+        "hi": "अपनी प्रॉपर्टी लिस्ट करें",
+        "te": "మీ ఆస్తిని లిస్ట్ చేయండి",
+        "kn": "ನಿಮ್ಮ ಆಸ್ತಿಯನ್ನು ಪಟ್ಟಿ ಮಾಡಿ",
+        "ml": "നിങ്ങളുടെ പ്രോപ്പർട്ടി ലിസ്റ്റ് ചെയ്യൂ"
+      },
+      "listing.page.why.1": {
+        "en": "Property Owner Services",
+        "ta": "சொத்து உரிமையாளர் சேவைகள்",
+        "hi": "प्रॉपर्टी ओनर सेवाएँ",
+        "te": "ఆస్తి యజమాని సేవలు",
+        "kn": "ಆಸ್ತಿ ಮಾಲೀಕರ ಸೇವೆಗಳು",
+        "ml": "പ്രോപ്പർട്ടി ഉടമ സേവനങ്ങൾ"
+      },
+      "listing.page.why.2": {
+        "en": "Why List With Aventrix Realty?",
+        "ta": "அவென்ட்ரிக்ஸ் ரியால்டியுடன் ஏன் பட்டியலிட வேண்டும்?",
+        "hi": "Aventrix Realty के साथ लिस्ट क्यों करें?",
+        "te": "Aventrix Realtyతో ఎందుకు లిస్ట్ చేయాలి?",
+        "kn": "Aventrix Realty ಜೊತೆ ಏಕೆ ಪಟ್ಟಿ ಮಾಡಬೇಕು?",
+        "ml": "എന്തുകൊണ്ട് Aventrix Realty-യിൽ ലിസ്റ്റ് ചെയ്യണം?"
+      },
+      "listing.page.why.3": {
+        "en": "Wider Buyer Reach",
+        "ta": "பரந்த வாங்குபவர் வரம்பு",
+        "hi": "खरीदारों तक व्यापक पहुँच",
+        "te": "విస్తృత కొనుగోలుదారుల చేరువ",
+        "kn": "ವಿಸ್ತೃತ ಖರೀದಿದಾರರ ಪ್ರಾಪ್ತಿ",
+        "ml": "വിശാലമായ വാങ്ങുന്നവരുടെ പരിധി"
+      },
+      "listing.page.why.4": {
+        "en": "Your property is presented to genuine buyers, tenants and investors actively looking across Chennai.",
+        "ta": "சென்னை முழுவதும் தீவிரமாகத் தேடும் உண்மையான வாங்குபவர்கள், வாடகைதாரர்கள் மற்றும் முதலீட்டாளர்களுக்கு உங்கள் சொத்து அறிமுகப்படுத்தப்படுகிறது.",
+        "hi": "आपकी प्रॉपर्टी चेन्नई में सक्रिय रूप से खोज रहे असली खरीदारों, किरायेदारों और निवेशकों के सामने प्रस्तुत की जाती है।",
+        "te": "చెన్నై అంతటా చురుకుగా వెతుకుతున్న నిజమైన కొనుగోలుదారులు, అద్దెదారులు మరియు పెట్టుబడిదారులకు మీ ఆస్తి చూపబడుతుంది.",
+        "kn": "ಚೆನ್ನೈ ಅಧ್ಯಂತ ಸಕ್ರಿಯವಾಗಿ ಹುಡುಕುತ್ತಿರುವ ನಿಜವಾದ ಖರೀದಿದಾರರು, ಬಾಡಿಗೆದಾರರು ಮತ್ತು ಹೂಡಿಕೆದಾರರಿಗೆ ನಿಮ್ಮ ಆಸ್ತಿಯನ್ನು ಪ್ರಸ್ತುತಪಡಿಸಲಾಗುತ್ತದೆ.",
+        "ml": "ചെന്നൈയിലുടനീളം സജീവമായി തിരയുന്ന യഥാർത്ഥ വാങ്ങുന്നവർ, വാടകക്കാർ, നിക്ഷേപകർ എന്നിവർക്ക് നിങ്ങളുടെ പ്രോപ്പർട്ടി അവതരിപ്പിക്കുന്നു."
+      },
+      "listing.page.why.5": {
+        "en": "Professional Marketing",
+        "ta": "தொழில்முறை சந்தைப்படுத்தல்",
+        "hi": "पेशेवर मार्केटिंग",
+        "te": "ప్రొఫెషనల్ మార్కెటింగ్",
+        "kn": "ವೃತ್ತಿಪರ ಮಾರುಕಟ್ಟೆ",
+        "ml": "പ്രൊഫഷണൽ മാർക്കറ്റിംഗ്"
+      },
+      "listing.page.why.6": {
+        "en": "Clear, well-organised property information helps your listing stand out and get noticed.",
+        "ta": "தெளிவான, ஒழுங்கமைக்கப்பட்ட சொத்து தகவல்கள் உங்கள் பட்டியலை தனித்துத் தெரியச் செய்து கவனம் பெற உதவுகின்றன.",
+        "hi": "स्पष्ट और व्यवस्थित प्रॉपर्टी जानकारी आपकी लिस्टिंग को अलग दिखाने और ध्यान आकर्षित करने में मदद करती है।",
+        "te": "స్పష్టమైన, చక్కగా ఏర్పాటు చేసిన ఆస్తి సమాచారం మీ లిస్టింగ్ ప్రత్యేకంగా కనిపించి దృష్టిని ఆకర్షించడానికి సహాయపడుతుంది.",
+        "kn": "ಸ್ಪಷ್ಟ ಮತ್ತು ಸುವ್ಯವಸ್ಥಿತ ಆಸ್ತಿ ಮಾಹಿತಿ ನಿಮ್ಮ ಪಟ್ಟಿಯು ಎದ್ದು ಕಾಣಲು ಮತ್ತು ಗಮನ ಸೆಳೆಯಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ.",
+        "ml": "വ്യക്തവും ക്രമീകൃതവുമായ പ്രോപ്പർട്ടി വിവരങ്ങൾ നിങ്ങളുടെ ലിസ്റ്റിംഗ് ശ്രദ്ധേയമാകാൻ സഹായിക്കുന്നു."
+      },
+      "listing.page.why.7": {
+        "en": "End-to-End Support",
+        "ta": "தொடக்கம் முதல் முடிவு வரை ஆதரவு",
+        "hi": "शुरू से अंत तक सहयोग",
+        "te": "మొదటి నుండి చివరి వరకు మద్దతు",
+        "kn": "ಆರಂಭದಿಂದ ಅಂತ್ಯದವರೆಗೆ ಬೆಂಬಲ",
+        "ml": "തുടക്കം മുതൽ അവസാനം വരെ പിന്തുണ"
+      },
+      "listing.page.why.8": {
+        "en": "From listing to closing, our team stays involved with you at every step of the process.",
+        "ta": "பட்டியலிடுவது முதல் முடிப்பது வரை, ஒவ்வொரு படியிலும் எங்கள் குழு உங்களுடன் இருக்கும்.",
+        "hi": "लिस्टिंग से लेकर सौदा पूरा होने तक, हमारी टीम हर चरण में आपके साथ रहती है।",
+        "te": "లిస్టింగ్ నుండి క్లోజింగ్ వరకు, ప్రతి దశలో మా బృందం మీతో ఉంటుంది.",
+        "kn": "ಪಟ್ಟಿ ಮಾಡುವುದರಿಂದ ಮುಕ್ತಾಯದವರೆಗೆ, ಪ್ರತಿ ಹಂತದಲ್ಲೂ ನಮ್ಮ ತಂಡ ನಿಮ್ಮೊಂದಿಗೆ ಇರುತ್ತದೆ.",
+        "ml": "ലിസ്റ്റിംഗ് മുതൽ ക്ലോസിംഗ് വരെ, ഓരോ ഘട്ടത്തിലും ഞങ്ങളുടെ ടീം നിങ്ങളോടൊപ്പമുണ്ട്."
+      },
+      "listing.page.why.9": {
+        "en": "Confidential Handling",
+        "ta": "ரகசியமான கையாளுதல்",
+        "hi": "गोपनीय संचालन",
+        "te": "గోప్యమైన నిర్వహణ",
+        "kn": "ಗೌಪ್ಯ ನಿರ್ವಹಣೆ",
+        "ml": "രഹസ്യാത്മക കൈകാര്യം ചെയ്യൽ"
+      },
+      "listing.page.why.10": {
+        "en": "Your property and contact details are handled discreetly and shared only with relevant parties.",
+        "ta": "உங்கள் சொத்து மற்றும் தொடர்பு விவரங்கள் கவனமாகக் கையாளப்பட்டு, தொடர்புடையவர்களுடன் மட்டுமே பகிரப்படும்.",
+        "hi": "आपकी प्रॉपर्टी और संपर्क विवरण सावधानी से संभाले जाते हैं और केवल संबंधित पक्षों के साथ साझा किए जाते हैं।",
+        "te": "మీ ఆస్తి మరియు సంప్రదింపు వివరాలు జాగ్రత్తగా నిర్వహించబడతాయి మరియు సంబంధిత పక్షాలతో మాత్రమే పంచుకోబడతాయి.",
+        "kn": "ನಿಮ್ಮ ಆಸ್ತಿ ಮತ್ತು ಸಂಪರ್ಕ ವಿವರಗಳನ್ನು ಎಚ್ಚರಿಕೆಯಿಂದ ನಿರ್ವಹಿಸಿ ಸಂಬಂಧಿತ ಪಕ್ಷಗಳೊಂದಿಗೆ ಮಾತ್ರ ಹಂಚಿಕೊಳ್ಳಲಾಗುತ್ತದೆ.",
+        "ml": "നിങ്ങളുടെ പ്രോപ്പർട്ടിയും ബന്ധപ്പെടാനുള്ള വിവരങ്ങളും ശ്രദ്ധയോടെ കൈകാര്യം ചെയ്യുകയും ബന്ധപ്പെട്ടവരുമായി മാത്രം പങ്കിടുകയും ചെയ്യുന്നു."
+      },
+      "listing.page.benefits.1": {
+        "en": "Owner Benefits",
+        "ta": "உரிமையாளர் நன்மைகள்",
+        "hi": "ओनर के लाभ",
+        "te": "యజమాని ప్రయోజనాలు",
+        "kn": "ಮಾಲೀಕರ ಪ್ರಯೋಜನಗಳು",
+        "ml": "ഉടമയ്ക്കുള്ള നേട്ടങ്ങൾ"
+      },
+      "listing.page.benefits.2": {
+        "en": "What You Gain by Listing With Us",
+        "ta": "எங்களுடன் பட்டியலிடுவதால் நீங்கள் பெறுவது",
+        "hi": "हमारे साथ लिस्ट करने से आपको क्या मिलता है",
+        "te": "మాతో లిస్ట్ చేయడం ద్వారా మీరు పొందేవి",
+        "kn": "ನಮ್ಮೊಂದಿಗೆ ಪಟ್ಟಿ ಮಾಡುವುದರಿಂದ ನೀವು ಪಡೆಯುವುದು",
+        "ml": "ഞങ്ങളോടൊപ്പം ലിസ്റ്റ് ചെയ്യുമ്പോൾ നിങ്ങൾക്ക് ലഭിക്കുന്നത്"
+      },
+      "listing.page.benefits.3": {
+        "en": "Better Visibility",
+        "ta": "சிறந்த தெரிவுநிலை",
+        "hi": "बेहतर दृश्यता",
+        "te": "మెరుగైన దృశ్యమానత",
+        "kn": "ಉತ್ತಮ ಗೋಚರತೆ",
+        "ml": "മെച്ചപ്പെട്ട ദൃശ്യത"
+      },
+      "listing.page.benefits.4": {
+        "en": "Your property gets proper presentation across our active buyer and tenant network.",
+        "ta": "எங்கள் செயலில் உள்ள வாங்குபவர் மற்றும் வாடகைதாரர் வலையமைப்பில் உங்கள் சொத்து முறையாக வழங்கப்படுகிறது.",
+        "hi": "हमारे सक्रिय खरीदार और किरायेदार नेटवर्क में आपकी प्रॉपर्टी को उचित प्रस्तुति मिलती है।",
+        "te": "మా చురుకైన కొనుగోలుదారు మరియు అద్దెదారు నెట్‌వర్క్‌లో మీ ఆస్తి సరిగ్గా ప్రదర్శించబడుతుంది.",
+        "kn": "ನಮ್ಮ ಸಕ್ರಿಯ ಖರೀದಿದಾರ ಮತ್ತು ಬಾಡಿಗೆದಾರರ ಜಾಲದಲ್ಲಿ ನಿಮ್ಮ ಆಸ್ತಿಗೆ ಸರಿಯಾದ ಪ್ರಸ್ತುತಿ ಸಿಗುತ್ತದೆ.",
+        "ml": "ഞങ്ങളുടെ സജീവ വാങ്ങുന്നവരുടെയും വാടകക്കാരുടെയും ശൃംഖലയിൽ നിങ്ങളുടെ പ്രോപ്പർട്ടിക്ക് ശരിയായ അവതരണം ലഭിക്കുന്നു."
+      },
+      "listing.page.benefits.5": {
+        "en": "Relevant Connections",
+        "ta": "பொருத்தமான தொடர்புகள்",
+        "hi": "उपयुक्त संपर्क",
+        "te": "సంబంధిత కనెక్షన్లు",
+        "kn": "ಸಂಬಂಧಿತ ಸಂಪರ್ಕಗಳು",
+        "ml": "പ്രസക്തമായ ബന്ധങ്ങൾ"
+      },
+      "listing.page.benefits.6": {
+        "en": "We match your property to buyers and tenants whose requirements genuinely fit.",
+        "ta": "உங்கள் சொத்துக்கு உண்மையாகப் பொருந்தும் தேவைகளைக் கொண்ட வாங்குபவர்கள் மற்றும் வாடகைதாரர்களுடன் இணைக்கிறோம்.",
+        "hi": "हम आपकी प्रॉपर्टी को ऐसे खरीदारों और किरायेदारों से जोड़ते हैं जिनकी ज़रूरतें वास्तव में मेल खाती हैं।",
+        "te": "మీ ఆస్తికి నిజంగా సరిపోయే అవసరాలున్న కొనుగోలుదారులు మరియు అద్దెదారులతో మేము అనుసంధానిస్తాం.",
+        "kn": "ನಿಮ್ಮ ಆಸ್ತಿಗೆ ನಿಜವಾಗಿ ಹೊಂದುವ ಅಗತ್ಯಗಳಿರುವ ಖರೀದಿದಾರರು ಮತ್ತು ಬಾಡಿಗೆದಾರರೊಂದಿಗೆ ನಾವು ಹೊಂದಿಸುತ್ತೇವೆ.",
+        "ml": "നിങ്ങളുടെ പ്രോപ്പർട്ടിക്ക് യഥാർത്ഥത്തിൽ യോജിക്കുന്ന ആവശ്യങ്ങളുള്ള വാങ്ങുന്നവരെയും വാടകക്കാരെയും ഞങ്ങൾ ബന്ധിപ്പിക്കുന്നു."
+      },
+      "listing.page.benefits.7": {
+        "en": "Professional Presentation",
+        "ta": "தொழில்முறை வழங்கல்",
+        "hi": "पेशेवर प्रस्तुति",
+        "te": "ప్రొఫెషనల్ ప్రదర్శన",
+        "kn": "ವೃತ್ತಿಪರ ಪ್ರಸ್ತುತಿ",
+        "ml": "പ്രൊഫഷണൽ അവതരണം"
+      },
+      "listing.page.benefits.8": {
+        "en": "Clear property details and organised information make a stronger first impression.",
+        "ta": "தெளிவான சொத்து விவரங்களும் ஒழுங்கமைக்கப்பட்ட தகவல்களும் வலுவான முதல் தோற்றத்தை அளிக்கின்றன.",
+        "hi": "स्पष्ट प्रॉपर्टी विवरण और व्यवस्थित जानकारी बेहतर पहली छाप बनाती है।",
+        "te": "స్పష్టమైన ఆస్తి వివరాలు మరియు చక్కగా ఏర్పాటు చేసిన సమాచారం బలమైన తొలి అభిప్రాయాన్ని ఇస్తాయి.",
+        "kn": "ಸ್ಪಷ್ಟ ಆಸ್ತಿ ವಿವರಗಳು ಮತ್ತು ಸುವ್ಯವಸ್ಥಿತ ಮಾಹಿತಿ ಬಲವಾದ ಮೊದಲ ಅನಿಸಿಕೆ ಮೂಡಿಸುತ್ತವೆ.",
+        "ml": "വ്യക്തമായ പ്രോപ്പർട്ടി വിവരങ്ങളും ക്രമീകൃത വിവരങ്ങളും ശക്തമായ ആദ്യ മതിപ്പ് നൽകുന്നു."
+      },
+      "listing.page.benefits.9": {
+        "en": "Sensible Market Positioning",
+        "ta": "நியாயமான சந்தை நிலைநிறுத்தம்",
+        "hi": "उचित मार्केट पोज़िशनिंग",
+        "te": "సమంజసమైన మార్కెట్ స్థానం",
+        "kn": "ಸಮಂಜಸ ಮಾರುಕಟ್ಟೆ ಸ್ಥಾನೀಕರಣ",
+        "ml": "ന്യായമായ മാർക്കറ്റ് പൊസിഷനിംഗ്"
+      },
+      "listing.page.benefits.10": {
+        "en": "We help position your property sensibly based on its location and category.",
+        "ta": "இருப்பிடம் மற்றும் வகையின் அடிப்படையில் உங்கள் சொத்தை நியாயமாக நிலைநிறுத்த உதவுகிறோம்.",
+        "hi": "हम स्थान और श्रेणी के आधार पर आपकी प्रॉपर्टी को उचित रूप से स्थापित करने में मदद करते हैं।",
+        "te": "స్థానం మరియు వర్గం ఆధారంగా మీ ఆస్తిని సమంజసంగా నిలబెట్టడంలో మేము సహాయపడతాం.",
+        "kn": "ಸ್ಥಳ ಮತ್ತು ವರ್ಗದ ಆಧಾರದ ಮೇಲೆ ನಿಮ್ಮ ಆಸ್ತಿಯನ್ನು ಸಮಂಜಸವಾಗಿ ಸ್ಥಾನೀಕರಿಸಲು ನಾವು ಸಹಾಯ ಮಾಡುತ್ತೇವೆ.",
+        "ml": "സ്ഥലവും വിഭാഗവും അടിസ്ഥാനമാക്കി നിങ്ങളുടെ പ്രോപ്പർട്ടി ന്യായമായി സ്ഥാപിക്കാൻ ഞങ്ങൾ സഹായിക്കുന്നു."
+      },
+      "listing.page.benefits.11": {
+        "en": "Transaction Coordination",
+        "ta": "பரிவர்த்தனை ஒருங்கிணைப்பு",
+        "hi": "लेन-देन समन्वय",
+        "te": "లావాదేవీ సమన్వయం",
+        "kn": "ವಹಿವಾಟು ಸಮನ್ವಯ",
+        "ml": "ഇടപാട് ഏകോപനം"
+      },
+      "listing.page.benefits.12": {
+        "en": "Our team coordinates communication and next steps through the process.",
+        "ta": "செயல்முறை முழுவதும் தொடர்பு மற்றும் அடுத்த படிகளை எங்கள் குழு ஒருங்கிணைக்கிறது.",
+        "hi": "हमारी टीम पूरी प्रक्रिया में संवाद और अगले चरणों का समन्वय करती है।",
+        "te": "ప్రక్రియ అంతటా కమ్యూనికేషన్ మరియు తదుపరి దశలను మా బృందం సమన్వయం చేస్తుంది.",
+        "kn": "ಪ್ರಕ್ರಿಯೆಯ ಉದ್ದಕ್ಕೂ ಸಂವಹನ ಮತ್ತು ಮುಂದಿನ ಹಂತಗಳನ್ನು ನಮ್ಮ ತಂಡ ಸಮನ್ವಯಗೊಳಿಸುತ್ತದೆ.",
+        "ml": "പ്രക്രിയയിലുടനീളം ആശയവിനിമയവും അടുത്ത ഘട്ടങ്ങളും ഞങ്ങളുടെ ടീം ഏകോപിപ്പിക്കുന്നു."
+      },
+      "listing.page.benefits.13": {
+        "en": "Ongoing Owner Communication",
+        "ta": "தொடர்ச்சியான உரிமையாளர் தொடர்பு",
+        "hi": "निरंतर ओनर संवाद",
+        "te": "నిరంతర యజమాని కమ్యూనికేషన్",
+        "kn": "ನಿರಂತರ ಮಾಲೀಕರ ಸಂವಹನ",
+        "ml": "തുടർച്ചയായ ഉടമ ആശയവിനിമയം"
+      },
+      "listing.page.benefits.14": {
+        "en": "You stay informed and involved throughout, through a single point of contact.",
+        "ta": "ஒரே தொடர்பு நபர் மூலம் நீங்கள் முழுவதும் தகவல் பெற்று ஈடுபட்டிருப்பீர்கள்.",
+        "hi": "एक ही संपर्क व्यक्ति के माध्यम से आप पूरे समय जानकारी और भागीदारी में रहते हैं।",
+        "te": "ఒకే సంప్రదింపు వ్యక్తి ద్వారా మీరు ఎల్లప్పుడూ సమాచారంతో, భాగస్వామ్యంతో ఉంటారు.",
+        "kn": "ಒಬ್ಬರೇ ಸಂಪರ್ಕ ವ್ಯಕ್ತಿಯ ಮೂಲಕ ನೀವು ಸದಾ ಮಾಹಿತಿ ಮತ್ತು ಭಾಗವಹಿಸುವಿಕೆಯಲ್ಲಿರುತ್ತೀರಿ.",
+        "ml": "ഒരൊറ്റ ബന്ധപ്പെടൽ വ്യക്തിയിലൂടെ നിങ്ങൾ എപ്പോഴും വിവരമറിഞ്ഞും പങ്കാളിയായും തുടരുന്നു."
+      },
+      "listing.page.intro.1": {
+        "en": "Share Your Property Details",
+        "ta": "உங்கள் சொத்து விவரங்களைப் பகிருங்கள்",
+        "hi": "अपनी प्रॉपर्टी का विवरण साझा करें",
+        "te": "మీ ఆస్తి వివరాలను పంచుకోండి",
+        "kn": "ನಿಮ್ಮ ಆಸ್ತಿ ವಿವರಗಳನ್ನು ಹಂಚಿಕೊಳ್ಳಿ",
+        "ml": "നിങ്ങളുടെ പ്രോപ്പർട്ടി വിവരങ്ങൾ പങ്കിടൂ"
+      },
+      "listing.page.intro.2": {
+        "en": "🔒 Your information is kept confidential and used only for property-related communication.",
+        "ta": "🔒 உங்கள் தகவல் ரகசியமாக வைக்கப்பட்டு, சொத்து தொடர்பான தகவல்தொடர்புக்கு மட்டுமே பயன்படுத்தப்படும்.",
+        "hi": "🔒 आपकी जानकारी गोपनीय रखी जाती है और केवल प्रॉपर्टी संबंधी संवाद के लिए उपयोग की जाती है।",
+        "te": "🔒 మీ సమాచారం గోప్యంగా ఉంచబడుతుంది మరియు ఆస్తి సంబంధిత కమ్యూనికేషన్ కోసం మాత్రమే ఉపయోగించబడుతుంది.",
+        "kn": "🔒 ನಿಮ್ಮ ಮಾಹಿತಿಯನ್ನು ಗೌಪ್ಯವಾಗಿಡಲಾಗುತ್ತದೆ ಮತ್ತು ಆಸ್ತಿ ಸಂಬಂಧಿತ ಸಂವಹನಕ್ಕೆ ಮಾತ್ರ ಬಳಸಲಾಗುತ್ತದೆ.",
+        "ml": "🔒 നിങ്ങളുടെ വിവരങ്ങൾ രഹസ്യമായി സൂക്ഷിക്കുകയും പ്രോപ്പർട്ടി സംബന്ധമായ ആശയവിനിമയത്തിന് മാത്രം ഉപയോഗിക്കുകയും ചെയ്യും."
+      },
+      "listing.page.types.1": {
+        "en": "Property Types",
+        "ta": "சொத்து வகைகள்",
+        "hi": "प्रॉपर्टी के प्रकार",
+        "te": "ఆస్తి రకాలు",
+        "kn": "ಆಸ್ತಿ ಪ್ರಕಾರಗಳು",
+        "ml": "പ്രോപ്പർട്ടി തരങ്ങൾ"
+      },
+      "listing.page.types.2": {
+        "en": "Property Types We Handle",
+        "ta": "நாங்கள் கையாளும் சொத்து வகைகள்",
+        "hi": "हम किन प्रॉपर्टी प्रकारों को संभालते हैं",
+        "te": "మేము నిర్వహించే ఆస్తి రకాలు",
+        "kn": "ನಾವು ನಿರ್ವಹಿಸುವ ಆಸ್ತಿ ಪ್ರಕಾರಗಳು",
+        "ml": "ഞങ്ങൾ കൈകാര്യം ചെയ്യുന്ന പ്രോപ്പർട്ടി തരങ്ങൾ"
+      },
+      "listing.page.types.3": {
+        "en": "Homes for sale or rent, across a range of budgets and configurations.",
+        "ta": "பல்வேறு பட்ஜெட்கள் மற்றும் அமைப்புகளில் விற்பனை அல்லது வாடகைக்கான வீடுகள்.",
+        "hi": "विभिन्न बजट और कॉन्फ़िगरेशन में बिक्री या किराये के लिए घर।",
+        "te": "వివిధ బడ్జెట్లు మరియు కాన్ఫిగరేషన్లలో అమ్మకానికి లేదా అద్దెకు ఇళ్లు.",
+        "kn": "ವಿವಿಧ ಬಜೆಟ್ ಮತ್ತು ಸಂರಚನೆಗಳಲ್ಲಿ ಮಾರಾಟ ಅಥವಾ ಬಾಡಿಗೆಗೆ ಮನೆಗಳು.",
+        "ml": "വിവിധ ബജറ്റുകളിലും കോൺഫിഗറേഷനുകളിലും വിൽപ്പനയ്ക്കോ വാടകയ്ക്കോ ഉള്ള വീടുകൾ."
+      },
+      "listing.page.types.4": {
+        "en": "Office spaces, showrooms and commercial units suited for business use.",
+        "ta": "வணிகப் பயன்பாட்டுக்கு ஏற்ற அலுவலக இடங்கள், ஷோரூம்கள் மற்றும் வணிக அலகுகள்.",
+        "hi": "व्यावसायिक उपयोग के लिए उपयुक्त ऑफिस स्पेस, शोरूम और कमर्शियल यूनिट।",
+        "te": "వ్యాపార వినియోగానికి అనువైన ఆఫీస్ స్థలాలు, షోరూమ్‌లు మరియు వాణిజ్య యూనిట్లు.",
+        "kn": "ವ್ಯಾಪಾರ ಬಳಕೆಗೆ ಸೂಕ್ತವಾದ ಕಚೇರಿ ಸ್ಥಳಗಳು, ಶೋರೂಮ್‌ಗಳು ಮತ್ತು ವಾಣಿಜ್ಯ ಘಟಕಗಳು.",
+        "ml": "ബിസിനസ് ഉപയോഗത്തിന് അനുയോജ്യമായ ഓഫീസ് സ്ഥലങ്ങൾ, ഷോറൂമുകൾ, വാണിജ്യ യൂണിറ്റുകൾ."
+      },
+      "listing.page.types.5": {
+        "en": "Residential and investment plots across Chennai and its surrounding areas.",
+        "ta": "சென்னை மற்றும் அதன் சுற்றுப்புறங்களில் உள்ள குடியிருப்பு மற்றும் முதலீட்டு மனைகள்.",
+        "hi": "चेन्नई और आसपास के क्षेत्रों में आवासीय और निवेश प्लॉट।",
+        "te": "చెన్నై మరియు పరిసర ప్రాంతాల్లో నివాస మరియు పెట్టుబడి ప్లాట్లు.",
+        "kn": "ಚೆನ್ನೈ ಮತ್ತು ಸುತ್ತಮುತ್ತಲಿನ ಪ್ರದೇಶಗಳಲ್ಲಿ ವಸತಿ ಮತ್ತು ಹೂಡಿಕೆ ನಿವೇಶನಗಳು.",
+        "ml": "ചെന്നൈയിലും സമീപ പ്രദേശങ്ങളിലുമുള്ള റസിഡൻഷ്യൽ, നിക്ഷേപ പ്ലോട്ടുകൾ."
+      },
+      "listing.page.types.6": {
+        "en": "Independent Houses",
+        "ta": "தனி வீடுகள்",
+        "hi": "इंडिपेंडेंट हाउस",
+        "te": "ఇండిపెండెంట్ హౌస్‌లు",
+        "kn": "ಸ್ವತಂತ್ರ ಮನೆಗಳು",
+        "ml": "ഇൻഡിപെൻഡന്റ് ഹൗസുകൾ"
+      },
+      "listing.page.types.7": {
+        "en": "Standalone homes suited for owners looking for more space and privacy.",
+        "ta": "அதிக இடமும் தனிமையும் விரும்பும் உரிமையாளர்களுக்கு ஏற்ற தனி வீடுகள்.",
+        "hi": "अधिक जगह और निजता चाहने वाले मालिकों के लिए उपयुक्त स्वतंत्र घर।",
+        "te": "ఎక్కువ స్థలం మరియు ప్రైవసీ కోరుకునే యజమానులకు అనువైన స్వతంత్ర ఇళ్లు.",
+        "kn": "ಹೆಚ್ಚು ಸ್ಥಳ ಮತ್ತು ಗೌಪ್ಯತೆ ಬಯಸುವ ಮಾಲೀಕರಿಗೆ ಸೂಕ್ತವಾದ ಸ್ವತಂತ್ರ ಮನೆಗಳು.",
+        "ml": "കൂടുതൽ സ്ഥലവും സ്വകാര്യതയും ആഗ്രഹിക്കുന്ന ഉടമകൾക്ക് അനുയോജ്യമായ സ്വതന്ത്ര വീടുകൾ."
+      },
+      "listing.page.types.8": {
+        "en": "Flats across a range of configurations, from compact homes to larger units.",
+        "ta": "சிறிய வீடுகள் முதல் பெரிய அலகுகள் வரை பல்வேறு அமைப்புகளில் உள்ள அடுக்குமாடி குடியிருப்புகள்.",
+        "hi": "छोटे घरों से लेकर बड़ी इकाइयों तक, विभिन्न कॉन्फ़िगरेशन में फ़्लैट।",
+        "te": "చిన్న ఇళ్ల నుండి పెద్ద యూనిట్ల వరకు వివిధ కాన్ఫిగరేషన్లలో ఫ్లాట్లు.",
+        "kn": "ಸಣ್ಣ ಮನೆಗಳಿಂದ ದೊಡ್ಡ ಘಟಕಗಳವರೆಗೆ ವಿವಿಧ ಸಂರಚನೆಗಳ ಫ್ಲಾಟ್‌ಗಳು.",
+        "ml": "ചെറിയ വീടുകൾ മുതൽ വലിയ യൂണിറ്റുകൾ വരെ വിവിധ കോൺഫിഗറേഷനുകളിലുള്ള ഫ്ലാറ്റുകൾ."
+      },
+      "listing.page.types.9": {
+        "en": "Joint Development Opportunities",
+        "ta": "கூட்டு மேம்பாட்டு வாய்ப்புகள்",
+        "hi": "संयुक्त विकास के अवसर",
+        "te": "జాయింట్ డెవలప్‌మెంట్ అవకాశాలు",
+        "kn": "ಜಂಟಿ ಅಭಿವೃದ್ಧಿ ಅವಕಾಶಗಳು",
+        "ml": "ജോയിന്റ് ഡെവലപ്മെന്റ് അവസരങ്ങൾ"
+      },
+      "listing.page.types.10": {
+        "en": "Suitable land matched with development partners for joint development.",
+        "ta": "கூட்டு மேம்பாட்டுக்காக மேம்பாட்டுப் பங்காளிகளுடன் இணைக்கப்படும் பொருத்தமான நிலம்.",
+        "hi": "संयुक्त विकास के लिए विकास साझेदारों से जोड़ी गई उपयुक्त भूमि।",
+        "te": "జాయింట్ డెవలప్‌మెంట్ కోసం అభివృద్ధి భాగస్వాములతో అనుసంధానించబడిన అనువైన భూమి.",
+        "kn": "ಜಂಟಿ ಅಭಿವೃದ್ಧಿಗಾಗಿ ಅಭಿವೃದ್ಧಿ ಪಾಲುದಾರರೊಂದಿಗೆ ಹೊಂದಿಸಲಾದ ಸೂಕ್ತ ಭೂಮಿ.",
+        "ml": "ജോയിന്റ് ഡെവലപ്മെന്റിനായി ഡെവലപ്മെന്റ് പങ്കാളികളുമായി ബന്ധിപ്പിക്കുന്ന അനുയോജ്യമായ ഭൂമി."
+      },
+      "listing.page.whyUs.1": {
+        "en": "Why Aventrix",
+        "ta": "ஏன் அவென்ட்ரிக்ஸ்",
+        "hi": "Aventrix क्यों",
+        "te": "ఎందుకు Aventrix",
+        "kn": "ಏಕೆ Aventrix",
+        "ml": "എന്തുകൊണ്ട് Aventrix"
+      },
+      "listing.page.whyUs.2": {
+        "en": "Why Property Owners Work With Us",
+        "ta": "சொத்து உரிமையாளர்கள் ஏன் எங்களுடன் பணியாற்றுகிறார்கள்",
+        "hi": "प्रॉपर्टी ओनर हमारे साथ क्यों काम करते हैं",
+        "te": "ఆస్తి యజమానులు మాతో ఎందుకు పని చేస్తారు",
+        "kn": "ಆಸ್ತಿ ಮಾಲೀಕರು ನಮ್ಮೊಂದಿಗೆ ಏಕೆ ಕೆಲಸ ಮಾಡುತ್ತಾರೆ",
+        "ml": "പ്രോപ്പർട്ടി ഉടമകൾ ഞങ്ങളോടൊപ്പം പ്രവർത്തിക്കുന്നത് എന്തുകൊണ്ട്"
+      },
+      "listing.page.whyUs.3": {
+        "en": "Real Estate Experience",
+        "ta": "ரியல் எஸ்டேட் அனுபவம்",
+        "hi": "रियल एस्टेट अनुभव",
+        "te": "రియల్ ఎస్టేట్ అనుభవం",
+        "kn": "ರಿಯಲ್ ಎಸ್ಟೇಟ್ ಅನುಭವ",
+        "ml": "റിയൽ എസ്റ്റേറ്റ് അനുഭവം"
+      },
+      "listing.page.whyUs.4": {
+        "en": "Led by professionals with 15+ years of real estate experience in the Chennai market.",
+        "ta": "சென்னை சந்தையில் 15+ ஆண்டுகள் ரியல் எஸ்டேட் அனுபவம் கொண்ட நிபுணர்களால் வழிநடத்தப்படுகிறது.",
+        "hi": "चेन्नई बाज़ार में 15+ वर्षों के रियल एस्टेट अनुभव वाले पेशेवरों के नेतृत्व में।",
+        "te": "చెన్నై మార్కెట్‌లో 15+ సంవత్సరాల రియల్ ఎస్టేట్ అనుభవం ఉన్న నిపుణుల నేతృత్వంలో.",
+        "kn": "ಚೆನ್ನೈ ಮಾರುಕಟ್ಟೆಯಲ್ಲಿ 15+ ವರ್ಷಗಳ ರಿಯಲ್ ಎಸ್ಟೇಟ್ ಅನುಭವ ಹೊಂದಿರುವ ವೃತ್ತಿಪರರ ನೇತೃತ್ವದಲ್ಲಿ.",
+        "ml": "ചെന്നൈ വിപണിയിൽ 15+ വർഷത്തെ റിയൽ എസ്റ്റേറ്റ് അനുഭവമുള്ള പ്രൊഫഷണലുകളുടെ നേതൃത്വത്തിൽ."
+      },
+      "listing.page.whyUs.5": {
+        "en": "Local Market Knowledge",
+        "ta": "உள்ளூர் சந்தை அறிவு",
+        "hi": "स्थानीय बाज़ार की जानकारी",
+        "te": "స్థానిక మార్కెట్ పరిజ్ఞానం",
+        "kn": "ಸ್ಥಳೀಯ ಮಾರುಕಟ್ಟೆ ಜ್ಞಾನ",
+        "ml": "പ്രാദേശിക വിപണി അറിവ്"
+      },
+      "listing.page.whyUs.6": {
+        "en": "A team familiar with Chennai's localities, property categories and buyer behaviour.",
+        "ta": "சென்னையின் பகுதிகள், சொத்து வகைகள் மற்றும் வாங்குபவர் நடத்தையை நன்கறிந்த குழு.",
+        "hi": "चेन्नई के इलाकों, प्रॉपर्टी श्रेणियों और खरीदारों के व्यवहार से परिचित टीम।",
+        "te": "చెన్నై ప్రాంతాలు, ఆస్తి వర్గాలు మరియు కొనుగోలుదారుల ప్రవర్తన తెలిసిన బృందం.",
+        "kn": "ಚೆನ್ನೈನ ಪ್ರದೇಶಗಳು, ಆಸ್ತಿ ವರ್ಗಗಳು ಮತ್ತು ಖರೀದಿದಾರರ ವರ್ತನೆ ತಿಳಿದಿರುವ ತಂಡ.",
+        "ml": "ചെന്നൈയിലെ പ്രദേശങ്ങൾ, പ്രോപ്പർട്ടി വിഭാഗങ്ങൾ, വാങ്ങുന്നവരുടെ പെരുമാറ്റം എന്നിവ അറിയുന്ന ടീം."
+      },
+      "listing.page.whyUs.7": {
+        "en": "Professional Property Marketing",
+        "ta": "தொழில்முறை சொத்து சந்தைப்படுத்தல்",
+        "hi": "पेशेवर प्रॉपर्टी मार्केटिंग",
+        "te": "ప్రొఫెషనల్ ఆస్తి మార్కెటింగ్",
+        "kn": "ವೃತ್ತಿಪರ ಆಸ್ತಿ ಮಾರುಕಟ್ಟೆ",
+        "ml": "പ്രൊഫഷണൽ പ്രോപ്പർട്ടി മാർക്കറ്റിംഗ്"
+      },
+      "listing.page.whyUs.8": {
+        "en": "Your property is presented clearly and professionally, every time.",
+        "ta": "உங்கள் சொத்து ஒவ்வொரு முறையும் தெளிவாகவும் தொழில்முறையாகவும் வழங்கப்படுகிறது.",
+        "hi": "आपकी प्रॉपर्टी हर बार स्पष्ट और पेशेवर ढंग से प्रस्तुत की जाती है।",
+        "te": "మీ ఆస్తి ప్రతిసారీ స్పష్టంగా మరియు ప్రొఫెషనల్‌గా ప్రదర్శించబడుతుంది.",
+        "kn": "ನಿಮ್ಮ ಆಸ್ತಿಯನ್ನು ಪ್ರತಿ ಬಾರಿಯೂ ಸ್ಪಷ್ಟವಾಗಿ ಮತ್ತು ವೃತ್ತಿಪರವಾಗಿ ಪ್ರಸ್ತುತಪಡಿಸಲಾಗುತ್ತದೆ.",
+        "ml": "നിങ്ങളുടെ പ്രോപ്പർട്ടി ഓരോ തവണയും വ്യക്തമായും പ്രൊഫഷണലായും അവതരിപ്പിക്കുന്നു."
+      },
+      "listing.page.whyUs.9": {
+        "en": "Buyer & Investor Network",
+        "ta": "வாங்குபவர் மற்றும் முதலீட்டாளர் வலையமைப்பு",
+        "hi": "खरीदार और निवेशक नेटवर्क",
+        "te": "కొనుగోలుదారు & పెట్టుబడిదారు నెట్‌వర్క్",
+        "kn": "ಖರೀದಿದಾರ ಮತ್ತು ಹೂಡಿಕೆದಾರರ ಜಾಲ",
+        "ml": "വാങ്ങുന്നവരുടെയും നിക്ഷേപകരുടെയും ശൃംഖല"
+      },
+      "listing.page.whyUs.10": {
+        "en": "Access to a network of buyers, tenants and investors actively engaging with our team.",
+        "ta": "எங்கள் குழுவுடன் தீவிரமாக ஈடுபடும் வாங்குபவர்கள், வாடகைதாரர்கள் மற்றும் முதலீட்டாளர்களின் வலையமைப்புக்கான அணுகல்.",
+        "hi": "हमारी टीम से सक्रिय रूप से जुड़े खरीदारों, किरायेदारों और निवेशकों के नेटवर्क तक पहुँच।",
+        "te": "మా బృందంతో చురుకుగా సంప్రదిస్తున్న కొనుగోలుదారులు, అద్దెదారులు మరియు పెట్టుబడిదారుల నెట్‌వర్క్‌కు ప్రాప్యత.",
+        "kn": "ನಮ್ಮ ತಂಡದೊಂದಿಗೆ ಸಕ್ರಿಯವಾಗಿ ಸಂಪರ್ಕದಲ್ಲಿರುವ ಖರೀದಿದಾರರು, ಬಾಡಿಗೆದಾರರು ಮತ್ತು ಹೂಡಿಕೆದಾರರ ಜಾಲಕ್ಕೆ ಪ್ರವೇಶ.",
+        "ml": "ഞങ്ങളുടെ ടീമുമായി സജീവമായി ഇടപഴകുന്ന വാങ്ങുന്നവർ, വാടകക്കാർ, നിക്ഷേപകർ എന്നിവരുടെ ശൃംഖലയിലേക്കുള്ള പ്രവേശനം."
+      },
+      "listing.page.whyUs.11": {
+        "en": "Transparent Communication",
+        "ta": "வெளிப்படையான தொடர்பு",
+        "hi": "पारदर्शी संवाद",
+        "te": "పారదర్శక కమ్యూనికేషన్",
+        "kn": "ಪಾರದರ್ಶಕ ಸಂವಹನ",
+        "ml": "സുതാര്യമായ ആശയവിനിമയം"
+      },
+      "listing.page.whyUs.12": {
+        "en": "We keep you informed with honest, straightforward updates through the process.",
+        "ta": "செயல்முறை முழுவதும் நேர்மையான, நேரடியான தகவல்களுடன் உங்களை அறிவிக்கிறோம்.",
+        "hi": "हम पूरी प्रक्रिया में ईमानदार और सीधी जानकारी देते रहते हैं।",
+        "te": "ప్రక్రియ అంతటా నిజాయితీగా, సూటిగా అప్‌డేట్‌లతో మిమ్మల్ని తెలియజేస్తాం.",
+        "kn": "ಪ್ರಕ್ರಿಯೆಯ ಉದ್ದಕ್ಕೂ ಪ್ರಾಮಾಣಿಕ, ನೇರ ಮಾಹಿತಿಯೊಂದಿಗೆ ನಿಮಗೆ ತಿಳಿಸುತ್ತೇವೆ.",
+        "ml": "പ്രക്രിയയിലുടനീളം സത്യസന്ധവും നേരിട്ടുള്ളതുമായ അപ്ഡേറ്റുകൾ നൽകി നിങ്ങളെ അറിയിക്കുന്നു."
+      },
+      "listing.page.whyUs.13": {
+        "en": "End-to-End Coordination",
+        "ta": "தொடக்கம் முதல் முடிவு வரை ஒருங்கிணைப்பு",
+        "hi": "शुरू से अंत तक समन्वय",
+        "te": "మొదటి నుండి చివరి వరకు సమన్వయం",
+        "kn": "ಆರಂಭದಿಂದ ಅಂತ್ಯದವರೆಗೆ ಸಮನ್ವಯ",
+        "ml": "തുടക്കം മുതൽ അവസാനം വരെ ഏകോപനം"
+      },
+      "listing.page.whyUs.14": {
+        "en": "One team coordinates the process from your first enquiry to the final transaction.",
+        "ta": "உங்கள் முதல் விசாரணை முதல் இறுதிப் பரிவர்த்தனை வரை ஒரே குழு செயல்முறையை ஒருங்கிணைக்கிறது.",
+        "hi": "आपकी पहली पूछताछ से अंतिम लेन-देन तक एक ही टीम प्रक्रिया का समन्वय करती है।",
+        "te": "మీ మొదటి విచారణ నుండి తుది లావాదేవీ వరకు ఒకే బృందం ప్రక్రియను సమన్వయం చేస్తుంది.",
+        "kn": "ನಿಮ್ಮ ಮೊದಲ ವಿಚಾರಣೆಯಿಂದ ಅಂತಿಮ ವಹಿವಾಟಿನವರೆಗೆ ಒಂದೇ ತಂಡ ಪ್ರಕ್ರಿಯೆಯನ್ನು ಸಮನ್ವಯಗೊಳಿಸುತ್ತದೆ.",
+        "ml": "നിങ്ങളുടെ ആദ്യ അന്വേഷണം മുതൽ അവസാന ഇടപാട് വരെ ഒരേ ടീം പ്രക്രിയ ഏകോപിപ്പിക്കുന്നു."
+      },
+      "listing.page.process.1": {
+        "en": "Our Property Listing Process",
+        "ta": "எங்கள் சொத்து பட்டியலிடும் செயல்முறை",
+        "hi": "हमारी प्रॉपर्टी लिस्टिंग प्रक्रिया",
+        "te": "మా ఆస్తి లిస్టింగ్ ప్రక్రియ",
+        "kn": "ನಮ್ಮ ಆಸ್ತಿ ಪಟ್ಟಿ ಪ್ರಕ್ರಿಯೆ",
+        "ml": "ഞങ്ങളുടെ പ്രോപ്പർട്ടി ലിസ്റ്റിംഗ് പ്രക്രിയ"
+      },
+      "listing.page.process.2": {
+        "en": "Share Your Property",
+        "ta": "உங்கள் சொத்தைப் பகிருங்கள்",
+        "hi": "अपनी प्रॉपर्टी साझा करें",
+        "te": "మీ ఆస్తిని పంచుకోండి",
+        "kn": "ನಿಮ್ಮ ಆಸ್ತಿಯನ್ನು ಹಂಚಿಕೊಳ್ಳಿ",
+        "ml": "നിങ്ങളുടെ പ്രോപ്പർട്ടി പങ്കിടൂ"
+      },
+      "listing.page.process.3": {
+        "en": "Fill in your property and contact details through our simple listing form.",
+        "ta": "எங்கள் எளிய பட்டியலிடும் படிவத்தின் மூலம் உங்கள் சொத்து மற்றும் தொடர்பு விவரங்களை நிரப்புங்கள்.",
+        "hi": "हमारे सरल लिस्टिंग फ़ॉर्म के माध्यम से अपनी प्रॉपर्टी और संपर्क विवरण भरें।",
+        "te": "మా సులభమైన లిస్టింగ్ ఫారమ్ ద్వారా మీ ఆస్తి మరియు సంప్రదింపు వివరాలను నింపండి.",
+        "kn": "ನಮ್ಮ ಸರಳ ಪಟ್ಟಿ ಫಾರ್ಮ್ ಮೂಲಕ ನಿಮ್ಮ ಆಸ್ತಿ ಮತ್ತು ಸಂಪರ್ಕ ವಿವರಗಳನ್ನು ಭರ್ತಿ ಮಾಡಿ.",
+        "ml": "ഞങ്ങളുടെ ലളിതമായ ലിസ്റ്റിംഗ് ഫോമിലൂടെ നിങ്ങളുടെ പ്രോപ്പർട്ടി, ബന്ധപ്പെടാനുള്ള വിവരങ്ങൾ പൂരിപ്പിക്കൂ."
+      },
+      "listing.page.process.4": {
+        "en": "Property Review",
+        "ta": "சொத்து மதிப்பாய்வு",
+        "hi": "प्रॉपर्टी की समीक्षा",
+        "te": "ఆస్తి సమీక్ష",
+        "kn": "ಆಸ್ತಿ ಪರಿಶೀಲನೆ",
+        "ml": "പ്രോപ്പർട്ടി അവലോകനം"
+      },
+      "listing.page.process.5": {
+        "en": "Our team reviews the information you've shared to understand your property better.",
+        "ta": "நீங்கள் பகிர்ந்த தகவலை எங்கள் குழு மதிப்பாய்வு செய்து உங்கள் சொத்தை நன்கு புரிந்துகொள்கிறது.",
+        "hi": "आपकी प्रॉपर्टी को बेहतर समझने के लिए हमारी टीम आपके द्वारा दी गई जानकारी की समीक्षा करती है।",
+        "te": "మీరు పంచుకున్న సమాచారాన్ని మా బృందం సమీక్షించి మీ ఆస్తిని బాగా అర్థం చేసుకుంటుంది.",
+        "kn": "ನೀವು ಹಂಚಿಕೊಂಡ ಮಾಹಿತಿಯನ್ನು ನಮ್ಮ ತಂಡ ಪರಿಶೀಲಿಸಿ ನಿಮ್ಮ ಆಸ್ತಿಯನ್ನು ಉತ್ತಮವಾಗಿ ಅರ್ಥಮಾಡಿಕೊಳ್ಳುತ್ತದೆ.",
+        "ml": "നിങ്ങൾ പങ്കിട്ട വിവരങ്ങൾ ഞങ്ങളുടെ ടീം അവലോകനം ചെയ്ത് നിങ്ങളുടെ പ്രോപ്പർട്ടി നന്നായി മനസ്സിലാക്കുന്നു."
+      },
+      "listing.page.process.6": {
+        "en": "Market Positioning",
+        "ta": "சந்தை நிலைநிறுத்தம்",
+        "hi": "मार्केट पोज़िशनिंग",
+        "te": "మార్కెట్ స్థానం నిర్ణయం",
+        "kn": "ಮಾರುಕಟ್ಟೆ ಸ್ಥಾನೀಕರಣ",
+        "ml": "മാർക്കറ്റ് പൊസിഷനിംഗ്"
+      },
+      "listing.page.process.7": {
+        "en": "We consider your property's location, category and condition to position it sensibly.",
+        "ta": "உங்கள் சொத்தின் இருப்பிடம், வகை மற்றும் நிலையை கருத்தில் கொண்டு நியாயமாக நிலைநிறுத்துகிறோம்.",
+        "hi": "हम आपकी प्रॉपर्टी के स्थान, श्रेणी और स्थिति को देखकर उसे उचित रूप से स्थापित करते हैं।",
+        "te": "మీ ఆస్తి స్థానం, వర్గం మరియు స్థితిని పరిగణనలోకి తీసుకుని సమంజసంగా నిలబెడతాం.",
+        "kn": "ನಿಮ್ಮ ಆಸ್ತಿಯ ಸ್ಥಳ, ವರ್ಗ ಮತ್ತು ಸ್ಥಿತಿಯನ್ನು ಪರಿಗಣಿಸಿ ಸಮಂಜಸವಾಗಿ ಸ್ಥಾನೀಕರಿಸುತ್ತೇವೆ.",
+        "ml": "നിങ്ങളുടെ പ്രോപ്പർട്ടിയുടെ സ്ഥലം, വിഭാഗം, അവസ്ഥ എന്നിവ പരിഗണിച്ച് ന്യായമായി സ്ഥാപിക്കുന്നു."
+      },
+      "listing.page.process.8": {
+        "en": "Buyer / Tenant Outreach",
+        "ta": "வாங்குபவர் / வாடகைதாரர் தொடர்பு",
+        "hi": "खरीदार / किरायेदार आउटरीच",
+        "te": "కొనుగోలుదారు / అద్దెదారు సంప్రదింపు",
+        "kn": "ಖರೀದಿದಾರ / ಬಾಡಿಗೆದಾರರ ಸಂಪರ್ಕ",
+        "ml": "വാങ്ങുന്നവർ / വാടകക്കാരുമായുള്ള സമ്പർക്കം"
+      },
+      "listing.page.process.9": {
+        "en": "Your property is shared with relevant buyers, tenants or investors in our network.",
+        "ta": "எங்கள் வலையமைப்பில் உள்ள தொடர்புடைய வாங்குபவர்கள், வாடகைதாரர்கள் அல்லது முதலீட்டாளர்களுடன் உங்கள் சொத்து பகிரப்படுகிறது.",
+        "hi": "आपकी प्रॉपर्टी हमारे नेटवर्क के संबंधित खरीदारों, किरायेदारों या निवेशकों के साथ साझा की जाती है।",
+        "te": "మా నెట్‌వర్క్‌లోని సంబంధిత కొనుగోలుదారులు, అద్దెదారులు లేదా పెట్టుబడిదారులతో మీ ఆస్తి పంచుకోబడుతుంది.",
+        "kn": "ನಮ್ಮ ಜಾಲದ ಸಂಬಂಧಿತ ಖರೀದಿದಾರರು, ಬಾಡಿಗೆದಾರರು ಅಥವಾ ಹೂಡಿಕೆದಾರರೊಂದಿಗೆ ನಿಮ್ಮ ಆಸ್ತಿಯನ್ನು ಹಂಚಿಕೊಳ್ಳಲಾಗುತ್ತದೆ.",
+        "ml": "ഞങ്ങളുടെ ശൃംഖലയിലെ പ്രസക്തരായ വാങ്ങുന്നവർ, വാടകക്കാർ, നിക്ഷേപകർ എന്നിവരുമായി നിങ്ങളുടെ പ്രോപ്പർട്ടി പങ്കിടുന്നു."
+      },
+      "listing.page.process.10": {
+        "en": "We stay involved through discussions, follow-ups and the steps that follow.",
+        "ta": "விவாதங்கள், தொடர் நடவடிக்கைகள் மற்றும் அதற்குப் பிந்தைய படிகளில் நாங்கள் உடனிருக்கிறோம்.",
+        "hi": "हम चर्चाओं, फ़ॉलो-अप और उसके बाद के चरणों में आपके साथ जुड़े रहते हैं।",
+        "te": "చర్చలు, ఫాలో-అప్‌లు మరియు తదుపరి దశల్లో మేము మీతో కొనసాగుతాం.",
+        "kn": "ಚರ್ಚೆಗಳು, ಅನುಸರಣೆಗಳು ಮತ್ತು ನಂತರದ ಹಂತಗಳಲ್ಲಿ ನಾವು ನಿಮ್ಮೊಂದಿಗೆ ಇರುತ್ತೇವೆ.",
+        "ml": "ചർച്ചകളിലും ഫോളോ-അപ്പുകളിലും തുടർന്നുള്ള ഘട്ടങ്ങളിലും ഞങ്ങൾ നിങ്ങളോടൊപ്പം തുടരുന്നു."
+      },
+      "listing.page.situations.1": {
+        "en": "Common Situations",
+        "ta": "பொதுவான சூழ்நிலைகள்",
+        "hi": "आम स्थितियाँ",
+        "te": "సాధారణ పరిస్థితులు",
+        "kn": "ಸಾಮಾನ್ಯ ಸನ್ನಿವೇಶಗಳು",
+        "ml": "സാധാരണ സാഹചര്യങ്ങൾ"
+      },
+      "listing.page.situations.2": {
+        "en": "Wherever You Are With Your Property, We Can Help",
+        "ta": "உங்கள் சொத்து எந்த நிலையில் இருந்தாலும், நாங்கள் உதவ முடியும்",
+        "hi": "आपकी प्रॉपर्टी जिस भी स्थिति में हो, हम मदद कर सकते हैं",
+        "te": "మీ ఆస్తి ఏ స్థితిలో ఉన్నా, మేము సహాయం చేయగలం",
+        "kn": "ನಿಮ್ಮ ಆಸ್ತಿ ಯಾವ ಸ್ಥಿತಿಯಲ್ಲಿದ್ದರೂ, ನಾವು ಸಹಾಯ ಮಾಡಬಹುದು",
+        "ml": "നിങ്ങളുടെ പ്രോപ്പർട്ടി ഏത് അവസ്ഥയിലായാലും, ഞങ്ങൾക്ക് സഹായിക്കാനാകും"
+      },
+      "listing.page.situations.3": {
+        "en": "Selling a Property",
+        "ta": "சொத்தை விற்பது",
+        "hi": "प्रॉपर्टी बेचना",
+        "te": "ఆస్తిని అమ్మడం",
+        "kn": "ಆಸ್ತಿ ಮಾರಾಟ",
+        "ml": "പ്രോപ്പർട്ടി വിൽക്കൽ"
+      },
+      "listing.page.situations.4": {
+        "en": "Looking to sell? We help you reach genuine buyers and manage the process end-to-end.",
+        "ta": "விற்க விரும்புகிறீர்களா? உண்மையான வாங்குபவர்களைச் சென்றடையவும் செயல்முறையை முழுமையாக நிர்வகிக்கவும் உதவுகிறோம்.",
+        "hi": "बेचना चाहते हैं? हम असली खरीदारों तक पहुँचने और पूरी प्रक्रिया संभालने में मदद करते हैं।",
+        "te": "అమ్మాలనుకుంటున్నారా? నిజమైన కొనుగోలుదారులను చేరుకోవడానికి మరియు ప్రక్రియను పూర్తిగా నిర్వహించడానికి సహాయం చేస్తాం.",
+        "kn": "ಮಾರಾಟ ಮಾಡಲು ಬಯಸುತ್ತೀರಾ? ನಿಜವಾದ ಖರೀದಿದಾರರನ್ನು ತಲುಪಲು ಮತ್ತು ಪ್ರಕ್ರಿಯೆಯನ್ನು ಸಂಪೂರ್ಣವಾಗಿ ನಿರ್ವಹಿಸಲು ಸಹಾಯ ಮಾಡುತ್ತೇವೆ.",
+        "ml": "വിൽക്കാൻ ആഗ്രഹിക്കുന്നുവോ? യഥാർത്ഥ വാങ്ങുന്നവരിലേക്ക് എത്താനും പ്രക്രിയ പൂർണ്ണമായി കൈകാര്യം ചെയ്യാനും ഞങ്ങൾ സഹായിക്കുന്നു."
+      },
+      "listing.page.situations.5": {
+        "en": "Leasing a Property",
+        "ta": "சொத்தை குத்தகைக்கு விடுவது",
+        "hi": "प्रॉपर्टी लीज़ पर देना",
+        "te": "ఆస్తిని లీజుకు ఇవ్వడం",
+        "kn": "ಆಸ್ತಿಯನ್ನು ಗುತ್ತಿಗೆಗೆ ನೀಡುವುದು",
+        "ml": "പ്രോപ്പർട്ടി ലീസിന് നൽകൽ"
+      },
+      "listing.page.situations.6": {
+        "en": "Want to lease your property? We connect you with suitable tenants and coordinate the details.",
+        "ta": "உங்கள் சொத்தை குத்தகைக்கு விட விரும்புகிறீர்களா? பொருத்தமான வாடகைதாரர்களுடன் இணைத்து விவரங்களை ஒருங்கிணைக்கிறோம்.",
+        "hi": "प्रॉपर्टी लीज़ पर देना चाहते हैं? हम उपयुक्त किरायेदारों से जोड़ते हैं और विवरण का समन्वय करते हैं।",
+        "te": "మీ ఆస్తిని లీజుకు ఇవ్వాలనుకుంటున్నారా? తగిన అద్దెదారులతో అనుసంధానించి వివరాలను సమన్వయం చేస్తాం.",
+        "kn": "ನಿಮ್ಮ ಆಸ್ತಿಯನ್ನು ಗುತ್ತಿಗೆಗೆ ನೀಡಲು ಬಯಸುತ್ತೀರಾ? ಸೂಕ್ತ ಬಾಡಿಗೆದಾರರೊಂದಿಗೆ ಸಂಪರ್ಕ ಕಲ್ಪಿಸಿ ವಿವರಗಳನ್ನು ಸಮನ್ವಯಗೊಳಿಸುತ್ತೇವೆ.",
+        "ml": "നിങ്ങളുടെ പ്രോപ്പർട്ടി ലീസിന് നൽകാൻ ആഗ്രഹിക്കുന്നുവോ? അനുയോജ്യരായ വാടകക്കാരുമായി ബന്ധിപ്പിച്ച് വിശദാംശങ്ങൾ ഏകോപിപ്പിക്കുന്നു."
+      },
+      "listing.page.situations.7": {
+        "en": "Managing an Investment Property",
+        "ta": "முதலீட்டுச் சொத்தை நிர்வகித்தல்",
+        "hi": "निवेश प्रॉपर्टी का प्रबंधन",
+        "te": "పెట్టుబడి ఆస్తి నిర్వహణ",
+        "kn": "ಹೂಡಿಕೆ ಆಸ್ತಿ ನಿರ್ವಹಣೆ",
+        "ml": "നിക്ഷേപ പ്രോപ്പർട്ടി കൈകാര്യം ചെയ്യൽ"
+      },
+      "listing.page.situations.8": {
+        "en": "Own a property purely as an investment? We help you stay on top of its market position.",
+        "ta": "சொத்தை முழுமையாக முதலீட்டுக்காக வைத்திருக்கிறீர்களா? அதன் சந்தை நிலையை அறிந்திருக்க உதவுகிறோம்.",
+        "hi": "प्रॉपर्टी केवल निवेश के रूप में रखते हैं? हम उसकी मार्केट स्थिति पर नज़र रखने में मदद करते हैं।",
+        "te": "ఆస్తిని పూర్తిగా పెట్టుబడిగా కలిగి ఉన్నారా? దాని మార్కెట్ స్థితిని గమనించడంలో సహాయం చేస్తాం.",
+        "kn": "ಆಸ್ತಿಯನ್ನು ಸಂಪೂರ್ಣವಾಗಿ ಹೂಡಿಕೆಗಾಗಿ ಹೊಂದಿದ್ದೀರಾ? ಅದರ ಮಾರುಕಟ್ಟೆ ಸ್ಥಿತಿಯ ಬಗ್ಗೆ ತಿಳಿದಿರಲು ಸಹಾಯ ಮಾಡುತ್ತೇವೆ.",
+        "ml": "പ്രോപ്പർട്ടി പൂർണ്ണമായും നിക്ഷേപമായി കൈവശം വച്ചിരിക്കുന്നുവോ? അതിന്റെ വിപണി നില അറിയാൻ ഞങ്ങൾ സഹായിക്കുന്നു."
+      },
+      "listing.page.situations.9": {
+        "en": "Land or Plot Sale",
+        "ta": "நிலம் அல்லது மனை விற்பனை",
+        "hi": "ज़मीन या प्लॉट की बिक्री",
+        "te": "భూమి లేదా ప్లాట్ అమ్మకం",
+        "kn": "ಭೂಮಿ ಅಥವಾ ನಿವೇಶನ ಮಾರಾಟ",
+        "ml": "ഭൂമി അല്ലെങ്കിൽ പ്ലോട്ട് വിൽപ്പന"
+      },
+      "listing.page.situations.10": {
+        "en": "Selling land or a plot? We help present it clearly to genuinely interested buyers.",
+        "ta": "நிலம் அல்லது மனையை விற்கிறீர்களா? ஆர்வமுள்ள வாங்குபவர்களுக்குத் தெளிவாக வழங்க உதவுகிறோம்.",
+        "hi": "ज़मीन या प्लॉट बेच रहे हैं? हम इच्छुक खरीदारों के सामने उसे स्पष्ट रूप से प्रस्तुत करने में मदद करते हैं।",
+        "te": "భూమి లేదా ప్లాట్ అమ్ముతున్నారా? ఆసక్తి ఉన్న కొనుగోలుదారులకు స్పష్టంగా ప్రదర్శించడంలో సహాయం చేస్తాం.",
+        "kn": "ಭೂಮಿ ಅಥವಾ ನಿವೇಶನ ಮಾರಾಟ ಮಾಡುತ್ತಿದ್ದೀರಾ? ಆಸಕ್ತ ಖರೀದಿದಾರರಿಗೆ ಸ್ಪಷ್ಟವಾಗಿ ಪ್ರಸ್ತುತಪಡಿಸಲು ಸಹಾಯ ಮಾಡುತ್ತೇವೆ.",
+        "ml": "ഭൂമിയോ പ്ലോട്ടോ വിൽക്കുന്നുവോ? താൽപ്പര്യമുള്ള വാങ്ങുന്നവർക്ക് വ്യക്തമായി അവതരിപ്പിക്കാൻ ഞങ്ങൾ സഹായിക്കുന്നു."
+      },
+      "listing.page.situations.11": {
+        "en": "Joint Development Opportunity",
+        "ta": "கூட்டு மேம்பாட்டு வாய்ப்பு",
+        "hi": "संयुक्त विकास का अवसर",
+        "te": "జాయింట్ డెవలప్‌మెంట్ అవకాశం",
+        "kn": "ಜಂಟಿ ಅಭಿವೃದ್ಧಿ ಅವಕಾಶ",
+        "ml": "ജോയിന്റ് ഡെവലപ്മെന്റ് അവസരം"
+      },
+      "listing.page.situations.12": {
+        "en": "Have land suited for development? We can discuss joint development possibilities with our partners.",
+        "ta": "மேம்பாட்டுக்கு ஏற்ற நிலம் உள்ளதா? எங்கள் பங்காளிகளுடன் கூட்டு மேம்பாட்டு சாத்தியங்களை விவாதிக்கலாம்.",
+        "hi": "क्या आपके पास विकास के लिए उपयुक्त ज़मीन है? हम अपने साझेदारों के साथ संयुक्त विकास की संभावनाओं पर चर्चा कर सकते हैं।",
+        "te": "అభివృద్ధికి అనువైన భూమి ఉందా? మా భాగస్వాములతో జాయింట్ డెవలప్‌మెంట్ అవకాశాలను చర్చించవచ్చు.",
+        "kn": "ಅಭಿವೃದ್ಧಿಗೆ ಸೂಕ್ತವಾದ ಭೂಮಿ ಇದೆಯೇ? ನಮ್ಮ ಪಾಲುದಾರರೊಂದಿಗೆ ಜಂಟಿ ಅಭಿವೃದ್ಧಿ ಸಾಧ್ಯತೆಗಳನ್ನು ಚರ್ಚಿಸಬಹುದು.",
+        "ml": "ഡെവലപ്മെന്റിന് അനുയോജ്യമായ ഭൂമി ഉണ്ടോ? ഞങ്ങളുടെ പങ്കാളികളുമായി ജോയിന്റ് ഡെവലപ്മെന്റ് സാധ്യതകൾ ചർച്ച ചെയ്യാം."
+      },
+      "listing.page.situations.13": {
+        "en": "Property Advisory Requirement",
+        "ta": "சொத்து ஆலோசனைத் தேவை",
+        "hi": "प्रॉपर्टी सलाह की आवश्यकता",
+        "te": "ఆస్తి సలహా అవసరం",
+        "kn": "ಆಸ್ತಿ ಸಲಹಾ ಅಗತ್ಯ",
+        "ml": "പ്രോപ്പർട്ടി ഉപദേശ ആവശ്യം"
+      },
+      "listing.page.situations.14": {
+        "en": "Not sure of your next step? Our team can walk you through the options available to you.",
+        "ta": "அடுத்த படி குறித்து உறுதியாக இல்லையா? உங்களுக்கு உள்ள வாய்ப்புகளை எங்கள் குழு விளக்கும்.",
+        "hi": "अगला कदम तय नहीं है? हमारी टीम आपके उपलब्ध विकल्प समझा सकती है।",
+        "te": "తదుపరి అడుగు ఏమిటో తెలియదా? మీకు అందుబాటులో ఉన్న ఎంపికలను మా బృందం వివరిస్తుంది.",
+        "kn": "ಮುಂದಿನ ಹೆಜ್ಜೆ ಖಚಿತವಿಲ್ಲವೇ? ನಿಮಗೆ ಲಭ್ಯವಿರುವ ಆಯ್ಕೆಗಳನ್ನು ನಮ್ಮ ತಂಡ ವಿವರಿಸುತ್ತದೆ.",
+        "ml": "അടുത്ത ചുവട് ഉറപ്പില്ലേ? നിങ്ങൾക്ക് ലഭ്യമായ ഓപ്ഷനുകൾ ഞങ്ങളുടെ ടീം വിശദീകരിക്കും."
+      },
+      "listing.page.faq.1": {
+        "en": "FAQ",
+        "ta": "அடிக்கடி கேட்கப்படும் கேள்விகள்",
+        "hi": "अक्सर पूछे जाने वाले प्रश्न",
+        "te": "తరచుగా అడిగే ప్రశ్నలు",
+        "kn": "ಪದೇ ಪದೇ ಕೇಳುವ ಪ್ರಶ್ನೆಗಳು",
+        "ml": "പതിവ് ചോദ്യങ്ങൾ"
+      },
+      "listing.page.faq.2": {
+        "en": "Questions Property Owners Ask",
+        "ta": "சொத்து உரிமையாளர்கள் கேட்கும் கேள்விகள்",
+        "hi": "प्रॉपर्टी ओनर अक्सर क्या पूछते हैं",
+        "te": "ఆస్తి యజమానులు అడిగే ప్రశ్నలు",
+        "kn": "ಆಸ್ತಿ ಮಾಲೀಕರು ಕೇಳುವ ಪ್ರಶ್ನೆಗಳು",
+        "ml": "പ്രോപ്പർട്ടി ഉടമകൾ ചോദിക്കുന്ന ചോദ്യങ്ങൾ"
+      },
+      "listing.page.faq.3": {
+        "en": "What information do I need to provide?",
+        "ta": "நான் என்ன தகவல்களை வழங்க வேண்டும்?",
+        "hi": "मुझे कौन-सी जानकारी देनी होगी?",
+        "te": "నేను ఏ సమాచారం ఇవ్వాలి?",
+        "kn": "ನಾನು ಯಾವ ಮಾಹಿತಿ ನೀಡಬೇಕು?",
+        "ml": "ഞാൻ എന്ത് വിവരങ്ങളാണ് നൽകേണ്ടത്?"
+      },
+      "listing.page.faq.4": {
+        "en": "Basic contact details along with your property's type, location, area and what you're looking to do with it (sale, rental or joint venture). Anything else can be added under Additional Details.",
+        "ta": "அடிப்படை தொடர்பு விவரங்களுடன் உங்கள் சொத்தின் வகை, இருப்பிடம், பரப்பளவு மற்றும் அதை என்ன செய்ய விரும்புகிறீர்கள் (விற்பனை, வாடகை அல்லது கூட்டு மேம்பாடு) என்பதை வழங்குங்கள். மற்றவற்றை கூடுதல் விவரங்கள் பகுதியில் சேர்க்கலாம்.",
+        "hi": "बुनियादी संपर्क विवरण, साथ ही प्रॉपर्टी का प्रकार, स्थान, क्षेत्रफल और आप उसके साथ क्या करना चाहते हैं (बिक्री, किराया या संयुक्त विकास)। बाकी सब कुछ अतिरिक्त विवरण में जोड़ा जा सकता है।",
+        "te": "ప్రాథమిక సంప్రదింపు వివరాలతో పాటు మీ ఆస్తి రకం, స్థానం, విస్తీర్ణం మరియు దానితో మీరు ఏమి చేయాలనుకుంటున్నారో (అమ్మకం, అద్దె లేదా జాయింట్ వెంచర్). మిగతావి అదనపు వివరాల్లో జోడించవచ్చు.",
+        "kn": "ಮೂಲ ಸಂಪರ್ಕ ವಿವರಗಳೊಂದಿಗೆ ನಿಮ್ಮ ಆಸ್ತಿಯ ಪ್ರಕಾರ, ಸ್ಥಳ, ವಿಸ್ತೀರ್ಣ ಮತ್ತು ಅದರೊಂದಿಗೆ ನೀವು ಏನು ಮಾಡಲು ಬಯಸುತ್ತೀರಿ (ಮಾರಾಟ, ಬಾಡಿಗೆ ಅಥವಾ ಜಂಟಿ ಅಭಿವೃದ್ಧಿ). ಉಳಿದವನ್ನು ಹೆಚ್ಚುವರಿ ವಿವರಗಳಲ್ಲಿ ಸೇರಿಸಬಹುದು.",
+        "ml": "അടിസ്ഥാന ബന്ധപ്പെടൽ വിവരങ്ങളോടൊപ്പം പ്രോപ്പർട്ടിയുടെ തരം, സ്ഥലം, വിസ്തീർണ്ണം, അതുമായി നിങ്ങൾ എന്ത് ചെയ്യാൻ ആഗ്രഹിക്കുന്നു (വിൽപ്പന, വാടക അല്ലെങ്കിൽ ജോയിന്റ് വെഞ്ചർ). മറ്റുള്ളവ കൂടുതൽ വിശദാംശങ്ങളിൽ ചേർക്കാം."
+      },
+      "listing.page.faq.5": {
+        "en": "Can I list residential and commercial property?",
+        "ta": "குடியிருப்பு மற்றும் வணிகச் சொத்துகளைப் பட்டியலிடலாமா?",
+        "hi": "क्या मैं आवासीय और व्यावसायिक प्रॉपर्टी लिस्ट कर सकता/सकती हूँ?",
+        "te": "నేను నివాస మరియు వాణిజ్య ఆస్తులను లిస్ట్ చేయవచ్చా?",
+        "kn": "ನಾನು ವಸತಿ ಮತ್ತು ವಾಣಿಜ್ಯ ಆಸ್ತಿಯನ್ನು ಪಟ್ಟಿ ಮಾಡಬಹುದೇ?",
+        "ml": "എനിക്ക് റസിഡൻഷ്യൽ, വാണിജ്യ പ്രോപ്പർട്ടി ലിസ്റ്റ് ചെയ്യാമോ?"
+      },
+      "listing.page.faq.6": {
+        "en": "Yes. Our form covers residential property types such as apartments, villas and independent houses, as well as commercial properties.",
+        "ta": "ஆம். எங்கள் படிவம் அடுக்குமாடி குடியிருப்புகள், வில்லாக்கள் மற்றும் தனி வீடுகள் போன்ற குடியிருப்புச் சொத்து வகைகளையும் வணிகச் சொத்துகளையும் உள்ளடக்கியது.",
+        "hi": "हाँ। हमारा फ़ॉर्म अपार्टमेंट, विला और इंडिपेंडेंट हाउस जैसे आवासीय प्रकारों के साथ-साथ व्यावसायिक प्रॉपर्टी को भी शामिल करता है।",
+        "te": "అవును. మా ఫారమ్ అపార్ట్‌మెంట్లు, విల్లాలు మరియు ఇండిపెండెంట్ హౌస్‌ల వంటి నివాస ఆస్తి రకాలతో పాటు వాణిజ్య ఆస్తులను కూడా కవర్ చేస్తుంది.",
+        "kn": "ಹೌದು. ನಮ್ಮ ಫಾರ್ಮ್ ಅಪಾರ್ಟ್‌ಮೆಂಟ್, ವಿಲ್ಲಾ ಮತ್ತು ಸ್ವತಂತ್ರ ಮನೆಗಳಂತಹ ವಸತಿ ಆಸ್ತಿ ಪ್ರಕಾರಗಳನ್ನು ಹಾಗೂ ವಾಣಿಜ್ಯ ಆಸ್ತಿಗಳನ್ನು ಒಳಗೊಂಡಿದೆ.",
+        "ml": "അതെ. ഞങ്ങളുടെ ഫോം അപ്പാർട്ട്മെന്റുകൾ, വില്ലകൾ, ഇൻഡിപെൻഡന്റ് ഹൗസുകൾ പോലുള്ള റസിഡൻഷ്യൽ തരങ്ങളും വാണിജ്യ പ്രോപ്പർട്ടികളും ഉൾക്കൊള്ളുന്നു."
+      },
+      "listing.page.faq.7": {
+        "en": "Can you help with land and plots?",
+        "ta": "நிலம் மற்றும் மனைகளுக்கு உதவ முடியுமா?",
+        "hi": "क्या आप ज़मीन और प्लॉट में मदद कर सकते हैं?",
+        "te": "భూమి మరియు ప్లాట్లకు సహాయం చేయగలరా?",
+        "kn": "ಭೂಮಿ ಮತ್ತು ನಿವೇಶನಗಳಿಗೆ ಸಹಾಯ ಮಾಡಬಹುದೇ?",
+        "ml": "ഭൂമിയിലും പ്ലോട്ടുകളിലും സഹായിക്കാമോ?"
+      },
+      "listing.page.faq.8": {
+        "en": "Yes, land and plots are among the property types we regularly assist with — for sale, investment or joint development purposes.",
+        "ta": "ஆம், நிலம் மற்றும் மனைகள் நாங்கள் தொடர்ந்து உதவும் சொத்து வகைகளில் அடங்கும் — விற்பனை, முதலீடு அல்லது கூட்டு மேம்பாட்டு நோக்கங்களுக்காக.",
+        "hi": "हाँ, ज़मीन और प्लॉट उन प्रॉपर्टी प्रकारों में हैं जिनमें हम नियमित रूप से मदद करते हैं — बिक्री, निवेश या संयुक्त विकास के लिए।",
+        "te": "అవును, భూమి మరియు ప్లాట్లు మేము క్రమం తప్పకుండా సహాయం చేసే ఆస్తి రకాల్లో ఉన్నాయి — అమ్మకం, పెట్టుబడి లేదా జాయింట్ డెవలప్‌మెంట్ కోసం.",
+        "kn": "ಹೌದು, ಭೂಮಿ ಮತ್ತು ನಿವೇಶನಗಳು ನಾವು ನಿಯಮಿತವಾಗಿ ಸಹಾಯ ಮಾಡುವ ಆಸ್ತಿ ಪ್ರಕಾರಗಳಲ್ಲಿ ಸೇರಿವೆ — ಮಾರಾಟ, ಹೂಡಿಕೆ ಅಥವಾ ಜಂಟಿ ಅಭಿವೃದ್ಧಿ ಉದ್ದೇಶಕ್ಕಾಗಿ.",
+        "ml": "അതെ, ഭൂമിയും പ്ലോട്ടുകളും ഞങ്ങൾ പതിവായി സഹായിക്കുന്ന പ്രോപ്പർട്ടി തരങ്ങളിൽ ഉൾപ്പെടുന്നു — വിൽപ്പന, നിക്ഷേപം അല്ലെങ്കിൽ ജോയിന്റ് ഡെവലപ്മെന്റ് ആവശ്യങ്ങൾക്കായി."
+      },
+      "listing.page.faq.9": {
+        "en": "How does property marketing work?",
+        "ta": "சொத்து சந்தைப்படுத்தல் எவ்வாறு செயல்படுகிறது?",
+        "hi": "प्रॉपर्टी मार्केटिंग कैसे काम करती है?",
+        "te": "ఆస్తి మార్కెటింగ్ ఎలా పనిచేస్తుంది?",
+        "kn": "ಆಸ್ತಿ ಮಾರುಕಟ್ಟೆ ಹೇಗೆ ಕೆಲಸ ಮಾಡುತ್ತದೆ?",
+        "ml": "പ്രോപ്പർട്ടി മാർക്കറ്റിംഗ് എങ്ങനെ പ്രവർത്തിക്കുന്നു?"
+      },
+      "listing.page.faq.10": {
+        "en": "Once we understand your property, our team presents it clearly to genuine buyers, tenants or investors within our network, based on its category and location.",
+        "ta": "உங்கள் சொத்தை நாங்கள் புரிந்துகொண்டதும், அதன் வகை மற்றும் இருப்பிடத்தின் அடிப்படையில் எங்கள் வலையமைப்பில் உள்ள உண்மையான வாங்குபவர்கள், வாடகைதாரர்கள் அல்லது முதலீட்டாளர்களுக்கு எங்கள் குழு தெளிவாக வழங்கும்.",
+        "hi": "आपकी प्रॉपर्टी को समझने के बाद, हमारी टीम उसकी श्रेणी और स्थान के आधार पर उसे हमारे नेटवर्क के असली खरीदारों, किरायेदारों या निवेशकों के सामने स्पष्ट रूप से प्रस्तुत करती है।",
+        "te": "మీ ఆస్తిని అర్థం చేసుకున్న తర్వాత, దాని వర్గం మరియు స్థానం ఆధారంగా మా నెట్‌వర్క్‌లోని నిజమైన కొనుగోలుదారులు, అద్దెదారులు లేదా పెట్టుబడిదారులకు మా బృందం స్పష్టంగా ప్రదర్శిస్తుంది.",
+        "kn": "ನಿಮ್ಮ ಆಸ್ತಿಯನ್ನು ಅರ್ಥಮಾಡಿಕೊಂಡ ನಂತರ, ಅದರ ವರ್ಗ ಮತ್ತು ಸ್ಥಳದ ಆಧಾರದ ಮೇಲೆ ನಮ್ಮ ಜಾಲದ ನಿಜವಾದ ಖರೀದಿದಾರರು, ಬಾಡಿಗೆದಾರರು ಅಥವಾ ಹೂಡಿಕೆದಾರರಿಗೆ ನಮ್ಮ ತಂಡ ಸ್ಪಷ್ಟವಾಗಿ ಪ್ರಸ್ತುತಪಡಿಸುತ್ತದೆ.",
+        "ml": "നിങ്ങളുടെ പ്രോപ്പർട്ടി മനസ്സിലാക്കിയ ശേഷം, അതിന്റെ വിഭാഗവും സ്ഥലവും അടിസ്ഥാനമാക്കി ഞങ്ങളുടെ ശൃംഖലയിലെ യഥാർത്ഥ വാങ്ങുന്നവർ, വാടകക്കാർ, നിക്ഷേപകർ എന്നിവർക്ക് ഞങ്ങളുടെ ടീം വ്യക്തമായി അവതരിപ്പിക്കുന്നു."
+      },
+      "listing.page.faq.11": {
+        "en": "Can I list a property for lease?",
+        "ta": "சொத்தை குத்தகைக்குப் பட்டியலிடலாமா?",
+        "hi": "क्या मैं प्रॉपर्टी को लीज़ के लिए लिस्ट कर सकता/सकती हूँ?",
+        "te": "నేను ఆస్తిని లీజుకు లిస్ట్ చేయవచ్చా?",
+        "kn": "ನಾನು ಆಸ್ತಿಯನ್ನು ಗುತ್ತಿಗೆಗೆ ಪಟ್ಟಿ ಮಾಡಬಹುದೇ?",
+        "ml": "എനിക്ക് പ്രോപ്പർട്ടി ലീസിനായി ലിസ്റ്റ് ചെയ്യാമോ?"
+      },
+      "listing.page.faq.12": {
+        "en": "Yes — select \"Rental / Leasing\" under Listing Requirement in the form and our team will assist accordingly.",
+        "ta": "ஆம் — படிவத்தில் பட்டியலிடும் தேவை என்பதன் கீழ் \"வாடகை / குத்தகை\" என்பதைத் தேர்ந்தெடுங்கள், எங்கள் குழு அதற்கேற்ப உதவும்.",
+        "hi": "हाँ — फ़ॉर्म में लिस्टिंग की आवश्यकता के अंतर्गत \"किराया / लीज़\" चुनें और हमारी टीम उसी के अनुसार सहायता करेगी।",
+        "te": "అవును — ఫారమ్‌లో లిస్టింగ్ అవసరం కింద \"అద్దె / లీజు\" ఎంచుకోండి, మా బృందం తదనుగుణంగా సహాయం చేస్తుంది.",
+        "kn": "ಹೌದು — ಫಾರ್ಮ್‌ನಲ್ಲಿ ಪಟ್ಟಿ ಮಾಡುವ ಅಗತ್ಯ ಅಡಿಯಲ್ಲಿ \"ಬಾಡಿಗೆ / ಗುತ್ತಿಗೆ\" ಆಯ್ಕೆಮಾಡಿ, ನಮ್ಮ ತಂಡ ಅದಕ್ಕೆ ತಕ್ಕಂತೆ ಸಹಾಯ ಮಾಡುತ್ತದೆ.",
+        "ml": "അതെ — ഫോമിൽ ലിസ്റ്റിംഗ് ആവശ്യം എന്നതിന് കീഴിൽ \"വാടക / ലീസ്\" തിരഞ്ഞെടുക്കൂ, ഞങ്ങളുടെ ടീം അതനുസരിച്ച് സഹായിക്കും."
+      },
+      "listing.page.faq.13": {
+        "en": "Can you assist with joint development opportunities?",
+        "ta": "கூட்டு மேம்பாட்டு வாய்ப்புகளில் உதவ முடியுமா?",
+        "hi": "क्या आप संयुक्त विकास के अवसरों में सहायता कर सकते हैं?",
+        "te": "జాయింట్ డెవలప్‌మెంట్ అవకాశాల్లో సహాయం చేయగలరా?",
+        "kn": "ಜಂಟಿ ಅಭಿವೃದ್ಧಿ ಅವಕಾಶಗಳಿಗೆ ಸಹಾಯ ಮಾಡಬಹುದೇ?",
+        "ml": "ജോയിന്റ് ഡെവലപ്മെന്റ് അവസരങ്ങളിൽ സഹായിക്കാമോ?"
+      },
+      "listing.page.faq.14": {
+        "en": "Yes. If your land may be suited for joint development, select \"Joint Venture\" in the form and our team will discuss the possibilities with you.",
+        "ta": "ஆம். உங்கள் நிலம் கூட்டு மேம்பாட்டுக்கு ஏற்றதாக இருந்தால், படிவத்தில் \"கூட்டு மேம்பாடு\" என்பதைத் தேர்ந்தெடுங்கள்; சாத்தியங்களை எங்கள் குழு உங்களுடன் விவாதிக்கும்.",
+        "hi": "हाँ। यदि आपकी ज़मीन संयुक्त विकास के लिए उपयुक्त हो सकती है, तो फ़ॉर्म में \"संयुक्त विकास\" चुनें और हमारी टीम आपसे संभावनाओं पर चर्चा करेगी।",
+        "te": "అవును. మీ భూమి జాయింట్ డెవలప్‌మెంట్‌కు అనువైనదైతే, ఫారమ్‌లో \"జాయింట్ వెంచర్\" ఎంచుకోండి; అవకాశాలను మా బృందం మీతో చర్చిస్తుంది.",
+        "kn": "ಹೌದು. ನಿಮ್ಮ ಭೂಮಿ ಜಂಟಿ ಅಭಿವೃದ್ಧಿಗೆ ಸೂಕ್ತವಾಗಿದ್ದರೆ, ಫಾರ್ಮ್‌ನಲ್ಲಿ \"ಜಂಟಿ ಅಭಿವೃದ್ಧಿ\" ಆಯ್ಕೆಮಾಡಿ; ಸಾಧ್ಯತೆಗಳನ್ನು ನಮ್ಮ ತಂಡ ನಿಮ್ಮೊಂದಿಗೆ ಚರ್ಚಿಸುತ್ತದೆ.",
+        "ml": "അതെ. നിങ്ങളുടെ ഭൂമി ജോയിന്റ് ഡെവലപ്മെന്റിന് അനുയോജ്യമാണെങ്കിൽ, ഫോമിൽ \"ജോയിന്റ് വെഞ്ചർ\" തിരഞ്ഞെടുക്കൂ; സാധ്യതകൾ ഞങ്ങളുടെ ടീം നിങ്ങളുമായി ചർച്ച ചെയ്യും."
+      },
+      "listing.page.faq.15": {
+        "en": "What happens after I submit my property?",
+        "ta": "நான் சொத்தைச் சமர்ப்பித்த பிறகு என்ன நடக்கும்?",
+        "hi": "प्रॉपर्टी जमा करने के बाद क्या होता है?",
+        "te": "నా ఆస్తిని సమర్పించిన తర్వాత ఏమి జరుగుతుంది?",
+        "kn": "ನಾನು ಆಸ್ತಿಯನ್ನು ಸಲ್ಲಿಸಿದ ನಂತರ ಏನಾಗುತ್ತದೆ?",
+        "ml": "പ്രോപ്പർട്ടി സമർപ്പിച്ച ശേഷം എന്ത് സംഭവിക്കും?"
+      },
+      "listing.page.faq.16": {
+        "en": "Our team reviews the details you've shared and gets in touch to discuss your property and the next steps.",
+        "ta": "நீங்கள் பகிர்ந்த விவரங்களை எங்கள் குழு மதிப்பாய்வு செய்து, உங்கள் சொத்து மற்றும் அடுத்த படிகளைப் பற்றி விவாதிக்க உங்களைத் தொடர்புகொள்ளும்.",
+        "hi": "हमारी टीम आपके द्वारा दिए गए विवरण की समीक्षा करती है और आपकी प्रॉपर्टी तथा अगले चरणों पर चर्चा के लिए आपसे संपर्क करती है।",
+        "te": "మీరు పంచుకున్న వివరాలను మా బృందం సమీక్షించి, మీ ఆస్తి మరియు తదుపరి దశలను చర్చించడానికి మిమ్మల్ని సంప్రదిస్తుంది.",
+        "kn": "ನೀವು ಹಂಚಿಕೊಂಡ ವಿವರಗಳನ್ನು ನಮ್ಮ ತಂಡ ಪರಿಶೀಲಿಸಿ, ನಿಮ್ಮ ಆಸ್ತಿ ಮತ್ತು ಮುಂದಿನ ಹಂತಗಳ ಬಗ್ಗೆ ಚರ್ಚಿಸಲು ನಿಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸುತ್ತದೆ.",
+        "ml": "നിങ്ങൾ പങ്കിട്ട വിവരങ്ങൾ ഞങ്ങളുടെ ടീം അവലോകനം ചെയ്ത് നിങ്ങളുടെ പ്രോപ്പർട്ടിയും തുടർ ഘട്ടങ്ങളും ചർച്ച ചെയ്യാൻ നിങ്ങളെ ബന്ധപ്പെടും."
+      },
+      "listing.page.cta.1": {
+        "en": "Let's Talk About Your Property",
+        "ta": "உங்கள் சொத்து பற்றி பேசலாம்",
+        "hi": "आइए आपकी प्रॉपर्टी के बारे में बात करें",
+        "te": "మీ ఆస్తి గురించి మాట్లాడదాం",
+        "kn": "ನಿಮ್ಮ ಆಸ್ತಿಯ ಬಗ್ಗೆ ಮಾತನಾಡೋಣ",
+        "ml": "നമുക്ക് നിങ്ങളുടെ പ്രോപ്പർട്ടിയെക്കുറിച്ച് സംസാരിക്കാം"
+      },
+      "listing.page.cta.2": {
+        "en": "Share your property details and our team will get in touch to discuss the best way forward.",
+        "ta": "உங்கள் சொத்து விவரங்களைப் பகிருங்கள்; சிறந்த முன்னேற்ற வழியைப் பற்றி விவாதிக்க எங்கள் குழு உங்களைத் தொடர்புகொள்ளும்.",
+        "hi": "अपनी प्रॉपर्टी का विवरण साझा करें और हमारी टीम सबसे अच्छा आगे का रास्ता तय करने के लिए आपसे संपर्क करेगी।",
+        "te": "మీ ఆస్తి వివరాలను పంచుకోండి, ఉత్తమ ముందడుగు గురించి చర్చించడానికి మా బృందం మిమ్మల్ని సంప్రదిస్తుంది.",
+        "kn": "ನಿಮ್ಮ ಆಸ್ತಿ ವಿವರಗಳನ್ನು ಹಂಚಿಕೊಳ್ಳಿ, ಉತ್ತಮ ಮುಂದಿನ ದಾರಿಯ ಬಗ್ಗೆ ಚರ್ಚಿಸಲು ನಮ್ಮ ತಂಡ ನಿಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸುತ್ತದೆ.",
+        "ml": "നിങ്ങളുടെ പ്രോപ്പർട്ടി വിവരങ്ങൾ പങ്കിടൂ, മികച്ച മുന്നോട്ടുള്ള വഴി ചർച്ച ചെയ്യാൻ ഞങ്ങളുടെ ടീം നിങ്ങളെ ബന്ധപ്പെടും."
+      },
+      "listing.page.intro.3": {
+        "en": "Tell us about your property and what you're looking to do with it — our team will review the details and get in touch to discuss the next steps.",
+        "ta": "உங்கள் சொத்தைப் பற்றியும் அதை என்ன செய்ய விரும்புகிறீர்கள் என்பதையும் எங்களிடம் கூறுங்கள் — எங்கள் குழு விவரங்களை மதிப்பாய்வு செய்து அடுத்த படிகளைப் பற்றி விவாதிக்க உங்களைத் தொடர்புகொள்ளும்.",
+        "hi": "हमें अपनी प्रॉपर्टी के बारे में बताएँ और यह भी कि आप उसके साथ क्या करना चाहते हैं — हमारी टीम विवरण की समीक्षा करेगी और अगले चरणों पर चर्चा के लिए आपसे संपर्क करेगी।",
+        "te": "మీ ఆస్తి గురించి మరియు దానితో మీరు ఏమి చేయాలనుకుంటున్నారో మాకు చెప్పండి — మా బృందం వివరాలను సమీక్షించి, తదుపరి దశలను చర్చించడానికి మిమ్మల్ని సంప్రదిస్తుంది.",
+        "kn": "ನಿಮ್ಮ ಆಸ್ತಿಯ ಬಗ್ಗೆ ಮತ್ತು ಅದರೊಂದಿಗೆ ನೀವು ಏನು ಮಾಡಲು ಬಯಸುತ್ತೀರಿ ಎಂಬುದನ್ನು ತಿಳಿಸಿ — ನಮ್ಮ ತಂಡ ವಿವರಗಳನ್ನು ಪರಿಶೀಲಿಸಿ ಮುಂದಿನ ಹಂತಗಳ ಬಗ್ಗೆ ಚರ್ಚಿಸಲು ನಿಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸುತ್ತದೆ.",
+        "ml": "നിങ്ങളുടെ പ്രോപ്പർട്ടിയെക്കുറിച്ചും അതുമായി എന്ത് ചെയ്യാൻ ആഗ്രഹിക്കുന്നു എന്നതിനെക്കുറിച്ചും ഞങ്ങളോട് പറയൂ — ഞങ്ങളുടെ ടീം വിവരങ്ങൾ അവലോകനം ചെയ്ത് തുടർ ഘട്ടങ്ങൾ ചർച്ച ചെയ്യാൻ നിങ്ങളെ ബന്ധപ്പെടും."
+      },
+      "listing.post.title": {
+        "en": "Log in to post your property",
+        "ta": "உங்கள் சொத்தை இடுகையிட உள்நுழையுங்கள்",
+        "hi": "अपनी प्रॉपर्टी पोस्ट करने के लिए लॉग इन करें",
+        "te": "మీ ఆస్తిని పోస్ట్ చేయడానికి లాగిన్ అవ్వండి",
+        "kn": "ನಿಮ್ಮ ಆಸ್ತಿಯನ್ನು ಪೋಸ್ಟ್ ಮಾಡಲು ಲಾಗಿನ್ ಮಾಡಿ",
+        "ml": "നിങ്ങളുടെ പ്രോപ്പർട്ടി പോസ്റ്റ് ചെയ്യാൻ ലോഗിൻ ചെയ്യൂ"
+      },
+      "listing.post.subtitle": {
+        "en": "Sign in to continue. Your property details will be submitted to Aventrix Realty for review.",
+        "ta": "தொடர உள்நுழையுங்கள். உங்கள் சொத்து விவரங்கள் மதிப்பாய்வுக்காக அவென்ட்ரிக்ஸ் ரியால்டிக்கு சமர்ப்பிக்கப்படும்.",
+        "hi": "जारी रखने के लिए साइन इन करें। आपकी प्रॉपर्टी का विवरण समीक्षा के लिए Aventrix Realty को भेजा जाएगा।",
+        "te": "కొనసాగడానికి సైన్ ఇన్ చేయండి. మీ ఆస్తి వివరాలు సమీక్ష కోసం Aventrix Realtyకి సమర్పించబడతాయి.",
+        "kn": "ಮುಂದುವರಿಯಲು ಸೈನ್ ಇನ್ ಮಾಡಿ. ನಿಮ್ಮ ಆಸ್ತಿ ವಿವರಗಳನ್ನು ಪರಿಶೀಲನೆಗಾಗಿ Aventrix Realtyಗೆ ಸಲ್ಲಿಸಲಾಗುತ್ತದೆ.",
+        "ml": "തുടരാൻ സൈൻ ഇൻ ചെയ്യൂ. നിങ്ങളുടെ പ്രോപ്പർട്ടി വിവരങ്ങൾ അവലോകനത്തിനായി Aventrix Realty-ക്ക് സമർപ്പിക്കും."
+      },
+      "listing.post.email": {
+        "en": "Email address",
+        "ta": "மின்னஞ்சல் முகவரி",
+        "hi": "ईमेल पता",
+        "te": "ఇమెయిల్ చిరునామా",
+        "kn": "ಇಮೇಲ್ ವಿಳಾಸ",
+        "ml": "ഇമെയിൽ വിലാസം"
+      },
+      "listing.post.password": {
+        "en": "Password",
+        "ta": "கடவுச்சொல்",
+        "hi": "पासवर्ड",
+        "te": "పాస్‌వర్డ్",
+        "kn": "ಪಾಸ್‌ವರ್ಡ್",
+        "ml": "പാസ്‌വേഡ്"
+      },
+      "listing.post.passwordPlaceholder": {
+        "en": "Enter your password",
+        "ta": "உங்கள் கடவுச்சொல்லை உள்ளிடவும்",
+        "hi": "अपना पासवर्ड दर्ज करें",
+        "te": "మీ పాస్‌వర్డ్ నమోదు చేయండి",
+        "kn": "ನಿಮ್ಮ ಪಾಸ್‌ವರ್ಡ್ ನಮೂದಿಸಿ",
+        "ml": "നിങ്ങളുടെ പാസ്‌വേഡ് നൽകൂ"
+      },
+      "listing.post.submit": {
+        "en": "Log in and continue",
+        "ta": "உள்நுழைந்து தொடரவும்",
+        "hi": "लॉग इन करें और आगे बढ़ें",
+        "te": "లాగిన్ అయి కొనసాగండి",
+        "kn": "ಲಾಗಿನ್ ಮಾಡಿ ಮುಂದುವರಿಸಿ",
+        "ml": "ലോഗിൻ ചെയ്ത് തുടരുക"
+      },
+      "listing.post.newTo": {
+        "en": "New to Aventrix Realty?",
+        "ta": "அவென்ட்ரிக்ஸ் ரியால்டிக்குப் புதியவரா?",
+        "hi": "Aventrix Realty में नए हैं?",
+        "te": "Aventrix Realtyకి కొత్తవారా?",
+        "kn": "Aventrix Realtyಗೆ ಹೊಸಬರೇ?",
+        "ml": "Aventrix Realty-യിൽ പുതിയതാണോ?"
+      },
+      "listing.post.create": {
+        "en": "Create an account",
+        "ta": "கணக்கை உருவாக்கவும்",
+        "hi": "खाता बनाएँ",
+        "te": "ఖాతా సృష్టించండి",
+        "kn": "ಖಾತೆ ರಚಿಸಿ",
+        "ml": "അക്കൗണ്ട് സൃഷ്ടിക്കൂ"
+      },
+      "listing.post.thenReturn": {
+        "en": ", then return here to post your property.",
+        "ta": ", பின்னர் உங்கள் சொத்தை இடுகையிட இங்கு திரும்பவும்.",
+        "hi": ", फिर अपनी प्रॉपर्टी पोस्ट करने के लिए यहाँ लौटें।",
+        "te": ", ఆపై మీ ఆస్తిని పోస్ట్ చేయడానికి ఇక్కడికి తిరిగి రండి.",
+        "kn": ", ನಂತರ ನಿಮ್ಮ ಆಸ್ತಿಯನ್ನು ಪೋಸ್ಟ್ ಮಾಡಲು ಇಲ್ಲಿಗೆ ಹಿಂತಿರುಗಿ.",
+        "ml": ", തുടർന്ന് നിങ്ങളുടെ പ്രോപ്പർട്ടി പോസ്റ്റ് ചെയ്യാൻ ഇവിടേക്ക് മടങ്ങൂ."
+      },
+      "listing.post.unavailable": {
+        "en": "Sign-in service is unavailable. Please refresh and try again.",
+        "ta": "உள்நுழைவு சேவை கிடைக்கவில்லை. பக்கத்தை புதுப்பித்து மீண்டும் முயற்சிக்கவும்.",
+        "hi": "साइन-इन सेवा उपलब्ध नहीं है। कृपया पेज रीफ़्रेश करके पुनः प्रयास करें।",
+        "te": "సైన్-ఇన్ సేవ అందుబాటులో లేదు. దయచేసి పేజీని రిఫ్రెష్ చేసి మళ్లీ ప్రయత్నించండి.",
+        "kn": "ಸೈನ್-ಇನ್ ಸೇವೆ ಲಭ್ಯವಿಲ್ಲ. ದಯವಿಟ್ಟು ಪುಟವನ್ನು ರಿಫ್ರೆಶ್ ಮಾಡಿ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+        "ml": "സൈൻ-ഇൻ സേവനം ലഭ്യമല്ല. ദയവായി പേജ് റിഫ്രഷ് ചെയ്ത് വീണ്ടും ശ്രമിക്കുക."
+      },
+      "listing.post.sessionFailed": {
+        "en": "Could not verify your session. Please sign in again.",
+        "ta": "உங்கள் அமர்வைச் சரிபார்க்க முடியவில்லை. மீண்டும் உள்நுழையவும்.",
+        "hi": "आपका सत्र सत्यापित नहीं हो सका। कृपया फिर से साइन इन करें।",
+        "te": "మీ సెషన్‌ను ధృవీకరించలేకపోయాము. దయచేసి మళ్లీ సైన్ ఇన్ చేయండి.",
+        "kn": "ನಿಮ್ಮ ಸೆಷನ್ ಪರಿಶೀಲಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಮತ್ತೆ ಸೈನ್ ಇನ್ ಮಾಡಿ.",
+        "ml": "നിങ്ങളുടെ സെഷൻ പരിശോധിക്കാൻ കഴിഞ്ഞില്ല. ദയവായി വീണ്ടും സൈൻ ഇൻ ചെയ്യുക."
+      },
+      "listing.post.signingIn": {
+        "en": "Signing in…",
+        "ta": "உள்நுழைகிறது…",
+        "hi": "साइन इन हो रहा है…",
+        "te": "సైన్ ఇన్ అవుతోంది…",
+        "kn": "ಸೈನ್ ಇನ್ ಆಗುತ್ತಿದೆ…",
+        "ml": "സൈൻ ഇൻ ചെയ്യുന്നു…"
+      },
+      "listing.post.signInFailed": {
+        "en": "Sign-in failed. Please check your details.",
+        "ta": "உள்நுழைவு தோல்வியடைந்தது. உங்கள் விவரங்களைச் சரிபார்க்கவும்.",
+        "hi": "साइन-इन विफल रहा। कृपया अपना विवरण जाँचें।",
+        "te": "సైన్-ఇన్ విఫలమైంది. దయచేసి మీ వివరాలను తనిఖీ చేయండి.",
+        "kn": "ಸೈನ್-ಇನ್ ವಿಫಲವಾಗಿದೆ. ದಯವಿಟ್ಟು ನಿಮ್ಮ ವಿವರಗಳನ್ನು ಪರಿಶೀಲಿಸಿ.",
+        "ml": "സൈൻ-ഇൻ പരാജയപ്പെട്ടു. ദയവായി നിങ്ങളുടെ വിവരങ്ങൾ പരിശോധിക്കുക."
+      },
+      "listing.post.invalidCredentials": {
+        "en": "Invalid login credentials",
+        "ta": "தவறான உள்நுழைவு விவரங்கள்",
+        "hi": "लॉगिन विवरण अमान्य है",
+        "te": "చెల్లని లాగిన్ వివరాలు",
+        "kn": "ಅಮಾನ್ಯ ಲಾಗಿನ್ ವಿವರಗಳು",
+        "ml": "അസാധുവായ ലോഗിൻ വിവരങ്ങൾ"
+      },
+      "listing.post.emailNotConfirmed": {
+        "en": "Email not confirmed",
+        "ta": "மின்னஞ்சல் உறுதிப்படுத்தப்படவில்லை",
+        "hi": "ईमेल की पुष्टि नहीं हुई है",
+        "te": "ఇమెయిల్ నిర్ధారించబడలేదు",
+        "kn": "ಇಮೇಲ್ ಅನ್ನು ದೃಢೀಕರಿಸಲಾಗಿಲ್ಲ",
+        "ml": "ഇമെയിൽ സ്ഥിരീകരിച്ചിട്ടില്ല"
+      },
+      "listing.validation.required": {
+        "en": "Please fill out this field.",
+        "ta": "இந்தப் புலத்தை நிரப்பவும்.",
+        "hi": "कृपया यह फ़ील्ड भरें।",
+        "te": "దయచేసి ఈ ఫీల్డ్‌ను పూరించండి.",
+        "kn": "ದಯವಿಟ್ಟು ಈ ಕ್ಷೇತ್ರವನ್ನು ಭರ್ತಿ ಮಾಡಿ.",
+        "ml": "ദയവായി ഈ ഫീൽഡ് പൂരിപ്പിക്കുക."
+      },
+      "listing.validation.select": {
+        "en": "Please select an item in the list.",
+        "ta": "பட்டியலில் இருந்து ஒரு விருப்பத்தைத் தேர்ந்தெடுக்கவும்.",
+        "hi": "कृपया सूची में से एक विकल्प चुनें।",
+        "te": "దయచేసి జాబితా నుండి ఒక ఎంపికను ఎంచుకోండి.",
+        "kn": "ದಯವಿಟ್ಟು ಪಟ್ಟಿಯಿಂದ ಒಂದು ಆಯ್ಕೆಯನ್ನು ಆರಿಸಿ.",
+        "ml": "ദയവായി ലിസ്റ്റിൽ നിന്ന് ഒരു ഇനം തിരഞ്ഞെടുക്കുക."
+      },
+      "listing.validation.email": {
+        "en": "Please enter a valid email address.",
+        "ta": "சரியான மின்னஞ்சல் முகவரியை உள்ளிடவும்.",
+        "hi": "कृपया एक मान्य ईमेल पता दर्ज करें।",
+        "te": "దయచేసి చెల్లుబాటు అయ్యే ఇమెయిల్ చిరునామాను నమోదు చేయండి.",
+        "kn": "ದಯವಿಟ್ಟು ಮಾನ್ಯ ಇಮೇಲ್ ವಿಳಾಸವನ್ನು ನಮೂದಿಸಿ.",
+        "ml": "ദയവായി സാധുവായ ഒരു ഇമെയിൽ വിലാസം നൽകുക."
       }
     }
 }
