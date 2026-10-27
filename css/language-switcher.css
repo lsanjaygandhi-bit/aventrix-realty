@@ -375,3 +375,11 @@
     transform: none !important;
   }
 }
+
+
+/* Desktop recovery: keep the language selector visible on desktop too. */
+@media (min-width: 769px) {
+  #avxLanguageSlot.avx-language-slot {
+    display: block !important;
+  }
+}
