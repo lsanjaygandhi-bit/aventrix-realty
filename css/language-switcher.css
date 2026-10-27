@@ -344,3 +344,17 @@
     right: 12px !important;
   }
 }
+
+
+/* Match the homepage selector's below-header position on every other mobile page. */
+@media (max-width: 768px) {
+  #avxLanguageSlot.avx-language-slot[data-avx-selector-placement="header"] {
+    position: fixed !important;
+    top: var(--avx-language-top, 140px) !important;
+    right: 12px !important;
+    left: auto !important;
+    z-index: 2147483647 !important;
+    width: 82px !important;
+    height: 27px !important;
+  }
+}
