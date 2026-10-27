@@ -3,3 +3,7 @@
 # configured before the widget is enabled publicly.
 [functions.ai-property-assistant]
 verify_jwt = false
+
+# Admin-only translation function: require a valid JWT (also the default).
+[functions.translate-property]
+verify_jwt = true

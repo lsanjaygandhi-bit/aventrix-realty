@@ -173,7 +173,7 @@
                 return;
             }
             const { data, error } = await sb.from("properties")
-                .select("slug, title, location, price_display, price_value, listing_type, category, sub_type, bedrooms, parking, built_up_area, facing, furnishing, featured_image, images, property_code, status")
+                .select("id, slug, title, location, price_display, price_value, listing_type, category, sub_type, bedrooms, parking, built_up_area, facing, furnishing, featured_image, images, property_code, status")
                 .eq("publish_status", "Published")
                 .limit(1000);
             if (error) throw error;

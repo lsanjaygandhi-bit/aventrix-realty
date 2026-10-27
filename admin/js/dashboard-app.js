@@ -30,6 +30,7 @@ function showToast(message, isError) {
         content: "Website Content",
         legacy: "Our Legacy",
         properties: "Properties",
+        translations: "Property Translations",
         testimonials: "Testimonials",
         realtors: "Our Realtors / Leadership",
         insights: "Insights",
@@ -51,6 +52,7 @@ function showToast(message, isError) {
         if (key === "content" && window.PageContentModule) window.PageContentModule.load();
         if (key === "legacy" && window.LegacyContentModule) window.LegacyContentModule.load();
         if (key === "properties" && window.PropertiesModule) window.PropertiesModule.load();
+        if (key === "translations" && window.PropertyTranslationsModule) window.PropertyTranslationsModule.load();
         if (key === "testimonials" && window.TestimonialsModule) window.TestimonialsModule.load();
         if (key === "realtors" && window.RealtorsModule) window.RealtorsModule.load();
         if (key === "insights" && window.InsightsModule) window.InsightsModule.load();
