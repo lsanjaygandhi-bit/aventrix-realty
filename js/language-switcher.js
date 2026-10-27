@@ -192,15 +192,7 @@
   }
 
   function addSelector() {
-    // The language selector is needed on the homepage only. Remove it
-    // completely from every other page so it cannot overlap page content.
-    var pagePath = location.pathname.replace(/^\/(ta|hi|te|kn|ml)(?=\/|$)/, "") || "/";
-    var isHomePage = pagePath === "/" || pagePath === "/index.html";
-    if (!isHomePage) {
-      var existingSlot = document.getElementById("avxLanguageSlot");
-      if (existingSlot) existingSlot.remove();
-      return;
-    }
+    // Show the language selector on every page; CSS limits it to mobile view.
     if (document.getElementById("avxLanguageSelect")) return;
 
     // Keep the control in a fixed, high-contrast position so it cannot be
@@ -236,8 +228,7 @@
       if (!document.body) return;
       var existing = document.getElementById("avxLanguageSelect");
       if (existing) return;
-      // Keep the language selector inside the hero so it scrolls away with
-      // the page instead of staying fixed over every section.
+      // Place it in the hero where available; otherwise use a mobile fixed position.
       var hero = document.querySelector(".hh-hero");
       if (hero) hero.appendChild(slot);
       else document.body.appendChild(slot);
@@ -274,7 +265,7 @@
     addSelector();
     var css = document.createElement("link");
     css.rel = "stylesheet";
-    css.href = "/css/language-switcher.css";
+    css.href = "/css/language-switcher.css?v=20261027-all-pages-mobile";
     document.head.appendChild(css);
 
     document.addEventListener("click", preserveProductionLocaleOnLink, true);
