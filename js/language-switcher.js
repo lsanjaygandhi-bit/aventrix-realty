@@ -228,13 +228,15 @@
       if (!document.body) return;
       var existing = document.getElementById("avxLanguageSelect");
       if (existing) return;
-      // Match the homepage placement: directly below the site header at the
-      // top-right on pages without the homepage hero.
-      var hero = document.querySelector(".hh-hero");
+      // Place the selector inside each page's hero, matching the homepage:
+      // same top-right inset measured from the hero's own top edge.
+      var hero = document.querySelector(".hh-hero, .list-hero, .sf-header, .property-hero, .hero-section");
       if (hero) {
+        if (window.getComputedStyle(hero).position === "static") hero.style.position = "relative";
         hero.appendChild(slot);
         slot.setAttribute("data-avx-selector-placement", "hero");
       } else {
+        // Pages without a hero use the top-right just below the shared header.
         document.body.appendChild(slot);
         slot.setAttribute("data-avx-selector-placement", "header");
         function alignBelowHeader() {
@@ -278,7 +280,7 @@
     addSelector();
     var css = document.createElement("link");
     css.rel = "stylesheet";
-    css.href = "/css/language-switcher.css?v=20261027-same-position";
+    css.href = "/css/language-switcher.css?v=20261027-hero-aligned";
     document.head.appendChild(css);
 
     document.addEventListener("click", preserveProductionLocaleOnLink, true);
