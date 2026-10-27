@@ -198,7 +198,7 @@ export default {
       .on("head", {
         element(element) {
           element.append('<script src="/js/low-data-mode.js" defer></script>', { html: true });
-          element.append('<script src="/js/language-switcher.js?v=20261022-emi-4" defer></script>', { html: true });
+          element.append('<script src="/js/language-switcher.js?v=20261027-all-pages-mobile" defer></script>', { html: true });
         }
       })
       .transform(assetResponse);
