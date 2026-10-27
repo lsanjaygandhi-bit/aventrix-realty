@@ -280,7 +280,7 @@
     addSelector();
     var css = document.createElement("link");
     css.rel = "stylesheet";
-    css.href = "/css/language-switcher.css?v=20261027-hero-aligned";
+    css.href = "/css/language-switcher.css?v=20261027-desktop-selector-restore";
     document.head.appendChild(css);
 
     document.addEventListener("click", preserveProductionLocaleOnLink, true);
