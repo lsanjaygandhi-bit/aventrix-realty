@@ -48,7 +48,7 @@ class Handler(SimpleHTTPRequestHandler):
                 with open(path, "rb") as f:
                     body = f.read()
                 text = body.decode("utf-8")
-                injection = '<script src="/js/language-switcher.js?v=20261022-emi-4" defer></script>'
+                injection = '<script src="/js/language-switcher.js?v=20261027-all-pages-mobile" defer></script>'
                 if "language-switcher.js" not in text:
                     text = re.sub(r"</head>", injection + "\n</head>", text, count=1, flags=re.I)
                 text = re.sub(r'<html([^>]*?)\slang=["\'][^"\']*["\']', r'<html\1 lang="' + getattr(self, "_avx_locale", "en") + '"', text, count=1, flags=re.I)
