@@ -228,10 +228,23 @@
       if (!document.body) return;
       var existing = document.getElementById("avxLanguageSelect");
       if (existing) return;
-      // Place it in the hero where available; otherwise use a mobile fixed position.
+      // Match the homepage placement: directly below the site header at the
+      // top-right on pages without the homepage hero.
       var hero = document.querySelector(".hh-hero");
-      if (hero) hero.appendChild(slot);
-      else document.body.appendChild(slot);
+      if (hero) {
+        hero.appendChild(slot);
+        slot.setAttribute("data-avx-selector-placement", "hero");
+      } else {
+        document.body.appendChild(slot);
+        slot.setAttribute("data-avx-selector-placement", "header");
+        function alignBelowHeader() {
+          var header = document.querySelector("header, .site-header, .main-header, #site-header, .header");
+          var bottom = header ? Math.round(header.getBoundingClientRect().bottom) : 0;
+          slot.style.setProperty("--avx-language-top", Math.max(110, bottom + 12) + "px");
+        }
+        alignBelowHeader();
+        window.addEventListener("resize", alignBelowHeader, { passive: true });
+      }
       // Mark successful mount for easy local DevTools verification.
       document.documentElement.setAttribute("data-avx-language-selector", "mounted");
     }
@@ -265,7 +278,7 @@
     addSelector();
     var css = document.createElement("link");
     css.rel = "stylesheet";
-    css.href = "/css/language-switcher.css?v=20261027-all-pages-mobile";
+    css.href = "/css/language-switcher.css?v=20261027-same-position";
     document.head.appendChild(css);
 
     document.addEventListener("click", preserveProductionLocaleOnLink, true);
