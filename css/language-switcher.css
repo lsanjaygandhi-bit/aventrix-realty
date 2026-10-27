@@ -322,3 +322,25 @@
     height: 27px !important;
   }
 }
+
+
+/* Language selector site-wide on mobile only. On pages with a hero it stays
+   at the hero's top-right; on other pages it floats below the site header. */
+@media (min-width: 769px) {
+  #avxLanguageSlot.avx-language-slot { display: none !important; }
+}
+@media (max-width: 768px) {
+  #avxLanguageSlot.avx-language-slot {
+    position: fixed !important;
+    top: 140px !important;
+    right: 12px !important;
+    left: auto !important;
+    z-index: 2147483647 !important;
+    display: block !important;
+  }
+  body:has(.hh-hero) .hh-hero #avxLanguageSlot.avx-language-slot {
+    position: absolute !important;
+    top: 12px !important;
+    right: 12px !important;
+  }
+}
