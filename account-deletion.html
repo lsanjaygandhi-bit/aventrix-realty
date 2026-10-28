@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script>
+    (function () {
+    // Manual scroll restoration: we save/restore scroll position
+    // ourselves (see script.js) so users returning via Back land back
+    // exactly where they were, instead of the browser's default
+    // (and often mistimed) automatic restoration.
+    if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+    }
+
+    function evaluateMobile() {
+        var coarsePointer = window.matchMedia &&
+            window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+        var mobileUA = /Android|iPhone|iPad|iPod|IEMobile|BlackBerry|Opera Mini|Mobile/i
+            .test(navigator.userAgent);
+        var narrowViewport = window.innerWidth <= 768;
+
+        var shouldBeMobile = coarsePointer || mobileUA || narrowViewport;
+        document.documentElement.classList.toggle('is-mobile', shouldBeMobile);
+    }
+
+    evaluateMobile();
+
+    var resizeTimer;
+    window.addEventListener('resize', function () {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(evaluateMobile, 150);
+    });
+})();
+    </script>
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico?v=3">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png?v=3">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png?v=3">
+    <link rel="icon" type="image/png" sizes="48x48" href="/images/favicon/favicon-48x48.png?v=3">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png?v=3">
+    <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon/android-chrome-192x192.png?v=3">
+    <link rel="icon" type="image/png" sizes="512x512" href="/images/favicon/android-chrome-512x512.png?v=3">
+    <link rel="manifest" href="/site.webmanifest?v=2">
+
+    <title>Delete Your Account | Aventrix Realty</title>
+
+    <meta name="description" content="Request deletion of your Aventrix Realty account and associated personal data.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://aventrixrealty.com/account-deletion.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Aventrix Realty">
+    <meta property="og:title" content="Delete Your Account | Aventrix Realty">
+    <meta property="og:description" content="Request deletion of your Aventrix Realty account and associated personal data.">
+    <meta property="og:url" content="https://aventrixrealty.com/account-deletion.html">
+    <meta property="og:image" content="https://aventrixrealty.com/images/og/aventrix-logo-og.jpg">
+    <meta property="og:image:secure_url" content="https://aventrixrealty.com/images/og/aventrix-logo-og.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Aventrix Realty">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Delete Your Account | Aventrix Realty">
+    <meta name="twitter:description" content="Request deletion of your Aventrix Realty account and associated personal data.">
+    <meta name="twitter:image" content="https://aventrixrealty.com/images/og/aventrix-logo-og.jpg">
+
+    <link rel="stylesheet" href="style.css?v=20261018-mobile-audit">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="css/site-footer.css?v=20261021">
+    <link rel="stylesheet" href="css/site-fixes.css?v=20261014">
+    <style>
+    .del-page{background:#fff;padding:64px 0}
+    .del-page .container{max-width:860px}
+    .del-page,.del-page p,.del-page li{color:#111;text-align:left}
+    .del-page h2{color:#000;text-align:left;margin:36px 0 12px}
+    .del-page h2::after{background:#0F3B2E}
+    .del-page a{color:#0F3B2E;text-decoration:underline;text-underline-offset:3px}
+    .del-page ol,.del-page ul{padding-left:22px;line-height:1.8}
+    .del-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:16px 0}
+    .del-card{border:1px solid #000;border-radius:12px;padding:20px 22px;background:#fff}
+    .del-card h3{margin:0 0 8px;color:#0F3B2E;font-size:18px}
+    .del-card ul{margin:0}
+    .del-form{border:2px solid #0F3B2E;border-radius:14px;padding:24px;margin-top:16px;background:#fff}
+    .del-form .form-grid{grid-template-columns:1fr}
+    .del-form label{font-weight:600;color:#000;display:block;margin-bottom:6px}
+    .del-form input[type="text"],.del-form input[type="email"]{border:1px solid #000}
+    .del-form input:focus{outline:3px solid #0F3B2E;outline-offset:1px}
+    .del-confirm{display:flex;gap:12px;align-items:flex-start;margin:18px 0;line-height:1.6;color:#000}
+    .del-confirm input{width:22px;height:22px;margin-top:3px;flex:0 0 auto;accent-color:#0F3B2E}
+    .del-form button{background:#0F3B2E;color:#fff;border:2px solid #0F3B2E;width:100%}
+    .del-form button:hover{background:#000;border-color:#000;color:#fff}
+    #success-message{border:2px solid #0F3B2E;border-radius:14px;background:#fff;margin-top:16px}
+    #success-message h3{color:#0F3B2E}
+    #success-message p{text-align:center;color:#000}
+    @media(max-width:700px){.del-page{padding:40px 0}.del-grid{grid-template-columns:1fr}.del-form{padding:18px}}
+    </style>
+</head>
+
+<body data-page-key="account-deletion">
+
+    <header class="header">
+    <div class="container nav">
+        <div class="logo">
+    <a href="index.html" class="logo-text">
+        <img src="images/aventrix-logo.png" alt="Aventrix Realty">
+    </a>
+</div>
+   <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" data-i18n-aria-label="shared.header.openMenu">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+        <!-- Mobile-only bell — matches index.html's header exactly
+             (site-wide header consistency). Stays visible on every
+             breakpoint, unlike the desktop one inside .nav-right
+             (hidden on mobile by an existing rule). -->
+        <div class="home-app-header-actions">
+            <a href="account.html" class="home-app-bell-btn" aria-label="My Account" data-i18n-aria-label="shared.header.myAccount">
+                <i class="far fa-circle-user" aria-hidden="true"></i>
+            </a>
+        </div>
+    <div class="menu-overlay" id="menuOverlay"></div>
+       <nav class="main-nav" data-hq="phones">
+
+    <a href="index.html" data-i18n="Home">Home</a>
+
+    <a href="about.html" data-i18n="About Us">About Us</a>
+
+    <a href="properties.html" data-i18n="Properties">Properties</a>
+
+    <a href="services.html" data-i18n="Services">Services</a>
+
+    <a href="list-with-us.html" data-i18n="List With Us">List With Us</a>
+
+    <a href="free-valuation.html" data-i18n="Free Valuation">Free Valuation</a>
+
+    <a href="joint-venture.html" data-i18n="Joint Venture">Joint Venture</a>
+
+    <div class="dropdown aventrix-tools-dropdown">
+      <a href="/property-tools.html" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+        <span><span class="nav-label-extra">Property </span>Tools</span>
+        <i class="fas fa-chevron-down" aria-hidden="true"></i>
+      </a>
+      <div class="dropdown-content aventrix-tools-menu" aria-hidden="true">
+        <a href="/property-tools.html" data-i18n="All Property Tools">All Property Tools</a>
+        <a href="/plot-area-calculator.html" data-i18n="Plot Area Calculator">Plot Area Calculator</a>
+        <a href="/nri-property-tax-calculator/">NRI Property Tax Calculator</a>
+        <a href="/land-knowledge/" data-i18n="Tamil Nadu Land Knowledge Centre">Tamil Nadu Land Knowledge Centre</a>
+        <a href="/about-chennai/" data-i18n="About Chennai">About Chennai</a>
+      </div>
+    </div>
+    <a href="nri-services.html" data-i18n="NRI Services">NRI Services</a>
+
+    <a href="contact.html" data-i18n="Contact">Contact</a>
+
+    <a href="/admin/" class="main-nav-admin" data-i18n="Admin">Admin</a>
+
+
+    <div class="mobile-menu-divider"></div>
+    <span class="mobile-menu-contact-label" data-i18n="CONTACT">CONTACT</span>
+    <a href="tel:+919176887770" class="mobile-menu-phone">📞 +91 91768 87770</a>
+    <a href="tel:+917092356222" class="mobile-menu-phone">📞 +91 70923 56222</a>
+
+
+    <div class="mobile-menu-socials">
+      <a href="https://wa.me/919176887770" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" data-site="whatsapp-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 3.5a8.5 8.5 0 0 0-7.3 12.8L3.5 20.5l4.4-1.2A8.5 8.5 0 1 0 12 3.5z"/><path d="M8.7 8.6c.2-.5.4-.5.6-.5h.5c.2 0 .4 0 .5.4.2.5.6 1.5.6 1.6.1.1.1.3 0 .4-.1.2-.1.3-.3.4-.1.2-.3.3-.4.5-.1.1-.3.3-.1.5.2.4 1 1.5 2 2.3 1.2 1 1 .8 1.3.7.2 0 .4-.2.5-.4.2-.2.4-.2.6-.1l1.4.7c.2.1.4.2.4.3.1.2.1 1-.3 1.4-.4.5-1.4.9-2 .9-.6 0-1.4-.1-3.3-1-2.4-1.1-3.9-3.4-4-3.6-.1-.2-1-1.3-1-2.5s.6-1.8.8-2z" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="https://www.instagram.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Instagram" data-site="social-instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="0.8" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="https://www.facebook.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Facebook" data-site="social-facebook">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M15 8.5h-2a1.5 1.5 0 0 0-1.5 1.5v2h3.4l-.4 3H11.5v7h-3v-7H6.5v-3h2V9.7C8.5 7 10 5.5 12.5 5.5H15v3z"/></svg>
+      </a>
+      <a href="https://maps.app.goo.gl/Gfs3JJ4VVN4cxU5G7?g_st=ic" target="_blank" rel="noopener noreferrer" aria-label="Google Maps" data-hq="maps">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg>
+      </a>
+    </div>
+
+  </nav>
+
+        <div class="nav-right">
+            <!-- Notification/Bell — matches index.html's header exactly
+                 (site-wide header consistency), same .nav-wishlist-link
+                 styling, same position ahead of the phone number. -->
+            <a href="account.html" class="nav-wishlist-link nav-bell-link" aria-label="My Account" data-i18n-aria-label="shared.header.myAccount">
+                <i class="far fa-circle-user" aria-hidden="true"></i>
+            </a>
+            <a href="tel:+919176887770" class="nav-phone" aria-label="Call Aventrix Realty" data-i18n-aria-label="shared.header.callAventrix">
+                <i class="fas fa-phone-alt" aria-hidden="true"></i>
+            </a>
+        </div>
+    </div>
+     </header>
+
+
+<section class="list-hero free-valuation-hero">
+    <div class="container">
+        <span class="section-tag">ACCOUNT &amp; PRIVACY</span>
+        <h1>Delete Your Account</h1>
+        <p>Request deletion of your Aventrix Realty account and personal data</p>
+    </div>
+</section>
+
+<section class="owner-form del-page">
+<div class="container">
+
+<p>This page explains how users of the <strong>Aventrix Realty Android app</strong> (and the website) can ask us to delete their account and the personal data linked to it. You do not need to be signed in to make a request.</p>
+
+<h2>How to request deletion</h2>
+<ol>
+<li>Fill in the form below using your <strong>full name</strong> and the <strong>email address you registered with</strong> in the app.</li>
+<li>Tick the confirmation box and submit the request.</li>
+<li>Our team will verify the request using your registered email address and confirm with you once your account and data have been deleted.</li>
+</ol>
+<p>You can also email us at <a href="mailto:office@aventrixrealty.com?subject=Account%20Deletion%20Request">office@aventrixrealty.com</a> from your registered email address, or call <a href="tel:+919176887770">+91 91768 87770</a>.</p>
+
+<h2>What will be deleted</h2>
+<div class="del-grid">
+<div class="del-card">
+<h3>Deleted on request</h3>
+<ul>
+<li>Your account and sign-in details (email address and password)</li>
+<li>Your profile details (name, phone number, preferred contact method)</li>
+<li>Your saved items: wishlist, shortlist and recently viewed properties</li>
+<li>Your saved preferences and notifications</li>
+<li>Information you previously submitted, where you ask us to remove it</li>
+</ul>
+</div>
+<div class="del-card">
+<h3>May be retained</h3>
+<ul>
+<li>Enquiry records and client communications, kept for as long as reasonably necessary to respond to your request and maintain records of those communications (see our <a href="privacy-policy.html">Privacy Policy</a>)</li>
+<li>Records we are required to keep to comply with applicable law, or to protect the rights of Aventrix Realty, our clients or others</li>
+<li>Anonymous property-view statistics that do not include your name, phone number or email address</li>
+</ul>
+</div>
+</div>
+<p>Once an account is deleted it cannot be recovered. Data that is retained is kept only for the purposes above, and we will tell you in our confirmation if anything specific has been kept and why. Retention is governed by the <a href="privacy-policy.html">Privacy Policy</a>.</p>
+
+<h2>Submit your request</h2>
+<form id="propertyForm" class="del-form" action="" method="POST" data-form-type="Account Deletion Request">
+    <input type="hidden" name="Subject" value="Account Deletion Request">
+    <div class="form-grid">
+        <div class="form-group">
+            <label for="delName">Full Name <span class="required">*</span></label>
+            <input id="delName" type="text" name="Full Name" autocomplete="name" placeholder="Full Name" required maxlength="120">
+        </div>
+        <div class="form-group">
+            <label for="delEmail">Registered Email Address <span class="required">*</span></label>
+            <input id="delEmail" type="email" name="Email" autocomplete="email" placeholder="The email you used to register in the app" required maxlength="254">
+        </div>
+    </div>
+    <label class="del-confirm" for="delConfirm">
+        <input id="delConfirm" type="checkbox" name="Deletion Confirmation" value="I confirm I want my Aventrix Realty account and associated personal data permanently deleted" required>
+        <span>I confirm that I want my Aventrix Realty account and associated personal data to be permanently deleted, and I understand this cannot be undone.</span>
+    </label>
+    <button type="submit">Submit Deletion Request</button>
+</form>
+
+<div id="success-message" class="success-message">
+    <h3>Request received</h3>
+    <p>Thank you. Your account deletion request has been submitted.</p>
+    <p>Our team will verify it using your registered email address and confirm once your account and data have been deleted.</p>
+</div>
+
+</div>
+</section>
+
+<!-- SITE-FOOTER:START — generated from partials/footer.html by tools/sync-footer.py. Edit the partial, then run: python3 tools/sync-footer.py -->
+<footer class="site-footer" id="footer">
+    <div class="ft-inner">
+
+        <div class="ft-brand">
+            <a href="index.html" class="ft-logo" aria-label="Aventrix Realty — Home"><img src="images/aventrix-logo-white.png" alt="Aventrix Realty" width="1042" height="342" loading="lazy" decoding="async"></a>
+            <p class="ft-tagline" data-site="footer-tagline" data-i18n="shared.footer.tagline">Where Legacy Meets The Next Generation</p>
+            <p class="ft-desc" data-site="footer-description">
+                Premium real estate advisory across Chennai — residential,
+                commercial, land and joint venture solutions, guided by
+                trust and decades of local expertise.
+            </p>
+        </div>
+
+        <ul class="ft-contacts">
+            <li class="ft-contact">
+                <span class="ft-icon" aria-hidden="true"><i class="fa-solid fa-location-dot"></i></span>
+                <div>
+                    <h4 class="ft-label" data-i18n="shared.footer.headOffice">Head Office</h4>
+                    <span class="ft-sr" data-hq="name" data-i18n="Aventrix Realty – Head Office">Aventrix Realty – Head Office</span>
+                    <p data-hq="address">No.27, 1st Main Road, Newcolony, Chromepet, Chennai, Tamil Nadu</p>
+                </div>
+            </li>
+            <li class="ft-contact">
+                <span class="ft-icon" aria-hidden="true"><i class="fa-solid fa-phone"></i></span>
+                <div>
+                    <h4 class="ft-label" data-i18n="Phone">Phone</h4>
+                    <div class="ft-phones" data-hq="phones">
+                        <a href="tel:+919176887770">+91 91768 87770</a>
+                        <a href="tel:+917092356222">+91 70923 56222</a>
+                    </div>
+                </div>
+            </li>
+            <li class="ft-contact">
+                <span class="ft-icon" aria-hidden="true"><i class="fa-regular fa-envelope"></i></span>
+                <div>
+                    <h4 class="ft-label" data-i18n="Email">Email</h4>
+                    <p><a href="mailto:office@aventrixrealty.com" data-hq="email">office@aventrixrealty.com</a></p>
+                </div>
+            </li>
+            <li class="ft-contact">
+                <span class="ft-icon" aria-hidden="true"><i class="fa-regular fa-building"></i></span>
+                <div>
+                    <h4 class="ft-label" data-i18n="shared.footer.branchOffice">Branch Office</h4>
+                    <p>Adyar, Chennai</p>
+                </div>
+            </li>
+        </ul>
+
+        <div class="ft-rule" aria-hidden="true"></div>
+
+        <div class="ft-main">
+            <div class="ft-col" role="navigation" aria-label="About Aventrix" data-i18n-aria-label="shared.footer.aboutAventrix">
+                <h4 class="ft-heading" data-i18n="shared.footer.aboutAventrix">About Aventrix</h4>
+                <ul class="ft-links">
+                    <li><a href="index.html" data-i18n="Home">Home</a></li>
+                    <li><a href="about.html" data-i18n="About Us">About Us</a></li>
+                    <li><a href="index.html#contact" data-i18n="Contact Us">Contact Us</a></li>
+                    <li><a href="services.html" data-i18n="Our Services">Our Services</a></li>
+                </ul>
+            </div>
+            <div class="ft-col" role="navigation" aria-label="Quick links" data-i18n-aria-label="Quick links">
+                <h4 class="ft-heading" data-i18n="shared.footer.quickLinks">Quick Links</h4>
+                <ul class="ft-links">
+                    <li><a href="our-realtors.html" data-i18n="shared.footer.realtors">Realtors</a></li>
+                    <li><a href="brokerage-fees.html" data-i18n="shared.footer.brokerageFees">Brokerage &amp; Fees</a></li>
+                    <li><a href="emi-calculator.html" data-i18n="shared.footer.emiCalculator">EMI Calculator</a></li>
+                    <li><a href="jv-calculator.html" data-i18n="shared.footer.jointVentureCalculator">Joint Venture Calculator</a></li>
+                </ul>
+            </div>
+
+            <div class="ft-side">
+                <div class="ft-follow">
+                    <h4 class="ft-heading" data-i18n="shared.footer.followUs">Follow Us</h4>
+                    <div class="ft-social">
+                        <a href="https://www.facebook.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Facebook" data-site="social-facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+                        <a href="https://www.instagram.com/aventrixrealty" target="_blank" rel="noopener noreferrer" aria-label="Instagram" data-site="social-instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+                        <a href="https://www.linkedin.com/in/lsanjaygandhi" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" data-site="social-linkedin"><i class="fa-brands fa-linkedin" aria-hidden="true"></i></a>
+                        <a href="https://youtube.com/@sanjaygandhirealty" target="_blank" rel="noopener noreferrer" aria-label="YouTube" data-site="social-youtube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
+                        <a href="https://wa.me/919176887770" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" data-site="whatsapp-link"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a>
+                        <a href="https://maps.app.goo.gl/VjCCdVch9uequeGUA?g_st=ic" target="_blank" rel="noopener noreferrer" aria-label="Google Maps" data-hq="maps"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+
+                <section class="ft-map" aria-labelledby="ftMapTitle">
+                    <h4 class="ft-sr" id="ftMapTitle" data-i18n="shared.footer.findUs">Find Us</h4>
+                    <div class="ft-map-frame" data-hq="map-embed"><iframe src="https://www.google.com/maps?q=No.27%2C%201st%20Main%20Road%2C%20New%20Colony%2C%20Chromepet%2C%20Chennai%2C%20Tamil%20Nadu&amp;output=embed" width="600" height="280" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Aventrix Realty Head Office Map" allowfullscreen></iframe></div>
+                    <a class="ft-map-open" href="https://maps.app.goo.gl/VjCCdVch9uequeGUA?g_st=ic" target="_blank" rel="noopener noreferrer" data-hq="maps"><i class="fa-solid fa-diamond-turn-right" aria-hidden="true"></i><span data-i18n="shared.footer.openInMaps">Open in Maps</span><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i><span class="ft-sr" data-i18n="shared.footer.opensInNewTab"> (opens in a new tab)</span></a>
+                </section>
+            </div>
+        </div>
+
+        <div class="ft-rule" aria-hidden="true"></div>
+
+        <div class="ft-bottom">
+            <div class="ft-credits">
+                <p class="ft-copyright" data-site="copyright-text" data-i18n="shared.footer.rights">© 2026 Aventrix Realty. All Rights Reserved.</p>
+                <p class="ft-designer">Designed with <span class="ft-heart" role="img" aria-label="love">&#10084;&#65039;</span> by L. Sanjay Gandhi</p>
+            </div>
+            <div class="ft-legal" role="navigation" aria-label="Legal and utility links" data-i18n-aria-label="Legal and utility links">
+                <a href="privacy-policy.html" data-i18n="shared.footer.privacyPolicy">Privacy Policy</a>
+                <a href="terms.html" data-i18n="shared.footer.termsConditions">Terms &amp; Conditions</a>
+                <a href="sitemap.html" data-i18n="shared.footer.sitemap">Sitemap</a>
+                <a href="property-tools.html" data-i18n="shared.footer.propertyTools">Property Tools</a>
+                <a href="/admin/" class="ft-legal-admin" data-i18n="Admin">Admin</a>
+            </div>
+        </div>
+
+    </div>
+</footer>
+<script src="js/site-footer.js?v=20261015" defer></script>
+<!-- SITE-FOOTER:END -->
+
+<a href="https://wa.me/919176887770" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" data-site="whatsapp-link">
+    <img src="images/whatsapp-icon.png" alt="WhatsApp">
+</a>
+
+<button id="backToTop" class="back-to-top" aria-label="Back to top" data-i18n-aria-label="Back to top">
+    <i class="fas fa-chevron-up"></i>
+</button>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-client.js"></script>
+<script src="js/public-site-settings.js?v=20260926b"></script>
+<script src="js/public-offices.js?v=20261016-owner-map"></script>
+<script src="js/public-page-content.js?v=20260926b"></script>
+<script src="js/aventrix-storage.js"></script>
+<script src="js/wishlist-widget.js"></script>
+<script src="js/enquiry-supabase.js?v=20260926b"></script>
+<script src="script.js?v=20260926b"></script>
+
+
+<script src="/js/language-switcher.js?v=20261023-br-normalization" defer></script>
+</body>
+</html>
