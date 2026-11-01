@@ -1541,3 +1541,50 @@ html.is-mobile .hh-form {
     .hh-adv-toggle,
     .hh-popular a{ color:#ffffff !important; }
 }
+
+/* CRYSTAL CLEAR GLASS — visual-only desktop override; preserve all geometry. */
+@media screen and (min-width:1181px){
+    /* Keep the existing search panel size, position, radius and layout.
+       Remove the heavy green fill; let the live hero video read through. */
+    .hh-form{
+        background:rgba(255,255,255,.035) !important;
+        -webkit-backdrop-filter:blur(2px) saturate(135%) !important;
+        backdrop-filter:blur(2px) saturate(135%) !important;
+        border-color:rgba(255,255,255,.62) !important;
+        box-shadow:0 10px 28px rgba(0,0,0,.08),inset 0 1px 0 rgba(255,255,255,.28) !important;
+    }
+    /* Tabs stay in exactly the same place and shape, with clear glass only. */
+    .hh-tabs{
+        background:rgba(255,255,255,.045) !important;
+        -webkit-backdrop-filter:blur(2px) saturate(135%) !important;
+        backdrop-filter:blur(2px) saturate(135%) !important;
+        border-color:rgba(255,255,255,.58) !important;
+    }
+    /* Make the existing input boxes translucent too; do not resize or rearrange. */
+    .hh-control{
+        background:rgba(255,255,255,.105) !important;
+        border-color:rgba(255,255,255,.66) !important;
+        -webkit-backdrop-filter:blur(1.5px) saturate(140%) !important;
+        backdrop-filter:blur(1.5px) saturate(140%) !important;
+        box-shadow:inset 0 1px 0 rgba(255,255,255,.24) !important;
+    }
+    .hh-control:focus-within{
+        background:rgba(255,255,255,.15) !important;
+        border-color:rgba(255,255,255,.82) !important;
+        box-shadow:0 0 0 2px rgba(255,255,255,.12),inset 0 1px 0 rgba(255,255,255,.30) !important;
+    }
+    .hh-control input,
+    .hh-control select{
+        background-color:transparent !important;
+        color:#ffffff !important;
+    }
+    .hh-control input::placeholder{
+        color:rgba(255,255,255,.82) !important;
+        opacity:1;
+    }
+    .hh-control > .hh-ico{ color:rgba(255,255,255,.96) !important; }
+    .hh-control select{
+        background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") !important;
+    }
+    .hh-control select option{ color:#26332f; background:#ffffff; }
+}
