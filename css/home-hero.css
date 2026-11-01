@@ -506,14 +506,14 @@ html.is-mobile .hh-hero .home-app-hero-post-btn{ top:14px; right:14px; }
    the hero image shows through without changing layout or behaviour.
 =========================================================== */
 .hh-search{
-    background:linear-gradient(135deg, rgba(255,255,255,.10) 0%, rgba(15,59,46,.14) 100%);
-    -webkit-backdrop-filter:blur(12px) saturate(155%);
-    backdrop-filter:blur(12px) saturate(155%);
-    border:1px solid rgba(255,255,255,.42);
+    background:linear-gradient(135deg, rgba(255,255,255,.045) 0%, rgba(15,59,46,.075) 100%);
+    -webkit-backdrop-filter:blur(4px) saturate(165%);
+    backdrop-filter:blur(4px) saturate(165%);
+    border:1px solid rgba(255,255,255,.52);
     border-radius:16px;
     overflow:hidden;
     box-shadow:
-        0 18px 48px rgba(0,0,0,.14),
+        0 18px 48px rgba(0,0,0,.10),
         inset 0 1px 0 rgba(255,255,255,.32);
 }
 .hh-tabs{
@@ -541,13 +541,13 @@ html.is-mobile .hh-hero .home-app-hero-post-btn{ top:14px; right:14px; }
 }
 /* Individual fields use the same translucent glass language as the app. */
 .hh-control{
-    background:rgba(255,255,255,.09);
-    border-color:rgba(255,255,255,.52);
-    -webkit-backdrop-filter:blur(8px) saturate(150%);
-    backdrop-filter:blur(8px) saturate(150%);
+    background:rgba(255,255,255,.065);
+    border-color:rgba(255,255,255,.58);
+    -webkit-backdrop-filter:blur(3px) saturate(160%);
+    backdrop-filter:blur(3px) saturate(160%);
 }
 .hh-control:focus-within{
-    background:rgba(255,255,255,.15);
+    background:rgba(255,255,255,.11);
     border-color:rgba(212,175,55,.9);
     box-shadow:0 0 0 3px rgba(212,175,55,.24);
 }
