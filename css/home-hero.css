@@ -506,15 +506,16 @@ html.is-mobile .hh-hero .home-app-hero-post-btn{ top:14px; right:14px; }
    the hero image shows through without changing layout or behaviour.
 =========================================================== */
 .hh-search{
-    background:linear-gradient(135deg, rgba(255,255,255,.045) 0%, rgba(15,59,46,.075) 100%);
-    -webkit-backdrop-filter:blur(4px) saturate(165%);
-    backdrop-filter:blur(4px) saturate(165%);
-    border:1px solid rgba(255,255,255,.52);
+    /* Near-clear glass: keep the hero video sharp and visible behind the panel. */
+    background:linear-gradient(135deg, rgba(255,255,255,.025) 0%, rgba(15,59,46,.035) 100%);
+    -webkit-backdrop-filter:blur(1px) saturate(125%);
+    backdrop-filter:blur(1px) saturate(125%);
+    border:1px solid rgba(255,255,255,.64);
     border-radius:16px;
     overflow:hidden;
     box-shadow:
-        0 18px 48px rgba(0,0,0,.10),
-        inset 0 1px 0 rgba(255,255,255,.32);
+        0 12px 32px rgba(0,0,0,.07),
+        inset 0 1px 0 rgba(255,255,255,.28);
 }
 .hh-tabs{
     background:transparent;
@@ -541,13 +542,14 @@ html.is-mobile .hh-hero .home-app-hero-post-btn{ top:14px; right:14px; }
 }
 /* Individual fields use the same translucent glass language as the app. */
 .hh-control{
-    background:rgba(255,255,255,.065);
-    border-color:rgba(255,255,255,.58);
-    -webkit-backdrop-filter:blur(3px) saturate(160%);
-    backdrop-filter:blur(3px) saturate(160%);
+    /* Light translucent input glass; video remains visible through each field. */
+    background:rgba(255,255,255,.13);
+    border-color:rgba(255,255,255,.68);
+    -webkit-backdrop-filter:blur(1.5px) saturate(130%);
+    backdrop-filter:blur(1.5px) saturate(130%);
 }
 .hh-control:focus-within{
-    background:rgba(255,255,255,.11);
+    background:rgba(255,255,255,.18);
     border-color:rgba(212,175,55,.9);
     box-shadow:0 0 0 3px rgba(212,175,55,.24);
 }
