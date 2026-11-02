@@ -640,11 +640,41 @@
 
         // Aventrix app-style map: show every property as its own marker.
         // Nearby properties are never hidden behind a numbered cluster bubble.
+        // Show each property separately. If multiple records have the same
+        // coordinates, fan their markers around that point so none are hidden.
         function recluster() {
             if (!state.map) return;
+            var zoom = state.map.getZoom();
+            if (typeof zoom !== "number") return;
+            var groups = Object.create(null);
             state.mapped.forEach(function (x) {
-                var marker = state.markers[x.p.slug];
-                if (marker) marker.show();
+                var key = x.pos.lat.toFixed(6) + "," + x.pos.lng.toFixed(6);
+                if (!groups[key]) groups[key] = [];
+                groups[key].push(x);
+            });
+            Object.keys(groups).forEach(function (key) {
+                var items = groups[key];
+                var count = items.length;
+                items.forEach(function (x, index) {
+                    var marker = state.markers[x.p.slug];
+                    if (!marker) return;
+                    if (count === 1) {
+                        marker.setPos(x.pos);
+                    } else {
+                        // Compact screen-space fan-out for identical coordinates.
+                        var base = project(x.pos, zoom);
+                        var radius = Math.min(38, 20 + count * 1.5);
+                        var angle = (-Math.PI / 2) + (2 * Math.PI * index / count);
+                        var px = base.x + Math.cos(angle) * radius;
+                        var py = base.y + Math.sin(angle) * radius;
+                        var scale = 256 * Math.pow(2, zoom);
+                        var lng = (px / scale - 0.5) * 360;
+                        var merc = Math.PI * (1 - 2 * py / scale);
+                        var lat = (180 / Math.PI) * Math.atan(Math.sinh(merc));
+                        marker.setPos({ lat: lat, lng: lng });
+                    }
+                    marker.show();
+                });
             });
             state.clusterPool.forEach(function (cluster) { cluster.hide(); });
             state.clusters = [];
