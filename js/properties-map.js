@@ -638,34 +638,16 @@
             recluster();
         }
 
+        // Aventrix app-style map: show every property as its own marker.
+        // Nearby properties are never hidden behind a numbered cluster bubble.
         function recluster() {
             if (!state.map) return;
-            var zoom = state.map.getZoom();
-            if (typeof zoom !== "number") return;
-            var groups = [];
             state.mapped.forEach(function (x) {
-                var pt = project(x.pos, zoom), hit = null;
-                for (var i = 0; i < groups.length; i++) {
-                    var gp = groups[i], dx = gp.x - pt.x, dy = gp.y - pt.y;
-                    if (Math.sqrt(dx * dx + dy * dy) <= (zoom >= NO_CLUSTER_ZOOM ? 1 : CLUSTER_RADIUS_PX)) { hit = gp; break; }
-                }
-                if (hit) hit.items.push(x); else groups.push({ x: pt.x, y: pt.y, items: [x] });
+                var marker = state.markers[x.p.slug];
+                if (marker) marker.show();
             });
-            var used = 0;
-            groups.forEach(function (gp) {
-                if (gp.items.length === 1) { state.markers[gp.items[0].p.slug].show(); return; }
-                gp.items.forEach(function (x) { state.markers[x.p.slug].hide(); });
-                var lat = 0, lng = 0;
-                gp.items.forEach(function (x) { lat += x.pos.lat; lng += x.pos.lng; });
-                var center = { lat: lat / gp.items.length, lng: lng / gp.items.length };
-                var c = state.clusterPool[used];
-                if (!c) { c = makeMarker("cluster", center, "", function () { onClusterClick(c.items); }); state.clusterPool.push(c); }
-                c.items = gp.items;
-                c.setPos(center); c.setCount(gp.items.length); c.show();
-                used++;
-            });
-            for (var j = used; j < state.clusterPool.length; j++) state.clusterPool[j].hide();
-            state.clusters = groups.filter(function (gp) { return gp.items.length > 1; }).map(function (gp) { return gp.items.map(function (x) { return x.p.slug; }); });
+            state.clusterPool.forEach(function (cluster) { cluster.hide(); });
+            state.clusters = [];
         }
 
         function onClusterClick(items) {
