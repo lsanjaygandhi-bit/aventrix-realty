@@ -2,12 +2,7 @@
   "schema": 1,
   "title": "Pallikaranai Marsh News & Updates",
   "reviewed_by": "Aventrix Realty editorial",
-  "next_scheduled": {
-    "date": "2026-11-11",
-    "label": "Madras High Court — next listing of the interim Zone of Influence matter",
-    "evidence": "single_secondary",
-    "note": "Reported by one secondary source (a real-estate portal) only. Not yet confirmed from the Madras High Court cause list or any order."
-  },
+  "next_scheduled": null,
   "categories": {
     "court": "Court Proceedings",
     "orders": "Government Orders",
@@ -34,6 +29,28 @@
     "unverified": "Not independently verified"
   },
   "updates": [
+    {
+      "id": "2026-11-11-high-court-reserves-orders",
+      "event_date": "2026-11-11",
+      "published_date": "2026-11-12",
+      "category": "court",
+      "legal_status": "court_proceeding",
+      "headline": "Madras High Court reserves orders on challenges to the 1 km construction restriction around Pallikaranai Marsh",
+      "summary": "On 11 November 2026, the First Division Bench of Chief Justice Sushrut Arvind Dharmadhikari and Justice G. Arul Murugan heard petitions filed by CREDAI-Chennai and others challenging the National Green Tribunal's restriction on new construction within 1 km of the existing Pallikaranai Marsh boundary. After hearing senior counsel for CREDAI-Chennai and the Tamil Nadu State Wetlands Authority, the Court reserved its orders without announcing a date for pronouncement. The Authority placed before the Court its proposed interim Zone of Influence covering 128.19 hectares across 36 survey numbers, with site-specific construction regulation and hydrological safeguards. The proposal has not been recorded as an adopted Court order. No decision lifting the existing restriction has been reported; the verdict is awaited.",
+      "sources": [
+        {
+          "title": "Madras High Court reserves orders in cases challenging NGT’s construction ban on 1 km radius around Pallikaranai marshland",
+          "publisher": "The Hindu",
+          "url": "https://www.thehindu.com/news/national/tamil-nadu/madras-high-court-reserves-orders-in-cases-challenging-ngts-construction-ban-on-1-km-radius-around-pallikaranai-marshland/article71690916.ece",
+          "type": "news_report",
+          "published": "2026-11-12",
+          "checked": "2026-11-13",
+          "verification": "checked",
+          "tier": "news"
+        }
+      ],
+      "review_flags": []
+    },
     {
       "id": "2026-10-14-status-report-adjourned",
       "event_date": "2026-10-14",
@@ -573,15 +590,15 @@
     "Hearing dates of 15 July and 6 September 2026 are inferred from weekday wording in reports."
   ],
   "current_status": {
-    "text": "No order lifting the approval restriction around the Pallikaranai Ramsar site has been reported. CMDA's October 2025 office order pausing approvals in the Ramsar site and a 1 km zone is described from reports (official copy not yet reviewed). The State's proposed interim Zone of Influence (128.19 ha, 36 survey numbers) is a proposal before the Madras High Court, not an order.",
-    "as_of": "2026-10-18"
+    "as_of": "2026-11-13",
+    "text": "On 11 November 2026, the Madras High Court reserved its orders on petitions challenging the NGT's 1 km construction restriction around Pallikaranai Marsh. No date has been announced for pronouncing the verdict. No order lifting the restriction has been reported. The State Wetlands Authority's proposed interim Zone of Influence (128.19 ha across 36 survey numbers) has not been adopted by the Court. Buyers, landowners and developers should verify the applicable restrictions and approvals for each survey number with the relevant authorities and a qualified legal professional."
   },
   "homepage_window_days": 45,
   "dates": {
     "coverage_start": "2026-08-01",
     "page_published": "2026-09-01",
-    "last_substantive_update": "2026-10-18",
-    "last_source_verification": "2026-10-19",
+    "last_substantive_update": "2026-11-13",
+    "last_source_verification": "2026-11-13",
     "notes": "coverage_start is the start of the research window, not a creation date. page_published stays null until the page is actually deployed; set it to the deploy date then. last_substantive_update changes only when content changes; last_source_verification when sources are re-checked."
   },
   "tier_labels": {
