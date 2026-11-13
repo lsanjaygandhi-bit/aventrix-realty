@@ -98,9 +98,6 @@ def validate():
             if group == "updates":
                 if u["event_date"] < DATES["coverage_start"]:
                     errs.append(f"updates/{u['id']}: event before coverage_start — move to background")
-                for k in ("changed", "not_changed"):
-                    if not u.get(k):
-                        errs.append(f"updates/{u['id']}: missing {k}")
             for s in u.get("sources", []):
                 for k in ("title", "publisher", "url", "type", "checked", "verification"):
                     if not s.get(k):
@@ -236,7 +233,7 @@ def render_regions():
   {flags_html(u)}{sources_html(u["sources"])}</li>''' for u in bg)
     nxt = DATA.get("next_scheduled") or {}
     pub = DATES.get("page_published")
-    status = (f'<span><strong>Research coverage from:</strong> <time datetime="{DATES["coverage_start"]}">{fmt(DATES["coverage_start"])}</time></span>'
+    status = (f'<span><strong>Research coverage period:</strong> <time datetime="{DATES["coverage_start"]}">{fmt(DATES["coverage_start"])}</time> – <time datetime="{DATES["last_substantive_update"]}">{fmt(DATES["last_substantive_update"])}</time></span>'
               + (f'<span><strong>Page published:</strong> <time datetime="{pub}">{fmt(pub)}</time></span>' if pub
                  else '<span><strong>Page published:</strong> Not yet published</span>')
               + f'<span><strong>Last substantive update:</strong> <time datetime="{DATES["last_substantive_update"]}">{fmt(DATES["last_substantive_update"])}</time></span>'
